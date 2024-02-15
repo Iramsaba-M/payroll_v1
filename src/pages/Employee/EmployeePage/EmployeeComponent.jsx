@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../../services/APIService';
-import Card from '../../configurations/Card/Card';
-import Button from '../../configurations/Button/Button';
-import { cardContent, ButtonData, tableContent } from './EmployeeContent';
-import { EMP_API, CARDS_API } from '../../api/EndPoints'
-import TableComponent from '../../configurations/tables/TableComponent';
-import AddEmployee from './AddEmployee/AddEmployee';
-import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../src/excelUtils';
-import SearchableComp from '../../configurations/search/search/SearchableComp';
-import SearchInputConfig from '../../configurations/search/search/SearchInputConfig.json'
-import {exportDataTemplate} from '../../../src/excelUtils';
+import { fetchData } from '../../../services/APIService';
+import Card from '../../../configurations/Card/Card';
+import Button from '../../../configurations/Button/Button';
+import { cardContent, tablesearchContent, ButtonContent, tableContent } from '../EmployeePage/EmployeeContent';
+import { EMP_API, CARDS_API } from '../../../api/EndPoints'
+import TableComponent from '../../../configurations/tables/TableComponent';
+import AddEmployee from '../AddEmployee/AddEmployee';
+import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
+import SearchableComp from '../../../configurations/search/search/SearchableComp';
+import {exportDataTemplate} from '../../../excelUtils';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -223,12 +222,12 @@ const closeImportPopup = () => {
 
           <div className="flex items-center justify-between p-1 ml-4">
             <div className='text-left ml-4 font-lg font-bold text-gray-500'>
-            <SearchableComp SearchConfig={SearchInputConfig} data={employeeData} searchFunrec={searchFun} />
+            <SearchableComp SearchConfig={tablesearchContent} data={employeeData} searchFunrec={searchFun} />
 
             
             </div>
             <div className='text-right p-1 mr-4'>
-              <Button Configs={ButtonData} onClick={handleButtonClick} />
+              <Button Configs={ButtonContent} onClick={handleButtonClick} />
             </div>
           </div>
 
@@ -238,7 +237,7 @@ const closeImportPopup = () => {
         </>
       ) : (
         <AddEmployee />
-      )}
+      )}  
 
 {showImportPopup && (
   <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">

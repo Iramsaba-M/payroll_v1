@@ -5,7 +5,7 @@ import TextComponent from "../Formfields/text/TextComponent";
 import TextStyle from "../Formfields/text/TextStyle";
 import EmailComponent from "../Formfields/email/EmailComponent";
 import OptionsComponent from "../Formfields/options/OptionsComponent";
-import { ButtonDataNew } from "../../../configurations/Button/ButtonData";
+import { ButtonContent } from "../../../pages/Employee/BasicDetails/BasicDetailsContent";
 import PhoneComponent from "../Formfields/phone/PhoneComponent";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
 import { BASIC_DETAILS_API } from "../../../api/EndPoints";
@@ -337,7 +337,7 @@ const BasicDetailsFormComponent = ({
       </div>
       <div className=" ml-[110vh] -translate-y-[15vh]">
         {" "}
-        <ButtonConfig Config={ButtonDataNew} onClick={handleButtonClick} />
+        <ButtonConfig Config={ButtonContent} onClick={handleButtonClick} />
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import BasicDetailsFormComponent from '../../../components/form/BasicDetailForm/BasicDetailsFormComponent'
-import { basicdetailform } from './AddEmplyeeContent'
+import { formContent } from '../BasicDetails/BasicDetailsContent'
 
 
 const BasicDetails = ({handleNextClick,handleEmpId,}) => {
@@ -10,7 +10,7 @@ const BasicDetails = ({handleNextClick,handleEmpId,}) => {
   return (
     <div>
       <div className='basicdeatils'>
-        <BasicDetailsFormComponent config={basicdetailform} handleNextClick={handleNextClick} handleEmpId={handleEmpId}  />
+        <BasicDetailsFormComponent config={formContent} handleNextClick={handleNextClick} handleEmpId={handleEmpId}  />
       </div>
     </div>
   );

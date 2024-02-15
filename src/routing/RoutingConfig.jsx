@@ -3,7 +3,7 @@ import AppMenus from '../components/SidebarMenus/SidebarMenus/AppMenus'
 import SettingsMenus from '../components/SidebarMenus/SidebarMenus/SettingsMenus'
 import TeamMeanus from '../components/SidebarMenus/SidebarMenus/TeamMenus'
 import Home from '../pages/Home/Home'
-import Employee from '../pages/Employee/Employee';
+import Employee from '../pages/Employee/EmployeePage/Employee';
 import RunPayroll from '../pages/Run Payroll/RunPayroll';
 import Notifications from '../pages/Notifications/Notifications'
 import CTC_Calculator from '../pages/CTC Calculator/CTC_Calculator'

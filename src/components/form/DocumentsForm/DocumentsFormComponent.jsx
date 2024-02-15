@@ -4,11 +4,8 @@ import FileComponent from "./FileComponent";
 import DemoStyles from "./DemoStyles";
 import axios from "axios";
 import CustomComponent from "./CustomComponent";
-import CustomConfig from "./CustomConfig";
-import {
-  ButtonDataNew,
-  ButtonDataAdd,
-} from "../../..//configurations/Button/ButtonData";
+import {customformContent} from "../../../pages/Employee/Documents/DocumentsContent";
+import { ButtonforSave, ButtonforAdd } from "../../../pages/Employee/Documents/DocumentsContent";
 import { getApiUrl3 } from "../../../api/GetAPI";
 import { DOCUMENTS_API } from "../../../api/EndPoints";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
@@ -238,12 +235,12 @@ const DocumentsFormComponent = ({
         </div>
         <div className="ml-[50vh]">
           {" "}
-          <ButtonConfig Config={ButtonDataNew} onClick={handleButtonClick} />
+          <ButtonConfig Config={ButtonforSave} onClick={handleButtonClick} />
         </div>
 
         <div className="ml-20 mb-2 mr-2">
           {" "}
-          <ButtonConfig Config={ButtonDataAdd} onClick={addCustomComponent} />
+          <ButtonConfig Config={ButtonforAdd} onClick={addCustomComponent} />
         </div>
 
         <div className="ml-20">
@@ -251,7 +248,7 @@ const DocumentsFormComponent = ({
             <CustomComponent
               key={index}
               value={customComponent.customValue}
-              config={CustomConfig}
+              config={customformContent}
               onCustomChange={(value) => updateCustomValue(index, value)}
             />
           ))}
