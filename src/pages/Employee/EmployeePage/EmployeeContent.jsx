@@ -7,8 +7,16 @@ export const cardContent = [
   { card: 'style3', title: 'Total Employees', contentKey: 'total_employees' },
   // Add more card data as needed
 ];
+
+export const tablesearchContent = [
+{
+     
+  "placeholder" : "  Search ",
+  "style" : "search1"
+} 
+]
   
-export const ButtonData = [
+export const ButtonContent = [
   { label: 'Add Employee', icon: <CiImport />, style: 'buttonStyle' },
   { label: 'Import', icon: <CiImport />, style: 'buttonStyle1' },
   { label: 'Export', icon: <BsArrowBarUp />, style: 'buttonStyle1' }, 

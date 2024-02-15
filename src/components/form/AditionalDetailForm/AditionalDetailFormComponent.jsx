@@ -5,17 +5,14 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import PasswordIcon from './PasswordIcon';
 import { VscTools } from "react-icons/vsc";
 import TagComponent from './TagComponent';
-import TagConfig from './TagConfig';
+import {TagConfig, ButtonDataforAditional} from '../../../pages/Employee/AditionalDetail/AditionalDetailsContent';
 import OptionsComp from './OptionsComp';
 import { getApiUrl } from '../../../api/GetAPI';
 import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';
-import { ButtonDataforAditional } from './AditionalDetailData';
 import Button from '../../../configurations/Button/Button';
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-
-
 
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value });
@@ -35,7 +32,6 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         setValues((prevOptions) => ({ ...prevOptions, ...updatedOptions }));
         
     };
-
 
     const onSubmit = async (e) => {
         e.preventDefault();

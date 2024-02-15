@@ -1,13 +1,13 @@
 import React from 'react'
 import SalaryDetailsComp from '../../../components/form/SalaryDetailForm/SalaryDetailsFormComponent';
-import { salaryData} from './AddEmplyeeContent'
+import { formContent} from '../SalaryDetail/SalaryDetailsContents'
 
 const SalaryDetails = ({handleNextClick, employeeId}) => {
   
   return (
     <div>
       <div className='salarydeatils'>
-        <SalaryDetailsComp config={salaryData} handleNextClick={handleNextClick} employeeId={employeeId} />
+        <SalaryDetailsComp config={formContent} handleNextClick={handleNextClick} employeeId={employeeId} />
       </div>
     </div>
   );

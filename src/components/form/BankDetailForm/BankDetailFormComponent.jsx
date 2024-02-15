@@ -7,7 +7,7 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl2 } from '../../../api/GetAPI'
 import Button from '../../../configurations/Button/Button';
-import { ButtonforDefault } from './BankDetailData';
+import { ButtonforDefault } from '../../../pages/Employee/BankDetail/BankDetailsContent';
 
 const BankDetailFormComponent = ({ id,config, onChange }) => {
   const [values, setValues] = useState({ default_payroll: false,});

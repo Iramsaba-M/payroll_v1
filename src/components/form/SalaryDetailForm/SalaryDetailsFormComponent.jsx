@@ -7,8 +7,7 @@ import { SALARY_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
-import {ButtonDataNew} from '../../../configurations/Button/ButtonData';
-import {ButtonDataNew1}from '../../../configurations/Button/ButtonData';
+import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
 
 // const API_BASE_URL = 'http://localhost:3001'; // Adjust the port as needed
@@ -139,7 +138,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       ))}
     </div>
         <div className=" flex translate-x-20">
-        <ButtonConfig Config={ButtonDataNew1} onClick={handleButtonClick} />
+        <ButtonConfig Config={Button1Content} onClick={handleButtonClick} />
       </div>
       </div>
 
@@ -288,7 +287,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
 
       {/* Submit button */}
       <div className="form-line flex justify-end mt-6">
-     <ButtonConfig Config={ButtonDataNew} onClick={handleButtonClick} />
+     <ButtonConfig Config={Button2Content} onClick={handleButtonClick} />
       </div>
       </div>
 

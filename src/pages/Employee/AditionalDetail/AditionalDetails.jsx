@@ -1,11 +1,11 @@
 import React from 'react'
 import AditionalDetailFormComponent from '../../../components/form/AditionalDetailForm/AditionalDetailFormComponent'
-import AditionalDetailData from '../../../components/form/AditionalDetailForm/AditionalDetailData'
+import {formContent} from './AditionalDetailsContent'
 
 const AditionalDetails = ({handleNextClick ,employeeId}) => {
   return (
     <div>
-        <AditionalDetailFormComponent  config={AditionalDetailData} handleNextClick={handleNextClick} employeeId={employeeId} />
+        <AditionalDetailFormComponent  config={formContent} handleNextClick={handleNextClick} employeeId={employeeId} />
     </div>
   )
 }

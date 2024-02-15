@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Nav from '../../../configurations/Navbar/Nav';
-import { navs } from './AddEmplyeeContent';
-import BasicDetails from './BasicDetails';
-import SalaryDetails from './SalaryDetails';
-import BankDetails from './BankDetails';
-import Documents from './Documents';
-import AditionalDetails from './AditionalDetails';
+import { navsContent } from './AddEmplyeeContent';
+import BasicDetails from '../BasicDetails/BasicDetails';
+import SalaryDetails from '../SalaryDetail/SalaryDetails';
+import BankDetails from '../BankDetail/BankDetails';
+import Documents from '../Documents/Documents';
+import AditionalDetails from '../AditionalDetail/AditionalDetails';
 
 const AddEmployee = () => {
   const [selectedNavItem, setSelectedNavItem] = useState(0); 
   const [employeeId, setEmployeeId] = useState('');
  
   const handleNavClick = (itemName) => {
-    const selectedIndex = navs.findIndex((item) => item.name === itemName);
+    const selectedIndex = navsContent.findIndex((item) => item.name === itemName);
     setSelectedNavItem(selectedIndex);
   };
 
@@ -24,13 +24,13 @@ const AddEmployee = () => {
   }
 
   const handleNextClick = (itemName) => {
-    const selectedIndex = navs.findIndex((item) => item.name === itemName);
+    const selectedIndex = navsContent.findIndex((item) => item.name === itemName);
     const nextIndex = selectedNavItem + 1;
 
-    if (nextIndex < navs.length) {
+    if (nextIndex < navsContent.length) {
       setSelectedNavItem(nextIndex);
 
-      const nextForm = navs[nextIndex];
+      const nextForm = navsContent[nextIndex];
       if (nextForm.name === 'Salary Details') {
         // Assuming employeeId is obtained from BasicDetails form
         const idFromBasicDetails = employeeId; // Replace with your logic
@@ -47,15 +47,15 @@ const AddEmployee = () => {
    return (
     <div>
       <div className='navtabs items-center justify-center p-8 ml-16'>
-        <Nav configs={navs} handleNavClick={handleNavClick} activeItem={navs[selectedNavItem].name} />
+        <Nav configs={navsContent} handleNavClick={handleNavClick} activeItem={navsContent[selectedNavItem].name} />
 
         <div className='main-body pt-4 ml-1'>
           <div className='forms'>
-          {navs[selectedNavItem].name === 'Basic Details' && <BasicDetails handleNextClick={handleNextClick} handleEmpId={handleEmpId} />}
-            {navs[selectedNavItem].name === 'Salary Details' && <SalaryDetails handleNextClick={handleNextClick} employeeId={employeeId}/>}
-            {navs[selectedNavItem].name === 'Bank Details' && <BankDetails handleNextClick={handleNextClick} employeeId={employeeId} />}
-            {navs[selectedNavItem].name === 'Documents' && <Documents handleNextClick={handleNextClick} employeeId={employeeId}/>}
-            {navs[selectedNavItem].name === 'Aditional Details' && <AditionalDetails handleNextClick={handleNextClick} employeeId={employeeId} />}
+          {navsContent[selectedNavItem].name === 'Basic Details' && <BasicDetails handleNextClick={handleNextClick} handleEmpId={handleEmpId} />}
+            {navsContent[selectedNavItem].name === 'Salary Details' && <SalaryDetails handleNextClick={handleNextClick} employeeId={employeeId}/>}
+            {navsContent[selectedNavItem].name === 'Bank Details' && <BankDetails handleNextClick={handleNextClick} employeeId={employeeId} />}
+            {navsContent[selectedNavItem].name === 'Documents' && <Documents handleNextClick={handleNextClick} employeeId={employeeId}/>}
+            {navsContent[selectedNavItem].name === 'Aditional Details' && <AditionalDetails handleNextClick={handleNextClick} employeeId={employeeId} />}
           </div>
         </div>
       </div>

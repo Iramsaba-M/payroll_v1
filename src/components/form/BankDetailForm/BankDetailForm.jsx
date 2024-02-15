@@ -6,8 +6,8 @@ import { GoPlusCircle } from "react-icons/go";
 import Button from '../../../configurations/Button/Button';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl2 } from '../../../api/GetAPI';
-import { ButtonDataNew } from '../../../configurations/Button/ButtonData';
-import { ButtonforaddBank } from './BankDetailData';
+import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
+
 
 const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) => {
   const [forms, setForms] = useState([
@@ -75,7 +75,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
       </div>
       <div className='buttons flex justify-end mr- mt-6 mb-96'>
         
-        <Button  Configs={ButtonDataNew} onClick={handleButtonClick} />
+        <Button  Configs={ButtonforSave} onClick={handleButtonClick} />
       </div>
     </form>
   );
