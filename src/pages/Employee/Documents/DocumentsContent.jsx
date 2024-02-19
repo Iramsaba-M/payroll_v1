@@ -1,8 +1,7 @@
 import { PiUploadSimpleThin } from "react-icons/pi";
 import { CiEdit } from "react-icons/ci";
-import DemoStyles from "../../../components/form/DocumentsForm/DemoStyles";
-import CustomStyles from "../../../components/form/DocumentsForm/CustomStyles";
 
+import DocumentStyles from "../../../components/form/DocumentsForm/DocumentStyles";
 export const formContent  = [
     {
       label: 'Upload Aadhar Documents',
@@ -10,32 +9,32 @@ export const formContent  = [
       type: 'file',
       textcss: 'standard',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={DemoStyles.iconstyle} />, 
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />, 
     },
     {
       label: 'Enter Aadhar Number ',
       name:'aadhar_number',
       type: 'text',
       placeholder: 'Enter here',
-      textcss: 'standard',
-      icon:<CiEdit className={DemoStyles.iconstyle} />,
+      textcss: 'standard_document',
+      icon:<CiEdit className={DocumentStyles.iconstyle1} />,
    
     },
     {
-        label: 'Upload PAN Documents',
-        name:'pan_document',
-        type: 'file',
-        textcss: 'standard',
-        placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DemoStyles.iconstyle} />,
+      label: 'Upload PAN Documents',
+      name:'pan_document',
+      type: 'file',
+      textcss: 'standard',
+      placeholder: 'Select',
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
       },
       {
         label: 'Enter PAN Number ',
         name:'pan_number',
         type: 'text',
         placeholder: 'Enter here',
-        textcss: 'standard',
-        icon:<CiEdit className={DemoStyles.iconstyle}/>,
+        textcss: 'standard_document',
+        icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
         
       },
     
@@ -45,7 +44,8 @@ export const formContent  = [
         type: 'file',
         textcss: 'standard',
         placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DemoStyles.iconstyle} />,
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
+      
       },
       {
         label: 'Enter ESIC Number ',
@@ -53,7 +53,7 @@ export const formContent  = [
         type: 'text',
         placeholder: 'Enter here',
         textcss: 'standard',
-        icon:<CiEdit className={DemoStyles.iconstyle}/>,
+        icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
       },
       {
         label: 'Upload EPFO Document',
@@ -61,7 +61,7 @@ export const formContent  = [
         type: 'file',
         textcss: 'standard',
         placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DemoStyles.iconstyle}/>,
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
       },
       {
         label: 'Enter EPFO Number ',
@@ -69,7 +69,7 @@ export const formContent  = [
         type: 'text',
         placeholder: 'Enter here',
         textcss: 'standard',
-        icon:<CiEdit className={DemoStyles.iconstyle} />,
+        icon:<CiEdit className={DocumentStyles.iconstyle1} />,
       },
       {
         label: 'Upload Form 16 Document',
@@ -77,7 +77,7 @@ export const formContent  = [
         type: 'file',
         textcss: 'standard',
         placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DemoStyles.iconstyle}/>,
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
         isTrue:true,
       },
       {
@@ -86,7 +86,7 @@ export const formContent  = [
         type: 'text',
         placeholder: 'Enter here',
         textcss: 'standard',
-        icon:<CiEdit className={DemoStyles.iconstyle}/>,
+        icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
       },  
   ];
 
@@ -97,14 +97,14 @@ export const formContent  = [
       type: 'file',
       textcss: 'standard',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={CustomStyles.iconstyle} />, 
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />, 
     },
     {
       label: 'Custom Number',
       type: 'text',
       placeholder: 'Enter here',
       textcss: 'standard',
-      icon:<CiEdit className={CustomStyles.iconstyle} />,
+      icon:<CiEdit className={DocumentStyles.iconstyle1} />,
     },  
   ];
   
