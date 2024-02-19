@@ -1,3 +1,4 @@
+import { CiCalendar } from "react-icons/ci";
 export const formContent = [
     // {
     //   "name": "employee_name",
@@ -33,7 +34,8 @@ export const formContent = [
       "label": "DOB* ",
       "type": "date",
       "placeholder": "dd/yy/mm",
-      "textcss": "standard"
+      "textcss": "standard",
+      "icon": <CiCalendar className="text-gray-500" />,
     },
     {
       "name":"gender",
@@ -51,7 +53,8 @@ export const formContent = [
       "label": "Date Of Joining*",
       "type": "date",
       "placeholder": "dd/yy/mm",
-      "textcss": "standard"
+      "textcss": "standard",
+      "icon": <CiCalendar className="text-gray-500" />,
     },
     {
       "name":"blood_group",
