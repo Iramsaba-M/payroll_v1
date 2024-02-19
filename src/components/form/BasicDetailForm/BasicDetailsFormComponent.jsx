@@ -88,7 +88,7 @@ const BasicDetailsFormComponent = ({
   };
   return (
     <form onSubmit={onSubmit}>
-      <div className="">
+      <div className="w-[135vh]">
         <h1 className="block text-gray-600 text-xs font-bold my-1">
           Employee Name*
         </h1>

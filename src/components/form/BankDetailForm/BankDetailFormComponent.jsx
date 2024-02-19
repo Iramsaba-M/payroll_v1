@@ -95,8 +95,8 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
 
       <div className='buttons flex  mt-6 ' >
-        {/* <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>         */}
-        <Button  Configs={ButtonforDefault} onClick={highlight} />
+        <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>        
+        {/* <Button  Configs={ButtonforDefault} onClick={highlight} /> */}
       </div>
     </div>
   );

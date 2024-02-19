@@ -21,6 +21,7 @@ const ButtonData = [
   { label: 'Export', icon: <CiImport />, style: 'buttonStyle1' },
  ];
 
+
 export default ButtonData;
 
 export const ButtonDataNew = [
@@ -52,6 +53,12 @@ export const ExportButtonData = [
   { label: 'Download as Excel', style: 'buttonStyle2' },
   { label: 'Download as CSV', style: 'buttonStyle2' },
 ];
+
+ export const ButtonDataNew = [
+  { label: 'Save',  style: 'buttonStyle' , type:"submit"},
+  { label: 'Next', style: 'buttonStyle3' ,type:"Button" },
+];
+
 
 
 

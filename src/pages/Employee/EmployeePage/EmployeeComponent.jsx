@@ -9,6 +9,7 @@ import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import {exportDataTemplate} from '../../../excelUtils';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -87,10 +88,16 @@ const EmployeeComponent = () => {
     fetchemployeeData();
   }, []);
   
+  const navigate = useNavigate();
+  const handleAddEMp =() =>{
+    setShowAddEmployee(true)
+    navigate('Addemployee')
+  }
   
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
-      setShowAddEmployee(true);
+      // setShowAddEmployee(true);
+      handleAddEMp(true);
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {

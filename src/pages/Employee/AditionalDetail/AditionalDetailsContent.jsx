@@ -42,7 +42,7 @@ export const formContent = [
 export const TagConfig = [
     {
         "label": "Add Benefit",
-        "name":"employe_Benefit",
+        "name":"employe_benefit",
         "type": "options",
         "dropdownOptions": [
           { "label": "food", "value": "food" },
