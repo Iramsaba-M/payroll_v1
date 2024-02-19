@@ -6,7 +6,7 @@ const Card = ({ Configs, data }) => {
     <div>
       {/* Other components or content */}
       <CardConfig Config={Configs} data={data} />
-      hello
+      hello sabbbbba
     </div>
   );
 };
