@@ -11,3 +11,8 @@ const Card = ({ Configs, data }) => {
 };
 
 export default Card;
+
+
+
+
+
