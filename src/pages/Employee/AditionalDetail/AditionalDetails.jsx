@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import AditionalDetailFormComponent from '../../../components/form/AditionalDetailForm/AditionalDetailFormComponent'
 import {formContent} from './AditionalDetailsContent'

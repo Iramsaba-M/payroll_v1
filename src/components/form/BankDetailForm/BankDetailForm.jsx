@@ -5,7 +5,7 @@ import axios from 'axios';
 import { GoPlusCircle } from "react-icons/go";
 import Button from '../../../configurations/Button/Button';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
-import { getApiUrl2 } from '../../../api/GetAPI';
+import { getApiUrl } from '../../../api/GetAPI';
 import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
 
 
@@ -31,7 +31,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
     try {
       const allFormValues = forms.map(form => form.values);
       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
-      const response = await axios.post(getApiUrl2(BANK_DETAILS_API), dataToSend);
+      const response = await axios.post(getApiUrl(BANK_DETAILS_API), dataToSend);
       
       console.log('Data sent:', response.data);      
 
@@ -68,8 +68,8 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
         <GoPlusCircle  onClick={() => addBank()} className='justify-center size-5'/>
         </div>
         <div className='flex justify-center ml-7'>
-         
-          <Button  Configs={ButtonforaddBank} onClick={addBank} />
+        <button type="button" onClick={addBank} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-1'>Add another bank details</button>
+          {/* <Button  Configs={ButtonforaddBank} onClick={addBank} /> */}
           </div>
         </div>
       </div>

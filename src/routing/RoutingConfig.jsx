@@ -11,6 +11,14 @@ import Loans from '../pages/Loans/Loans'
 import Reports from '../pages/Reports/Reports'
 import Settings from '../pages/Settings/Setting'
 import AddEmp from '../pages/Employee/AddEmployee/AddEmp'
+import CTCTemplateSetting from '../pages/Settings/CTCTemplateSetting'
+import AnnouncementSetting from '../pages/Settings/AnnouncementSetting'
+import LeaveSetting from '../pages/Settings/LeaveSetting'
+import PayRollSetting from '../pages/Settings/PayRollSetting'
+import PaymentReminderSetting from '../pages/Settings/PaymentReminderSetting'
+import PayslipSetting from '../pages/Settings/PayslipSetting'
+import ReimbursementSetting from '../pages/Settings/ReimbursementSetting'
+import LoanSetting from '../pages/Settings/LoanSetting'
 
 const routesConfig = [
   {
@@ -101,6 +109,41 @@ const routesConfig = [
           {
             path: 'settings',
             element: <Settings />,
+            children: [
+              {
+                  path: 'CTCTemplateSetting',
+                  element: <CTCTemplateSetting />,
+                },
+                {
+                  path: 'PayRollSetting',
+                  element: <PayRollSetting />,
+                },
+                {
+                  path: 'ReimbursementSetting',
+                  element: <ReimbursementSetting />,
+                },
+                {
+                  path: 'LoanSetting',
+                  element: <LoanSetting />,
+                },
+                {
+                  path: 'PayslipSetting',
+                  element: <PayslipSetting />,
+                },
+                {
+                  path: 'PaymentReminderSetting',
+                  element: <PaymentReminderSetting />,
+                },
+                {
+                  path: 'AnnouncementSetting',
+                  element: <AnnouncementSetting />,
+                },
+                {
+                  path: 'LeaveSetting',
+                  element: <LeaveSetting />,
+                },
+                
+            ],
           },
       ],
   },

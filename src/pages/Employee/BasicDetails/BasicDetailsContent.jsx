@@ -1,3 +1,5 @@
+import { CiCalendar } from "react-icons/ci";
+import { RiArrowDownSFill } from "react-icons/ri";
 export const formContent = [
     // {
     //   "name": "employee_name",
@@ -33,7 +35,8 @@ export const formContent = [
       "label": "DOB* ",
       "type": "date",
       "placeholder": "dd/yy/mm",
-      "textcss": "standard"
+      "textcss": "standard",
+      "icon": <CiCalendar className="text-gray-500" />,
     },
     {
       "name":"gender",
@@ -44,14 +47,16 @@ export const formContent = [
           { "name": "Male", "value": "male" }
       ],
       "placeholder":"",
-      "textcss": "standard"
+      "textcss": "standard",
+      "icon": <RiArrowDownSFill  className="text-gray-400" />,
     },
     {
       "name":"date_of_joining",
       "label": "Date Of Joining*",
       "type": "date",
       "placeholder": "dd/yy/mm",
-      "textcss": "standard"
+      "textcss": "standard",
+      "icon": <CiCalendar className="text-gray-500" />,
     },
     {
       "name":"blood_group",
@@ -70,7 +75,10 @@ export const formContent = [
           { "name": "Manager", "value": "manager" },
           { "name": "Software Engineer", "value": "software_engineer" }
       ],
-      "textcss": "standard"
+      "placeholder": "",
+      "textcss": "standard",
+      "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
+      
     },
     {
       "name":"employee_id",
@@ -102,7 +110,8 @@ export const formContent = [
               "value": "intern"
           }
       ],
-       "textcss": "standard"
+       "textcss": "standard",
+       "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
        
     },
   //   {
@@ -145,9 +154,11 @@ export const formContent = [
             "value": "No"
         }
     ],
-     "textcss": "standard"
+     "textcss": "standard",
+     "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
      
     },
+
   {
     "name":"personal_email",
       "label": "Personal Email* ",

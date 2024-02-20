@@ -11,16 +11,20 @@
   },
   "dependencies": {
     "axios": "^1.6.7",
+    "downshift": "^8.3.1",
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "react": "^18.2.0",
     "react-csv-reader": "^4.0.0",
+    "react-datepicker": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.22.0",
+    "react-select": "^5.8.0",
+    "recharts": "^2.12.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

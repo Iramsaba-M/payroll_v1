@@ -10,9 +10,9 @@ import Button from '../../../configurations/Button/Button';
 import { ButtonforDefault } from '../../../pages/Employee/BankDetail/BankDetailsContent';
 
 const BankDetailFormComponent = ({ id,config, onChange }) => {
-  const [values, setValues] = useState({ default_payroll: false,});
+  const [values, setValues] = useState({ default_for_payroll: false,});
   const [isButtonClicked, setIsButtonClicked] = useState(false);
-  // const [default_payroll, setdefault_payroll] = useState(false);
+  // const [default_for_payroll, setdefault_for_payroll] = useState(false);
 
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
@@ -26,9 +26,9 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
   const highlight = () => {
     setIsButtonClicked((prevState) => !prevState);
-    const setDefaultPayroll = !values["default_payroll"];
-    setValues({ ...values, default_payroll: setDefaultPayroll });
-    onChange(id, { ...values, default_payroll: setDefaultPayroll });
+    const setDefaultPayroll = !values["default_for_payroll"];
+    setValues({ ...values, default_for_payroll: setDefaultPayroll });
+    onChange(id, { ...values, default_for_payroll: setDefaultPayroll });
 
   };
   return (
@@ -47,6 +47,7 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
                 value={values[field.name] || ''}
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
+                icon={field.icon}
               />
             )}
             {field.type === 'text' && (
@@ -95,8 +96,8 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
 
       <div className='buttons flex  mt-6 ' >
-        {/* <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>         */}
-        <Button  Configs={ButtonforDefault} onClick={highlight} />
+        <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>        
+        {/* <Button  Configs={ButtonforDefault} onClick={highlight} /> */}
       </div>
     </div>
   );
