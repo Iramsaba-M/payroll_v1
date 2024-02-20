@@ -8,7 +8,7 @@ const OptionData = {
     ],
   
     typeOptions: [
-      { name: 'On Leave', value: 'On Leave' },
+      { name: 'On Leave', value: 'Leave' },
       { name: 'Suspended', value: 'Suspended' },
     ],
   

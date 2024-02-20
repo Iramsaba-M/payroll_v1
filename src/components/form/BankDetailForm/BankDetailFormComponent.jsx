@@ -10,9 +10,9 @@ import Button from '../../../configurations/Button/Button';
 import { ButtonforDefault } from '../../../pages/Employee/BankDetail/BankDetailsContent';
 
 const BankDetailFormComponent = ({ id,config, onChange }) => {
-  const [values, setValues] = useState({ default_payroll: false,});
+  const [values, setValues] = useState({ default_for_payroll: false,});
   const [isButtonClicked, setIsButtonClicked] = useState(false);
-  // const [default_payroll, setdefault_payroll] = useState(false);
+  // const [default_for_payroll, setdefault_for_payroll] = useState(false);
 
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
@@ -26,9 +26,9 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
   const highlight = () => {
     setIsButtonClicked((prevState) => !prevState);
-    const setDefaultPayroll = !values["default_payroll"];
-    setValues({ ...values, default_payroll: setDefaultPayroll });
-    onChange(id, { ...values, default_payroll: setDefaultPayroll });
+    const setDefaultPayroll = !values["default_for_payroll"];
+    setValues({ ...values, default_for_payroll: setDefaultPayroll });
+    onChange(id, { ...values, default_for_payroll: setDefaultPayroll });
 
   };
   return (
