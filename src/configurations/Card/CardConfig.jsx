@@ -1,11 +1,16 @@
 import React from 'react';
 import CardStyles from './CardStyle';
 
-const Card = ({ card, title, content }) => {
+const Card = ({ card, title, content,icon }) => {
   return (
     <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards}`}>
       <h3 className={CardStyles.CardTitle}>{title}</h3>
       <p className={CardStyles.CardContent}>{content}</p>
+      {icon && (
+        <div className='mt-6 '>
+          {icon}
+        </div>
+      )}
     </div>
   );
 };

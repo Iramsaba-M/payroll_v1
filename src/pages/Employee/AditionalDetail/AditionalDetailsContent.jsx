@@ -22,19 +22,7 @@ export const formContent = [
         ],
         "placeholder": "",
         "textcss": "standard",
-    },
-  
-    {
-        "label": "Add Benefit",
-        "name":"add_benefits",
-        "type": "options1",
-        "dropdownOptions": [
-          { "label": "food", "value": "food" },
-          { "label": "Transport", "value": "Transport" },
-          { "label": "Accomodation", "value": "Accomodation" }
-        ],
-        "placeholder": "",
-        "textcss": "standard",
+        "required": true
     },
   
   ]
@@ -42,7 +30,7 @@ export const formContent = [
 export const TagConfig = [
     {
         "label": "Add Benefit",
-        "name":"employe_benefit",
+        "name":"employee_benefit",
         "type": "options",
         "dropdownOptions": [
           { "label": "food", "value": "food" },

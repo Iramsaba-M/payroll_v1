@@ -34,7 +34,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
 
     const handleOptionsChange = (updatedOptions) => {
         setValues((prevOptions) => ({ ...prevOptions, ...updatedOptions }));
-        
+
     };
 
     // const handleButtonClick = (label, type) => {
@@ -49,9 +49,9 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
             const data={
                 ...values,employee_id:employeeId
             }
-            console.log(data);
-              const response = await axios.post(getApiUrl(ADITIONAL_DETAILS_API, data));
-    
+            // console.log(data);
+              const response = await axios.post(getApiUrl(ADITIONAL_DETAILS_API), data);
+
 
             console.log('Data sent:', response.data);
 
