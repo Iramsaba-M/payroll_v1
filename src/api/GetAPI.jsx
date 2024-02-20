@@ -7,10 +7,4 @@ export const getApiUrl = (endpoint) => {
   return `${baseUrl}/${endpoint}`;
 };
 
-// export const getApiUrl2 = (endpoint) => {
-//   return `${baseUrl2}/${endpoint}`;
-// };
 
-// export const getApiUrl3 = (endpoint) => {
-//   return `${baseUrl3}/${endpoint}`;
-// };
