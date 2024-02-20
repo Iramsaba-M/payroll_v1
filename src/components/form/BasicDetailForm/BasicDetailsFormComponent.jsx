@@ -169,6 +169,7 @@ const BasicDetailsFormComponent = ({
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
+              
                   />
                 )}
               </div>
@@ -179,7 +180,7 @@ const BasicDetailsFormComponent = ({
           <div className="form-line flex mb-4">
             {config.slice(5, 7).map((field, index) => (
               <div key={index} className={`form-field ${field.fieldstyle}`}>
-                                <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
+               <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
                 </label>
@@ -226,6 +227,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
               {field.type === "text" && (
@@ -254,6 +256,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
             </div>
@@ -309,6 +312,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
             </div>
@@ -356,6 +360,7 @@ const BasicDetailsFormComponent = ({
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
+                    icon={field.icon}
                   />
                 )}
               </div>

@@ -14,11 +14,16 @@
 // export const ADITIONAL_DETAILS_API = 'api/additional-details';
 export const EMP_API = 'employees/';
 
-export const CARDS_API = 'api/card';
+export const EMP_API = 'basicdetail';
+// export const EMP_API = 'employees/';
+// export const CARDS_API = 'employee/api/card';
+export const CARDS_API = 'cardData/';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
 // export const BASIC_DETAILS_API = 'employees';
 
+// export const BASIC_DETAILS_API = 'employee/basic-details/';
+// export const BASIC_DETAILS_API = 'employees';
 export const SALARY_DETAILS_API = 'basicdetail';
 
 

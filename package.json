@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.6.7",
+    "downshift": "^8.3.1",
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",
     "jspdf": "^2.5.1",

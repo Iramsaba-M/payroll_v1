@@ -4,6 +4,7 @@ const OptionData = {
       { name: 'Inactive', value: 'Inactive' },
       { name: 'Terminate', value: 'Terminate' },
       { name: 'Retired', value: 'Retired' },
+      
     ],
   
     typeOptions: [

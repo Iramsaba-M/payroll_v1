@@ -20,7 +20,7 @@ const HeadComponents = ({ props, currentPath }) => {
           </li>
         ))}
       </ul>
-      <div className='mb-2'>
+      <div className='mb-3'>
       <ApplicationSearch />
       </div>
       

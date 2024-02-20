@@ -47,6 +47,7 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
                 value={values[field.name] || ''}
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
+                icon={field.icon}
               />
             )}
             {field.type === 'text' && (
