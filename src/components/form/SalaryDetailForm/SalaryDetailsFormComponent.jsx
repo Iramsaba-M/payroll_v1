@@ -15,13 +15,6 @@ import NumberStyle from '../Formfields/number/numberstyle';
 import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 
-// const API_BASE_URL = 'http://localhost:3001'; // Adjust the port as needed
-// const POST_API_ENDPOINT = '/postSalaryDetails';
-// const GET_API_ENDPOINT = '/getSalaryDetails';
-
-// const API_BASE_URL = 'http://192.168.0.108:8000';
-// const POST_API_ENDPOINT = '/calculate_ctc';
-// const GET_API_ENDPOINT = '/get_ctc/';
 
 
 const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }) => {
@@ -79,24 +72,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       }
     }
   };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       if (postSuccess) {
-  //         const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
-  //         console.log('GET Response Data:', response.data);
-          
-  //         // Update state with received data
-  //         setValues({
-  //           annual_ctc: response.data.annual_ctc,
-  //           ctc_template: response.data.ctc_template,
-  //           // Map other fields as needed
-  //         });
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
+
   useEffect(() => {
     // Fetch data only if postSuccess is true
     const fetchData = async () => {

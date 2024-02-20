@@ -10,6 +10,7 @@ import { EMP_API, CARDS_API } from '../../../api/EndPoints'
 import TableComponent from '../../../configurations/tables/TableComponent';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
+import {getApiUrl} from '../../../api/GetAPI';
 
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
@@ -35,7 +36,7 @@ const EmployeeComponent = () => {
     try {
       // Fetch data from the server
       // const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directl
-      const serverResponse = await axios.get(getApiUrl4(EMP_API));
+      const serverResponse = await axios.get(getApiUrl(EMP_API));
       const serverData = serverResponse.data;
       setEmployeeData(serverData);
     } catch (error) {
@@ -53,7 +54,7 @@ const EmployeeComponent = () => {
   const fetchCardData = async () => {
     try {
 
-      const response = await axios.get(getApiUrl4(CARDS_API));
+      const response = await axios.get(getApiUrl(CARDS_API));
       
      
       setCardData(response.data);
@@ -66,11 +67,6 @@ const EmployeeComponent = () => {
     fetchCardData();
   }, []);
 
-  const navigate = useNavigate();
-  const handleAddEMp =() =>{
-    setShowAddEmployee(true)
-    navigate('Addemployee')
-  }
   
   const navigate = useNavigate();
   const handleAddEMp =() =>{
