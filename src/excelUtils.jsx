@@ -5,7 +5,7 @@ import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
-// import { fetchemployeeData } from './pages/Employee/EmployeeComponent';
+
 
  // Function to concatenate first name, middle name, and last name
  export const concatenateName = (First_Name, Middle_Name, Last_Name) => {
@@ -13,7 +13,7 @@ import axios from 'axios';
 };
 
 export const generateTemplate = async () => {
-  const url = 'http://192.168.0.106:8000/api/download_template';
+  const url = 'http://192.168.0.130:8000/api/download_template';
 
   try {
     const response = await fetch(url, {
@@ -67,7 +67,7 @@ export const generateTemplate = async () => {
 //   }
 // };
 export const uploadEmployeeData = async (data, file) => {
-  const url = 'http://192.168.0.136:8002/api/upload_and_process';
+  const url = 'http://192.168.0.130/api/upload_and_process';
 
   const formData = new FormData();
   formData.append('file', file); // Ensure the key matches what the server expects

@@ -9,20 +9,26 @@ import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
+// import ModalComponent from '../Formfields/modal/ModalComponent';
+// import ModalConfig from '../Formfields/modal/ModalConfig';
+
+import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
+import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 
 // const API_BASE_URL = 'http://localhost:3001'; // Adjust the port as needed
 // const POST_API_ENDPOINT = '/postSalaryDetails';
 // const GET_API_ENDPOINT = '/getSalaryDetails';
 
-const API_BASE_URL = 'http://192.168.0.108:8000';
-const POST_API_ENDPOINT = '/calculate_ctc';
-const GET_API_ENDPOINT = '/get_ctc/';
+// const API_BASE_URL = 'http://192.168.0.108:8000';
+// const POST_API_ENDPOINT = '/calculate_ctc';
+// const GET_API_ENDPOINT = '/get_ctc/';
 
 
 const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
   const [ctcDetails, setCtcDetails] = useState({});
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleButtonClick = (label, type) => {
     if (label === 'Save' && type === 'submit') {
@@ -32,6 +38,18 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
     }
   };
 
+  // const handleButtonClick = (label, type) => {
+  //   if (label === "Save" && type === "submit") {
+  //     setIsModalOpen(true);
+  //   } else if (label === "Next") {
+  //     handleNextClick(true);
+  //   }
+  // };
+
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
   };
@@ -40,7 +58,8 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
     e.preventDefault();
     try {
       const { annual_ctc, ctc_template } = values;
-      const postResponse = await axios.post(`${API_BASE_URL}${POST_API_ENDPOINT}`, {
+      // const postResponse = await axios.post(`${API_BASE_URL}${POST_API_ENDPOINT}`, {
+        const postResponse = await axios.post(`${getApiUrl1(SALARY_DETAILS_POST_API)}`, {
         annual_ctc,
         ctc_template,
         employee_id: employeeId,
@@ -83,7 +102,8 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
     const fetchData = async () => {
       try {
         if (postSuccess) {
-          const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
+          // const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
+          const response = await axios.get(`${getApiUrl1(SALARY_DETAILS_GET_API)}${employeeId}`);
 
           console.log('GET Response Data:', response.data);
           setValues(response.data);
@@ -137,13 +157,13 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
         </div>
       ))}
     </div>
-        <div className=" flex translate-x-20">
+        <div className=" flex translate-x-24">
         <ButtonConfig Config={Button1Content} onClick={handleButtonClick} />
       </div>
       </div>
 
       {/* Section 2: Earnings (at center) */}
-      <div className="form-line flex justify-center mb-4 font-semibold mr-[45vh]">
+      <div className="form-line flex justify-center mb-4 font-semibold mr-[40vh]">
         <h2>Earnings</h2>
       </div>
 
@@ -159,7 +179,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
                    name={field.name}
                    placeholder={field.placeholder}
                   //  value={values.earning && values.earning[field.name] || ""}
-                  value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : 0}
+                  value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : null}
                    onChange={(e) => handleChange("earning", field.name, e.target.value)}
                    numberType={field.numberType}  // Use field.numberType or default to "float"
                    numbercss={NumberStyle[field.numbercss].input}
@@ -181,7 +201,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
               name={field.name}
               placeholder={field.placeholder}
               // value={values.earning && values.earning[field.name] || ""}
-              value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : 0}
+              value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : null}
               onChange={(e) => handleChange("earning", field.name, e.target.value)}
               numberType={field.numberType}  // Use field.numberType or default to "float"
               numbercss={NumberStyle[field.numbercss].input}
@@ -230,7 +250,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
                     name={field.name}
                     placeholder={field.placeholder}
                     // value={values.deduction && values.deduction[field.name] || ""}
-                    value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : 0}
+                    value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : null}
                    onChange={(e) => handleChange("deduction", field.name, e.target.value)}
                    numberType={field.numberType}  // Use field.numberType or default to "float"
                     numbercss={NumberStyle[field.numbercss].input}
@@ -252,7 +272,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
                     name={field.name}
                     placeholder={field.placeholder}
                     // value={values.deduction && values.deduction[field.name] || ""}
-                    value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : 0}
+                    value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : null}
                    onChange={(e) => handleChange("deduction", field.name, e.target.value)}
                    numberType={field.numberType}  // Use field.numberType or default to "float"
                     numbercss={NumberStyle[field.numbercss].input}
@@ -286,10 +306,15 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
 
 
       {/* Submit button */}
-      <div className="form-line flex justify-end mt-6">
+      <div className="form-line flex justify-end mt-4">
      <ButtonConfig Config={Button2Content} onClick={handleButtonClick} />
       </div>
       </div>
+      {/* <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalConfig}
+      /> */}
 
           </form>
   );
