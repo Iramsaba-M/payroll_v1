@@ -15,11 +15,6 @@ import SearchableComp from '../../../configurations/search/search/SearchableComp
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
-import { getApiUrl1 ,getApiUrl4} from '../../../api/GetAPI';
-import {ExportButtonData} from '../../../configurations/Button/ButtonData';
-import { importButtonData } from '../../../configurations/Button/ButtonData';
-import { Additionaldetails_export,BasicDetails_export,BankDetails_export,Documents_export,SalaryDetails_export } from '../../../api/EndPoints';
-
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -77,7 +72,12 @@ const EmployeeComponent = () => {
     navigate('Addemployee')
   }
   
-
+  const navigate = useNavigate();
+  const handleAddEMp =() =>{
+    setShowAddEmployee(true)
+    navigate('Addemployee')
+  }
+  
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
       // setShowAddEmployee(true);

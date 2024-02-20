@@ -13,10 +13,14 @@ import Button from '../../../configurations/Button/Button';
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value });
     };
+    // const handleCloseModal = () => {
+    //     setIsModalOpen(false);
+    //   };
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -33,12 +37,19 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         
     };
 
+    // const handleButtonClick = (label, type) => {
+    //     if (label === "Save" && type === "submit") {
+    //       setIsModalOpen(true);
+    //     } 
+    //   };
+
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
             const data={
                 ...values,employee_id:employeeId
             }
+            console.log(data);
               const response = await axios.post(getApiUrl(ADITIONAL_DETAILS_API, data));
     
 
@@ -46,6 +57,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
 
             // If the above API call is successful, trigger the handleSubmit function from props
             handleSubmit(values);
+            window.location.reload();
         } catch (error) {
             console.error('Error:', error);
         }
@@ -117,9 +129,15 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
               <div className='w-44'></div>                    
             <div className='buttons flex justify-end mt-6 w-96' >
                 {/* <button type="submit" className='bg-blue-600 text-white px-4 rounded flex items-center p-2 mb-2 mr-5'>Save</button> */}
+                {/* <Button  Configs={ButtonDataforAditional} onClick={handleButtonClick} /> */}
                 <Button  Configs={ButtonDataforAditional} onClick={()=>onSubmit} />
             </div>
             </div> 
+            {/* <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalConfig}
+      /> */}
         </form>
     );
 };

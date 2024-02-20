@@ -6,7 +6,7 @@ const OptionData = {
       { name: 'Retired', value: 'Retired' },
     ],
   
-    inactiveStatusOptions: [
+    typeOptions: [
       { name: 'On Leave', value: 'On Leave' },
       { name: 'Suspended', value: 'Suspended' },
     ],

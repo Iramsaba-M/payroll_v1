@@ -116,25 +116,25 @@ const OptionsComp = ({ onChange }) => {
  
 
   const [employee_status, setEmployeeStatus] = useState('');
-  const [inactiveStatus, setinactiveStatus] = useState('');
+  const [type, settype] = useState('');
   const [selectedLeaveOption, setSelectedLeaveOption] = useState('');
 
   const handleEmployeeStatusChange = (value) => {
     setEmployeeStatus(value);
-    setinactiveStatus('');
+    settype('');
     setSelectedLeaveOption('');
     onChange({ employee_status: value });
   };
 
-  const handleinactiveStatusChange = (value) => {
-    setinactiveStatus(value);
+  const handletypeChange = (value) => {
+    settype(value);
     setSelectedLeaveOption('');
-    onChange({ employee_status, inactiveStatus: value });
+    onChange({ employee_status, type: value });
   };
 
   const handleLeaveOptionChange = (value) => {
     setSelectedLeaveOption(value);
-    onChange({ employee_status, inactiveStatus, leaveOption: value });
+    onChange({ employee_status, type, reason: value });
   };
 
   return (
@@ -162,18 +162,18 @@ const OptionsComp = ({ onChange }) => {
               <label className='block text-gray-600 text-xs font-bold my-1'></label>
               <select
                 className="border-b-0 hover:border-blue-500 border-gray-100 bg text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
-                value={inactiveStatus}
-                onChange={(e) => handleinactiveStatusChange(e.target.value)}
+                value={type}
+                onChange={(e) => handletypeChange(e.target.value)}
               >
                 <option value="" disabled>Select Additional Status</option>
-                {OptionData.inactiveStatusOptions.map((option) => (
+                {OptionData.typeOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.name}
                   </option>
                 ))}
               </select>
 
-              {inactiveStatus === 'On Leave' && (
+              {type === 'Leave' && (
                 <div>
                   <label className='block text-gray-600 text-xs font-bold my-1'></label>
                   <select
@@ -191,7 +191,7 @@ const OptionsComp = ({ onChange }) => {
                 </div>
               )}
 
-              {inactiveStatus === 'Suspended' && (
+              {type === 'Suspended' && (
                 <div>
                   <label className='block text-gray-600 text-xs font-bold my-1'></label>
                   <select

@@ -68,8 +68,8 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
         <GoPlusCircle  onClick={() => addBank()} className='justify-center size-5'/>
         </div>
         <div className='flex justify-center ml-7'>
-         
-          <Button  Configs={ButtonforaddBank} onClick={addBank} />
+        <button type="button" onClick={addBank} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-1'>Add another bank details</button>
+          {/* <Button  Configs={ButtonforaddBank} onClick={addBank} /> */}
           </div>
         </div>
       </div>
