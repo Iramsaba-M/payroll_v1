@@ -1,3 +1,4 @@
+import { RiArrowDownSFill } from "react-icons/ri";
 export const formContent = [
     {
       "label": "Bank Name",
@@ -10,7 +11,7 @@ export const formContent = [
       ],
       "placeholder": "",
       "textcss": "standard",
-  
+      "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
     },
     {
       "label": "IFSC Code",

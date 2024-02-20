@@ -417,7 +417,7 @@ const DocumentsFormComponent = ({
         <div className="form-line flex mb-4 ml-20">
           {config.slice(4, 6).map((field, index) => (
             <div key={index}>
-              <label className={DemoStyles[field.textcss].label}>
+              <label className={DocumentStyles[field.textcss].label}>
                 {field.label}
               </label>
               {field.type === "text" && (

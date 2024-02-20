@@ -38,6 +38,7 @@ const TagComponent = ({ cardConfig, onOptionChange }) => {
                     <select
                         value={value}
                         onChange={handleDropdownChange}
+                        style={{ appearance: 'none', background: 'transparent' }}
                         className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     > {value ? null : (
                         <option value="" disabled selected> {placeholder} </option>
