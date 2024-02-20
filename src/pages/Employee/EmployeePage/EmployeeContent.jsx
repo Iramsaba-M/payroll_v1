@@ -62,6 +62,18 @@ export const tableContent = [
 // Add more column data as needed
 ];
 
+export const importButtonData = [
+  { label: 'Download Template',  style: 'buttonStyle2' },
+  { label: 'Upload File', style: 'buttonStyle2' },
+];
+
+
+export const ExportButtonData = [
+  { label: 'Download as PDF', style: 'buttonStyle2' },
+  { label: 'Download as Excel', style: 'buttonStyle2' },
+  { label: 'Download as CSV', style: 'buttonStyle2' },
+];
+
 
 
 
