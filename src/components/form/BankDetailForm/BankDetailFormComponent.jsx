@@ -5,7 +5,7 @@ import TextComponent from '../Formfields/text/TextComponent';
 import TextStyle from '../Formfields/text/TextStyle';
 import OptionsComponent from '../Formfields/options/OptionsComponent';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
-import { getApiUrl2 } from '../../../api/GetAPI'
+import { getApiUrl } from '../../../api/GetAPI'
 import Button from '../../../configurations/Button/Button';
 import { ButtonforDefault } from '../../../pages/Employee/BankDetail/BankDetailsContent';
 

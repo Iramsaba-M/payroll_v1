@@ -10,14 +10,6 @@ import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
 
-// const API_BASE_URL = 'http://localhost:3001'; // Adjust the port as needed
-// const POST_API_ENDPOINT = '/postSalaryDetails';
-// const GET_API_ENDPOINT = '/getSalaryDetails';
-
-const API_BASE_URL = 'http://192.168.0.108:8000';
-const POST_API_ENDPOINT = '/calculate_ctc';
-const GET_API_ENDPOINT = '/get_ctc/';
-
 
 const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }) => {
   const [values, setValues] = useState({});

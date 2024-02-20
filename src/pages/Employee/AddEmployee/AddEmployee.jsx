@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Nav from '../../../configurations/Navbar/Nav';
+import Nav from '../../../L3/Navbar/Nav';
 import { navsContent } from './AddEmplyeeContent';
 import BasicDetails from '../BasicDetails/BasicDetails';
 import SalaryDetails from '../SalaryDetail/SalaryDetails';
