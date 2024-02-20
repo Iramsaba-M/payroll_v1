@@ -55,7 +55,7 @@ export const tableContent = [
 {
   name: "employee_id",
   label: "EMPLOYEE ID",
-  dataType: "Date",
+  dataType: "string",
   cssClass: "datastyle2",
   clmncss : "style1"
 },

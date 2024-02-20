@@ -63,7 +63,7 @@ const Layout = () => {
 
   return (
     <>
-    <div className=" flex h-screen">
+    <div className=" flex min-h-screen">
       <div className=" w-14 border-r border-gray-200">
         <Iconbar />
       </div> 

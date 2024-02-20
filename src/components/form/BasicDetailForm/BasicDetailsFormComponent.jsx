@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import  { useState } from "react";
 import axios from "axios";
 import DateComponent from "../Formfields/date/DateComponent";
 import TextComponent from "../Formfields/text/TextComponent";
@@ -12,6 +13,8 @@ import { BASIC_DETAILS_API } from "../../../api/EndPoints";
 import { getApiUrl } from "../../../api/GetAPI";
 import CardComponent from "./CardComponent";
 import CardConfig from "./CardConfig";
+import ModalComponent from '../Formfields/modal/ModalComponent';
+import {ModalConfig} from '../Formfields/modal/ModalConfig'
 const BasicDetailsFormComponent = ({
   config,
   handleSubmit,
@@ -20,6 +23,7 @@ const BasicDetailsFormComponent = ({
 }) => {
   const [values, setValues] = useState({});
   const [originalDateValues, setOriginalDateValues] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleChange = (name, value) => {
     if (config.some((field) => field.name === name && field.type === "date")) {
       const formattedDate = value.split("-").reverse().join("-");
@@ -29,9 +33,13 @@ const BasicDetailsFormComponent = ({
       setValues({ ...values, [name]: value });
     }
   };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const handleButtonClick = (label, type) => {
     if (label === "Save" && type === "submit") {
-      onSubmit();
+      setIsModalOpen(true);
     } else if (label === "Next") {
       handleNextClick(true);
     }
@@ -39,22 +47,40 @@ const BasicDetailsFormComponent = ({
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+
       console.log("Form Values:", values);
-      const textData = { ...values }; // Copy values object
-      delete textData.photo_content; // Remove photo_content from the copy
+      // Create a FormData object to handle file uploads
+      const formData = new FormData();
+
+      // Append text data to FormData
+      Object.entries(values).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      // Append image file to FormData if it exists
+      if (values.photo_content) {
+        formData.append("photo_content", values.photo_content);
+      }
+
+      // Make the axios call using FormData
       const response = await axios.post(
         getApiUrl(BASIC_DETAILS_API),
-        textData,
+        formData,
         {
           headers: {
-            "Content-Type": "application/json", // Set content type for JSON data
+            "Content-Type": "multipart/form-data", // Set content type for FormData
           },
         }
       );
+
       console.log("Data sent:", response.data);
+
       const employeeId = values.employee_id;
-      handleEmpId(employeeId);
-      console.log("Employee ID:", employeeId);
+
+      handleEmpId(employeeId)
+
+      console.log('Employee ID:', employeeId);
+      // If the above API call is successful, trigger the handleSubmit function from props
       handleSubmit(values);
     } catch (error) {
       console.error("Error:", error);
@@ -62,7 +88,7 @@ const BasicDetailsFormComponent = ({
   };
   return (
     <form onSubmit={onSubmit}>
-      <div className="">
+      <div className="w-[135vh]">
         <h1 className="block text-gray-600 text-xs font-bold my-1">
           Employee Name*
         </h1>
@@ -122,6 +148,7 @@ const BasicDetailsFormComponent = ({
           <div className="form-line flex mb-4">
             {config.slice(3, 5).map((field, index) => (
               <div key={index} className={`form-field ${field.fieldstyle}`}>
+                                <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
                 </label>
@@ -142,6 +169,7 @@ const BasicDetailsFormComponent = ({
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
+              
                   />
                 )}
               </div>
@@ -152,6 +180,7 @@ const BasicDetailsFormComponent = ({
           <div className="form-line flex mb-4">
             {config.slice(5, 7).map((field, index) => (
               <div key={index} className={`form-field ${field.fieldstyle}`}>
+               <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
                 </label>
@@ -198,6 +227,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
               {field.type === "text" && (
@@ -226,6 +256,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
             </div>
@@ -281,6 +312,7 @@ const BasicDetailsFormComponent = ({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
+                  icon={field.icon}
                 />
               )}
             </div>
@@ -328,6 +360,7 @@ const BasicDetailsFormComponent = ({
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
+                    icon={field.icon}
                   />
                 )}
               </div>
@@ -339,6 +372,11 @@ const BasicDetailsFormComponent = ({
         {" "}
         <ButtonConfig Config={ButtonContent} onClick={handleButtonClick} />
       </div>
+      <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalConfig}
+      />
     </form>
   );
 };

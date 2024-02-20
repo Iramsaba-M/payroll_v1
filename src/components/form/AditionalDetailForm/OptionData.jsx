@@ -4,10 +4,11 @@ const OptionData = {
       { name: 'Inactive', value: 'Inactive' },
       { name: 'Terminate', value: 'Terminate' },
       { name: 'Retired', value: 'Retired' },
+      
     ],
   
-    inactiveStatusOptions: [
-      { name: 'On Leave', value: 'On Leave' },
+    typeOptions: [
+      { name: 'On Leave', value: 'Leave' },
       { name: 'Suspended', value: 'Suspended' },
     ],
   
