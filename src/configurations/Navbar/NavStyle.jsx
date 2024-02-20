@@ -17,7 +17,7 @@ const NavStyle = {
   style4: "text-bule-800 hover:text-blue-500 font-bold mx-12",
   style5: "hover:text-blue-500 font-normal mx-8 p-2 text-gray-600",
   style6: "text-gray-400 border-2 rounded-md text-xs font-medium hover:border-gray-500 hover:text-blue-600 p-1 px-14",
-  activeStyle: "border-2 border-blue-500 text-blue-500 text-sm",
+  activeStyle: "border-2 border-blue-500 text-red-500 text-sm",
   selectedTab: "transform text-blue-600 ", // Add a pop-up effect
 };
 

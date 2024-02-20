@@ -52,7 +52,7 @@ export const formContent  = [
         name:'esic_number',
         type: 'text',
         placeholder: 'Enter here',
-        textcss: 'standard',
+        textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
       },
       {
@@ -68,7 +68,7 @@ export const formContent  = [
         name:'epfo_number',
         type: 'text',
         placeholder: 'Enter here',
-        textcss: 'standard',
+        textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1} />,
       },
       {
@@ -78,14 +78,14 @@ export const formContent  = [
         textcss: 'standard',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
-        isTrue:true,
+     
       },
       {
         label: 'Enter Form 16 Aadhar Number. ',
         name:'form16_aadhar_number',
         type: 'text',
         placeholder: 'Enter here',
-        textcss: 'standard',
+        textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
       },  
   ];
@@ -103,7 +103,7 @@ export const formContent  = [
       label: 'Custom Number',
       type: 'text',
       placeholder: 'Enter here',
-      textcss: 'standard',
+      textcss: 'standard_document',
       icon:<CiEdit className={DocumentStyles.iconstyle1} />,
     },  
   ];
