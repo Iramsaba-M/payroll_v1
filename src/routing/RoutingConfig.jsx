@@ -19,7 +19,8 @@ import PaymentReminderSetting from '../pages/Settings/PaymentReminderSetting'
 import PayslipSetting from '../pages/Settings/PayslipSetting'
 import ReimbursementSetting from '../pages/Settings/ReimbursementSetting'
 import LoanSetting from '../pages/Settings/LoanSetting'
-
+import Demo_ctc from '../pages/Settings/cardcomponent/Demo_ctc'
+import Demo from '../pages/Settings/cardcomponent/Demo'
 const routesConfig = [
   {
     path: '/',
@@ -113,6 +114,16 @@ const routesConfig = [
               {
                   path: 'CTCTemplateSetting',
                   element: <CTCTemplateSetting />,
+                  children: [
+                    {
+                      path: 'Demo_ctc',
+                      element: <Demo/>,
+                    },
+                    // {
+                    //   path: 'CTCTemplateSetting',
+                    //   element: <CTCTemplateSetting />,
+                    // }
+                  ]
                 },
                 {
                   path: 'PayRollSetting',

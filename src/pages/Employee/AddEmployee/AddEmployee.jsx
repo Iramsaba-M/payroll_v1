@@ -18,9 +18,6 @@ const AddEmployee = () => {
 
   const handleEmpId = (employeeId) => {
     setEmployeeId(employeeId);
-    // console.log("99999999999999")
-    // console.log(employeeId)
-    // console.log("99999999999999")
   }
 
   const handleNextClick = (itemName) => {

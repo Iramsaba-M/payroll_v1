@@ -10,17 +10,19 @@ import OptionsComp from './OptionsComp';
 import { getApiUrl } from '../../../api/GetAPI';
 import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
+import ModalComponent from '../Formfields/modal/ModalComponent';
+import {ModalConfig} from '../Formfields/modal/ModalConfig'
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-    // const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value });
     };
-    // const handleCloseModal = () => {
-    //     setIsModalOpen(false);
-    //   };
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+      };
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -37,11 +39,11 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
 
     };
 
-    // const handleButtonClick = (label, type) => {
-    //     if (label === "Save" && type === "submit") {
-    //       setIsModalOpen(true);
-    //     } 
-    //   };
+    const handleButtonClick = (label, type) => {
+        if (label === "Save" && type === "submit") {
+          setIsModalOpen(true);
+        } 
+      };
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -130,14 +132,14 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
             <div className='buttons flex justify-end mt-6 w-96' >
                 {/* <button type="submit" className='bg-blue-600 text-white px-4 rounded flex items-center p-2 mb-2 mr-5'>Save</button> */}
                 {/* <Button  Configs={ButtonDataforAditional} onClick={handleButtonClick} /> */}
-                <Button  Configs={ButtonDataforAditional} onClick={()=>onSubmit} />
+                <Button  Configs={ButtonDataforAditional} onClick={handleButtonClick} />
             </div>
             </div> 
-            {/* <ModalComponent
+            <ModalComponent
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         config={ModalConfig}
-      /> */}
+      />
         </form>
     );
 };
