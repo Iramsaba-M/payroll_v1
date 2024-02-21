@@ -16,6 +16,7 @@ import SearchableComp from '../../../configurations/search/search/SearchableComp
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
+import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
