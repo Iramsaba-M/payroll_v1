@@ -14,7 +14,7 @@
 // export const ADITIONAL_DETAILS_API = 'api/additional-details';
 export const EMP_API = 'employees/';
 
-export const EMP_API = 'basicdetail';
+// export const EMP_API = 'basicdetail';
 // export const EMP_API = 'employees/';
 // export const CARDS_API = 'employee/api/card';
 export const CARDS_API = 'cardData/';
@@ -30,9 +30,9 @@ export const SALARY_DETAILS_API = 'basicdetail';
 export const BANK_DETAILS_API = 'employee/bank-details';
 
 
-export const SALARY_DETAILS_POST_API = 'calculate_ctc';
+export const SALARY_DETAILS_POST_API = "employee/salary_details/generate_ctc";
 
-export const SALARY_DETAILS_GET_API = 'get_ctc/';
+export const SALARY_DETAILS_GET_API = 'employee/salary_details/';
 
 
 

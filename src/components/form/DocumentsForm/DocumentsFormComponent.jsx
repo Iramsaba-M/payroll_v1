@@ -316,11 +316,13 @@ const DocumentsFormComponent = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
+      // const employeeId='E911'
       const data = {
         ...values,
         employee_id: employeeId,
+      
       };
       console.log(data);
       const formData = new FormData();

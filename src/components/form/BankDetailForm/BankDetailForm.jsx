@@ -7,12 +7,14 @@ import Button from '../../../configurations/Button/Button';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
 import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
-
+import ModalComponent from '../Formfields/modal/ModalComponent';
+import {ModalConfig} from '../Formfields/modal/ModalConfig'
 
 const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) => {
   const [forms, setForms] = useState([
     { id: 0, values: {} },
   ]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const addBank = () => {
     const newForms = [...forms, { id: forms.length, values: {} }];
@@ -41,12 +43,22 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
     }
     
   };
-  const handleButtonClick = (label,type) => {
-    if (label === 'Save' && type ==='submit') {
-      onSubmit();
-    } else if (label === 'Next') {
+  // const handleButtonClick = (label,type) => {
+  //   if (label === 'Save' && type ==='submit') {
+  //     onSubmit();
+  //   } else if (label === 'Next') {
+  //     handleNextClick(true);
+  //   } 
+  // };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleButtonClick = (label, type) => {
+    if (label === "Save" && type === "submit") {
+      setIsModalOpen(true);
+    } else if (label === "Next") {
       handleNextClick(true);
-    } 
+    }
   };
 
   return (
@@ -77,6 +89,11 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
         
         <Button  Configs={ButtonforSave} onClick={handleButtonClick} />
       </div>
+      <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalConfig}
+      />
     </form>
   );
 };

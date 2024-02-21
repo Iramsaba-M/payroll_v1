@@ -9,9 +9,8 @@ import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
-// import ModalComponent from '../Formfields/modal/ModalComponent';
-// import ModalConfig from '../Formfields/modal/ModalConfig';
-
+import ModalComponent from '../Formfields/modal/ModalComponent';
+import {ModalConfig }from '../Formfields/modal/ModalConfig';
 import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 
@@ -21,27 +20,27 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
   const [ctcDetails, setCtcDetails] = useState({});
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleButtonClick = (label, type) => {
-    if (label === 'Save' && type === 'submit') {
-      onSubmit();
-    } else if (label === 'Next') {
-      handleNextClick(true);
-    }
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // const handleButtonClick = (label, type) => {
-  //   if (label === "Save" && type === "submit") {
-  //     setIsModalOpen(true);
-  //   } else if (label === "Next") {
+  //   if (label === 'Save' && type === 'submit') {
+  //     onSubmit();
+  //   } else if (label === 'Next') {
   //     handleNextClick(true);
   //   }
   // };
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleButtonClick = (label, type) => {
+    if (label === "Save" && type === "submit") {
+      setIsModalOpen(true);
+    } else if (label === "Next") {
+      handleNextClick(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
@@ -52,7 +51,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
     try {
       const { annual_ctc, ctc_template } = values;
       // const postResponse = await axios.post(`${API_BASE_URL}${POST_API_ENDPOINT}`, {
-        const postResponse = await axios.post(`${getApiUrl1(SALARY_DETAILS_POST_API)}`, {
+        const postResponse = await axios.post(`${getApiUrl(SALARY_DETAILS_POST_API)}`, {
         annual_ctc,
         ctc_template,
         employee_id: employeeId,
@@ -79,7 +78,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       try {
         if (postSuccess) {
           // const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
-          const response = await axios.get(`${getApiUrl1(SALARY_DETAILS_GET_API)}${employeeId}`);
+          const response = await axios.get(`${getApiUrl(SALARY_DETAILS_GET_API)}${employeeId}`);
 
           console.log('GET Response Data:', response.data);
           setValues(response.data);
@@ -278,21 +277,17 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
     </div>
   ))}
 </div>
-
-
-
       {/* Submit button */}
       <div className="form-line flex justify-end mt-4">
      <ButtonConfig Config={Button2Content} onClick={handleButtonClick} />
       </div>
       </div>
-      {/* <ModalComponent
+      <ModalComponent
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         config={ModalConfig}
-      /> */}
-
-          </form>
+      />
+</form>
   );
 };
 
