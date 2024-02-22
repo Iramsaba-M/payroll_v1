@@ -15,9 +15,10 @@ export const DOCUMENTS_API = 'employee/document-details';
 
 export const ADITIONAL_DETAILS_API = 'employee/additional-details';
 
-export const Import_GET_API = 'employee/api/api/download_template';
+export const Import_GET_API = 'employee/download_template';
 
-export const Import_UPLOAD__GET_API = '/employee/api/api/download_template';
+export const Import_UPLOAD__GET_API = 'employee/upload_and_process';
+
 
 export const BasicDetails_export = 'employee/export/basic-details/';
 

@@ -10,12 +10,13 @@ import TableComponent from '../../../configurations/tables/TableComponent';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
 import {getApiUrl} from '../../../api/GetAPI';
-import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export,Documents_export } from '../../../api/EndPoints';
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export } from '../../../api/EndPoints';
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
 import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
+import axios from 'axios';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -70,15 +71,28 @@ const EmployeeComponent = () => {
   
   useEffect(() => {
     
-  const fetchemployeeData = async () => {
-    try {
-      const empdata = await fetchData(EMP_API);
-      const serverData = empdata.data;
-      const excelData = await parseExcelFile();
+  // const fetchemployeeData = async () => {
+  //   try {
+  //     const empdata = await fetchData(EMP_API);
+  //     const serverData = empdata.data;
+  //     const excelData = await parseExcelFile();
 
-      setEmployeeData([...serverData, ...excelData]);
+  //     setEmployeeData([...serverData, ...excelData]);
+  //   } catch (error) {
+  //     // Handle error
+  //   }
+  // };
+
+
+   const fetchemployeeData = async () => {
+    try {
+      // Fetch data from the server
+      // const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directl
+      const serverResponse = await axios.get(getApiUrl(EMP_API));
+      const serverData = serverResponse.data;
+      setEmployeeData(serverData);
     } catch (error) {
-      // Handle error
+      console.error('Error fetching data:', error);
     }
   };
 
@@ -105,7 +119,7 @@ const EmployeeComponent = () => {
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
       // setShowAddEmployee(true);
-handleAddEMp(true);
+      handleAddEMp(true);
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {
