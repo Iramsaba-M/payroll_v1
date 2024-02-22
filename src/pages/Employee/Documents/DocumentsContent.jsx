@@ -81,7 +81,7 @@ export const formContent  = [
      
       },
       {
-        label: 'Enter Form 16 Aadhar Number. ',
+        label: 'Enter Form 16 Number. ',
         name:'form16_number',
         type: 'text',
         placeholder: 'Enter here',

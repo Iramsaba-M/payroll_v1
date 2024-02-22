@@ -13,7 +13,7 @@ import axios from 'axios';
 };
 
 export const generateTemplate = async () => {
-  const url = 'http://192.168.0.130:8000/api/download_template';
+  const url = 'http://192.168.0.121:8000/employee/download_template';
 
   try {
     const response = await fetch(url, {
@@ -67,7 +67,7 @@ export const generateTemplate = async () => {
 //   }
 // };
 export const uploadEmployeeData = async (data, file) => {
-  const url = 'http://192.168.0.130/api/upload_and_process';
+  const url = 'http://192.168.0.121:8000/employee/upload_and_process';
 
   const formData = new FormData();
   formData.append('file', file); // Ensure the key matches what the server expects

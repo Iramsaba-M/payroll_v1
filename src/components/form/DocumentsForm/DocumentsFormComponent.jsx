@@ -269,7 +269,7 @@ import axios from "axios";
 import CustomComponent from "./CustomComponent";
 import {customformContent} from "../../../pages/Employee/Documents/DocumentsContent";
 import { ButtonforSave, ButtonforAdd } from "../../../pages/Employee/Documents/DocumentsContent";
-import { getApiUrl3 } from "../../../api/GetAPI";
+import { getApiUrl } from "../../../api/GetAPI";
 import { DOCUMENTS_API } from "../../../api/EndPoints";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
 import DocumentStyles from "./DocumentStyles";
@@ -340,7 +340,7 @@ const DocumentsFormComponent = ({
       console.log("Form values:", data);
 
       // Assuming getApiUrl is a valid function
-      const response = await axios.post(getApiUrl3(DOCUMENTS_API), formData, {
+      const response = await axios.post(getApiUrl(DOCUMENTS_API), formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

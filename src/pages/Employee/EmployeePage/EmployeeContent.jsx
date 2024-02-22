@@ -39,7 +39,7 @@ export const tableContent = [
     clmncss : "style1"
 },
 {
-    name: "CTC",
+    name: "ctc",
     label: "CTC",
     dataType: "string",
     cssClass: "datastyle1",

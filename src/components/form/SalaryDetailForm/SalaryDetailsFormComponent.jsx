@@ -3,7 +3,6 @@ import TextComponent from '../Formfields/text/TextComponent';
 import TextStyle from '../Formfields/text/TextStyle';
 import axios from 'axios';
 import OptionsComponent from '../Formfields/options/OptionsComponent';
-import { SALARY_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
@@ -78,7 +77,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       try {
         if (postSuccess) {
           // const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
-          const response = await axios.get(`${getApiUrl(SALARY_DETAILS_GET_API)}${employeeId}`);
+          const response = await axios.get(`${getApiUrl(SALARY_DETAILS_GET_API)}/${employeeId}`);
 
           console.log('GET Response Data:', response.data);
           setValues(response.data);

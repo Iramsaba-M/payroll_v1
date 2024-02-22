@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { fetchData } from '../../../services/APIService';
 import Card from '../../../configurations/Card/Card';
 import Button from '../../../configurations/Button/Button';
@@ -11,12 +10,13 @@ import TableComponent from '../../../configurations/tables/TableComponent';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
 import {getApiUrl} from '../../../api/GetAPI';
-import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export,Documents_export } from '../../../api/EndPoints';
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export } from '../../../api/EndPoints';
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
 import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
+import axios from 'axios';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -34,7 +34,57 @@ const EmployeeComponent = () => {
     
   });
 
-  const fetchemployeeData = async () => {
+  // const fetchemployeeData = async () => {
+  //   try {
+  //     // Fetch data from the server
+  //     const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directly
+  //     const serverData = serverResponse.data;
+
+  //     // Fetch and parse Excel data
+  //     const excelData = await parseExcelFile();
+
+  //     // Update the UI with combined data from the server and Excel file
+  //     setEmployeeData([...serverData, ...excelData]);
+  //   } catch (error) {
+  //     console.error(`Error fetching data:`, error);
+  //   }
+  // };
+  
+  // useEffect(() => {
+  //   fetchemployeeData();
+  // }, []);
+
+// const fetchCardData = async () => {
+  //   try {
+
+  //     const response = await axios.get(getApiUrl(CARDS_API));
+     
+  //     setCardData(response.data);
+  //   } catch (error) {
+  //     console.error(`Error fetching ${CARDS_API} data:`, error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchCardData();
+  // }, []);
+  
+  useEffect(() => {
+    
+  // const fetchemployeeData = async () => {
+  //   try {
+  //     const empdata = await fetchData(EMP_API);
+  //     const serverData = empdata.data;
+  //     const excelData = await parseExcelFile();
+
+  //     setEmployeeData([...serverData, ...excelData]);
+  //   } catch (error) {
+  //     // Handle error
+  //   }
+  // };
+
+
+   const fetchemployeeData = async () => {
     try {
       // Fetch data from the server
       // const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directl
@@ -45,31 +95,21 @@ const EmployeeComponent = () => {
       console.error('Error fetching data:', error);
     }
   };
-  
 
-  
+    const fetchCardData = async () => {
+      try {
+        const data = await fetchData(CARDS_API);
+        setCardData(data);
+      } catch (error) {
+        // Handle error
+      }
+    };
 
-  useEffect(() => {
+    fetchCardData();
     fetchemployeeData();
   }, []);
-
-  const fetchCardData = async () => {
-    try {
-
-      const response = await axios.get(getApiUrl(CARDS_API));
-      
-     
-      setCardData(response.data);
-    } catch (error) {
-      console.error(`Error fetching ${CARDS_API} data:`, error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCardData();
-  }, []);
-
   
+
   const navigate = useNavigate();
   const handleAddEMp =() =>{
     setShowAddEmployee(true)
@@ -96,7 +136,7 @@ const EmployeeComponent = () => {
       handleExportButtonClick('csv');
     }
   };
-  
+
 
   const handleDownload = async (apiEndpoint, format) => {
     try {
@@ -113,7 +153,7 @@ const EmployeeComponent = () => {
   const handleExportButtonClick = async (format) => {
     try {
       // Create an array of selected options based on the state
-     
+      
   
       const selectedOptions = Object.keys(selectedExportOptions).filter(
         option => selectedExportOptions[option]
@@ -232,7 +272,7 @@ const closeImportPopup = () => {
         </>
       ) : (
         <AddEmployee />
-      )}
+      )}  
 
 
 {showImportPopup && (
@@ -242,19 +282,19 @@ const closeImportPopup = () => {
         <span className="text-gray-500 text-2xl font-bold">&times;</span>
       </div>
       <input
-  id="fileInput"
-  type="file"
-  className="hidden"
-  onChange={handleFileUpload}
-/>
-
+        id="fileInput"
+        type="file"
+        className="hidden"
+        onChange={handleFileUpload}
+      />
+      
 
       {/* Replace static buttons with ButtonConfig component */}
       <ButtonConfig Config={importButtonData} onClick={handleButtonClick} />
     
     </div>
   </div>
-  )}
+)}
 
 {showExportPopup && (
    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
