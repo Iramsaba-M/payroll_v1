@@ -11,7 +11,7 @@ import TableComponent from '../../../configurations/tables/TableComponent';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
 import {getApiUrl} from '../../../api/GetAPI';
-
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export,Documents_export } from '../../../api/EndPoints';
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
 import {exportDataTemplate} from '../../../excelUtils';
@@ -31,6 +31,7 @@ const EmployeeComponent = () => {
     bankDetails: false,
     documents: false,
     additionalDetails: false,
+    
   });
 
   const fetchemployeeData = async () => {
@@ -124,29 +125,29 @@ const EmployeeComponent = () => {
         switch (option) {
           case 'basicDetails':
             // apiEndpoint = `${baseApiUrl}basic-details/`;
-            apiEndpoint = getApiUrl1(BasicDetails_export);
+            apiEndpoint = getApiUrl(BasicDetails_export);
 
             break;
   
           case 'salaryDetails':
             // apiEndpoint = `${baseApiUrl}SalaryDetails_export`;
-            apiEndpoint = getApiUrl1(SalaryDetails_export);
+            apiEndpoint = getApiUrl(SalaryDetails_export);
             
             break;
   
           case 'bankDetails':
             // apiEndpoint = `${baseApiUrl}bank-details/`;
-            apiEndpoint = getApiUrl1(BankDetails_export);
+            apiEndpoint = getApiUrl(BankDetails_export);
             break;
   
           case 'documents':
             // apiEndpoint = `${baseApiUrl}documents/`;
-            apiEndpoint = getApiUrl1(Documents_export);
+            apiEndpoint = getApiUrl(Documents_export);
             break;
   
           case 'additionalDetails':
             // apiEndpoint = `${baseApiUrl}additional-details/`;
-            apiEndpoint = getApiUrl1(Additionaldetails_export);
+            apiEndpoint = getApiUrl(Additionaldetails_export);
             break;
   
           default:
@@ -225,7 +226,7 @@ const closeImportPopup = () => {
             </div>
           </div>
 
-          <div className="flex p-2 ml-1">
+          <div className="flex p-2 ml-8">
           <TableComponent config={tableContent} data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} />
           </div>
         </>
