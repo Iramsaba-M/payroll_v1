@@ -36,11 +36,17 @@ const CTCTemplateSetting = () => {
   };
 
   return (
+    <div>
     <div className='ml-36' onClick={handleClick}  >
       <Box Configs={BoxContent} />
+
+      </div>
+      <div className='ml-36'>
       <Box Configs={BoxContent2} />
       {/* CTC Template Setting */}
-      <Outlet/>
+      </div>
+   
+    <Outlet/>
     </div>
   );
 };
