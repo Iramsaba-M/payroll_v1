@@ -66,7 +66,7 @@ export const formContent = [
       "numberType": "float"
     },
     {
-      "name":"other_special_allowances",
+      "name":"other_special_allowance",
       "label": "Other Special Allowances",
       "type": "number",
       "placeholder": "Enter Other Special Allowances",

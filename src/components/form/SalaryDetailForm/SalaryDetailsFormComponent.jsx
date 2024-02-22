@@ -77,7 +77,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       try {
         if (postSuccess) {
           // const response = await axios.get(`${API_BASE_URL}${GET_API_ENDPOINT}${employeeId}`);
-          const response = await axios.get(`${getApiUrl(SALARY_DETAILS_GET_API)}${employeeId}`);
+          const response = await axios.get(`${getApiUrl(SALARY_DETAILS_GET_API)}/${employeeId}`);
 
           console.log('GET Response Data:', response.data);
           setValues(response.data);
