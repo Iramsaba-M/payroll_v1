@@ -28,8 +28,8 @@ function DynamicTable({ config, data }) {
   };
 
   const renderCellContent = (row, column) => {
-    if (column.name === 'employee_name' && row.First_name && row.Middle_Name && row.Last_Name) {
-        const formattedName = [row.First_name, row.Middle_Name, row.Last_Name].join(' ');
+    if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
+        const formattedName = [row.first_name, row.middle_name, row.last_name].join(' ');
         return formattedName;
     }
     return row[column.name] || '';

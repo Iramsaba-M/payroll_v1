@@ -18,7 +18,7 @@ export const formContent = [
       "placeholder": "Enter Annual CTC",
       "numbercss": "standard",
       "fieldstyle": "inline-block ",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"monthly_ctc",
@@ -27,7 +27,7 @@ export const formContent = [
       "placeholder": "Enter Monthly CTC",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"basic",
@@ -36,7 +36,7 @@ export const formContent = [
       "placeholder": "Enter Basic",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"da",
@@ -45,7 +45,7 @@ export const formContent = [
       "placeholder": "Enter DA",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"hra",
@@ -54,7 +54,7 @@ export const formContent = [
       "placeholder": "Enter HRA",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"allowances",
@@ -63,7 +63,7 @@ export const formContent = [
       "placeholder": "Enter Allowances",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"other_special_allowance",
@@ -72,7 +72,7 @@ export const formContent = [
       "placeholder": "Enter Other Special Allowances",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"gross_salary",
@@ -81,7 +81,7 @@ export const formContent = [
       "placeholder": "",
       "numbercss": "standardcolour",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"epf",
@@ -90,7 +90,7 @@ export const formContent = [
       "placeholder": "Enter EPF",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"esic",
@@ -99,7 +99,7 @@ export const formContent = [
       "placeholder": "Enter ESIC",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"pt",
@@ -108,7 +108,7 @@ export const formContent = [
       "placeholder": "Enter PT",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"gratuity",
@@ -126,7 +126,7 @@ export const formContent = [
       "placeholder": "Enter Medical Insurance",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"others",
@@ -135,7 +135,7 @@ export const formContent = [
       "placeholder": "Enter Others",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     },
     {
       "name":"net_salary",
@@ -144,11 +144,11 @@ export const formContent = [
       "placeholder": "",
       "numbercss": "standardcolour",
       "fieldstyle": "inline-block",
-      "numberType": "float"
+      "numberType": "text"
     }
   ]
 
-  export const Button1Content = [
+export const Button1Content = [
   { label: 'Generate CTC ',  style: 'buttonStylew' , type:"submit"},
   { label: 'Revise CTC', style: 'buttonStylew1' ,type:"Button" },
 ];
