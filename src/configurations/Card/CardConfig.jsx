@@ -62,6 +62,7 @@ const Card = ({ chart,card, title, content,icon,comp,heading,iconstyle,heading2,
       )}
       {icon && (
         <div className={`${CardStyles[iconstyle]}`}>
+        <div className={`${CardStyles[iconstyle]}`}>
           {icon}
         </div>
       )}  

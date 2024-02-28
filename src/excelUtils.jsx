@@ -5,6 +5,8 @@ import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
+import { fetchData, postData } from '../src/services/APIService';
+import { Import_GET_API, Import_UPLOAD__GET_API} from '../src/api/EndPoints';
 
 
  // Function to concatenate first name, middle name, and last name
@@ -13,101 +15,45 @@ import axios from 'axios';
 };
 
 export const generateTemplate = async () => {
-  const url = 'http://192.168.0.121:8000/employee/download_template';
-
   try {
-    const response = await fetch(url, {
-      method: 'POST',  // Change the method to POST
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),  // You might need to include some dummy data
-    });
+    // Assuming you have some dummy data to send in the request
+    const dummyData = {};
 
-    if (response.ok) {
-      const blob = await response.blob();
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'employee_template.xlsx';
-      link.click();
-    } else {
-      console.error('Error fetching template:', response.status, response.statusText);
-    }
+    // Use postData function for making the POST request
+    const response = await postData(Import_GET_API, dummyData);
+
+    // Assuming the response is a Blob, modify this part accordingly
+    const blob = new Blob([response], { type: 'application/octet-stream' });
+
+    // Save the blob as a file
+    saveAs(blob, 'employee_template.xlsx');
   } catch (error) {
     console.error('Error fetching template:', error);
   }
 };
 
-
-
-// export const uploadEmployeeData = async (data, file) => {
-//   const url = 'http://192.168.0.106:8000/api/upload_and_process';
-
-//   const formData = new FormData();
-//   formData.append('upload_file', file);
-
-//   // Append other data fields to the FormData object
-//   Object.entries(data).forEach(([key, value]) => {
-//     formData.append(key, value);
-//   });
-
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       body: formData,
-//     });
-
-//     if (response.ok) {
-//       console.log('Data uploaded successfully:', data);
-//     } else {
-//       console.error('Error uploading data:', response.status, response.statusText);
-//     }
-//   } catch (error) {
-//     console.error('Error uploading data:', error);
-//   }
-// };
 export const uploadEmployeeData = async (data, file) => {
-  const url = 'http://192.168.0.121:8000/employee/upload_and_process';
-
-  const formData = new FormData();
-  formData.append('file', file); // Ensure the key matches what the server expects
-
-  // Append other data fields to the FormData object
-  Object.entries(data).forEach(([key, value]) => {
-    // Convert date field to string if it's a Date object
-    if (value instanceof Date) {
-      formData.append(key, value.toISOString()); // Adjust to the appropriate date format
-    } else {
-      formData.append(key, value);
-    }
-  });
-
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        Accept: 'application/json',
-      },
+    const formData = new FormData();
+    formData.append('file', file);
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value instanceof Date) {
+        formData.append(key, value.toISOString());
+      } else {
+        formData.append(key, value);
+      }
     });
 
-    const responseData = await response.json();
+    const response = await postData(Import_UPLOAD__GET_API, formData);
 
-    if (response.ok) {
-      console.log('File uploaded successfully:', responseData);
-    } else {
-      console.error('Error uploading file:', response.status, response.statusText);
-      console.error('Response Data:', responseData);
-
-      if (response.status === 422 && responseData.detail) {
-        console.error('Validation Errors:', responseData.detail);
-      }
+    if (response) {
+      console.log('File uploaded successfully:', response);
     }
   } catch (error) {
     console.error('Error uploading file:', error);
   }
 };
-
 
 
 export const parseExcelFile = async (file) => {
@@ -178,83 +124,6 @@ export const parseExcelFile = async (file) => {
   return data;
 };
 
-// excelUtils.js
-
-// export const parseExcelFile = async (file) => {
-//   const url = 'http://192.168.0.106:8000/api/upload_and_process';
-
-//   const formData = new FormData();
-//   formData.append('upload_file', file);
-
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       body: formData,
-//       headers: {
-//         Accept: 'application/json',
-//       },
-//     });
-
-//     if (response.ok) {
-//       console.log('File uploaded successfully to the server.');
-//     } else {
-//       console.error('Error uploading file:', response.status, response.statusText);
-//       const responseData = await response.json();
-
-//       if (response.status === 422 && responseData.errors) {
-//         console.error('Validation Errors:', responseData.errors);
-//       }
-//     }
-//   } catch (error) {
-//     console.error('Error uploading file:', error);
-//   }
-// };
-
-// export const exportDataTemplate = async (apiEndpoint, format) => {
-//   try {
-//     const response = await fetch(`${apiEndpoint}?format=${format}`, {
-//       method: 'GET',
-//       headers: {
-//         'Accept': '*/*', 
-//       },
-//     });
-
-//     if (response.ok) {
-//       const blob = await response.blob();
-//       const link = document.createElement('a');
-
-//       let fileExtension = '';
-//       let fileName = 'exported_data';
-
-//       switch (format) {
-//         case 'pdf':
-//           fileExtension = 'pdf';
-//           break;
-
-//         case 'excel':
-//           fileExtension = 'xlsx';
-//           break;
-
-//         case 'csv':
-//           fileExtension = 'csv';
-//           break;
-
-//         default:
-//           console.error(`Unsupported export format: ${format}`);
-//           return;
-//       }
-
-//       fileName += `.${fileExtension}`;
-//       link.href = URL.createObjectURL(blob);
-//       link.download = fileName;
-//       link.click();
-//     } else {
-//       console.error(`Error fetching data for export: ${response.status}`, response.statusText);
-//     }
-//   } catch (error) {
-//     console.error('Error exporting data:', error);
-//   }
-// };
 
 export const exportDataTemplate = async (apiEndpoint, format) => {
   try {

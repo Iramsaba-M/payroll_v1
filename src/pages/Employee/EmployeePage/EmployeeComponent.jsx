@@ -34,65 +34,18 @@ const EmployeeComponent = () => {
     
   });
 
-  // const fetchemployeeData = async () => {
-  //   try {
-  //     // Fetch data from the server
-  //     const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directly
-  //     const serverData = serverResponse.data;
-
-  //     // Fetch and parse Excel data
-  //     const excelData = await parseExcelFile();
-
-  //     // Update the UI with combined data from the server and Excel file
-  //     setEmployeeData([...serverData, ...excelData]);
-  //   } catch (error) {
-  //     console.error(`Error fetching data:`, error);
-  //   }
-  // };
-  
-  // useEffect(() => {
-  //   fetchemployeeData();
-  // }, []);
-
-// const fetchCardData = async () => {
-  //   try {
-
-  //     const response = await axios.get(getApiUrl(CARDS_API));
-     
-  //     setCardData(response.data);
-  //   } catch (error) {
-  //     console.error(`Error fetching ${CARDS_API} data:`, error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchCardData();
-  // }, []);
+ 
   
   useEffect(() => {
     
-  // const fetchemployeeData = async () => {
-  //   try {
-  //     const empdata = await fetchData(EMP_API);
-  //     const serverData = empdata.data;
-  //     const excelData = await parseExcelFile();
+  
 
-  //     setEmployeeData([...serverData, ...excelData]);
-  //   } catch (error) {
-  //     // Handle error
-  //   }
-  // };
-
-
-   const fetchemployeeData = async () => {
+  const fetchemployeeData = async () => {
     try {
-      // Fetch data from the server
-      // const serverResponse = await axios.get(getApiUrl(EMP_API)); // or use EMP_API directl
-      const serverResponse = await axios.get(getApiUrl(EMP_API));
-      const serverData = serverResponse.data;
-      setEmployeeData(serverData);
+      const data = await fetchData(EMP_API);
+      setEmployeeData(data); 
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error(`Error fetching employee data:`, error);
     }
   };
 
@@ -120,6 +73,7 @@ const EmployeeComponent = () => {
     if (label === 'Add Employee') {
       // setShowAddEmployee(true);
       handleAddEMp(true);
+      
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {

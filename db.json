@@ -839,7 +839,17 @@
     }
   ],
   "graph_data": {
+<<<<<<< HEAD
     "barchart": [
+=======
+    "employee": 100,
+    "interns": 10,
+    "esic": 4567.5678,
+    "pt": 9876.67,
+    "pf": 765.87,
+    "insurance": 45678.87,
+    "barchart2": [
+>>>>>>> 559e442292b177aef12e6ddee4f02c217907f6cb
       {
         "year": 2023,
         "month": [
@@ -854,6 +864,7 @@
           150,
           200
         ]
+<<<<<<< HEAD
       },
       {
         "year": 2024,
@@ -55270,5 +55281,129 @@
       "year": 2024,
       "month": "feb"
     }
+=======
+      }
+      
+    ],
+    
+    "departments": [
+      {
+        "name": "Testing",
+        "value": 10
+      },
+      {
+        "name": "Front End",
+        "value": 15
+      },
+      {
+        "name": "Back End",
+        "value": 20
+      },
+      {
+        "name": "Data Engineer",
+        "value": 15
+      },
+      {
+        "name": "DevOps",
+        "value": 10
+      }
+    ],
+    "branches": [
+      {
+        "name": "hubli",
+        "value": 100000
+      },
+      {
+        "name": "Dharwad",
+        "value": 150000
+      },
+      {
+        "name": "Bangalore",
+        "value": 200000
+      },
+      {
+        "name": "Hyderabad",
+        "value": 1500000
+      }
+    ],
+    "branches1": {
+      "hubli": 100000,
+      "Dharwad": 150000,
+      "Bangalore": 200000,
+      "channi": 1500000
+    }
+  },
+  "post_data": [
+    {
+      "id": "cc67",
+      "from": {
+        "year": 2024,
+        "month": "March"
+      },
+      "to": {
+        "year": 2024,
+        "month": "September"
+      }
+    },
+    {
+      "id": "4526",
+      "from": {
+        "year": 2024,
+        "month": "March"
+      },
+      "to": {
+        "year": 2024,
+        "month": "September"
+      }
+    },
+    {
+      "id": "2551",
+      "from": {
+        "year": 2024,
+        "month": "March"
+      },
+      "to": {
+        "year": 2024,
+        "month": "September"
+      }
+    }
+  ],
+  "graphdata":  [
+    {
+      "year": 2023,
+      "month": [
+        "jan",
+        "feb",
+        "mar",
+        "apr","may","jun","jul","aug","sep","oct","nov","dec"
+      ],
+      "value": [
+        250,
+        500,
+        150,
+        200,250,
+        500,
+        150,
+        200,250,
+        500,
+        150,
+        200
+      ]
+      
+    },
+    {
+      "year": 2024,
+      "month": [
+        "jan" 
+        
+      ],
+      "value": [
+        250
+        
+      ]
+      
+    }
+    
+>>>>>>> 559e442292b177aef12e6ddee4f02c217907f6cb
   ]
 }
