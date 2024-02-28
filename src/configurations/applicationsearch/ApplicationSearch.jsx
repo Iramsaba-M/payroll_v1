@@ -18,7 +18,7 @@ const ApplicationSearch = ({ setSearchResults }) => {
       data={routesConfig}
       config={ApplicationSearchConfig}
       searchFunrecd={handleSearch}
-      setSearchResults={setSearchResults}
+      setSearchResults={setSearchResults} // Pass setSearchResults here
     />
   );
 };

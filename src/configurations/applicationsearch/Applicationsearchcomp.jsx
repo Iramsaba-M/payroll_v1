@@ -5,6 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import routesConfig from '../../routing/RoutingConfig';
 
 const ApplicationSearchComp = ({ config, searchFunrecd }) => {
+
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
@@ -20,8 +21,6 @@ const ApplicationSearchComp = ({ config, searchFunrecd }) => {
       return labelMatches || childrenMatch;
     });
   
-    console.log("Filtered Routes:", filteredRoutes);
-    
     // Render elements related to the matched labels
     const matchedElements = [];
     filteredRoutes.forEach(route => {
@@ -37,7 +36,7 @@ const ApplicationSearchComp = ({ config, searchFunrecd }) => {
       }
     });
   
-    console.log("Matched Elements:", matchedElements);
+    setSearchResults(matchedElements); // Update search results
   };
   
   
