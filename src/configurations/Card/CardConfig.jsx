@@ -3,7 +3,7 @@ import CardStyles from './CardStyle';
 
 
 
-const Card = ({ chart,card, title, content,icon,comp,heading }) => {
+const Card = ({ chart,card, title, content,icon,comp,heading,iconstyle,contentvalue,contentstyle }) => {
   return (
     <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards}`}>
      {title && ( <h3 className={CardStyles.CardTitle}>{title}</h3>)}
@@ -15,15 +15,16 @@ const Card = ({ chart,card, title, content,icon,comp,heading }) => {
         </div>
       )}
       {icon && (
-        <div className='mt-6 '>
+        <div className={`${CardStyles[iconstyle]}`}>
           {icon}
         </div>
       )}  
+      {contentvalue && ( <h3 className={`${CardStyles[contentstyle]}`} >{contentvalue}</h3>)}
     </div>
   );
 };
 
-const CardConfig = ({ Config, data,comp}) => {
+const CardConfig = ({ Config, data,comp,contentvalue}) => {
   return (
     <div className="flex ">
       {Config.map((card, index) => (
@@ -32,6 +33,7 @@ const CardConfig = ({ Config, data,comp}) => {
           <Card
             {...card}
             comp={comp ? comp : (card.comp?card.comp:null)}
+            contentvalue={contentvalue ? contentvalue : ''}
             content={data && data.length > 0 ? data[0][card.contentKey] : ''}
           />
         </React.Fragment>
