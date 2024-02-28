@@ -205,7 +205,8 @@ const HomeComponent = () => {
   }, []);
   
   return (
-    <div className="">
+    <div className="ml-">
+      <div className='ml-2 border-2 w-[13vh] rounded-md'>
          <DatePicker
       selected={selectedDateTop}
       onChange={handleDateChangeTop}
@@ -215,6 +216,7 @@ const HomeComponent = () => {
       className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
       showMonthYearPicker
     />
+    </div>
   
       <div className='w-[60vh]' style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ marginRight: '20px' }}>
@@ -237,7 +239,7 @@ const HomeComponent = () => {
         </div>
       </div>
       {/* <RangePicker onChange={handleDateRangeChange}/> */}
-      <div className='flex p-2 border-2 w-[28vh] rounded-md  '>
+      <div className='flex p-2 border-2 w-[28vh] rounded-md ml-4 '>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
