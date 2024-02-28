@@ -241,7 +241,7 @@ const ReportsComponent = () => {
   // }, [cardData]);
 
   return (
-    <div className='flex flex-col bg-gray-50 '>
+    <div className='flex flex-col'>
       <div className='flex '>
       <div className='flex p-2 border-2 w-[28vh] rounded-md ml-4 '>
         <DatePicker
@@ -265,7 +265,7 @@ const ReportsComponent = () => {
       </div>
       
    
-      <div className='ml-96'>
+      <div className='ml-[54vh] border-2 w-[14vh] rounded-md h-10 p-2'>
         <DatePicker
           selected={selectedDateTop}
           onChange={handleDateChangeTop}
