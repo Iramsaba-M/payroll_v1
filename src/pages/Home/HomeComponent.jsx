@@ -1,192 +1,268 @@
 
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { PieChart, Pie } from 'recharts';
+
+
+/* eslint-disable react/prop-types */
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
-// import SettingContent from '../Settings/SettingContent';
-// import { cardContent } from '../Employee/EmployeePage/EmployeeContent';
-const data01 = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-  { name: 'Group E', value: 278 },
-
-];
-const data02 = [
-  {
-    name: 'Page A',
-    // uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    // uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    // uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    // uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    // uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    // uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    // uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
-const Barchart =({data})=>{
-  return(
-  <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-  
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-                {/* <Bar dataKey="uv" stackId="a" fill="#82ca9d" /> */}
-              </BarChart>
-            </ResponsiveContainer>
-      )
+const Barchart = ({ graphdata }) => {
+
+  if (!graphdata || !Array.isArray(graphdata)) {
+    // Handle the case when graphdata is not defined or not an array
+    console.error("Invalid graphdata:", graphdata);
+    return null;
   }
-  const Pichart=({data})=>{
-    return(
-      <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={150} height={150}>
+  const data = graphdata.flatMap(({ year, month, value }) => month.map((m, index) => ({
+    name: `${m}`,
+    [year]: value[index]
+  }))
+  );
+
+  const defaultColors = ["#8884d8", "#82ca9d", "#FFBB28"];
+  return (
+    <ResponsiveContainer width={1100} height={450}>
+      <BarChart
+        data={data}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 10,
+          bottom: 5,
+        }}
+      >
+        <XAxis dataKey="name" />
+        <YAxis />
+        {/* <Tooltip /> */}
+        <Legend />
+        {graphdata.map(({ year }, index) => (
+          <Bar key={year} dataKey={year} stackId="a"
+            fill={defaultColors[index % defaultColors.length]}
+                // fill=" #4e4cc8" 
+            barSize={60} />
+
+        ))}
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+const Pichart = ({ data }) => {
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
+
+  if (!data) {
+    return null;
+  }
+
+  return (
+    <ResponsiveContainer width={200} height={200} margin={{ left: 40 }}>
+      <PieChart>
         <Pie
           data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false} 
-            outerRadius={50}
-            dataKey="value"
+          cx={80}
+          cy={80}
+          innerRadius={30}
+          outerRadius={80}
+          fill="#8884d8"
+          paddingAngle={5}
+          dataKey="value"
         >
-          {data01.map((entry, index) => (
+          {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />
       </PieChart>
     </ResponsiveContainer>
-    )
-  }
- const exmpcardContent = [
-  { card: 'style1', title: 'Total CTC', contentKey: 'total_ctc' },
-  { card: 'style2', title: 'Total Monthly CTC', contentKey: 'total_monthly_ctc' },
-  { card: 'style3', title: 'Total Employees', contentKey: 'total_employees' },
-  // Add more card data as needed
-];
-
-const exmpContent = [
-  { card:'style5',chart:'barchart', comp: <Barchart data={data02}/> },
-  // { card:'style3',chart:'pichart', comp: <Pichart data={data01}/> ,heading:'Departments' },
-  // { card:'style3',chart:'pichart', comp: <Pichart data={data01}/> ,heading:'Branches'},
-  
-];
-const exmpContent1 = [
-  
-  { card:'style3',chart:'pichart', comp: <Pichart data={data01}/> ,heading:'Departments' },
-  { card:'style3',chart:'pichart', comp: <Pichart data={data01}/> ,heading:'Branches'},
-  
-];
-
-// const fetchCardData = async () => {
-//   try {
-
-//     const response = await axios.get(getApiUrl(CARDS_API));
-    
-   
-//     setCardData(response.data);
-//   } catch (error) {
-//     console.error(`Error fetching ${CARDS_API} data:`, error);
-//   }
-// };
-
-// useEffect(() => {
-//   fetchCardData();
-// }, []);
-
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
+  );
+};
 
 const HomeComponent = () => {
-  return (
+  const [cardData, setCardData] = useState([]);
+  // const [selectedValue, setSelectedValue] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);//to
+  const [selectedDate1, setSelectedDate1] = useState(null);//from
+  const [graphData, setGraphData] = useState([]);
+  const [selectedDateTop, setSelectedDateTop] = useState(null);
+
+  useEffect(() => {
+    const selectedDateTop = new Date(); // This is a redeclaration
+    setSelectedDateTop(selectedDateTop);
+  }, []);
+  const handleDateChangeTop = (date) => {
+    setSelectedDateTop(date);
+  };
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+
+  };
 
 
-    <div className='flex justify-between'>
-      <div className=''>
-      <div className='w-[100vh] h-[100vh]'>
-          
-      <Barchart data={data02} />
-          {/* <Card Config={exmpContent}  /> */}
-          {/* <Card Config={exmpContent1}  /> */}
-        
-      </div>
-      {/* <div className='w-[100vh] h-[50vh]'>
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart width={400} height={400}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={false}
-              data={data01}
-              cx="50%"
-              cy="50%"
-              outerRadius={80}
-              // fill="#82ca9d"
-              label
-            >
-              {data01.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-      </div> */}
-      </div>
-      {/* <Card Config={exmpcardContent}  /> */}
-    </div>
-  )
-}
+  const handleDateChange1 = (date) => {
+    // Ensure the end date is set to the last day of the selected month
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    setSelectedDate1(lastDayOfMonth);
+  };
 
-
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
   
+    // If the current month is February, set selectedDateTop to the previous month (January)
+    // If the current month is January, set selectedDateTop to December of the previous year
+    const defaultMonth = currentMonth === 1 ? 0 : currentMonth === 0 ? 11 : currentMonth - 1;
+  
+    const selectedDateTop = new Date(
+      currentMonth === 0 ? currentDate.getFullYear() - 1 : currentDate.getFullYear(),
+      defaultMonth
+    );
+  
+    setSelectedDateTop(selectedDateTop);
+  }, []);
+  
+  useEffect(() => {
+    const fetchData2 = async () => {
+      try {
+        console.log('Fetching data from cardpiedata endpoint...');
+        const year = selectedDateTop.getFullYear();
+        const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
+        // Rest of your code
+        const response = await axios.post('http://192.168.0.123:8000/calculate_financial_data', {
+          year: year,
+          month: month,
+        });
+        console.log('Post Response:', response.data);
+        setCardData(response.data);
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+    fetchData2();
+  }, [ selectedDateTop ]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (selectedDate && selectedDate1) {
+          const formattedStartDate = {
+            year: selectedDate.getFullYear(),
+            month: selectedDate.toLocaleString('en-us', { month: 'short' }),
+          
+          };
 
-export default HomeComponent
+          const formattedEndDate = {
+            year: selectedDate1.getFullYear(),
+            month: selectedDate1.toLocaleString('en-us', { month: 'short' }),
+          };
+          console.log('Request Payload:', {
+            from: formattedStartDate,
+            to: formattedEndDate,
+          });
+          const response = await axios.get('http://localhost:8000/graph_data', {
+            from: formattedStartDate,
+            to: formattedEndDate,
+          });
+     
+          console.log('Graph Response:', response.data);
+          setGraphData(response.data);
+        } else {
+          console.log('Please select both "From" and "To" dates');
+        }
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+
+    fetchData();
+  }, [selectedDate, selectedDate1]);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+  
+    // Set the end date to the last day of the previous month
+    const endDate = new Date(currentYear, currentMonth, 0);
+  
+    // If the current month is February, adjust the start date to exclude it
+    const startDate = new Date(
+      currentMonth === 1 ? currentYear - 1 : currentYear,
+      currentMonth === 1 ? 0 : currentMonth - 12,
+      1
+    );
+    
+    setSelectedDate(startDate);
+    setSelectedDate1(endDate);
+  }, []);
+  
+  return (
+    <div className="">
+         <DatePicker
+      selected={selectedDateTop}
+      onChange={handleDateChangeTop}
+      placeholderText='To'
+      dateFormat="MM/yyyy"
+      style={{ appearance: 'none', background: 'transparent' }}
+      className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
+      showMonthYearPicker
+    />
+  
+      <div className='w-[60vh]' style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ marginRight: '20px' }}>
+          <div className="flex ">
+            <Card Config={total_employees} contentvalue={cardData.employees} />
+            <Card Config={total_payroll} contentvalue={cardData.total_payroll} />
+            <div className="ml-4 ">
+              <Card Config={exmpContent1} comp={<Pichart data={cardData.branches} />} contentvalue2={cardData.pay}/>
+            </div>
+          </div>
+          <div className="flex -mt-[23vh] ">
+            <Card Config={tds} contentvalue={cardData.pt} />
+            <Card Config={pt} contentvalue={cardData.pt} />
+          </div>
+          <div className="flex -mt-3 ">
+            <Card Config={esic} contentvalue={cardData.esic} />
+            <Card Config={epf} contentvalue={cardData.pf} />
+            <Card Config={insurance} contentvalue={cardData.insurance} />
+          </div>
+        </div>
+      </div>
+      {/* <RangePicker onChange={handleDateRangeChange}/> */}
+      <div className='flex p-2 border-2 w-[28vh] rounded-md  '>
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="MM/yyyy"
+          placeholderText='From'
+          className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+          showMonthYearPicker
+        />
+        <div className='text-gray-400'>~</div>
+        <DatePicker
+          selected={selectedDate1}
+          onChange={handleDateChange1}
+          placeholderText='To'
+          dateFormat="MM/yyyy"
+          style={{ appearance: 'none', background: 'transparent' }}
+          className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
+          showMonthYearPicker
+        />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row' }}></div>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <Card Config={exmpContent} comp={<Barchart graphdata={graphData.barchart} />} />
+      </div>
+    </div>
+  );
+};
+
+export default HomeComponent;
