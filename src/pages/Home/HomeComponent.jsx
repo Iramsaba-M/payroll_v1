@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
-import { total_employees, total_payroll, tds, pt, epf, esic, insurance, exmpContent, exmpContent1 } from "./HomeContent";
+import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';

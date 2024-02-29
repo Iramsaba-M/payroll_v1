@@ -18,7 +18,7 @@ export const APP_SIDEBAR_LINKS = {
           },
           {
             label: 'Employee',
-            path:'employee',
+            path:'Employees',
             icon: <MdPerson />
           },
           {
