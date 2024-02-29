@@ -1,14 +1,11 @@
 
-
-
-// CardStyles.js
 const CardStyles = {
   style1: 'bg-cyan-50 rounded-sm shadow-md p-4 m-7 w-72 size-40 text-teal-600 text-semibold text-xs',
   style2: 'bg-purple-50 rounded-sm shadow-md p-4 m-7 w-72 size-40 text-purple-600 text-semibold text-xs',
   style3: 'bg-blue-50 rounded-sm shadow-md p-4 m-6 w-72 size-40 text-blue-600 text-semibold text-xs',
-  homestyle1: 'bg-white-50 rounded-sm shadow-md p-4 m-4 w-[50vh] size-40 h-32  ',
-  homestyle2:'flex flex-col rounded-sm  p-4 w-29 bg-white shadow-md mx-4 w-[157vh] h-[70vh]',
-  homestyle3: 'bg-white-50 rounded-sm shadow-md p-4 m- w-[50vh] size-40 h-[38vh] ',
+  homestyle1: 'bg-white-50 rounded-md shadow-md p-4 m-4 w-[50vh] size-40 h-32 border ',
+  homestyle2:'flex flex-col rounded-md  p-4 w-29 bg-white shadow-md mx-4 w-[159vh] h-[55vh] border',
+  homestyle3: 'bg-white-50 rounded-md shadow-md p-4 m- w-[50vh] size-40 h-[38vh] border',
   CardTitle: 'text-xl font-bold mb-2',
   CardContent: 'mx-4 text-blue-600 text-2xl font-semibold ',
   MarginBetweenCards: 'my-5',

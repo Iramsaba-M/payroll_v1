@@ -646,7 +646,7 @@ const BasicDetailsFormComponent = ({
               
             </div>
           ))}
-          <div className="translate-x-[45vh] -translate-y-[10vh] p-3 mr-2 w-14 flex ">
+          <div className="translate-x-[45vh] -translate-y-[11vh] p-3 mr-2 w-14 flex ">
             {config.slice(11, 13).map((field, index) => (
               <div key={index}>
                 <label className={TextStyle[field.textcss].label}>
