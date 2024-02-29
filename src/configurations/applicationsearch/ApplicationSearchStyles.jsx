@@ -1,9 +1,13 @@
 // ApplicationSearchStyles.js
 const ApplicationSearchStyles = {
-  // Other styles...
-  searchContainer: 'relative', // Keep existing styles for search container
-  input: 'bg-transparent outline-none border-b border-gray-400 py-2 pl-8 pr-4 w-full text-gray-800 placeholder-gray-500', // Keep existing styles for input
-  suggestionList: 'absolute left-0 w-full bg-white border border-gray-400 mt-2 rounded-md shadow-md z-10', // Adjust styles for suggestion list
+  search1: "flex items-center text-gray-700 bg-gray-50 mt-4 text-sm px-3 py-1.5 w-64 border-1 rounded-sm shadow-inner bg-gray-200 hover:border-2",
+  input: {
+    backgroundColor: 'transparent',
+    color: 'black',
+    border: 'none',  
+    outline: 'none', 
+    width: '100%',   
+  },
 };
 
 export default ApplicationSearchStyles;
