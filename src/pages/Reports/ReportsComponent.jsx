@@ -17,8 +17,8 @@ import axios from 'axios';
 import { exmpContent, exmpContent1, exmpContent2, cardContent, cardContent2, cardContent3, internContent, insuranceContent, pfContent } from './ReportsContent';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Home_and_Report_BarGraphdata,Home_and_Reportdata } from '../../api/EndPoints';
-import { getApiUrl,getApiUrl2 } from '../../api/GetAPI';
+import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
+import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
 
 const Barchart3 = ({ graphdata }) => {
 
@@ -136,13 +136,13 @@ const ReportsComponent = () => {
     setSelectedDateTop(selectedDateTop);
   }, []);
   useEffect(() => {
-    const currentDate = new Date( );
+    const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-  
+
     // Set the end date to the last day of the previous month
     const endDate = new Date(currentYear, currentMonth, 0);
-  
+
     // If the current month is February, adjust the start date to exclude it
     const startDate = new Date(
       currentMonth === 1 ? currentYear - 1 : currentYear,
@@ -182,10 +182,9 @@ const ReportsComponent = () => {
             year: selectedDate1.getFullYear(),
             month: selectedDate1.toLocaleString('en-us', { month: 'short' }),
           };
-          console.log('before Post Response:', formattedStartDate,formattedEndDate);
+          console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
-            // const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-              const response = await axios.get('http://localhost:8000/home_report_graphdata',{
+          const response = await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
             from: formattedStartDate,
             to: formattedEndDate,
           });
@@ -226,9 +225,7 @@ const ReportsComponent = () => {
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
-          // const response =await axios.post(getApiUrl(Home_and_Reportdata), {
-        const response = await axios.get('http://localhost:8000/home_report_carddata',{
-
+        const response = await axios.post(getApiUrl(Home_and_Reportdata), {
           year: year,
           month: month,
         });
@@ -256,46 +253,46 @@ const ReportsComponent = () => {
   return (
     <div className='flex flex-col'>
       <div className='flex '>
-      <div className='flex p-2 border-2 w-[28vh] rounded-md ml-4 '>
-        <DatePicker
-          selected={selectedDate}
-          onChange={handleDateChange}
-          dateFormat="MM/yyyy"
-          placeholderText='From'
-          className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
-          showMonthYearPicker
-        />
-        <div className='text-gray-400'>~</div>
-        <DatePicker
-          selected={selectedDate1}
-          onChange={handleDateChange1}
-          placeholderText='To'
-          dateFormat="MM/yyyy"
-          style={{ appearance: 'none', background: 'transparent' }}
-          className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
-          showMonthYearPicker
-        />
-      </div>
-      
-   
-      <div className='ml-[54vh] border-2 w-[14vh] rounded-md h-10 p-2'>
-        <DatePicker
-          selected={selectedDateTop}
-          onChange={handleDateChangeTop}
-          placeholderText='To'
-          dateFormat="MM/yyyy"
-          style={{ appearance: 'none', background: 'transparent' }}
-          className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
-          showMonthYearPicker
-        />
-      </div>
+        <div className='flex p-2 border-2 w-[28vh] rounded-md ml-4 '>
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            dateFormat="MM/yyyy"
+            placeholderText='From'
+            className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+            showMonthYearPicker
+          />
+          <div className='text-gray-400'>~</div>
+          <DatePicker
+            selected={selectedDate1}
+            onChange={handleDateChange1}
+            placeholderText='To'
+            dateFormat="MM/yyyy"
+            style={{ appearance: 'none', background: 'transparent' }}
+            className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+            showMonthYearPicker
+          />
+        </div>
+
+
+        <div className='ml-[54vh] border-2 w-[14vh] rounded-md h-10 p-2'>
+          <DatePicker
+            selected={selectedDateTop}
+            onChange={handleDateChangeTop}
+            placeholderText='To'
+            dateFormat="MM/yyyy"
+            style={{ appearance: 'none', background: 'transparent' }}
+            className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
+            showMonthYearPicker
+          />
+        </div>
       </div>
       <div className='flex flex-row '>
         <div className=' drop-shadow-inner'>
 
           <Card Config={exmpContent} comp={<Barchart3 graphdata=
-          {bargraphData}
-           />} />
+            {bargraphData}
+          />} />
           <div className='flex flex-row ml-6 '>
             <Card Config={exmpContent1} comp={<Pichart graphdata={cardData.departments} />} />
             <Card Config={exmpContent2} comp={<Pichart graphdata={cardData.branches} />} />
