@@ -40,11 +40,11 @@ export const cardContent = [
   ];
   export const exmpContent1 = [
     
-    { card:'reportstyle1',chart:'reportpichart',  heading:'Departments' },
+    { card:'reportstyle3',chart:'reportpichart',  heading:'Departments' },
     
   ];
   export const exmpContent2 = [
     
-    { card:'reportstyle1',chart:'reportpichart' ,heading:'Branches'},
+    { card:'reportstyle3',chart:'reportpichart' ,heading:'Branches'},
     
   ];
