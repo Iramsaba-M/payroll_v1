@@ -124,6 +124,18 @@ const ReportsComponent = () => {
   const [selectedDateTop, setSelectedDateTop] = useState(null);
 
   useEffect(() => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    // If the current month is February, set selectedDateTop to the previous month (January)
+    // If the current month is January, set selectedDateTop to December of the previous year
+    const defaultMonth = currentMonth === 1 ? 0 : currentMonth === 0 ? 11 : currentMonth - 1;
+    const selectedDateTop = new Date(
+      currentMonth === 0 ? currentDate.getFullYear() - 1 : currentDate.getFullYear(),
+      defaultMonth
+    );
+    setSelectedDateTop(selectedDateTop);
+  }, []);
+  useEffect(() => {
     const currentDate = new Date( );
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
@@ -137,7 +149,7 @@ const ReportsComponent = () => {
       currentMonth === 1 ? 0 : currentMonth - 12,
       1
     );
-    setSelectedDateTop(endDate);
+    // setSelectedDateTop(endDate);
     setSelectedDate(startDate);
     setSelectedDate1(endDate);
   }, []);
@@ -171,12 +183,12 @@ const ReportsComponent = () => {
             month: selectedDate1.toLocaleString('en-us', { month: 'short' }),
           };
           console.log('before Post Response:', formattedStartDate,formattedEndDate);
-          // const response = await axios.post('http://192.168.0.123:5002/calculate_total_monthly_ctc', {
-            const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
+
+            // const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
+              const response = await axios.get('http://localhost:8000/home_report_graphdata',{
             from: formattedStartDate,
             to: formattedEndDate,
           });
-          // const response = await axios.get('http://localhost:8000/graphdata');
           console.log('Post Response graph :', response.data);
           setBarGraphData(response.data);
         } else {
@@ -213,8 +225,9 @@ const ReportsComponent = () => {
         const year = selectedDateTop.getFullYear();
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
-        const response = await axios.post('http://192.168.0.123:8000/calculate_financial_data', {
+
           // const response =await axios.post(getApiUrl(Home_and_Reportdata), {
+        const response = await axios.get('http://localhost:8000/home_report_carddata',{
 
           year: year,
           month: month,
@@ -277,13 +290,13 @@ const ReportsComponent = () => {
         />
       </div>
       </div>
-      <div className='flex flex-row'>
-        <div className=''>
+      <div className='flex flex-row '>
+        <div className=' drop-shadow-inner'>
 
           <Card Config={exmpContent} comp={<Barchart3 graphdata=
           {bargraphData}
            />} />
-          <div className='flex flex-row ml-6'>
+          <div className='flex flex-row ml-6 '>
             <Card Config={exmpContent1} comp={<Pichart graphdata={cardData.departments} />} />
             <Card Config={exmpContent2} comp={<Pichart graphdata={cardData.branches} />} />
           </div>
