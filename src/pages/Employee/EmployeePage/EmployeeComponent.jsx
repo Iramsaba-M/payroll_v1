@@ -34,12 +34,8 @@ const EmployeeComponent = () => {
     
   });
 
- 
-  
   useEffect(() => {
     
-  
-
   const fetchemployeeData = async () => {
     try {
       const data = await fetchData(EMP_API);

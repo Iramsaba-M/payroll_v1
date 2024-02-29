@@ -329,16 +329,9 @@ export const formContent = [
        "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
        
     },
-  //   {
-  //     "name":"address_line1",
-  //     "label": "Address: ",
-  //     "type": "doubleInput",
-  //     "placeholders": ["Line 1", "Line 2"],
-  //     "textcss": "standard",
-  //     "keys": ["Line 1", "Line 2"],
-  // },
+
   {
-    "name":"address_line1",
+    "name":"address",
     "label": "Address*",
     "type": "text",
     "placeholder": "Line 1 ",

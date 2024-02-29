@@ -1,13 +1,3 @@
-// // import React from 'react'
-
-// // const ReportsComponent = () => {
-// //   return (
-// //     <div>Reports</div>
-// //   )
-// // }
-
-// // export default ReportsComponent
-
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -184,10 +174,12 @@ const ReportsComponent = () => {
           };
           console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
-          const response = await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-            from: formattedStartDate,
-            to: formattedEndDate,
-          });
+          const response = await axios.get('http://localhost:3000/home_report_graphdata')
+
+          // const response = await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
+          //   from: formattedStartDate,
+          //   to: formattedEndDate,
+          // });
           console.log('Post Response graph :', response.data);
           setBarGraphData(response.data);
         } else {
@@ -199,23 +191,7 @@ const ReportsComponent = () => {
     };
     fetchData();
   }, [selectedDate, selectedDate1]);
-  // const fetchCardData = async () => {
-  //   try {
-
-  //     const response = await axios.get('http://localhost:8000/graph_data');
-  //     // const response =await axios.post(getApiUrl(BANK_DETAILS_API), dataToSend);
-
-  //     console.log('Card Data:', response.data);
-  //     setGraphData(response.data);
-
-  //   } catch (error) {
-  //     console.error(`Error :`, error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchCardData();
-  // }, []);
+  
 
   useEffect(() => {
     const fetchData2 = async () => {
@@ -225,10 +201,12 @@ const ReportsComponent = () => {
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
-        const response = await axios.post(getApiUrl(Home_and_Reportdata), {
-          year: year,
-          month: month,
-        });
+        const response = await axios.get('http://localhost:3000/home_report_carddata')
+        
+        // const response = await axios.post(getApiUrl(Home_and_Reportdata), {
+        //   year: year,
+        //   month: month,
+        // });
         console.log('Post Response cards:', response.data);
         setCardData(response.data);
         console.log('setCardData:', cardData);
@@ -239,16 +217,6 @@ const ReportsComponent = () => {
     fetchData2();
   }, [selectedDateTop]);
 
-  // const processBarData = () => {
-  //   const bar = cardData.branches1;
-
-  //   if (bar && typeof bar === 'object') {
-  //     setBarArray(Object.entries(bar).map(([name, value]) => ({ name, value })));
-  //   }
-  // };
-  // useEffect(() => {
-  //   processBarData();
-  // }, [cardData]);
 
   return (
     <div className='flex flex-col'>
