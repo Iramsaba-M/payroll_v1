@@ -32,8 +32,4 @@ export const Home_and_Reportdata ='calculate_financial_data'
 
 export const Home_and_Report_BarGraphdata ='calculate_total_monthly_ctc'
 
-// export const Home_and_Reportdata ='home_report_carddata'
-
-// export const Home_and_Report_BarGraphdata ='home_report_graphdata'
-
 
