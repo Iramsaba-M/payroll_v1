@@ -5,7 +5,7 @@ import ApplicationSearchStyles from './ApplicationSearchStyles';
 import ApplicationSearchComp from './Applicationsearchcomp';
 import routesConfig from '../../routing/RoutingConfig';
 
-const ApplicationSearch = ({ setSearchResults }) => {
+const ApplicationSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (searchedData) => {
@@ -15,10 +15,8 @@ const ApplicationSearch = ({ setSearchResults }) => {
 
   return (
     <ApplicationSearchComp
-      data={routesConfig}
       config={ApplicationSearchConfig}
-      searchFunrecd={handleSearch}
-      setSearchResults={setSearchResults} // Pass setSearchResults here
+      handleSearch={handleSearch} // Pass handleSearch function
     />
   );
 };
