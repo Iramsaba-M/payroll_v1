@@ -78,11 +78,11 @@ const routesConfig = [
             element: <Home />,
           },
           {
-            path: 'employee',
+            path: 'Employees',
             element: <Employee />,
             children: [
               {
-                  path: 'addemployee',
+                  path: 'AddEmployee',
                   element: <AddEmp/>,
               },    
             ],
