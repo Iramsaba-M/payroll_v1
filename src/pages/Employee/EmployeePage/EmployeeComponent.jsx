@@ -66,7 +66,7 @@ const EmployeeComponent = () => {
   const navigate = useNavigate();
   const handleAddEMp =() =>{
     setShowAddEmployee(true)
-    navigate('Addemployee')
+    navigate('AddEmployee')
   }
   
   const handleButtonClick = (label) => {
@@ -161,10 +161,6 @@ const EmployeeComponent = () => {
     }
   };
   
-
-
-
-
   
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
@@ -202,7 +198,7 @@ const closeImportPopup = () => {
   
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ml-4">
       {!showAddEmployee ? (
         <>
           <div className='card p-2'>
