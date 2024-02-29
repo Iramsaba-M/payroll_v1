@@ -13,7 +13,8 @@ import 'react-date-range/dist/theme/default.css';
 import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import { Home_and_Report_BarGraphdata,Home_and_Reportdata } from '../../api/EndPoints';
+import { getApiUrl,getApiUrl2 } from '../../api/GetAPI';
 
 const Barchart = ({ graphdata }) => {
 
@@ -136,7 +137,8 @@ const HomeComponent = () => {
         const year = selectedDateTop.getFullYear();
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
-        const response = await axios.post('http://192.168.0.123:8000/calculate_financial_data', {
+        // const response = await axios.post('http://192.168.0.142:8000/calculate_financial_data', {
+          const response =await axios.post(getApiUrl(Home_and_Reportdata), {
           year: year,
           month: month,
         });
@@ -167,7 +169,8 @@ const HomeComponent = () => {
             from: formattedStartDate,
             to: formattedEndDate,
           });
-          const response = await axios.get('http://localhost:8000/graph_data', {
+          // const response = await axios.post('http://192.168.0.142:5002/calculate_total_monthly_ctc', {
+            const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
             from: formattedStartDate,
             to: formattedEndDate,
           });
@@ -224,7 +227,7 @@ const HomeComponent = () => {
             <Card Config={total_employees} contentvalue={cardData.employees} />
             <Card Config={total_payroll} contentvalue={cardData.total_payroll} />
             <div className="ml-4 ">
-              <Card Config={exmpContent1} comp={<Pichart data={cardData.branches} />} contentvalue2={cardData.pay}/>
+              <Card Config={exmpContent1} comp={<Pichart data={cardData.branches} />} contentvalue2={cardData.total_payroll}/>
             </div>
           </div>
           <div className="flex -mt-[23vh] ">
@@ -261,7 +264,7 @@ const HomeComponent = () => {
       </div>
       <div style={{ display: 'flex', flexDirection: 'row' }}></div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <Card Config={exmpContent} comp={<Barchart graphdata={graphData.barchart} />} />
+        <Card Config={exmpContent} comp={<Barchart graphdata={graphData} />} />
       </div>
     </div>
   );
