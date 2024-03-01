@@ -334,7 +334,7 @@ export const formContent = [
     "name":"address",
     "label": "Address*",
     "type": "text",
-    "placeholder": "Line 1 ",
+    "placeholder": "Line",
     "textcss": "standard"
     
   },
