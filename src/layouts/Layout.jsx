@@ -64,16 +64,16 @@ const Layout = () => {
   return (
     <>
     <div className=" flex min-h-screen">
-      <div className=" w-14 border-r border-gray-200">
+      <div className=" w-14 border-r border-border-line">
         <Iconbar />
       </div> 
     
-      <div className='flex w-60 border-r border-gray-200'>
+      <div className='flex w-60 border-r border-border-line'>
         <Routes>{renderRoutes(routesConfig)}</Routes>
       </div>
       
 
-      <div className='w-full h-12 border-b-gray-50 text-gray-600 text-sm'>
+      <div className='w-full h-12 border-b-border-line text-gray-600 text-sm'>
         <Header HeadConfi={HeadConfi} currentPath={currentPath} />
       </div> 
 
