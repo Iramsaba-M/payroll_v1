@@ -266,7 +266,7 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
   ))}
 </div>
       {/* Submit button */}
-      <div className="form-line flex justify-end mt-4">
+      <div className="form-line flex justify-end mt-4 mx-16">
      <ButtonConfig Config={Button2Content} onClick={handleButtonClick} />
       </div>
       </div>
