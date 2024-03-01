@@ -216,9 +216,9 @@ const ReportsComponent = () => {
 
 
   return (
-    <div className='flex flex-col mt-2'>
+    <div className='flex flex-col mt-2 ml-4'>
       <div className='flex '>
-        <div className='flex  border-t-2 border-s-2 border w-[28vh] h-8 rounded-md ml-4 '>
+        <div className='flex  border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4 '>
           <DatePicker
             selected={selectedDate}
             onChange={handleDateChange}
@@ -240,7 +240,7 @@ const ReportsComponent = () => {
         </div>
 
 
-        <div className='ml-[54.5vh] border-t-2 border-s-2 border w-[20vh] h-8 rounded-md '>
+        <div className='ml-[54.5vh] border-t border-s-2 border-b-2 border-r w-[20vh] h-8 rounded-md '>
           <DatePicker
             selected={selectedDateTop}
             onChange={handleDateChangeTop}

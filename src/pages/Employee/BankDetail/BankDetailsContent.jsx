@@ -5,9 +5,10 @@ export const formContent = [
       "name":"bank_name",
       "type": "options",
       "options": [
-        { "name": "Bank1", "value": "Bank1" },
-        { "name": "Bank2", "value": "Bank2" },
-        { "name": "Bank3", "value": "Bank3" }
+        { "name": "State Bank of India", "value": "State Bank of India" },
+        { "name": "ICICI Bank", "value": "ICICI Bank" },
+        { "name": "Axis Bank", "value": "Axis Bank" },
+        { "name": "HDFC Bank", "value": "HDFC Bank" }
       ],
       "placeholder": "",
       "textcss": "standard",

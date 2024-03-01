@@ -110,6 +110,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
                                     onChange={(e) => handleChange(field.name, e.target.value)}
                                     textcss={TextStyle[field.textcss].input}
                                     placeholder={field.placeholder}
+                                    icon={field.icon}
                                 />
                             )}
                         </div>
