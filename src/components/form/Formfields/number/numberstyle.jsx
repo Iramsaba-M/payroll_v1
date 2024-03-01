@@ -6,7 +6,7 @@ const NumberStyle = {
     },
     standardcolour: {
       label: 'block text-gray-600 text-xs font-bold my-1', 
-      input: 'border bg-gray-200 text-blue-500  font-semibold text-xs my-2 mr-14 mb-2 px-2 py-1 w-26 h-10 leading-tight focus:outline-none',
+      input: ' bg-gray-100 text-blue-500  font-semibold text-xs my-2 mr-14 mb-2 px-2 py-1 w-25 h-10 leading-tight focus:outline-none',
     },
     
     

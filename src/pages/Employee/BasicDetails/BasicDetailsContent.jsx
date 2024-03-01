@@ -288,7 +288,7 @@ export const formContent = [
           { "name": "CEO", "value": "ceo" },
           { "name": "CTO", "value": "cto" },
           { "name": "Manager", "value": "manager" },
-          { "name": "Software Engineer", "value": "software_engineer" }
+          { "name": "Software Engineer", "value": "software engineer" }
       ],
       "placeholder": "",
       "textcss": "standard",
