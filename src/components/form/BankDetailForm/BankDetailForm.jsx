@@ -63,7 +63,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
 
   return (
     <form  onSubmit={onSubmit} className=''>
-      <div className='form-line flex justify-evenly mb-4 ml-2 '>
+      <div className='form-line flex justify-evenly mb-4  '>
         <div >
           {forms.map((form, index) => (
             <div key={index} className='shadow-sm mt-7 mb-7'>
@@ -85,7 +85,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
           </div>
         </div>
       </div>
-      <div className='buttons flex justify-end mr- mt-6 mb-96'>
+      <div className='buttons flex justify-end mr- mt-6 mb-96 -ml-1 '>
         
         <Button  Configs={ButtonforSave} onClick={handleButtonClick} />
       </div>
