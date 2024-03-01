@@ -29,47 +29,27 @@ function DynamicTable({ config, data }) {
     setSelectedRow(row);
     setShowForm(true);
   };
-  const fetchImageUrls = async () => {
-    const urls = {};
-    await Promise.all(
-      data.map(async (row) => {
-        if (row.photo_content) {
-          try {
-            const imageUrl = await convertBase64ToPng(row.photo_content);
-            urls[row.id] = imageUrl;
-          } catch (error) {
-            console.error('Error converting base64 to PNG:', error);
-          }
-        }
-      })
-    );
-    setImageUrls(urls);
-  };
-  useEffect(() => {
-    if (data && data.length > 0) {
-      fetchImageUrls();
-    }
-  }, [data]);
+  
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
-      console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
+      // console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
       const formattedName = `${row.first_name} ${row.middle_name} ${row.last_name}`;
-      if (row.id in imageUrls) {
-        const imageUrl = imageUrls[row.id];
+      if (row.photo_content) {
+        const imageUrl = `data:image/png;base64, ${row.photo_content}`;
         console.log('Image URL:', imageUrl);
         const photoIcon = (
           <img
             src={imageUrl}
             alt="Employee Photo"
-            className="employee-icon"
-            style={{ width: '24px', height: '24px', marginRight: '5px' }}
+            className="rounded-full"
+            style={{ width: '28px', height: '28px', marginRight: '6px' }}
           />
         );
         return (
-          <>
+          <div className='flex'>
             {photoIcon}
             {formattedName}
-          </>
+          </div>
         );
       } else {
         return <>Loading...</>;
@@ -77,6 +57,7 @@ function DynamicTable({ config, data }) {
     }
     return row[column.name] || '';
   };
+  
   useEffect(() => {
     console.log('Image URLs:', imageUrls);
   }, [imageUrls]);

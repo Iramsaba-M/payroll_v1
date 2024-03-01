@@ -5,14 +5,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#2563eb',
-        secondary: '#656565',
-        background: '#eff4ff',
-        text: '#292929',
-        white: '#ffffff',
+        'font-color': '#414040',
+        'button-color': '#6366F1',
+        'menu-bg': '#E6EDFE',
+        'active-icons': '#6366F1',
+        'input-border': '#BCC1CA',
+        'border-line': '#DEE1E6',
+        'placeholder': '#9095A0',
+        'button-bg': '#E6EDFE',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        'bold': ['Roboto-Bold', 'sans-serif'],
+        'medium': ['Roboto-Medium', 'sans-serif'],
+        'light': ['Roboto-Light', 'sans-serif'],
+        'regular': ['Roboto-Regular', 'sans-serif'],
       },
       fontWeight: {
         regular: 400,

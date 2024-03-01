@@ -4,6 +4,8 @@ import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -82,7 +84,7 @@ const Pichart = ({ data }) => {
   );
 };
 
-const HomeComponent = () => {
+  const HomeComponent = () => {
   const [cardData, setCardData] = useState([]);
   // const [selectedValue, setSelectedValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);//to
@@ -132,11 +134,14 @@ const HomeComponent = () => {
         const year = selectedDateTop.getFullYear();
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
-        // const response = await axios.post('http://192.168.0.142:8000/calculate_financial_data', {
-        const response = await axios.post(getApiUrl(Home_and_Reportdata), {
-          year: year,
-          month: month,
-        });
+
+        const response = await axios.get('http://localhost:3000/home_report_carddata')
+
+        //   const response =await axios.post(getApiUrl(Home_and_Reportdata), {
+        //   year: year,
+        //   month: month,
+        // });
+
         console.log('Post Response:', response.data);
         setCardData(response.data);
       } catch (error) {
@@ -164,11 +169,15 @@ const HomeComponent = () => {
             from: formattedStartDate,
             to: formattedEndDate,
           });
-          // const response = await axios.post('http://192.168.0.142:5002/calculate_total_monthly_ctc', {
-          const response = await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-            from: formattedStartDate,
-            to: formattedEndDate,
-          });
+
+
+          const response = await axios.get('http://localhost:3000/home_report_graphdata')
+
+          //   const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
+          //   from: formattedStartDate,
+          //   to: formattedEndDate,
+          // });
+     
 
           console.log('Graph Response:', response.data);
           setGraphData(response.data);
