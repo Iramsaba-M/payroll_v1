@@ -4,8 +4,7 @@ import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+
 import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -27,7 +26,7 @@ const Barchart = ({ graphdata }) => {
 
   const defaultColors = ["#8884d8", "#82ca9d", "#FFBB28"];
   return (
-    <ResponsiveContainer width={1100} height={350}>
+    <ResponsiveContainer width={1050} height={350}>
       <BarChart
         data={data}
         margin={{
@@ -212,8 +211,8 @@ const Pichart = ({ data }) => {
   }, []);
 
   return (
-    <div className="">
-      <div className='ml-4 h-[6vh] border-2 w-[20vh] rounded-md p-2 '>
+    <div className="mt-3 ml-12 ">
+      <div className='ml-4 h-[4vh] border w-[20vh] rounded-md  '>
         <DatePicker
           selected={selectedDateTop}
           onChange={handleDateChangeTop}
@@ -246,7 +245,7 @@ const Pichart = ({ data }) => {
         </div>
       </div>
       {/* <RangePicker onChange={handleDateRangeChange}/> */}
-      <div className='flex p-2 border-2 w-[38vh] rounded-md ml-4 '>
+      <div className='flex h-[4vh] border w-[36vh] rounded-md ml-4 '>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}

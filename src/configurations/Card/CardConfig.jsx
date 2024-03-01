@@ -2,15 +2,15 @@
 import React from 'react';
 import CardStyles from './CardStyle';
 
-const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2 }) => {
+const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle,contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2 }) => {
   return (
     <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards} ${className}`}>
       {title && (<h3 className={CardStyles.CardTitle}>{title}</h3>)}
 
-      {heading && (<h3 className=''>{heading}</h3>)}
+      {heading && (<h3 className='text-font-color font-semibold'>{heading}</h3>)}
       <div className={` ${classNametext}`}>{heading2 && (<h3 className='ml-16 font-bold'>{heading2}</h3>)}</div>
       {heading3 && (<h3 className='ml-4 font-bold'>{heading3}</h3>)}
-      {content && (<p className={CardStyles.CardContent}>{content}</p>)}
+      {content && <p style={contentStyle}>{content}</p>}
       {comp && (
         <div className={`${CardStyles[chart]}`}>
           {typeof comp === 'function' ? comp() : comp}

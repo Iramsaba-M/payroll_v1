@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RiArrowDropDownFill } from "react-icons/ri";
 // import DropCardStyles from './TagStyles';
 
 
@@ -38,7 +39,7 @@ const TagComponent = ({ cardConfig, onOptionChange }) => {
                     <select
                         value={value}
                         onChange={handleDropdownChange}
-                        style={{ appearance: 'none', background: 'transparent' }}
+                        style={{ appearance: 'none', background: 'transparent' }} 
                         className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     > {value ? null : (
                         <option value="" disabled selected> {placeholder} </option>
@@ -53,7 +54,7 @@ const TagComponent = ({ cardConfig, onOptionChange }) => {
                     {value && (
                         <p className="text-gray-500 mt-1"></p>
                     )}
-                </div>
+                </div> <RiArrowDropDownFill className='size-6 ml-[29vh] -mt-8 text-gray-700' />
             </div>
             <div className="flex items-center flex-wrap mt-2">
                 {selectedOptions.map((tag, index) => (

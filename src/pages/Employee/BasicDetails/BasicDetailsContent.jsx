@@ -285,10 +285,10 @@ export const formContent = [
       "label": "Designation*",
       "type": "options",
       "options": [
-          { "name": "CEO", "value": "CEO" },
-          { "name": "CTO", "value": "CTO" },
-          { "name": "Manager", "value": "Manager" },
-          { "name": "Software Engineer", "value": "Software Engineer" }
+          { "name": "CEO", "value": "ceo" },
+          { "name": "CTO", "value": "cto" },
+          { "name": "Manager", "value": "manager" },
+          { "name": "Software Engineer", "value": "software engineer" }
       ],
       "placeholder": "",
       "textcss": "standard",

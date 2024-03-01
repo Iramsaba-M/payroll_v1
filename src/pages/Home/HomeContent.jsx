@@ -5,12 +5,12 @@ import { MdOutlineWaterDrop } from "react-icons/md";
 
 export const total_employees = [
 
-  { heading2: 'Total Employees', card: 'homestyle1', contentKey: 'total_employees', classNametext: 'ml-[5vh]', contentstyle: 'homecontent' },
+  { heading2: 'Total Employees', card: 'homestyle1', contentKey: 'total_employees', classNametext: 'ml-[4vh]', contentstyle: 'homecontent_bold' },
 
 
 ];
 export const total_payroll = [
-  { heading2: 'Total Payroll', card: 'homestyle1', contentKey: 'total_payroll', classNametext: 'ml-[7vh]', contentstyle: 'homecontent' },
+  { heading2: 'Total Payroll', card: 'homestyle1', contentKey: 'total_payroll', classNametext: 'ml-[5vh] ', contentstyle: 'homecontent_bold' },
 
 ];
 export const tds = [
@@ -48,5 +48,5 @@ export const exmpContent = [
 ];
 
 export const exmpContent1 = [
-  { card: 'homestyle3', chart: 'homepichart2', heading2: 'Payroll Distribution by Location', contentstyle2: 'homecontent2' },
+  { card: 'homestyle3', chart: 'homepichart2', heading3: 'Payroll Distribution by Location', contentstyle2: 'homecontent2'},
 ];
