@@ -16,9 +16,9 @@ const CardStyles = {
   homecontent_bold:' text-gray-500 ml-28 mt-8 text-lg font-bold w-6',
   homecontent2:' text-gray-500 text-center -mt-2 text-lg font-bold ',
 /////////////////////////////////////////////////
-reportstyle1: 'bg-white rounded-sm border-t border-s shadow-md p-4 m-4 w-64 size-40 h-32 ',
-reportstyle3: 'bg-white rounded-sm border-t border-s shadow-md p-4 m-4 w-[37vh] size-40 h-32 ',
-reportstyle2:'bg-white flex flex-col  rounded-sm border-t border-s px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
+reportstyle1: 'bg-white rounded-md border-t border-s shadow-md p-4 m-4 w-64 size-40 h-32 ',
+reportstyle3: 'bg-white rounded-md border-t border-s shadow-md p-4 m-4 w-[37vh] size-40 h-32 ',
+reportstyle2:'bg-white flex flex-col  rounded-md border-t border-s px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
 reportbarchart:'w-[77vh] h-[32vh]',
 reportpichart:'w-[25vh] h-[25vh] -mt-12 ml-24 ',
 reporticonstyle1:'-mt-8   ml-[24vh] ',

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 // import OptionData from './OptionData';
 import { OptionData } from '../../../pages/Employee/AditionalDetail/AditionalDetailsContent';
+import { RiArrowDropDownFill } from "react-icons/ri";
 
 const OptionsComp = ({ onChange }) => {
  
@@ -35,8 +36,10 @@ const OptionsComp = ({ onChange }) => {
       <div className='flex   mb-4 '>
         <div className='form-line flex  mb-4'>
           <label className='block text-gray-600 text-xs font-bold my-1'></label>
+         
           <select
-            className="border-b-2 hover:border-blue-500 border-gray-100 bg text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60  "
+          style={{ appearance: 'none', background: 'transparent' }} 
+            className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60  "
             value={employee_status}
             onChange={(e) => handleEmployeeStatusChange(e.target.value)}
           >
@@ -46,14 +49,15 @@ const OptionsComp = ({ onChange }) => {
                 {option.name}
               </option>
             ))}
-          </select>
+          </select> <RiArrowDropDownFill className='size-6 -ml-[11vh]  mt-2 text-gray-700' />
         </div>
-        <div className='flex justify-col mb-4'>
+        <div className='flex justify-col mb-4 ml-28'>
           {employee_status === 'Inactive' && (
             <div className='flex justify-evenly'>
               <label className='block text-gray-600 text-xs font-bold my-1'></label>
               <select
-                className="border-b-0 hover:border-blue-500 border-gray-100 bg text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
+              style={{ appearance: 'none', background: 'transparent' }} 
+                className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                 value={type}
                 onChange={(e) => handletypeChange(e.target.value)}
               >
@@ -63,12 +67,13 @@ const OptionsComp = ({ onChange }) => {
                     {option.name}
                   </option>
                 ))}
-              </select>
+              </select> <RiArrowDropDownFill className='h-6 w-6 -ml-[11vh]  mt-2 text-gray-700' />
 
               {type === 'Leave' && (
-                <div>
+                <div className='ml-20'>
                   <label className='block text-gray-600 text-xs font-bold my-1'></label>
                   <select
+                  style={{ appearance: 'none', background: 'transparent' }} 
                     className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     value={selectedLeaveOption}
                     onChange={(e) => handleLeaveOptionChange(e.target.value)}
@@ -79,14 +84,15 @@ const OptionsComp = ({ onChange }) => {
                         {option.name}
                       </option>
                     ))}
-                  </select>
+                  </select><RiArrowDropDownFill className='h-6 w-6  -mt-8 ml-[29vh] text-gray-700' />
                 </div>
               )}
 
               {type === 'Suspended' && (
-                <div>
-                  <label className='block text-gray-600 text-xs font-bold my-1'></label>
+                <div className='ml-20'>
+                  <label className='block text-gray-600 text-xs font-bold my-1 '></label>
                   <select
+                  style={{ appearance: 'none', background: 'transparent' }} 
                     className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     value={selectedLeaveOption}
                     onChange={(e) => handleLeaveOptionChange(e.target.value)}>
@@ -96,7 +102,7 @@ const OptionsComp = ({ onChange }) => {
                         {option.name}
                       </option>
                     ))}
-                  </select>
+                  </select><RiArrowDropDownFill className='h-6 w-6  -mt-9 ml-[29vh] text-gray-700' />
                 </div>
               )}
             </div>

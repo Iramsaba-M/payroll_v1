@@ -1,6 +1,6 @@
 
 const ButtonStyles = {
-  buttonStyle: 'bg-blue-600 text-white p-1 px-4 rounded flex items-center mb-2 mr-2', // Add margin-bottom
+  buttonStyle: 'bg-button-color text-white p-1 px-4 rounded flex items-center mb-2 mr-2', // Add margin-bottom
   buttonStylew: 'bg-blue-600 text-white p-1 px-4 rounded flex items-center mb-2 mr-2 mt-3 w-33vh h-12 ',
   buttonStylew1: 'bg-gray-200 text-black p-1 px-4 rounded flex items-center mb-2 mr-2  mt-3 w-33vh h-12 ',
   

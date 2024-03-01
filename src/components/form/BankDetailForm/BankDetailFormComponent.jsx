@@ -34,7 +34,7 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
   return (
 
     <div style={{ boxShadow: isButtonClicked ? '0 0 2px rgba(0, 0, 0, 0.5)' : 'none' }}>
-      <div className="form-line flex mb-4 ">
+      <div className="form-line flex mb-4 ml-1 ">
         {config.slice(0, 2).map((field, index) => (
           <div key={index} className={`form-field ${field.fieldstyle}`}>
 
@@ -65,7 +65,7 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
 
 
-      <div className="form-line flex mb-4  ">
+      <div className="form-line flex mb-4 ml-1 ">
         {config.slice(2, 4).map((field, index) => (
           <div key={index} className={`form-field ${field.fieldstyle}`}>
 
@@ -95,7 +95,7 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
 
 
 
-      <div className='buttons flex  mt-6 ' >
+      <div className='buttons flex  mt-6 ml-1' >
         <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>        
         {/* <Button  Configs={ButtonforDefault} onClick={highlight} /> */}
       </div>
