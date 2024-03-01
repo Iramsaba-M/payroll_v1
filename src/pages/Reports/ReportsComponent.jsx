@@ -276,7 +276,7 @@ const ReportsComponent = () => {
         </div>
       </div>
 
-      <div className='flex justify-end   text-slate-400 mt-8  '><p className='w-60 '>Payroll summary report</p></div>
+      <div className='flex justify-end   text-slate-400 mt-20  '><p className='w-60 '>Payroll summary report</p></div>
     </div>
   )
 }
