@@ -15,11 +15,12 @@ const CardStyles = {
   homecontent:' text-gray-600 ml-36 mt-8 text-lg font-bold w-6',
   homecontent2:' text-gray-600 text-center mt- text-lg font-bold ',
 /////////////////////////////////////////////////
-reportstyle1: 'bg-white rounded-sm shadow-md p-4 m-4 w-64 size-40 h-32 ',
-reportstyle2:'bg-white flex flex-col  rounded-sm  px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
+reportstyle1: 'bg-white rounded-sm border-t border-s shadow-md p-4 m-4 w-64 size-40 h-32 ',
+reportstyle3: 'bg-white rounded-sm border-t border-s shadow-md p-4 m-4 w-[37vh] size-40 h-32 ',
+reportstyle2:'bg-white flex flex-col  rounded-sm border-t border-s px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
 reportbarchart:'w-[77vh] h-[32vh]',
 reportpichart:'w-[25vh] h-[25vh] -mt-12 ml-24 ',
-reporticonstyle1:'-mt-10  ml-44 ',
+reporticonstyle1:'-mt-8   ml-[24vh] ',
 reportcontent:"mt-3 ml-4 text-gray-600 text-lg font-bold",
 
 

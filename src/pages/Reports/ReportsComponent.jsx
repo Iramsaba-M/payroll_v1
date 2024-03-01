@@ -143,10 +143,7 @@ const ReportsComponent = () => {
     setSelectedDate(startDate);
     setSelectedDate1(endDate);
   }, []);
-  // useEffect(() => {
-  //   const selectedDateTop = new Date(); // This is a redeclaration
-  //   setSelectedDateTop(selectedDateTop);
-  // }, []);
+  
   const handleDateChangeTop = (date) => {
     setSelectedDateTop(date);
   };
@@ -219,13 +216,13 @@ const ReportsComponent = () => {
 
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mt-2'>
       <div className='flex '>
-        <div className='flex p-2 border-2 w-[28vh] rounded-md ml-4 '>
+        <div className='flex  border-t-2 border-s-2 border w-[28vh] h-8 rounded-md ml-4 '>
           <DatePicker
             selected={selectedDate}
             onChange={handleDateChange}
-            dateFormat="MM/yyyy"
+            dateFormat="MMM-yyyy"
             placeholderText='From'
             className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
             showMonthYearPicker
@@ -235,7 +232,7 @@ const ReportsComponent = () => {
             selected={selectedDate1}
             onChange={handleDateChange1}
             placeholderText='To'
-            dateFormat="MM/yyyy"
+            dateFormat="MMM-yyyy"
             style={{ appearance: 'none', background: 'transparent' }}
             className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
             showMonthYearPicker
@@ -243,25 +240,25 @@ const ReportsComponent = () => {
         </div>
 
 
-        <div className='ml-[54vh] border-2 w-[14vh] rounded-md h-10 p-2'>
+        <div className='ml-[54.5vh] border-t-2 border-s-2 border w-[20vh] h-8 rounded-md '>
           <DatePicker
             selected={selectedDateTop}
             onChange={handleDateChangeTop}
             placeholderText='To'
-            dateFormat="MM/yyyy"
-            style={{ appearance: 'none', background: 'transparent' }}
-            className='w-[12vh] on hover:border-blue-500 text-center  focus:outline-none '
+            dateFormat="MMMM-yyyy"
+            style={{ appearance: 'none', background: 'transparent'  }}
+            className='w-[18vh] on hover:border-blue-500 text-center  focus:outline-none '
             showMonthYearPicker
           />
         </div>
       </div>
       <div className='flex flex-row '>
-        <div className=' drop-shadow-inner'>
+        <div className=''>
 
           <Card Config={exmpContent} comp={<Barchart3 graphdata=
             {bargraphData}
           />} />
-          <div className='flex flex-row ml-6 '>
+          <div className='flex flex-row  justify-between '>
             <Card Config={exmpContent1} comp={<Pichart graphdata={cardData.departments} />} />
             <Card Config={exmpContent2} comp={<Pichart graphdata={cardData.branches} />} />
           </div>
