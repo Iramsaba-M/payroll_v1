@@ -58,6 +58,11 @@ function DynamicTable({ config, data }) {
     return row[column.name] || '';
   };
   
+  const tableStyle = {
+    maxHeight: '300px',
+    overflowY: 'auto',
+  };
+  
   return (
     <div>
       {showForm ? (
@@ -67,7 +72,7 @@ function DynamicTable({ config, data }) {
         />
       ) : (
         <div>
-          <div style={TableStyle}>
+          <div style={tableStyle}>
             <table className='border-2 rounded-md p-2 hover:border-blue-500'>
               <thead>
                 <tr className='bg-gray-50 p-2'>
