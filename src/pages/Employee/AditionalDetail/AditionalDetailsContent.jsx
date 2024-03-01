@@ -1,6 +1,6 @@
 import { IoEyeOutline } from "react-icons/io5";
 import { FiEyeOff } from "react-icons/fi";
-
+import { RiArrowDropDownFill } from "react-icons/ri";
 export const formContent = [
     {
       "label": "Current Password",
@@ -22,7 +22,8 @@ export const formContent = [
         ],
         "placeholder": "",
         "textcss": "standard",
-        "required": true
+        "required": true,
+        "icon":<RiArrowDropDownFill className="h-7 w-6 -mt-6 text-gray-800 " />
     },
   
   ]
