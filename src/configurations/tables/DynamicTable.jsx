@@ -42,7 +42,7 @@ function DynamicTable({ config, data }) {
             src={imageUrl}
             alt="Employee Photo"
             className="rounded-full"
-            style={{ width: '24px', height: '24px', marginRight: '10px' }}
+            style={{ width: '24px', height: '24px', marginRight: '4px' }}
           />
         );
         return (
@@ -59,7 +59,7 @@ function DynamicTable({ config, data }) {
   };
   
   const tableStyle = {
-    maxHeight: '300px',
+    maxHeight: '350px',
     overflowY: 'auto',
   };
   

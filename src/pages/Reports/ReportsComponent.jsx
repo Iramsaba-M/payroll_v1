@@ -35,8 +35,8 @@ const Barchart3 = ({ graphdata }) => {
           bottom: 5,
         }}
       >
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" axisLine={false}/>
+        <YAxis axisLine={false}/>
         <Tooltip />
         <Legend />
         {graphdata.map(({ year }, index) => (

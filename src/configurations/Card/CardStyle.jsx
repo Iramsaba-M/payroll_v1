@@ -1,8 +1,8 @@
 
 const CardStyles = {
-  style1: 'bg-cyan-50 rounded-sm shadow-sm p-4 m-7 w-72 size-40 text-teal-600 text-semibold text-lg font-bold',
-  style2: 'bg-purple-50 rounded-sm shadow-sm p-4 m-7 w-72 size-40 text-purple-600 text-semibold text-lg font-bold',
-  style3: 'bg-blue-50 rounded-sm shadow-sm p-4 m-6 w-72 size-40 text-blue-600 text-semibold text-lg font-bold',
+  style1: 'bg-cyan-50 rounded-md shadow-sm p-4 m-7 w-72 size-40 text-teal-600 text-semibold text-lg font-bold',
+  style2: 'bg-purple-50 rounded-md shadow-sm p-4 m-7 w-72 size-40 text-purple-600 text-semibold text-lg font-bold',
+  style3: 'bg-blue-50 rounded-md shadow-sm p-4 m-6 w-72 size-40 text-blue-600 text-semibold text-lg font-bold',
   homestyle1: 'bg-white-50 rounded-md shadow-md p-4 m-4 w-[45vh] size-40 h-32 border text-gray-700',
   homestyle2:'flex flex-col rounded-md  p-4 w-29 bg-white shadow-md mx-4 w-[144vh] h-[55vh] border ',
   homestyle3: 'bg-white-50 rounded-md shadow-md p-4 m- w-[45vh] size-40 h-[38vh] border text-gray-600',

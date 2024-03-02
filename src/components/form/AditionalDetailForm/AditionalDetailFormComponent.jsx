@@ -67,7 +67,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     };
     return (
         <form onSubmit={onSubmit} >
-            <div className='border border-gray-300  mb-5 p-5 mr-4'>
+            <div className='border border-gray-200  mb-5 p-5 mr-4'>
                 <h1 className='text-gray-800 font-semibold mb-2'>Security</h1>
                 <div className="form-line flex mb-4 ">
                     {config.slice(0, 1).map((field, index) => (
@@ -95,7 +95,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
                 </div>
             </div>
 
-            <div className='border border-gray-300  p-7 mr-4'>
+            <div className='border border-gray-200  p-7 mr-4'>
                 <h1 className=' text-gray-800 font-semibold mb-2'>Employee Benefits</h1>
                 <div className="form-line flex mb-4">
                     {config.slice(1, 2).map((field, index) => (
