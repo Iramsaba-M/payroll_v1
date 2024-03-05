@@ -8,7 +8,7 @@ import { exmpContent, exmpContent1, exmpContent2, cardContent, cardContent2, car
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
-import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
+import { getApiUrl} from '../../api/GetAPI';
 
 const Barchart3 = ({ graphdata }) => {
 
