@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddEmployee from '../../pages/Employee/AddEmployee/AddEmployee';
 import { MdOutlineEdit } from 'react-icons/md';
-import { convertBase64ToPng } from '../../base64topng';
 import TableStyle from './TableStyle';
 function DynamicTable({ config, data }) {
   const [selectedRows, setSelectedRows] = useState([]);
