@@ -1,3 +1,5 @@
+
+const navData = 
 [
     {
           "id": 1,
@@ -23,5 +25,7 @@
         "link": "#contact",
         "navcss": "style1"
      }
-  ]
   
+]
+
+export default navData
