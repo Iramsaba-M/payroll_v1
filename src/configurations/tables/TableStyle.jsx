@@ -1,4 +1,4 @@
-const TableStyle = {
+// const TableStyle = {
     
   
 
@@ -10,5 +10,5 @@ const TableStyle = {
   
   
   }
-
+  
   export default TableStyle;
