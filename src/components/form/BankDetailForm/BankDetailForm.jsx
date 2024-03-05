@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import BankDetailFormComponent from './BankDetailFormComponent';
 import axios from 'axios';
