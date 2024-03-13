@@ -6,7 +6,7 @@ import { RiSettings3Fill } from "react-icons/ri";
 import IconStyle from './IconbarStyle';
 
 
-export const DASHBOARD_ICONBAR_LINKS ={ 
+ const DASHBOARD_ICONBAR_LINKS ={ 
     links: [
     {
         key: 'home',
@@ -47,3 +47,4 @@ export const DASHBOARD_ICONBAR_LINKS ={
 }
     
 
+export default DASHBOARD_ICONBAR_LINKS
