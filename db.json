@@ -884,7 +884,7 @@
     "epf": "29.333",
     "pay": "450000",
     "insurance": "100000.2",
-    "esic": "233",
+    "esic": "0",
     "branches": [
       {
         "name": "Hubli",

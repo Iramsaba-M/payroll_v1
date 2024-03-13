@@ -9,6 +9,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
 import { getApiUrl} from '../../api/GetAPI';
+import { postData } from '../../services/APIService';
 
 const Barchart = ({ graphdata }) => {
 
@@ -35,7 +36,7 @@ const Barchart = ({ graphdata }) => {
           bottom: 5,
         }}      
       >
-        <XAxis dataKey="name" axisLine={false}/>
+        <XAxis dataKey="name" />
         <YAxis axisLine={false}/>
         <Tooltip />
         <Legend />
@@ -144,9 +145,8 @@ const ReportsComponent = () => {
           console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
           const response = await axios.get('http://localhost:3000/home_report_graphdata')
-
-          // const response = await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-          //   from: formattedStartDate,
+          // const response = await postData(Home_and_Report_BarGraphdata, {
+          //   from_: formattedStartDate,
           //   to: formattedEndDate,
           // });
           console.log('Post Response graph :', response.data);
@@ -171,8 +171,7 @@ const ReportsComponent = () => {
         // Rest of your code
 
         const response = await axios.get('http://localhost:3000/home_report_carddata')
-        
-        // const response = await postData(Home_and_Report_BarGraphdata, {
+        // const response = await postData(Home_and_Reportdata, {
         //   year: year,
         //   month: month,
         // });
@@ -237,14 +236,14 @@ const ReportsComponent = () => {
 
         </div>
         <div>
-          <Card Config={cardContent} contentvalue={cardData.employees} />
-          <Card Config={cardContent2} contentvalue={cardData.esic} />
-          <Card Config={cardContent3} contentvalue={cardData.pt} />
+          <Card Config={cardContent} contentvalue={cardData.employees?.toString()} />
+          <Card Config={cardContent2} contentvalue={cardData.esic?.toString()} />
+          <Card Config={cardContent3} contentvalue={cardData.pt?.toString()} />
         </div>
         <div>
-          <Card Config={internContent} contentvalue={cardData.interns} />
-          <Card Config={insuranceContent} contentvalue={cardData.insurance} />
-          <Card Config={pfContent} contentvalue={cardData.pf} />
+          <Card Config={internContent} contentvalue={cardData.interns?.toString()} />
+          <Card Config={insuranceContent} contentvalue={cardData.insurance?.toString()} />
+          <Card Config={pfContent} contentvalue={cardData.pf?.toString()} />
         </div>
       </div>
 

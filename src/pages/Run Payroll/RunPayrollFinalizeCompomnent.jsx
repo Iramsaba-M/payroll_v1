@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from '../../configurations/Card/CardConfig';
 import TableComponent from '../../configurations/tables/TableComponent';
-import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip } from './RunPayrollContent';
+import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5 } from './RunPayrollContent';
 import Button from '../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import axios from 'axios';
 
 const RunPayrollFinalizeCompomnent = () => {
-  // const [selectedDateTop, setSelectedDateTop] = useState(null);
   const [selectedOption, setSelectedOption] = useState("Review Payroll");
-
   const [data, setData] = useState([]);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
 
@@ -19,16 +17,7 @@ const RunPayrollFinalizeCompomnent = () => {
     const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     setSelectedDateTop(firstDayOfMonth);
   }, []);
-  // useEffect(() => {
-  //   const currentDate = new Date();
-  //   const currentMonth = currentDate.getMonth();
-  //   const defaultMonth = currentMonth === 1 ? 0 : currentMonth === 0 ? 11 : currentMonth - 1;
-  //   const selectedDateTop = new Date(
-  //     currentMonth === 0 ? currentDate.getFullYear() - 1 : currentDate.getFullYear(),
-  //     defaultMonth
-  //   );
-  //   setSelectedDateTop(selectedDateTop);
-  // }, []);
+ 
 
   const handleDateChangeTop = (date) => {
     setSelectedDateTop(date);
@@ -52,50 +41,7 @@ const RunPayrollFinalizeCompomnent = () => {
     setSelectedOption(option);
 
   };
-  const cardContent = [
-    {
-      heading: 'Taxes & Deduction',
-      multivalue: [
-        { heading: 'PF', name: 'pf' },
-        { heading: 'ESIC', name: 'esic' },
-        { heading: 'PT', name: 'pt' }
-      ],
-      card: 'payrollstyle2',
-      headstyle: 'payrollheading3'
-    },
-  ];
-  const cardContent2 = [
-    {
-      heading: 'PAYROLL EXPENSE',
-      card: 'payrollstyle1',
-      contentstyle: 'payrollcontent',
-      headstyle: 'payrollheading'
-    },
-  ];
-  const cardContent3 = [
-    {
-      heading: 'EMPLOYEE NET PAY',
-      card: 'payrollstyle3',
-      contentstyle: 'payrollcontent',
-      headstyle: 'payrollheading'
-    },
-  ];
-  const cardContent4 = [
-    {
-      heading: 'TOTAL EMPLOYEES ',
-      card: 'payrollstyle1',
-      contentstyle: 'payrollcontent2',
-      headstyle: 'payrollheading2'
-    },
-  ];
-  const cardContent5 = [
-    {
-      heading: 'PAYABLE DAYS',
-      card: 'payrollstyle3',
-      contentstyle: 'payrollcontent2',
-      headstyle: 'payrollheading2'
-    },
-  ];
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
