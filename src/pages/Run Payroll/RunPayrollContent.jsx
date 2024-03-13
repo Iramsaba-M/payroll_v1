@@ -63,3 +63,48 @@ export const PrintPayslip=[
 
   { label: 'Print Payslips', style: 'payrollbuttonStyle1' },
 ]
+
+export const cardContent = [
+  {
+    heading: 'Taxes & Deduction',
+    multivalue: [
+      { heading: 'PF', name: 'pf' },
+      { heading: 'ESIC', name: 'esic' },
+      { heading: 'PT', name: 'pt' }
+    ],
+    card: 'payrollstyle2',
+    headstyle: 'payrollheading3'
+  },
+];
+export const cardContent2 = [
+  {
+    heading: 'PAYROLL EXPENSE',
+    card: 'payrollstyle1',
+    contentstyle: 'payrollcontent',
+    headstyle: 'payrollheading'
+  },
+];
+export const cardContent3 = [
+  {
+    heading: 'EMPLOYEE NET PAY',
+    card: 'payrollstyle3',
+    contentstyle: 'payrollcontent',
+    headstyle: 'payrollheading'
+  },
+];
+export const cardContent4 = [
+  {
+    heading: 'TOTAL EMPLOYEES ',
+    card: 'payrollstyle1',
+    contentstyle: 'payrollcontent2',
+    headstyle: 'payrollheading2'
+  },
+];
+export const cardContent5 = [
+  {
+    heading: 'PAYABLE DAYS',
+    card: 'payrollstyle3',
+    contentstyle: 'payrollcontent2',
+    headstyle: 'payrollheading2'
+  },
+];
