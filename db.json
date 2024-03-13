@@ -949,5 +949,55 @@
         70
       ]
     }
+  ],
+  "Approve_payroll":[
+    {
+      "employee_name": "vivek",
+      "designation": "UI",
+      "attendance": "42",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {
+      "employee_name": "uppi",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {
+      "employee_name": "karthik",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {
+      "employee_name": "uppi",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {
+      "employee_name": "karthik",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {
+      "employee_name": "kaushik",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    }
   ]
 }
