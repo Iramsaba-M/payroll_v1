@@ -16,6 +16,7 @@ import CardComponent from "./CardComponent";
 import CardConfig from "./CardConfig";
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
+import { postDataImage } from "../../../services/APIService";
 const BasicDetailsFormComponent = ({
   config,
   handleSubmit,
@@ -45,41 +46,75 @@ const BasicDetailsFormComponent = ({
       handleNextClick(true);
     }
   };
+  // old onsubmit code  dont remove it
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+
+  //     console.log("Form Values:", values);
+  //     // Create a FormData object to handle file uploads
+  //     const formData = new FormData();
+
+  //     // Append text data to FormData
+  //     Object.entries(values).forEach(([key, value]) => {
+  //       formData.append(key, value);
+  //     });
+
+  //     // Append image file to FormData if it exists
+  //     if (values.photo_content) {
+  //       formData.append("photo_content", values.photo_content);
+  //     }
+
+  //     // Make the axios call using FormData
+  //     const response = await axios.post(
+  //       getApiUrl(BASIC_DETAILS_API),
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data", // Set content type for FormData
+  //         },
+  //       }
+  //     );
+
+  //     console.log("Data sent:", response.data);
+
+  //     const employeeId = values.employee_id;
+
+  //     handleEmpId(employeeId)
+
+  //     console.log('Employee ID:', employeeId);
+  //     // If the above API call is successful, trigger the handleSubmit function from props
+  //     handleSubmit(values);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-
       console.log("Form Values:", values);
       // Create a FormData object to handle file uploads
       const formData = new FormData();
-
+  
       // Append text data to FormData
       Object.entries(values).forEach(([key, value]) => {
         formData.append(key, value);
       });
-
+  
       // Append image file to FormData if it exists
       if (values.photo_content) {
         formData.append("photo_content", values.photo_content);
       }
-
-      // Make the axios call using FormData
-      const response = await axios.post(
-        getApiUrl(BASIC_DETAILS_API),
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data", // Set content type for FormData
-          },
-        }
-      );
-
-      console.log("Data sent:", response.data);
-
+  
+      // Use postDataImage function to make the axios call
+      const response = await postDataImage(BASIC_DETAILS_API, formData);
+  
+      console.log("Data sent:", response);
+  
       const employeeId = values.employee_id;
-
+  
       handleEmpId(employeeId)
-
+  
       console.log('Employee ID:', employeeId);
       // If the above API call is successful, trigger the handleSubmit function from props
       handleSubmit(values);
@@ -207,7 +242,7 @@ const BasicDetailsFormComponent = ({
             ))}
             <div className=" translate-y-[-390%] ml-8 p-3">
               <CardComponent
-                CardConfig={CardConfig}
+                CardConfig={CardConfig} 
                 handleChange={handleChange}
               />
             </div>

@@ -12,8 +12,9 @@ const ButtonStyles = {
   buttonStyle3: 'bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-2',
 
   iconStyle: 'text-xl',
-
-  payrollbuttonStyle1: 'bg-white text-blue-600 p-2 px-4 rounded flex items-center border-2 border-blue-500 ',
+  //review payroll
+  buttonStyleadd: 'bg-gray-400  text-white  rounded flex  mb-2 mr-2 text-xs px-1',
+  buttonStyleaddlop: 'bg-gray-100  text-violet-400  rounded-sm  mb-2 mr-2 text-xs px-1',
 };
 
 export default ButtonStyles;
