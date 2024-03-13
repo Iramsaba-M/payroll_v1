@@ -212,8 +212,29 @@ const closeImportPopup = () => {
             </div>
           </div>
 
-          <div className="flex p-2 ml-8">
+          <div className="flex p-2 ml-8 mt-8">
           <TableComponent config={tableContent} data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} />
+          {/* <TableComponent
+  config={tableContent}
+  data={[
+    { 
+      employee_name: "John Doe",
+      designation: "Software Engineer",
+      ctc: "$100,000",
+      date_of_joining: "2022-01-01",
+      employee_id: "EMP001",
+    },
+    { 
+      employee_name: "Jane Smith",
+      designation: "Product Manager",
+      ctc: "$120,000",
+      date_of_joining: "2021-12-15",
+      employee_id: "EMP002",
+    },
+    // Add more dummy data objects as needed
+  ]}
+/> */}
+
           </div>
         </>
       ) : (
