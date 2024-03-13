@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddEmployee from '../../pages/Employee/AddEmployee/AddEmployee';
 import { MdOutlineEdit } from 'react-icons/md';
-import { convertBase64ToPng } from '../../base64topng';
 import TableStyle from './TableStyle';
 function DynamicTable({ config, data }) {
   const [selectedRows, setSelectedRows] = useState([]);
@@ -29,7 +28,6 @@ function DynamicTable({ config, data }) {
     setSelectedRow(row);
     setShowForm(true);
   };
-  
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
       console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
@@ -42,7 +40,7 @@ function DynamicTable({ config, data }) {
             src={imageUrl}
             alt="Employee Photo"
             className="rounded-full"
-            style={{ width: '24px', height: '24px', marginRight: '10px' }}
+            style={{ width: '24px', height: '24px', marginRight: '4px' }}
           />
         );
         return (
@@ -55,10 +53,21 @@ function DynamicTable({ config, data }) {
         return <>Loading...</>;
       }
     }
+    //This if block is conditional styling for Review payroll table in Run Payroll page.
+    if (column.name === 'payroll_status' && column.clmncss) {
+      const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
+      return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
+    }
+
     return row[column.name] || '';
   };
   
-  return (
+  const tableStyle = {
+    maxHeight: '350px',
+    overflowY: 'auto',
+  };
+  
+  return (  
     <div>
       {showForm ? (
         <AddEmployee
@@ -67,8 +76,9 @@ function DynamicTable({ config, data }) {
         />
       ) : (
         <div>
-          <div style={TableStyle}>
+          <div style={tableStyle}>
             <table className='border-2 rounded-md p-2 hover:border-blue-500'>
+            <div className="max-h-[44vh] overflow-y-auto ">
               <thead>
                 <tr className='bg-gray-50 p-2'>
                   <th className='px-6'>
@@ -85,7 +95,7 @@ function DynamicTable({ config, data }) {
                   ))}
                   <th></th>
                 </tr>
-              </thead>
+              </thead>              
               <tbody>
                 {data.map((row, rowIndex) => (
                   <tr key={rowIndex}>
@@ -106,10 +116,11 @@ function DynamicTable({ config, data }) {
                     </td>
                   </tr>
                 ))}
-              </tbody>
+              </tbody>             
+              </div>
             </table>
           </div>
-        </div>
+        </div>   
       )}
     </div>
   );

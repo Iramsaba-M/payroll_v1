@@ -53,6 +53,8 @@ const handleDateChange = (date) => {
         onChange={handleDateChange} 
         dateFormat="dd/mm/yyyy" 
         className={textcss}
+        showYearDropdown
+        showMonthDropdown
       />
     </div>
   );

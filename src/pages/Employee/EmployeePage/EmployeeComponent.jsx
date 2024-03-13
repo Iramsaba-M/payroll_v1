@@ -12,7 +12,7 @@ import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../ex
 import {getApiUrl} from '../../../api/GetAPI';
 import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export } from '../../../api/EndPoints';
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
-import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig.json';
+import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig';
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
 import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
