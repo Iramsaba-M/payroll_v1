@@ -947,5 +947,52 @@
         70
       ]
     }
-  ]
+  ],
+  "modal": [
+    {
+   
+        "aadhar": 12222222222,
+"name": "Shashank",
+"empid":"IK001",
+"payabledays":"30",
+"basic":"79,167.00",
+"basicarrer":"37,500.00",
+"houserentallowance":"39,584.00",
+"fixedallowance":"36,632.00",
+"fixedallowancearrear":"18,750.00",
+"grosssalary":"100,000.00",
+"epf":"1800",
+"esic":"1000",
+"pt":"200",
+"netsalary":"90000.00",
+"netpay":"900000.00"
+    }
+  ],
+  "payslip":[{
+    "name":"Shashank",
+    "phonenumber":9767534977,
+    "branch":"Hubli",
+    "salaryamount":29000.00,
+    "basesalary":232323,
+    "hra":23423,
+    "travelallowance":23423,
+    "internetallowance":234,
+    "medicalallowance":2344,
+    "coveyanceallowance":65445,
+    "emploverpf":234,
+    "emploveresi":6554,
+    "totalearnings":54323,
+    "emploveepf":654,
+    "emploveeesi":876,
+    "professionaltax":9876,
+    "employerpf":345,
+    "employeresi":5444,
+    "totaldeduction":2347,
+    "julynetsalary":37000,
+    "paidamount":2344,
+    "pendingjulysalary":2222
+    }
+    
+    ]
+  
 }

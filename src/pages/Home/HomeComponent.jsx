@@ -36,8 +36,10 @@ const Barchart = ({ graphdata }) => {
           bottom: 5,
         }}
       >
-        <XAxis dataKey="name" />
-        <YAxis />
+        {/* <XAxis dataKey="name" />
+        <YAxis /> */}
+            <XAxis dataKey="name" axisLine={false} />
+    <YAxis axisLine={false} />
         <Tooltip />
         <Legend />
         {graphdata.map(({ year }, index) => (
@@ -212,7 +214,7 @@ const Pichart = ({ data }) => {
 
   return (
     <div className="mt-3 ml-12 ">
-      <div className='ml-4 h-[4vh] border w-[20vh] rounded-md  '>
+      <div className='ml-4 h-[4vh] border w-[18vh] rounded-md  '>
         <DatePicker
           selected={selectedDateTop}
           onChange={handleDateChangeTop}
