@@ -8,9 +8,9 @@ import { exmpContent, exmpContent1, exmpContent2, cardContent, cardContent2, car
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
-import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
+import { getApiUrl} from '../../api/GetAPI';
 
-const Barchart3 = ({ graphdata }) => {
+const Barchart = ({ graphdata }) => {
 
   if (!graphdata || !Array.isArray(graphdata)) {
     console.error("Invalid graphdata:", graphdata);
@@ -33,12 +33,13 @@ const Barchart3 = ({ graphdata }) => {
           right: 30,
           left: 10,
           bottom: 5,
-        }}
+        }}      
       >
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" axisLine={false}/>
+        <YAxis axisLine={false}/>
         <Tooltip />
         <Legend />
+        {/* <CartesianGrid strokeDasharray="3" /> */}
         {graphdata.map(({ year }, index) => (
           <Bar key={year} dataKey={year} stackId="a"
             fill={defaultColors[index % defaultColors.length]}
@@ -50,34 +51,6 @@ const Barchart3 = ({ graphdata }) => {
   );
 }
 
-
-const Barchart = ({ graphdata }) => {
-  return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-
-        // width={500}
-        // height={30}
-        data={graphdata}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 10,
-          bottom: 5,
-        }}
-      >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="value" stackId="a" fill="#8884d8"
-          barSize={55}
-        />
-      </BarChart>
-    </ResponsiveContainer>
-  )
-}
 const Pichart = ({ graphdata }) => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
   if (!graphdata) {
@@ -139,7 +112,6 @@ const ReportsComponent = () => {
       currentMonth === 1 ? 0 : currentMonth - 12,
       1
     );
-    // setSelectedDateTop(endDate);
     setSelectedDate(startDate);
     setSelectedDate1(endDate);
   }, []);
@@ -200,7 +172,7 @@ const ReportsComponent = () => {
 
         const response = await axios.get('http://localhost:3000/home_report_carddata')
         
-        // const response = await axios.post(getApiUrl(Home_and_Reportdata), {
+        // const response = await postData(Home_and_Report_BarGraphdata, {
         //   year: year,
         //   month: month,
         // });
@@ -216,7 +188,7 @@ const ReportsComponent = () => {
 
 
   return (
-    <div className='flex flex-col mt-2 ml-4'>
+    <div className='flex flex-col mt-4 ml-4'>
       <div className='flex '>
         <div className='flex  border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4 '>
           <DatePicker
@@ -255,7 +227,7 @@ const ReportsComponent = () => {
       <div className='flex flex-row '>
         <div className=''>
 
-          <Card Config={exmpContent} comp={<Barchart3 graphdata=
+          <Card Config={exmpContent} comp={<Barchart graphdata=
             {bargraphData}
           />} />
           <div className='flex flex-row  justify-between '>
@@ -276,7 +248,7 @@ const ReportsComponent = () => {
         </div>
       </div>
 
-      <div className='flex justify-end   text-slate-400 mt-8  '><p className='w-60 '>Payroll summary report</p></div>
+      <div className='flex justify-end   text-slate-400 mt-20  '><p className='w-60 '>Payroll summary report</p></div>
     </div>
   )
 }

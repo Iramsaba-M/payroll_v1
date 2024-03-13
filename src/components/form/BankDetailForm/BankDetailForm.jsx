@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import BankDetailFormComponent from './BankDetailFormComponent';
 import axios from 'axios';
@@ -9,6 +8,7 @@ import { getApiUrl } from '../../../api/GetAPI';
 import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
+import { postData } from '../../../services/APIService';
 
 const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) => {
   const [forms, setForms] = useState([
@@ -27,21 +27,38 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
   };
   
 
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const allFormValues = forms.map(form => form.values);
+  //     const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
+  //     const response = await axios.post(getApiUrl(BANK_DETAILS_API), dataToSend);
+      
+  //     console.log('Data sent:', response.data);      
+
+  //     handleSubmit(dataToSend);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+    
+  // };
   const onSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const allFormValues = forms.map(form => form.values);
+      const allFormValues = forms.map((form) => form.values);
       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
-      const response = await axios.post(getApiUrl(BANK_DETAILS_API), dataToSend);
+  
+      // Use the postData function
+      const response = await postData(BANK_DETAILS_API, dataToSend);
       
-      console.log('Data sent:', response.data);      
-
+      console.log('Data sent:', response);
+  
       handleSubmit(dataToSend);
     } catch (error) {
       console.error('Error:', error);
     }
-    
   };
   // const handleButtonClick = (label,type) => {
   //   if (label === 'Save' && type ==='submit') {
@@ -66,7 +83,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
       <div className='form-line flex justify-evenly mb-4  '>
         <div >
           {forms.map((form, index) => (
-            <div key={index} className='shadow-sm mt-7 mb-7'>
+            <div key={index} className='shadow-sm mt-7 mb-7 ml-1'>
               <BankDetailFormComponent
                 id={form.id}
                 config={configs}

@@ -12,6 +12,7 @@ import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
+import { postData } from '../../../services/APIService';
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
@@ -45,29 +46,51 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         } 
       };
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const data={
-                ...values,employee_id:employeeId
-            }
-            // console.log(data);
-              const response = await axios.post(getApiUrl(ADITIONAL_DETAILS_API), data);
+    // const onSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const data={
+    //             ...values,employee_id:employeeId
+    //         }
+    //         // console.log(data);
+    //           const response = await axios.post(getApiUrl(ADITIONAL_DETAILS_API), data);
 
 
-            console.log('Data sent:', response.data);
+    //         console.log('Data sent:', response.data);
 
-            // If the above API call is successful, trigger the handleSubmit function from props
-            handleSubmit(values);
-            window.location.reload();
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    //         // If the above API call is successful, trigger the handleSubmit function from props
+    //         handleSubmit(values);
+    //         window.location.reload();
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
 
-    };
+    // };
+    
+const onSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const data = {
+        ...values,
+        employee_id: employeeId
+      };
+  
+      // Use the postData function
+      const response = await postData(ADITIONAL_DETAILS_API, data);
+  
+      console.log('Data sent:', response);
+  
+      // If the above API call is successful, trigger the handleSubmit function from props
+      handleSubmit(values);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
     return (
         <form onSubmit={onSubmit} >
-            <div className='border border-gray-300  mb-5 p-5 mr-4'>
+            <div className='border border-gray-200  mb-5 p-5 mr-4'>
                 <h1 className='text-gray-800 font-semibold mb-2'>Security</h1>
                 <div className="form-line flex mb-4 ">
                     {config.slice(0, 1).map((field, index) => (
@@ -95,7 +118,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
                 </div>
             </div>
 
-            <div className='border border-gray-300  p-7 mr-4'>
+            <div className='border border-gray-200  p-7 mr-4'>
                 <h1 className=' text-gray-800 font-semibold mb-2'>Employee Benefits</h1>
                 <div className="form-line flex mb-4">
                     {config.slice(1, 2).map((field, index) => (

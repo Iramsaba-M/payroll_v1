@@ -1,8 +1,11 @@
 import React from 'react'
+import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent'
 
 const RunPayrollComponent = () => {
   return (
-    <div>RunPayroll</div>
+    <div>RunPayroll
+      <RunPayrollFinalizeCompomnent />
+    </div>
   )
 }
 
