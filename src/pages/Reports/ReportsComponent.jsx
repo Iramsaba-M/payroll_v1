@@ -8,8 +8,7 @@ import { exmpContent, exmpContent1, exmpContent2, cardContent, cardContent2, car
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
-import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
-import { postData } from '../../services/APIService';
+import { getApiUrl} from '../../api/GetAPI';
 
 const Barchart = ({ graphdata }) => {
 
@@ -36,8 +35,8 @@ const Barchart = ({ graphdata }) => {
           bottom: 5,
         }}      
       >
-        <XAxis dataKey="name" />
-        <YAxis axisLine={false} />
+        <XAxis dataKey="name" axisLine={false}/>
+        <YAxis axisLine={false}/>
         <Tooltip />
         <Legend />
         {/* <CartesianGrid strokeDasharray="3" /> */}
@@ -249,7 +248,7 @@ const ReportsComponent = () => {
         </div>
       </div>
 
-      <div className='flex justify-end   text-slate-400 mt-20 '><p className='w-60 '>Payroll summary report</p></div>
+      <div className='flex justify-end   text-slate-400 mt-20  '><p className='w-60 '>Payroll summary report</p></div>
     </div>
   )
 }

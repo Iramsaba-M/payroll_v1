@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import BankDetailFormComponent from './BankDetailFormComponent';
 import axios from 'axios';
@@ -84,7 +83,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
       <div className='form-line flex justify-evenly mb-4  '>
         <div >
           {forms.map((form, index) => (
-            <div key={index} className='shadow-sm mt-7 mb-7'>
+            <div key={index} className='shadow-sm mt-7 mb-7 ml-1'>
               <BankDetailFormComponent
                 id={form.id}
                 config={configs}
