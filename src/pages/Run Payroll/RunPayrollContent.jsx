@@ -5,42 +5,46 @@ export const RunPayrolltableContent = [
       label: "EMPLOYEE NAME",
       dataType: "string",
       cssClass: "datastyle",
-      clmncss : "style3"
+      clmncss : "payrollstyle3"
   },
   {
       name: "designation",
       label: "DESIGNATION",
       dataType: "string",
-      cssClass: "datastyle4",
-      clmncss : "style3"
+      cssClass: "payrolldatastyle4",
+      clmncss : "payrollstyle3"
   },
   {
       name: "attendance",
       label: "Attendance",
       dataType: "string",
-      cssClass: "datastyle4",
-      clmncss : "style3"
+      cssClass: "payrolldatastyle4",
+      clmncss : "payrollstyle3"
   },
   {
     name: "gross_salary",
     label: "Gross Salary",
     dataType: "string",
-    cssClass: "datastyle4",
-    clmncss : "style3"
+    cssClass: "payrolldatastyle4",
+    clmncss : "payrollstyle3"
 },
 {
     name: "net_pay",
     label: "Net Pay",
     dataType: "string",
-    cssClass: "datastyle4",
-    clmncss : "style3"
+    cssClass: "payrolldatastyle4",
+    clmncss : "payrollstyle3"
 },
 {
     name: "payroll_status",
     label: "PAYROLL STATUS",
     dataType: "string",
-    cssClass: "datastyle3",
-    clmncss : "style4"
+    cssClass: "payrolldatastyle4",
+    clmncss : "payrollstyle4",
+    statusStyles: {
+      'Finalized': 'payrolldatastyle3', 
+      'Finalize now': 'payrolldatastyle5', 
+    },
 },
   
   ];
@@ -49,8 +53,13 @@ export const RunPayrolltableContent = [
     label:"status"
   }]
   export const finalizeButtons=[
-//     {
-//     label:"Bulk Finalize" 
-//   }
-  { label: 'Bulk Finalize', style: 'buttonStyle1' },
+  { label: 'Bulk Finalize', style: 'payrollbuttonStyle1' },
+]
+export const ApproveandProcess=[
+
+  { label: 'Approve & Process Payroll', style: 'payrollbuttonStyle1' },
+]
+export const PrintPayslip=[
+
+  { label: 'Print Payslips', style: 'payrollbuttonStyle1' },
 ]
