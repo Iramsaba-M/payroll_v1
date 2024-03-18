@@ -5,12 +5,12 @@ import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Responsive
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
 
-import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1} from "./HomeContent";
+import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1, Admin, Personal} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
 import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
-
+import Button from '../../configurations/Button/Button';
 const Barchart = ({ graphdata }) => {
 
   if (!graphdata || !Array.isArray(graphdata)) {
@@ -175,7 +175,7 @@ const Pichart = ({ data }) => {
           const response = await axios.get('http://localhost:3000/home_report_graphdata')
 
           //   const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-          //   from: formattedStartDate,
+          //   from_: formattedStartDate,
           //   to: formattedEndDate,
           // });
      
@@ -214,7 +214,8 @@ const Pichart = ({ data }) => {
 
   return (
     <div className="mt-3 ml-12 ">
-      <div className='ml-4 h-[4vh] border w-[18vh] rounded-md  '>
+    
+      <div className='ml-4 h-[4vh] border w-[18vh] rounded-md mt-2  '>
         <DatePicker
           selected={selectedDateTop}
           onChange={handleDateChangeTop}
@@ -224,25 +225,29 @@ const Pichart = ({ data }) => {
           className='w-[17vh] on hover:border-blue-500 text-center  focus:outline-none '
           showMonthYearPicker
         />
+        <div className='flex ml-[120vh] -translate-y-7'>
+        <Button  Configs={Admin} />
+        <Button  Configs={Personal} />
+        </div>
       </div>
 
       <div className='w-[60vh]' style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ marginRight: '20px' }}>
           <div className="flex ">
-            <Card Config={total_employees} contentvalue={cardData.employees} />
-            <Card Config={total_payroll} contentvalue={cardData.total_payroll} />
+            <Card Config={total_employees} contentvalue={cardData.employees?.toString()} />
+            <Card Config={total_payroll} contentvalue={cardData.total_payroll?.toString()} />
             <div className="ml-4 ">
               <Card Config={exmpContent1} comp={<Pichart data={cardData.branches} />} contentvalue2={cardData.total_payroll} />
             </div>
           </div>
           <div className="flex -mt-[23vh] ">
-            <Card Config={tds} contentvalue={cardData.pt} />
-            <Card Config={pt} contentvalue={cardData.pt} />
+            <Card Config={tds} contentvalue={cardData.pt?.toString()} />
+            <Card Config={pt} contentvalue={cardData.pt?.toString()} />
           </div>
           <div className="flex -mt-3 ">
-            <Card Config={esic} contentvalue={cardData.esic} />
-            <Card Config={epf} contentvalue={cardData.pf} />
-            <Card Config={insurance} contentvalue={cardData.insurance} />
+            <Card Config={esic} contentvalue={cardData.esic?.toString()} />
+            <Card Config={epf} contentvalue={cardData.pf?.toString()} />
+            <Card Config={insurance} contentvalue={cardData.insurance?.toString()} />
           </div>
         </div>
       </div>
