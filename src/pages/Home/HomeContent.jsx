@@ -5,7 +5,7 @@ import { MdOutlineWaterDrop } from "react-icons/md";
 
 export const total_employees = [
 
-  { heading2: 'Total Employees', card: 'homestyle1', contentKey: 'total_employees', classNametext: 'ml-[4vh]', contentstyle: 'homecontent_bold' },
+  { heading2: 'Total Employees', card: 'homestyle1', contentKey: 'total_employees', classNametext: 'ml-[3vh]', contentstyle: 'homecontent_bold' },
 
 
 ];
