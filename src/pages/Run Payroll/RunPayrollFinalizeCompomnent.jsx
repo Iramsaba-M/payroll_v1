@@ -2,15 +2,35 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from '../../configurations/Card/CardConfig';
 import TableComponent from '../../configurations/tables/TableComponent';
-import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5 } from './RunPayrollContent';
+import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5,tableContent2 } from './RunPayrollcontent';
 import Button from '../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { payslips } from '../../api/EndPoints';
+import { fetchData } from '../../services/APIService';
 import axios from 'axios';
+// import DynamicTable2 from '../../configurations/tables/DynamicTable2';
 
 const RunPayrollFinalizeCompomnent = () => {
   const [selectedOption, setSelectedOption] = useState("Review Payroll");
-  const [data, setData] = useState([]);
+  const [showpayslip, setShowpayslip] = useState(false);
+  const [payrolldata, setPayrollData] = useState([]);
+  const [payrolltabledata, setpayrollTableData] = useState([]);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
+  const [tableData, setTableData] = useState([]);
+
+  const fetchTableData = async () => {
+    try {
+      const tableData = await fetchData(payslips); // Fetch data based on payslips
+      setTableData(tableData);
+    } catch (error) {
+      console.error('Error fetching table data:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchTableData(); // Fetch data on component mount or when payslips change
+  }, [payslips]); // Include payslips in the dependency array
+
 
   useEffect(() => {
     const currentDate = new Date();
@@ -25,22 +45,27 @@ const RunPayrollFinalizeCompomnent = () => {
 
   const handleFinalize = () => {
     setSelectedOption("Approve Payroll");
-    const updatedData = data.map((row) => ({
+    const updatedData = payrolltabledata.map((row) => ({
       ...row,
-      payroll_status: 'Finalized',
+      status: 'Finalized',
     }));
 
-    setData(updatedData);
+    setpayrollTableData(updatedData);
 
   }
   const handleApprove = () => {
-    setSelectedOption("Print Payslip");
+    setSelectedOption("Print Payslip"); 
+  }
+  const handlePrintPayslip=()=>{
+    setShowpayslip(true);
   }
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
 
   };
+
+  
  
   useEffect(() => {
     const fetchData = async () => {
@@ -50,15 +75,17 @@ const RunPayrollFinalizeCompomnent = () => {
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
-        const response = await axios.get('http://localhost:3000/Approve_payroll')
+        const response = await axios.get('http://localhost:3000/reviewPayroll')
         
         // const response = await postData(Home_and_Report_BarGraphdata, {
         //   year: year,
         //   month: month,
         // });
-        // console.log('Post Response cards:', response.data);
-        setData(response.data);
-        // console.log('setCardData:', cardData);
+        console.log('Post Response cards:', response.data);
+        setPayrollData(response.data[0]);
+        setpayrollTableData(response.data[0].employees)
+        console.log('payrolldData:', payrolldata);
+        console.log('setpayrolltabledata:', payrolltabledata);
       } catch (error) {
         console.error('Error posting data:', error);
       }
@@ -67,6 +94,8 @@ const RunPayrollFinalizeCompomnent = () => {
   }, [selectedDateTop]);
 
   return (
+    <div>
+    {!showpayslip && ( 
     <div className='ml-14 mt-3'>
       <div className='flex flex-row justify-between h-10 text-sm'>
         <div>
@@ -86,7 +115,7 @@ const RunPayrollFinalizeCompomnent = () => {
         </div>
         </div>
         <div className='flex flex-row '>
-          <p className='mr-2 underline underline-offset-1 text-blue-800'>Payslip</p>
+          <p className='mr-2 underline underline-offset-1 text-blue-800' onClick={handlePrintPayslip}>Payslip</p>
           <p className='mr-2 underline underline-offset-1 text-blue-800'>PayrollHistory</p>
         </div>
       </div>
@@ -117,23 +146,23 @@ const RunPayrollFinalizeCompomnent = () => {
         <div>
           <div className='flex shad'>
 
-            <Card Config={cardContent2} contentvalue={567} />
-            <Card Config={cardContent3} contentvalue={567} />
+            <Card Config={cardContent2} contentvalue={payrolldata.total_expense} />
+            <Card Config={cardContent3} contentvalue={payrolldata.net_pay} />
           </div>
           <div className='flex -mt-7  '>
-            <Card Config={cardContent4} contentvalue={567} />
-            <Card Config={cardContent5} contentvalue={567} />
+            <Card Config={cardContent4} contentvalue={payrolldata.total_employees} />
+            <Card Config={cardContent5} contentvalue={payrolldata.payable_days} />
           </div>
         </div>
         <div>
-          <Card Config={cardContent} multiclone={{ pf: 567865465, esic: 567, pt: 5678 }} />
+          <Card Config={cardContent} multiclone={payrolldata} />
 
         </div>
       </div>
       <div className="flex  justify-center -mt-2">
         <TableComponent config={RunPayrolltableContent}
-          data={data}
-        />
+          data={payrolltabledata} 
+      />
       </div>
 
       <div className=' text-xs font-semibold mt-4 flex justify-col justify-between '>
@@ -144,10 +173,12 @@ const RunPayrollFinalizeCompomnent = () => {
         <div >
           {selectedOption === "Review Payroll" && <Button Configs={finalizeButtons} onClick={handleFinalize} />}
           {selectedOption === "Approve Payroll" && <Button Configs={ApproveandProcess} onClick={handleApprove} />}
-          {selectedOption === "Print Payslip" && <Button Configs={PrintPayslip} onClick={handleApprove} />}
+          {selectedOption === "Print Payslip" && <Button Configs={PrintPayslip} onClick={handlePrintPayslip} />}
         </div>
       </div>
 
+    </div>)}
+    {showpayslip && <TableComponent config={tableContent2} data={tableData} />}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 
-export const EMP_API = 'employee/basic-details';
+// export const EMP_API = 'employee/basic-details';
+export const EMP_API = 'basicdetail';
 
 export const CARDS_API = 'employee/total_ctc_and_employees';
 
@@ -33,3 +34,10 @@ export const Home_and_Reportdata ='reports/month-data'
 export const Home_and_Report_BarGraphdata ='reports/graph-data'
 
 
+export const Runpayroll ='Runpayroll';
+
+// export const payslips ='fetch_employee_data';
+
+export const payslips ='Payslip';
+
+export const view ='history/dowload';
