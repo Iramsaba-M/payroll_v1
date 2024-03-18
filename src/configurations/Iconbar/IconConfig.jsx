@@ -5,9 +5,9 @@ import { RiApps2Fill } from "react-icons/ri";
 import { RiSettings3Fill } from "react-icons/ri";
 import IconStyle from './IconbarStyle';
 
-
- const DASHBOARD_ICONBAR_LINKS ={ 
-    links: [
+const DASHBOARD_ICONBAR_LINKS =
+{ 
+    links:[
     {
         key: 'home',
         path:"/",
@@ -30,6 +30,7 @@ import IconStyle from './IconbarStyle';
         
     },
     ],
+
     footerIcon : [
     {
         key: 'notifications',
@@ -41,10 +42,7 @@ import IconStyle from './IconbarStyle';
         path:"/",
         icon: <BiLogOut className={IconStyle.style1} />
     },
-],
-    
-
+    ],    
 }
     
-
 export default DASHBOARD_ICONBAR_LINKS
