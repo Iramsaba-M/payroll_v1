@@ -23,7 +23,7 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
         </div>
       )}
       {contentvalue2 && (<h3 className={`${CardStyles[contentstyle2]}`}>₹ {contentvalue2}</h3>)}
-      {contentvalue && (<h3 className={`${CardStyles[contentstyle]}`}>{contentvalue}</h3>)}
+      {contentvalue && (<h3 className={`${CardStyles[contentstyle]}`}>{Number(contentvalue).toLocaleString('en-IN')}</h3>)}
       {multivalue &&
         multivalue.map((field, index) => (
           <div key={index} className='flex flex-col p-2  font-medium text-gray-600'>
@@ -31,7 +31,7 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
             {multiclone &&
               Object.entries(multiclone).map(([key, value], cloneIndex) => {
                 if (field.name === key) {
-                  return <p className='-mt-6  ml-48 text-right' key={cloneIndex}>{value}</p>;
+                  return <p className='-mt-6  ml-48 text-right' key={cloneIndex}>{Number(value).toLocaleString('en-IN')}</p>;
                 }
                 return null;
               })}

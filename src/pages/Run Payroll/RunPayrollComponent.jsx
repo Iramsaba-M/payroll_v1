@@ -1,14 +1,21 @@
 // RunPayrollComponent.jsx
-import React, { useState } from 'react';
-import DynamicTable2 from '../../configurations/tables/DynamicTable2';
+import React, { useState, useEffect } from 'react';
 import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollcontent';
 import Tablecomp from '../../configurations/table2/Tablecomp2';
-import RunPayrollFinalizeComponent from './RunPayrollFinalizeComponent';
+import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
+import DynamicTable from '../../configurations/tables/DynamicTable';
+import TableComponent from '../../configurations/tables/TableComponent';
+import DatePicker from 'react-datepicker';
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { payslips } from '../../api/EndPoints';
+import { fetchData } from '../../services/APIService';
 
-const RunPayrollComponent = () => {
+const RunPayrollComponent = ( ) => {
+  const [tableData, setTableData] = useState([]);
   const [showDynamicTable, setShowDynamicTable] = useState(false);
   const [showFinalizeComponent, setShowFinalizeComponent] = useState(false);
   const [showPayslipsButton, setShowPayslipsButton] = useState(true);
+  const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
 
   const handlePayslipsClick = () => {
     setShowDynamicTable(true);
@@ -22,19 +29,77 @@ const RunPayrollComponent = () => {
     setShowPayslipsButton(false);
   };
 
+  const handleDateChangeTop = (date) => {
+    setSelectedDateTop(date);
+  };
+
+  const fetchTableData = async () => {
+    try {
+      const tableData = await fetchData(payslips); // Fetch data based on payslips
+      setTableData(tableData);
+    } catch (error) {
+      console.error('Error fetching table data:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchTableData(); // Fetch data on component mount or when payslips change
+  }, [payslips]); // Include payslips in the dependency array
+
+//  useEffect(() => {
+//     const fetchTableData = async () => {
+//       try {
+//         const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
+//         const queryParams = new URLSearchParams({
+//           month: formattedDate,
+//           year: selectedDateTop.getFullYear()
+//         });
+//         const tableData = await fetchData(`payslips?${queryParams}`);
+  
+//         // Log the constructed URL
+//         const url = `${fetchData.baseUrl}/${payslips}?${queryParams.toString()}`;
+//         console.log('Constructed URL:', url);
+  
+//         setData(tableData);
+//       } catch (error) {
+//         console.error('Error fetching table data:', error);
+//       }
+//     };
+  
+//     fetchTableData();
+//   }, [selectedDateTop]);
+
+
   return (
     <div>
+      {/* Your JSX code */}
       {showFinalizeComponent ? (
-        <RunPayrollFinalizeComponent />
+        <RunPayrollFinalizeCompomnent />
       ) : (
         showDynamicTable ? (
-          <DynamicTable2 config={tableContent2} />
+          <div className='absolute right-8 top-20'>
+            <p>Payroll For the month </p>
+            <div className='ml-[30vh] border-2 w-[19vh] h-7 -mt-6 border-gray-400 rounded-md'>
+              <DatePicker
+                selected={selectedDateTop}
+                onChange={handleDateChangeTop}
+                placeholderText='To'
+                dateFormat="MMMM-yyyy"
+                style={{ appearance: 'none', background: 'transparent' }}
+                className='w-[15vh] on hover:border-blue-500 ml-1 focus:outline-none'
+                showMonthYearPicker
+              />
+              <RiArrowDropDownLine className='-mt-6 ml-[14.5vh] text-3xl text-gray-500' />
+            </div>
+            <div className='cursor-pointer absolute top-[-10px] right-1 m-4 underline underline-offset-1 text-blue-800'>payroll Historys</div>
+            <TableComponent config={tableContent2} data={tableData} />
+          </div>
         ) : (
           <Tablecomp config={tableContent3} onReviewClick={handleReviewClick} />
         )
       )}
       {showPayslipsButton && !showDynamicTable && (
-        <div className='absolute top-16 right-2 m-4 text-gray-500 cursor-pointer' onClick={handlePayslipsClick}>
+        <div className='absolute top-16 right-2 m-4 cursor-pointer  underline underline-offset-1 text-blue-800' onClick={handlePayslipsClick}>
           payslips
         </div>
       )}
