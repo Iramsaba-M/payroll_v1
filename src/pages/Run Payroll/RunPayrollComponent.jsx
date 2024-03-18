@@ -1,14 +1,11 @@
-// RunPayrollComponent.jsx
+// RunPayrollComponent.jsxcvbnmfghj
 import React, { useState, useEffect } from 'react';
-import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollcontent';
+import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollContents';
 import Tablecomp from '../../configurations/table2/Tablecomp2';
 import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
-import DynamicTable from '../../configurations/tables/DynamicTable';
-import TableComponent from '../../configurations/tables/TableComponent';
-import DatePicker from 'react-datepicker';
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { payslips } from '../../api/EndPoints';
 import { fetchData } from '../../services/APIService';
+import Payslip from '../Run Payroll/Payslip';
 
 const RunPayrollComponent = ( ) => {
   const [tableData, setTableData] = useState([]);
@@ -77,22 +74,9 @@ const RunPayrollComponent = ( ) => {
         <RunPayrollFinalizeCompomnent />
       ) : (
         showDynamicTable ? (
-          <div className='absolute right-8 top-20'>
-            <p>Payroll For the month </p>
-            <div className='ml-[30vh] border-2 w-[19vh] h-7 -mt-6 border-gray-400 rounded-md'>
-              <DatePicker
-                selected={selectedDateTop}
-                onChange={handleDateChangeTop}
-                placeholderText='To'
-                dateFormat="MMMM-yyyy"
-                style={{ appearance: 'none', background: 'transparent' }}
-                className='w-[15vh] on hover:border-blue-500 ml-1 focus:outline-none'
-                showMonthYearPicker
-              />
-              <RiArrowDropDownLine className='-mt-6 ml-[14.5vh] text-3xl text-gray-500' />
-            </div>
-            <div className='cursor-pointer absolute top-[-10px] right-1 m-4 underline underline-offset-1 text-blue-800'>payroll Historys</div>
-            <TableComponent config={tableContent2} data={tableData} />
+          <div className='absolute right-8 top-8'>
+            <Payslip />
+
           </div>
         ) : (
           <Tablecomp config={tableContent3} onReviewClick={handleReviewClick} />

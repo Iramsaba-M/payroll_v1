@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from '../../configurations/Card/CardConfig';
 import TableComponent from '../../configurations/tables/TableComponent';
-import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5,tableContent2 } from './RunPayrollcontent';
+import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5,tableContent2 } from './RunPayrollContents';
 import Button from '../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { payslips } from '../../api/EndPoints';
 import { fetchData } from '../../services/APIService';
 import axios from 'axios';
-// import DynamicTable2 from '../../configurations/tables/DynamicTable2';
+import Payslip from '../Run Payroll/Payslip';
+
 
 const RunPayrollFinalizeCompomnent = () => {
   const [selectedOption, setSelectedOption] = useState("Review Payroll");
@@ -178,7 +179,7 @@ const RunPayrollFinalizeCompomnent = () => {
       </div>
 
     </div>)}
-    {showpayslip && <TableComponent config={tableContent2} data={tableData} />}
+    {showpayslip && <Payslip />}
     </div>
   );
 }
