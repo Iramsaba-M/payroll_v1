@@ -19,7 +19,7 @@
       "designation": "Software Engineer",
       "differently_abled": "No",
       "dob": "1990-01-01",
-      "employee_id": "",
+      "employee_id": "123",
       "employee_name": {
         "First_name": "John",
         "Last_Name": "Doe",
@@ -76,7 +76,7 @@
       "dateofjoining": "2024-01-26",
       "name": "A",
       "designation": "software_engineer",
-      "employeeid": "122",
+      "Employee Id": "122",
       "department": "cse",
       "type of employee": "employed",
       "address": [
@@ -214,19 +214,17 @@
   ],
   "basicdetail": [
     {
-      "Employee Name": "fdsfsdf",
-      "": "ddsf",
-      "undefined": "sdfdsf",
+     
+      "employee_name": "Saba M Mirjankar",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "Designation: ": "manager",
-      "Employee Id: ": "12",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0001",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "Address: ": [
-        "dfdsf",
-        "dsfdsfds"
-      ],
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
       "Work Email: ": "ff@gmail.com",
@@ -236,157 +234,120 @@
       "id": "1"
     },
     {
-      "Employee Name": [
-        "saba",
-        "m",
-        "m"
-      ],
-      "DOB: ": "2024-01-01",
+      "employee_name": "Vaishnavi S Konnur",
+      "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "Date Of Joining: ": "2024-01-25",
-      "Blood group: ": "a",
-      "Designation: ": "manager",
-      "Employee Id: ": "1234",
-      "Department: ": "cse",
-      "Type Of Employee: ": "employed",
-      "Address: ": [
-        "hubli ",
-        "hubli"
-      ],
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0002",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
       "Differently abled: ": "No",
-      "Personal Email: ": "saba@gmail.com",
-      "Work Email: ": "saba@gmail.com",
-      "Phone Number: ": "7894563212",
-      "Alternate Phone Number: ": "1234567895",
-      "Work Location: ": "remote",
-      "id": "2"
-    },
-    {
-      "employee_name": [
-        "Vaishu",
-        "M",
-        "Mirza"
-      ],
-      "dob": "2024-01-01",
-      "gender": "female",
-      "dateofjoining": "2024-02-02",
-      "name": "A",
-      "designation": "software_engineer",
-      "employeeid": "123",
-      "department": "CSE",
-      "type of employee": "intern",
-      "address": [
-        "Hubli",
-        "Dharwad"
-      ],
-      "differently_abled": "No",
-      "personalemail": "vaish@gmail.com",
-      "WorkEmail": "vaish@gmail.com",
-      "pn": "7894563215",
-      "apn": "1234567895",
-      "id": "3"
-    },
-    {
-      "employee_name": [
-        "Vaishu",
-        "M",
-        "Mirza"
-      ],
-      "dob": "2024-01-01",
-      "gender": "female",
-      "dateofjoining": "2024-02-02",
-      "name": "A",
-      "designation": "software_engineer",
-      "employeeid": "123",
-      "department": "CSE",
-      "type of employee": "intern",
-      "address": [
-        "Hubli",
-        "Dharwad"
-      ],
-      "differently_abled": "No",
-      "personalemail": "vaish@gmail.com",
-      "WorkEmail": "vaish@gmail.com",
-      "pn": "7894563215",
-      "apn": "1234567895",
-      "id": "4"
-    },
-    {
-      "employee_name": [
-        "saba",
-        "M",
-        "Mirjanker"
-      ],
-      "dob": "2024-01-27",
-      "gender": "female",
-      "dateofjoining": "2024-01-26",
-      "name": "A",
-      "designation": "cto",
-      "employeeid": "123",
-      "department": "CSE",
-      "type of employee": "employed",
-      "address": [
-        "hubli",
-        "dharwad"
-      ],
-      "differently_abled": "No",
-      "personalemail": "vaish@gmail.com",
-      "WorkEmail": "vaish@gmail.com",
-      "pn": "7894563215",
-      "apn": "1234567895",
-      "id": "5"
-    },
-    {
-      "employee_name": [
-        "saba",
-        "a",
-        "Mirjanker"
-      ],
-      "dob": "2024-01-26",
-      "gender": "female",
-      "id": "6"
-    },
-    {
-      "employee_name": [
-        "vaishu",
-        "vaishu",
-        "Vaishu"
-      ],
-      "dob": "2024-01-01",
-      "name": "A",
-      "employeeid": "123",
-      "gender": "female",
-      "department": "CSE",
-      "designation": "cto",
-      "type of employee": "intern",
-      "address": [
-        "Hubli",
-        "Hubli"
-      ],
-      "personalemail": "vaish@gmail.com",
-      "WorkEmail": "vaish@gmail.com",
-      "apn": "1234567895",
-      "pn": "7894563215",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
       "Work Location: ": "headquarters",
-      "id": "7"
+      "id": "1"
     },
     {
-      "id": "8"
+      "employee_name": "Shashank S Baikadi",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0003",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
     },
     {
-      "id": "9"
+      "employee_name": "Santosh P Sohani",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0004",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
     },
     {
-      "id": "10"
+      "employee_name": "Vikas S joshi",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0005",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
     },
     {
-      "employee_name": [
-        "vikas",
-        "vikas",
-        "tgy"
-      ],
-      "id": "11"
+      "employee_name": "Vaishnavi S Konnur",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0006",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
+    },
+    {
+      "employee_name": "Vaishnavi S Konnur",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc":"300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0007",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining":"2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
     }
+
   ],
   "bankdetails": [
     {
@@ -884,7 +845,7 @@
     "epf": "29.333",
     "pay": "450000",
     "insurance": "100000.2",
-    "esic": "233",
+    "esic": "0",
     "branches": [
       {
         "name": "Hubli",
@@ -971,8 +932,193 @@
 "netpay":"900000.00"
     }
   ],
-  "payslip":[{
-    "name":"Shashank",
+  
+  "Approve_payroll":[
+    {
+      "employee_id":"1",
+      "employee_name": "vivek sharma",
+      "designation": "UI",
+      "attendance": "42",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {"employee_id":"2",
+      "employee_name": "uppi sharma",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {"employee_id":"3",
+      "employee_name": "karthik joshi",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {"employee_id":"4",
+      "employee_name": "uppi sharma",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {"employee_id":"5",
+      "employee_name": "karthik badiger",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    },
+    {"employee_id":"6",
+      "employee_name": "kaushik joshi",
+      "designation": "UI",
+      "attendance": "45",
+      "gross_salary": "150000",
+      "net_pay": "4567",
+      "payroll_status": "Finalize now"
+    }
+  ],
+
+  "Runpayroll": [
+    {
+      "id": 1,
+      "netpay": "",
+      "month": "March",
+      "payment-date": "02/01/2023",
+      "total-employee": "15",
+      "action": "Review"
+    },
+    {
+      "id": 2,
+      "netpay": "$6000",
+      "month": "April",
+      "payment-date": "02/01/2023",
+      "total-employee": "20",
+      "action": "Processed"
+    },
+    {
+      "id": 3,
+      "netpay": "$6000",
+      "month": "May",
+      "payment-date": "02/01/2023",
+      "total-employee": "20",
+      "action": "Processed"
+    },
+    {
+      "id": 4,
+      "netpay": "$6000",
+      "month": "June",
+      "payment-date": "02/01/2023",
+      "total-employee": "15",
+      "action": "Processed"
+    }
+  ],
+  "Payslip": [
+    {
+      "employee_name": "Shashank Baikadi",
+      "designation": "software engineer",
+      "employee_id": "Ik0001"
+      
+     
+    },
+    {
+      "employee_name": "John williams",
+      "designation": "software engineer",
+      "employee_id": "Ik0002"
+      
+      
+    },
+    {
+      "employee_name": "John williams",
+      "designation": "software engineer",
+      "employee_id": "Ik0003"
+      
+      
+    },
+    {
+      "employee_name": "John williams",
+      "designation": "software engineer",
+      "employee_id": "Ik0004"
+      
+      
+    }
+  ],
+
+  "reviewPayroll":[
+    {
+    "total_expense" : "567",
+    "net_pay" : "4567",
+    "total_employees" : "567" ,
+    "payable_days" : "98765" ,
+    "pf" : "6191690.06",
+    "esic" : "456",
+    "pt" : "987654" ,
+    "employees" : [
+    {
+      "employee_id":"666",
+      "name": "Vivek sharma",
+      "designation": "UI",
+      "attendance": "42",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    },
+    {
+      "employee_id":"111",
+      "name": "Jack Sparrow",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    },
+    {
+      "employee_id":"222",
+      "name": "Karthik joshi",
+      "designation": "UI",
+      "attendance": "45",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    },
+    {
+      "employee_id":"333",
+      "name": "Karthik joshi",
+      "designation": "Ux",
+      "attendance": "45",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    },
+    {
+      "employee_id":"444",
+      "name": "Karthik joshi",
+      "designation": "UI",
+      "attendance": "45",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    },
+    {
+      "employee_id":"555",
+      "name": "Kaushik shetty",
+      "designation": "UI",
+      "attendance": "45",
+      "gross": "150000",
+      "netpay": "4567",
+      "status": "Finalize now"
+    }
+    ]
+    }
+  ],
+  "az":[{
+    "name":"Shashank Baikadi",
     "phonenumber":9767534977,
     "branch":"Hubli",
     "salaryamount":29000.00,
@@ -997,57 +1143,5 @@
     }
     
     ]
-  
-
-  "Approve_payroll":[
-    {
-      "employee_name": "vivek",
-      "designation": "UI",
-      "attendance": "42",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    },
-    {
-      "employee_name": "uppi",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    },
-    {
-      "employee_name": "karthik",
-      "designation": "UI",
-      "attendance": "45",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    },
-    {
-      "employee_name": "uppi",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    },
-    {
-      "employee_name": "karthik",
-      "designation": "UI",
-      "attendance": "45",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    },
-    {
-      "employee_name": "kaushik",
-      "designation": "UI",
-      "attendance": "45",
-      "gross_salary": "150000",
-      "net_pay": "4567",
-      "payroll_status": "Finalize now"
-    }
-  ]
 
 }
