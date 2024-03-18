@@ -2,103 +2,151 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from '../../configurations/Card/CardConfig';
 import TableComponent from '../../configurations/tables/TableComponent';
-import { tableContent } from '../Employee/EmployeePage/EmployeeContent';
-import { RunPayrolltableContent,finalizeButtons } from './RunPayrollContent';
+import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5 } from './RunPayrollContent';
 import Button from '../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import axios from 'axios';
 
 const RunPayrollFinalizeCompomnent = () => {
-  const [selectedDateTop, setSelectedDateTop] = useState(null);
-   const data = [
-    {
-      employee_name: "vikas",
-      designation: "UI",
-      attendance: "45",
-      gross_salary: "150000",
-      net_pay: "4567",
-      payroll_status:"finalized"
-    },
-    {
-      employee_name: "vikas",
-      designation: "UI",
-      attendance: "45",
-      gross_salary: "150000",
-      net_pay: "4567",
-      payroll_status:"finalized"
-    },
-    {
-      employee_name: "vikas",
-      designation: "UI",
-      attendance: "45",
-      gross_salary: "150000",
-      net_pay: "4567",
-      payroll_status:"finalized"
-    },
-  ];
+  const [selectedOption, setSelectedOption] = useState("Review Payroll");
+  const [data, setData] = useState([]);
+  const [selectedDateTop, setSelectedDateTop] = useState(new Date());
+
   useEffect(() => {
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth();
-    const defaultMonth = currentMonth === 1 ? 0 : currentMonth === 0 ? 11 : currentMonth - 1;
-    const selectedDateTop = new Date(
-      currentMonth === 0 ? currentDate.getFullYear() - 1 : currentDate.getFullYear(),
-      defaultMonth
-    );
-    setSelectedDateTop(selectedDateTop);
+    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    setSelectedDateTop(firstDayOfMonth);
   }, []);
+ 
 
   const handleDateChangeTop = (date) => {
     setSelectedDateTop(date);
   };
-  const cardContent = [
-    {heading:'EMPLOYEES NET PAY', card:'reportstyle1'  },
-    { card:'reportstyle1' ,heading:'PAYROLL EXPENSE' },
 
-    
-  ];
+  const handleFinalize = () => {
+    setSelectedOption("Approve Payroll");
+    const updatedData = data.map((row) => ({
+      ...row,
+      payroll_status: 'Finalized',
+    }));
+
+    setData(updatedData);
+
+  }
+  const handleApprove = () => {
+    setSelectedOption("Print Payslip");
+  }
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+
+  };
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log('Fetching data from cardpiedata endpoint...');
+        const year = selectedDateTop.getFullYear();
+        const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
+        // Rest of your code
+
+        const response = await axios.get('http://localhost:3000/Approve_payroll')
+        
+        // const response = await postData(Home_and_Report_BarGraphdata, {
+        //   year: year,
+        //   month: month,
+        // });
+        // console.log('Post Response cards:', response.data);
+        setData(response.data);
+        // console.log('setCardData:', cardData);
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+    fetchData();
+  }, [selectedDateTop]);
 
   return (
-    <div className='ml-8'>
-      <div className='flex-col h-10'>
+    <div className='ml-14 mt-3'>
+      <div className='flex flex-row justify-between h-10 text-sm'>
+        <div>
         <p>Payroll For the month </p>
-        <div className='ml-[25vh] border-2 w-[22vh] h-8 -mt-7 border-gray-400 rounded-sm  '>
+        <div className='ml-[22vh] border-2 w-[19vh] h-7 -mt-6 border-gray-400 rounded-md  '>
           <DatePicker
             selected={selectedDateTop}
             onChange={handleDateChangeTop}
             placeholderText='To'
             dateFormat="MMMM-yyyy"
             style={{ appearance: 'none', background: 'transparent' }}
-            className='w-[17vh] on hover:border-blue-500 text-center ml-3  focus:outline-none '
+            className='w-[15vh] on hover:border-blue-500 ml-1 focus:outline-none '
             showMonthYearPicker
-            
+
           />
-          <RiArrowDropDownLine className='-mt-6 ml-[18vh] text-3xl text-gray-500'/>
+          <RiArrowDropDownLine className='-mt-6 ml-[14.5vh] text-3xl text-gray-500' />
+        </div>
+        </div>
+        <div className='flex flex-row '>
+          <p className='mr-2 underline underline-offset-1 text-blue-800'>Payslip</p>
+          <p className='mr-2 underline underline-offset-1 text-blue-800'>PayrollHistory</p>
         </div>
       </div>
-      <div className='flex flex-row ml-10 justify-center '>
-        <p className='w-[20vh] '>1{")"}Review Payrol</p>
-        <p className='w-[20vh]'>2{")"}Approve Payrol</p>
-        <p>3{")"}Print Payrol</p>
+      <div className='flex flex-row ml-10 -mt-2 justify-center  '>
+        
+        <p
+          className={`w-[20vh] cursor-pointer text-sm ${selectedOption === "Review Payroll" ? 'font-bold' : ''}`}
+          onClick={() => handleOptionClick("Review Payroll")}
+        >
+          1{")"}Review Payrol
+        </p>
+        <p
+          className={`w-[20vh] cursor-pointer text-sm ${selectedOption === "Approve Payroll" ? 'font-bold' : ''}`}
+          onClick={() => handleOptionClick("Approve Payroll")}
+        >
+          2{")"}Approve Payrol
+        </p>
+        
+        <p
+          className={`w-[20vh] cursor-pointer text-sm ${selectedOption === "Print Payslip" ? 'font-bold' : ''}`}
+          onClick={() => handleOptionClick("Print Payslip")}
+        >
+          3{")"}Print Payslip
+        </p>
+        
       </div>
-      <div>
-      <Card Config={cardContent} contentvalue={200000}  />
-      {/* <Card Config={cardContent} contentvalue={200000} contentvalue2={45677} /> */}
+      <div className='flex justify-between -mt-1'>
+        <div>
+          <div className='flex shad'>
 
+            <Card Config={cardContent2} contentvalue={567} />
+            <Card Config={cardContent3} contentvalue={567} />
+          </div>
+          <div className='flex -mt-7  '>
+            <Card Config={cardContent4} contentvalue={567} />
+            <Card Config={cardContent5} contentvalue={567} />
+          </div>
+        </div>
+        <div>
+          <Card Config={cardContent} multiclone={{ pf: 567865465, esic: 567, pt: 5678 }} />
+
+        </div>
       </div>
-      <div className="flex ">
-          <TableComponent config={RunPayrolltableContent}
-           data={data}
-           />
-          </div>
+      <div className="flex  justify-center -mt-2">
+        <TableComponent config={RunPayrolltableContent}
+          data={data}
+        />
+      </div>
 
-          <div className='mt-4 text-xs font-semibold p-3 flex justify-col justify-between '>
-            <div>
-            <p>* Net salary is calculated after reviewing Employees Attendence and Leave Policies of Companies</p>
-            <p className='mt-2'> * Attendence = No of Days Present & Paid Holidays</p>
-            </div>
-            <div >
-              <Button Configs={finalizeButtons}/>
-            </div>
-          </div>
+      <div className=' text-xs font-semibold mt-4 flex justify-col justify-between '>
+        <div>
+          <p>* Net salary is calculated after reviewing Employees Attendence and Leave Policies of Companies</p>
+          <p className='mt-3'> * Attendence = No of Days Present & Paid Holidays</p>
+        </div>
+        <div >
+          {selectedOption === "Review Payroll" && <Button Configs={finalizeButtons} onClick={handleFinalize} />}
+          {selectedOption === "Approve Payroll" && <Button Configs={ApproveandProcess} onClick={handleApprove} />}
+          {selectedOption === "Print Payslip" && <Button Configs={PrintPayslip} onClick={handleApprove} />}
+        </div>
+      </div>
 
     </div>
   );

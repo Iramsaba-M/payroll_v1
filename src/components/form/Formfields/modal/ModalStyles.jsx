@@ -6,14 +6,25 @@ const ModalStyles = {
     // header: 'text-lg leading-6 font-medium text-blue-900 ',
     // CrossButton: 'ml-2 mb-5 h-6 w-7  rounded-md hover:bg-gray-200 ',
     // standard: 'mb-5 text-3xl font-bold text-blue-600 align-items-center ',
+
+    //data saved
     MainDiv: ' ml-[25vh] fixed z-10 inset-0 overflow-y-auto translate-y-[30vh]  translate-x-[50vh]',
-    ModalBody: 'w-[80vh] bg-white rounded-lg shadow-lg  ',
+    ModalBody: 'w-[80vh] bg-white rounded-lg shadow-lg h-[40vh]  ',
     Header: ' h-[36vh]  flex justify-center items-center  ',
     header: 'text-lg leading-6 font-medium text-blue-900  ',
-    CrossButton: 'ml- mb-5 mb-[39vh] rounded-md translate-y-8',
-    standard: 'ml-18 text-3xl font-bold text-blue-600 translate-x-[24vh] mb-3  ',
-    standardline: ' mt-[15vh] -translate-x-[14vh] text-3xl font-bold text-blue-600 mb-[10vh]  ',
-    
+    CrossButton: 'rounded-md  translate-x-[75vh] -translate-y-[36vh] hover:bg-gray-200 ',
+    standard: 'ml-18 text-3xl font-bold text-blue-600 translate-x-[24vh] translate-y-[17vh]   ',
+    standardline: ' translate-x-[14vh] text-3xl font-bold text-blue-600 mb-[10vh]  ',
+    right:'text-3xl',
+
+//payslip
+MainDiv5: ' ml-[50vh] fixed z-10 inset-0 overflow-y-auto   translate-x-[50vh]',
+ModalBody5: 'w-[100vh] h-[100vh] bg-white rounded-lg shadow-lg border-2 overflow-auto ',
+CrossButton5: '  ml-[97vh] bg-gray-300',
+//ReviewPayroll
+MainDiv10: ' ml-[76vh] fixed z-10 inset-0 overflow-y-auto   translate-x-[50vh]',
+ModalBody10: 'w-[60vh] h-[100vh] bg-white rounded-lg shadow-lg border-2 overflow-auto ',
+CrossButton10: '  ml-[57vh] bg-gray-300 ',
   };
 
 export default ModalStyles
