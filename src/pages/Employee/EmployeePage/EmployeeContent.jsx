@@ -100,6 +100,14 @@ export const tableContent = [
     cssClass: "datastyle2",
     clmncss: "style1"
   },
+  {
+    name: "edit",
+    label: "EDIT",
+    dataType: "icon",
+    cssClass: "datastyle2",
+    clmncss: "style1",
+    content: <MdOutlineEdit />
+  },
 
 ];
 
