@@ -21,6 +21,7 @@ import ReimbursementSetting from '../pages/Settings/ReimbursementSetting'
 import LoanSetting from '../pages/Settings/LoanSetting'
 import Demo_ctc from '../pages/Settings/cardcomponent/Demo_ctc'
 import Demo from '../pages/Settings/cardcomponent/Demo'
+
 const routesConfig = [
   {
     path: '/',
@@ -190,3 +191,100 @@ const routesConfig = [
 ];
 
 export default routesConfig;
+
+
+
+export const PersonConfig = [
+  {
+    path: '/',
+    label:"Home",
+    element: <HomeMenus />,
+    children: [
+        {
+          path: 'home1',
+          element: <Home />,
+        },
+        {
+          path: 'home2',
+          element: <Employee />,
+        },
+        {
+          path: 'home3',
+          element: <RunPayroll />,
+        },
+        {
+          path: 'home4',
+          element: <Notifications />,
+        },
+      ],
+  },
+  {
+    path: '/team',
+    label:"Team",
+    element: <HomeMenus />,
+    children: [
+        {
+          path: 'team1',
+          element: <Home />,
+        },
+        {
+          path: 'team2',
+          element: <Employee />,
+        },
+        {
+          path: 'team3',
+          element: <RunPayroll />,
+        },
+        {
+          path: 'team4',
+          element: <Notifications />,
+        },
+      ],
+  },
+  {
+    path: 'apps',
+    label:"Appplication",
+    element: <HomeMenus />,
+    children: [
+        {
+          path: 'app1',
+          element: <Home />,
+        },
+        {
+          path: 'app2',
+          element: <Employee />,
+        },
+        {
+          path: 'app3',
+          element: <RunPayroll />,
+        },
+        {
+          path: 'app4',
+          element: <Notifications />,
+        },
+      ],
+  },
+  {
+    path: 'settings',
+    label:"Setting",
+    element: <SettingsMenus />,
+    children: [
+        {
+            path: 'setting1',
+            element: <Home />,
+          },
+          {
+            path: 'setting2',
+            element: <Employee />,
+          },
+          {
+            path: 'setting3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'setting4',
+            element: <Notifications />,
+          },
+    ],
+  },
+];
