@@ -2,10 +2,12 @@ import { MdPerson } from 'react-icons/md';
 import { IoNotificationsOutline } from "react-icons/io5"; 
 import { FaCalculator } from "react-icons/fa";
 import { VscGraph } from "react-icons/vsc";
-import { SlSettings } from "react-icons/sl";
+import { SlSettings, SlUser } from "react-icons/sl";
 import { LiaHomeSolid } from "react-icons/lia";
 import { PiHandCoinsLight } from "react-icons/pi";
 import { LuWallet } from "react-icons/lu";
+import { HiOutlineCalculator } from "react-icons/hi2";
+
 
 export const APP_SIDEBAR_LINKS = {
 
@@ -17,41 +19,31 @@ export const APP_SIDEBAR_LINKS = {
             icon: <LiaHomeSolid />
           },
           {
-            label: 'Employee',
-            path:'Employees',
-            icon: <MdPerson />
+            label: 'My Attendance',
+            path:'myattendance',
+            icon: <SlUser />
           },
           {
-            label: 'Run Payroll',
-            path:'runpayroll',
-            icon: <LuWallet /> 
+            label: 'My Payslips',
+            path:'mypayslips',
+            icon: <HiOutlineCalculator /> 
           },
           {
             label: 'Notifications',
-            path:'notifications', 
+            path:'usernotification', 
             icon: <IoNotificationsOutline /> 
           },
           {
-            label: 'CTC Calculator',
-            path:'ctccalculator',
+            label: 'Raise a Request',
+            path:'raiserequest',
             icon: <FaCalculator />
           },
           {
-            label: 'Loans',
-            path:'loans',
-            icon: <PiHandCoinsLight />
-          },
-          {
             label: 'Reports',
-            path:'reports',
+            path:'userreports',
             icon: <VscGraph />
           },
-          {
-            label: 'Settings',
-            path:'Settings',
-            icon: <SlSettings />
-          },
-          
+             
         ],
     },
 }
@@ -60,22 +52,22 @@ export const HOME_SIDEBAR_LINKS ={
     default : {
          submenus: [
             {
-                label: 'Home 1',
+                label: 'H 1',
                 path:'home', 
                 icon: <LiaHomeSolid />
             }, 
             {
-                label: 'Home 2',
+                label: 'H 2',
                 path:'home', 
                 icon: <LiaHomeSolid />
             }, 
             {
-                label: 'Home 3',
+                label: 'H 3',
                 path:'home', 
                 icon: <LiaHomeSolid />
             }, 
             {
-                label: 'Home 4',
+                label: 'H 4',
                 path:'home', 
                 icon: <LiaHomeSolid />
             }, 
@@ -91,27 +83,27 @@ export const SETTINGS_SIDEBAR_LINKS ={
     default: {
         submenus: [
             {
-                label: 'Setting 1',
+                label: 'S 1',
                 path:'home', 
                 icon: <SlSettings />
             },
             {
-                label: 'Setting 2',
+                label: 'S 2',
                 path:'home', 
                 icon: <SlSettings />
             },
             {
-                label: 'Setting 3',
+                label: 'S 3',
                 path:'home', 
                 icon: <SlSettings />
             },
             {
-                label: 'Setting 4',
+                label: 'S 4',
                 path:'home', 
                 icon: <SlSettings />
             },
             {
-                label: 'Setting 5',
+                label: 'S 5',
                 path:'home', 
                 icon: <SlSettings />
             }, 
@@ -124,31 +116,25 @@ export const TEAM_SIDEBAR_LINKS ={
     default: {
         submenus: [
             {
-                label: 'Team 1',
+                label: 'T 1',
                 path:'home', 
                 icon: <MdPerson />
             },
             {
-                label: 'Team 2',
+                label: 'T 2',
                 path:'home', 
                 icon: <MdPerson />
             },
             {
-                label: 'Team 3',
+                label: 'T 3',
                 path:'home', 
                 icon: <MdPerson />
             },
             {
-                label: 'Team 4',
+                label: 'T 4',
                 path:'home', 
                 icon: <MdPerson />
             },
-            {
-                label: 'Team 5',
-                path:'home', 
-                icon: <MdPerson />
-            },
-            
         ],     
     }
  }

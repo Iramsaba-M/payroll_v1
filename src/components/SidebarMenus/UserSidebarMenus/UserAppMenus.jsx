@@ -1,9 +1,9 @@
 
 import React from "react";
 import { NavLink, Outlet} from "react-router-dom";
-import { APP_SIDEBAR_LINKS } from "../sidebarConfigs/MenuConfig";
+import { APP_SIDEBAR_LINKS } from "../sidebarConfigs/UserMenuConfig";
 
-const AppMenus = () => {
+const UserAppMenus = () => {
     const activeLink = "rounded-md text-blue-700 bg-menu-bg text-xs py-2 mx-2 ";
 
     const normalLink = "rounded-md w-48 text-left py-2 mx-2 hover:bg-gray-off text-xs ";
@@ -26,8 +26,8 @@ const AppMenus = () => {
           ))}
         </ul>
           <Outlet />
-               </>
+    </>
   )
 }
 
-export default AppMenus
+export default UserAppMenus

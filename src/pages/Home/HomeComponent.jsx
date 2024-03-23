@@ -4,13 +4,14 @@ import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../configurations/Card/CardConfig';
-
 import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1, Admin, Personal} from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
 import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
 import Button from '../../configurations/Button/Button';
+import RoutesComponent from "../../routing/RoutesComponent"
+import {useButtonState}  from "../../context/ButtonStateContext"
 const Barchart = ({ graphdata }) => {
 
   if (!graphdata || !Array.isArray(graphdata)) {
@@ -85,7 +86,11 @@ const Pichart = ({ data }) => {
   );
 };
 
+
+
   const HomeComponent = () => {
+    const { handleAdminClick, handlePersonalClick } = useButtonState();
+
   const [cardData, setCardData] = useState([]);
   // const [selectedValue, setSelectedValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);//to
@@ -102,7 +107,6 @@ const Pichart = ({ data }) => {
   };
   const handleDateChange = (date) => {
     setSelectedDate(date);
-
   };
 
 
@@ -212,6 +216,7 @@ const Pichart = ({ data }) => {
     setSelectedDate1(endDate);
   }, []);
 
+  
   return (
     <div className="mt-3 ml-12 ">
     
@@ -226,8 +231,9 @@ const Pichart = ({ data }) => {
           showMonthYearPicker
         />
         <div className='flex ml-[120vh] -translate-y-7'>
-        <Button  Configs={Admin} />
-        <Button  Configs={Personal} />
+        <Button onClick={handleAdminClick} Configs={Admin} />
+      <Button onClick={handlePersonalClick} Configs={Personal} />
+          {/* <RoutesComponent isAdmin={isAdmin} isPersonal={isPersonal} /> */}
         </div>
       </div>
 
