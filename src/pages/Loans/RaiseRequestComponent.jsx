@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, } from 'react-router-dom';
-import CardConfig from './cardcomponent/CardConfig';
-import SettingContent from './SettingContent';
+import CardConfig from '../../pages/Settings/cardcomponent/CardConfig';
+import  RaiseRequestContent from './RaiseRequestContent'; // 
 import { Outlet } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
-const SettingComponent = () => {
+const RaiseRequestComponent = () => {
   // const [selectedCard, setSelectedCard] = useState(null);
   const [cardclick, setCardClick] = useState(false)
   const navigate = useNavigate();
@@ -21,13 +20,13 @@ const SettingComponent = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/settings/');
+    navigate('/apps/loans');
     setCardClick(false);
   };
 
 
   const cardsPerRow = 3;
-  const chunkedSettingContent = chunkArray(SettingContent, cardsPerRow);
+  const chunkedSettingContent = chunkArray(RaiseRequestContent, cardsPerRow);
 
   return (
     <div>
@@ -61,4 +60,4 @@ const chunkArray = (array, size) => {
   }, []);
 };
 
-export default SettingComponent;
+export default RaiseRequestComponent;

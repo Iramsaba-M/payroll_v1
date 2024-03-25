@@ -24,6 +24,13 @@ CrossButton5: '  ml-[97vh] bg-gray-300',
 MainDiv10: ' ml-[88vh] fixed z-10 inset-0 overflow-y-auto   translate-x-[50vh]',
 ModalBody10: 'w-[60vh] h-[100vh] bg-white rounded-lg shadow-lg border-2 overflow-y-0 overflow-x-0 ',
 CrossButton10: '  ml-[57vh] bg-gray-300 ',
-};
+
+//modalconfig2
+yourrequestissent: 'text-3xl font text-black-700 translate-x-[22vh] translate-y-[8vh]  ',
+standardline2: ' translate-x-[18vh] text-xl font-bold text-gray-400 translate-y-[8vh] text-xs  ',
+MainDiv20: ' ml-[20vh] fixed z-10 inset-0 overflow-y-auto translate-y-[30vh]  translate-x-[50vh]',
+ModalBody20: 'w-[80vh] bg-white rounded-lg shadow-lg h-[40vh]  ',
+CrossButton20: '  ml-[77vh] bg-gray-300 -translate-y-[20vh]',
+  };
 
 export default ModalStyles
