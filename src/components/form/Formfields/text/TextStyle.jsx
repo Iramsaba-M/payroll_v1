@@ -50,6 +50,8 @@ const TextStyle = {
   //ctc inner template
   
 
+  leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr-14 text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
+  leaveuploadinput:'bg-gray-100 border-2  hover:border-blue-500 mt-8   text-gray text-sm   rounded-md px-5 py-1 leading-tight focus:outline-none'
 };
 
 export default TextStyle;

@@ -214,16 +214,15 @@
   ],
   "basicdetail": [
     {
-     
       "employee_name": "Saba M Mirjankar",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0001",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -237,12 +236,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0002",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -256,12 +255,12 @@
       "employee_name": "Shashank S Baikadi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0003",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -275,12 +274,12 @@
       "employee_name": "Santosh P Sohani",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0004",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -294,12 +293,12 @@
       "employee_name": "Vikas S joshi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0005",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -313,12 +312,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0006",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -332,12 +331,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0007",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -347,7 +346,6 @@
       "Work Location: ": "headquarters",
       "id": "1"
     }
-
   ],
   "bankdetails": [
     {
@@ -797,12 +795,38 @@
       "employee_status": "Inactive",
       "inactiveStatus": "Suspended",
       "leaveOption": "Due to Disciplinary Action"
+    },
+    {
+      "id": "583b",
+      "type_of_employee": "Employee",
+      "employee_benefit": [
+        "Transport"
+      ],
+      "employee_status": "Active",
+      "year_of_experiance": "5",
+      "feedback": "good",
+      "experiance_certificate": {},
+      "payslips": {},
+      "bank_status": {},
+      "employee_id": ""
+    },
+    {
+      "id": "b2b4",
+      "type_of_employee": "Employee",
+      "employee_benefit": [
+        "Transport"
+      ],
+      "employee_status": "Active",
+      "year_of_experiance": "5",
+      "feedback": "good",
+      "experiance_certificate": {},
+      "payslips": {},
+      "bank_status": {},
+      "employee_id": ""
     }
   ],
-
   "home_report_carddata": {
     "barchart2": [
-
       {
         "year": 2023,
         "month": [
@@ -816,8 +840,8 @@
           500,
           150,
           200
-
-     ] },
+        ]
+      },
       {
         "year": 2024,
         "month": [
@@ -860,24 +884,22 @@
         "value": 200000
       }
     ],
-    "departments":[{
-      "name": "it",
-      "value": 100
-    },
-    {
-      "name": "non it ",
-      "value": 15
-    },
-    {
-      "name": "hr",
-      "value": 20
-    }
-
+    "departments": [
+      {
+        "name": "it",
+        "value": 100
+      },
+      {
+        "name": "non it ",
+        "value": 15
+      },
+      {
+        "name": "hr",
+        "value": 20
+      }
     ]
   },
-  
   "home_report_graphdata": [
-
     {
       "year": 2023,
       "month": [
@@ -891,8 +913,8 @@
         500,
         150,
         200
-
-   ] },
+      ]
+    },
     {
       "year": 2024,
       "month": [
@@ -911,31 +933,28 @@
       ]
     }
   ],
-
   "modal": [
     {
-   
-        "aadhar": 12222222222,
-"name": "Shashank",
-"empid":"IK001",
-"payabledays":"30",
-"basic":"79,167.00",
-"basicarrer":"37,500.00",
-"houserentallowance":"39,584.00",
-"fixedallowance":"36,632.00",
-"fixedallowancearrear":"18,750.00",
-"grosssalary":"100,000.00",
-"epf":"1800",
-"esic":"1000",
-"pt":"200",
-"netsalary":"90000.00",
-"netpay":"900000.00"
+      "aadhar": 12222222222,
+      "name": "Shashank",
+      "empid": "IK001",
+      "payabledays": "30",
+      "basic": "79,167.00",
+      "basicarrer": "37,500.00",
+      "houserentallowance": "39,584.00",
+      "fixedallowance": "36,632.00",
+      "fixedallowancearrear": "18,750.00",
+      "grosssalary": "100,000.00",
+      "epf": "1800",
+      "esic": "1000",
+      "pt": "200",
+      "netsalary": "90000.00",
+      "netpay": "900000.00"
     }
   ],
-  
-  "Approve_payroll":[
+  "Approve_payroll": [
     {
-      "employee_id":"1",
+      "employee_id": "1",
       "employee_name": "vivek sharma",
       "designation": "UI",
       "attendance": "42",
@@ -943,7 +962,8 @@
       "net_pay": "4567",
       "payroll_status": "Finalize now"
     },
-    {"employee_id":"2",
+    {
+      "employee_id": "2",
       "employee_name": "uppi sharma",
       "designation": "Ux",
       "attendance": "45",
@@ -951,7 +971,8 @@
       "net_pay": "4567",
       "payroll_status": "Finalize now"
     },
-    {"employee_id":"3",
+    {
+      "employee_id": "3",
       "employee_name": "karthik joshi",
       "designation": "UI",
       "attendance": "45",
@@ -959,7 +980,8 @@
       "net_pay": "4567",
       "payroll_status": "Finalize now"
     },
-    {"employee_id":"4",
+    {
+      "employee_id": "4",
       "employee_name": "uppi sharma",
       "designation": "Ux",
       "attendance": "45",
@@ -967,7 +989,8 @@
       "net_pay": "4567",
       "payroll_status": "Finalize now"
     },
-    {"employee_id":"5",
+    {
+      "employee_id": "5",
       "employee_name": "karthik badiger",
       "designation": "UI",
       "attendance": "45",
@@ -975,7 +998,8 @@
       "net_pay": "4567",
       "payroll_status": "Finalize now"
     },
-    {"employee_id":"6",
+    {
+      "employee_id": "6",
       "employee_name": "kaushik joshi",
       "designation": "UI",
       "attendance": "45",
@@ -984,7 +1008,6 @@
       "payroll_status": "Finalize now"
     }
   ],
-
   "Runpayroll": [
     {
       "id": 1,
@@ -1024,124 +1047,142 @@
       "employee_name": "Shashank Baikadi",
       "designation": "software engineer",
       "employee_id": "Ik0001"
-      
-     
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
       "employee_id": "Ik0002"
-      
-      
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
       "employee_id": "Ik0003"
-      
-      
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
       "employee_id": "Ik0004"
-      
-      
     }
   ],
-
-  "reviewPayroll":[
+  "reviewPayroll": [
     {
-    "total_expense" : "567",
-    "net_pay" : "4567",
-    "total_employees" : "567" ,
-    "payable_days" : "98765" ,
-    "pf" : "6191690.06",
-    "esic" : "456",
-    "pt" : "987654" ,
-    "employees" : [
-    {
-      "employee_id":"666",
-      "name": "Vivek sharma",
-      "designation": "UI",
-      "attendance": "42",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"111",
-      "name": "Jack Sparrow",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"222",
-      "name": "Karthik joshi",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"333",
-      "name": "Karthik joshi",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"444",
-      "name": "Karthik joshi",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"555",
-      "name": "Kaushik shetty",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    }
-    ]
+      "total_expense": "567",
+      "net_pay": "4567",
+      "total_employees": "567",
+      "payable_days": "98765",
+      "pf": "6191690.06",
+      "esic": "456",
+      "pt": "987654",
+      "employees": [
+        {
+          "employee_id": "666",
+          "name": "Vivek sharma",
+          "designation": "UI",
+          "attendance": "42",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "111",
+          "name": "Jack Sparrow",
+          "designation": "Ux",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "222",
+          "name": "Karthik joshi",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "333",
+          "name": "Karthik joshi",
+          "designation": "Ux",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "444",
+          "name": "Karthik joshi",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "555",
+          "name": "Kaushik shetty",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        }
+      ]
     }
   ],
-  "az":[{
-    "name":"Shashank Baikadi",
-    "phonenumber":9767534977,
-    "branch":"Hubli",
-    "salaryamount":29000.00,
-    "basesalary":232323,
-    "hra":23423,
-    "travelallowance":23423,
-    "internetallowance":234,
-    "medicalallowance":2344,
-    "coveyanceallowance":65445,
-    "emploverpf":234,
-    "emploveresi":6554,
-    "totalearnings":54323,
-    "emploveepf":654,
-    "emploveeesi":876,
-    "professionaltax":9876,
-    "employerpf":345,
-    "employeresi":5444,
-    "totaldeduction":2347,
-    "julynetsalary":37000,
-    "paidamount":2344,
-    "pendingjulysalary":2222
+  "az": [
+    {
+      "name": "Shashank Baikadi",
+      "phonenumber": 9767534977,
+      "branch": "Hubli",
+      "salaryamount": 29000,
+      "basesalary": 232323,
+      "hra": 23423,
+      "travelallowance": 23423,
+      "internetallowance": 234,
+      "medicalallowance": 2344,
+      "coveyanceallowance": 65445,
+      "emploverpf": 234,
+      "emploveresi": 6554,
+      "totalearnings": 54323,
+      "emploveepf": 654,
+      "emploveeesi": 876,
+      "professionaltax": 9876,
+      "employerpf": 345,
+      "employeresi": 5444,
+      "totaldeduction": 2347,
+      "julynetsalary": 37000,
+      "paidamount": 2344,
+      "pendingjulysalary": 2222
     }
-    
-    ]
-
+  ],
+  "end_user_attendance": {
+    "punchin": false,
+    "punchout": false,
+    "history": [
+      {
+        "date": "02/03/2023",
+        "type_of_leave": "SL"
+      },
+      {
+        "date": "03/03/2023",
+        "type_of_leave": "SL"
+      },
+      {
+        "date": "04/03/2023",
+        "type_of_leave": "SL"
+      }
+    ],
+    "leave_balance": {
+      "cl": "2",
+      "sl": "7",
+      "unpaid": "3",
+      "paternity": "19",
+      "marriage": "6",
+      "maternity": "10",
+      "bereavement": "12",
+      "vacation": "0"
+    }
+  }
 }
