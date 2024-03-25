@@ -34,8 +34,8 @@ const HeadComponents = ({ content, config }) => {
             </li>
           ))}
       </ul>
-
-      <div className="mb-3">
+      
+                   <div className="mb-3">
       <ApplicationSearch />
       </div>
     </div>

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import ApplicationSearchConfig from './ApplicationSearchConfig';
 import ApplicationSearchStyles from './ApplicationSearchStyles';
 import ApplicationSearchComp from './Applicationsearchcomp';
-import routesConfig from '../../routing/RoutingConfig';
 
 const ApplicationSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
