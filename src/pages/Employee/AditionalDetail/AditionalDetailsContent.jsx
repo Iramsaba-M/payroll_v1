@@ -1,6 +1,8 @@
 import { IoEyeOutline } from "react-icons/io5";
 import { FiEyeOff } from "react-icons/fi";
 import { RiArrowDropDownFill } from "react-icons/ri";
+import { PiUploadSimpleThin } from "react-icons/pi";
+import DocumentStyles from "../../../components/form/DocumentsForm/DocumentStyles";
 export const formContent = [
     {
       "label": "Current Password",
@@ -25,6 +27,46 @@ export const formContent = [
         "required": true,
         "icon":<RiArrowDropDownFill className="h-7 w-6 -mt-6 text-gray-800 " />
     },
+    {
+      "name":"year_of_experience",
+      "label": "Year of Experience",
+      "type": "text",
+      "placeholder": "Enter here",
+      "textcss": "standard"
+    },
+    {
+      "name":"feedback",
+      "label": "Feedback",
+      "type": "text",
+      "placeholder": "Enter here",
+      "textcss": "standard"
+    },
+    {
+      label: 'Experience Certificate',
+      name:'experience_certificate',
+      type: 'file',
+      textcss: 'additionalstandard2',
+      placeholder: 'Select',
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />, //className={DocumentStyles.iconstyle}
+    },
+    {
+      label: 'Payslips',
+      name:'payslips',
+      type: 'file',
+      textcss: 'additionalstandard2',
+      placeholder: 'Select',
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
+      },
+      {
+        label: 'Bank Status',
+        name:'bank_status',
+        type: 'file',
+        textcss: 'additionalstandard2',
+        placeholder: 'Select',
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
+        },
+  
+
   
   ]
   

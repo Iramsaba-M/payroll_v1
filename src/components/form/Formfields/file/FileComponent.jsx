@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 const FileComponent = ({ name, onChange, textcss,icon,  placeholder }) => {
   const [uploadedFile, setUploadedFile] = useState(null);

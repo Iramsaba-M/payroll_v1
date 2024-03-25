@@ -155,9 +155,9 @@ export const Button1Content = [
     {
       heading: 'Taxes & Deduction',
       multivalue: [
-        { heading: 'PF', name: 'pf' },
-        { heading: 'ESIC', name: 'esic' },
-        { heading: 'PT', name: 'pt' }
+        { heading: 'PF', name: 'pf',multiheadingstyle:'payrollmultivaluehead',multivaluestyle:'payrollmaultivalue' },
+        { heading: 'ESIC', name: 'esic',multiheadingstyle:'payrollmultivaluehead',multivaluestyle:'payrollmaultivalue'},
+        { heading: 'PT', name: 'pt',multiheadingstyle:'payrollmultivaluehead',multivaluestyle:'payrollmaultivalue' }
       ],
       card: 'payrollstyle2',
       headstyle: 'payrollheading3'

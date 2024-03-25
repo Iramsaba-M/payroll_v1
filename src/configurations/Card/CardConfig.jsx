@@ -3,7 +3,7 @@ import React from 'react';
 import CardStyles from './CardStyle';
 
 const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle, 
-  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone }) => {
+  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone,multivaluestyle,multiheadingstyle }) => {
   return (
     <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards} ${className}`}>
       {title && (<h3 className={CardStyles.CardTitle}>{title}</h3>)}
@@ -26,12 +26,12 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
       {contentvalue && (<h3 className={`${CardStyles[contentstyle]}`}>{Number(contentvalue).toLocaleString('en-IN')}</h3>)}
       {multivalue &&
         multivalue.map((field, index) => (
-          <div key={index} className='flex flex-col p-2  font-medium text-gray-600'>
+          <div key={index} className={`${CardStyles[field.multiheadingstyle]}`}>
             {field.heading && <h3 className='text-gray-600'>{field.heading}</h3>}
             {multiclone &&
               Object.entries(multiclone).map(([key, value], cloneIndex) => {
                 if (field.name === key) {
-                  return <p className='-mt-6  ml-48 text-right' key={cloneIndex}>{Number(value).toLocaleString('en-IN')}</p>;
+                  return <p className={`${CardStyles[field.multivaluestyle]}`} key={cloneIndex}>{Number(value).toLocaleString('en-IN')}</p>;
                 }
                 return null;
               })}
@@ -44,7 +44,7 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
 
 const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclone }) => {
   return (
-    <div className="flex ">
+    <div className="flex  ">
       {Config.map((card, index) => (
         <React.Fragment key={index}>
           {index > 0 && index % Config.length === 0 && <div className="w-full"></div>}
