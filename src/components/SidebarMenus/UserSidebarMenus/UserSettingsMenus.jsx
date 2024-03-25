@@ -1,24 +1,24 @@
-/* eslint-disable react/prop-types */
+
 import React from "react";
 import { NavLink, Outlet} from "react-router-dom";
-import { APP_SIDEBAR_LINKS } from "../sidebarConfigs/MenuConfig";
+import { SETTINGS_SIDEBAR_LINKS } from "../sidebarConfigs/UserMenuConfig";
 
-const AppMenus = () => {
-    const activeLink = "rounded-md text-blue-700 bg-menu-bg text-xs py-2 mx-2 ";
+const UserSettingsMenus = () => {
+    const activeLink = "rounded-md text-white bg-blue-500 text-xs py-2 mx-2 ";
 
     const normalLink = "rounded-md w-48 text-left py-2 mx-2 hover:bg-gray-off text-xs ";
   return (
     <>
         <ul>
-         <div className="appname text-bold text-4xl font-mono font-bold px-5 mt-3 mb-3">
+         <div className="appname text-gray-800 text-4xl font-mono font-bold px-5 mt-3 mb-3">
            iKamai
          </div>
-          {APP_SIDEBAR_LINKS.default.submenus.map((items) => (
+          {SETTINGS_SIDEBAR_LINKS.default.submenus.map((items) => (
             <NavLink to={items.path} className={({isActive}) => 
               isActive ? activeLink : normalLink
              }>
               <button className=" w-48 text-left p-2.5 mx-3 my-1"> <span className="flex">
-                {items.icon && <span className="mr-5 mt-0.5">{items.icon}</span>} 
+                {items.icon && <span className="mr-5">{items.icon}</span>} 
                 {items.label}
                 </span>
               </button>
@@ -26,8 +26,8 @@ const AppMenus = () => {
           ))}
         </ul>
           <Outlet />
-               </>
+    </>
   )
 }
 
-export default AppMenus
+export default UserSettingsMenus

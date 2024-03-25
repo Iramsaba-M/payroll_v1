@@ -21,172 +21,296 @@ import ReimbursementSetting from '../pages/Settings/ReimbursementSetting'
 import LoanSetting from '../pages/Settings/LoanSetting'
 import Demo_ctc from '../pages/Settings/cardcomponent/Demo_ctc'
 import Demo from '../pages/Settings/cardcomponent/Demo'
+import UserAppMenus from '../components/SidebarMenus/UserSidebarMenus/UserAppMenus'
+import UserTeamMenus from '../components/SidebarMenus/UserSidebarMenus/UserTeamMenus'
+import UserHomeMenus from '../components/SidebarMenus/UserSidebarMenus/UserHomeMenus'
+import UserSettingsMenus from "../components/SidebarMenus/UserSidebarMenus/UserSettingsMenus"
+import UserHome from '../userpages/Home/UserHome'
+import MyAttendance from '../userpages/My Attendance/MyAttendance'
+import MyPayslips from '../userpages/My Payslips/MyPayslips'
+import UserNotification from '../userpages/Notifications/UserNotification'
+import RaiseRequest from '../userpages/Raise Request/RaiseRequest'
+import UserReports from '../userpages/Reports/UserReports'
+
 const routesConfig = [
   {
-    path: '/',
-    label:"Home",
-    element: <HomeMenus />,
+    label: "Person Data",
     children: [
-        {
-          path: 'home1',
-          element: <Home />,
-        },
-        {
-          path: 'home2',
-          element: <Employee />,
-        },
-        {
-          path: 'home3',
-          element: <RunPayroll />,
-        },
-        {
-          path: 'home4',
-          element: <Notifications />,
-        },
+      {
+        path: '/',
+        label:"Home",
+        element: <UserHomeMenus />,
+        children: [
+            {
+              path: 'home1',
+              element: <Home />,
+            },
+            {
+              path: 'home2',
+              element: <Employee />,
+            },
+            {
+              path: 'home3',
+              element: <RunPayroll />,
+            },
+            {
+              path: 'home4',
+              element: <Notifications />,
+            },
+          ],
+      },
+      {
+        path: 'team',
+        label:"Team",
+        element: <UserTeamMenus />,
+        children: [
+            {
+                path: 'home1',
+                element: <Home />,
+              },
+              {
+                path: 'home2',
+                element: <Employee />,
+              },
+              {
+                path: 'home3',
+                element: <RunPayroll />,
+              },
+              {
+                path: 'home4',
+                element: <Notifications />,
+              },
+        ],
+      },
+      {
+        path: 'apps',
+        label:"Appplication",
+        element: <UserAppMenus />,
+        children: [
+            {
+              path: 'home',
+              element: <Home />,
+            },
+            {
+              path: 'myattendance',
+              element: <MyAttendance />,
+            },
+            {
+              path: 'mypayslips',
+              element: <MyPayslips />,
+            },
+            {
+              path: 'usernotification',
+              element: <UserNotification />,
+            },
+            {
+              path: 'raiserequest',
+              element: <RaiseRequest />,
+            },
+            {
+              path: 'userreports',
+              element: <UserReports />,
+            },
       ],
-  },
-  {
-    path: '/team',
-    label:"Team",
-    element: <TeamMeanus />,
-    children: [
-        {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-    ],
-  },
-  {
-    path: 'apps',
-    label:"Appplication",
-    element: <AppMenus />,
-    children: [
-        {
-            path: 'home',
-            element: <Home />,
-          },
-          {
-            path: 'Employees',
-            element: <Employee />,
-            children: [
+      },
+
+      {
+        path: 'settings',
+        label:"Setting",
+        element: <UserSettingsMenus />,
+        children: [
+            {
+                path: 'home1',
+                element: <Home />,
+              },
               {
-                  path: 'AddEmployee',
-                  element: <AddEmp/>,
-              },    
-            ],
-          },
-          {
-            path: 'runpayroll',
-            element: <RunPayroll />,
-            // children: [
-            //   {
-            //       path: 'Reviewpayroll',
-            //       element: <ReviewPayroll/>,
-            //   },    
-            // ],
-          },
-          {
-            path: 'notifications',
-            element: <Notifications />,
-          },
-          {
-            path: 'ctccalculator',
-            element: <CTC_Calculator />,
-          },
-          {
-            path: 'loans',
-            element: <Loans />,
-          },
-          {
-            path: 'reports',
-            element: <Reports />,
-          },
-          {
-            path: 'settings',
-            element: <Settings />,
-            children: [
+                path: 'home2',
+                element: <Employee />,
+              },
               {
-                  path: 'CTCTemplateSetting',
-                  element: <CTCTemplateSetting />,
-                  children: [
-                    {
-                      path: 'Demo_ctc',
-                      element: <Demo/>,
+                path: 'home3',
+                element: <RunPayroll />,
+              },
+              {
+                path: 'home4',
+                element: <Notifications />,
+              },
+        ],
+      }, 
+    ]
+  },
+
+  {
+    label: "Admin Data",
+    children: [
+      {
+        path: '/',
+        label:"Home",
+        element: <HomeMenus />,
+        children: [
+            {
+              path: 'home1',
+              element: <Home />,
+            },
+            {
+              path: 'home2',
+              element: <Employee />,
+            },
+            {
+              path: 'home3',
+              element: <RunPayroll />,
+            },
+            {
+              path: 'home4',
+              element: <Notifications />,
+            },
+          ],
+      },
+      {
+        path: 'team',
+        label:"Team",
+        element: <TeamMeanus />,
+        children: [
+            {
+                path: 'home1',
+                element: <Home />,
+              },
+              {
+                path: 'home2',
+                element: <Employee />,
+              },
+              {
+                path: 'home3',
+                element: <RunPayroll />,
+              },
+              {
+                path: 'home4',
+                element: <Notifications />,
+              },
+        ],
+      },
+      {
+        path: 'apps',
+        label:"Appplication",
+        element: <AppMenus />,
+        children: [
+            {
+                path: 'home',
+                element: <Home />,
+              },
+              {
+                path: 'Employees',
+                element: <Employee />,
+                children: [
+                  {
+                      path: 'AddEmployee',
+                      element: <AddEmp/>,
+                  },    
+                ],
+              },
+              {
+                path: 'runpayroll',
+                element: <RunPayroll />,
+                // children: [
+                //   {
+                //       path: 'Reviewpayroll',
+                //       element: <ReviewPayroll/>,
+                //   },    
+                // ],
+              },
+              {
+                path: 'notifications',
+                element: <Notifications />,
+              },
+              {
+                path: 'ctccalculator',
+                element: <CTC_Calculator />,
+              },
+              {
+                path: 'loans',
+                element: <Loans />,
+              },
+              {
+                path: 'reports',
+                element: <Reports />,
+              },
+              {
+                path: 'settings',
+                element: <Settings />,
+                children: [
+                  {
+                      path: 'CTCTemplateSetting',
+                      element: <CTCTemplateSetting />,
+                      children: [
+                        {
+                          path: 'Demo_ctc',
+                          element: <Demo/>,
+                        },
+                        // {
+                        //   path: 'CTCTemplateSetting',
+                        //   element: <CTCTemplateSetting />,
+                        // }
+                      ]
                     },
-                    // {
-                    //   path: 'CTCTemplateSetting',
-                    //   element: <CTCTemplateSetting />,
-                    // }
-                  ]
-                },
-                {
-                  path: 'PayRollSetting',
-                  element: <PayRollSetting />,
-                },
-                {
-                  path: 'ReimbursementSetting',
-                  element: <ReimbursementSetting />,
-                },
-                {
-                  path: 'LoanSetting',
-                  element: <LoanSetting />,
-                },
-                {
-                  path: 'PayslipSetting',
-                  element: <PayslipSetting />,
-                },
-                {
-                  path: 'PaymentReminderSetting',
-                  element: <PaymentReminderSetting />,
-                },
-                {
-                  path: 'AnnouncementSetting',
-                  element: <AnnouncementSetting />,
-                },
-                {
-                  path: 'LeaveSetting',
-                  element: <LeaveSetting />,
-                },
-                
-            ],
-          },
-      ],
-  },
-  {
-    path: 'settings',
-    label:"Setting",
-    element: <SettingsMenus />,
-    children: [
-        {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-    ],
-  },
+                    {
+                      path: 'PayRollSetting',
+                      element: <PayRollSetting />,
+                    },
+                    {
+                      path: 'ReimbursementSetting',
+                      element: <ReimbursementSetting />,
+                    },
+                    {
+                      path: 'LoanSetting',
+                      element: <LoanSetting />,
+                    },
+                    {
+                      path: 'PayslipSetting',
+                      element: <PayslipSetting />,
+                    },
+                    {
+                      path: 'PaymentReminderSetting',
+                      element: <PaymentReminderSetting />,
+                    },
+                    {
+                      path: 'AnnouncementSetting',
+                      element: <AnnouncementSetting />,
+                    },
+                    {
+                      path: 'LeaveSetting',
+                      element: <LeaveSetting />,
+                    },
+                    
+                ],
+              },
+          ],
+      },
+      {
+        path: 'settings',
+        label:"Setting",
+        element: <SettingsMenus />,
+        children: [
+            {
+                path: 'home1',
+                element: <Home />,
+              },
+              {
+                path: 'home2',
+                element: <Employee />,
+              },
+              {
+                path: 'home3',
+                element: <RunPayroll />,
+              },
+              {
+                path: 'home4',
+                element: <Notifications />,
+              },
+        ],
+      },
+    ]
+  }
 ];
 
 export default routesConfig;
+

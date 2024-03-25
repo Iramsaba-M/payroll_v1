@@ -50,3 +50,12 @@ export const exmpContent = [
 export const exmpContent1 = [
   { card: 'homestyle3', chart: 'homepichart2', heading3: 'Payroll Distribution by Location', contentstyle2: 'homecontent2'},
 ];
+
+export const Admin= [
+  { label: 'Admin',  style: 'buttonStyleHome' , type:"button"},
+];
+
+export const Personal= [
+  { label: 'Personal',  style: 'buttonStyleHome' , type:"button"},
+];
+

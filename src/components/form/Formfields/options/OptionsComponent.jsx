@@ -109,7 +109,7 @@
 
 // export default OptionsComponent;
 
-const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon }) => {
+const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon                                                                     }) => {
   return (
     <div style={{ position: 'relative' }}>
       {icon && <div className="absolute ml-[30vh] mt-8">{icon}</div>}
