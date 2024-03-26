@@ -41,6 +41,10 @@ const CardStyles = {
   leavestyle3:'bg-white rounded-md border shadow-md py-5 flex justify-centre  ml-3  h-28 w-32 px-3 overfl-auto max-w-[6vh]  ',
   leavemultivalue:"font-bold text-2xl ml-9 text-black ",
   leavemultivaluehead:"flex flex-col justify-between item-centre text-sm font-semibold text-gray-600",
+  //////////////////////////////////////////////////
+  usernotificationstyle1:'flex flex-row rounded-md p-4 bg-white shadow-md mx-4 w-[144vh] h-[15vh] border text-[1px]'
+
+
 };
 
 

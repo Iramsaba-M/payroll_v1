@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../../services/APIService';
 import Card from '../../../configurations/Card/Card';
@@ -16,14 +18,19 @@ import SearchInputConfig from '../../../configurations/search/search/SearchInput
 import {exportDataTemplate} from '../../../excelUtils';
 import { useNavigate } from 'react-router-dom';
 import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
+import DynamicTable from '../../../configurations/tables/DynamicTable';
 import axios from 'axios';
+import { BASIC_DETAILS_API_Get } from '../../../api/EndPoints';
+
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [empcardData, setCardData] = useState([]);
-  const [showAddEmployee, setShowAddEmployee] = useState(false);
+
   const [showImportPopup, setShowImportPopup] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
+  const [showAddEmployee, setShowAddEmployee] = useState(false);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
 
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
@@ -31,19 +38,17 @@ const EmployeeComponent = () => {
     bankDetails: false,
     documents: false,
     additionalDetails: false,
-    
   });
 
-  useEffect(() => {
-    
-  const fetchemployeeData = async () => {
-    try {
-      const data = await fetchData(EMP_API);
-      setEmployeeData(data); 
-    } catch (error) {
-      console.error(`Error fetching employee data:`, error);
-    }
-  };
+  useEffect(() => {  
+    const fetchemployeeData = async () => {
+      try {
+        const data = await fetchData(EMP_API);
+        setEmployeeData(data); 
+      } catch (error) {
+        console.error(`Error fetching employee data:`, error);
+      }
+    };
 
     const fetchCardData = async () => {
       try {
@@ -59,17 +64,120 @@ const EmployeeComponent = () => {
   }, []);
   
 
-  const navigate = useNavigate();
-  const handleAddEMp =() =>{
-    setShowAddEmployee(true)
-    navigate('AddEmployee')
-  }
-  
+  // const navigate = useNavigate();
+  // const handleAddEmployee = () => {
+  //   setShowAddEmployee(true);
+  //   navigate('AddEmployee');
+  // };
+
+  // const handleEditEmployee = (employeeId) => {
+  //   setSelectedEmployeeId(employeeId);
+  //   setShowAddEmployee(true);
+  //   console.log('Employee ID passed:', employeeId); // Log the employeeId here
+  //   navigate(`AddEmployee?employeeId=${employeeId}`);
+  // };
+
+  // useEffect(() => {
+  //   const fetchDataAndSetState = async () => {
+  //     const queryParams = new URLSearchParams(location.search);
+  //     const empId = queryParams.get('employeeId');
+
+  //     // Construct the API URL with the employee ID
+  //     const apiUrl = `${EMP_API}?employeeId=${empId}`;
+  //     console.log('API URL:', apiUrl); // Log the API URL
+
+  //     try {
+  //       const data = await fetchData(apiUrl);
+  //       setEmployeeData(data);
+  //     } catch (error) {
+  //       console.error('Error fetching employee data:', error);
+  //     }
+  //   };
+
+  //   fetchDataAndSetState();
+  // }, [location.search]);
+
+  // useEffect(() => {
+  //   const fetchTotalCTCAndEmployees = async () => {
+  //     if (selectedEmployeeId) {
+       
+  //       try {
+  //         const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
+  //         console.log('Total CTC and Employees Data:', result);
+  //         // Process data as needed
+  //       } catch (error) {
+  //         console.error('Error fetching total CTC and employees data:', error);
+  //       }
+  //     }
+  //   };
+
+  //   fetchTotalCTCAndEmployees();
+  // }, [selectedEmployeeId]);``
+
+  // const handleAddEmployee = () => {
+  //   setShowAddEmployee(true);
+  //   navigate('AddEmployee');
+  // };
+
+  // const handleEditEmployee = (employeeId) => {
+  //   setSelectedEmployeeId(employeeId);
+  //   setShowAddEmployee(true);
+  //   navigate(`AddEmployee?employeeId=${employeeId}`);
+  // };
+
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      const queryParams = new URLSearchParams(location.search);
+      const empId = queryParams.get('employeeId');
+
+      // Construct the API URL with the employee ID
+      const apiUrl = `${EMP_API}?employeeId=${empId}`;
+      console.log('API URL:', apiUrl); // Log the API URL
+
+      try {
+        const data = await fetchData(apiUrl);
+        setEmployeeData(data);
+      } catch (error) {
+        console.error('Error fetching employee data:', error);
+      }
+    };
+
+    fetchDataAndSetState();
+  }, [location.search]);
+
+  useEffect(() => {
+    const fetchTotalCTCAndEmployees = async () => {
+
+
+      
+      if (selectedEmployeeId) {
+        try {
+          const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
+          console.log('Total CTC and Employees Data:', result);
+          // Process data as needed
+        } catch (error) {
+          console.error('Error fetching total CTC and employees data:', error);
+        }
+      }
+    };
+
+    fetchTotalCTCAndEmployees();
+  }, [selectedEmployeeId]);
+
+  const handleAddEmployee = () => {
+    setShowAddEmployee(true);
+    navigate('AddEmployee');
+  };
+
+  const handleEditEmployee = (employeeId) => {
+    setSelectedEmployeeId(employeeId);
+    setShowAddEmployee(true);
+    setIsEditMode(true); // Set edit mode to true
+    navigate(`AddEmployee?employeeId=${employeeId}`);
+  };
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
-      // setShowAddEmployee(true);
-      handleAddEMp(true);
-      
+      handleAddEmployee();
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {
@@ -87,24 +195,8 @@ const EmployeeComponent = () => {
     }
   };
 
-
-  const handleDownload = async (apiEndpoint, format) => {
-    try {
-      // Call the exportDataTemplate function
-      await exportDataTemplate(apiEndpoint, format);
-  
-      // If needed, add any additional logic after successful download
-      console.log('Download successful!');
-    } catch (error) {
-      console.error('Error handling download:', error);
-    }
-  };
-
   const handleExportButtonClick = async (format) => {
     try {
-      // Create an array of selected options based on the state
-      
-  
       const selectedOptions = Object.keys(selectedExportOptions).filter(
         option => selectedExportOptions[option]
       );
@@ -114,32 +206,20 @@ const EmployeeComponent = () => {
   
         switch (option) {
           case 'basicDetails':
-            // apiEndpoint = `${baseApiUrl}basic-details/`;
             apiEndpoint = getApiUrl(BasicDetails_export);
-
             break;
-  
           case 'salaryDetails':
-            // apiEndpoint = `${baseApiUrl}SalaryDetails_export`;
             apiEndpoint = getApiUrl(SalaryDetails_export);
-            
             break;
-  
           case 'bankDetails':
-            // apiEndpoint = `${baseApiUrl}bank-details/`;
             apiEndpoint = getApiUrl(BankDetails_export);
             break;
-  
           case 'documents':
-            // apiEndpoint = `${baseApiUrl}documents/`;
             apiEndpoint = getApiUrl(Documents_export);
             break;
-  
           case 'additionalDetails':
-            // apiEndpoint = `${baseApiUrl}additional-details/`;
             apiEndpoint = getApiUrl(Additionaldetails_export);
             break;
-  
           default:
             console.error(`Unsupported export option: ${option}`);
             return;
@@ -150,48 +230,34 @@ const EmployeeComponent = () => {
         await exportDataTemplate(apiEndpoint, adjustedFormat);
       }
   
-      // Close the export popup
       setShowExportPopup(false);
     } catch (error) {
       console.error('Error exporting data:', error);
     }
   };
   
-  
-const handleFileUpload = async (event) => {
-  const file = event.target.files[0];
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
 
-  try {
-    const parsedData = await parseExcelFile(file);
+    try {
+      const parsedData = await parseExcelFile(file);
+      await uploadEmployeeData(parsedData, file);
+    } catch (error) {
+      console.error('Error processing file content:', error);
+    }
 
-    // Only upload the data to the server without updating the local state
-    await uploadEmployeeData(parsedData, file);
+    setShowImportPopup(false);
+  };
 
-    
+  const closeImportPopup = () => {
+    setShowImportPopup(false);
+  };
 
-  } catch (error) {
-    console.error('Error processing file content:', error);
-  }
-
-  setShowImportPopup(false);
-};
-
-
-
-
-const closeImportPopup = () => {
-  setShowImportPopup(false);
-};
-
-
-  const [data, setData] = useState([]);
   const [filteredEmployeeData, setFilteredEmployeeData] = useState([]);
 
   const searchFun = (recsearchdata) => {
     setFilteredEmployeeData(recsearchdata);
   };
-
-  
 
   return (
     <div className="flex flex-col ml-4">
@@ -203,9 +269,7 @@ const closeImportPopup = () => {
 
           <div className="flex items-center justify-between p-1 ml-4">
             <div className='text-left ml-4 font-lg font-bold text-gray-500'>
-            <SearchableComp SearchConfig={SearchInputConfig} data={employeeData} searchFunrec={searchFun} />
-
-            
+              <SearchableComp SearchConfig={SearchInputConfig} data={employeeData} searchFunrec={searchFun} />
             </div>
             <div className='text-right p-1 mr-4'>
               <Button Configs={ButtonData} onClick={handleButtonClick} />
@@ -213,34 +277,17 @@ const closeImportPopup = () => {
           </div>
 
           <div className="flex p-2 ml-8 mt-8">
-          <TableComponent config={tableContent} data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} />
-          {/* <TableComponent
-  config={tableContent}
-  data={[
-    { 
-      employee_name: "John Doe",
-      designation: "Software Engineer",
-      ctc: "$100,000",
-      date_of_joining: "2022-01-01",
-      employee_id: "EMP001",
-    },
-    { 
-      employee_name: "Jane Smith",
-      designation: "Product Manager",
-      ctc: "$120,000",
-      date_of_joining: "2021-12-15",
-      employee_id: "EMP002",
-    },
-    // Add more dummy data objects as needed
-  ]}
-/> */}
+          <DynamicTable
+  config={tableContent} 
+  data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} 
+  onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
+/>
 
           </div>
         </>
       ) : (
-        <AddEmployee />
-      )}  
-
+        <AddEmployee employeeId={selectedEmployeeId} onClose={() => setShowAddEmployee(false)} />
+      )}
 
 {showImportPopup && (
   <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
@@ -374,3 +421,4 @@ const closeImportPopup = () => {
 };
 
 export default EmployeeComponent;
+
