@@ -10,6 +10,7 @@ export const formContent  = [
       textcss: 'standard',
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />, 
+      iconPosition:"end",
     },
     {
       label: 'Enter Aadhar Number ',
@@ -27,6 +28,7 @@ export const formContent  = [
       textcss: 'standard',
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
+      iconPosition:"end",
       },
       {
         label: 'Enter PAN Number ',
@@ -45,6 +47,7 @@ export const formContent  = [
         textcss: 'standard',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
+        iconPosition:"end",
       
       },
       {
@@ -62,6 +65,7 @@ export const formContent  = [
         textcss: 'standard',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
+        iconPosition:"end",
       },
       {
         label: 'Enter EPFO Number ',
@@ -78,6 +82,7 @@ export const formContent  = [
         textcss: 'standard',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
+        iconPosition:"end",
      
       },
       {
@@ -98,6 +103,7 @@ export const formContent  = [
       textcss: 'standard',
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />, 
+      iconPosition:"end",
     },
     {
       label: 'Custom Number',

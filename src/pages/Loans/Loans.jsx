@@ -2,12 +2,12 @@
 
 import React from 'react'
 import BodyContent from '../../configurations/bodyContent/BodyContent'
-import LoanComponent from './LoanComponent'
+import RaiseRequestComponent from './RaiseRequestComponent'
 
 const Loans = () => {
   return (
     <div>
-        <BodyContent content={LoanComponent} />
+        <BodyContent content={RaiseRequestComponent} />
     </div>
   )
 }

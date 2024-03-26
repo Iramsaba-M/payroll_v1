@@ -18,6 +18,12 @@ const ButtonStyles = {
 
 //home
 buttonStyleHome: ' border bg-white-400 text-gray-400 p-1 px-4 rounded flex items-center mb-2 mr-2 on hover:text-blue-500 text-sm ', 
+//request for loan
+buttonStyleApply: ' border bg-button-bg text-black p-1 px-4 rounded flex items-center mb-2 mr-2 ',
+buttonStyleCancel: ' border bg-gray-200 text-black p-1 px-4 rounded flex items-center mb-2 mr-2 ', 
+
+//request for loan
+buttonStyleAddnew: ' border border-cyan-500 text-cyan-500 p-1 px-4 rounded-sm flex items-center mb-2 mr-2 h-10 w-[30vh]',
 };
 
 export default ButtonStyles;

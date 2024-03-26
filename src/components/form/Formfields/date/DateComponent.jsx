@@ -44,7 +44,7 @@ const handleDateChange = (date) => {
     <div>
      
       <label>{label}</label>
-
+{icon}
       <DatePicker
         name={name}
         value={value}

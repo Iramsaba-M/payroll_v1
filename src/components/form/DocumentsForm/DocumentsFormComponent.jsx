@@ -18,6 +18,7 @@ import {ModalConfig} from '../../form/Formfields/modal/ModalConfig'
 import { postDataImage } from "../../../services/APIService";
 import { ModalPayslipConfig } from "../Formfields/modal/ModalPayslipConfig";
 import { ModalReviewPayrollConfig } from "../Formfields/modal/ModalReviewPayrollConfig";
+import { ModalConfig2 } from "../Formfields/modal/ModalConfig2";
 const DocumentsFormComponent = ({
   config,
   handleNextClick,
@@ -159,6 +160,7 @@ const onSubmit = async (e) => {
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
+                  iconPosition={field.iconPosition}
                 />
               )}
             </div>
@@ -188,6 +190,7 @@ const onSubmit = async (e) => {
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
+                  iconPosition={field.iconPosition}
                 />
               )}
             </div>
@@ -217,6 +220,7 @@ const onSubmit = async (e) => {
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
+                  iconPosition={field.iconPosition}
                 />
               )}
             </div>
@@ -246,6 +250,7 @@ const onSubmit = async (e) => {
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
+                  iconPosition={field.iconPosition}
                 />
               )}
             </div>
@@ -275,6 +280,7 @@ const onSubmit = async (e) => {
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
+                  iconPosition={field.iconPosition}
                 />
               )}
             </div>
@@ -305,7 +311,8 @@ const onSubmit = async (e) => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         // config={ModalConfig}
-        config={ModalPayslipConfig}
+        config={ModalConfig2}
+        // config={ModalPayslipConfig}
         // config={ModalReviewPayrollConfig}
       />
     </form>

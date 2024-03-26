@@ -42,6 +42,7 @@ const CustomComponent = ({ config, value, onCustomChange }) => {
                     textcss={DocumentStyles[field.textcss].input}
                     placeholder={field.placeholder}
                     icon={field.icon}
+                    iconPosition={field.iconPosition}
                   />
                 )}
               </div>

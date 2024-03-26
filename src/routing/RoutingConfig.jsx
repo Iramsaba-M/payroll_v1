@@ -21,6 +21,8 @@ import ReimbursementSetting from '../pages/Settings/ReimbursementSetting'
 import LoanSetting from '../pages/Settings/LoanSetting'
 import Demo_ctc from '../pages/Settings/cardcomponent/Demo_ctc'
 import Demo from '../pages/Settings/cardcomponent/Demo'
+import RequestForLoan from '../pages/Loans/RequestForLoan'
+import RequestForReimbursement from '../pages/Loans/RequestForReimbursement'
 const routesConfig = [
   {
     path: '/',
@@ -108,6 +110,29 @@ const routesConfig = [
           {
             path: 'loans',
             element: <Loans />,
+            children: [
+              {
+                  path: 'RequestforLoan',
+                  element: <RequestForLoan/>,
+                  // children: [
+                  //   {
+                  //     path: 'RequestForReimbursement',
+                  //     element: <RequestForReimbursement/>,
+                  //   },
+                    
+                  // ]
+                },
+                {
+                  path: 'RequestForReimbursement',
+                  element: <RequestForReimbursement/>,
+                },
+                {
+                  path: 'ReimbursementSetting',
+                  element: <ReimbursementSetting />,
+                },
+              
+                
+            ],
           },
           {
             path: 'reports',
@@ -123,13 +148,14 @@ const routesConfig = [
                   children: [
                     {
                       path: 'Demo_ctc',
-                      element: <Demo/>,
+                      element: <Demo_ctc/>,
                     },
-                    // {
-                    //   path: 'CTCTemplateSetting',
-                    //   element: <CTCTemplateSetting />,
-                    // }
+                   
                   ]
+                },
+                {
+                  path: 'Demo_ctc',
+                  element: <Demo_ctc />,
                 },
                 {
                   path: 'PayRollSetting',
