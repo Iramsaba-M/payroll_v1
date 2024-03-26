@@ -136,7 +136,7 @@ const onSubmit = async (e) => {
 };
   return (
     <form onSubmit={onSubmit}>
-      <div className=" flex-col w-[138vh] h-5/6 mt-8 ">
+      <div className=" flex-col w-[130vh] h-5/6 mt-8 ">
         <div className="form-line flex mb-4 ml-20">
           {config.slice(0, 2).map((field, index) => (
             <div key={index}>

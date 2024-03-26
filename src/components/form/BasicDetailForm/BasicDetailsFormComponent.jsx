@@ -124,7 +124,7 @@ const BasicDetailsFormComponent = ({
   };
   return (
     <form onSubmit={onSubmit}>
-      <div className="w-[135vh] h-[50vh]">
+      <div className="w-[130vh] h-[50vh]">
         <h1 className="block text-gray-600 text-xs font-bold my-1">
           Employee Name*
         </h1>
@@ -364,7 +364,7 @@ const BasicDetailsFormComponent = ({
         <div className="">
        
           <div className="form-line flex mb-4 -translate-y-[12vh]">
-            {config.slice(16, 18).map((field, index) => (
+            {config.slice(16, 19).map((field, index) => (
               <div key={index}>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
@@ -378,6 +378,19 @@ const BasicDetailsFormComponent = ({
                     textcss={TextStyle[field.textcss].input}
                   />
                 )}
+                  <div className="">
+                 {field.type === "options" && (
+                <OptionsComponent
+                  name={field.name}
+                  value={values[field.name] || ""}
+                  options={field.options}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={TextStyle[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                />
+              )}
+               </div>
               
               </div>
             ))}
@@ -395,5 +408,6 @@ const BasicDetailsFormComponent = ({
       />
     </form>
   );
-};
+                 }
+
 export default BasicDetailsFormComponent;
