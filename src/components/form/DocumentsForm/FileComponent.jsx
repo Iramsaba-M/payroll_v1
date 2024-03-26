@@ -18,9 +18,6 @@ const FileComponent = ({ name, onChange, textcss,icon,  placeholder, iconPositio
     <div className={textcss}>
       {uploadedFile ? (
         <>
-       {/* <div className='mt-8'></div>
-          <span className="mr-2 mt-3">{uploadedFile.name}</span>
-          <button  className='mt-3 text-blue-700' onClick={handleCancelFile}>Cancel</button> */}
              <div className=''></div>
           <span className="">{uploadedFile.name}</span>
           <button  className='mt-3 text-blue-700 ml-4' onClick={handleCancelFile}>Cancel</button>

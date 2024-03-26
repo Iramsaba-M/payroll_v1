@@ -22,46 +22,6 @@ export const ButtonContent = [
   { label: 'Export', icon: <BsArrowBarUp />, style: 'buttonStyle1' }, 
 ];
 
-// export const tableContent = [
- 
-//   {
-//     name: "employee_name",
-//     label: "EMPLOYEE NAME",
-//     dataType: "string",
-//     cssClass: "datastyle",
-//     clmncss : "style1"
-// },
-// {
-//     name: "designation",
-//     label: "DESIGNATION",
-//     dataType: "string",
-//     cssClass: "datastyle1",
-//     clmncss : "style1"
-// },
-// {
-//     name: "ctc",
-//     label: "CTC",
-//     dataType: "string",
-//     cssClass: "datastyle1",
-//     clmncss : "style1"
-// },
-// {
-//     name: "date_of_joining",
-//     label: "JOINING DATE",
-//     dataType: "Date",
-//     cssClass: "datastyle2",
-//     clmncss : "style1"
-// },
-// {
-//   name: "employee_id",
-//   label: "EMPLOYEE ID",
-//   dataType: "string",
-//   cssClass: "datastyle2",
-//   clmncss : "style1"
-// },
-// // Add more column data as needed
-// ];
-
 import { MdOutlineEdit } from 'react-icons/md';
 
 export const tableContent = [
