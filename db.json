@@ -1184,5 +1184,252 @@
       "bereavement": "12",
       "vacation": "0"
     }
-  }
+  },
+  "enduser_applyleave": [
+    {
+      "id": "addd",
+      "leavetype": "maternity",
+      "reason": "maternity",
+      "daterange": {
+        "start": "2024-03-26T12:12:57.763Z",
+        "end": "2024-03-26T12:12:57.763Z",
+        "key": "selection",
+        "startDate": "2024-03-26T18:30:00.000Z",
+        "endDate": "2024-03-27T18:30:00.000Z"
+      }
+    },
+    {
+      "id": "214f",
+      "leavetype": "maternity",
+      "reason": "maternity for",
+      "daterange": {
+        "start": "2024-03-26T12:12:57.763Z",
+        "end": "2024-03-26T12:12:57.763Z",
+        "key": "selection",
+        "startDate": "2024-03-26T18:30:00.000Z",
+        "endDate": "2024-03-27T18:30:00.000Z"
+      }
+    },
+    {
+      "id": "87e6",
+      "daterange": {
+        "startDate": "2024-03-26T12:17:34.226Z",
+        "endDate": "2024-03-26T12:17:34.226Z",
+        "key": "selection"
+      },
+      "leavetype": null
+    },
+    {
+      "id": "6f1b",
+      "start": "2024-03-26T12:17:34.226Z",
+      "end": "2024-03-26T12:17:34.226Z",
+      "leavetype": null
+    },
+    {
+      "id": "29cc",
+      "leavetype": "sl",
+      "reason": "sssssssssssssssssssssssiiiiiiiiiccccccccccccckkkkkkkkkk",
+      "start": "2024-03-27T18:30:00.000Z",
+      "end": "2024-03-28T18:30:00.000Z"
+    },
+    {
+      "id": "7cec",
+      "leavetype": "marriage",
+      "reason": "marriage leaveeeee",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "1c3e",
+      "leavetype": "paternity",
+      "reason": "fhjkldc",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "89c0",
+      "leavetype": "paternity",
+      "reason": "fhjkldc",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "2287",
+      "leavetype": "paternity",
+      "reason": "fhjkldc",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "cc6a",
+      "leavetype": "paternity",
+      "reason": "fhjkldc",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "e945",
+      "leavetype": "paternity",
+      "reason": "fhjkldc",
+      "full_day": true,
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z"
+    },
+    {
+      "id": "1781",
+      "reason": "esdrfghj",
+      "start": "2024-03-28T18:30:00.000Z",
+      "end": "2024-03-29T18:30:00.000Z",
+      "leavetype": "marriage"
+    },
+    {
+      "id": "ff72",
+      "leavetype": null,
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "option": true
+    },
+    {
+      "id": "724d",
+      "leavetype": null,
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z"
+    },
+    {
+      "id": "5f20",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z"
+    },
+    {
+      "id": "7c19",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave": "full_day"
+    },
+    {
+      "id": "4591",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave": true
+    },
+    {
+      "id": "54b5",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave": true
+    },
+    {
+      "id": "5de8",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave2": true
+    },
+    {
+      "id": "b0b7",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave2": "half_day"
+    },
+    {
+      "id": "2384",
+      "leavetype": "paternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z",
+      "leave2": "full_day"
+    },
+    {
+      "id": "1e7f",
+      "leavetype": "maternity",
+      "start": "2024-03-27T07:23:11.794Z",
+      "end": "2024-03-27T07:23:11.794Z"
+    },
+    {
+      "id": "8792",
+      "leavetype": null,
+      "start": "2024-03-27T07:40:58.091Z",
+      "end": "2024-03-27T07:40:58.091Z"
+    },
+    {
+      "id": "768f",
+      "leavetype": null,
+      "start": "2024-03-27T07:41:57.432Z",
+      "end": "2024-03-27T07:41:57.432Z",
+      "leave": "half_day"
+    },
+    {
+      "id": "7477",
+      "leavetype": null,
+      "doc": {},
+      "start": "2024-03-27T07:41:57.432Z",
+      "end": "2024-03-27T07:41:57.432Z",
+      "leave": "half_day"
+    },
+    {
+      "id": "eaad",
+      "leavetype": null,
+      "doc": {},
+      "employee_id": "IK01",
+      "start": "2024-03-27T07:41:57.432Z",
+      "end": "2024-03-27T07:41:57.432Z",
+      "leave": "half_day"
+    },
+    {
+      "id": "bba4",
+      "leavetype": null,
+      "doc": {},
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leave": "half_day"
+    },
+    {
+      "id": "816f",
+      "leavetype": null,
+      "doc": {},
+      "reason": "dfghj",
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leave": "half_day"
+    },
+    {
+      "id": "4371",
+      "leavetype": null,
+      "doc": {},
+      "reason": "dfghj",
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leave": "half_day"
+    },
+    {
+      "id": "38c0",
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leavetype": null
+    },
+    {
+      "id": "2091",
+      "leavetype": null,
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leave": "full_day"
+    },
+    {
+      "id": "26a9",
+      "leavetype": null,
+      "employee_id": "IK01",
+      "start": "27-03-2024",
+      "end": "27-03-2024",
+      "leave": "half_day"
+    }
+  ]
 }

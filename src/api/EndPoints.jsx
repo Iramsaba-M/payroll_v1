@@ -41,3 +41,6 @@ export const Runpayroll ='Runpayroll';
 export const payslips ='Payslip';
 
 export const view ='history/dowload';
+
+// export const EndUser_ApplyLeave = 'enduser_applyleave';
+export const EndUser_ApplyLeave = 'apply_leave';

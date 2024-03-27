@@ -22,9 +22,9 @@ const ButtonStyles = {
   payrollbuttonStyle1:'bg-white text-blue-600 p-2 px-4 rounded flex items-center border-2 border-blue-400 ',
 
   //Attendance
-  AttendancebuttonStyle1: 'bg-blue-600 text-white px-4 w-[18vh] h-10 rounded flex justify-center items-center mb-2 ',
-  AttendancebuttonStyle2: 'bg-gray-200 text-gray-700 px-4 w-[18vh] h-10 rounded flex justify-center items-center mb-2 mr-7',
-  AttendancebuttonStyle3: 'bg-lime-400 text-gray-700 px-4 w-[18vh] h-10 rounded flex justify-center items-center mb-2 mr-5'
+  AttendancebuttonStyle1: 'bg-blue-500 text-white px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 ',
+  AttendancebuttonStyle2: 'bg-gray-200 text-gray-700 px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 mr-9',
+  AttendancebuttonStyle3: 'bg-green-400 text-gray-700 px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 mr-5'
 };
 
 export default ButtonStyles;

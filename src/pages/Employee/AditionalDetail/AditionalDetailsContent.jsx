@@ -48,6 +48,7 @@ export const formContent = [
       textcss: 'additionalstandard2',
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />, //className={DocumentStyles.iconstyle}
+      iconPosition:'end'
     },
     {
       label: 'Payslips',
@@ -56,6 +57,7 @@ export const formContent = [
       textcss: 'additionalstandard2',
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
+      iconPosition:'end'
       },
       {
         label: 'Bank Status',
@@ -64,6 +66,7 @@ export const formContent = [
         textcss: 'additionalstandard2',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
+        iconPosition:'end'
         },
   
 
