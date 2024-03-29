@@ -7,7 +7,8 @@ import RaiseRequestComponent from './RaiseRequestComponent'
 const Loans = () => {
   return (
     <div>
-        <BodyContent content={RaiseRequestComponent} />
+        {/* <BodyContent content={RaiseRequestComponent} /> */}
+        
     </div>
   )
 }

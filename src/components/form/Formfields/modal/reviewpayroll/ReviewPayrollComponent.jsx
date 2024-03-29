@@ -351,7 +351,7 @@ const ReviewPayrollComponent = ({ config }) => {
               <label className={ReviewPayrollStyle[field.textcss].label}>
                 {field.label}
               </label>
-              {field.type === "text" && (
+              {field.type === "textarea" && (
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}

@@ -141,7 +141,7 @@ export const ReviewPayrollData = [
   {
     label: '',
     name: 'input',
-    type: 'text',
+    type: 'textarea',
     placeholder: 'Enter here',
     textcss: 'standard_document8',
 

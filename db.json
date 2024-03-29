@@ -214,16 +214,15 @@
   ],
   "basicdetail": [
     {
-     
       "employee_name": "Saba M Mirjankar",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0001",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -237,12 +236,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0002",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -256,12 +255,12 @@
       "employee_name": "Shashank S Baikadi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0003",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -275,12 +274,12 @@
       "employee_name": "Santosh P Sohani",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0004",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -294,12 +293,12 @@
       "employee_name": "Vikas S joshi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0005",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -313,12 +312,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0006",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -332,12 +331,12 @@
       "employee_name": "Vaishnavi S Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
-      "ctc":"300000",
+      "ctc": "300000",
       "designation": "Software Engineer",
       "employee_id": "Ik0007",
       "Department: ": "dsfds",
       "Type Of Employee: ": "dsfdsf",
-      "date_of_joining":"2022-01-01",
+      "date_of_joining": "2022-01-01",
       "Address": "cccc",
       "Differently abled: ": "No",
       "Personal Email: ": "ff@gmail.com",
@@ -347,7 +346,6 @@
       "Work Location: ": "headquarters",
       "id": "1"
     }
-
   ],
   "bankdetails": [
     {
@@ -799,10 +797,8 @@
       "leaveOption": "Due to Disciplinary Action"
     }
   ],
-
   "home_report_carddata": {
     "barchart2": [
-
       {
         "year": 2023,
         "month": [
@@ -816,8 +812,8 @@
           500,
           150,
           200
-
-     ] },
+        ]
+      },
       {
         "year": 2024,
         "month": [
@@ -860,24 +856,22 @@
         "value": 200000
       }
     ],
-    "departments":[{
-      "name": "it",
-      "value": 100
-    },
-    {
-      "name": "non it ",
-      "value": 15
-    },
-    {
-      "name": "hr",
-      "value": 20
-    }
-
+    "departments": [
+      {
+        "name": "it",
+        "value": 100
+      },
+      {
+        "name": "non it ",
+        "value": 15
+      },
+      {
+        "name": "hr",
+        "value": 20
+      }
     ]
   },
-  
   "home_report_graphdata": [
-
     {
       "year": 2023,
       "month": [
@@ -891,8 +885,9 @@
         500,
         150,
         200
-
-   ] },
+      ],
+      "id": "233e"
+    },
     {
       "year": 2024,
       "month": [
@@ -908,86 +903,95 @@
         700,
         1000,
         70
-      ]
+      ],
+      "id": "4c57"
     }
   ],
-
   "modal": [
     {
-   
-        "aadhar": 12222222222,
-"name": "Shashank",
-"empid":"IK001",
-"payabledays":"30",
-"basic":"79,167.00",
-"basicarrer":"37,500.00",
-"houserentallowance":"39,584.00",
-"fixedallowance":"36,632.00",
-"fixedallowancearrear":"18,750.00",
-"grosssalary":"100,000.00",
-"epf":"1800",
-"esic":"1000",
-"pt":"200",
-"netsalary":"90000.00",
-"netpay":"900000.00"
+      "aadhar": 12222222222,
+      "name": "Shashank",
+      "empid": "IK001",
+      "payabledays": "30",
+      "basic": "79,167.00",
+      "basicarrer": "37,500.00",
+      "houserentallowance": "39,584.00",
+      "fixedallowance": "36,632.00",
+      "fixedallowancearrear": "18,750.00",
+      "grosssalary": "100,000.00",
+      "epf": "1800",
+      "esic": "1000",
+      "pt": "200",
+      "netsalary": "90000.00",
+      "netpay": "900000.00",
+      "id": "aee5"
     }
   ],
-  
-  "Approve_payroll":[
+  "Approve_payroll": [
     {
-      "employee_id":"1",
+      "employee_id": "1",
       "employee_name": "vivek sharma",
       "designation": "UI",
       "attendance": "42",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "629c"
     },
-    {"employee_id":"2",
+    {
+      "employee_id": "2",
       "employee_name": "uppi sharma",
       "designation": "Ux",
       "attendance": "45",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "f700"
     },
-    {"employee_id":"3",
+    {
+      "employee_id": "3",
       "employee_name": "karthik joshi",
       "designation": "UI",
       "attendance": "45",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "271e"
     },
-    {"employee_id":"4",
+    {
+      "employee_id": "4",
       "employee_name": "uppi sharma",
       "designation": "Ux",
       "attendance": "45",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "0636"
     },
-    {"employee_id":"5",
+    {
+      "employee_id": "5",
       "employee_name": "karthik badiger",
       "designation": "UI",
       "attendance": "45",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "0292"
     },
-    {"employee_id":"6",
+    {
+      "employee_id": "6",
       "employee_name": "kaushik joshi",
       "designation": "UI",
       "attendance": "45",
       "gross_salary": "150000",
       "net_pay": "4567",
-      "payroll_status": "Finalize now"
+      "payroll_status": "Finalize now",
+      "id": "d9e4"
     }
   ],
-
   "Runpayroll": [
     {
-      "id": 1,
+      "id": "1",
       "netpay": "",
       "month": "March",
       "payment-date": "02/01/2023",
@@ -995,7 +999,7 @@
       "action": "Review"
     },
     {
-      "id": 2,
+      "id": "2",
       "netpay": "$6000",
       "month": "April",
       "payment-date": "02/01/2023",
@@ -1003,7 +1007,7 @@
       "action": "Processed"
     },
     {
-      "id": 3,
+      "id": "3",
       "netpay": "$6000",
       "month": "May",
       "payment-date": "02/01/2023",
@@ -1011,7 +1015,7 @@
       "action": "Processed"
     },
     {
-      "id": 4,
+      "id": "4",
       "netpay": "$6000",
       "month": "June",
       "payment-date": "02/01/2023",
@@ -1023,125 +1027,499 @@
     {
       "employee_name": "Shashank Baikadi",
       "designation": "software engineer",
-      "employee_id": "Ik0001"
-      
-     
+      "employee_id": "Ik0001",
+      "id": "3ad9"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0002"
-      
-      
+      "employee_id": "Ik0002",
+      "id": "33a3"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0003"
-      
-      
+      "employee_id": "Ik0003",
+      "id": "763b"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0004"
-      
-      
+      "employee_id": "Ik0004",
+      "id": "688f"
     }
   ],
-
-  "reviewPayroll":[
+  "reviewPayroll": [
     {
-    "total_expense" : "567",
-    "net_pay" : "4567",
-    "total_employees" : "567" ,
-    "payable_days" : "98765" ,
-    "pf" : "6191690.06",
-    "esic" : "456",
-    "pt" : "987654" ,
-    "employees" : [
-    {
-      "employee_id":"666",
-      "name": "Vivek sharma",
-      "designation": "UI",
-      "attendance": "42",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"111",
-      "name": "Jack Sparrow",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"222",
-      "name": "Karthik joshi",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"333",
-      "name": "Karthik joshi",
-      "designation": "Ux",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"444",
-      "name": "Karthik joshi",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    },
-    {
-      "employee_id":"555",
-      "name": "Kaushik shetty",
-      "designation": "UI",
-      "attendance": "45",
-      "gross": "150000",
-      "netpay": "4567",
-      "status": "Finalize now"
-    }
-    ]
+      "total_expense": "567",
+      "net_pay": "4567",
+      "total_employees": "567",
+      "payable_days": "98765",
+      "pf": "6191690.06",
+      "esic": "456",
+      "pt": "987654",
+      "employees": [
+        {
+          "employee_id": "666",
+          "name": "Vivek sharma",
+          "designation": "UI",
+          "attendance": "42",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "111",
+          "name": "Jack Sparrow",
+          "designation": "Ux",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "222",
+          "name": "Karthik joshi",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "333",
+          "name": "Karthik joshi",
+          "designation": "Ux",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "444",
+          "name": "Karthik joshi",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        },
+        {
+          "employee_id": "555",
+          "name": "Kaushik shetty",
+          "designation": "UI",
+          "attendance": "45",
+          "gross": "150000",
+          "netpay": "4567",
+          "status": "Finalize now"
+        }
+      ],
+      "id": "89de"
     }
   ],
-  "az":[{
-    "name":"Shashank Baikadi",
-    "phonenumber":9767534977,
-    "branch":"Hubli",
-    "salaryamount":29000.00,
-    "basesalary":232323,
-    "hra":23423,
-    "travelallowance":23423,
-    "internetallowance":234,
-    "medicalallowance":2344,
-    "coveyanceallowance":65445,
-    "emploverpf":234,
-    "emploveresi":6554,
-    "totalearnings":54323,
-    "emploveepf":654,
-    "emploveeesi":876,
-    "professionaltax":9876,
-    "employerpf":345,
-    "employeresi":5444,
-    "totaldeduction":2347,
-    "julynetsalary":37000,
-    "paidamount":2344,
-    "pendingjulysalary":2222
+  "az": [
+    {
+      "name": "Shashank Baikadi",
+      "phonenumber": 9767534977,
+      "branch": "Hubli",
+      "salaryamount": 29000,
+      "basesalary": 232323,
+      "hra": 23423,
+      "travelallowance": 23423,
+      "internetallowance": 234,
+      "medicalallowance": 2344,
+      "coveyanceallowance": 65445,
+      "emploverpf": 234,
+      "emploveresi": 6554,
+      "totalearnings": 54323,
+      "emploveepf": 654,
+      "emploveeesi": 876,
+      "professionaltax": 9876,
+      "employerpf": 345,
+      "employeresi": 5444,
+      "totaldeduction": 2347,
+      "julynetsalary": 37000,
+      "paidamount": 2344,
+      "pendingjulysalary": 2222,
+      "id": "f8cc"
     }
-    
-    ]
-
+  ],
+  "test": [
+    {
+      "id": "f494",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "insurance",
+          "value": "s",
+          "component": "CTC",
+          "conditionType": ">=",
+          "typeValue": "234",
+          "conditionValue": "654"
+        }
+      ]
+    },
+    {
+      "id": "a0da",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "EPF",
+          "value": "s",
+          "component": "example",
+          "conditionType": "example",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "f5e6",
+      "templateName": "santosh",
+      "tableData": [
+        {
+          "name": "insurance",
+          "value": "1000",
+          "component": "CTC",
+          "conditionType": "<",
+          "typeValue": "2",
+          "conditionValue": "911"
+        },
+        {
+          "name": "DA",
+          "value": "1000",
+          "component": "CTC",
+          "conditionType": ">=",
+          "typeValue": "411",
+          "conditionValue": "199"
+        }
+      ]
+    },
+    {
+      "id": "0a93",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        },
+        {
+          "name": "EPF",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        },
+        {
+          "name": "Add Allowances",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "346b",
+      "templateName": "shashnl",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "b28e",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "c1a6",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "DA",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "e61d",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "67f2",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "ef02",
+      "templateName": "s",
+      "tableData": [
+        {
+          "undefined": ""
+        }
+      ]
+    },
+    {
+      "id": "37c7",
+      "templateName": "s",
+      "tableData": [
+        {
+          "undefined": ""
+        }
+      ]
+    },
+    {
+      "id": "3235",
+      "templateName": "b",
+      "tableData": []
+    },
+    {
+      "id": "e6b9",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "eed5",
+      "templateName": "shashnl",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "2a15",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "09a4",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "2199",
+      "templateName": "ch",
+      "tableData": [
+        {
+          "name": "LTA",
+          "value": "1000",
+          "component": "Gross Salary",
+          "conditionType": "<",
+          "typeValue": "331",
+          "conditionValue": "100"
+        }
+      ]
+    },
+    {
+      "id": "5377",
+      "templateName": " uu",
+      "tableData": [
+        {
+          "name": "LTA",
+          "value": "1000",
+          "component": "CTC",
+          "conditionType": "<",
+          "typeValue": "331",
+          "conditionValue": "911"
+        },
+        {
+          "name": "Gratutity",
+          "value": "1000",
+          "component": "Gross Salary",
+          "conditionType": ">=",
+          "typeValue": "411",
+          "conditionValue": "199"
+        },
+        {
+          "name": "EPF",
+          "value": "3",
+          "component": "Gross Salary",
+          "conditionType": "<",
+          "typeValue": "00",
+          "conditionValue": "456"
+        }
+      ]
+    },
+    {
+      "id": "d942",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "ad67",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "259d",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "d1be",
+      "templateName": "vm",
+      "tableData": [
+        {
+          "name": "EPF",
+          "value": "1",
+          "component": "CTC",
+          "conditionType": "<",
+          "typeValue": "2",
+          "conditionValue": "3"
+        },
+        {
+          "name": "LTA",
+          "value": "10",
+          "component": "Gross Salary",
+          "conditionType": ">=",
+          "typeValue": "11",
+          "conditionValue": "12"
+        }
+      ]
+    },
+    {
+      "id": "f01c",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "e54e",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "2c03",
+      "templateName": "sb",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "0d1f",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "093d",
+      "templateName": "shashnl",
+      "tableData": [
+        {
+          "name": "LTA",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "dbbd",
+      "templateName": "mmmmm",
+      "tableData": [
+        {
+          "value": "LTA"
+        },
+        {
+          "value": "EPF"
+        }
+      ]
+    },
+    {
+      "id": "1481",
+      "templateName": "vikramm",
+      "tableData": [
+        {
+          "value": "insurance"
+        },
+        {
+          "value": "Add Allowances"
+        }
+      ]
+    },
+    {
+      "id": "35ba",
+      "templateName": "",
+      "tableData": [
+        {
+          "value": "LTA"
+        }
+      ]
+    },
+    {
+      "id": "003b",
+      "templateName": "",
+      "tableData": [
+        {
+          "value": "Gratutity"
+        },
+        {
+          "value": "<"
+        }
+      ]
+    },
+    {
+      "id": "b4eb",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "DA",
+          "value": "1",
+          "component": "Gross Salary",
+          "conditionType": ">=",
+          "typeValue": "234",
+          "conditionValue": "654"
+        }
+      ]
+    }
+  ],
+  "tempname": [
+    {
+      "name": [
+        "IK_CTC_Template",
+        "Template2",
+        "Template3"
+      ]
+    }
+  ]
 }
