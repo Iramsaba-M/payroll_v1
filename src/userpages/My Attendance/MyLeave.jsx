@@ -1,32 +1,4 @@
-// import React from 'react'
-// import Card from '../../configurations/Card/CardConfig'
-// import { leavesdata } from './AttendanceContent'
 
-// const MyLeave = () => {
-//     return (
-//         <div>MyLeave
-//             <div className='p-2 border-2'>
-//                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>
-//                 <div className='bg-gray-100 p-2 rounded-md border-2 '>
-//                     <Card Config={leavesdata} />
-//                 </div>
-//             </div>
-
-//             <div className=' mt-2 flex justify-between border-2 p-2'>
-//                 <div className='bg-gray-100 border-2 '>
-//                     <input type="radio" id="html" name="fav_language" value="HTML">
-//                         <label for="html">HTML</label><br>
-//                             <input type="radio" id="css" name="fav_language" value="CSS">
-//                                 <label for="css">CSS</label><br>
-//                 </div>
-//                 <div className='bg-gray-100 border-2'>
-//                                     fghjkfghjkl
-//                                 </div>
-//                             </div>
-//                 </div>
-//                         )
-// }
-//  export default MyLeave;
 
 
 import React, { useState, useEffect } from 'react';
@@ -44,8 +16,8 @@ import dayjs from 'dayjs';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import axios from 'axios';
-import { postData, postDataImage } from '../../services/APIService';
-import { ADITIONAL_DETAILS_API, EndUser_ApplyLeave } from '../../api/EndPoints';
+import { fetchData, postData, postDataImage } from '../../services/APIService';
+import {  EndUser_ApplyLeave, EndUser_Leave_Balance } from '../../api/EndPoints';
 import FileComponent from '../../components/form/DocumentsForm/FileComponent';
 
 const MyLeave = ({ config, applyleave }) => {
@@ -104,49 +76,41 @@ const MyLeave = ({ config, applyleave }) => {
             ...values,
             [name]: option
         });
-        
+
         console.log(values.leavetype)
     };
-    const fetchData = async () => {
+    const fetchgetData = async () => {
         try {
 
 
-            const response = await axios.get('http://localhost:3000/end_user_attendance')
+            // const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-            // const response = await postData(Home_and_Report_BarGraphdata, {
-            //   year: year,
-            //   month: month,
-            // });
-            console.log('Post Response cards:', response.data);
+            const queryParams = { employee_id: 'IK02' };
+            const endpoint = `${EndUser_Leave_Balance}?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+            const response = await fetchData(endpoint);
+            
+            // console.log('Post Response cards:', response.data);
+            console.log('Post Response cards:', response);
 
-            setLeavebalance(response.data.leave_balance)
+            setLeavebalance(response.leave_balance)
         } catch (error) {
             console.error('Error posting data:', error);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        fetchgetData();
     }, []);
     // useEffect(() => {
     //     handleLeavetype();
     // }, []);
     const onSubmit = async (e) => {
         e.preventDefault();
-    
+
         try {
             const emp = 'IK02';
 
-            // // const formattedStartDate = dayjs(daterange.startDate).format('DD-MM-YYYY');
-            // const data = {
-            //     ...values,
-            //     employee_id: emp,
-            //     start_date: dayjs(daterange.startDate).format('DD-MM-YYYY'),
-            //     end_date: dayjs(daterange.endDate).format('DD-MM-YYYY'),
-            //     leave_type: leavetype,
-            //     //    leave_day:values.leavetype
-            // };
-            // // console.log('Data',data)
+
 
             const formData = new FormData();
             // Append form data
@@ -159,7 +123,7 @@ const MyLeave = ({ config, applyleave }) => {
 
             Object.entries(values).forEach(([key, value]) => {
                 formData.append(key, value);
-                
+
             });
             // console.log('val', emp, leavetype, values)
             if (values.doc) {
@@ -176,7 +140,7 @@ const MyLeave = ({ config, applyleave }) => {
             });
 
             const response = await postDataImage(EndUser_ApplyLeave, formData);
-            
+
 
             console.log('Data sent:', response);
             // handlesubmit();
@@ -194,14 +158,7 @@ const MyLeave = ({ config, applyleave }) => {
                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>
                 <div className='bg-gray-100 p-2 flex  rounded-md border-2'>
                     <Card Config={leavesdata} multiclone={leavebalance} onClick={handleLeavetype} />
-                    {/* <Card Config={leavecard1} multiclone={leavebalance} onClick={handleLeavetype} className={`${isClicked && 'border-2 border-blue-400'}`} /> 
-                    <Card Config={leavecard2} multiclone={leavebalance} onClick={handleLeavetype} />
-                    <Card Config={leavecard3} multiclone={leavebalance} onClick={handleLeavetype} />
-                    <Card Config={leavecard4} multiclone={leavebalance} onClick={handleLeavetype}/>
-                    <Card Config={leavecard5} multiclone={leavebalance} onClick={handleLeavetype}/>
-                    <Card Config={leavecard6} multiclone={leavebalance} onClick={handleLeavetype}/>
-                    <Card Config={leavecard7} multiclone={leavebalance} onClick={handleLeavetype}/>
-                    <Card Config={leavecard8} multiclone={leavebalance} onClick={handleLeavetype}/> */}
+
                 </div>
             </div>
 
@@ -246,8 +203,8 @@ const MyLeave = ({ config, applyleave }) => {
 
             <div>
 
-                <div className="form-line flex   ">
-                    {config.slice(2, 4).map((field, index) => (
+                <div className="form-line flex justify-between  ">
+                    {config.slice(2, 3).map((field, index) => (
                         <div key={index} className={`form-field ${field.fieldstyle}`}>
 
                             <label className={TextStyle[field.textcss].label}>{field.label}</label>
@@ -260,19 +217,26 @@ const MyLeave = ({ config, applyleave }) => {
                                     placeholder={field.placeholder}
                                 />
                             )}
-                            {field.type === 'file' && (
-                                <FileComponent
-                                    name={field.name}
-                                    onChange={(file) => handleFileChange(file)}
-                                    textcss={TextStyle[field.textcss]}
-                                    placeholder={field.placeholder}
-                                    icon={field.icon}
-                                    iconPosition={field.iconPosition}
-                                />
-                            )}
+
                         </div>
                     ))}
-                    <div className='mt-9 ml-8  '>
+                    <div className='mt-9  flex   '>
+                        {config.slice(3, 4).map((field, index) => (
+                            <div key={index} className={`form-field ${field.fieldstyle}`}>
+
+
+                                {field.type === 'file' && (
+                                    <FileComponent
+                                        name={field.name}
+                                        onChange={(file) => handleFileChange(file)}
+                                        textcss={TextStyle[field.textcss]}
+                                        placeholder={field.placeholder}
+                                        icon={field.icon}
+                                        iconPosition={field.iconPosition}
+                                    />
+                                )}
+                            </div>
+                        ))}
                         <ButtonConfig Config={LeaveButtons} onClick={handlebuttonclick} />
                     </div>
 

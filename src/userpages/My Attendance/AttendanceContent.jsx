@@ -20,20 +20,20 @@ export const Attendanccard = [
 
 ]
 export const Attendanccard2 = [
-  { heading: 'Leave History', card: 'leavestyle2', headstyle: 'attendanceheading' },
+  { heading: 'Leave History', card: 'leavestyle5', headstyle: 'attendanceheading' },
 ]
 
 ////////////////////////////////////////////////////////////////////////////////////////
 export const leavesdata = [
   {
-    card: 'leavestyle',name: 'cl', multivalue: [
-      { heading: 'Casual Leave', name: 'cl', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
+    card: 'leavestyle',name: 'casual', multivalue: [
+      { heading: 'Casual Leave', name: 'casual', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'sl',
+    card: 'leavestyle',name: 'sick',
     multivalue: [
-      { heading: 'Sick Leave', name: 'sl', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
+      { heading: 'Sick Leave', name: 'sick', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
@@ -137,8 +137,8 @@ export const leavecard8 =[
 
 export const leavesdata2 = [
 
-  { heading: 'CL ', name: 'cl' },
-  { heading: 'SL ', name: 'sl' },
+  { heading: 'CL ', name: 'casual' },
+  { heading: 'SL ', name: 'sick' },
   { heading: 'Marriage', name: 'marriage' },
   { heading: 'Paternity', name: 'paternity' },
   { heading: 'Maternity', name: 'maternity' },
@@ -168,20 +168,40 @@ export const radiocontent = [
   },
 ]
 
-export const leavehistorytable = [
-  {
-    name: "date",
-    label: " Date",
-    dataType: "string",
-    cssClass: "leavedatastyle",//datastyle
-    clmncss: "leavestyles"//payrollstyle3
-  },
-  {
-    name: "type_of_leave",
-    label: " Type of Leave",
-    dataType: "string",
-    cssClass: "leavedatastyle",//datastyle
-    clmncss: "leavestyles"//payrollstyle3
-  },
-]
+// export const leavehistorytable = [
+//   // maxheight:"Attendancetableheight",
+//   {
+//     name: "start_date",
+//     label: " Date",
+//     dataType: "string",
+//     cssClass: "leavedatastyle",//datastyle
+//     clmncss: "leavestyles"//payrollstyle3
+//   },
+//   {
+//     name: "type_of_leave",
+//     label: " Type of Leave",
+//     dataType: "string",
+//     cssClass: "leavedatastyle",//datastyle
+//     clmncss: "leavestyles"//payrollstyle3
+//   },
+// ]
+export const leavehistorytable = {
+  maxheight: "Attendancetableheight",
+  columns: [
+    {
+      name: "start_date",
+      label: "Date",
+      dataType: "string",
+      cssClass: "leavedatastyle", // datastyle
+      clmncss: "leavestyles" // payrollstyle3
+    },
+    {
+      name: "type_of_leave",
+      label: "Type of Leave",
+      dataType: "string",
+      cssClass: "leavedatastyle", // datastyle
+      clmncss: "leavestyles" // payrollstyle3
+    }
+  ]
+};
 

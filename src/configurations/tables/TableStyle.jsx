@@ -22,7 +22,8 @@ const TableStyle = {
 
 
  leavestyles:"border-b-zinc-50 border-b text-center text-gray-500 px-[5.6vh]  py-2 text-sm ",
-  leavedatastyle:"border-b-zinc-50 text-center  text-gray-700 text-sm px-5  pl-7"
+  leavedatastyle:"border-b-zinc-50 text-center  text-gray-700 text-sm px-5  pl-7",
+  Attendancetableheight:" max-h-[16vh] "
 
 }
 
