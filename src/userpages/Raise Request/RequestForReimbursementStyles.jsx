@@ -1,10 +1,16 @@
-const RequestForLoanStyles = {
+const RequestForReimbursementStyles = {
     standard: {
        
       label: 'block text-gray-600 text-xs font-bold my-1', 
-      input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none placeholder-gray-400',//mr-14
+      input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none placeholder-black ',//mr-14
       
     },
+    standard_document: {
+       
+        label: 'block text-gray-600 text-xs font-bold my-1 ', 
+        input: 'border hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[30vh] leading-tight focus:outline-none rounded-sm h-10',//mr-14
+        
+      },
     standard_Home: {
       label: 'block text-gray-600 text-xs font-bold my-1', 
       input: 'border-2 hover:border-blue-500 border-gray-100 bg-transparent rounded-md text-gray text-xs my-2 mr- mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-24
@@ -31,5 +37,5 @@ const RequestForLoanStyles = {
   
   };
   
-  export default RequestForLoanStyles;
+  export default RequestForReimbursementStyles;
   

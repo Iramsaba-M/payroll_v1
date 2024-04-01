@@ -13,6 +13,16 @@ export const fetchData = async (endpoint) => {
     throw error;
   }
 };
+export const putData = async (endpoint) => {
+  try {
+    const response = await axios.put(getApiUrl(endpoint));
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching data for
+     ${endpoint}:`, error);
+    throw error;
+  }
+};
 
 
 export const postData = async (endpoint, data) => {

@@ -22,6 +22,7 @@ import axios from 'axios';
 import { BASIC_DETAILS_API_Get } from '../../../api/EndPoints';
 
 
+
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [empcardData, setCardData] = useState([]);
@@ -30,6 +31,7 @@ const EmployeeComponent = () => {
   const [showExportPopup, setShowExportPopup] = useState(false);
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  
 
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
@@ -163,6 +165,7 @@ const EmployeeComponent = () => {
     fetchTotalCTCAndEmployees();
   }, [selectedEmployeeId]);
 
+ 
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
     navigate('AddEmployee');
@@ -192,6 +195,7 @@ const EmployeeComponent = () => {
     } else if (label === 'Download as CSV') {
       handleExportButtonClick('csv');
     }
+  
   };
 
   const handleExportButtonClick = async (format) => {
@@ -281,8 +285,7 @@ const EmployeeComponent = () => {
   data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} 
   onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
 />
-
-          </div>
+ </div>
         </>
       ) : (
         <AddEmployee employeeId={selectedEmployeeId} onClose={() => setShowAddEmployee(false)} />

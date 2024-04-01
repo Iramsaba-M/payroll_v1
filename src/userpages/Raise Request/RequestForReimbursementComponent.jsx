@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import RequestForReimbursementStyles from './RequestForReimbursementStyles';
@@ -45,27 +44,45 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await Promise.all(
+  //       formData.map(async (form) => {
+  //         const response = await axios.post('http://localhost:3000/re', form.values);
+  //         console.log('Data sent successfully:', response.data);
+  //       })
+  //     );
+  //     // Open the modal after successful form submission
+  //   } catch (error) {
+  //     console.error('Error sending data:', error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Promise.all(
         formData.map(async (form) => {
-          const response = await axios.post('http://localhost:3000/re', form.values);
+          const dataToSend = { ...form.values, employee_id: 1 }; // Include employee_id with form values
+          const response = await axios.post('http://192.168.0.150:5001/submit_reimbursement/', dataToSend);
           console.log('Data sent successfully:', response.data);
         })
       );
       // Open the modal after successful form submission
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
+  
 
   return (
     <div className=''>
       <div className='w-[160vh]'>
-        <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[3.5vh]'>Request For Reimbursement</h1>
-        <div className='border-2 border-gray-200 shadow-md h-full'>
-          <div className=' ml-7 mt-7'>
+        <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Reimbursement</h1>
+        <div className='border-2 border-gray-200 shadow-md h-full ml-7'>
+          <div className=' ml-7 mt-6'>
             {/* <form onSubmit={handleSubmit}> */}
             <form onSubmit={(e) => handleSubmit(e, 'Requestreimbursement')}>
               {formData.map((form, index) => (
@@ -140,7 +157,7 @@ const RequestForReimbursementComponent = ({ config }) => {
               <div className='mt-4'>
                 <ButtonConfig Config={add} onClick={addNewForm} />
               </div>
-              <div className='flex mt-4'>
+              <div className='flex mt-4 mb-7'>
                 <ButtonConfig Config={Requestreimbursement} onClick={() => handleButtonClick("submit")}  />
                 <ButtonConfig Config={Cancel}/>
                 

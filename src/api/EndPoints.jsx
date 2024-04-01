@@ -1,8 +1,13 @@
 
+//Employee Registeration
 // export const EMP_API = 'employee/basic-details';
 export const EMP_API = 'basicdetail';
+export const BASIC_DETAILS_API_put = 'employee/basic-details';
 
-export const CARDS_API = 'employee/total_ctc_and_employees';
+export const BASIC_DETAILS_API_Get = 'employee/basic-details';
+
+// export const CARDS_API = 'employee/total_ctc_and_employees';
+export const CARDS_API = 'cardData';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
 
@@ -20,7 +25,6 @@ export const Import_GET_API = 'employee/download_template';
 
 export const Import_UPLOAD__GET_API = 'employee/upload_and_process';
 
-
 export const BasicDetails_export = 'employee/export/basic-details/';
 
 export const SalaryDetails_export = 'employee/export/salary-details';
@@ -29,14 +33,14 @@ export const BankDetails_export = 'employee/export/bank-details';
 
 export const Additionaldetails_export = 'employee/export/additional-details';
 
+// Home and Report 
 export const Home_and_Reportdata ='reports/month-data'
 
 export const Home_and_Report_BarGraphdata ='reports/graph-data'
 
-
+//Runpayroll
 export const Runpayroll ='Runpayroll';
 
-// export const payslips ='fetch_employee_data';
 export const mypayslip ='mypayslip';
 
 export const payslips ='Payslip';

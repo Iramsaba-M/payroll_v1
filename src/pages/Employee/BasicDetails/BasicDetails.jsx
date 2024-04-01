@@ -4,13 +4,13 @@ import BasicDetailsFormComponent from '../../../components/form/BasicDetailForm/
 import { formContent } from '../BasicDetails/BasicDetailsContent'
 
 
-const BasicDetails = ({handleNextClick,handleEmpId,}) => {
+const BasicDetails = ({handleNextClick,handleEmpId,handleButtonClick}) => {
  
 
   return (
     <div>
       <div className='basicdeatils'>
-        <BasicDetailsFormComponent config={formContent} handleNextClick={handleNextClick} handleEmpId={handleEmpId}  />
+        <BasicDetailsFormComponent config={formContent} handleNextClick={handleNextClick} handleEmpId={handleEmpId} handleSubmit={handleButtonClick}  />
       </div>
     </div>
   );
