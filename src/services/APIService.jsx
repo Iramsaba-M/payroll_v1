@@ -1,6 +1,6 @@
 // apiService.js
 import axios from 'axios';
-import { getApiUrl } from '../api/GetAPI';
+import { getApiUrl, getApiUrl3 } from '../api/GetAPI';
 
 
 export const fetchData = async (endpoint) => {
@@ -13,6 +13,18 @@ export const fetchData = async (endpoint) => {
     throw error;
   }
 };
+
+export const fetchData2 = async (endpoint) => {
+  try {
+    const response = await axios.get(getApiUrl4(endpoint));
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching data for
+     ${endpoint}:`, error);
+    throw error;
+  }
+};
+
 export const putData = async (endpoint) => {
   try {
     const response = await axios.put(getApiUrl(endpoint));

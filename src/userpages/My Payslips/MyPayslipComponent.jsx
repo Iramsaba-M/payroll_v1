@@ -12,7 +12,7 @@ import React, { useState,useEffect } from 'react';
 import { Mypayslipcontent } from './MypayslipContent';
 import TableComponent from '../../configurations/tables/TableComponent';
 import { mypayslip } from '../../api/EndPoints';
-import { fetchData } from '../../services/APIService';
+import { fetchData2 } from '../../services/APIService';
 
 
 const MyPayslipComponent = () => {
@@ -23,7 +23,7 @@ const MyPayslipComponent = () => {
     const fetchTableData = async () => {
         
         try {
-          const tableData = await fetchData(mypayslip); // Fetch data based on payslips
+          const tableData = await fetchData2(mypayslip); // Fetch data based on payslips
           setTableData(tableData);
         } catch (error) {
           console.error('Error fetching table data:', error);

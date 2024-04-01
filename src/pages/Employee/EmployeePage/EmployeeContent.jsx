@@ -9,8 +9,7 @@ export const cardContent = [
 ];
 
 export const tablesearchContent = [
-{
-     
+{  
   "placeholder" : "  Search ",
   "style" : "search1"
 } 
