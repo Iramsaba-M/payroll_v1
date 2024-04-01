@@ -22,7 +22,47 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
 
 
 
-  const handleButtonClick = async (label, type) => {
+  // const handleButtonClick = async (label, type) => {
+  //   if (!editMode) {
+  //     // When edit mode is off
+  //     if (label === "Save" && type === "submit") {
+  //       setIsModalOpen(true); // Open modal
+  //     } else if (label === "Next") {
+  //       handleNextClick(); // Call handleNextClick function
+  //     }
+  //   } else {
+  //     // When edit mode is on
+  //     if (label === "Save" && type === "submit") {
+  //       try {
+  //         // Call your putData service function here
+  //         await putData(BASIC_DETAILS_API_put); // Replace 'your-endpoint' with your actual endpoint
+  //         console.log("Put API called");
+  //       } catch (error) {
+  //         console.error("Error calling PUT API:", error);
+  //         // Handle errors here
+  //       }
+  //     } else if (label === "Next") {
+  //       try {
+  //         // Call your fetchData service function here
+  //         const data = await fetchData(BASIC_DETAILS_API_Get); // Replace 'your-endpoint' with your actual endpoint
+  //         console.log("Get API called");
+  //         // Process the retrieved data as needed
+          
+  //         // After fetching data and processing it, navigate to the next step
+  //         handleNextClick();
+  //       } catch (error) {
+  //         console.error("Error calling GET API:", error);
+  //         // Handle errors here
+  //       }
+  //     }
+  //   }
+  // };
+  // Define onedit based on editMode
+  const handleButtonClick = async (label, type, editMode, handleSubmit) => {
+    console.log("EditMode:", editMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+  
     if (!editMode) {
       // When edit mode is off
       if (label === "Save" && type === "submit") {
@@ -34,25 +74,31 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
       // When edit mode is on
       if (label === "Save" && type === "submit") {
         try {
-          // Call your putData service function here
-          await putData(BASIC_DETAILS_API_put); // Replace 'your-endpoint' with your actual endpoint
-          console.log("Put API called");
+          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+          await putData(BASIC_DETAILS_API_put, values);
+          console.log("PUT API called successfully");
+          // Handle success or update UI accordingly
         } catch (error) {
           console.error("Error calling PUT API:", error);
           // Handle errors here
         }
       } else if (label === "Next") {
         try {
-          // Call your fetchData service function here
-          const data = await fetchData(BASIC_DETAILS_API_Get); // Replace 'your-endpoint' with your actual endpoint
-          console.log("Get API called");
-          // Process the retrieved data as needed
-          
-          // After fetching data and processing it, navigate to the next step
-          handleNextClick();
+          // Navigate first (assuming handleNextClick is responsible for navigation)
+          handleNextClick(); // Navigate to the next page or perform navigation action
+  
+          // Call fetchData or other relevant function for next action in edit mode asynchronously
+          try {
+            const data = await fetchData(BASIC_DETAILS_API_Get);
+            console.log("GET API called");
+            // Process the retrieved data as needed
+          } catch (error) {
+            console.error("Error calling GET API:", error);
+            // Handle errors here if needed
+          }
         } catch (error) {
-          console.error("Error calling GET API:", error);
-          // Handle errors here
+          console.error("Error navigating:", error);
+          // Handle navigation errors here if needed
         }
       }
     }
