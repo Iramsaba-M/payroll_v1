@@ -38,7 +38,7 @@ const MyPayslipComponent = () => {
       }, [mypayslip]); // Include payslips in the dependency array
 
     return (
-      <div className='px-[60px]'>
+      <div className='px-[60px] mt-10'>
           <TableComponent config={Mypayslipcontent} data={tableData} />
       </div>
     )

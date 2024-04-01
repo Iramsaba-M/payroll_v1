@@ -4,7 +4,7 @@ import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollContents'
 import Tablecomp from '../../configurations/table2/Tablecomp2';
 import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
 import { payslips } from '../../api/EndPoints';
-import { fetchData } from '../../services/APIService';
+import { fetchData} from '../../services/APIService';
 import Payslip from '../Run Payroll/Payslip';
 
 const RunPayrollComponent = ( ) => {
@@ -44,7 +44,7 @@ const RunPayrollComponent = ( ) => {
   }, [payslips]); // Include payslips in the dependency array
 
 //  useEffect(() => {
-//     const fetchTableData = async () => {
+//     const fetchData = async () => {
 //       try {
 //         const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
 //         const queryParams = new URLSearchParams({
@@ -63,7 +63,7 @@ const RunPayrollComponent = ( ) => {
 //       }
 //     };
   
-//     fetchTableData();
+//     fetchData();
 //   }, [selectedDateTop]);
 
 

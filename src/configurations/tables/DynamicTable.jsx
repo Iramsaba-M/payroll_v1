@@ -85,6 +85,11 @@ function DynamicTable({ config, data, onEditEmployee }) {
   };
 
   const renderCellContent = (row, column) => {
+    if (column.name === 'status' && column.clmncss) {
+      const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
+      return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
+    }
+
     if (column.name === 'edit2') {
       // Render AddEmployee component conditionally
       return (

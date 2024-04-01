@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import  { useState } from "react";
 import axios from "axios";
+import { fetchData ,putData} from '../../../services/APIService';
 import DateComponent from "../Formfields/date/DateComponent";
 import TextComponent from "../Formfields/text/TextComponent";
 import TextStyle from "../Formfields/text/TextStyle";
@@ -10,7 +11,7 @@ import OptionsComponent from "../Formfields/options/OptionsComponent";
 import { ButtonContent } from "../../../pages/Employee/BasicDetails/BasicDetailsContent";
 import PhoneComponent from "../Formfields/phone/PhoneComponent";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
-import { BASIC_DETAILS_API } from "../../../api/EndPoints";
+import { BASIC_DETAILS_API, BASIC_DETAILS_API_Get, BASIC_DETAILS_API_put } from "../../../api/EndPoints";
 import { getApiUrl } from "../../../api/GetAPI";
 import CardComponent from "./CardComponent";
 import CardConfig from "./CardConfig";
@@ -22,7 +23,9 @@ const BasicDetailsFormComponent = ({
   handleSubmit,
   handleNextClick,
   handleEmpId,
+  editMode,
 }) => {
+ 
   const [values, setValues] = useState({});
   const [originalDateValues, setOriginalDateValues] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,13 +42,55 @@ const BasicDetailsFormComponent = ({
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const handleButtonClick = (label, type) => {
-    if (label === "Save" && type === "submit") {
-      setIsModalOpen(true);
-    } else if (label === "Next") {
-      handleNextClick(true);
+
+   // Define onedit based on editMode
+   const handleButtonClick = async (label, type, editMode, handleSubmit) => {
+    console.log("EditMode:", editMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+  
+    if (!editMode) {
+      // When edit mode is off
+      if (label === "Save" && type === "submit") {
+        setIsModalOpen(true); // Open modal
+      } else if (label === "Next") {
+        handleNextClick(); // Call handleNextClick function
+      }
+    } else {
+      // When edit mode is on
+      if (label === "Save" && type === "submit") {
+        try {
+          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+          await putData(BASIC_DETAILS_API_put, values);
+          console.log("PUT API called successfully");
+          // Handle success or update UI accordingly
+        } catch (error) {
+          console.error("Error calling PUT API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        try {
+          // Navigate first (assuming handleNextClick is responsible for navigation)
+          handleNextClick(); // Navigate to the next page or perform navigation action
+  
+          // Call fetchData or other relevant function for next action in edit mode asynchronously
+          try {
+            const data = await fetchData(BASIC_DETAILS_API_Get);
+            console.log("GET API called");
+            // Process the retrieved data as needed
+          } catch (error) {
+            console.error("Error calling GET API:", error);
+            // Handle errors here if needed
+          }
+        } catch (error) {
+          console.error("Error navigating:", error);
+          // Handle navigation errors here if needed
+        }
+      }
     }
   };
+  
+  
   // old onsubmit code  dont remove it
   // const onSubmit = async (e) => {
   //   e.preventDefault();
@@ -89,6 +134,10 @@ const BasicDetailsFormComponent = ({
   //     console.error("Error:", error);
   //   }
   // };
+  BasicDetailsFormComponent.defaultProps = {
+    editMode: true,
+  };
+  
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -134,6 +183,7 @@ const BasicDetailsFormComponent = ({
               <div key={index} className={`form-field ${field.fieldstyle}`}>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
+
                 </label>
                 {field.type === "text" && (
                   <TextComponent
@@ -399,7 +449,8 @@ const BasicDetailsFormComponent = ({
       </div>
       <div className=" ml-[107vh] -translate-y-[-27vh]">
         {" "}
-        <ButtonConfig Config={ButtonContent} onClick={handleButtonClick} />
+        <ButtonConfig Config={ButtonContent} onClick={(label, type) => handleButtonClick(label, type, editMode)} />
+
       </div>
       <ModalComponent
         isOpen={isModalOpen}
@@ -408,6 +459,10 @@ const BasicDetailsFormComponent = ({
       />
     </form>
   );
-                 }
+  }
 
 export default BasicDetailsFormComponent;
+
+export const payslips ='run_payroll/payroll-histroy';
+
+export const Runpayroll ='run_payroll/payroll-data';
