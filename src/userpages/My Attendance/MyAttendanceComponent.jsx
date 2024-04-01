@@ -185,16 +185,16 @@ const MyAttendanceComponent = () => {
     try {
 
 
-        // const response = await axios.get('http://localhost:3000/end_user_attendance')
+        const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-        const queryParams = { employee_id: 'IK02' };
-        const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
-        const response = await fetchData(endpoint);
+        // const queryParams = { employee_id: 'IK02' };
+        // const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+        // const response = await fetchData(endpoint);
         
         
         console.log('Post leave', response);
 
-        setLeavebalance(response.leave_balance)
+        setLeavebalance(response.data.leave_balance)
     } catch (error) {
         console.error('Error posting data:', error);
     }

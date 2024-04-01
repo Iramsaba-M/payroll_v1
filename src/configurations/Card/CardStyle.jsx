@@ -43,6 +43,10 @@ const CardStyles = {
   leavemultivaluehead:"flex flex-col justify-between item-centre text-sm font-semibold text-gray-600",
   attendanceheading: " font-bold  text-gray-400 text-sm py-1 -mt-2 ",
   leavestyle5:'bg-white rounded-md border shadow-md px-5 py-4   ml-3 w-[55.9vh] size-40 h-[23vh]',
+
+  usernotificationstyle1:'flex flex-row rounded-md p-4 bg-white shadow-md mx-4 w-[148vh] h-[13vh] border text-xl',
+  usernotificationheadstyle:'text-xs font-bold',
+
 };
 
 export default CardStyles

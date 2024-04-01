@@ -1589,5 +1589,37 @@
       ],
       "id": "3411"
     }
-  ]
+  ],
+
+  "end_user_attendance": {
+    "punchin": false,
+    "punchout": false,
+    "history": [
+      {
+        "start_date": "02/03/2023",
+        "type_of_leave": "SL"
+      },
+      {
+        "start_date": "03/03/2023",
+        "type_of_leave": "SL"
+      },
+      {
+        "start_date": "04/03/2023",
+        "type_of_leave": "SL"
+      }
+    ],
+    "leave_balance": {
+      "casual": "2",
+      "sick": "7",
+      "unpaid": "3",
+      "paternity": "19",
+      "marriage": "6",
+      "maternity": "10",
+      "bereavement": "12",
+      "vacation": "0"
+    }
+  }
 }
+
+
+
