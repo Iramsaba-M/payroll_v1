@@ -20,13 +20,44 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
   const [ctcDetails, setCtcDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleButtonClick = (label, type) => {
-    if (label === "Save" && type === "submit") {
-      setIsModalOpen(true);
-    } else if (label === "Next") {
-      handleNextClick(true);
+
+
+  const handleButtonClick = async (label, type) => {
+    if (!editMode) {
+      // When edit mode is off
+      if (label === "Save" && type === "submit") {
+        setIsModalOpen(true); // Open modal
+      } else if (label === "Next") {
+        handleNextClick(); // Call handleNextClick function
+      }
+    } else {
+      // When edit mode is on
+      if (label === "Save" && type === "submit") {
+        try {
+          // Call your putData service function here
+          await putData(BASIC_DETAILS_API_put); // Replace 'your-endpoint' with your actual endpoint
+          console.log("Put API called");
+        } catch (error) {
+          console.error("Error calling PUT API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        try {
+          // Call your fetchData service function here
+          const data = await fetchData(BASIC_DETAILS_API_Get); // Replace 'your-endpoint' with your actual endpoint
+          console.log("Get API called");
+          // Process the retrieved data as needed
+          
+          // After fetching data and processing it, navigate to the next step
+          handleNextClick();
+        } catch (error) {
+          console.error("Error calling GET API:", error);
+          // Handle errors here
+        }
+      }
     }
   };
+  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -276,3 +307,4 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
 };
 
 export default SalaryDetailsComp;
+

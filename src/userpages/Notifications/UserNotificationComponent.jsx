@@ -37,10 +37,10 @@ import usernotificationstyle1 from '../../configurations/Card/CardStyle';
 
 const UserNotificationComponent = () => {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col">
       {UserNotificationcontent.map((item, index) => (
-        <div key={index} className={usernotificationstyle1}> {/* Use cardStyle here */}
-          <Card Configs={[item]} />
+        <div key={index} className={usernotificationstyle1}>
+          <Card Configs={[item]} cardTitleStyle="text-xs font-bold mb-2" />
         </div>
       ))}
     </div>
@@ -48,3 +48,4 @@ const UserNotificationComponent = () => {
 };
 
 export default UserNotificationComponent;
+

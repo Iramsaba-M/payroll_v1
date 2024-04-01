@@ -20,7 +20,10 @@ const TableStyle = {
  payrolldatastyle5: " border-zinc-50 border-b   text-sm text-yellow-700 bg-yellow-50  w-[11vh]  rounded-md  ",
 
  leavestyles:"border-b-zinc-50 border-b text-center text-gray-500 px-[5.6vh]  py-2 text-sm ",
-  leavedatastyle:"border-b-zinc-50 text-center  text-gray-700 text-sm px-5  pl-7"
+  leavedatastyle:"border-b-zinc-50 text-center  text-gray-700 text-sm px-5  pl-7",
+
+//mypayslip style 
+mypayslipdatastyle1: " border-b-zinc-50 border-b text-center text-black px-10  py-4 text-sm ",
 
 }
 

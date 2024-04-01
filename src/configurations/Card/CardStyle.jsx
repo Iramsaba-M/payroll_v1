@@ -6,7 +6,7 @@ const CardStyles = {
   homestyle1: 'bg-white-50 rounded-md shadow-md p-4 m-4 w-[45vh] size-40 h-32 border text-gray-700',
   homestyle2:'flex flex-col rounded-md  p-4 w-29 bg-white shadow-md mx-4 w-[144vh] h-[55vh] border ',
   homestyle3: 'bg-white-50 rounded-md shadow-md p-4 m- w-[45vh] size-40 h-[38vh] border text-gray-600',
-  CardTitle: 'text-xl font-bold mb-2',
+  CardTitle: 'text-xl  font-bold mb-2',
   CardContent: 'mx-4 text-blue-600 text-2xl font-semibold ',
   MarginBetweenCards: 'my-5',
   homebarchart:'w-[70vh] h-[30vh]',
