@@ -1363,36 +1363,6 @@
       ]
     },
     {
-      "id": "5377",
-      "templateName": " uu",
-      "tableData": [
-        {
-          "name": "LTA",
-          "value": "1000",
-          "component": "CTC",
-          "conditionType": "<",
-          "typeValue": "331",
-          "conditionValue": "911"
-        },
-        {
-          "name": "Gratutity",
-          "value": "1000",
-          "component": "Gross Salary",
-          "conditionType": ">=",
-          "typeValue": "411",
-          "conditionValue": "199"
-        },
-        {
-          "name": "EPF",
-          "value": "3",
-          "component": "Gross Salary",
-          "conditionType": "<",
-          "typeValue": "00",
-          "conditionValue": "456"
-        }
-      ]
-    },
-    {
       "id": "d942",
       "templateName": "",
       "tableData": []
@@ -1539,6 +1509,75 @@
           "conditionValue": "654"
         }
       ]
+    },
+    {
+      "id": "f7dd",
+      "templateName": "",
+      "tableData": []
+    },
+    {
+      "id": "b753",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "LTA",
+          "value": "1000",
+          "component": "Gross Salary",
+          "conditionType": "<",
+          "typeValue": "1",
+          "conditionValue": "2"
+        }
+      ]
+    },
+    {
+      "id": "6273",
+      "templateName": "",
+      "tableData": [
+        {
+          "name": "EPF",
+          "value": "",
+          "component": "",
+          "conditionType": "",
+          "typeValue": "",
+          "conditionValue": ""
+        }
+      ]
+    },
+    {
+      "id": "4af3",
+      "templateName": "v",
+      "tableData": [
+        {
+          "name": "DA",
+          "percentage_value": "1",
+          "of_compenent": "Gross Salary",
+          "operator": ">=",
+          "true_value": "331",
+          "false_value": "911"
+        },
+        {
+          "name": "Add Allowances",
+          "percentage_value": "2",
+          "of_compenent": "",
+          "operator": "",
+          "true_value": "",
+          "false_value": ""
+        }
+      ]
+    },
+    {
+      "id": "980e",
+      "templateName": "ms",
+      "tableData": [
+        {
+          "name": "Gratutity",
+          "percentage_value": "1",
+          "of_compenent": "CTC",
+          "operator": "<",
+          "true_value": "331",
+          "false_value": "911"
+        }
+      ]
     }
   ],
   "tempname": [
@@ -1547,7 +1586,8 @@
         "IK_CTC_Template",
         "Template2",
         "Template3"
-      ]
+      ],
+      "id": "3411"
     }
   ]
 }
