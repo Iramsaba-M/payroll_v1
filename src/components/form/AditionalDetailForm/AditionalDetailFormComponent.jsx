@@ -15,7 +15,7 @@ import { ModalConfig } from '../Formfields/modal/ModalConfig'
 import { postData } from '../../../services/APIService';
 import TextComponent from '../Formfields/text/TextComponent';
 import DocumentStyles from '../DocumentsForm/DocumentStyles';
-import FileComponent from '../Formfields/file/FileComponent';
+import FileComponent from '../DocumentsForm/FileComponent';
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
@@ -166,6 +166,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
                                     textcss={DocumentStyles[field.textcss].input}
                                     placeholder={field.placeholder}
                                     icon={field.icon}
+                                    iconPosition={field.iconPosition}
                                 />
                             )}
                         </div>

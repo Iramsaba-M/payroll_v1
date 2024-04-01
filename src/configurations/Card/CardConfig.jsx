@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React,{useState} from 'react';
 import CardStyles from './CardStyle';
 
-const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle, 
-  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone,multivaluestyle,multiheadingstyle }) => {
+const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle, name,
+  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone,multivaluestyle,multiheadingstyle,onClick }) => {
+    const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+     onClick(name, heading);
+  };
   return (
-    <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards} ${className}`}>
+    <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards} ${className} ${isClicked && 'border-2 border-blue-400'}`} onClick={onClick && handleClick}>
       {title && (<h3 className={CardStyles.CardTitle}>{title}</h3>)}
 
       {heading && (<h3 className={`${CardStyles[headstyle]}`}>{heading}</h3>)}
@@ -42,7 +48,7 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
   );
 };
 
-const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclone }) => {
+const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclone,onClick }) => {
   return (
     <div className="flex  ">
       {Config.map((card, index) => (
@@ -50,6 +56,7 @@ const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclon
           {index > 0 && index % Config.length === 0 && <div className="w-full"></div>}
           <Card
             {...card}
+             onClick={onClick}
             comp={comp ? comp : (card.comp ? card.comp : null)}
             contentvalue={contentvalue ? contentvalue : null}
             contentvalue2={contentvalue2 ? contentvalue2 : null}

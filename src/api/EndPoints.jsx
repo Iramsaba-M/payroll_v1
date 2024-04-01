@@ -43,4 +43,5 @@ export const payslips ='Payslip';
 
 export const view ='history/dowload';
 
-export const BASIC_DETAILS_API_Get = 'employee/basic-details';
+// export const EndUser_ApplyLeave = 'enduser_applyleave';
+export const EndUser_ApplyLeave = 'apply_leave';
