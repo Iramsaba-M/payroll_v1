@@ -1,9 +1,19 @@
+
+
 const TextStyle = {
   standard: {
     label: 'block text-gray-600 text-xs font-bold my-1', 
     input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-14
     
   },
+
+//ctc template
+  textcss: 'ml-12 w-[12vh] outline-none',
+  TableHeaders:'px-1 w-[40vh] border-r-2 border-b-2 bg-indigo-450',
+  OptionsComponentData :'w-[18vh] flex justify-center ml-8 6 outline-none bg-green-200  ',
+  OptionsComponentData2 :'w-[8vh] flex justify-center ml-[10vh] 6 outline-none bg-green-200 px-1  ',
+
+  
   standard_Home: {
     label: 'block text-gray-600 text-xs font-bold my-1', 
     input: 'border-2 hover:border-blue-500 border-gray-100 bg-transparent rounded-md text-gray text-xs my-2 mr- mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-24
@@ -29,14 +39,12 @@ const TextStyle = {
   boxInput2: 'border-1 border-gray-200 text-gray-900 shadow-inner text-sm focus:border-blue-500 bg-gray-50 p-2 rounded-sm outline-none block w-full transition-colors duration-300',
   //ctctemplate
   templatename: {
-    // label: 'block text-black-600 text-sm font-medium my-1', 
-    // input: 'border-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-14
-    label: 'block text-black-600 text-lg font-medium my-1', 
-    input: ' h-10 border-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-14
+    label: 'block text-black-600 text-lg  my-1', 
+    input: ' h-10 border-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[45vh] leading-tight focus:outline-none rounded-md' ,//mr-14
   },
   ctcoption: {
     label: 'block text-black-600 text-sm font-medium my-1', 
-    input: 'h-10 border-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none placeholder:text-green-500',//mr-14
+    input: 'h-10 border-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[25vh] leading-tight focus:outline-none placeholder:text-green-500 rounded-md',//mr-14
     
   },
   
@@ -50,8 +58,9 @@ const TextStyle = {
   //ctc inner template
   
 
-  leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr-14 text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
-  leaveuploadinput:'bg-gray-100 border-2  hover:border-blue-500 mt-8   text-gray text-sm   rounded-md px-5 py-1 leading-tight focus:outline-none'
+  leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr-4 text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
+  // leaveuploadinput:'bg-gray-100 border-2  hover:border-blue-500 mt-9 mr-9  text-gray-700 flex justify-center items-center  py-0.5 rounded-md px-6 '
+  leaveuploadinput:'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-12 mt-9'
 };
 
 export default TextStyle;

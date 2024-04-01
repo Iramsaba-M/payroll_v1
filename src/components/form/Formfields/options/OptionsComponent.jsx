@@ -109,6 +109,39 @@
 
 // export default OptionsComponent;
 
+// const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon                                                                     }) => {
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       {icon && <div className="absolute ml-[30vh] mt-8">{icon}</div>}
+//       <label>{label} </label>
+//       <select
+//         name={name}
+//         value={value}
+//         onChange={onChange}
+//         className={textcss}
+//         style={{ appearance: 'none', background: 'transparent' }}
+     
+//       >
+//         {value ? null : (
+//           <option value="" disabled hidden>
+//             {placeholder}
+//           </option>
+//         )}
+//         {options.map((option, index) => (
+//           <option key={index} value={option.value}>
+//             {option.name}
+//           </option>
+//         ))}
+//       </select>
+//       {value && <p className="text-gray-500 mt-1"></p>}
+//     </div>
+//   );
+// };
+
+// export default OptionsComponent;
+
+
+
 const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon                                                                     }) => {
   return (
     <div style={{ position: 'relative' }}>
@@ -119,13 +152,14 @@ const OptionsComponent = ({ name, label, value, options, onChange, textcss, plac
         value={value}
         onChange={onChange}
         className={textcss}
-        style={{ appearance: 'none', background: 'transparent' }}
+        style={{ appearance: 'none', background: 'transparent'  }}
       >
         {value ? null : (
           <option value="" disabled hidden>
             {placeholder}
           </option>
         )}
+           <option >{placeholder}</option>
         {options.map((option, index) => (
           <option key={index} value={option.value}>
             {option.name}
@@ -138,3 +172,91 @@ const OptionsComponent = ({ name, label, value, options, onChange, textcss, plac
 };
 
 export default OptionsComponent;
+
+// import React from 'react';
+// import Select from 'react-select';
+
+// const OptionsComponent = ({ name, label, value, options, onChange, placeholder, icon ,textcss}) => {
+//   // Convert options to the format required by react-select
+//   const selectOptions = options.map(option => ({ value: option.value, label: option.name }));
+
+//   // Handle change event
+//   const handleChange = selectedOption => {
+//     // Call the passed in onChange function with the value of the selected option
+//     onChange({ target: { name, value: selectedOption ? selectedOption.value : '' } });
+//   };
+
+//   // Find the selected option
+//   const selectedOption = selectOptions.find(option => option.value === value);
+
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       {icon && <div className="absolute ml-[30vh] mt-8">{icon}</div>}
+//       <label>{label}</label>
+//       <Select
+//         name={name}
+//         value={selectedOption}
+//         onChange={handleChange}
+//         options={selectOptions}
+//         isClearable
+//         placeholder={placeholder}
+//         className={textcss}
+        
+//       />
+//       {value && <p className="text-gray-500 mt-1"></p>}
+//     </div>
+//   );
+// };
+
+// export default OptionsComponent;
+
+
+// import React from 'react';
+// import Select from 'react-select';
+
+// const OptionsComponent = ({ name, label, value, options, onChange, placeholder, icon, textcss }) => {
+//   // Convert options to the format required by react-select
+//   const selectOptions = options.map(option => ({ value: option.value, label: option.name }));
+
+//   // Handle change event
+//   const handleChange = selectedOption => {
+//     // Call the passed in onChange function with the value of the selected option
+//     onChange({ target: { name, value: selectedOption ? selectedOption.value : '' } });
+//   };
+
+//   // Find the selected option
+//   const selectedOption = selectOptions.find(option => option.value === value);
+
+//   // Define custom styles
+//   const customStyles = {
+//     control: () => ({
+//       // None of react-select's styles are passed to <Control />
+//       width: 200,
+//     }),
+//     dropdownIndicator: () => ({
+//       // None of react-select's styles are passed to <DropdownIndicator />
+//     }),
+//     // You can also specify styles for other parts of the select component
+//   };
+
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       {icon && <div className="absolute ml-[30vh] mt-8">{icon}</div>}
+//       <label>{label}</label>
+//       <Select
+//         name={name}
+//         value={selectedOption}
+//         onChange={handleChange}
+//         options={selectOptions}
+//         isClearable
+//         placeholder={placeholder}
+//         className={textcss}
+//         styles={customStyles} // Apply the custom styles
+//         components={{ DropdownIndicator: () => null }}
+//       />
+//       {value && <p className="text-gray-500 mt-1"></p>}
+//     </div>
+//   );
+// };
+
+// export default OptionsComponent;

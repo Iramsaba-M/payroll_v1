@@ -1,6 +1,4 @@
-//payslip.jsxfghjk
-
-
+//payslip
 import React, { useState, useEffect } from 'react';
 import TableComponent from '../../configurations/tables/TableComponent'
 import { tableContent2 } from './RunPayrollContents';
@@ -70,7 +68,6 @@ const Payslip = () => {
       }, [selectedDateTop]);
     
     
-
     return (
         <div>
            <div className='absolute right-8 top-20'>

@@ -41,7 +41,9 @@ const SettingComponent = () => {
         ))}
       {cardclick && (
         <>
+        <div className='mt-4'>
           <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          </div>
           <Outlet />
         </>
       )}

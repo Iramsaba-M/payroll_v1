@@ -14,8 +14,6 @@ import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 import { fetchData, postData } from '../../../services/APIService';
 
-
-
 const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
