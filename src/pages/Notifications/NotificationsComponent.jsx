@@ -1,10 +1,10 @@
 import React from 'react'
-import Attendance from '../My Attendance/Attendance'
+import MyAttendance from '../../userpages/My Attendance/MyAttendance'
 
 const NotificationsComponent = () => {
   return (
     <div>
-      <Attendance/>
+      <MyAttendance/>
     </div>
   )
 }

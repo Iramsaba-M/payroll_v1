@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import RequestForReimbursementStyles from './RequestForReimbursementStyles';
@@ -63,9 +62,9 @@ const RequestForReimbursementComponent = ({ config }) => {
   return (
     <div className=''>
       <div className='w-[160vh]'>
-        <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[3.5vh]'>Request For Reimbursement</h1>
-        <div className='border-2 border-gray-200 shadow-md h-full'>
-          <div className=' ml-7 mt-7'>
+        <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Reimbursement</h1>
+        <div className='border-2 border-gray-200 shadow-md h-full ml-7'>
+          <div className=' ml-7 mt-6'>
             {/* <form onSubmit={handleSubmit}> */}
             <form onSubmit={(e) => handleSubmit(e, 'Requestreimbursement')}>
               {formData.map((form, index) => (
@@ -140,7 +139,7 @@ const RequestForReimbursementComponent = ({ config }) => {
               <div className='mt-4'>
                 <ButtonConfig Config={add} onClick={addNewForm} />
               </div>
-              <div className='flex mt-4'>
+              <div className='flex mt-4 mb-7'>
                 <ButtonConfig Config={Requestreimbursement} onClick={() => handleButtonClick("submit")}  />
                 <ButtonConfig Config={Cancel}/>
                 

@@ -299,7 +299,7 @@ const BasicDetailsFormComponent = ({
           </div>
         </div>
 
-<div className="form-line flex mb-4 ">
+      <div className="form-line flex mb-4 ">
           {config.slice(7, 10).map((field, index) => (
             <div key={index} className={`form-field ${field.fieldstyle}`}>
               <label className={TextStyle[field.textcss].label}>
