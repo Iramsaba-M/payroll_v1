@@ -46,49 +46,7 @@ const BasicDetailsFormComponent = ({
       handleNextClick(true);
     }
   };
-  // old onsubmit code  dont remove it
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
 
-  //     console.log("Form Values:", values);
-  //     // Create a FormData object to handle file uploads
-  //     const formData = new FormData();
-
-  //     // Append text data to FormData
-  //     Object.entries(values).forEach(([key, value]) => {
-  //       formData.append(key, value);
-  //     });
-
-  //     // Append image file to FormData if it exists
-  //     if (values.photo_content) {
-  //       formData.append("photo_content", values.photo_content);
-  //     }
-
-  //     // Make the axios call using FormData
-  //     const response = await axios.post(
-  //       getApiUrl(BASIC_DETAILS_API),
-  //       formData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data", // Set content type for FormData
-  //         },
-  //       }
-  //     );
-
-  //     console.log("Data sent:", response.data);
-
-  //     const employeeId = values.employee_id;
-
-  //     handleEmpId(employeeId)
-
-  //     console.log('Employee ID:', employeeId);
-  //     // If the above API call is successful, trigger the handleSubmit function from props
-  //     handleSubmit(values);
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -249,7 +207,7 @@ const BasicDetailsFormComponent = ({
           </div>
         </div>
 
-<div className="form-line flex mb-4 ">
+      <div className="form-line flex mb-4 ">
           {config.slice(7, 10).map((field, index) => (
             <div key={index} className={`form-field ${field.fieldstyle}`}>
               <label className={TextStyle[field.textcss].label}>

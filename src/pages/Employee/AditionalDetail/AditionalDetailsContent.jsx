@@ -47,8 +47,7 @@ export const formContent = [
       type: 'file',
       textcss: 'additionalstandard2',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />, //className={DocumentStyles.iconstyle}
-      iconPosition:'end'
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} /> 
     },
     {
       label: 'Payslips',
@@ -56,8 +55,7 @@ export const formContent = [
       type: 'file',
       textcss: 'additionalstandard2',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
-      iconPosition:'end'
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />
       },
       {
         label: 'Bank Status',
@@ -65,8 +63,7 @@ export const formContent = [
         type: 'file',
         textcss: 'additionalstandard2',
         placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,//className={DocumentStyles.iconstyle}
-        iconPosition:'end'
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />
         },
   
 
