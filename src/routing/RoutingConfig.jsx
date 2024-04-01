@@ -31,7 +31,8 @@ import MyPayslips from '../userpages/My Payslips/MyPayslips'
 import UserNotification from '../userpages/Notifications/UserNotification'
 import RaiseRequest from '../userpages/Raise Request/RaiseRequest'
 import UserReports from '../userpages/Reports/UserReports'
-
+import RequestForLoan from '../../src/userpages/Raise Request/RequestForLoan'
+import RequestForReimbursement from '../../src/userpages/Raise Request/RequestForReimbursement'
 const routesConfig = [
   {
     label: "Person Data",
@@ -106,6 +107,29 @@ const routesConfig = [
             {
               path: 'raiserequest',
               element: <RaiseRequest />,
+              children: [
+                {
+                    path: 'RequestforLoan',
+                    element: <RequestForLoan/>,
+                    // children: [
+                    //   {
+                    //     path: 'RequestForReimbursement',
+                    //     element: <RequestForReimbursement/>,
+                    //   },
+                      
+                    // ]
+                  },
+                  {
+                    path: 'RequestForReimbursement',
+                    element: <RequestForReimbursement/>,
+                  },
+                  {
+                    path: 'ReimbursementSetting',
+                    element: <ReimbursementSetting />,
+                  },
+                
+                  
+              ],
             },
             {
               path: 'userreports',
@@ -241,16 +265,20 @@ const routesConfig = [
                   {
                       path: 'CTCTemplateSetting',
                       element: <CTCTemplateSetting />,
-                      children: [
-                        {
-                          path: 'Demo_ctc',
-                          element: <Demo/>,
-                        },
-                        // {
-                        //   path: 'CTCTemplateSetting',
-                        //   element: <CTCTemplateSetting />,
-                        // }
-                      ]
+                      // children: [
+                      //   {
+                      //     path: 'Demo_ctc',
+                      //     element: <Demo_ctc/>,
+                      //   },
+                      //   // {
+                      //   //   path: 'CTCTemplateSetting',
+                      //   //   element: <CTCTemplateSetting />,
+                      //   // }
+                      // ]
+                    },
+                    {
+                      path: 'Demo_ctc',
+                      element: <Demo_ctc />,
                     },
                     {
                       path: 'PayRollSetting',

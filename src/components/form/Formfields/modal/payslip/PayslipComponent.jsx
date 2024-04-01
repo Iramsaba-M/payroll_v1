@@ -24,7 +24,7 @@ const PayslipComponent = ({ config }) => {
       }
     };
 
-    fetchData();
+    fetchData(); 
   }, []);
 
   const handleInputChange = (fieldName, newValue) => {
