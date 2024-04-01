@@ -1,8 +1,32 @@
+// import React, { useState } from 'react';
+// import DynamicSearch from '../search/DynamicSearch';
+
+
+// const SearchableComp = ({ SearchConfig, data, searchFunrec }) => {
+//   const [searchData, setSearchData] = useState([]);
+
+//   const recSearchData = (searchedData) => {
+//     setSearchData(searchedData);
+//     searchFunrec(searchedData);
+//   };
+
+//   return (
+//     <div>
+//       <DynamicSearch
+//         data={data}
+//         searchKey="employee_name"
+//         config={SearchConfig}
+//         searchFunrecd={recSearchData}
+//       />
+//     </div>
+//   );
+// };
+// export default SearchableComp;
 import React, { useState } from 'react';
 import DynamicSearch from '../search/DynamicSearch';
+import SearchInputConfig from './SearchInputConfig'; // Correct import path
 
-
-const SearchableComp = ({ SearchConfig, data, searchFunrec }) => {
+const SearchableComp = ({ data, searchFunrec }) => {
   const [searchData, setSearchData] = useState([]);
 
   const recSearchData = (searchedData) => {
@@ -12,13 +36,18 @@ const SearchableComp = ({ SearchConfig, data, searchFunrec }) => {
 
   return (
     <div>
-      <DynamicSearch
-        data={data}
-        searchKey="employee_name"
-        config={SearchConfig}
-        searchFunrecd={recSearchData}
-      />
+      {SearchInputConfig.map((config, index) => (
+        <DynamicSearch
+          key={index}
+          data={data}
+          searchKey="employee_name"
+          config={config}
+          searchFunrecd={recSearchData}
+        />
+      ))}
     </div>
   );
 };
+
 export default SearchableComp;
+

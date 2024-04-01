@@ -31,41 +31,41 @@ const Payslip = () => {
       };
     
 
-    const fetchTableData = async () => {
-        try {
-          const tableData = await fetchData(payslips); // Fetch data based on payslips
-          setTableData(tableData);
-        } catch (error) {
-          console.error('Error fetching table data:', error);
-        }
-      };
+    // const fetchTableData = async () => {
+    //     try {
+    //       const tableData = await fetchData(payslips); // Fetch data based on payslips
+    //       setTableData(tableData);
+    //     } catch (error) {
+    //       console.error('Error fetching table data:', error);
+    //     }
+    //   };
       
-      useEffect(() => {
-        fetchTableData(); // Fetch data on component mount or when payslips change
-      }, [payslips]); // Include payslips in the dependency array
+    //   useEffect(() => {
+    //     fetchTableData(); // Fetch data on component mount or when payslips change
+    //   }, [payslips]); // Include payslips in the dependency array
     
-    //  useEffect(() => {
-    //     const fetchTableData = async () => {
-    //       try {
-    //         const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
-    //         const queryParams = new URLSearchParams({
-    //           month: formattedDate,
-    //           year: selectedDateTop.getFullYear()
-    //         });
-    //         const tableData = await fetchData(`payslips?${queryParams}`);
+     useEffect(() => {
+        const fetchTableData = async () => {
+          try {
+            const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
+            const queryParams = new URLSearchParams({
+              month: formattedDate,
+              year: selectedDateTop.getFullYear()
+            });
+            const tableData = await fetchData(`payslips?${queryParams}`);
       
-    //         // Log the constructed URL
-    //         const url = `${fetchData.baseUrl}/${payslips}?${queryParams.toString()}`;
-    //         console.log('Constructed URL:', url);
+            // Log the constructed URL
+            const url = `${fetchData.baseUrl}/${payslips}?${queryParams.toString()}`;
+            console.log('Constructed URL:', url);
       
-    //         setData(tableData);
-    //       } catch (error) {
-    //         console.error('Error fetching table data:', error);
-    //       }
-    //     };
+            setData(tableData);
+          } catch (error) {
+            console.error('Error fetching table data:', error);
+          }
+        };
       
-    //     fetchTableData();
-    //   }, [selectedDateTop]);
+        fetchTableData();
+      }, [selectedDateTop]);
     
     
     return (
