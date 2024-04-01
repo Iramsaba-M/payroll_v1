@@ -2,8 +2,6 @@
 import Button from "../configurations/Button/Button.jsx";
 import IconbarComponent from "../configurations/Iconbar/IconbarComponent";
 import IconConfig from "../configurations/Iconbar/IconConfig.jsx"
-// import TableComponent from "./components/Tables/TableComponent.jsx";
-// import FormComponent from "./components/Forms/FormComponent.jsx";
 import routesConfig from "../routing/RoutingConfig.jsx";
 import LogoConfig from "../configurations/logo/LogoConfig.jsx";
 import HeadConfi from "../configurations/Header/HeadConfi";

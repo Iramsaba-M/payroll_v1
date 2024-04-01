@@ -37,6 +37,7 @@ export const Home_and_Report_BarGraphdata ='reports/graph-data'
 export const Runpayroll ='Runpayroll';
 
 // export const payslips ='fetch_employee_data';
+export const mypayslip ='mypayslip';
 
 export const payslips ='Payslip';
 
