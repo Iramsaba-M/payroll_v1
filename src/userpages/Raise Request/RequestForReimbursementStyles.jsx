@@ -2,7 +2,7 @@ const RequestForReimbursementStyles = {
     standard: {
        
       label: 'block text-gray-600 text-xs font-bold my-1', 
-      input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none ',//mr-14
+      input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none placeholder-black ',//mr-14
       
     },
     standard_document: {
