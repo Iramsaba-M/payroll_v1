@@ -49,3 +49,6 @@ export const view ='history/dowload';
 
 // export const EndUser_ApplyLeave = 'enduser_applyleave';
 export const EndUser_ApplyLeave = 'apply_leave';
+export const EndUser_Leave_Balance ="annual_leave_balance"
+export const EndUser_Attendance = 'punch';
+export const EndUser_Get_Attendance = 'employee';

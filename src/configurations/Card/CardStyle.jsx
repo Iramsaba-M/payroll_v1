@@ -37,11 +37,12 @@ const CardStyles = {
   payrollmaultivalue:"-mt-6  ml-48 text-right",
   //////////////////////////////////////////////////
   leavestyle:'bg-white rounded-md border shadow-md py-5 flex justify-centre  ml-3  h-28 w-32 px-3  ',
-  leavestyle2:'bg-white rounded-md border shadow-md px-5 py-4   ml-3 w-[54vh] size-40 h-[23vh]',
+  leavestyle2:'bg-white rounded-md border shadow-md px-5 py-4   ml-3 w-[60vh] size-40 h-[23vh]',
   leavestyle3:'bg-white rounded-md border shadow-md py-5 flex justify-centre  ml-3  h-28 w-32 px-3 overfl-auto max-w-[6vh]  ',
   leavemultivalue:"font-bold text-2xl ml-9 text-black ",
   leavemultivaluehead:"flex flex-col justify-between item-centre text-sm font-semibold text-gray-600",
   attendanceheading: " font-bold  text-gray-400 text-sm py-1 -mt-2 ",
+  leavestyle5:'bg-white rounded-md border shadow-md px-5 py-4   ml-3 w-[55.9vh] size-40 h-[23vh]',
 };
 
 export default CardStyles

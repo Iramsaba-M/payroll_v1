@@ -10,6 +10,8 @@ import TableComponent from '../../configurations/tables/TableComponent'
 import axios from 'axios'
 import ButtonConfig from '../../configurations/Button/ButtonConfig'
 import { FaPlay } from "react-icons/fa6";
+import {  EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance } from '../../api/EndPoints'
+import { fetchData } from '../../services/APIService'
 
 export const Slider =({config,data})=>{
  
@@ -41,7 +43,7 @@ const handleScroll = (scrollOffset) => {
 };
 
 const scrollToLeft = () => {
-  handleScroll(-260);
+  handleScroll(-280);
 };
 
 const scrollToRight = () => {
@@ -49,20 +51,20 @@ const scrollToRight = () => {
 };
 
 return (
-  <div className=" ">
+  <div className=" w-[55vh] bg-gray-100 flex justify-center ">
     <div
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
       style={{ position: "relative" }}
     >
       <div
-        className='flex w-[48.7vh] rounded-md  overflow-hidden  '
+        className='flex w-[48vh] rounded-md  overflow-hidden  '
         ref={containerRef}
       >
         {config.map((item,index) => (
           <div
             key={index}
-            className=" border-4 border-gray-100  p-1   h-28 bg-gray-100 flex flex-col  justify-betwee w-40  "
+            className=" border-4 border-gray-100  p-1   h-28  flex flex-col  justify-betwee w-40  "
           >
             <div className='w-[10vh] mt-2 borde h-24 flex justify-center'>
             <h1 className="     text-center">
@@ -90,7 +92,7 @@ return (
             style={{
               position: "absolute",
               top: "55%",
-              left: "-14px",
+              left: "-30px",
               transform: "translateY(-50%)",
               backgroundColor: "transparent",
               border: "none",
@@ -106,7 +108,7 @@ return (
             style={{
               position: "absolute",
               top: "55%",
-              right: "-5px",
+              right: "-20px",
               transform: "translateY(-50%)",
               backgroundColor: "transparent",
               border: " none",
@@ -179,29 +181,75 @@ const MyAttendanceComponent = () => {
     
     return className.trim();
   };
+  const fetchgetData = async () => {
+    try {
 
 
-  const fetchData = async () => {
+        // const response = await axios.get('http://localhost:3000/end_user_attendance')
+
+        const queryParams = { employee_id: 'IK02' };
+        const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+        const response = await fetchData(endpoint);
+        
+        
+        console.log('Post leave', response);
+
+        setLeavebalance(response.leave_balance)
+    } catch (error) {
+        console.error('Error posting data:', error);
+    }
+};
+
+useEffect(() => {
+    fetchgetData();
+    fetchAttendanceData();
+}, []);
+
+  const fetchAttendanceData = async () => {
     try {
       
 
       const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-      // const response = await postData(Home_and_Report_BarGraphdata, {
-      //   year: year,
-      //   month: month,
-      // });
-      console.log('Post Response cards:', response.data);
+      // const queryParams = { employee_id: 'IK02' };
+      // const endpoint = `${EndUser_Get_Attendance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+      // const response = await fetchData(endpoint);
+      console.log('leave history', response.data);
+      // setLeavehistory(response.leave_history);
       setLeavehistory(response.data.history);
-      setLeavebalance(response.data.leave_balance)
     } catch (error) {
       console.error('Error posting data:', error);
     }
-  };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+        const emp = 'IK02';
+
+        console.log('Data:', formData);
+        const formDataArray = [...formData.entries()];
+
+        // Iterate over formDataArray and log key-value pairs to the console
+        formDataArray.forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
+
+        const response = await postDataImage(EndUser_ApplyLeave, formData);
+
+
+        console.log('Data sent:', response);
+        // handlesubmit();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 
   return (
     <div >
