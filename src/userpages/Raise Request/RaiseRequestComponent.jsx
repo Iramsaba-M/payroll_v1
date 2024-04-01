@@ -40,7 +40,7 @@ const RaiseRequestComponent = () => {
         ))}
       {cardclick && (
         <>
-          <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          <button onClick={handleBackClick} className='mt-4'><IoMdArrowBack /></button>
           <Outlet />
         </>
       )}
