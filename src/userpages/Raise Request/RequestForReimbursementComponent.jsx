@@ -44,20 +44,38 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await Promise.all(
+  //       formData.map(async (form) => {
+  //         const response = await axios.post('http://localhost:3000/re', form.values);
+  //         console.log('Data sent successfully:', response.data);
+  //       })
+  //     );
+  //     // Open the modal after successful form submission
+  //   } catch (error) {
+  //     console.error('Error sending data:', error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Promise.all(
         formData.map(async (form) => {
-          const response = await axios.post('http://localhost:3000/re', form.values);
+          const dataToSend = { ...form.values, employee_id: 1 }; // Include employee_id with form values
+          const response = await axios.post('http://192.168.0.150:5001/submit_reimbursement/', dataToSend);
           console.log('Data sent successfully:', response.data);
         })
       );
       // Open the modal after successful form submission
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
+  
 
   return (
     <div className=''>
