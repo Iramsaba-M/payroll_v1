@@ -1,10 +1,13 @@
 
 //Employee Registeration
-export const EMP_API = 'employee/basic-details';
+// export const EMP_API = 'employee/basic-details';
+export const EMP_API = 'basicdetail';
+export const BASIC_DETAILS_API_put = 'employee/basic-details';
 
 export const BASIC_DETAILS_API_Get = 'employee/basic-details';
 
-export const CARDS_API = 'employee/total_ctc_and_employees';
+// export const CARDS_API = 'employee/total_ctc_and_employees';
+export const CARDS_API = 'cardData';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
 
