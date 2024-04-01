@@ -85,6 +85,30 @@ function DynamicTable({ config, data, onEditEmployee }) {
   };
 
   const renderCellContent = (row, column) => {
+      if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
+      console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
+      const formattedName = `${row.first_name} ${row.middle_name} ${row.last_name}`;
+      if (row.photo_content) {
+        const imageUrl = `data:image/png;base64, ${row.photo_content}`;
+        console.log('Image URL:', imageUrl);
+        const photoIcon = (
+          <img
+            src={imageUrl}
+            alt="Employee Photo"
+            className="rounded-full"
+            style={{ width: '24px', height: '24px', marginRight: '4px' }}
+          />
+        );
+        return (
+          <div className="flex items-center">
+            {photoIcon}
+            <span>{formattedName}</span>
+          </div>
+        );
+      } else {
+        return <>Loading...</>;
+      }
+    }
     if (column.name === 'status' && column.clmncss) {
       const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
       return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
