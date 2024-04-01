@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import TableStyle from './TableStyle';
 import { MdOutlineEdit, MdOutlineFileDownload } from 'react-icons/md';
@@ -8,12 +7,12 @@ import ModalComponent from '../../components/form/Formfields/modal/ModalComponen
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 
-function DynamicTable({ config, data }) {
+function DynamicTable({ config, data, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  console.log ('data',data)
+
   const handleCheckboxChange = (row) => {
     if (selectedRows.includes(row)) {
       setSelectedRows(selectedRows.filter((selectedRow) => selectedRow !== row));
@@ -24,7 +23,7 @@ function DynamicTable({ config, data }) {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setEditModalOpen(false)
+    setEditModalOpen(false);
   };
 
   const handleDownload = async (row) => {
@@ -35,10 +34,9 @@ function DynamicTable({ config, data }) {
       }
 
       const queryParams = { employee_id: row.employee_id };
-      const endpoint = `${view}/${queryParams.employee_id}`; // Construct endpoint URL
+      const endpoint = `${view}/${queryParams.employee_id}`;
       const tableData = await fetchData(endpoint, queryParams);
 
-      
       const blob = await tableData.blob();
       const url = window.URL.createObjectURL(blob);
       window.open(url, '_blank');
@@ -54,15 +52,10 @@ function DynamicTable({ config, data }) {
         return;
       }
 
-      // Render modal component
       setIsModalOpen(true);
-
-      // Fetch data from API
       const endpoint = `${view}/${row.employee_id}`;
       const tableData = await fetchData(endpoint);
 
-      // Assuming the response contains the data for the modal
-      // You need to handle the modal data accordingly
       console.log('Modal data:', tableData);
     } catch (error) {
       console.error('Error fetching payslips data:', error);
@@ -76,17 +69,7 @@ function DynamicTable({ config, data }) {
         return;
       }
 
-      // Render modal component
-      setEditModalOpen(true);
-      console.log(' setEditModalOpen(true);', setEditModalOpen(true));
-
-      // // Fetch data from API
-      // const endpoint = `${view}/${row.employee_id}`;
-      // const tableData = await fetchData(endpoint);
-
-      // // Assuming the response contains the data for the modal
-      // // You need to handle the modal data accordingly
-      // console.log('Modal data:', tableData);
+      onEditEmployee(row.employee_id); // Call the onEditEmployee function passed as a prop
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
@@ -102,37 +85,24 @@ function DynamicTable({ config, data }) {
   };
 
   const renderCellContent = (row, column) => {
-    if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
-      console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
-      const formattedName = `${row.first_name} ${row.middle_name} ${row.last_name}`;
-      if (row.photo_content) {
-        const imageUrl = `data:image/png;base64, ${row.photo_content}`;
-        console.log('Image URL:', imageUrl);
-        const photoIcon = (
-          <img
-            src={imageUrl}
-            alt="Employee Photo"
-            className="rounded-full"
-            style={{ width: '24px', height: '24px', marginRight: '4px' }}
-          />
-        );
-        return (
-          <div className="flex items-center">
-            {photoIcon}
-            <span>{formattedName}</span>
-          </div>
-        );
-      } else {
-        return <>Loading...</>;
-      }
-    }
-        //This if block is conditional styling for Review payroll table in Run Payroll page.
-        if (column.name === 'status' && column.clmncss) {
-          const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
-          return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
-        }
-
-    if (column.name === 'PAYSLIPS') {
+    if (column.name === 'edit2') {
+      // Render AddEmployee component conditionally
+      return (
+        <button className="cursor-pointer" onClick={() => handleEditPayslips(row)}>
+          {column.content}
+        </button>
+      );
+    } else if (column.dataType === 'icon' && column.name === 'download') {
+      // Render Download button with icon
+      return (
+        <button
+          className="bg-blue-50 text-blue-600 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
+          onClick={() => handleDownload(row)}
+        >
+          <MdOutlineFileDownload />
+        </button>
+      );
+    } else if (column.name === 'PAYSLIPS') {
       // Render PaySlips button
       return (
         <button
@@ -154,34 +124,29 @@ function DynamicTable({ config, data }) {
       );
     } else if (column.dataType === 'icon' && column.name === 'edit') {
       // Render Edit icon
-      // return column.content;
       return (
         <button
-          className="  cursor-pointer "
+          className="cursor-pointer"
           onClick={() => handleEditPayslips(row)}
         >
           <MdOutlineEdit />
         </button>
       );
-    } else {
+    }
+    
+    else {
       // Default rendering for other columns
       return row[column.name] || '';
     }
-};
+  };
 
   return (
-    // <div style={{ maxHeight: '350px', overflowY: 'auto' }}>
-     <div  className=' max-h-[44vh] overflow-y-auto border-2 rounded-md  hover:border-blue-500'> 
-       {/* <table className='border-2 rounded-md p-2 hover:border-blue-500'> */}
-        <table> 
+    <div className="max-h-[44vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
+      <table>
         <thead>
-          <tr className='bg-gray-100 p-2'>
-            <th className='px-6'>
-              <input
-                type="checkbox"
-                onChange={handleSelectAll}
-                checked={selectAll}
-              />
+          <tr className="bg-gray-100 p-2">
+            <th className="px-6">
+              <input type="checkbox" onChange={handleSelectAll} checked={selectAll} />
             </th>
             {config.map((column) => (
               <th key={column.name} className={TableStyle[column.clmncss]}>
@@ -193,7 +158,7 @@ function DynamicTable({ config, data }) {
         <tbody>
           {data.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              <td className='px-6'>
+              <td className="px-6">
                 <input
                   type="checkbox"
                   onChange={() => handleCheckboxChange(row)}
@@ -209,17 +174,10 @@ function DynamicTable({ config, data }) {
           ))}
         </tbody>
       </table>
-
-     {setIsModalOpen && ( <ModalComponent
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        config={ModalPayslipConfig}
-      />)}
-      {setEditModalOpen && ( <ModalComponent
-        isOpen={editModalOpen}
-        onClose={handleCloseModal}
-        config={ModalReviewPayrollConfig}
-      />)}
+      {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
+      {editModalOpen && (
+        <ModalComponent isOpen={editModalOpen} onClose={handleCloseModal} config={ModalReviewPayrollConfig} />
+      )}
     </div>
   );
 }

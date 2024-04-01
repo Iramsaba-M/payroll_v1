@@ -795,6 +795,34 @@
       "employee_status": "Inactive",
       "inactiveStatus": "Suspended",
       "leaveOption": "Due to Disciplinary Action"
+    },
+    {
+      "id": "583b",
+      "type_of_employee": "Employee",
+      "employee_benefit": [
+        "Transport"
+      ],
+      "employee_status": "Active",
+      "year_of_experiance": "5",
+      "feedback": "good",
+      "experiance_certificate": {},
+      "payslips": {},
+      "bank_status": {},
+      "employee_id": ""
+    },
+    {
+      "id": "b2b4",
+      "type_of_employee": "Employee",
+      "employee_benefit": [
+        "Transport"
+      ],
+      "employee_status": "Active",
+      "year_of_experiance": "5",
+      "feedback": "good",
+      "experiance_certificate": {},
+      "payslips": {},
+      "bank_status": {},
+      "employee_id": ""
     }
   ],
   "home_report_carddata": {

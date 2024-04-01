@@ -19,11 +19,6 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
     onChange(id, { ...values, [name]: value });
   };
 
-  // const handleChange = (name, value) => {
-  //   setValues((prevValues) => ({ ...prevValues, [name]: value }));
-  // };
-
-
   const highlight = () => {
     setIsButtonClicked((prevState) => !prevState);
     const setDefaultPayroll = !values["default_for_payroll"];

@@ -58,6 +58,9 @@ const TextStyle = {
   //ctc inner template
   
 
+  leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr-4 text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
+  // leaveuploadinput:'bg-gray-100 border-2  hover:border-blue-500 mt-9 mr-9  text-gray-700 flex justify-center items-center  py-0.5 rounded-md px-6 '
+  leaveuploadinput:'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-12 mt-9'
 };
 
 export default TextStyle;
