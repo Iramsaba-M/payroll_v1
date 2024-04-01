@@ -15,9 +15,6 @@ import { mypayslip } from '../../api/EndPoints';
 import { fetchData } from '../../services/APIService';
 
 
-
-
-
 const MyPayslipComponent = () => {
 
 

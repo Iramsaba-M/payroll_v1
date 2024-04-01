@@ -1,8 +1,4 @@
 
-
-
-
-
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { BoxContent, BoxContent2 } from '../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
