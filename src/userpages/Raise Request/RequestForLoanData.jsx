@@ -90,6 +90,9 @@ export const RequestForLoanData= [
     export const Apply= [
         { label: 'Apply',  style: 'buttonStyleApply' , type:"button"},
       ];
+      export const View_Policies= [
+        { label: 'View policies',  style: 'buttonStyleViewPolicies' , type:"button"},
+      ];
       
       export const Cancel= [
         { label: 'Cancel',  style: 'buttonStyleCancel' , type:"button"},
