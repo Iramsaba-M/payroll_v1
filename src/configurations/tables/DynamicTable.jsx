@@ -74,6 +74,18 @@ function DynamicTable({ config, data, onEditEmployee }) {
       console.error('Error fetching payslips data:', error);
     }
   };
+  const handleEditPayslips1 = async (row) => {
+    try {
+      if (!row || !row.employee_id) {
+        console.error('Error: Invalid row data or missing employee_id');
+        return;
+      }
+      setEditModalOpen(true) 
+     
+    } catch (error) {
+      console.error('Error fetching payslips data:', error);
+    }
+  };
 
   const handleSelectAll = () => {
     if (selectAll) {
@@ -85,7 +97,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
   };
 
   const renderCellContent = (row, column) => {
-      if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
+    if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
       console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
       const formattedName = `${row.first_name} ${row.middle_name} ${row.last_name}`;
       if (row.photo_content) {
@@ -105,16 +117,17 @@ function DynamicTable({ config, data, onEditEmployee }) {
             <span>{formattedName}</span>
           </div>
         );
-      } else {
-        return <>Loading...</>;
       }
+      // If photo_content is not available, still render employee name
+      return <span>{formattedName}</span>;
     }
+     
     if (column.name === 'status' && column.clmncss) {
       const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
       return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
     }
 
-    if (column.name === 'edit2') {
+    if (column.name === 'edit') {
       // Render AddEmployee component conditionally
       return (
         <button className="cursor-pointer" onClick={() => handleEditPayslips(row)}>
@@ -151,12 +164,12 @@ function DynamicTable({ config, data, onEditEmployee }) {
           <MdOutlineFileDownload />
         </button>
       );
-    } else if (column.dataType === 'icon' && column.name === 'edit') {
+    } else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
       // Render Edit icon
       return (
         <button
           className="cursor-pointer"
-          onClick={() => handleEditPayslips(row)}
+          onClick={() => handleEditPayslips1(row)}
         >
           <MdOutlineEdit />
         </button>

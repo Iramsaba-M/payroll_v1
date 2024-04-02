@@ -1,30 +1,31 @@
-// import React from 'react'
-
-// const MyPayslipComponent = () => {
-//   return (
-//     <div>MyPayslipComponent</div>
-//   )
-// }
-
-// export default MyPayslipComponent
-
+import axios from 'axios';
 import React, { useState,useEffect } from 'react';
 import { Mypayslipcontent } from './MypayslipContent';
 import TableComponent from '../../configurations/tables/TableComponent';
 import { mypayslip } from '../../api/EndPoints';
-import { fetchData2 } from '../../services/APIService';
-
 
 const MyPayslipComponent = () => {
-
 
     const [tableData, setTableData] = useState([]);
 
     const fetchTableData = async () => {
         
         try {
-          const tableData = await fetchData2(mypayslip); // Fetch data based on payslips
-          setTableData(tableData);
+
+          //db.json
+            const response = await axios.get('http://localhost:3000/mypayslip');
+          const tableData = response.data; // Assuming response.data is the array of table data
+         setTableData(tableData);
+         
+          // const employeeId = 2;
+          // const params = new URLSearchParams({ employee_id: employeeId });
+          // const url = `${mypayslip}?${params.toString()}`;
+          // console.log(url);
+          
+
+          // const tableData = await fetchData2(url); // Fetch data based on payslips
+          // setTableData(tableData);
+        
         } catch (error) {
           console.error('Error fetching table data:', error);
         }
@@ -33,6 +34,9 @@ const MyPayslipComponent = () => {
       useEffect(() => {
         fetchTableData(); // Fetch data on component mount or when payslips change
       }, [mypayslip]); // Include payslips in the dependency array
+
+
+    
 
     return (
       <div className='px-[60px] mt-10'>

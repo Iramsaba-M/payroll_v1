@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import TableComponent from '../../configurations/tables/TableComponent'
 import { tableContent2 } from './RunPayrollContents';
-import { payslips } from '../../api/EndPoints';
+import { mypayslip, payslips } from '../../api/EndPoints';
 import DatePicker from 'react-datepicker';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { fetchData } from '../../services/APIService';
+import axios from 'axios';
 
 
 const Payslip = () => {
@@ -13,6 +14,7 @@ const Payslip = () => {
     const [tableData, setTableData] = useState([]);
     const [showPayslipsButton, setShowPayslipsButton] = useState(true);
     const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
+    const [data, setData] = useState(null);
 
     const handlePayslipsClick = () => {
         setShowDynamicTable(true);
@@ -30,42 +32,41 @@ const Payslip = () => {
         setSelectedDateTop(date);
       };
     
-
-    // const fetchTableData = async () => {
+// DB.JSON
+    const fetchTableData = async () => {
+        try {
+          const tableData = await axios.get('http://localhost:3000/payslips'); // Fetch data based on payslips
+          setTableData(tableData.data);
+        } catch (error) {
+          console.error('Error fetching table data:', error);
+        }
+      };
+      
+      useEffect(() => {
+        fetchTableData(); // Fetch data on component mount or when payslips change
+      }, [payslips]); // Include payslips in the dependency array
+    
+    // useEffect(() => {
+    //   const fetchTableData = async () => {
     //     try {
-    //       const tableData = await fetchData(payslips); // Fetch data based on payslips
-    //       setTableData(tableData);
+    //       const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
+    //       const queryParams = new URLSearchParams({
+    //         month: formattedDate,
+    //         year: selectedDateTop.getFullYear()
+    //       });
+    //       const endpoint = `${payslips}/?${queryParams.toString()}`;
+    //       console.log('Constructed URL:', endpoint);
+          
+    //       const tableData = await fetchData((endpoint));
+    //       setData(tableData);
+    //       console.log
     //     } catch (error) {
     //       console.error('Error fetching table data:', error);
     //     }
     //   };
-      
-    //   useEffect(() => {
-    //     fetchTableData(); // Fetch data on component mount or when payslips change
-    //   }, [payslips]); // Include payslips in the dependency array
-    
-     useEffect(() => {
-        const fetchTableData = async () => {
-          try {
-            const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
-            const queryParams = new URLSearchParams({
-              month: formattedDate,
-              year: selectedDateTop.getFullYear()
-            });
-            const tableData = await fetchData(`payslips?${queryParams}`);
-      
-            // Log the constructed URL
-            const url = `${fetchData.baseUrl}/${payslips}?${queryParams.toString()}`;
-            console.log('Constructed URL:', url);
-      
-            setData(tableData);
-          } catch (error) {
-            console.error('Error fetching table data:', error);
-          }
-        };
-      
-        fetchTableData();
-      }, [selectedDateTop]);
+  
+    //   fetchTableData();
+    // }, [selectedDateTop]);
     
     
     return (
@@ -84,7 +85,7 @@ const Payslip = () => {
                   />
                   <RiArrowDropDownLine className='-mt-6 ml-[14.5vh] text-3xl text-gray-500' />
                 </div>
-                <div className='cursor-pointer absolute top-[-10px] right-1 m-4 underline underline-offset-1 text-blue-800'>payroll Historys</div>
+                <div className='cursor-pointer absolute top-[-10px] right-1 mt-2 underline underline-offset-1 text-blue-800'>payroll Historys</div>
                 <TableComponent config={tableContent2} data={tableData} />
               </div>
         </div>

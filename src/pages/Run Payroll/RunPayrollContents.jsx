@@ -131,7 +131,7 @@ export const Button1Content = [
       },
     },
     {
-      name: "edit",
+      name: "finalizeedit",
       label: "EDIT",
       dataType: "icon",
       cssClass: "datastyle2",

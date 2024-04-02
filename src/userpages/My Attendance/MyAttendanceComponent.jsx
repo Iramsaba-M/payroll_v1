@@ -10,8 +10,8 @@ import TableComponent from '../../configurations/tables/TableComponent'
 import axios from 'axios'
 import ButtonConfig from '../../configurations/Button/ButtonConfig'
 import { FaPlay } from "react-icons/fa6";
-import {  EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance } from '../../api/EndPoints'
-import { fetchData } from '../../services/APIService'
+import {  EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../api/EndPoints'
+import { fetchData, postData } from '../../services/APIService'
 
 export const Slider =({config,data})=>{
  
@@ -136,27 +136,33 @@ const MyAttendanceComponent = () => {
   const [punchout, setPunchout] = useState(null);
   const [leavehistory, setLeavehistory] = useState(null);
   const [leavebalance, setLeavebalance] = useState(null);
-
+  const [punchstatus,setPunchstatus]=useState(null);
 
   const Buttonclick = (label) => {
-    if (label === 'Punch In' && !punchout) {
+    if (label === 'Punch In' ) {
       handlePunchin(true);
-    } else if (label === 'Punch Out' && punchin) {
+    } else if (label === 'Punch Out' ) {
       handlePunchout(true);
     } else if (label === 'Apply Leave') {
       SetApplyleave(true);
     }
   };
   const handlePunchin = () => {
-    setSelectedDate(value);
-    setPunchin(value);
-    console.log('punch in',value)
+    // setSelectedDate(value);
+    // setPunchin(value);
+    // console.log('punch in',value)
+    setPunchstatus('punchin')
+    // console.log(punchstatus)
+    // punch()
   }
   const handlePunchout = () => {
-    const punchouttime=new Date().toLocaleString();
-    setSelectedDate(punchouttime);
-    setPunchout(punchouttime);
-    console.log('punch out',punchouttime)
+    // const punchouttime=new Date().toLocaleString();
+    // setSelectedDate(punchouttime);
+    // setPunchout(punchouttime);
+    // console.log('punch out',punchouttime)
+    setPunchstatus('punchout')
+    // console.log(punchstatus)
+    // punch()
     
   }
 
@@ -212,36 +218,31 @@ useEffect(() => {
       const response = await axios.get('http://localhost:3000/end_user_attendance')
 
       // const queryParams = { employee_id: 'IK02' };
-      // const endpoint = `${EndUser_Get_Attendance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+      // const endpoint = `${EndUser_Get_Attendance}/?employee_id=${queryParams.employee_id}`; // C`onstruct endpoint URL
       // const response = await fetchData(endpoint);
-      console.log('leave history', response.data);
       // setLeavehistory(response.leave_history);
       setLeavehistory(response.data.history);
+      console.log('leave history', response.data);
     } catch (error) {
       console.error('Error posting data:', error);
     }
 
   };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  
 
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const punch = async (e) => {
+    // e.preventDefault();
 
     try {
-        const emp = 'IK02';
+        const emp = 'IK04';
 
-        console.log('Data:', formData);
-        const formDataArray = [...formData.entries()];
-
-        // Iterate over formDataArray and log key-value pairs to the console
-        formDataArray.forEach(([key, value]) => {
-            console.log(`${key}: ${value}`);
-        });
-
-        const response = await postDataImage(EndUser_ApplyLeave, formData);
+        const formData={
+          employee_id:emp,
+          action:punchstatus
+        }
+        console.log('form data',formData)
+        const response = await postData(EndUser_punch_status, formData);
 
 
         console.log('Data sent:', response);
@@ -250,6 +251,11 @@ useEffect(() => {
         console.error('Error:', error);
     }
 };
+
+useEffect(() => {
+  if(punchstatus){
+    punch(); }
+}, [punchstatus]);
 
   return (
     <div >

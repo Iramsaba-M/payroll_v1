@@ -1,7 +1,9 @@
-
 //Employee Registeration
+
 // export const EMP_API = 'employee/basic-details';
+
 export const EMP_API = 'basicdetail';
+
 export const BASIC_DETAILS_API_put = 'employee/basic-details';
 
 export const BASIC_DETAILS_API_Get = 'employee/basic-details';
@@ -48,7 +50,13 @@ export const payslips ='Payslip';
 export const view ='history/dowload';
 
 // export const EndUser_ApplyLeave = 'enduser_applyleave';
+
 export const EndUser_ApplyLeave = 'apply_leave';
+
 export const EndUser_Leave_Balance ="annual_leave_balance"
+
 export const EndUser_Attendance = 'punch';
+
 export const EndUser_Get_Attendance = 'employee';
+
+export const EndUser_punch_status = 'punch';

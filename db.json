@@ -7,6 +7,7 @@
       "id": "5284"
     }
   ],
+
   "employees": [
     {
       "CTC": 123,
@@ -26,195 +27,15 @@
         "Middle_Name": "M"
       },
       "id": "64f7"
-    },
-    {
-      "id": "d4dc",
-      "Bank Name": "B2",
-      "IFSC Code": "1",
-      "Account Number ": "1",
-      "Branch Code ": "1"
-    },
-    {
-      "id": "4157",
-      "Bank Name": "B2",
-      "IFSC Code": "1",
-      "Account Number ": "1",
-      "Branch Code ": "1"
-    },
-    {
-      "id": "326b",
-      "Bank Name": "B1",
-      "IFSC Code": "QQ",
-      "Account Number ": "Q",
-      "Branch Code ": "Q"
-    },
-    {
-      "id": "55c8",
-      "Bank Name": "B1",
-      "IFSC Code": "hhh",
-      "Account Number ": "jj",
-      "Branch Code ": "m"
-    },
-    {
-      "id": "62e2",
-      "Bank Name": "B1",
-      "IFSC Code": "hhh",
-      "Account Number ": "jj",
-      "Branch Code ": "m"
-    },
-    {
-      "id": "yJECZ0a"
-    },
-    {
-      "employee_name": [
-        "vikas",
-        "tgy",
-        "tgy"
-      ],
-      "dob": "2024-01-01",
-      "gender": "female",
-      "dateofjoining": "2024-01-26",
-      "name": "A",
-      "designation": "software_engineer",
-      "Employee Id": "122",
-      "department": "cse",
-      "type of employee": "employed",
-      "address": [
-        "Hubli",
-        "Hubli"
-      ],
-      "differently_abled": "No",
-      "personalemail": "vaish@gmail.com",
-      "WorkEmail": "vaish@gmail.com",
-      "pn": "7894563215",
-      "apn": "1234567895",
-      "Work Location: ": "client_site",
-      "id": "mcNv2Nb"
-    },
-    {
-      "id": "626b",
-      "first_name": "sppp",
-      "employee_id": "12"
-    },
-    {
-      "id": "c283",
-      "first_name": "sqq",
-      "employee_id": "111111111"
-    },
-    {
-      "id": "349a",
-      "first_name": "sk",
-      "employee_id": "100"
-    },
-    {
-      "id": "7c00",
-      "first_name": "new",
-      "employee_id": "new1"
-    },
-    {
-      "id": "39c0",
-      "first_name": "sb",
-      "employee_id": "E190"
-    },
-    {
-      "id": "e091",
-      "first_name": "skkkk",
-      "employee_id": "E9000"
-    },
-    {
-      "id": "84c7",
-      "first_name": "sanlwwwwwww",
-      "employee_id": "E87900"
-    },
-    {
-      "id": "a10f",
-      "first_name": "@fdd",
-      "employee_id": "E900"
-    },
-    {
-      "id": "a410",
-      "first_name": "@fdd",
-      "employee_id": "E900"
-    },
-    {
-      "id": "2a42",
-      "first_name": "@fdd",
-      "employee_id": "E900"
-    },
-    {
-      "id": "abde",
-      "first_name": "skk",
-      "employee_id": "E200"
-    },
-    {
-      "id": "ad50",
-      "first_name": "shashank",
-      "employee_id": "E64"
-    },
-    {
-      "id": "1291",
-      "first_name": "shashank",
-      "employee_id": "E64"
-    },
-    {
-      "id": "1c27",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "4f23",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "4702",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "8fa3",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "9ae7",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "345d",
-      "first_name": "Osama",
-      "employee_id": "E911"
-    },
-    {
-      "id": "ac8f",
-      "first_name": "shashank",
-      "employee_id": "E911"
-    },
-    {
-      "id": "dc9d",
-      "first_name": "sb",
-      "employee_id": "E911"
-    },
-    {
-      "id": "bbb1",
-      "first_name": "sk",
-      "employee_id": "E911"
-    },
-    {
-      "id": "c5d1",
-      "first_name": "Osama",
-      "employee_id": "E12"
-    },
-    {
-      "id": "56e1",
-      "first_name": "n",
-      "employee_id": "E911"
     }
   ],
+
+
   "basicdetail": [
     {
-      "employee_name": "Saba M Mirjankar",
+      "first_name": "Saba",
+      "middle_name":"M",
+      "last_name":"Mirjankar",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -233,7 +54,10 @@
       "id": "1"
     },
     {
-      "employee_name": "Vaishnavi S Konnur",
+      
+      "first_name": "Vaishnavi",
+      "middle_name":"S",
+      "last_name":"Konnur",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -252,7 +76,9 @@
       "id": "1"
     },
     {
-      "employee_name": "Shashank S Baikadi",
+      "first_name": "Shashank",
+      "middle_name":"S",
+      "last_name":"Baikadi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -271,7 +97,9 @@
       "id": "1"
     },
     {
-      "employee_name": "Santosh P Sohani",
+      "first_name": "Santosh",
+      "middle_name":"p",
+      "last_name":"Sohani",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -290,7 +118,9 @@
       "id": "1"
     },
     {
-      "employee_name": "Vikas S joshi",
+      "first_name": "Vikas",
+      "middle_name":"S",
+      "last_name":"joshi",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -309,7 +139,9 @@
       "id": "1"
     },
     {
-      "employee_name": "Vaishnavi S Konnur",
+      "first_name": "Sanket",
+      "middle_name":"S",
+      "last_name":"Roti",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -347,174 +179,8 @@
       "id": "1"
     }
   ],
+
   "bankdetails": [
-    {
-      "id": "d05a",
-      "Bank Name": "B1",
-      "IFSC Code": "q",
-      "Account Number ": "q",
-      "Branch Code ": "q"
-    },
-    {
-      "id": "5759",
-      "Bank Name": "B1",
-      "IFSC Code": "q",
-      "Account Number ": "w",
-      "Branch Code ": "e"
-    },
-    {
-      "id": "e498",
-      "Bank Name": "B1",
-      "IFSC Code": "q",
-      "Account Number ": "w",
-      "Branch Code ": "e"
-    },
-    {
-      "id": "5c89",
-      "Bank Name": "B1",
-      "IFSC Code": "q",
-      "Account Number ": "w",
-      "Branch Code ": "e"
-    },
-    {
-      "id": "d375",
-      "Bank Name": "B1",
-      "IFSC Code": "1",
-      "Account Number ": "1",
-      "Branch Code ": "1"
-    },
-    {
-      "id": "ae17",
-      "Bank Name": "B2",
-      "IFSC Code": "2",
-      "Account Number ": "2",
-      "Branch Code ": "2"
-    },
-    {
-      "id": "df69"
-    },
-    {
-      "id": "c59f"
-    },
-    {
-      "id": "4b12",
-      "IFSC Code": "qqq",
-      "Account Number ": "qqq",
-      "Branch Code ": "qqq"
-    },
-    {
-      "id": "k21mthI"
-    },
-    {
-      "id": "AbzHpdO"
-    },
-    {
-      "id": "4l7uEft"
-    },
-    {
-      "bank_name": "B2",
-      "ifsc_code": "1234",
-      "account_number": "123456",
-      "branch_code": "ASSJ",
-      "id": "G4yR4W-"
-    },
-    {
-      "id": "c685",
-      "bank_name": "Bank2",
-      "ifsc_code": "v1",
-      "account_number": "123",
-      "branch_code": "abc"
-    },
-    {
-      "id": "8edb",
-      "bank_name": "Bank2",
-      "ifsc_code": "1qas",
-      "account_number": "sdft",
-      "branch_code": "5rfd"
-    },
-    {
-      "id": "4de9",
-      "bank_name": "Bank1",
-      "ifsc_code": "qwer",
-      "account_number": "qwe",
-      "branch_code": "qwe"
-    },
-    {
-      "id": "6b81",
-      "false": false,
-      "true": true
-    },
-    {
-      "id": "666d",
-      "false": false,
-      "true": true,
-      "default_payroll": false
-    },
-    {
-      "id": "b83c",
-      "false": false,
-      "true": true,
-      "default_payroll": true
-    },
-    {
-      "id": "590e",
-      "false": false,
-      "true": true,
-      "default_payroll": false
-    },
-    {
-      "id": "d073",
-      "bank_name": "Bank1",
-      "ifsc_code": "12345",
-      "account_number": "12345",
-      "branch_code": "12345",
-      "default_payroll": true
-    },
-    {
-      "id": "50bb",
-      "bank_name": "Bank2",
-      "ifsc_code": "54321",
-      "account_number": "54321",
-      "branch_code": "54321",
-      "default_payroll": false
-    },
-    {
-      "id": "c8b9",
-      "bank_name": "Bank1",
-      "ifsc_code": "iu",
-      "account_number": "iiu",
-      "branch_code": "iu"
-    },
-    {
-      "id": "c15a",
-      "bank_name": "Bank2",
-      "ifsc_code": "rt",
-      "account_number": "tr",
-      "branch_code": "rt"
-    },
-    {
-      "id": "3af0",
-      "bank_name": "Bank1",
-      "ifsc_code": "34567",
-      "account_number": "45678",
-      "branch_code": "56789",
-      "default_payroll": true
-    },
-    {
-      "id": "a74a",
-      "bank_name": "Bank1",
-      "ifsc_code": "a",
-      "account_number": "a",
-      "branch_code": "a",
-      "default_payroll": true
-    },
-    {
-      "id": "3aaf",
-      "bank_name": "Bank3",
-      "ifsc_code": "b",
-      "account_number": "b",
-      "branch_code": "b"
-    },
     {
       "id": "abc5",
       "Bank_details": [
@@ -524,292 +190,12 @@
           "account_number": "a",
           "branch_code": "a",
           "default_payroll": true
-        },
-        {
-          "bank_name": "Bank3",
-          "ifsc_code": "b",
-          "account_number": "b",
-          "branch_code": "b"
-        }
-      ]
-    },
-    {
-      "id": "8a9f",
-      "Bank_details": [
-        {
-          "bank_name": "Bank2",
-          "ifsc_code": "j",
-          "account_number": "j",
-          "branch_code": "j",
-          "default_payroll": true
-        }
-      ]
-    },
-    {
-      "id": "22dd",
-      "Bank_details": [
-        {
-          "bank_name": "Bank1",
-          "ifsc_code": "p",
-          "account_number": "p",
-          "branch_code": "p"
-        }
-      ]
-    },
-    {
-      "id": "e2de",
-      "Bank_details": [
-        {
-          "bank_name": "Bank1",
-          "ifsc_code": "p",
-          "account_number": "p",
-          "branch_code": "p"
-        }
-      ]
-    },
-    {
-      "id": "6b19",
-      "Bank_details": [
-        {
-          "bank_name": "Bank1",
-          "ifsc_code": "8",
-          "account_number": "8",
-          "branch_code": "8",
-          "name": false
-        }
-      ]
-    },
-    {
-      "id": "b98a",
-      "Bank_details": [
-        {
-          "bank_name": "Bank1",
-          "ifsc_code": "9",
-          "account_number": "9",
-          "branch_code": "9"
-        }
-      ]
-    },
-    {
-      "id": "65f8",
-      "Bank_details": [
-        {
-          "default_payroll": false,
-          "bank_name": "Bank1",
-          "ifsc_code": "kl",
-          "account_number": "kl",
-          "branch_code": "kl"
-        }
-      ]
-    },
-    {
-      "id": "f1b6",
-      "Bank_details": [
-        {
-          "default_payroll": false,
-          "bank_name": "Bank1",
-          "ifsc_code": "1",
-          "account_number": "1",
-          "branch_code": "1"
-        },
-        {
-          "default_payroll": false,
-          "bank_name": "Bank3",
-          "ifsc_code": "2",
-          "account_number": "2",
-          "branch_code": "2"
-        }
-      ]
-    },
-    {
-      "id": "7b65",
-      "Bank_details": [
-        {
-          "default_payroll": false,
-          "bank_name": "Bank1",
-          "ifsc_code": "1",
-          "account_number": "1",
-          "branch_code": "1"
-        },
-        {
-          "default_payroll": true,
-          "bank_name": "Bank3",
-          "ifsc_code": "2",
-          "account_number": "2",
-          "branch_code": "2"
-        }
-      ]
-    },
-    {
-      "id": "2669",
-      "Bank_details": [
-        {
-          "default_payroll": false,
-          "bank_name": "Bank1",
-          "ifsc_code": "1",
-          "account_number": "1",
-          "branch_code": "1"
-        },
-        {
-          "default_payroll": true,
-          "bank_name": "Bank3",
-          "ifsc_code": "2",
-          "account_number": "2",
-          "branch_code": "2"
-        }
-      ]
-    },
-    {
-      "id": "5666",
-      "Bank_details": [
-        {
-          "default_payroll": false,
-          "bank_name": "Bank1",
-          "ifsc_code": "1",
-          "account_number": "1",
-          "branch_code": "1"
-        },
-        {
-          "default_payroll": true,
-          "bank_name": "Bank3",
-          "ifsc_code": "2",
-          "account_number": "2",
-          "branch_code": "2"
         }
       ]
     }
   ],
+
   "aditionalDetails": [
-    {
-      "id": "9dae",
-      "employe_type": "Employee",
-      "current_password": "123",
-      "employe_Benefit": [
-        "food",
-        "Transport"
-      ],
-      "Employee Status": "Active"
-    },
-    {
-      "id": "1fd4",
-      "employe_type": "Employee",
-      "current_password": "123",
-      "employe_Benefit": [
-        "food",
-        "Transport"
-      ],
-      "Employee Status": "Inactive",
-      "Employee_Inactive_Status1": "On Leave",
-      "Employee_Inactive_Status2": "Paternity Leave"
-    },
-    {
-      "id": "9f97",
-      "EmployeeStatus": "Inactive"
-    },
-    {
-      "id": "f96d",
-      "employeeStatus": "Inactive",
-      "additionalStatus": "Suspended",
-      "leaveOption": "Due to Disciplinary Action"
-    },
-    {
-      "id": "2fcc",
-      "employeeStatus": "Inactive",
-      "additionalStatus": "On Leave"
-    },
-    {
-      "id": "6dc0",
-      "employeeStatus": "Inactive",
-      "additionalStatus": "On Leave",
-      "leaveOption": "Maternity Leave"
-    },
-    {
-      "id": "2476",
-      "employeeStatus": "Active",
-      "additionalStatus": "On Leave",
-      "leaveOption": "Maternity Leave",
-      "current_password": "123",
-      "type_of_employee": "Employee",
-      "employe_Benefit": [
-        "food",
-        "Transport"
-      ],
-      "employee_status": "Inactive"
-    },
-    {
-      "id": "c80f",
-      "current_password": "123",
-      "type_of_employee": "Paid Intern",
-      "employe_Benefit": [
-        "food"
-      ],
-      "employee_status": "Inactive",
-      "additionalStatus": "On Leave",
-      "leaveOption": "Medical Leave"
-    },
-    {
-      "id": "8309",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "0f3a",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "95fd",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "9d47",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "b1a7",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "67ce",
-      "employee_status": "Inactive",
-      "inactiveStatus": "On Leave",
-      "leaveOption": "Vacation Leave"
-    },
-    {
-      "id": "c419",
-      "current_password": "123",
-      "type_of_employee": "Employee",
-      "employe_Benefit": [
-        "Transport",
-        "food",
-        "Accomodation"
-      ],
-      "employee_status": "Inactive",
-      "inactiveStatus": "Suspended",
-      "leaveOption": "Due to Disciplinary Action"
-    },
-    {
-      "id": "583b",
-      "type_of_employee": "Employee",
-      "employee_benefit": [
-        "Transport"
-      ],
-      "employee_status": "Active",
-      "year_of_experiance": "5",
-      "feedback": "good",
-      "experiance_certificate": {},
-      "payslips": {},
-      "bank_status": {},
-      "employee_id": ""
-    },
     {
       "id": "b2b4",
       "type_of_employee": "Employee",
@@ -825,6 +211,8 @@
       "employee_id": ""
     }
   ],
+
+
   "home_report_carddata": {
     "barchart2": [
       {
@@ -899,6 +287,7 @@
       }
     ]
   },
+
   "home_report_graphdata": [
     {
       "year": 2023,
@@ -935,6 +324,8 @@
       "id": "4c57"
     }
   ],
+
+
   "modal": [
     {
       "aadhar": 12222222222,
@@ -955,6 +346,7 @@
       "id": "aee5"
     }
   ],
+  
   "Approve_payroll": [
     {
       "employee_id": "1",
@@ -1017,6 +409,7 @@
       "id": "d9e4"
     }
   ],
+
   "Runpayroll": [
     {
       "id": "1",
@@ -1051,32 +444,30 @@
       "action": "Processed"
     }
   ],
-  "Payslip": [
+
+  "payslips": [
     {
       "employee_name": "Shashank Baikadi",
       "designation": "software engineer",
-      "employee_id": "Ik0001",
-      "id": "3ad9"
+      "employee_id": "Ik0001"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0002",
-      "id": "33a3"
+      "employee_id": "Ik0002"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0003",
-      "id": "763b"
+      "employee_id": "Ik0003"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0004",
-      "id": "688f"
+      "employee_id": "Ik0004"
     }
   ],
+
   "reviewPayroll": [
     {
       "total_expense": "567",
@@ -1172,6 +563,7 @@
       "id": "f8cc"
     }
   ],
+
   "test": [
     {
       "id": "f494",
@@ -1618,7 +1010,30 @@
       "bereavement": "12",
       "vacation": "0"
     }
-  }
+  },
+
+  "mypayslip": [
+    {
+      "year": "2023",
+      "month": "march"
+    },
+    {
+      "year": "2023",
+      "month": "march"
+    },
+    {
+      "year": "2023",
+      "month": "march"
+    },
+    {
+      "year": "2023",
+      "month": "march"
+    },
+    {
+      "year": "2023",
+      "month": "April"
+    }
+  ]
 }
 
 

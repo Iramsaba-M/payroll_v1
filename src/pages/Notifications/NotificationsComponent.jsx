@@ -4,7 +4,7 @@ import MyAttendance from '../../userpages/My Attendance/MyAttendance'
 const NotificationsComponent = () => {
   return (
     <div>
-      <MyAttendance/>
+      Notification
     </div>
   )
 }

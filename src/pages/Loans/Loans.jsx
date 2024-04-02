@@ -1,13 +1,12 @@
 
-
 import React from 'react'
 import BodyContent from '../../configurations/bodyContent/BodyContent'
-import RaiseRequestComponent from './RaiseRequestComponent'
+import LoanComponent from './LoanComponent'
 
 const Loans = () => {
   return (
     <div>
-        {/* <BodyContent content={RaiseRequestComponent} /> */}
+        <BodyContent content={LoanComponent} />
         
     </div>
   )

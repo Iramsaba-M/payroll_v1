@@ -8,7 +8,6 @@ import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpCont
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../api/EndPoints';
-import { getApiUrl, getApiUrl2 } from '../../api/GetAPI';
 import Button from '../../configurations/Button/Button';
 import RoutesComponent from "../../routing/RoutesComponent"
 import {useButtonState}  from "../../context/ButtonStateContext"
