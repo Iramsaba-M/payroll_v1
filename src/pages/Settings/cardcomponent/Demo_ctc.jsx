@@ -37,11 +37,11 @@ const gatherDataAndPost = async (event) => {
 
   const tableData = selectedOptions.map((option, index) => ({
     name: option.name,
-    value: document.querySelector(`input[name="value_${index}"]`).value,
-    component: document.querySelector(`select[name="component_${index}"]`).value,
-    conditionType: document.querySelector(`select[name="conditionType_${index}"]`).value,
-    typeValue: document.querySelector(`input[name="typeValue_${index}"]`).value, 
-    conditionValue: document.querySelector(`input[name="conditionValue_${index}"]`).value, 
+    percentage_value: document.querySelector(`input[name="value_${index}"]`).value,
+    of_compenent: document.querySelector(`select[name="component_${index}"]`).value,
+    operator: document.querySelector(`select[name="conditionType_${index}"]`).value,
+    true_value: document.querySelector(`input[name="typeValue_${index}"]`).value, 
+    false_value: document.querySelector(`input[name="conditionValue_${index}"]`).value, 
   }));
 
   const dataToPost = {
