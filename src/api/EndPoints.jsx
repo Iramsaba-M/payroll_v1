@@ -60,3 +60,15 @@ export const EndUser_Attendance = 'punch';
 export const EndUser_Get_Attendance = 'employee';
 
 export const EndUser_punch_status = 'punch';
+
+
+//sb
+export const EndUser_ApplyLoan = 'az';
+
+export const EndUser_ApplyReimbursement = 'submit_reimbursement/';
+
+export const ctctemplate = 'test';
+
+export const ctctemplatename ='tempname';
+
+export const reviewpayroll = 'modal';

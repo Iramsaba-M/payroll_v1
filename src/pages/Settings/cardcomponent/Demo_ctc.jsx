@@ -10,6 +10,8 @@ import { TextData, OptionData, TableHeaders ,TextComponentData,OptionsComponentD
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import ModalComponent from '../../../components/form/Formfields/modal/ModalComponent';
 import { ModalConfig2 } from '../../../components/form/Formfields/modal/ModalConfig2';
+import { postData } from '../../../services/APIService';
+import { ctctemplate } from '../../../api/EndPoints';
 const Demo_ctc = () => {
   const navigate = useNavigate();
   const handleGoBack = () => {
@@ -50,13 +52,12 @@ const gatherDataAndPost = async (event) => {
   };
 
   try {
-    const response = await axios.post('http://localhost:3000/test', dataToPost);
+    const response = await postData(ctctemplate, dataToPost);
+    // const response = await axios.post('http://localhost:3000/test', dataToPost);
     console.log(response.data);
 
-    // Log the structure of Demo_ctc
     console.log(dataToPost);
 
-    // Reset the form
     setSelectedOptions([]);
     setTemplateName('');
   } catch (error) {

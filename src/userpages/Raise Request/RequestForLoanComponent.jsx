@@ -12,7 +12,8 @@ import RequestForLoanStyles from './RequestForLoanStyles';
 import axios from 'axios';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalConfig2 } from '../../components/form/Formfields/modal/ModalConfig2';
-
+import { postData } from '../../services/APIService';
+import { EndUser_ApplyLoan } from '../../api/EndPoints';
 const RequestForLoanComponent = ({ config }) => {
 const [data, setData] = useState({});
 const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,10 +34,15 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     setIsModalOpen(false);
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/loan', data);
+      const employee_id="IK02"
+      const data2={...data,"employee_id":employee_id}
+      const response = await postData(EndUser_ApplyLoan, data2);
+      // const response = await axios.post('http://localhost:3000/az', data2);
+      console.log(data2);
       console.log('Data sent successfully:', response.data);
     } catch (error) {
       console.error('Error sending data:', error);
