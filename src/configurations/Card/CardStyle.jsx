@@ -27,16 +27,21 @@ const CardStyles = {
   ////////////////////////////////////////////////
   payrollstyle1: 'bg-white rounded-md rounded-r-none border-t border-b w-[45vh] border-s shadow-md p-3 w-64 size-40 h-[11vh] ',
   payrollstyle3: 'bg-white rounded-md rounded-s-none border-t border-b w-[45vh]  border-r shadow-md  p-3  w-64 size-40 h-[11vh] ',
-  payrollstyle2: 'bg-white rounded-md border shadow-md px-10 py-5  ml-10 w-[50vh] size-40 h-[23.7vh] ', // for Tax and Deduction
+  payrollstyle2: 'bg-white rounded-md border shadow-md px-10 py-5  ml-3 w-[52vh] size-40 h-[23.7vh] ', // for Tax and Deduction
   payrollheading: "flex justify-center font-semibold text-gray-300 mt-7 ", //ml-9
   payrollheading2: "flex justify-center font-semibold text-gray-300  ", //ml-12
   payrollheading3: " font-bold   -mt-2 ",
   payrollcontent: "flex justify-center  text-gray-600 text-lg font-bold -mt-14 ", //ml-20
   payrollcontent2: "flex justify-center mt-1  text-gray-600 text-lg font-bold", //ml-20
-
-
+  payrollmultivaluehead:"flex flex-col p-2  font-medium text-gray-600",
+  payrollmaultivalue:"-mt-6  ml-48 text-right",
+  //////////////////////////////////////////////////
+  leavestyle:'bg-white rounded-md border shadow-md py-5 flex justify-centre  ml-3  h-28 w-32 px-3  ',
+  leavestyle2:'bg-white rounded-md border shadow-md px-5 py-4   ml-3 w-[54vh] size-40 h-[23vh]',
+  leavestyle3:'bg-white rounded-md border shadow-md py-5 flex justify-centre  ml-3  h-28 w-32 px-3 overfl-auto max-w-[6vh]  ',
+  leavemultivalue:"font-bold text-2xl ml-9 text-black ",
+  leavemultivaluehead:"flex flex-col justify-between item-centre text-sm font-semibold text-gray-600",
+  attendanceheading: " font-bold  text-gray-400 text-sm py-1 -mt-2 ",
 };
-
-
 
 export default CardStyles

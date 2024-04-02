@@ -57,49 +57,6 @@ const DocumentsFormComponent = ({
   const handleFileChange = (name, selectedFile) => {
     setValues({ ...values, [name]: selectedFile });
   };
-// old onsubmit code  dont remove it
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  
-  //   try {
-  //     // const employeeId='E911'
-  //     const data = {
-  //       ...values,
-  //       employee_id: employeeId,
-      
-  //     };
-  //     console.log(data);
-  //     const formData = new FormData();
-  //     //add non form data to form data
-  //     Object.keys(data).forEach((key) => {
-  //       if (key !== "file") {
-  //         formData.append(key, data[key]);
-  //       }
-  //     });
-  //     //if we have a file, add it to the form data
-  //     if (data.file) {
-  //       formData.append("file", data.file);
-  //     }
-
-  //     console.log("Form values:", data);
-
-  //     // Assuming getApiUrl is a valid function
-  //     const response = await axios.post(getApiUrl(DOCUMENTS_API), formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-
-  //     console.log("Form submitted successfully:", response.data);
-
-  //     // If the above API call is successful, trigger the handleSubmit function from props
-  //     handleSubmit(data);
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // };
-
-
 
 const onSubmit = async (e) => {
   e.preventDefault();

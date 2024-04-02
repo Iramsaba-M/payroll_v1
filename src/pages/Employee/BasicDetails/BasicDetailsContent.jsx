@@ -139,26 +139,6 @@ export const formContent = [
     "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
   },
 
-  // {
-  //   "name":"differently_abled",   
-  //   "label": "Differently abled*",
-  //   "type": "options",
-    
-  //   "options": [
-       
-  //       {
-  //           "name": "Yes",
-  //           "value": "Yes"
-  //       },
-  //       {
-  //           "name": "No",
-  //           "value": "No"
-  //       }
-  //   ],
-  //    "textcss": "standard",
-  //    "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
-     
-  //   },
     {
       "name":"work_location",
         "label": "Work Location: ",
@@ -206,28 +186,6 @@ export const formContent = [
       "textcss": "standard"
       
   },
-
-  // {
-  //   "name":"grade",
-  //   "label": "Grade* ",
-  //   "type": "options",
-  //   "options": [
-  //       { "name": "G1.0", "value": "G1.0" },
-  //       {"name": "G1.1", "value": "G1.1"},
-  //       {"name": "G2.0", "value": "G2.0"},
-  //       {"name": "G2.1", "value": "G2.1"},
-  //       {"name": "G2.3", "value": "G2.3"},
-  //       {"name": "G3.0", "value": "G3.0"},
-  //       {"name": "G3.1", "value": "G3.1"},
-  //       {"name": "G3.2", "value": "G3.2"},
-  //       {"name": "G3.3", "value": "G3.3"},
-  //       {"name": "G3.4", "value": "G3.4"},
-  //       {"name": "G4.0", "value": "G4.0"},
-  //   ],
-  //   "placeholder":"",
-  //   "textcss": "standard",
-  //   "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
-  // },
 
   {
     "name":"differently_abled",   
