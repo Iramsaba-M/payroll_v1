@@ -16,11 +16,11 @@ const PayslipComponent = ({ config }) => {
       try {
         const response = await axios.get('http://localhost:3000/az');
 
-        setData(response.data[0]); // assuming the data is an array and you want the first object
+        setData(response.data[0]); 
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setLoading(false); // Set loading to false whether successful or not
+        setLoading(false); 
       }
     };
 
@@ -28,7 +28,7 @@ const PayslipComponent = ({ config }) => {
   }, []);
 
   const handleInputChange = (fieldName, newValue) => {
-    // Update the state with the new value
+    
     setData((prevData) => ({
       ...prevData,
       [fieldName]: newValue,

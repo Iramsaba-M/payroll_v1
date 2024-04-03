@@ -45,7 +45,7 @@ export const Runpayroll ='Runpayroll';
 
 export const mypayslip ='mypayslip';
 
-export const payslips ='Payslip';
+export const payslips ='fetch_employee_data';
 
 export const view ='history/dowload';
 
