@@ -9,13 +9,12 @@ const ApplicationSearch = () => {
 
   const handleSearch = (searchedData) => {
     setSearchTerm(searchedData);
-    // Additional actions after search, if needed
   }
 
   return (
     <ApplicationSearchComp
       config={ApplicationSearchConfig}
-      handleSearch={handleSearch} // Pass handleSearch function
+      handleSearch={handleSearch}
     />
   );
 };

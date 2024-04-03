@@ -1,4 +1,3 @@
-
 // HeadComponents.js
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -14,7 +13,7 @@ const HeadComponents = ({ content, config }) => {
 
   return (
     <div className={`${HeaderStyles.HeaderBg} `}>
-      
+
       <ul className="flex items-center">
         {currentPathSegments.map((segment, index) => (
           <li key={index} className={HeaderStyles.HeaderPath}>
@@ -34,9 +33,9 @@ const HeadComponents = ({ content, config }) => {
             </li>
           ))}
       </ul>
-      
-                   <div className="mb-3">
-      <ApplicationSearch />
+
+      <div className="mb-3">
+        <ApplicationSearch />
       </div>
     </div>
   );

@@ -25,17 +25,13 @@ function Tablecomp({ config, endpoint, onReviewClick }) {
     }
     return row[column.name] || '';
   };
-  
+
   const handleReviewClick = (row) => {
-    // Add your logic here to handle the review click event
+
     console.log('Review clicked for row:', row);
-    // You can also call any necessary functions or update state here
-    // For example:
-    // if (onReviewClick) {
-    //   onReviewClick(row);
-    // }
+
   };
-  
+
 
   return (
     <div>
