@@ -1,10 +1,10 @@
 
 const SearchInputConfig = [
-{
-     
-   "placeholder" : "  Search ",
-   "style" : "search1"
- } 
+  {
+
+    "placeholder": "  Search ",
+    "style": "search1"
+  }
 ]
- export default SearchInputConfig
+export default SearchInputConfig
 

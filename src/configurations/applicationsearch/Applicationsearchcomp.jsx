@@ -27,7 +27,7 @@ const ApplicationSearchComp = ({ config }) => {
       return matchedRoutes;
     }, []);
   };
-  
+
 
   const handleSearch = (e) => {
     const searchedTerm = e.target.value.trim().toLowerCase();
@@ -41,10 +41,10 @@ const ApplicationSearchComp = ({ config }) => {
   };
 
   const handleSuggestionClick = (path, element) => {
-    navigate(path); // Navigate to the selected suggestion's path
-    setSearchTerm(''); // Clear search term
-    setSuggestions([]); // Clear suggestions
-    renderElement(element); // Render the clicked element
+    navigate(path);
+    setSearchTerm('');
+    setSuggestions([]);
+    renderElement(element);
   };
 
   const renderSuggestions = (routes) => {
@@ -57,13 +57,13 @@ const ApplicationSearchComp = ({ config }) => {
   };
 
   const renderElement = (element) => {
-    // Implement your rendering logic here
+
     console.log("Rendering element:", element);
-    // Example: Set state to render the component
+
   };
 
   return (
-     <div className='relative'>
+    <div className='relative'>
       <div className={`${ApplicationSearchStyles[config.style]} search-container`}>
         <div className="flex items-center">
           <FaSearch className="search-icon text-gray-400" />
@@ -72,7 +72,7 @@ const ApplicationSearchComp = ({ config }) => {
             value={searchTerm}
             onChange={handleSearch}
             placeholder={config.placeholder}
-            className={ApplicationSearchStyles.input} // Use className instead of style for Tailwind CSS
+            className={ApplicationSearchStyles.input}
           />
         </div>
         {suggestions.length > 0 && (

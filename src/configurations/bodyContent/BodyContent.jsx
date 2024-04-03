@@ -1,16 +1,16 @@
 import React from 'react'
 
-const BodyContent = ({content: NewComponent}) => {
+const BodyContent = ({ content: NewComponent }) => {
 
-return (    
+  return (
     <>
-    <div className='p-4 pt-16 flex'>
-      <NewComponent />
-    </div>
-   </>
+      <div className='p-4 pt-16 flex'>
+        <NewComponent />
+      </div>
+    </>
 
   )
-  
+
 }
 
 export default BodyContent

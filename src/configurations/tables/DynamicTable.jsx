@@ -80,8 +80,8 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-      setEditModalOpen(true) 
-     
+      setEditModalOpen(true)
+
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
@@ -122,7 +122,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
       // If photo_content is not available, still render employee name
       return <span>{formattedName}</span>;
     }
-     
+
     if (column.name === 'status' && column.clmncss) {
       const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
       return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
@@ -166,7 +166,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
         </button>
       );
     } else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
-      // Render Edit icon
+      // Render finalizeedit for run payroll finalize component icon
       return (
         <button
           className="cursor-pointer"
@@ -176,7 +176,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
         </button>
       );
     }
-    
+
     else {
       // Default rendering for other columns
       return row[column.name] || '';

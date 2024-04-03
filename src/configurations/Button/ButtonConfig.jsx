@@ -31,7 +31,7 @@
 import React from 'react';
 import ButtonStyles from './ButtonStyles';
 
-const Button = ({ label, icon, style, type, onClick, buttonStyle,EditMode }) => {
+const Button = ({ label, icon, style, type, onClick, buttonStyle, EditMode }) => {
   return (
     <button className={`${ButtonStyles[style]} ${buttonStyle}`} onClick={() => onClick(label, type)} editMode={EditMode}>
       {icon && typeof icon === 'object' ? (
