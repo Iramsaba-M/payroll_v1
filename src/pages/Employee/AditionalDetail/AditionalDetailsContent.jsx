@@ -1,3 +1,4 @@
+//clean code
 import { IoEyeOutline } from "react-icons/io5";
 import { FiEyeOff } from "react-icons/fi";
 import { RiArrowDropDownFill } from "react-icons/ri";
@@ -64,10 +65,7 @@ export const formContent = [
         textcss: 'additionalstandard2',
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />
-        },
-  
-
-  
+        }, 
   ]
   
 export const TagConfig = [

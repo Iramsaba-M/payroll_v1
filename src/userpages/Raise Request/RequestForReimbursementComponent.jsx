@@ -1,11 +1,10 @@
-
-import React, { useState } from 'react';
+//clean code
+import { useState } from 'react';
 import axios from 'axios';
 import RequestForReimbursementStyles from './RequestForReimbursementStyles';
 import OptionsComponent from '../../components/form/Formfields/options/OptionsComponent';
 import TextComponent from '../../components/form/Formfields/text/TextComponent';
-import Button from '../../configurations/Button/Button';
-import { Addnew, Cancel, Requestreimbursement, add } from './RequestForReimbursementData';
+import { Cancel, Requestreimbursement, add } from './RequestForReimbursementData';
 import RequestForLoanStyles from './RequestForLoanStyles';
 import DateComponent from '../../components/form/Formfields/date/DateComponent';
 import FileComponent from '../../components/form/DocumentsForm/FileComponent';
@@ -29,12 +28,11 @@ const RequestForReimbursementComponent = ({ config }) => {
       )
     );
   };
- const handleButtonClick = (type) => {
+  const handleButtonClick = (type) => {
     if (type === "submit") {
       setIsModalOpen(true);
     }
   };
-  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -44,48 +42,36 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Promise.all(
         formData.map(async (form) => {
-          const employee_id = "IK999";
-          // Convert the amount field to float
+          const employee_id = "IK666";
           const amount = parseFloat(form.values.amount);
-  
-          // Create a new FormData object
           const formData = new FormData();
-          
-          // Append other form data fields
           formData.append('employee_id', employee_id);
           formData.append('amount', amount);
           formData.append('reimbursment_type', form.values.reimbursment_type);
           formData.append('expense_date', form.values.expense_date);
           formData.append('description', form.values.description);
-          
-          // Append file data
           formData.append('documents', form.values.documents);
-  
-          // Make a POST request with FormData and content-type set to multipart/form-data
           const response = await axios.post('http://192.168.0.150:5000/submit_reimbursement', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
-  
+
           console.log('Data sent successfully:', response.data);
         })
       );
-      // Open the modal after successful form submission 
+
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
-  
-  
+
+
 
   return (
     <div className=''>
@@ -97,7 +83,7 @@ const RequestForReimbursementComponent = ({ config }) => {
             <form onSubmit={(e) => handleSubmit(e, 'Requestreimbursement')}>
               {formData.map((form, index) => (
                 <div key={index} className="flex items-center">
-                  
+
                   <div>
                     {config.map((field, fieldIndex) => (
                       <div key={fieldIndex}>
@@ -115,9 +101,9 @@ const RequestForReimbursementComponent = ({ config }) => {
                             icon={field.icon}
                           />
                         )}
-                        
+
                         {field.type === 'date' && (
-                          
+
                           <DateComponent
                             name={field.name}
                             placeholder={field.placeholder}
@@ -127,7 +113,7 @@ const RequestForReimbursementComponent = ({ config }) => {
                             icon={field.icon}
 
                           />
-                          
+
                         )}
                         {field.type === 'text' && (
                           <TextComponent
@@ -168,9 +154,9 @@ const RequestForReimbursementComponent = ({ config }) => {
                 <ButtonConfig Config={add} onClick={addNewForm} />
               </div>
               <div className='flex mt-4 mb-7'>
-                <ButtonConfig Config={Requestreimbursement} onClick={() => handleButtonClick("submit")}  />
-                <ButtonConfig Config={Cancel}/>
-                
+                <ButtonConfig Config={Requestreimbursement} onClick={() => handleButtonClick("submit")} />
+                <ButtonConfig Config={Cancel} />
+
               </div>
               <ModalComponent
                 isOpen={isModalOpen}

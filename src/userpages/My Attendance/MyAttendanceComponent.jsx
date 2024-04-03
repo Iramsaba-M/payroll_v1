@@ -1,8 +1,8 @@
-
+//clean code
 import React from 'react'
-import { useState, useEffect,useRef } from 'react'
-import { AttendanceButtons, Attendanccard,Attendanccard2, leavesdata2, radiocontent, leavehistorytable } from './AttendanceContent'
-import { leavecard1, leavecard2,leavecard3, leavecard4, leavecard5, leavecard6,leavecard7,leavecard8 } from './AttendanceContent'
+import { useState, useEffect, useRef } from 'react'
+import { AttendanceButtons, Attendanccard, Attendanccard2, leavesdata2, radiocontent, leavehistorytable } from './AttendanceContent'
+import { leavecard1, leavecard2, leavecard3, leavecard4, leavecard5, leavecard6, leavecard7, leavecard8 } from './AttendanceContent'
 import Card from '../../configurations/Card/CardConfig'
 import Calendar from 'react-calendar';
 import MyLeave from './MyLeave'
@@ -10,119 +10,119 @@ import TableComponent from '../../configurations/tables/TableComponent'
 import axios from 'axios'
 import ButtonConfig from '../../configurations/Button/ButtonConfig'
 import { FaPlay } from "react-icons/fa6";
-import {  EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../api/EndPoints'
+import { EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../api/EndPoints'
 import { fetchData, postData } from '../../services/APIService'
 
-export const Slider =({config,data})=>{
- 
+export const Slider = ({ config, data }) => {
+
   const containerRef = useRef(null);
-const [showButtons, setShowButtons] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
-const handleScroll = (scrollOffset) => {
-  if (containerRef.current) {
-    const container = containerRef.current;
-    const currentPosition = container.scrollLeft;
-    const targetPosition = currentPosition + scrollOffset;
-    const duration = 500;
-    const startTime = performance.now();
+  const handleScroll = (scrollOffset) => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const currentPosition = container.scrollLeft;
+      const targetPosition = currentPosition + scrollOffset;
+      const duration = 500;
+      const startTime = performance.now();
 
-    const animateScroll = (currentTime) => {
-      const elapsedTime = currentTime - startTime;
-      const easing = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
-      if (elapsedTime < duration) {
-        container.scrollLeft =
-          currentPosition +
-          (targetPosition - currentPosition) * easing(elapsedTime / duration);
-        requestAnimationFrame(animateScroll);
-      } else {
-        container.scrollLeft = targetPosition;
-      }
-    };
-    requestAnimationFrame(animateScroll);
-  }
-};
+      const animateScroll = (currentTime) => {
+        const elapsedTime = currentTime - startTime;
+        const easing = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+        if (elapsedTime < duration) {
+          container.scrollLeft =
+            currentPosition +
+            (targetPosition - currentPosition) * easing(elapsedTime / duration);
+          requestAnimationFrame(animateScroll);
+        } else {
+          container.scrollLeft = targetPosition;
+        }
+      };
+      requestAnimationFrame(animateScroll);
+    }
+  };
 
-const scrollToLeft = () => {
-  handleScroll(-280);
-};
+  const scrollToLeft = () => {
+    handleScroll(-280);
+  };
 
-const scrollToRight = () => {
-  handleScroll(260);
-};
+  const scrollToRight = () => {
+    handleScroll(260);
+  };
 
-return (
-  <div className=" w-[55vh] bg-gray-100 flex justify-center ">
-    <div
-      onMouseEnter={() => setShowButtons(true)}
-      onMouseLeave={() => setShowButtons(false)}
-      style={{ position: "relative" }}
-    >
+  return (
+    <div className=" w-[55vh] bg-gray-100 flex justify-center ">
       <div
-        className='flex w-[48vh] rounded-md  overflow-hidden  '
-        ref={containerRef}
+        onMouseEnter={() => setShowButtons(true)}
+        onMouseLeave={() => setShowButtons(false)}
+        style={{ position: "relative" }}
       >
-        {config.map((item,index) => (
-          <div
-            key={index}
-            className=" border-4 border-gray-100  p-1   h-28  flex flex-col  justify-betwee w-40  "
-          >
-            <div className='w-[10vh] mt-2 borde h-24 flex justify-center'>
-            <h1 className="     text-center">
-              {item.heading}
-            </h1>
+        <div
+          className='flex w-[48vh] rounded-md  overflow-hidden  '
+          ref={containerRef}
+        >
+          {config.map((item, index) => (
+            <div
+              key={index}
+              className=" border-4 border-gray-100  p-1   h-28  flex flex-col  justify-betwee w-40  "
+            >
+              <div className='w-[10vh] mt-2 borde h-24 flex justify-center'>
+                <h1 className="     text-center">
+                  {item.heading}
+                </h1>
+              </div>
+              {data &&
+                Object.entries(data).map(([key, value], cloneIndex) => {
+                  if (item.name === key) {
+                    return <div key={cloneIndex} className='flex justify-center items-baseline border w-10 ml-4 bg-white -mt-12'>
+                      {value}
+                    </div>;
+                  }
+                  return null;
+                })}
             </div>
-            {data &&
-            Object.entries(data).map(([key, value], cloneIndex) => {
-              if (item.name === key) {
-                return <div key={cloneIndex} className='flex justify-center items-baseline border w-10 ml-4 bg-white -mt-12'>
-                {value}
-                </div>;
-              }
-              return null;
-            })}
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {(
-        <>
-          <button
-            onClick={scrollToLeft}
-            
-            style={{
-              position: "absolute",
-              top: "55%",
-              left: "-30px",
-              transform: "translateY(-50%)",
-              backgroundColor: "transparent",
-              border: "none",
-              cursor: "pointer",
-              color:"gray",
-            }}
-          >
-            <FaPlay size={25} className="text-blue ml-3 rotate-180 " />
-          </button>
-          <button
-            onClick={scrollToRight}
-           
-            style={{
-              position: "absolute",
-              top: "55%",
-              right: "-20px",
-              transform: "translateY(-50%)",
-              backgroundColor: "transparent",
-              border: " none",
-              cursor: "pointer",
-              color:"gray",
-            }}
-          >
-            <FaPlay size={25} className="text-blue ml-3" />
-          </button>
-        </>
-      )}
+        {(
+          <>
+            <button
+              onClick={scrollToLeft}
+
+              style={{
+                position: "absolute",
+                top: "55%",
+                left: "-30px",
+                transform: "translateY(-50%)",
+                backgroundColor: "transparent",
+                border: "none",
+                cursor: "pointer",
+                color: "gray",
+              }}
+            >
+              <FaPlay size={25} className="text-blue ml-3 rotate-180 " />
+            </button>
+            <button
+              onClick={scrollToRight}
+
+              style={{
+                position: "absolute",
+                top: "55%",
+                right: "-20px",
+                transform: "translateY(-50%)",
+                backgroundColor: "transparent",
+                border: " none",
+                cursor: "pointer",
+                color: "gray",
+              }}
+            >
+              <FaPlay size={25} className="text-blue ml-3" />
+            </button>
+          </>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 
@@ -136,12 +136,12 @@ const MyAttendanceComponent = () => {
   const [punchout, setPunchout] = useState(null);
   const [leavehistory, setLeavehistory] = useState(null);
   const [leavebalance, setLeavebalance] = useState(null);
-  const [punchstatus,setPunchstatus]=useState(null);
+  const [punchstatus, setPunchstatus] = useState(null);
 
   const Buttonclick = (label) => {
-    if (label === 'Punch In' ) {
+    if (label === 'Punch In') {
       handlePunchin(true);
-    } else if (label === 'Punch Out' ) {
+    } else if (label === 'Punch Out') {
       handlePunchout(true);
     } else if (label === 'Apply Leave') {
       SetApplyleave(true);
@@ -163,19 +163,19 @@ const MyAttendanceComponent = () => {
     setPunchstatus('punchout')
     // console.log(punchstatus)
     // punch()
-    
+
   }
 
 
 
   const customTileClassName = ({ date, view }) => {
     let className = '';
-    if (date.toDateString() === new Date().toDateString()   ) {
+    if (date.toDateString() === new Date().toDateString()) {
       className += ' font-bold border-2 bg-blue-300   border-black w-10  ';
     }
     if (view === 'month') {
       className += 'border-4 bg-white hover:bordre-blue-800 hover:border  border-blue-100 p-2 rounded-md  ';
-     
+
     }
     // if( date.getMonth() !== new Date().getMonth){
     //   className +='text-black '
@@ -183,37 +183,37 @@ const MyAttendanceComponent = () => {
     if (selectedDate && date.toDateString() === new Date().toDateString()) {
       className = ' bg-green-300  w-10 font-bold border-2';//bg-lime-400 or bg-green-300 bg-green-300
     }
-    
-    
+
+
     return className.trim();
   };
   const fetchgetData = async () => {
     try {
 
 
-        const response = await axios.get('http://localhost:3000/end_user_attendance')
+      const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-        // const queryParams = { employee_id: 'IK02' };
-        // const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
-        // const response = await fetchData(endpoint);
-        
-        
-        console.log('Post leave', response);
+      // const queryParams = { employee_id: 'IK02' };
+      // const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+      // const response = await fetchData(endpoint);
 
-        setLeavebalance(response.data.leave_balance)
+
+      console.log('Post leave', response);
+
+      setLeavebalance(response.data.leave_balance)
     } catch (error) {
-        console.error('Error posting data:', error);
+      console.error('Error posting data:', error);
     }
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     fetchgetData();
     fetchAttendanceData();
-}, []);
+  }, []);
 
   const fetchAttendanceData = async () => {
     try {
-      
+
 
       const response = await axios.get('http://localhost:3000/end_user_attendance')
 
@@ -228,49 +228,50 @@ useEffect(() => {
     }
 
   };
-  
+
 
 
   const punch = async (e) => {
     // e.preventDefault();
 
     try {
-        const emp = 'IK04';
+      const emp = 'IK04';
 
-        const formData={
-          employee_id:emp,
-          action:punchstatus
-        }
-        console.log('form data',formData)
-        const response = await postData(EndUser_punch_status, formData);
+      const formData = {
+        employee_id: emp,
+        action: punchstatus
+      }
+      console.log('form data', formData)
+      const response = await postData(EndUser_punch_status, formData);
 
 
-        console.log('Data sent:', response);
-        // handlesubmit();
+      console.log('Data sent:', response);
+      // handlesubmit();
     } catch (error) {
-        console.error('Error:', error);
+      console.error('Error:', error);
     }
-};
+  };
 
-useEffect(() => {
-  if(punchstatus){
-    punch(); }
-}, [punchstatus]);
+  useEffect(() => {
+    if (punchstatus) {
+      punch();
+    }
+  }, [punchstatus]);
 
   return (
     <div >
-      {!applyleave && (<div className='ml-10 mt-5  '> 
+      {!applyleave && (<div className='ml-10 mt-5  '>
         <div className='flex justify-end'>
           <ButtonConfig Config={AttendanceButtons} onClick={Buttonclick} />
         </div>
         <div className='flex w-[130vh] justify-between p-2  border-2  '>
-        
-          <Card Config={Attendanccard}  comp={ <Slider config={leavesdata2} data={leavebalance} />}
+
+          <Card Config={Attendanccard} comp={<Slider config={leavesdata2} data={leavebalance} />}
           />
-          <Card Config={Attendanccard2} 
-          comp={leavehistory && (
-            <TableComponent config={leavehistorytable} data={leavehistory} />
-          )}
+          <Card Config={Attendanccard2}
+            comp={leavehistory && (
+              <TableComponent config={leavehistorytable} data={leavehistory} />
+            )}
           />
         </div>
 
@@ -287,14 +288,14 @@ useEffect(() => {
             nextLabel={<span className="w-fit  p-1 text-2xl ">{'>'}</span>}
             prevLabel={<span className="w-fit  p-1 text-2xl ">{'<'}</span>}
             next2Label={null}
-            
+
             tileClassName={customTileClassName}
           />
         </div>
         <div>
         </div>
       </div>)}
-      {applyleave && <MyLeave config={radiocontent} applyleave={SetApplyleave}/>}
+      {applyleave && <MyLeave config={radiocontent} applyleave={SetApplyleave} />}
     </div>
   )
 }

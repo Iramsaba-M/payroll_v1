@@ -1,13 +1,12 @@
-
-import React, { useState, useEffect } from 'react';
+//clean code
+import { useState, useEffect } from 'react';
 import { fetchData } from '../../../services/APIService';
 import Card from '../../../configurations/Card/Card';
 import Button from '../../../configurations/Button/Button';
 import ButtonData from '../../../configurations/Button/ButtonData';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
-import { cardContent, tablesearchContent, ButtonContent, tableContent } from '../EmployeePage/EmployeeContent';
+import { cardContent, tableContent } from '../EmployeePage/EmployeeContent';
 import { EMP_API, CARDS_API } from '../../../api/EndPoints'
-import TableComponent from '../../../configurations/tables/TableComponent';
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate} from '../../../excelUtils';
 import {getApiUrl} from '../../../api/GetAPI';
@@ -15,10 +14,8 @@ import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionald
 import SearchableComp from '../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../configurations/search/search/SearchInputConfig';
 import {exportDataTemplate} from '../../../excelUtils';
-import { useNavigate } from 'react-router-dom';
 import { importButtonData ,ExportButtonData } from '../../../pages/Employee/EmployeePage/EmployeeContent';
 import DynamicTable from '../../../configurations/tables/DynamicTable';
-import axios from 'axios';
 import { BASIC_DETAILS_API_Get } from '../../../api/EndPoints';
 
 
@@ -26,13 +23,10 @@ import { BASIC_DETAILS_API_Get } from '../../../api/EndPoints';
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [empcardData, setCardData] = useState([]);
-
   const [showImportPopup, setShowImportPopup] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
-  
-
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
     salaryDetails: false,
@@ -65,67 +59,6 @@ const EmployeeComponent = () => {
   }, []);
   
 
-  // const navigate = useNavigate();
-  // const handleAddEmployee = () => {
-  //   setShowAddEmployee(true);
-  //   navigate('AddEmployee');
-  // };
-
-  // const handleEditEmployee = (employeeId) => {
-  //   setSelectedEmployeeId(employeeId);
-  //   setShowAddEmployee(true);
-  //   console.log('Employee ID passed:', employeeId); // Log the employeeId here
-  //   navigate(`AddEmployee?employeeId=${employeeId}`);
-  // };
-
-  // useEffect(() => {
-  //   const fetchDataAndSetState = async () => {
-  //     const queryParams = new URLSearchParams(location.search);
-  //     const empId = queryParams.get('employeeId');
-
-  //     // Construct the API URL with the employee ID
-  //     const apiUrl = `${EMP_API}?employeeId=${empId}`;
-  //     console.log('API URL:', apiUrl); // Log the API URL
-
-  //     try {
-  //       const data = await fetchData(apiUrl);
-  //       setEmployeeData(data);
-  //     } catch (error) {
-  //       console.error('Error fetching employee data:', error);
-  //     }
-  //   };
-
-  //   fetchDataAndSetState();
-  // }, [location.search]);
-
-  // useEffect(() => {
-  //   const fetchTotalCTCAndEmployees = async () => {
-  //     if (selectedEmployeeId) {
-       
-  //       try {
-  //         const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
-  //         console.log('Total CTC and Employees Data:', result);
-  //         // Process data as needed
-  //       } catch (error) {
-  //         console.error('Error fetching total CTC and employees data:', error);
-  //       }
-  //     }
-  //   };
-
-  //   fetchTotalCTCAndEmployees();
-  // }, [selectedEmployeeId]);``
-
-  // const handleAddEmployee = () => {
-  //   setShowAddEmployee(true);
-  //   navigate('AddEmployee');
-  // };
-
-  // const handleEditEmployee = (employeeId) => {
-  //   setSelectedEmployeeId(employeeId);
-  //   setShowAddEmployee(true);
-  //   navigate(`AddEmployee?employeeId=${employeeId}`);
-  // };
-
   useEffect(() => {
     const fetchDataAndSetState = async () => {
       const queryParams = new URLSearchParams(location.search);
@@ -148,10 +81,7 @@ const EmployeeComponent = () => {
 
   useEffect(() => {
     const fetchTotalCTCAndEmployees = async () => {
-
-
-      
-      if (selectedEmployeeId) {
+       if (selectedEmployeeId) {
         try {
           const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
           console.log('Total CTC and Employees Data:', result);
@@ -165,7 +95,6 @@ const EmployeeComponent = () => {
     fetchTotalCTCAndEmployees();
   }, [selectedEmployeeId]);
 
- 
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
     navigate('AddEmployee');

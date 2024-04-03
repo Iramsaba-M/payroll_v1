@@ -1,3 +1,4 @@
+//clean code
 import { RiArrowDownSFill } from "react-icons/ri";
 export const formContent = [
     {
@@ -36,10 +37,7 @@ export const formContent = [
       "placeholder": "Enter Here",
       "textcss": "standard"
     },
-  
   ]
-  
-  
   export const ButtonforDefault = [
     { label: 'Set default for payroll', style: 'buttonStyle3' ,type:"Button" },
   ];

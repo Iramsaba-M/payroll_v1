@@ -1,3 +1,4 @@
+//clean code
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, } from 'react-router-dom';
 import CardConfig from '../../pages/Settings/cardcomponent/CardConfig';
@@ -5,16 +6,13 @@ import  RaiseRequestContent from './RaiseRequestContent'; //
 import { Outlet } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 const RaiseRequestComponent = () => {
-  // const [selectedCard, setSelectedCard] = useState(null);
+
   const [cardclick, setCardClick] = useState(false)
   const navigate = useNavigate();
-  // const [currentPath, setcurrentPath] = useState(window.location.pathname);
+  
 
   const handleCardClick = (route) => {
-    // const currentPath = window.location.pathname;
-    // const newPath =  `/apps/Settings${route.to}`;
-    // console.log(`Navigating to ${cardclick}`);
-    // setSelectedCard(route.title);
+
     navigate(route.to)
 
     setCardClick(true)

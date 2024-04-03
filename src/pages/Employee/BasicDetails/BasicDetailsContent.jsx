@@ -1,3 +1,4 @@
+//clean code
 import { CiCalendar } from "react-icons/ci";
 import { RiArrowDownSFill } from "react-icons/ri";
 export const formContent = [
@@ -205,9 +206,8 @@ export const formContent = [
     ],
      "textcss": "standard",
      "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
-     
-    },
-  
+
+    }, 
 ];
 
 export const ButtonContent = [
