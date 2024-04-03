@@ -29,10 +29,10 @@ const TagComponent = ({ cardConfig, onOptionChange }) => {
         }
         
     };
-    // console.log(selectedOptions)
+  
     return (
         <div >
-            {/* <label >{label}</label> */}
+           
             <div className='block text-gray-600 text-xs font-bold my-1'>{label}</div>
             <div className="">
                 <div className="">
@@ -59,7 +59,7 @@ const TagComponent = ({ cardConfig, onOptionChange }) => {
             <div className="flex items-center flex-wrap mt-2">
                 {selectedOptions.map((tag, index) => (
                     <span key={index}
-                    //  className="bg-gray-100 text-blue-800 px-2 py-1 mr-2 rounded-md font-thin mb-2"
+                   
                     className=" border-gray-100 bg-transparent text-gray text-xs  mr-6 mb-2  leading-tight focus:outline-none"
                      >
                         

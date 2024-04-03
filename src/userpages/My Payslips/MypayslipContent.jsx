@@ -16,7 +16,7 @@ export const Mypayslipcontent = [
      clmncss: "style5"
    },
    {
-    name: "download",
+    name: "payslip",
     label: "Download",
     dataType: "icon",
     cssClass: "mypayslipdatastyle1",

@@ -24,7 +24,7 @@ const ReviewPayrollComponent = ({ config }) => {
   }, []);
   
   const handleInputChange = (fieldName, newValue) => {
-    // Update the state with the new value
+    
     setData((prevData) => ({
       ...prevData,
       [fieldName]: newValue,

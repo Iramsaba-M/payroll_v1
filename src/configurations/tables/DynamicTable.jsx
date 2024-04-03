@@ -95,6 +95,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
     }
     setSelectAll(!selectAll);
   };
+  
 
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
@@ -134,12 +135,12 @@ function DynamicTable({ config, data, onEditEmployee }) {
           {column.content}
         </button>
       );
-    } else if (column.dataType === 'icon' && column.name === 'download') {
+    } else if (column.dataType === 'icon' && column.name === 'payslip') {
       // Render Download button with icon
       return (
         <button
           className="bg-blue-50 text-blue-600 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
-          onClick={() => handleDownload(row)}
+          onClick={() => handleDownload2(row)}
         >
           <MdOutlineFileDownload />
         </button>

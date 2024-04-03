@@ -9,10 +9,7 @@ export const ModalConfig2 = [
     ModalBody: 'ModalBody20',
    
     labels: [
-    //   {
-    //     text: 'Data Saved',
-    //     css: 'standard',
-    //   },
+  
       {
         text: <BsPersonCheckFill className=" ml-[34vh] translate-y-[6vh] text-blue-500 h-24 w-24"/>,
         css: 'right',

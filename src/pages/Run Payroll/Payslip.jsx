@@ -51,13 +51,15 @@ const Payslip = () => {
     //     try {
     //       const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
     //       const queryParams = new URLSearchParams({
+    //         year: selectedDateTop.getFullYear(),
     //         month: formattedDate,
-    //         year: selectedDateTop.getFullYear()
+            
     //       });
     //       const endpoint = `${payslips}/?${queryParams.toString()}`;
     //       console.log('Constructed URL:', endpoint);
           
     //       const tableData = await fetchData((endpoint));
+    //       console.log(tableData)
     //       setData(tableData);
     //       console.log
     //     } catch (error) {
