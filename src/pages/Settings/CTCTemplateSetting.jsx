@@ -4,21 +4,28 @@ import { BoxContent, BoxContent2 } from '../../components/AppSettingComponents/C
 import Box from '../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { fetchData } from '../../services/APIService';
+import { ctctemplatename } from '../../api/EndPoints';
 import Card from '../../configurations/Card/Card';
 const CTCTemplateSetting = () => {
   const navigate = useNavigate();
   const [templates, setTemplates] = useState([]);
+
   useEffect(() => {
-    axios.get('http://localhost:3000/tempname')
-      .then(response => {
-        if (response.data[0].name) {
-          setTemplates(response.data[0].name);
+    const fetchDataFromEndpoint = async () => {
+      try {
+        const data = await fetchData(ctctemplatename);
+        if (data[0].name) {
+          setTemplates(data[0].name);
         }
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('There was an error!', error);
-      });
+      }
+    };
+
+    fetchDataFromEndpoint();
   }, []);
+
 
   const handleClick = () => {
     navigate('../Demo_ctc');

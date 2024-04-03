@@ -44,37 +44,47 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await Promise.all(
-  //       formData.map(async (form) => {
-  //         const response = await axios.post('http://localhost:3000/re', form.values);
-  //         console.log('Data sent successfully:', response.data);
-  //       })
-  //     );
-  //     // Open the modal after successful form submission
-  //   } catch (error) {
-  //     console.error('Error sending data:', error);
-  //   }
-  // };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Promise.all(
         formData.map(async (form) => {
-          const dataToSend = { ...form.values, employee_id: 1 }; // Include employee_id with form values
-          const response = await axios.post('http://192.168.0.150:5001/submit_reimbursement/', dataToSend);
+          const employee_id = "IK999";
+          // Convert the amount field to float
+          const amount = parseFloat(form.values.amount);
+  
+          // Create a new FormData object
+          const formData = new FormData();
+          
+          // Append other form data fields
+          formData.append('employee_id', employee_id);
+          formData.append('amount', amount);
+          formData.append('reimbursment_type', form.values.reimbursment_type);
+          formData.append('expense_date', form.values.expense_date);
+          formData.append('description', form.values.description);
+          
+          // Append file data
+          formData.append('documents', form.values.documents);
+  
+          // Make a POST request with FormData and content-type set to multipart/form-data
+          const response = await axios.post('http://192.168.0.150:5000/submit_reimbursement', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+  
           console.log('Data sent successfully:', response.data);
         })
       );
-      // Open the modal after successful form submission
-      setIsModalOpen(true);
+      // Open the modal after successful form submission 
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
+  
   
 
   return (

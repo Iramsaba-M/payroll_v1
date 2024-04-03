@@ -5,21 +5,24 @@ import TextComponent from "../../text/TextComponent";
 import ReviewPayrollStyle from "./ReviewPayrollStyle";
 import Button from "../../../../../configurations/Button/Button";
 import { addlop, add } from "./ReviewPayrollData";
+import { fetchData } from "../../../../../services/APIService";
+import { reviewpayroll } from "../../../../../api/EndPoints";
 const ReviewPayrollComponent = ({ config }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataFromEndpoint = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/modal');
-        setData(response.data[0]); // assuming the data is an array and you want the first object
+        const responseData = await fetchData(reviewpayroll);
+        setData(responseData[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchData();
+    fetchDataFromEndpoint();
   }, []);
+  
   const handleInputChange = (fieldName, newValue) => {
     // Update the state with the new value
     setData((prevData) => ({
