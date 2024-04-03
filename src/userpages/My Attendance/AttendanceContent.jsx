@@ -1,3 +1,4 @@
+//clean code
 import { BiUpArrowAlt } from "react-icons/bi";
 
 export const AttendanceButtons = [
@@ -26,104 +27,104 @@ export const Attendanccard2 = [
 ////////////////////////////////////////////////////////////////////////////////////////
 export const leavesdata = [
   {
-    card: 'leavestyle',name: 'casual', multivalue: [
+    card: 'leavestyle', name: 'casual', multivalue: [
       { heading: 'Casual Leave', name: 'casual', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'sick',
+    card: 'leavestyle', name: 'sick',
     multivalue: [
       { heading: 'Sick Leave', name: 'sick', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'marriage',
+    card: 'leavestyle', name: 'marriage',
     multivalue: [
       { heading: 'Marriage Leave', name: 'marriage', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle', name: 'paternity',multivalue: [
+    card: 'leavestyle', name: 'paternity', multivalue: [
       { heading: 'Paternity Leave', name: 'paternity', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'maternity', multivalue: [
+    card: 'leavestyle', name: 'maternity', multivalue: [
       { heading: ' Maternity   Leave', name: 'maternity', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'bereavement', multivalue: [
+    card: 'leavestyle', name: 'bereavement', multivalue: [
       { heading: 'Bereavement Leave', name: 'bereavement', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'unpaid', multivalue: [
+    card: 'leavestyle', name: 'unpaid', multivalue: [
       { heading: 'Unpaid Leave', name: 'unpaid', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
   {
-    card: 'leavestyle',name: 'vacation', multivalue: [
+    card: 'leavestyle', name: 'vacation', multivalue: [
       { heading: 'Vacation Leave', name: 'vacation', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 
 ]
 ///////////////////////////////////////////////////////////////////
-export const leavecard1 =[
+export const leavecard1 = [
   {
-    card: 'leavestyle',name: 'cl',multivalue: [
+    card: 'leavestyle', name: 'cl', multivalue: [
       { heading: 'Casual Leave', name: 'cl', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard2 =[
+export const leavecard2 = [
   {
-    card: 'leavestyle',name: 'sl',
+    card: 'leavestyle', name: 'sl',
     multivalue: [
       { heading: 'Sick Leave', name: 'sl', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard3 =[
+export const leavecard3 = [
   {
-    card: 'leavestyle',name: 'marriage',
+    card: 'leavestyle', name: 'marriage',
     multivalue: [
       { heading: 'Marriage Leave', name: 'marriage', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard4 =[
+export const leavecard4 = [
   {
     card: 'leavestyle', multivalue: [
       { heading: 'Paternity Leave', name: 'paternity', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard5 =[
+export const leavecard5 = [
   {
-    card: 'leavestyle',  name: 'paternity',multivalue: [
+    card: 'leavestyle', name: 'paternity', multivalue: [
       { heading: 'Maternity Leave', name: 'maternity', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard6 =[
+export const leavecard6 = [
   {
-    card: 'leavestyle',name: 'bereavement', multivalue: [
+    card: 'leavestyle', name: 'bereavement', multivalue: [
       { heading: 'Bereavement Leave', name: 'bereavement', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard7 =[
+export const leavecard7 = [
   {
     card: 'leavestyle', name: 'unpaid', multivalue: [
       { heading: 'Unpaid Leave', name: 'unpaid', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
 ]
-export const leavecard8 =[
+export const leavecard8 = [
   {
-    card: 'leavestyle',name: 'vacation', multivalue: [
+    card: 'leavestyle', name: 'vacation', multivalue: [
       { heading: 'Vacation Leave', name: 'vacation', multiheadingstyle: 'leavemultivaluehead', multivaluestyle: 'leavemultivalue' },
     ],
   },
@@ -148,8 +149,8 @@ export const leavesdata2 = [
 
 ]
 export const radiocontent = [
-  { label: 'Half Day', type: 'radio', textcss: "standard", name: 'leave_day',value:'half_day' }, //leavetype
-  { label: 'Full Day', type: 'radio', textcss: "standard", name: 'leave_day',value:'full_day' },
+  { label: 'Half Day', type: 'radio', textcss: "standard", name: 'leave_day', value: 'half_day' }, //leavetype
+  { label: 'Full Day', type: 'radio', textcss: "standard", name: 'leave_day', value: 'full_day' },
   {
     label: "",
     name: "reason",
@@ -164,7 +165,7 @@ export const radiocontent = [
     textcss: 'leaveuploadinput',
     placeholder: 'Upload Doc',
     icon: <BiUpArrowAlt className="text-2xl ml-3 text-gray-600" />,
-    iconPosition:'end',
+    iconPosition: 'end',
   },
 ]
 

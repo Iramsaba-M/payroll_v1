@@ -1,18 +1,5 @@
-// import React from 'react'
-// import BodyContent from '../../../configurations/bodyContent/BodyContent'
-// import AddEmployee from './AddEmployee'
-
-// const AddEmp = () => {
-//   return (
-//     <div>
-//         <BodyContent content={AddEmployee} />
-//     </div>
-//   )
-// }
-
-// export default AddEmp
-
-import React, { useState } from 'react';
+//clean code
+import { useState } from 'react';
 import BodyContent from '../../../configurations/bodyContent/BodyContent';
 import AddEmployee from './AddEmployee';
 

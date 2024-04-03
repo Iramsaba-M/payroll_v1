@@ -1,3 +1,4 @@
+//clean code
 import { PiUploadSimpleThin } from "react-icons/pi";
 import { CiEdit } from "react-icons/ci";
 
@@ -118,7 +119,6 @@ export const formContent  = [
     { label: 'Save',  style: 'buttonStyle' , type:"submit"},
     { label: 'Next', style: 'buttonStyle3' ,type:"Button" },
   ];
-
 
   export const ButtonforAdd = [
     { label: '+ Add Another Document',  style: 'buttonStyle3' },

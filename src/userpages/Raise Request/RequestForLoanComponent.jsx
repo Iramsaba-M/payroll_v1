@@ -1,15 +1,10 @@
-
-
-
-
-/* eslint-disable react/prop-types */
+//clean code
 import  { useState } from 'react';
 import OptionsComponent from '../../components/form/Formfields/options/OptionsComponent';
 import TextComponent from '../../components/form/Formfields/text/TextComponent';
 import Button from '../../configurations/Button/Button';
 import { Apply, Cancel,View_Policies } from './RequestForLoanData';
 import RequestForLoanStyles from './RequestForLoanStyles';
-import axios from 'axios';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalConfig2 } from '../../components/form/Formfields/modal/ModalConfig2';
 import { postData } from '../../services/APIService';

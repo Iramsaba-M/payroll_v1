@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+//clean code
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -14,7 +14,6 @@ import {useButtonState}  from "../../context/ButtonStateContext"
 const Barchart = ({ graphdata }) => {
 
   if (!graphdata || !Array.isArray(graphdata)) {
-    // Handle the case when graphdata is not defined or not an array
     console.error("Invalid graphdata:", graphdata);
     return null;
   }
