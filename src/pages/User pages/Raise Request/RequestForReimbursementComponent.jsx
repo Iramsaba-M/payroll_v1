@@ -12,7 +12,8 @@ import { FaTimes } from 'react-icons/fa';
 import ModalComponent from '../../../components/form/Formfields/modal/ModalComponent';
 import { ModalConfig2 } from '../../../components/form/Formfields/modal/ModalConfig2';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
-
+import { EndUser_ApplyReimbursement } from '../../../api/EndPoints';
+import {postDataImage} from '../../../services/APIService';
 const RequestForReimbursementComponent = ({ config }) => {
   const [formData, setFormData] = useState([{ id: 0, values: {} }]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,6 +43,34 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await Promise.all(
+  //       formData.map(async (form) => {
+  //         const employee_id = "IK666";
+  //         const amount = parseFloat(form.values.amount);
+  //         const formData = new FormData();
+  //         formData.append('employee_id', employee_id);
+  //         formData.append('amount', amount);
+  //         formData.append('reimbursment_type', form.values.reimbursment_type);
+  //         formData.append('expense_date', form.values.expense_date);
+  //         formData.append('description', form.values.description);
+  //         formData.append('documents', form.values.documents);
+  //         const response = await axios.post('http://192.168.0.117:8000/enduser/ submit_reimbursement/', formData, {
+  //           headers: {
+  //             'Content-Type': 'multipart/form-data'
+  //           }
+  //         });
+
+  //         console.log('Data sent successfully:', response.data);
+  //       })
+  //     );
+
+  //   } catch (error) {
+  //     console.error('Error sending data:', error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,28 +78,25 @@ const RequestForReimbursementComponent = ({ config }) => {
         formData.map(async (form) => {
           const employee_id = "IK666";
           const amount = parseFloat(form.values.amount);
-          const formData = new FormData();
-          formData.append('employee_id', employee_id);
-          formData.append('amount', amount);
-          formData.append('reimbursment_type', form.values.reimbursment_type);
-          formData.append('expense_date', form.values.expense_date);
-          formData.append('description', form.values.description);
-          formData.append('documents', form.values.documents);
-          const response = await axios.post('http://192.168.0.150:5000/submit_reimbursement', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-
-          console.log('Data sent successfully:', response.data);
+          const data = new FormData();
+          data.append('employee_id', employee_id);
+          data.append('amount', amount);
+          data.append('reimbursment_type', form.values.reimbursment_type);
+          data.append('expense_date', form.values.expense_date);
+          data.append('description', form.values.description);
+          data.append('documents', form.values.documents);
+  
+          // Utilize EndUser_ApplyReimbursement constant
+          const response = await postDataImage(EndUser_ApplyReimbursement, data);
+  
+          console.log('Data sent successfully:', response);
         })
       );
-
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
-
+  
 
 
   return (
