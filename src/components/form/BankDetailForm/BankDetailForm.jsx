@@ -5,7 +5,7 @@ import { GoPlusCircle } from "react-icons/go";
 import Button from '../../../configurations/Button/Button';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
-import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
+import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
 import { postData } from '../../../services/APIService';

@@ -5,7 +5,7 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import PasswordIcon from './PasswordIcon';
 import { VscTools } from "react-icons/vsc";
 import TagComponent from './TagComponent';
-import { TagConfig, ButtonDataforAditional } from '../../../pages/Employee/AditionalDetail/AditionalDetailsContent';
+import { TagConfig, ButtonDataforAditional } from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
 import OptionsComp from './OptionsComp';
 import { getApiUrl } from '../../../api/GetAPI';
 import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';

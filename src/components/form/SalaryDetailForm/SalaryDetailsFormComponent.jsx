@@ -6,7 +6,7 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import { getApiUrl } from '../../../api/GetAPI';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
-import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
+import {Button1Content, Button2Content}from '../../../pages/Admin pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig }from '../Formfields/modal/ModalConfig';

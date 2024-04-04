@@ -8,7 +8,7 @@ import TextComponent from "../Formfields/text/TextComponent";
 import TextStyle from "../Formfields/text/TextStyle";
 import EmailComponent from "../Formfields/email/EmailComponent";
 import OptionsComponent from "../Formfields/options/OptionsComponent";
-import { ButtonContent } from "../../../pages/Employee/BasicDetails/BasicDetailsContent";
+import { ButtonContent } from "../../../pages/Admin pages/Employee/BasicDetails/BasicDetailsContent";
 import PhoneComponent from "../Formfields/phone/PhoneComponent";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
 import { BASIC_DETAILS_API, BASIC_DETAILS_API_Get, BASIC_DETAILS_API_put } from "../../../api/EndPoints";
