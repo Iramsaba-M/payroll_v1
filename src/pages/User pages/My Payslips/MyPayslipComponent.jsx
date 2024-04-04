@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react';
 import { Mypayslipcontent } from './MypayslipContent';
 import TableComponent from '../../../configurations/tables/TableComponent';
 import { mypayslip } from '../../../api/EndPoints';
-
+import { fetchData } from '../../../services/APIService';
 const MyPayslipComponent = () => {
 
   const [tableData, setTableData] = useState([]);

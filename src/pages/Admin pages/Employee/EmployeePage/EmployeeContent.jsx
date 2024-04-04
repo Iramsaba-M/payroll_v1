@@ -21,7 +21,7 @@ export const ButtonContent = [
   { label: 'Export', icon: <BsArrowBarUp />, style: 'buttonStyle1' }, 
 ];
 
-import { MdOutlineEdit } from 'react-icons/md';
+import { MdOutlineEdit,MdDeleteOutline } from 'react-icons/md';
 
 export const tableContent = [
   {
@@ -61,11 +61,19 @@ export const tableContent = [
   },
   {
     name: "edit",
-    label: "EDIT",
+    label: "",
     dataType: "icon",
     cssClass: "datastyle2",
     clmncss: "style1",
     content: <MdOutlineEdit />
+  },
+  {
+    name: "delete",
+    label: "",
+    dataType: "icon",
+    cssClass: "datastyle2",
+    clmncss: "style1",
+    content: <MdDeleteOutline />
   },
 
 ];

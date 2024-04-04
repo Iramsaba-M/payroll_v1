@@ -12,7 +12,13 @@ import AditionalDetails from '../AditionalDetail/AditionalDetails';
 const AddEmployee = () => {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [employeeId, setEmployeeId] = useState('');
+  
   const [editMode, setEditMode] = useState(false);
+
+  // Function to toggle edit mode
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+  };
 
   const handleNavClick = (itemName) => {
     const selectedIndex = navsContent.findIndex((item) => item.name === itemName);

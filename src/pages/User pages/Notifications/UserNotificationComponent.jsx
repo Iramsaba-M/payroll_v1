@@ -1,51 +1,95 @@
-// import { useState } from 'react'
-// import React from 'react'
-// import Card from '../../configurations/Card/Card'
-// import { UserNotificationcontent } from './UserNotificationContent';
-
-// const UserNotificationComponent = () => {
-
-//   // const [notificationData, setTableData] = useState([]);
-
-//   // const fetchTableData = async () => {
-      
-//   //     try {
-//   //       const notificationData = await fetchData(mypayslip); // Fetch data based on payslips
-//   //       setTableData(notificationData);
-//   //     } catch (error) {
-//   //       console.error('Error fetching table data:', error);
-//   //     }
-//   //   };
-    
-//   //   useEffect(() => {
-//   //     fetchTableData(); // Fetch data on component mount or when payslips change
-//   //   }, [mypayslip]); // Include payslips in the dependency array
-
-
-//   return (
-//     <div>
-//       <Card Configs={UserNotificationcontent}  />
-//     </div>
-//   )
-// }
-// export default UserNotificationComponent
-
-import React from 'react';
+import { useState ,useEffect} from 'react'
+import React from 'react'
 import Card from '../../../configurations/Card/Card';
 import { UserNotificationcontent } from './UserNotificationContent';
+import { EndUser_notification } from '../../../api/EndPoints';
+import { fetchData } from '../../../services/APIService';
 import usernotificationstyle1 from '../../../configurations/Card/CardStyle';
-
 const UserNotificationComponent = () => {
+  const [notificationData, setNotificationData] = useState({});
+
+  useEffect(() => {
+    const fetchNotificationData = async () => {
+      try {
+        const data = await fetchData(EndUser_notification);
+        setNotificationData(data);
+        console.log('Fetched Data:', data); // Log fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchNotificationData();
+  }, []);
+
   return (
     <div className="flex flex-col">
-      {UserNotificationcontent.map((item, index) => (
-        <div key={index} className={usernotificationstyle1}>
-          <Card Configs={[item]} cardTitleStyle="text-xs font-bold mb-2" />
-        </div>
-      ))}
+      {UserNotificationcontent.map((item, index) => {
+        const { contentKey } = item;
+        const cardData = notificationData[contentKey] || []; // Get data for the contentKey
+        console.log(`Content Key: ${contentKey}, Data:`, cardData); // Log card data
+        return (
+          <div key={index} className={usernotificationstyle1}>
+            <Card Configs={[{ ...item, data: cardData }]} cardTitleStyle="text-xs font-bold mb-2" />
+          </div>
+        );
+      })}
     </div>
   );
 };
 
 export default UserNotificationComponent;
 
+// import React from 'react';
+// import Card from '../../../configurations/Card/Card';
+// import { UserNotificationcontent } from './UserNotificationContent';
+// import usernotificationstyle1 from '../../../configurations/Card/CardStyle';
+
+// const UserNotificationComponent = () => {
+//   return (
+//     <div className="flex flex-col">
+//       {UserNotificationcontent.map((item, index) => (
+//         <div key={index} className={usernotificationstyle1}>
+//           <Card Configs={[item]} cardTitleStyle="text-xs font-bold mb-2" />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default UserNotificationComponent;
+
+// import React, { useState, useEffect } from 'react';
+// import Card from '../../../configurations/Card/Card';
+// import usernotificationstyle1 from '../../../configurations/Card/CardStyle';
+// import { fetchData } from '../../../services/APIService';
+// import { EndUser_notification } from '../../../api/EndPoints';
+
+// const UserNotificationComponent = () => {
+//   const [notificationData, setNotificationData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchnotificationData = async () => {
+//       try {
+//         const data = await fetchData(EndUser_notification); // Assuming fetchDataFromApi is your API fetching function
+//         setNotificationData(data);
+//       } catch (error) {
+//         console.error('Error fetching data:', error);
+//       }
+//     };
+
+//     fetchnotificationData();
+//   }, []); // Empty dependency array ensures it runs only once on component mount
+
+//   return (
+//     <div className="flex flex-col">
+//       {notificationData.map((item, index) => (
+//         <div key={index} className={usernotificationstyle1}>
+//           <Card Configs={[item]} cardTitleStyle="text-xs font-bold mb-2" />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default UserNotificationComponent;

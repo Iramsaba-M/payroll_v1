@@ -61,6 +61,8 @@ export const EndUser_Get_Attendance = 'employee';
 
 export const EndUser_punch_status = 'punch';
 
+export const EndUser_notification = 'notification';
+
 
 //sb
 export const EndUser_ApplyLoan = 'az';

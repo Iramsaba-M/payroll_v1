@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollContents';
 import Tablecomp from '../../../configurations/table2/Tablecomp2';
+import Table2 from '../../../configurations/table2/Table2';
 import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
-import { payslips } from '../../../api/EndPoints';
+import { Runpayroll } from '../../../api/EndPoints';
 import { fetchData} from '../../../services/APIService';
 import Payslip from '../Run Payroll/Payslip';
+
 
 const RunPayrollComponent = ( ) => {
   const [tableData, setTableData] = useState([]);
@@ -30,41 +32,20 @@ const RunPayrollComponent = ( ) => {
     setSelectedDateTop(date);
   };
 
-  const fetchTableData = async () => {
-    try {
-      const tableData = await fetchData(payslips); // Fetch data based on payslips
-      setTableData(tableData);
-    } catch (error) {
-      console.error('Error fetching table data:', error);
-    }
-  };
-  
-  useEffect(() => {
-    fetchTableData(); // Fetch data on component mount or when payslips change
-  }, [payslips]); // Include payslips in the dependency array
+   const [data, setData] = useState(null);
 
-//  useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const formattedDate = selectedDateTop.toLocaleString('default', { month: 'short' }).toLowerCase();
-//         const queryParams = new URLSearchParams({
-//           month: formattedDate,
-//           year: selectedDateTop.getFullYear()
-//         });
-//         const tableData = await fetchData(`payslips?${queryParams}`);
-  
-//         // Log the constructed URL
-//         const url = `${fetchData.baseUrl}/${payslips}?${queryParams.toString()}`;
-//         console.log('Constructed URL:', url);
-  
-//         setData(tableData);
-//       } catch (error) {
-//         console.error('Error fetching table data:', error);
-//       }
-//     };
-  
-//     fetchData();
-//   }, [selectedDateTop]);
+  useEffect(() => {
+    const fetchTableData = async () => {
+      try {
+        const tableData = await fetchData(Runpayroll);
+        setData(tableData);
+      } catch (error) {
+        console.error('Error fetching table data:', error);
+      }
+    };
+
+    fetchTableData();
+  }, [Runpayroll]);
 
 
   return (
@@ -79,7 +60,7 @@ const RunPayrollComponent = ( ) => {
 
           </div>
         ) : (
-          <Tablecomp config={tableContent3} onReviewClick={handleReviewClick} />
+          <Table2 config={tableContent3} onReviewClick={handleReviewClick} data={data} />
         )
       )}
       {showPayslipsButton && !showDynamicTable && (
