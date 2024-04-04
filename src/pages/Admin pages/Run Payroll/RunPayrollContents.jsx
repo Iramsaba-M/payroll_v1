@@ -42,8 +42,10 @@ export const Button1Content = [
       content: <MdOutlineFileDownload />
     },
   ]
-  export const tableContent3 = [
-    {
+  export const tableContent3 = {
+    tableposition: "review",
+    column: [
+      {
         name: "netpay",
         label: "EMPLOYEE NET PAY",
         dataType: "string",
@@ -82,7 +84,8 @@ export const Button1Content = [
           'Processed': 'datastyle4', // Specify the class name directly
         },
       },
-    ];
+    ],
+  };
     export const RunPayrolltableContent = [
       {
         name: "name",

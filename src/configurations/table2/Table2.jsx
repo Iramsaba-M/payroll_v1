@@ -1,10 +1,12 @@
 import React from 'react';
 import Tablecomp from './Tablecomp2';
 
-function Table2({ config, data }) {
+
+
+function Table2({ config, data, onReviewClick }) {
   return (
     <div>
-      <Tablecomp config={config} data={data} />
+      <Tablecomp config={config} data={data} onReviewClick={onReviewClick} />
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import TableStyle from './TableStyle';
-import { MdOutlineEdit, MdOutlineFileDownload } from 'react-icons/md';
+import { MdOutlineEdit, MdOutlineFileDownload,MdDeleteOutline } from 'react-icons/md';
 import { view } from '../../api/EndPoints';
 import { fetchData } from '../../services/APIService';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
+
 
 function DynamicTable({ config, data, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
@@ -32,6 +33,8 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
+
+      
 
       const queryParams = { employee_id: row.employee_id };
       const endpoint = `${view}/${queryParams.employee_id}`;
@@ -80,12 +83,13 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-      setEditModalOpen(true)
-
+      setEditModalOpen(true) 
+     
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
   };
+  
 
   const handleSelectAll = () => {
     if (selectAll) {
@@ -95,29 +99,37 @@ function DynamicTable({ config, data, onEditEmployee }) {
     }
     setSelectAll(!selectAll);
   };
-//sb tested api
-const handleDownload2 = (row) => {
-  const { year, month } = row;
-  const employee_id = 2; 
-  const downloadUrl = `http://192.168.0.150:8000/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
-  fetch(downloadUrl)
-      .then(response => response.json()) 
-      .then(data => {
-          const base64Response = data.payslip;
-          const blobData = base64ToBlob(base64Response, 'application/pdf');
-          const blobUrl = URL.createObjectURL(blobData);
-          const a = document.createElement('a');
-          a.href = blobUrl;
-          a.download = `payslip_${employee_id}_${year}_${month}.pdf`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(blobUrl);
-      })
-      .catch(error => {
-          console.error('Error downloading payslip:', error);
-      });
+  
+  const handleDownload2 = (row) => {
+    const employee_id = 2; // Statically define employee_id here
+
+    const { year, month } = row; // Extract year and month from the row object
+
+    // Construct the download URL with query parameters
+    const downloadUrl = `http://192.168.0.150:5005/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
+
+    fetch(downloadUrl)
+        .then(response => response.blob()) // Get the response as a Blob object directly
+        .then(blobData => {
+            // Create Blob object from the received data
+            const blobUrl = URL.createObjectURL(blobData);
+
+            // Create a temporary <a> element to trigger the download
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = `payslip_${employee_id}_${year}_${month}.pdf`; // Set the filename for the downloaded PDF
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Clean up the Blob URL object
+            URL.revokeObjectURL(blobUrl);
+        })
+        .catch(error => {
+            console.error('Error downloading payslip:', error);
+        });
 };
+
 
 function base64ToBlob(base64, type = 'application/octet-stream') {
   const binStr = atob(base64);
@@ -153,7 +165,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
       // If photo_content is not available, still render employee name
       return <span>{formattedName}</span>;
     }
-
+     
     if (column.name === 'status' && column.clmncss) {
       const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
       return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
@@ -196,8 +208,18 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           <MdOutlineFileDownload />
         </button>
       );
+      }else if (column.dataType === 'icon' && column.name === 'delete') {
+        // Render Download button with icon
+        return (
+          <button
+            className=" text-gray-400 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
+            onClick={() => handleDelete(row)}
+          >
+             <MdDeleteOutline />
+          </button>
+        );
     } else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
-      // Render finalizeedit for run payroll finalize component icon
+      // Render Edit icon
       return (
         <button
           className="cursor-pointer"
@@ -207,7 +229,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         </button>
       );
     }
-
+    
     else {
       // Default rendering for other columns
       return row[column.name] || '';

@@ -12,6 +12,8 @@ import ButtonConfig from '../../../configurations/Button/ButtonConfig'
 import { FaPlay } from "react-icons/fa6";
 import { EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../../api/EndPoints'
 import { fetchData, postData } from '../../../services/APIService'
+import Table2 from '../../../configurations/table2/Table2';
+
 
 export const Slider = ({ config, data }) => {
 
@@ -270,7 +272,7 @@ const MyAttendanceComponent = () => {
           />
           <Card Config={Attendanccard2}
             comp={leavehistory && (
-              <TableComponent config={leavehistorytable} data={leavehistory} />
+              <Table2 config={leavehistorytable} data={leavehistory} />
             )}
           />
         </div>
