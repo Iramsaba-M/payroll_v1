@@ -50,7 +50,7 @@ const MyLeave = ({ config, applyleave }) => {
     const handlebuttonclick = (label) => {
         if (label === 'Apply Leave') {
             // onSubmit(true);
-            // console.log('p1');
+    
         } else if (label === 'Cancle') {
             applyleave(false);
             console.log(applyleave)

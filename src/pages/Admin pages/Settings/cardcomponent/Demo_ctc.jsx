@@ -70,9 +70,9 @@ const gatherDataAndPost = async (event) => {
     <form onSubmit={(event) => gatherDataAndPost(event)}>
     <div className=" p-8 w-[160vh]">
       <div className="flex items mb-8">
-        <div className="cursor-pointer -translate-y-[7vh] -translate-x-4 " onClick={handleGoBack}>
+        {/* <div className="cursor-pointer -translate-y-[7vh] -translate-x-4 " onClick={handleGoBack}>
           <IoIosArrowBack size={12} />
-        </div>
+        </div> */}
         <div className='-translate-y-16'>
         <h1 className="text-xl ">Add CTC Template</h1>
         </div>

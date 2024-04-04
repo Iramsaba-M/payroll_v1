@@ -41,11 +41,11 @@ export const Home_and_Reportdata ='reports/month-data'
 export const Home_and_Report_BarGraphdata ='reports/graph-data'
 
 //Runpayroll
-export const Runpayroll ='Runpayroll';
+export const Runpayroll ='run_payroll/fetch_monthly_data/fetch_monthly_data';//sb done api testing
 
-export const mypayslip ='mypayslip';
+export const mypayslip ='payslip/year-month';//sb done api testing
 
-export const payslips ='fetch_employee_data';
+export const payslips ='run_payroll/fetch_employee_data ';//sb done api testing 
 
 export const view ='history/dowload';
 
@@ -65,7 +65,7 @@ export const EndUser_punch_status = 'punch';
 //sb
 export const EndUser_ApplyLoan = 'az';
 
-export const EndUser_ApplyReimbursement = 'submit_reimbursement/';
+export const EndUser_ApplyReimbursement = 'enduser/ submit_reimbursement/';//sb tested for one reimbursement form multiple not yet should discuss
 
 export const ctctemplate = 'test';
 

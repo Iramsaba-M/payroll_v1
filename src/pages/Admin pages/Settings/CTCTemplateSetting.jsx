@@ -7,9 +7,12 @@ import axios from 'axios';
 import { fetchData } from '../../../services/APIService';
 import { ctctemplatename } from '../../../api/EndPoints';
 // import Card from '../../configurations/Card/Card';
+
+import { IoMdArrowBack } from "react-icons/io";
 const CTCTemplateSetting = () => {
   const navigate = useNavigate();
   const [templates, setTemplates] = useState([]);
+  const [cardclick, setCardClick] = useState(false)
 
   useEffect(() => {
     const fetchDataFromEndpoint = async () => {
@@ -28,27 +31,48 @@ const CTCTemplateSetting = () => {
 
 
   const handleClick = () => {
-    navigate('../Demo_ctc');
+    navigate('./Demo_ctc');
+    setCardClick(true)
+  };
+
+  const handleBackClick = () => {
+    navigate('/apps/settings/CTCTemplateSetting');
+    setCardClick(false);
   };
 
   return (
     <div>
-      <div className='ml-36' onClick={handleClick}  >
-        <Box Configs={BoxContent} />
-      </div>
- 
-     <div className='ml-[19vh]'>
-  {templates.map((template, index) => {
-    const Configs = [
-      { 
-        ...BoxContent2[0], 
-        title: template 
-      }
-    ];
-    return <Box key={index} Configs={Configs} />
-  })}
-</div>
-      <Outlet/>
+      
+     
+
+      {
+        (!cardclick) &&
+        <div>
+        <div className='ml-36' onClick={handleClick}  >
+          <Box Configs={BoxContent} />
+        </div>
+   
+       <div className='ml-[19vh]'>
+    {templates.map((template, index) => {
+      const Configs = [
+        { 
+          ...BoxContent2[0], 
+          title: template 
+        }
+      ];
+      return <Box key={index} Configs={Configs} />
+    })}
+  </div>
+  </div>
+        }
+      {cardclick && (
+        <>
+        <div className='-mt-6 '>
+          <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          </div>
+          <Outlet />
+        </>
+      )}
     </div>
   );
 };

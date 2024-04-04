@@ -95,8 +95,39 @@ function DynamicTable({ config, data, onEditEmployee }) {
     }
     setSelectAll(!selectAll);
   };
-  
+//sb tested api
+const handleDownload2 = (row) => {
+  const { year, month } = row;
+  const employee_id = 2; 
+  const downloadUrl = `http://192.168.0.150:8000/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
+  fetch(downloadUrl)
+      .then(response => response.json()) 
+      .then(data => {
+          const base64Response = data.payslip;
+          const blobData = base64ToBlob(base64Response, 'application/pdf');
+          const blobUrl = URL.createObjectURL(blobData);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = `payslip_${employee_id}_${year}_${month}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+      })
+      .catch(error => {
+          console.error('Error downloading payslip:', error);
+      });
+};
 
+function base64ToBlob(base64, type = 'application/octet-stream') {
+  const binStr = atob(base64);
+  const len = binStr.length;
+  const arr = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    arr[i] = binStr.charCodeAt(i);
+  }
+  return new Blob([arr], { type: type });
+}
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
       console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);

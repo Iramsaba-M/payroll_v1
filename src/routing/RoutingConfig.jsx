@@ -266,21 +266,18 @@ const routesConfig = [
                   {
                       path: 'CTCTemplateSetting',
                       element: <CTCTemplateSetting />,
-                      // children: [
-                      //   {
-                      //     path: 'Demo_ctc',
-                      //     element: <Demo_ctc/>,
-                      //   },
-                      //   // {
-                      //   //   path: 'CTCTemplateSetting',
-                      //   //   element: <CTCTemplateSetting />,
-                      //   // }
-                      // ]
+                      children: [
+                        {
+                          path: 'Demo_ctc',
+                          element: <Demo_ctc/>,
+                        },
+                        // {
+                        //   path: 'CTCTemplateSetting',
+                        //   element: <CTCTemplateSetting />,
+                        // }
+                      ]
                     },
-                    {
-                      path: 'Demo_ctc',
-                      element: <Demo_ctc />,
-                    },
+                 
                     {
                       path: 'PayRollSetting',
                       element: <PayRollSetting />,
