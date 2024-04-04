@@ -33,6 +33,8 @@ import RaiseRequest from '../pages/User pages/Raise Request/RaiseRequest'
 import UserReports from '../pages/User pages/Reports/UserReports'
 import RequestForLoan from '../pages/User pages/Raise Request/RequestForLoan'
 import RequestForReimbursement from '../pages/User pages/Raise Request/RequestForReimbursement'
+import Leavepolicy from '../components/AppSettingComponents/Leavepolicy/Leavepolicy'
+import Holidaypolicy from '../components/AppSettingComponents/Leavepolicy/Holidaypolicy'
 
 const routesConfig = [
   {
@@ -305,6 +307,16 @@ const routesConfig = [
                     {
                       path: 'LeaveSetting',
                       element: <LeaveSetting />,
+                      children: [
+                        {
+                            path: 'LeavePolicy',
+                            element: <Leavepolicy/>,
+                        },    
+                        {
+                          path: 'HolidayPolicy',
+                          element: <Holidaypolicy/>,
+                        },  
+                      ],
                     },
                     
                 ],
