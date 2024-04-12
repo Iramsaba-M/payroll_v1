@@ -19,7 +19,7 @@ import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { RiLock2Line } from "react-icons/ri";
 import { TbPigMoney ,TbMoneybag} from "react-icons/tb";
 import { TiTickOutline } from "react-icons/ti";
-
+import { PiHandCoins } from "react-icons/pi";
 
 export const BoxContent = [
     { card: 'style1', title: 'Add New Template',icon:<TbArrowBigRight className="ml-5" />,icon2:<FaPlus  className="h-5 w-5 "/> },
@@ -32,7 +32,7 @@ export const BoxContent2 = [
   ];
 
 export const TypeOfLoan = [
-    { card: 'style1',path:'./TypeOfLoan', title: 'Type Of Loan',icon:<TbArrowBigRight className="ml-5" />,icon2:<FaRegPaperPlane  className="h-6 w-5 -ml-12"/> },
+    { card: 'style1',path:'./TypeOfLoan', title: 'Type Of Loan',icon:<TbArrowBigRight className="ml-5" />,icon2:<PiHandCoins className="h-7 w-6 -ml-12 -mt-1"/> },
 
   ];
   export const Loanpolicycontent = [
