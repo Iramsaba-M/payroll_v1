@@ -152,8 +152,8 @@ const TypeOfReimbursement = () => {
   const [newReimbursementEnabled, setNewReimbursementEnabled] = useState(false);
 
   useEffect(() => {
-    // axios.get("http://localhost:3000/saveloan")
-    axios.get('http://192.168.0.134:5000/reimbursements/')
+    axios.get("http://localhost:3000/saverem")
+    // axios.get('http://192.168.0.134:5000/reimbursements/')
       .then(response => setReimbursementData(response.data))
       .catch(error => console.error("Error fetching data: ", error));
   }, []);
@@ -165,8 +165,8 @@ const TypeOfReimbursement = () => {
       enable: newReimbursementEnabled
     };
     try {
-      // const response = await axios.post("http://localhost:3000/saveloan", newReimbursement);
-      const response = await axios.post('http://192.168.0.134:5000/reimbursements/', newReimbursement);
+      const response = await axios.post("http://localhost:3000/saverem", newReimbursement);
+      // const response = await axios.post('http://192.168.0.134:5000/reimbursements/', newReimbursement);
       if (response.status === 200 || response.status === 201) {
         console.log("New data posted successfully");
         setReimbursementData([...reimbursementData, newReimbursement]); // Optionally add to local state

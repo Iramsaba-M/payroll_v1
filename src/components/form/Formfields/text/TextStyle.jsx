@@ -77,7 +77,7 @@ d:'ml-[10vh] w-36 outline-none',
 e:'ml-4 w-36 outline-none',
 f:'',
 
-cc:'ml-22 w-36 mr-8 text-center',
+cc:'ml-20 w-36 mr-8 text-center',
 
 
 

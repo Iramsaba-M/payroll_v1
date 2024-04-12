@@ -952,6 +952,15 @@
       "roi": "8",
       "applyeligibility": "Contractor",
       "documentneeded": "yes"
+    },
+    {
+      "id": "5793",
+      "policyname": "policy6",
+      "maxamt": "100",
+      "noofinstallments": "8",
+      "roi": "4",
+      "applyeligibility": "Paid intern",
+      "documentneeded": "no"
     }
   ],
   "Typeofreimbursement": [
@@ -1826,7 +1835,7 @@
       }
     ]
   ],
-  "saveloan": [
+  "saverem": [
     {
       "id": "a940",
       "reimbursement_type": "Food",
@@ -1863,7 +1872,7 @@
       "id": "3q3ulGi"
     }
   ],
-  "savepolicy": [
+  "savepolicyrem": [
     {
       "reimbursement_type": "policy1",
       "maximum_amount": "234567",
@@ -1903,6 +1912,119 @@
       "enable": true,
       "period": "Within 2 month of expense made",
       "id": 5
+    }
+  ],
+  "admin_leavepolicy": [
+    {
+      "id": "780c",
+      "policy_name": "sick leave",
+      "allowed_leaves": "12 days",
+      "duration": "Jan to Dec",
+      "Paytype": "unpaid_leave",
+      "forward": false,
+      "encashment": false
+    },
+    {
+      "id": "669b",
+      "policy_name": "casual leave",
+      "allowed_leaves": "20 days",
+      "duration": "Jan to Dec",
+      "pay_type": "",
+      "Pay_type": "unpaid_leave",
+      "forward": true,
+      "encashment": true
+    },
+    {
+      "id": "b640",
+      "policy_name": "Earned Leave",
+      "allowed_leaves": "20 days",
+      "duration": "Jan to Dec",
+      "forward": true,
+      "encashment": false,
+      "Paytype": "unpaid_leave"
+    },
+    {
+      "id": "e262",
+      "policy_name": "Maternity Leave",
+      "allowed_leaves": "186 days",
+      "duration": "Jan to Dec",
+      "Paytype": "unpaid_leave",
+      "forward": true,
+      "encashment": false
+    },
+    {
+      "id": "5680",
+      "policy_name": "Paternity Leave",
+      "allowed_leaves": "5 days",
+      "duration": "Jan to Dec",
+      "Paytype": "unpaid_leave",
+      "forward": true,
+      "encashment": false
+    },
+    {
+      "id": "caa4",
+      "policy_name": "Work from Home",
+      "allowed_leaves": "0",
+      "duration": "Jan to Dec",
+      "forward": false,
+      "encashment": false,
+      "paytype": "unpaid_leave"
+    },
+    {
+      "id": "cb93",
+      "policy_name": "Comp off",
+      "allowed_leaves": "5 days",
+      "duration": "Jan to Dec",
+      "forward": false,
+      "encashment": false,
+      "paytype": ""
+    },
+    {
+      "id": "581f",
+      "policyname": "",
+      "date": "",
+      "holiday_name": "Independance Day",
+      "Date": "15/08/2024",
+      "enable": true
+    },
+    {
+      "id": "f3bd",
+      "policy_name": "sick leave",
+      "allowed_leaves": "7 days",
+      "duration": "Jan to Dec",
+      "pay_type": "",
+      "Paytype": "unpaid_leave",
+      "forward": true,
+      "encashment": true
+    },
+    {
+      "id": "a1f7",
+      "policy_name": "leave",
+      "allowed_leaves": "8 days",
+      "duration": "Jan to Dec",
+      "paytype": "",
+      "forward": true,
+      "encashment": true
+    }
+  ],
+  "admin_holiday": [
+    {
+      "id": "47c4",
+      "date": "Independance Day",
+      "holiday_policy": "15/8/2024",
+      "enable": true
+    },
+    {
+      "id": "1003",
+      "date": "Republic Day",
+      "holiday_policy": "26/1/2024",
+      "enable": true
+    },
+    {
+      "id": "4eaf",
+      "date": "Gandhi jayanti",
+      "holiday_policy": "2/10/2024",
+      "enable": false
     }
   ]
 }
