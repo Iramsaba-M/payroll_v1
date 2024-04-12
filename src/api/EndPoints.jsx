@@ -43,7 +43,7 @@ export const Home_and_Report_BarGraphdata ='reports/graph-data'
 //Runpayroll
 export const Runpayroll ='run_payroll/fetch_monthly_data/fetch_monthly_data';//sb done api testing
 
-export const mypayslip ='payslip/year-month';//sb done api testing
+export const mypayslip ='enduser/ /payslip/year-month';//sb done api testing
 
 export const payslips ='run_payroll/fetch_employee_data ';//sb done api testing 
 
@@ -51,26 +51,29 @@ export const view ='history/dowload';
 
 // export const EndUser_ApplyLeave = 'enduser_applyleave';
 
-export const EndUser_ApplyLeave = 'apply_leave';
+export const EndUser_ApplyLeave = 'enduser/ /apply_leave/';//api done 
 
-export const EndUser_Leave_Balance ="annual_leave_balance"
+export const EndUser_Leave_Balance ="enduser/ /annual_leave_balance/"//api done 
 
-export const EndUser_Attendance = 'punch';
+// export const EndUser_Attendance = 'enduser/my-attendence/punch/';
 
-export const EndUser_Get_Attendance = 'employee';
+export const EndUser_Get_Attendance = 'enduser/my-attendence/employee/';//api done 
 
-export const EndUser_punch_status = 'punch';
+export const EndUser_punch_status = 'enduser/my-attendence/punch/';//frontend all ok backend minor error all rready punched by employee 
 
 export const EndUser_notification = 'notification';
 
 
 //sb
-export const EndUser_ApplyLoan = 'az';
+export const EndUser_ApplyLoan = 'loan/request/';//sb tested the api
 
-export const EndUser_ApplyReimbursement = 'enduser/ submit_reimbursement/';//sb tested for one reimbursement form multiple not yet should discuss
+export const EndUser_ApplyReimbursement = 'enduser/ /submit_reimbursement/';//sb tested for  reimbursement form multiple reim also checked with backend 
 
 export const ctctemplate = 'test';
 
 export const ctctemplatename ='tempname';
 
 export const reviewpayroll = 'modal';
+
+export const admin_Leave_and_Holiday_post = 'settings/holidays';
+export const admin_Leave_and_Holiday_get = 'settings/holidays';

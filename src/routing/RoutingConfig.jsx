@@ -33,8 +33,13 @@ import RaiseRequest from '../pages/User pages/Raise Request/RaiseRequest'
 import UserReports from '../pages/User pages/Reports/UserReports'
 import RequestForLoan from '../pages/User pages/Raise Request/RequestForLoan'
 import RequestForReimbursement from '../pages/User pages/Raise Request/RequestForReimbursement'
+import LoanPolicy from '../pages/Admin pages/Settings/LoanSettingsPages/LoanPolicy'
+import TypeOfLoan from '../pages/Admin pages/Settings/LoanSettingsPages/TypeOfLoan'
+import LoanApprovalSettings from '../pages/Admin pages/Settings/LoanSettingsPages/LoanApprovalSettings'
+
 import Leavepolicy from '../components/AppSettingComponents/Leavepolicy/Leavepolicy'
 import Holidaypolicy from '../components/AppSettingComponents/Leavepolicy/Holidaypolicy'
+
 import TypeReimbursement from '../components/AppSettingComponents/reimbursementpolicy/typereimbursement'
 import Reimbursementpolicy from '../components/AppSettingComponents/reimbursementpolicy/Reimbursementpolicy'
 import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
@@ -308,6 +313,20 @@ const routesConfig = [
                     {
                       path: 'LoanSetting',
                       element: <LoanSetting />,
+                      children: [
+                        {
+                            path: 'TypeOfLoan',
+                            element: <TypeOfLoan/>,
+                        },    
+                        {
+                          path: 'LoanPolicy',
+                          element: <LoanPolicy/>,
+                        }, 
+                        {
+                          path: 'LoanApprovalSettings',
+                          element: <LoanApprovalSettings/>,
+                        },  
+                      ],
                     },
                     {
                       path: 'PayslipSetting',
@@ -328,11 +347,11 @@ const routesConfig = [
                         {
                             path: 'LeavePolicy',
                             element: <Leavepolicy/>,
-                        },    
+                        },
                         {
                           path: 'HolidayPolicy',
                           element: <Holidaypolicy/>,
-                        },  
+                        },
                       ],
                     },
                     

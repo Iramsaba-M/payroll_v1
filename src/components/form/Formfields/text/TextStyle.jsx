@@ -5,7 +5,7 @@ const TextStyle = {
     
   },
 //loansettings sb
-textcss1: 'ml-12 w-[15vh] outline-none',
+textcss1: '  ml-[10vh] w-[25vh] placeholder-pink-500 outline-none',
 //ctc template
   textcss: 'ml-12 w-[12vh] outline-none',
   TableHeaders:'px-1 w-[40vh]  border-b-2 bg-indigo-450',
@@ -16,9 +16,8 @@ textcss1: 'ml-12 w-[15vh] outline-none',
   OptionsComponentData2 :'w-[8vh] flex justify-center ml-[10vh] 6 outline-none bg-green-200 px-1  ',
 
   //loansettings
-  TableHeaders1:'flex justify-start items-center  mt-6 ml-4',
-//reimbrusmentsettings
-TableHeadersR:'flex justify-start items-center w-[200px] mt-6 ml-4',
+  TableHeaders1:'flex justify-start items-center mt-6 ml-4',
+
   
   standard_Home: {
     label: 'block text-gray-600 text-xs font-bold my-1', 
@@ -59,23 +58,25 @@ TableHeadersR:'flex justify-start items-center w-[200px] mt-6 ml-4',
     input: ' ml-6 border-b-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[20vh] leading-tight focus:outline-none placeholder:text-green-500',//mr-14
     
   },
-//reimbrusment settings
+
+  //reimbrusment settings
   Remoption: {
     label: 'block text-black-100 text-sm font-bold my-1', 
     input: 'h-10 border-b-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs font-medium  my-2 mr-24 mb-2 px-2 py-1 w-[62vh] leading-tight focus:outline-none placeholder:text-green-500 ',//mr-14
     
   },
 //loan policy setting
-a:'ml-4 w-24 mr-12',
-aaa:'ml-4 w-36 mr-12 border text-center',
-aa: 'ml-4 w-36 mr-12',
-b:'ml-[12vh] w-16 mr-',
-bb: 'ml-12 w-[12vh] mr-8 border text-center ',
-c:'ml-10 w-36 mr-',
-cc:'ml-22 w-36 mr-8 text-center',
-d:'ml-[10vh] w-36',
-e:'ml-4 w-36',
+a:'ml-4 w-24 mr-12 outline-none',
+aaa:'ml-4 w-36 mr-12 border text-center outline-none',
+aa: 'ml-4 w-36 mr-12 outline-none',
+b:'ml-[9vh] w-16  outline-none mr-',
+bb: 'ml-12 w-[12vh] mr-8 border text-center outline-none ',
+c:'ml-10 w-36 outline-none',
+d:'ml-[10vh] w-36 outline-none',
+e:'ml-4 w-36 outline-none',
 f:'',
+
+cc:'ml-22 w-36 mr-8 text-center',
 
 
 
@@ -86,7 +87,17 @@ f:'',
 
   leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr- text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
   
-  leaveuploadinput:'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-20'
+  leaveuploadinput:'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-20',
+
+
+  leavepolicyname:'px-2 font-semibold  ',
+  leavetableHeader:'px-5 text-start  ',
+  leavecolumn:'ml-6 w-[16vh]  ',
+  holidaytableHeader:'px-5 text-start  ',
+  holidaytablerow:' -translate-x-[2vh] px-1   bg-indigo-450',
+  holidaytablerow1:'px-5 text-start  ',
+  holidaytableHeader1:' w-[30vh] text-start',
+  holidaytableHeader2:'px-5 -translate-x-[7vh]  ',
 };
 
 export default TextStyle;

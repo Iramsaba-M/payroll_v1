@@ -150,7 +150,7 @@ const MyAttendanceComponent = () => {
     }
   };
   const handlePunchin = () => {
-    // setSelectedDate(value);
+    setSelectedDate(true);
     // setPunchin(value);
     // console.log('punch in',value)
     setPunchstatus('punchin')
@@ -193,16 +193,17 @@ const MyAttendanceComponent = () => {
     try {
 
 
-      const response = await axios.get('http://localhost:3000/end_user_attendance')
+      // const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-      // const queryParams = { employee_id: 'IK02' };
-      // const endpoint = `${EndUser_Leave_Balance}/?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
-      // const response = await fetchData(endpoint);
+      const queryParams = { employee_id: 'IK02' };
+      const endpoint = `${EndUser_Leave_Balance}?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
+      const response = await fetchData(endpoint);
 
 
       console.log('Post leave', response);
 
-      setLeavebalance(response.data.leave_balance)
+      // setLeavebalance(response.data.leave_balance)
+      setLeavebalance(response.leave_balance)
     } catch (error) {
       console.error('Error posting data:', error);
     }
@@ -217,14 +218,14 @@ const MyAttendanceComponent = () => {
     try {
 
 
-      const response = await axios.get('http://localhost:3000/end_user_attendance')
+      // const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-      // const queryParams = { employee_id: 'IK02' };
-      // const endpoint = `${EndUser_Get_Attendance}/?employee_id=${queryParams.employee_id}`; // C`onstruct endpoint URL
-      // const response = await fetchData(endpoint);
-      // setLeavehistory(response.leave_history);
-      setLeavehistory(response.data.history);
-      console.log('leave history', response.data);
+      const queryParams = { employee_id: 'IK02' };
+      const endpoint = `${EndUser_Get_Attendance}?employee_id=${queryParams.employee_id}`; // C`onstruct endpoint URL
+      const response = await fetchData(endpoint);
+      setLeavehistory(response.leave_history);
+      // setLeavehistory(response.data.history);
+      console.log('leave history', response);
     } catch (error) {
       console.error('Error posting data:', error);
     }

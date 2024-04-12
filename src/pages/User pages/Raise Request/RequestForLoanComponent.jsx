@@ -30,19 +30,46 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   };
 
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const employee_id="IK02"
+  //     const data2={...data,"employee_id":employee_id}
+  //     const response = await postData(EndUser_ApplyLoan, data2);
+  //     // const response = await axios.post('http://localhost:3000/az', data2);
+  //     console.log(data2);
+  //     console.log('Data sent successfully:', response.data);
+  //   } catch (error) {
+  //     console.error('Error sending data:', error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const employee_id="IK02"
-      const data2={...data,"employee_id":employee_id}
-      const response = await postData(EndUser_ApplyLoan, data2);
-      // const response = await axios.post('http://localhost:3000/az', data2);
-      console.log(data2);
+      const employee_id = "100";
+      // Validate amount and installment_period
+      const amount = parseFloat(data.amount);
+      const installment_period = parseInt(data.installment_period);
+  
+      if (isNaN(amount) || isNaN(installment_period)) {
+        throw new Error('Amount and installment period must be valid numbers.');
+      }
+  
+      const loanData = {
+        ...data,
+        "employee_id": employee_id,
+        "amount": amount,
+        "installment_period": installment_period
+      };
+  console.log(loanData)
+      const response = await postData(EndUser_ApplyLoan, loanData);
       console.log('Data sent successfully:', response.data);
     } catch (error) {
       console.error('Error sending data:', error);
     }
   };
+  
 
   return (
     <div className=''>

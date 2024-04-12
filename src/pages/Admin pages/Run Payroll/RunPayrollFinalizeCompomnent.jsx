@@ -52,6 +52,7 @@ const RunPayrollFinalizeCompomnent = () => {
     }));
 
     setpayrollTableData(updatedData);
+    
 
   }
   const handleApprove = () => {

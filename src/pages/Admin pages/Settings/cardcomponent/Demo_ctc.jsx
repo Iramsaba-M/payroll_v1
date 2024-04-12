@@ -120,6 +120,7 @@ const gatherDataAndPost = async (event) => {
       </div>
 
       <div className="table-container">
+        
         <table className="w-[150vh] mt-5 ml-3  ">
           <thead className="bg-indigo-500 text-white">
             <tr>
