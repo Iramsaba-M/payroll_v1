@@ -93,9 +93,9 @@ function Tablecomp({ config, data, onReviewClick }) {
   };
 
   return (
-    <div>
+    <div className={TableStyle2[config.tableposition]} >
      
-      <table className={TableStyle2[config.tableposition]}>
+      <table className='w-full'>
         <thead>
           <tr className='bg-gray-100 p-2'>
             {config.column.map((column) => (
