@@ -52,13 +52,13 @@ const LoanPolicy = () => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-     <div className='p-8 w-[150vh]'>
+    <form onSubmit={handleSubmit} className=''>
+     <div className='p-8 w-[150vh] '>
         <div className='-translate-y-[8.5vh] flex '>
           <h1 className="text-xl font-semibold ">Types Of Loan List</h1>
           <IoSettingsOutline className="h-5 w-5 ml-6 mt-2 " />
         </div>
-        <table className="w-[155vh] -mt-8 ">
+        <table className="w-[155vh] -mt-8  overflow-x-0 overflow-y-0">
           <thead className="bg-gray-100 text-gray-600 font-normal h-[8vh] ">
             <tr>
               {TableHeaders.map((header, index) => (

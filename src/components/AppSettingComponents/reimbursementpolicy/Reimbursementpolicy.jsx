@@ -240,6 +240,7 @@ const ReimbrusementPolicy = () => {
                     uncheckedIcon={false}
                     checkedIcon={false}
                     className='ml-24'
+                    onColor="#60A5FA"
                   />
                 </td>
               </tr>
@@ -292,6 +293,7 @@ const ReimbrusementPolicy = () => {
                   uncheckedIcon={false}
                   checkedIcon={false}
                   className='ml-24'
+                  onColor="#60A5FA"
                 />
 
 

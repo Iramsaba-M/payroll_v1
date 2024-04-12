@@ -220,7 +220,7 @@ const TypeOfReimbursement = () => {
                       setReimbursementData(newData);
                     }}
                     checked={item.enable}
-                    onColor="#6b6aef"
+                    onColor="#60A5FA"
                     handleDiameter={20}
                     uncheckedIcon={false}
                     checkedIcon={false}
@@ -243,7 +243,7 @@ const TypeOfReimbursement = () => {
                 <Switch
                   onChange={setNewReimbursementEnabled}
                   checked={newReimbursementEnabled}
-                  onColor="#6b6aef"
+                  onColor="#60A5FA"
                   handleDiameter={20}
                   uncheckedIcon={false}
                   checkedIcon={false}
