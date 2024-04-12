@@ -291,22 +291,26 @@
     {
       "employee_name": "Shashank Baikadi",
       "designation": "software engineer",
-      "employee_id": "Ik0001"
+      "employee_id": "Ik0001",
+      "id": "71c4"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0002"
+      "employee_id": "Ik0002",
+      "id": "172c"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0003"
+      "employee_id": "Ik0003",
+      "id": "edce"
     },
     {
       "employee_name": "John williams",
       "designation": "software engineer",
-      "employee_id": "Ik0004"
+      "employee_id": "Ik0004",
+      "id": "e2e8"
     }
   ],
   "reviewPayroll": [
@@ -853,23 +857,101 @@
   "mypayslip": [
     {
       "year": "2023",
-      "month": "march"
+      "month": "march",
+      "id": "e29e"
     },
     {
       "year": "2023",
-      "month": "march"
+      "month": "march",
+      "id": "1b32"
     },
     {
       "year": "2023",
-      "month": "march"
+      "month": "march",
+      "id": "7a5a"
     },
     {
       "year": "2023",
-      "month": "march"
+      "month": "march",
+      "id": "ee61"
     },
     {
       "year": "2023",
-      "month": "April"
+      "month": "April",
+      "id": "362f"
+    }
+  ],
+  "saveloan": [
+    {
+      "id": "a940",
+      "loanType": "home loan",
+      "loanPolicyName": "policy name ",
+      "switchSaving": true
+    },
+    {
+      "id": "4a13",
+      "loanType": "vehicle loan",
+      "loanPolicyName": "vehicle policy",
+      "switchSaving": false
+    },
+    {
+      "id": "7ce3",
+      "loanType": "medical loan",
+      "loanPolicyName": "medical policy",
+      "switchSaving": false
+    },
+    {
+      "id": "af9c",
+      "loanType": "education loan",
+      "loanPolicyName": "education policy",
+      "switchSaving": true
+    }
+  ],
+  "savepolicy": [
+    {
+      "id": "9743",
+      "policyname": "policy1",
+      "maxamt": "10000",
+      "noofinstallments": "2",
+      "roi": "1",
+      "applyeligibility": "Employee",
+      "documentneeded": "yes"
+    },
+    {
+      "id": "70d2",
+      "policyname": "policy2",
+      "maxamt": "1000",
+      "noofinstallments": "2",
+      "roi": "1",
+      "applyeligibility": "Paid intern",
+      "documentneeded": "no"
+    },
+    {
+      "id": "00e3",
+      "policyname": "policy3",
+      "maxamt": "1000",
+      "noofinstallments": "2",
+      "roi": "2",
+      "applyeligibility": "Paid intern",
+      "documentneeded": "yes"
+    },
+    {
+      "id": "6c9f",
+      "policyname": "policy4",
+      "maxamt": "10",
+      "noofinstallments": "4",
+      "roi": "4",
+      "applyeligibility": "Freelancer",
+      "documentneeded": "no"
+    },
+    {
+      "id": "33c8",
+      "policyname": "policy5",
+      "maxamt": "200",
+      "noofinstallments": "6",
+      "roi": "8",
+      "applyeligibility": "Contractor",
+      "documentneeded": "yes"
     }
   ],
   "Typeofreimbursement": [

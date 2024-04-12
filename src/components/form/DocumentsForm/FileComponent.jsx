@@ -26,7 +26,7 @@ const FileComponent = ({ name, onChange, textcss,icon,  placeholder, iconPositio
         <label htmlFor={name} >
           <div className='flex items-center mt-2 '>
           {iconPosition === 'start' && <span>{icon}</span>}
-          <div className=''>{placeholder}</div> 
+          <div className='text-gray-400'>{placeholder}</div> 
             {/* <span>{icon}</span> */}
             {iconPosition === 'end' && <span>{icon}</span>}
           </div>

@@ -99,8 +99,8 @@ const MyLeave = ({ config, applyleave }) => {
             const formData = new FormData();
             // Append form data
             formData.append('employee_id', emp);
-            formData.append("start_date", dayjs(daterange.startDate).format('DD-MM-YYYY'));
-            formData.append("end_date", dayjs(daterange.endDate).format('DD-MM-YYYY'));
+            formData.append("start_date", dayjs(daterange.startDate).format('DD/MM/YYYY'));
+            formData.append("end_date", dayjs(daterange.endDate).format('DD/MM/YYYY'));
             formData.append('leave_type', leavetype);
 
             // Append file if selected

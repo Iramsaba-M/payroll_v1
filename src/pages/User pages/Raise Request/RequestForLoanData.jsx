@@ -3,7 +3,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { CiCalendar } from "react-icons/ci";
 export const RequestForLoanData = [
   {
-    "name": "s",
+    "name": "loan_type",
     "label": "Type Of Loan ",
     "type": "options",
     "options": [
@@ -24,7 +24,7 @@ export const RequestForLoanData = [
     "textcss": "standard",
   },
   {
-    "name": "typeofloan",
+    "name": "installment_period",
     "label": "Installment period",
     "type": "options",
     "options": [
