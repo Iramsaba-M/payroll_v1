@@ -11,6 +11,7 @@ textcss1: '  ml-[10vh] w-[25vh] placeholder-pink-500 outline-none',
   TableHeaders:'px-1 w-[40vh]  border-b-2 bg-indigo-450',
   TableHeaders11:'-translate-x-[3vh] px-1 w-[40vh]  border-b-2 bg-indigo-450',
   TableHeaders111:'-translate-x-[2vh] px-1 w-[40vh]  border-b-2 bg-indigo-450',
+  TableHeadersR:'flex justify-start items-center w-[200px] mt-6 ml-4',
  
   OptionsComponentData :'w-[18vh] flex justify-center ml-8 6 outline-none bg-green-200  ',
   OptionsComponentData2 :'w-[8vh] flex justify-center ml-[10vh] 6 outline-none bg-green-200 px-1  ',
@@ -98,6 +99,11 @@ cc:'ml-22 w-36 mr-8 text-center',
   holidaytablerow1:'px-5 text-start  ',
   holidaytableHeader1:' w-[30vh] text-start',
   holidaytableHeader2:'px-5 -translate-x-[7vh]  ',
+
+  leaverowoptionstyle:'ml-12 w-24 mr-12',
+  leavetablecolumnstyles:'ml-12 w-16 mr-12',
+  leavetablecolumnstyles2:'ml-12 w-36',
 };
+
 
 export default TextStyle;
