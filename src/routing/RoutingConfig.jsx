@@ -35,6 +35,9 @@ import RequestForLoan from '../pages/User pages/Raise Request/RequestForLoan'
 import RequestForReimbursement from '../pages/User pages/Raise Request/RequestForReimbursement'
 import Leavepolicy from '../components/AppSettingComponents/Leavepolicy/Leavepolicy'
 import Holidaypolicy from '../components/AppSettingComponents/Leavepolicy/Holidaypolicy'
+import TypeReimbursement from '../components/AppSettingComponents/reimbursementpolicy/typereimbursement'
+import Reimbursementpolicy from '../components/AppSettingComponents/reimbursementpolicy/Reimbursementpolicy'
+import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
 
 const routesConfig = [
   {
@@ -287,6 +290,20 @@ const routesConfig = [
                     {
                       path: 'ReimbursementSetting',
                       element: <ReimbursementSetting />,
+                      children: [
+                        {
+                            path: 'TypeReimbursement',
+                            element: <TypeReimbursement/>,
+                        },    
+                        {
+                          path: 'Reimbursementpolicy',
+                          element: <Reimbursementpolicy/>,
+                        },
+                        {
+                          path: 'Multilevel',
+                          element: <Multilevel/>,
+                        },    
+                      ],
                     },
                     {
                       path: 'LoanSetting',

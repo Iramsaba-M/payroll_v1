@@ -7,7 +7,6 @@
       "id": "5284"
     }
   ],
-
   "employees": [
     {
       "CTC": 123,
@@ -29,13 +28,11 @@
       "id": "64f7"
     }
   ],
-
-
   "basicdetail": [
     {
       "first_name": "Saba",
-      "middle_name":"M",
-      "last_name":"Mirjankar",
+      "middle_name": "M",
+      "last_name": "Mirjankar",
       "DOB: ": "2024-01-05",
       "Gender: ": "female",
       "ctc": "300000",
@@ -52,10 +49,50 @@
       "Alternate Phone Number: ": "9876543215",
       "Work Location: ": "headquarters",
       "id": "1"
+    },
+    {
+      "first_name": "Santosh",
+      "middle_name": "P",
+      "last_name": "Sohani",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc": "300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0002",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining": "2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
+    },
+    {
+      "first_name": "Vaishnavi",
+      "middle_name": "s",
+      "last_name": "Konnur",
+      "DOB: ": "2024-01-05",
+      "Gender: ": "female",
+      "ctc": "300000",
+      "designation": "Software Engineer",
+      "employee_id": "Ik0003",
+      "Department: ": "dsfds",
+      "Type Of Employee: ": "dsfdsf",
+      "date_of_joining": "2022-01-01",
+      "Address": "cccc",
+      "Differently abled: ": "No",
+      "Personal Email: ": "ff@gmail.com",
+      "Work Email: ": "ff@gmail.com",
+      "Phone Number: ": "1234567891",
+      "Alternate Phone Number: ": "9876543215",
+      "Work Location: ": "headquarters",
+      "id": "1"
     }
- 
   ],
-
   "bankdetails": [
     {
       "id": "abc5",
@@ -70,7 +107,6 @@
       ]
     }
   ],
-
   "aditionalDetails": [
     {
       "id": "b2b4",
@@ -87,8 +123,6 @@
       "employee_id": ""
     }
   ],
-
-
   "home_report_carddata": {
     "barchart2": [
       {
@@ -163,7 +197,6 @@
       }
     ]
   },
-
   "home_report_graphdata": [
     {
       "year": 2023,
@@ -200,8 +233,6 @@
       "id": "4c57"
     }
   ],
-
-
   "modal": [
     {
       "aadhar": 12222222222,
@@ -222,7 +253,6 @@
       "id": "aee5"
     }
   ],
-  
   "Runpayroll": [
     {
       "id": "1",
@@ -257,7 +287,6 @@
       "action": "Processed"
     }
   ],
-
   "payslips": [
     {
       "employee_name": "Shashank Baikadi",
@@ -280,7 +309,6 @@
       "employee_id": "Ik0004"
     }
   ],
-
   "reviewPayroll": [
     {
       "total_expense": "567",
@@ -376,7 +404,6 @@
       "id": "f8cc"
     }
   ],
-
   "test": [
     {
       "id": "f494",
@@ -795,7 +822,6 @@
       "id": "3411"
     }
   ],
-
   "end_user_attendance": {
     "punchin": false,
     "punchout": false,
@@ -824,7 +850,6 @@
       "vacation": "0"
     }
   },
-
   "mypayslip": [
     {
       "year": "2023",
@@ -846,8 +871,956 @@
       "year": "2023",
       "month": "April"
     }
+  ],
+  "Typeofreimbursement": [
+    {
+      "reimbursement_type": "food",
+      "enable": false
+    },
+    {
+      "reimbursement_type": "hotel and accomodation",
+      "enable": true
+    },
+    {
+      "reimbursement_type": "travel",
+      "enable": false
+    },
+    {
+      "reimbursement_type": "bonus",
+      "enable": true
+    },
+    {
+      "reimbursement_type": "travel",
+      "enable": false
+    },
+    {
+      "reimbursement_type": "bonus",
+      "enable": true
+    },
+    {
+      "reimbursement_type": "FFF",
+      "enable": false
+    },
+    {
+      "reimbursement_type": "hello",
+      "enable": false
+    }
+  ],
+  "reimbursementpolicy": [
+    [
+      {
+        "reimbursement_type": "food",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "travel",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "travel",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "FFF",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 4,
+        "maximum_amount": 100,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 2002,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 100,
+        "enable": true
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "travel",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "travel",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "FFF",
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "enable": true
+      },
+      {
+        "reimbursement_type": "sss",
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": true
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "vv",
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 300,
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 300,
+        "enable": true
+      },
+      {
+        "reimbursement_type": "sss",
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3444,
+        "maximum_amount": 356789,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "sss",
+        "period": "",
+        "minimum_amount": 4,
+        "maximum_amount": 300,
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3444,
+        "maximum_amount": 356789,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "sss",
+        "period": "",
+        "minimum_amount": 4,
+        "maximum_amount": 300,
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3444,
+        "maximum_amount": 356789,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "sss",
+        "period": "",
+        "minimum_amount": 4,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "dfg",
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 31222,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 1,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 3444,
+        "maximum_amount": 356789,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "sss",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 4,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "dfg",
+        "period": "Within 1 month of expense made",
+        "minimum_amount": 5,
+        "maximum_amount": 357,
+        "enable": false
+      }
+    ],
+    [
+      {
+        "reimbursement_type": "food",
+        "period": "",
+        "minimum_amount": 1,
+        "maximum_amount": 100,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hotel and accomodation",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 200,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3126,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "travel",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "bonus",
+        "period": "",
+        "minimum_amount": 3126,
+        "maximum_amount": 400,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "FFF",
+        "period": "",
+        "minimum_amount": 10984,
+        "maximum_amount": 399,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hello",
+        "period": "",
+        "minimum_amount": 2,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "hola",
+        "period": "",
+        "minimum_amount": 3,
+        "maximum_amount": 296,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "vv",
+        "period": "",
+        "minimum_amount": 3444,
+        "maximum_amount": 356789,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "sss",
+        "period": "",
+        "minimum_amount": 4,
+        "maximum_amount": 300,
+        "enable": false
+      },
+      {
+        "reimbursement_type": "dfg",
+        "period": "",
+        "minimum_amount": 5,
+        "maximum_amount": 357,
+        "enable": false
+      }
+    ]
+  ],
+  "saveloan": [
+    {
+      "id": "a940",
+      "reimbursement_type": "Food",
+      "enable": true
+    },
+    {
+      "id": "4a13",
+      "reimbursement_type": "Travel",
+      "enable": false
+    },
+    {
+      "id": "7ce3",
+      "reimbursement_type": "Hotel & Accommodation ",
+      "enable": false
+    },
+    {
+      "id": "af9c",
+      "reimbursement_type": "Fuel",
+      "enable": true
+    },
+    {
+      "reimbursement_type": "holiday",
+      "enable": false,
+      "id": "hyJA-Nt"
+    },
+    {
+      "reimbursement_type": "hello",
+      "enable": true,
+      "id": "4UwlRub"
+    },
+    {
+      "reimbursement_type": "sss",
+      "enable": false,
+      "id": "3q3ulGi"
+    }
+  ],
+  "savepolicy": [
+    {
+      "reimbursement_type": "policy1",
+      "maximum_amount": "234567",
+      "minimum_amount": "234",
+      "enable": "",
+      "period": "Within 1 month of expense made",
+      "id": 1
+    },
+    {
+      "reimbursement_type": "policy2",
+      "maximum_amount": "234567",
+      "minimum_amount": "234",
+      "enable": false,
+      "period": "Within 3 month of expense made",
+      "id": 2
+    },
+    {
+      "reimbursement_type": "policy3",
+      "maximum_amount": "1234",
+      "minimum_amount": "12345",
+      "enable": true,
+      "period": "Within 6 month of expense made",
+      "id": 3
+    },
+    {
+      "reimbursement_type": "policy4",
+      "maximum_amount": "23456",
+      "minimum_amount": "3456",
+      "enable": true,
+      "period": "",
+      "id": 4
+    },
+    {
+      "reimbursement_type": "policy5",
+      "maximum_amount": "2345",
+      "minimum_amount": "1234",
+      "enable": true,
+      "period": "Within 2 month of expense made",
+      "id": 5
+    }
   ]
 }
-
-
-
