@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install dependencies, forcing installation to accept potentially broken dependency resolution
 RUN npm install --production --force
 
+# Install Vite globally
+RUN npm install -g vite
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
