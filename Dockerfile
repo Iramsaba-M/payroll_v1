@@ -7,16 +7,11 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install Vite globally
-npm create vite@latest
+# Install dependencies, forcing installation to accept potentially broken dependency resolution
+# Also include vite as a local dependency
+RUN npm install --production --force vite
 
-# Install dependencies
-RUN npm install
-
-# Copy the Vite configuration file
-COPY vite.config.js .
-
-# Copy the rest of the application code to the working directory
+# Copy the Vite configuration file and the rest of the application code to the working directory
 COPY . .
 
 # Expose the port that the React app will run on
