@@ -4,12 +4,20 @@ FROM node:18-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
+# Add npm global bin to PATH
+ENV PATH /root/.npm-global/bin:$PATH
+
+# Configure npm to install packages globally without requiring sudo
+ENV NPM_CONFIG_PREFIX=/root/.npm-global
+
+# Install Vite globally before copying any files
+RUN npm install -g vite --legacy-peer-deps
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies including Vite locally
-RUN npm install --production --force
-RUN npm install vite --save-dev
+# Install dependencies, including potentially broken ones, with legacy peer dependencies
+RUN npm install --production --force --legacy-peer-deps
 
 # Copy the Vite configuration file and the rest of the application code to the working directory
 COPY . .
