@@ -1,29 +1,24 @@
+
+  
+
 # Use a base image with Node.js pre-installed
 FROM node:18-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Add npm global bin to PATH
-ENV PATH /root/.npm-global/bin:$PATH
-
-# Configure npm to install packages globally without requiring sudo
-ENV NPM_CONFIG_PREFIX=/root/.npm-global
-
-# Install Vite globally before copying any files
-RUN npm install -g vite --legacy-peer-deps
-
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies, including potentially broken ones, with legacy peer dependencies
-RUN npm install --production --force --legacy-peer-deps
+# Install dependencies
+RUN npm install
+RUN npm install -- production
 
-# Copy the Vite configuration file and the rest of the application code to the working directory
+# Copy the rest of the application code to the working directory
 COPY . .
 
 # Expose the port that the React app will run on
-EXPOSE 3000
+EXPOSE 5173
 
 # Define the command to run the React app
 CMD ["npm", "run", "dev"]
