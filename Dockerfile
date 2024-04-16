@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies, forcing installation to accept potentially broken dependency resolution
-RUN npm install --production --force
+# Install dependencies
+RUN npm install
 
 # Install Vite globally
 RUN npm install -g vite
