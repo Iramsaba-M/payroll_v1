@@ -7,11 +7,11 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Install Vite globally
+npm create vite@latest
+
 # Install dependencies
 RUN npm install
-
-# Install Vite globally
-RUN npm install -g vite
 
 # Copy the Vite configuration file
 COPY vite.config.js .
