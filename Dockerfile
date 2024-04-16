@@ -1,18 +1,17 @@
-
-  
-
-# Use a base image with Node.js pre-installed
+# Use a specific version of Node.js
 FROM node:18-alpine
 
-# Set the working directory inside the container
-WORKDIR /app
+# Set the working directory
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
-RUN npm install -- production
+# Install create-vite globally
+RUN npm install -g create-vite
+
+# Install production dependencies
+RUN npm ci --only=production
 
 # Copy the rest of the application code to the working directory
 COPY . .
