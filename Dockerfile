@@ -4,14 +4,25 @@ FROM node:18-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
+# Add npm global bin to PATH
+ENV PATH /root/.npm-global/bin:$PATH
+
+# Configure npm to install packages globally without requiring sudo
+ENV NPM_CONFIG_PREFIX=/root/.npm-global
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies, forcing installation to accept potentially broken dependency resolution
-# Also include vite as a local dependency
-RUN npm install --production --force vite
+# Install dependencies, including potentially broken ones
+RUN npm install --production --force
 
-# Copy the Vite configuration file and the rest of the application code to the working directory
+# Install Vite globally
+RUN npm install -g vite
+
+# Copy the Vite configuration file
+COPY vite.config.js .
+
+# Copy the rest of the application code to the working directory
 COPY . .
 
 # Expose the port that the React app will run on
