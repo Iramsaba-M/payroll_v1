@@ -1,24 +1,23 @@
-# Use a base image with Node.js pre-installed
-FROM node:18-alpine
+# Use Node.js 18 as base image
+FROM node:18
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Install create-vite globally
+RUN npm install -g create-vite
+
+# Copy package.json and package-lock.json if applicable
 COPY package*.json ./
 
-# Install dependencies, forcing installation to accept potentially broken dependency resolution
-RUN npm install --production --force
+# Install dependencies with --force flag
+RUN npm install --force
 
-# Install Vite globally
-RUN npm install -g vite
-
-# Copy the rest of the application code to the working directory
+# Copy the rest of the application
 COPY . .
 
-# Expose the port that the React app will run on
-EXPOSE 3000
+# Expose port 5173
+EXPOSE 5173
 
-# Define the command to run the React app
+# Command to run the application
 CMD ["npm", "run", "dev"]
-
