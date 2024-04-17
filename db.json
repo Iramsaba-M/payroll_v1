@@ -910,7 +910,7 @@
   "savepolicy": [
     {
       "id": "9743",
-      "policyname": "policy1",
+      "policyname": "home loan",
       "maxamt": "10000",
       "noofinstallments": "2",
       "roi": "1",
@@ -919,7 +919,7 @@
     },
     {
       "id": "70d2",
-      "policyname": "policy2",
+      "policyname": "vehicle loan",
       "maxamt": "1000",
       "noofinstallments": "2",
       "roi": "1",
@@ -928,7 +928,7 @@
     },
     {
       "id": "00e3",
-      "policyname": "policy3",
+      "policyname": "medical loan",
       "maxamt": "1000",
       "noofinstallments": "2",
       "roi": "2",
@@ -937,29 +937,11 @@
     },
     {
       "id": "6c9f",
-      "policyname": "policy4",
+      "policyname": "ducation loan",
       "maxamt": "10",
       "noofinstallments": "4",
       "roi": "4",
       "applyeligibility": "Freelancer",
-      "documentneeded": "no"
-    },
-    {
-      "id": "33c8",
-      "policyname": "policy5",
-      "maxamt": "200",
-      "noofinstallments": "6",
-      "roi": "8",
-      "applyeligibility": "Contractor",
-      "documentneeded": "yes"
-    },
-    {
-      "id": "5793",
-      "policyname": "policy6",
-      "maxamt": "100",
-      "noofinstallments": "8",
-      "roi": "4",
-      "applyeligibility": "Paid intern",
       "documentneeded": "no"
     }
   ],
@@ -1860,21 +1842,12 @@
       "reimbursement_type": "holiday",
       "enable": false,
       "id": "hyJA-Nt"
-    },
-    {
-      "reimbursement_type": "hello",
-      "enable": true,
-      "id": "4UwlRub"
-    },
-    {
-      "reimbursement_type": "sss",
-      "enable": false,
-      "id": "3q3ulGi"
     }
   ],
+
   "savepolicyrem": [
     {
-      "reimbursement_type": "policy1",
+      "reimbursement_type": "Food",
       "maximum_amount": "234567",
       "minimum_amount": "234",
       "enable": "",
@@ -1882,7 +1855,7 @@
       "id": 1
     },
     {
-      "reimbursement_type": "policy2",
+      "reimbursement_type": "travel",
       "maximum_amount": "234567",
       "minimum_amount": "234",
       "enable": false,
@@ -1890,7 +1863,7 @@
       "id": 2
     },
     {
-      "reimbursement_type": "policy3",
+      "reimbursement_type": "Hotel & Accommodation",
       "maximum_amount": "1234",
       "minimum_amount": "12345",
       "enable": true,
@@ -1898,7 +1871,7 @@
       "id": 3
     },
     {
-      "reimbursement_type": "policy4",
+      "reimbursement_type": "Fuel",
       "maximum_amount": "23456",
       "minimum_amount": "3456",
       "enable": true,
@@ -1906,7 +1879,7 @@
       "id": 4
     },
     {
-      "reimbursement_type": "policy5",
+      "reimbursement_type": "holiday",
       "maximum_amount": "2345",
       "minimum_amount": "1234",
       "enable": true,
@@ -1980,14 +1953,6 @@
       "paytype": ""
     },
     {
-      "id": "581f",
-      "policyname": "",
-      "date": "",
-      "holiday_name": "Independance Day",
-      "Date": "15/08/2024",
-      "enable": true
-    },
-    {
       "id": "f3bd",
       "policy_name": "sick leave",
       "allowed_leaves": "7 days",
@@ -2010,20 +1975,20 @@
   "admin_holiday": [
     {
       "id": "47c4",
-      "date": "Independance Day",
-      "holiday_policy": "15/8/2024",
+      "holiday_name": "Independance Day",
+      "date": "15/8/2024",
       "enable": true
     },
     {
       "id": "1003",
-      "date": "Republic Day",
-      "holiday_policy": "26/1/2024",
+      "holiday_name": "Republic Day",
+      "date": "26/1/2024",
       "enable": true
     },
     {
       "id": "4eaf",
-      "date": "Gandhi jayanti",
-      "holiday_policy": "2/10/2024",
+      "holiday_name": "Gandhi jayanti",
+      "date": "2/10/2024",
       "enable": false
     }
   ]

@@ -113,7 +113,7 @@ function Tablecomp({ config, data, onReviewClick }) {
                   const cellStyle = column.name === 'action' && row.action ? TableStyle2[column.actionStyles[row.action]] : '';
                   return (
                     <td key={column.name} className={`${TableStyle2[column.cssClass]} ${cellStyle}`} style={{ textAlign: 'center' }}>
-                      {column.name === 'action' && row.action === 'Review' ? (
+                      {column.name === 'action' && row.action === 'review' ? (
                         <button onClick={() => onReviewClick(row)}>Review</button>
                       ) : (
                         renderCellContent(row, column)

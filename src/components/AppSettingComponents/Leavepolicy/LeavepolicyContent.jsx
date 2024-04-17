@@ -7,7 +7,7 @@ export const TableHeaders = [
     },
     {
       name: 'Allowed Leaves',
-      className: 'TableHeaders1',
+      className: '',
     },
     {
       name: 'Duration',
@@ -17,15 +17,15 @@ export const TableHeaders = [
     
     {
       name: 'Carry Forward?',
-      className: 'TableHeaders1',
+      className: '',
     },
     {
         name: 'Eligible for Encashment?',
-        className: 'TableHeaders1',
+        className: '',
       },
       {
         name: 'Pay Type ',
-        className: 'TableHeaders1',
+        className: '',
       },
    
   ];
