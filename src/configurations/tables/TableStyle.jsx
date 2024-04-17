@@ -1,4 +1,4 @@
-// const TableStyle = {
+const TableStyle = {
     
   
 
