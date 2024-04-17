@@ -1,5 +1,5 @@
 
-# viteconfig.js
+ viteconfig.js
 
 // vite.config.js
 
