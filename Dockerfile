@@ -13,9 +13,6 @@ RUN npm install --production --force
 # Install Vite globally
 RUN npm install -g vite
 
-# Copy the Vite configuration file
-COPY vite.config.js .
-
 # Copy the rest of the application code to the working directory
 COPY . .
 
@@ -24,3 +21,4 @@ EXPOSE 3000
 
 # Define the command to run the React app
 CMD ["npm", "run", "dev"]
+
