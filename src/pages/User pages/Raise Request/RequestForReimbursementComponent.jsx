@@ -76,7 +76,7 @@ const RequestForReimbursementComponent = ({ config }) => {
     try {
       await Promise.all(
         formData.map(async (form) => {
-          const employee_id = "200";
+          const employee_id = "IK10001";
           const amount = parseFloat(form.values.amount);
           const data = new FormData();
           data.append('employee_id', employee_id);

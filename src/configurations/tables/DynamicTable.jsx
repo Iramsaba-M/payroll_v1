@@ -106,7 +106,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
     const { year, month } = row; // Extract year and month from the row object
 
     // Construct the download URL with query parameters
-    const downloadUrl = `http://192.168.0.150:5005/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
+    const downloadUrl = `http://192.168.0.136:8000/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
 
     fetch(downloadUrl)
         .then(response => response.blob()) // Get the response as a Blob object directly
