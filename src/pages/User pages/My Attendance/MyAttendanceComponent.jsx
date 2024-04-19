@@ -173,10 +173,10 @@ const MyAttendanceComponent = () => {
   const customTileClassName = ({ date, view }) => {
     let className = '';
     if (date.toDateString() === new Date().toDateString()) {
-      className += ' font-bold border-2 bg-blue-300   border-black w-10  ';
+      className += ' font-bold  bg-blue-300  text-gray-700  transfor-none ring ring-gray-400 ';
     }
     if (view === 'month') {
-      className += 'border-4 bg-white hover:bordre-blue-800 hover:border  border-blue-100 p-2 rounded-md  ';
+      className += ' bg-white  hover:border    py-1  rounded-md  scale-75 ';
 
     }
     // if( date.getMonth() !== new Date().getMonth){
@@ -200,7 +200,7 @@ const MyAttendanceComponent = () => {
       const response = await fetchData(endpoint);
 
 
-      console.log('Post leave', response);
+      console.log('Post leave', response,endpoint);
 
       // setLeavebalance(response.data.leave_balance)
       setLeavebalance(response.leave_balance)
@@ -220,7 +220,7 @@ const MyAttendanceComponent = () => {
 
       // const response = await axios.get('http://localhost:3000/end_user_attendance')
 
-      const queryParams = { employee_id: 'IK02' };
+      const queryParams = { employee_id: 'IK03' };
       const endpoint = `${EndUser_Get_Attendance}?employee_id=${queryParams.employee_id}`; // C`onstruct endpoint URL
       const response = await fetchData(endpoint);
       setLeavehistory(response.leave_history);
@@ -232,7 +232,11 @@ const MyAttendanceComponent = () => {
 
   };
 
+  // const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+  // const formatShortWeekday = (locale, date) => {
+  //   return dayNames[date.getDay()];
+  // };
 
   const punch = async (e) => {
     // e.preventDefault();
@@ -278,12 +282,13 @@ const MyAttendanceComponent = () => {
           />
         </div>
 
-        <div className='mt-6'>
-
+        <div className='mt-6 '>
+          
+            
           <Calendar
             onChange={onChange}
             value={value}
-            className="border-2  bg-blue-100 text-center text-sm py-1" //hover:border-blue-500
+            className="border-2  w[100vh] h[30vh] bg text-center text-xl py-3" //hover:border-blue-500
             navigationLabel={({ label }) => (
               <span className=" p-4  mt-20  text-center text-xl font-bold   px-10">{label}</span> // Change arrow color and position
             )}
@@ -293,7 +298,10 @@ const MyAttendanceComponent = () => {
             next2Label={null}
 
             tileClassName={customTileClassName}
+
+              //new
           />
+          
         </div>
         <div>
         </div>

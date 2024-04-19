@@ -1,316 +1,187 @@
 
-
-import Switch from 'react-switch';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Switch from 'react-switch';
 import { IoSettingsOutline } from "react-icons/io5";
-import OptionsComponent from '../../form/Formfields/options/OptionsComponent';
-import TextStyle from '../../form/Formfields/text/TextStyle';
-import { RiArrowDownSFill } from "react-icons/ri";
+import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import TextComponent from '../../form/DocumentsForm/TextComponent';
-// import { RiArrowDownSFill } from "react-icons/ri";
+import TextStyle from '../../form/Formfields/text/TextStyle';
+import OptionsComponent from '../../form/Formfields/options/OptionsComponent';
+import { RiArrowDownSFill } from "react-icons/ri";
+
 const TableHeaders = [
-  {
-    name: 'Policy Name',
-    className: 'TableHeaders1',
-
-  },
-  {
-    name: 'Maximum Amount',
-    className: 'TableHeaders',
-  },
-  {
-    name: 'Minimum Amount',
-    className: 'TableHeaders',
-  },
-  {
-    name: 'Enable',
-    className: 'TableHeaders',
-  },
-
-
+  { name: 'Policy Name', className: 'TableHeaders1' },
+  { name: 'Maximum Amount', className: 'TableHeaders' },
+  { name: 'Minimum Amount', className: 'TableHeaders' },
+  { name: 'Enable', className: 'TableHeaders' },
+  { name: 'Edit', className: 'TableHeaders' },
 ];
 
-
-const TextComponentData1 = [
-
-  {
-    name: 'reimbursement_type',
-    placeholder: 'policy name',
-    textcss: 'aa',
-  },
-
-
-];
-
-
-const TextComponentData2 = [
-
-  {
-    name: 'maximum_amount',
-    placeholder: '',
-    textcss: 'cc',
-  },
-
-
-];
-const TextComponentData3 = [
-
-  {
-    name: 'minimum_amount',
-    placeholder: '',
-    textcss: 'cc',
-  },
-
-
-];
-
-const TextComponentData4 = [
-
-  {
-    name: 'enable',
-    textcss: 'aa',
-  },
-
-
-];
-
-
-const OptionData = [
-  {
-    "name": "period",
-    "label": " Claiming period :",
-    "type": "options",
-    "options": [
-      { "name": "Within 1 month of expense made", "value": "Within 1 month of expense made" },
-      { "name": "Within 2 month of expense made", "value": "Within 2 month of expense made" },
-      { "name": "Within 3 month of expense made", "value": "Within 3 month of expense made" },
-      { "name": "Within 4 month of expense made", "value": "Within 4 month of expense made" },
-      { "name": "Within 5 month of expense made", "value": "Within 5 month of expense made" },
-      { "name": "Within 6 month of expense made", "value": "Within 6 month of expense made" },
-    ],
-    "placeholder": "Select Components ",
-    "textcss": "Remoption",
-    "icon": <RiArrowDownSFill className="text-gray-400 -mt-3  -translate-x-16" />,
-  },
-];
-const ReimbrusementPolicy = () => {
-  const [formData, setFormData] = useState({
-    reimbursement_type: '',
-    maximum_amount: '',
-    minimum_amount: '',
-    period: '',
-  });
+const ReimbursementPolicy = () => {
   const [tableData, setTableData] = useState([]);
+  const [editRowIndex, setEditRowIndex] = useState(null);
+  const [editRowData, setEditRowData] = useState(null);
+  const [formData, setFormData] = useState({ reimbursement_type: '', maximum_amount: '', minimum_amount: '', period: '', enable: false });
+  const [prevname, setPrevname] = useState(null);
+
+
+  useEffect(() => { fetchTableData(); }, []);
+
+  const handleEditClick = (rowIndex, row) => {
+    setPrevname(row);
+    setEditRowIndex(rowIndex);
+    setEditRowData({ ...row });
+  };
+
+  const handleCancel = () => {
+    setEditRowIndex(null);
+    setEditRowData(null);
+  };
+
+  const handleSave = async () => {
+    // Build query string from editRowData
+    const params = {
+      reimbursement_type: editRowData.reimbursement_type || '',
+      period: editRowData.period || '',
+      minimum_amount: editRowData.minimum_amount || '',
+      maximum_amount: editRowData.maximum_amount || '',
+      enable: editRowData.enable || false
+    }
+
+    // Send PATCH request with query parameters
+    const url = `http://192.168.0.112:8000/reimbursements/?reimbursement_type=${prevname.reimbursement_type}`;
+    // const url = `http://localhost:3000/savepolicyrem/?${params}`;
+    try {
+      const response = await axios.patch(url, params);
+      console.log(response.data.message); // Log success message from server
+      fetchTableData();
+    } catch (error) {
+      console.error('Failed to update reimbursement policy:', error);
+    }
+
+    handleCancel(); // Reset edit state
+  };
+
+  const handleChange = (e, rowIndex = null) => {
+    const { name, value } = e.target;
+    if (rowIndex !== null) {
+      setEditRowData(prev => ({ ...prev, [name]: value }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
 
   const handleSwitchChange = (checked, rowIndex) => {
-    const newData = [...tableData];
-    newData[rowIndex].enable = checked; // Update the enable state at the correct row index
-    setTableData(newData);
+    if (rowIndex === editRowIndex) {
+      setEditRowData(prev => ({ ...prev, enable: checked }));
+    } else {
+      const newData = [...tableData];
+      newData[rowIndex].enable = checked;
+      setTableData(newData);
+    }
   };
-  
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevFormData => ({
-        ...prevFormData,
-        [name]: value
-    }));
-};
-
-
-  const handleOptionChange = (value) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      period: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Only formData is sent, not the entire tableData
-    await axios.post('http://localhost:3000/savepolicyrem', formData);
-    // await axios.post( 'http://192.168.0.134:5000/reimbursements/', formData);
-    fetchTableData(); // Optionally fetch table data if needed to see updates
-    setFormData({
-      reimbursement_type: '',
-      maximum_amount: '',
-      minimum_amount: '',
-      period: '',
-      enable: '', // Assuming enable should also be reset
-    });
-};
 
   const fetchTableData = async () => {
-    // const response = await axios.get('http://192.168.0.162:5000/reimbursements/');
-    const response = await axios.get(' http://localhost:3000/savepolicyrem');
-    const fetchedData = response.data.map(item => ({
-      ...item,
-      enable: item.enable || false // Default to false if undefined
-    }));
+    const response = await axios.get('http://localhost:3000/savepolicyrem');
+    // const response = await axios.get('http://192.168.0.112:8000/reimbursements/');
+    const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
     setTableData(fetchedData);
   };
 
-  useEffect(() => {
-    fetchTableData();
-  }, []);
-
-
+  const handleAddPolicy = async () => {
+    if (formData.reimbursement_type && formData.maximum_amount && formData.minimum_amount && formData.period) {
+      // await axios.post('http://localhost:3000/savepolicyrem', formData);
+      await axios.post('http://192.168.0.112:8000/reimbursements/', formData);
+      fetchTableData();
+      setFormData({ reimbursement_type: '', maximum_amount: '', minimum_amount: '', period: '', enable: false });
+    } else {
+      alert("Please fill all fields.");
+    }
+  };
 
   return (
-
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={e => e.preventDefault()}>
       <div className='p-8 w-[130vh]'>
-        <div className='-translate-y-[8.5vh] flex '>
-          <h1 className="text-xl font-semibold ">Reimbursement policy</h1>
-          <IoSettingsOutline className="h-5 w-5 ml-6 mt-2 " />
+        <div className='-translate-y-[8vh] flex'>
+          <h1 className="text-xl font-semibold">Reimbursement Policy</h1>
+          <IoSettingsOutline className="h-5 w-5 ml-6 mt-2" />
         </div>
 
-        <div className='-mt-12 overflow-x-hidden w-56'>
-          {OptionData.map((field, index) => (
-            <div key={index} className={`form-field ${field.fieldstyle}`}>
-              <label className={TextStyle[field.textcss].label}>
-                {field.label}
-              </label>
-              {field.type === "options" && (
-                <OptionsComponent
-                  name={field.name}
-                  options={field.options}
-                  onChange={(e) => handleOptionChange(e.target.value)} // Assuming OptionsComponent can handle this prop
-                  textcss={TextStyle[field.textcss].input}
-                  placeholder={field.placeholder}
-                  icon={field.icon}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-
-        <table className="w-[140vh] -mt-4 ">
-          <thead className="bg-gray-100 text-gray-600 font-normal h-[8vh] ">
+        <OptionsComponent
+          name="period"
+          label="Claiming period :"
+          options={[
+            { name: "Within 1 months of expense made", value: "1 months" },
+            { name: "Within 3 months of expense made", value: "3 months" },
+            { name: "Within 6 months of expense made", value: "6 months" }
+          ]}
+          onChange={handleChange}
+          textcss={TextStyle['Remoption'].input}
+          placeholder="Select period"
+          icon={<RiArrowDownSFill className="text-gray-400 -mt-6 ml-44 -translate-x-16" />}
+        />
+        <table className="w-[140vh] mt-2">
+          <thead className="bg-gray-100 text-gray-600 font-normal h-[8vh]">
             <tr>
               {TableHeaders.map((header, index) => (
-                <th key={index} className={TextStyle[header.className]}>
-                  {header.name}
-                </th>
+                <th key={index} className={TextStyle[header.className]}>{header.name}</th>
               ))}
             </tr>
           </thead>
-          <tbody className="h-10 border border-b-1">
+          <tbody>
             {tableData.map((row, rowIndex) => (
-             <tr key={rowIndex} className='h-12 border border-b-1'>
-             {TextComponentData1.map((data, i) => (
-               <td key={i} className="">
-                 <TextComponent
-                   name={data.name}
-                   onChange={(handleChange)}
-                   value={row[data.name]}
-                   placeholder={data.placeholder}
-                   textcss={TextStyle[data.textcss]}
-                 />
-               </td>
-             ))}
-                {TextComponentData2.map((data, i) => (
-                  <td key={i} className="">
-                    <TextComponent
-                      name={data.name}
-                      onChange={handleChange}
-                      value={row[data.name]}
-                      placeholder={data.placeholder}
-                      textcss={TextStyle[data.textcss]}
-                    />
-                  </td>
-                ))}
-                {TextComponentData3.map((data, i) => (
-                  <td key={i} className="">
-                    <TextComponent
-                      name={data.name}
-                      onChange={handleChange}
-                      value={row[data.name]}
-                      placeholder={data.placeholder}
-                      textcss={TextStyle[data.textcss]}
-                    />
-                  </td>
-                 ))}
+              <tr key={rowIndex} className={`h-12 ${editRowIndex === rowIndex ? 'bg-blue-100' : ''}`}>
+                <td className={TextStyle['aa']}>{editRowIndex === rowIndex ? <input type="text" name="reimbursement_type" value={editRowData.reimbursement_type} onChange={(e) => handleChange(e, rowIndex)} /> : row.reimbursement_type}</td>
+                <td className={TextStyle['cc']}>{editRowIndex === rowIndex ? <input type="number" name="maximum_amount" value={editRowData.maximum_amount} onChange={(e) => handleChange(e, rowIndex)} /> : row.maximum_amount}</td>
+                <td className={TextStyle['cc']}>{editRowIndex === rowIndex ? <input type="number" name="minimum_amount" value={editRowData.minimum_amount} onChange={(e) => handleChange(e, rowIndex)} /> : row.minimum_amount}</td>
                 <td>
                   <Switch
                     onChange={(checked) => handleSwitchChange(checked, rowIndex)}
-                    checked={row.enable} // Use the `enable` value from the current row data
-                    handleDiameter={20}
+                    checked={editRowIndex === rowIndex ? editRowData.enable : row.enable}
+                    handleDiameter={28}
+                    offColor="#BBB"
+                    onColor="#3DCB29"
                     uncheckedIcon={false}
                     checkedIcon={false}
-                    className='ml-24'
-                    onColor="#60A5FA"
+                    className='ml-12'
                   />
+                </td>
+                <td>
+                  {editRowIndex === rowIndex ? (
+                    <>
+                      <MdCheck className="cursor-pointer ml-16" onClick={handleSave} />
+                      <MdCancel className="cursor-pointer ml-16" onClick={handleCancel} />
+                    </>
+                  ) : (
+                    <MdOutlineEdit className="cursor-pointer ml-16" onClick={() => handleEditClick(rowIndex, row)} />
+                  )}
                 </td>
               </tr>
             ))}
-            <tr className=' h-12 border border-b-1'>
-              <td className="">
-                {TextComponentData1.map((data, i) => (
-                  <td key={i} className="">
-                    <TextComponent
-                      name={data.name}
-                      onChange={handleChange}
-                      value={formData[data.name]}
-                      placeholder={data.placeholder}
-                      textcss={TextStyle[data.textcss]}
-                    />
-                  </td>
-                ))}
-              </td>
-
-              {TextComponentData2.map((data, i) => (
-                <td key={i} className="">
-                  <TextComponent
-                    name={data.name}
-                    onChange={handleChange}
-                    value={formData[data.name]}
-                    placeholder={data.placeholder}
-                    textcss={TextStyle[data.textcss]}
-                  />
-                </td>
-              ))}
-
-              {TextComponentData3.map((data, i) => (
-                <td key={i} className="">
-                  <TextComponent
-                    name={data.name}
-                    onChange={handleChange}
-                    value={formData[data.name]}
-                    placeholder={data.placeholder}
-                    textcss={TextStyle[data.textcss]}
-                  />
-                </td>
-              ))}
-
-              <td>
-
-                <Switch
-                  onChange={handleSwitchChange}
-                  checked={formData.enable || false} // Reflect formData's 'enable' status
-                  handleDiameter={20}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  className='ml-24'
-                  onColor="#60A5FA"
-                />
-
+            {/* Add policy row */}
+            <tr>
+              <td><TextComponent name="reimbursement_type" onChange={handleChange} value={formData.reimbursement_type} placeholder="Enter policy name" textcss={TextStyle['aa']} /></td>
+              <td><TextComponent name="maximum_amount" onChange={handleChange} value={formData.maximum_amount} placeholder="Enter max amount" textcss={TextStyle['cc']} /></td>
+              <td><TextComponent name="minimum_amount" onChange={handleChange} value={formData.minimum_amount} placeholder="Enter min amount" textcss={TextStyle['cc']} /></td>
+              <td> <Switch
+  onChange={(checked) => setFormData({ ...formData, enable: checked })}
+  checked={formData.enable}
+  handleDiameter={28}
+  offColor="#BBB"
+  onColor="#3DCB29"
+  uncheckedIcon={false}
+  checkedIcon={true}
+  className='ml-12'
+/>
 
               </td>
+              <td><button type="button" onClick={handleAddPolicy} className="bg-blue-500 text-white rounded px-4 py-1 ml-12">Add</button></td>
             </tr>
-
           </tbody>
         </table>
       </div>
-      {/* <button type="submit">Submit</button> */}
-      <div className="ml-[140vh] mb-2 ">
-        {" "}
-        {/* <ButtonConfig Config={ButtonSave} /> */}
-        <button type='submit' className="bg-blue-400 text-white py-2  px-4 -ml-[26px] rounded-lg">Save</button>
-      </div>
     </form>
-  )
-}
+  );
+};
 
-export default ReimbrusementPolicy;
+export default ReimbursementPolicy;

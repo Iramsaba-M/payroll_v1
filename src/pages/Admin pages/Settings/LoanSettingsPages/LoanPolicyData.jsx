@@ -30,6 +30,10 @@ export const TableHeaders = [
         name: 'Document Needed',
         className: 'TableHeaders111',
       },
+      {
+        name: 'edit',
+        className: 'TableHeaders111',
+      },
    
   ];
   
@@ -37,7 +41,7 @@ export const TableHeaders = [
   export const TextComponentData1= [
 
     {
-      name: 'policyname',
+      name: 'loan_type',
       placeholder: 'policy name',
       textcss: 'aa',
     },
@@ -49,7 +53,7 @@ export const TableHeaders = [
   export const TextComponentData2= [
 
     {
-      name: 'maxamt',
+      name: 'maximum_amount',
       placeholder: '',
       textcss: 'c',
     },
@@ -61,7 +65,7 @@ export const TableHeaders = [
   export const TextComponentData3= [
 
     {
-      name: 'noofinstallments',
+      name: 'no_of_repayment',
       placeholder: '',
       textcss: 'b',
     },
@@ -72,7 +76,7 @@ export const TableHeaders = [
   export const TextComponentData4 =[
 
     {
-      name: 'roi',
+      name: 'roi_in_percentage',
       placeholder: '',
       textcss: 'b',
     },
@@ -83,7 +87,7 @@ export const TableHeaders = [
   
 export const OptionsComponentData1 = [
   {
-    name: 'applyeligibility',
+    name: 'eligibility',
     options: [
       { name: 'Employee', value: 'Employee' },
       { name: 'Paid intern', value: 'Paid intern' },
@@ -101,7 +105,7 @@ export const OptionsComponentData1 = [
   
 export const OptionsComponentData2 = [
   {
-    name: 'documentneeded',
+    name: 'document_needed',
     options: [
       { name: 'yes', value: 'yes' },
       { name: 'no', value: 'no' },
