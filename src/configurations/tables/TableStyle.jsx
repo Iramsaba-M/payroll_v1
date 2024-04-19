@@ -1,4 +1,4 @@
-// tablestyle.jsxfghjk
+
 const TableStyle = {
 
   style1: "text-center px-[20px] py-2  mt-10 text-gray-500 bg-gray-100 text-sm font-sans",
