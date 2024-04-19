@@ -44,7 +44,7 @@ const handleDateChange = (date) => {
     <div>
      
       <label>{label}</label>
-
+{icon}
       <DatePicker
         name={name}
         value={value}
@@ -53,6 +53,8 @@ const handleDateChange = (date) => {
         onChange={handleDateChange} 
         dateFormat="dd/mm/yyyy" 
         className={textcss}
+        showYearDropdown
+        showMonthDropdown
       />
     </div>
   );

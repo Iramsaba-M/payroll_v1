@@ -13,6 +13,7 @@ export default {
         'border-line': '#DEE1E6',
         'placeholder': '#9095A0',
         'button-bg': '#E6EDFE',
+        'blue-light': '#DBEAFE',
       },
       fontFamily: {
         'bold': ['Roboto-Bold', 'sans-serif'],

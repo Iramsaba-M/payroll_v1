@@ -6,9 +6,7 @@ import FileComponent from './FileComponent';
 import DocumentStyles from './DocumentStyles';
 
 const CustomComponent = ({ config, value, onCustomChange }) => {
-    // const handleChange = ( value) => {
-    //   onCustomChange(value); // Call the onCustomChange prop when value change in text
-    // };
+    
     const handleChange = (e) => {
         const { value } = e.target;
         onCustomChange(value);
@@ -42,6 +40,7 @@ const CustomComponent = ({ config, value, onCustomChange }) => {
                     textcss={DocumentStyles[field.textcss].input}
                     placeholder={field.placeholder}
                     icon={field.icon}
+                    iconPosition={field.iconPosition}
                   />
                 )}
               </div>

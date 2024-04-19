@@ -10,9 +10,9 @@ const CardData = [
   { card: 'Card4', title: 'Card 8', content: 'Content for Card 8' },
   { card: 'Card2', title: 'Card 9', content: 'Content for Card 9' },
   { card: 'Card3', title: 'Card 10', content: 'Content for Card 10' },
-  { card: 'Card4', title: 'Card 11', content: 'Content for Card 11 '},
-  
-  { card: 'Card1', title: 'Card 12', content: 'Content for Card 11 '}
+  { card: 'Card4', title: 'Card 11', content: 'Content for Card 11 ' },
+
+  { card: 'Card1', title: 'Card 12', content: 'Content for Card 11 ' }
 
 
 ];

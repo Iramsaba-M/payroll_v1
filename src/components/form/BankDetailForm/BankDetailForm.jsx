@@ -5,7 +5,7 @@ import { GoPlusCircle } from "react-icons/go";
 import Button from '../../../configurations/Button/Button';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
-import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Employee/BankDetail/BankDetailsContent';
+import { ButtonforSave ,ButtonforaddBank} from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
 import { postData } from '../../../services/APIService';
@@ -27,22 +27,6 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
   };
   
 
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const allFormValues = forms.map(form => form.values);
-  //     const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
-  //     const response = await axios.post(getApiUrl(BANK_DETAILS_API), dataToSend);
-      
-  //     console.log('Data sent:', response.data);      
-
-  //     handleSubmit(dataToSend);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-    
-  // };
   const onSubmit = async (e) => {
     e.preventDefault();
   
@@ -60,13 +44,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId }) 
       console.error('Error:', error);
     }
   };
-  // const handleButtonClick = (label,type) => {
-  //   if (label === 'Save' && type ==='submit') {
-  //     onSubmit();
-  //   } else if (label === 'Next') {
-  //     handleNextClick(true);
-  //   } 
-  // };
+  
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };

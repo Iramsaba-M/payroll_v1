@@ -2,7 +2,6 @@ import { PiUploadSimpleThin } from "react-icons/pi";
 import { CiEdit } from "react-icons/ci";
 import CustomStyles from "./CustomStyles";
   
-
 const CustomConfig = [
     {
       label: 'Custom Document',
@@ -19,7 +18,6 @@ const CustomConfig = [
       icon:<CiEdit className={CustomStyles.iconstyle} />,
     },
     
-  
   ];
   
   export default CustomConfig;

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 // import OptionData from './OptionData';
-import { OptionData } from '../../../pages/Employee/AditionalDetail/AditionalDetailsContent';
+import { OptionData } from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
 import { RiArrowDropDownFill } from "react-icons/ri";
 
 const OptionsComp = ({ onChange }) => {

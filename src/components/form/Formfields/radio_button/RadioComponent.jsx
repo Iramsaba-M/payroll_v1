@@ -1,11 +1,15 @@
+
+
 import React from 'react';
 
-const RadioComponent = ({ label, value, checked, onChange,textcss }) => {
+const RadioComponent = ({ label, name, value, checked, onChange, textcss }) => {
   return (
     <div>
-      <label>{label}</label>
+      <label htmlFor={value}>{label}</label>
       <input 
         type="radio" 
+        id={value}
+        name={name}
         value={value} 
         checked={checked} 
         onChange={onChange}

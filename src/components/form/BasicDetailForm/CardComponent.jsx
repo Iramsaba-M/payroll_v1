@@ -7,14 +7,6 @@ const CardComponent = ({ CardConfig = [], handleChange }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
-  // const onDrop = (acceptedFiles) => {
-  //   const file = acceptedFiles[0];
-  //   if (file.type.startsWith('image/')) {
-  //     setUploadedImage(URL.createObjectURL(file));
-  //   } else {
-  //     setUploadedFiles((oldFiles) => [...oldFiles, file]);
-  //   }
-  // };
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file.type.startsWith('image/')) {

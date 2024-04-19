@@ -7,7 +7,7 @@ const TripleInputComponent = ({ name, label, values, onChange, textcss, placehol
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         {Array.from({ length: 3 }).map((_, index) => (
           <input
-            name={keys ? keys[index] : name} // use the provided keys or fallback to the default name
+            name={keys ? keys[index] : name} 
             key={index}
             type="text"
             value={values[index] || ""}
