@@ -10,7 +10,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { PiAirplaneTilt } from "react-icons/pi";
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import { fetchData, patchData, postData } from '../../../services/APIService';
-import { admin_Leave_and_Holiday_post, admin_settings_Holiday_list } from '../../../api/EndPoints';
+import {  admin_settings_Holiday_list } from '../../../api/EndPoints';
 
 const Holidaypolicy = () => {
   const [formData, setFormData] = useState({

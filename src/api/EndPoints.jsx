@@ -50,9 +50,9 @@ export const view ='history/dowload';
 
 // export const EndUser_ApplyLeave = 'enduser_applyleave';
 
-export const EndUser_ApplyLeave = 'enduser/ /apply_leave/';//api done 
+export const EndUser_ApplyLeave = 'enduser/apply_leave/';//api done 
 
-export const EndUser_Leave_Balance ="enduser/ /annual_leave_balance/"//api done 
+export const EndUser_Leave_Balance ="enduser/apply_leaveleave_data/"//api done 
 
 export const mypayslip ='enduser/payslip/';//sb done api testing
 

@@ -275,4 +275,3 @@ const TypeOfLoan = () => {
 };
 
 export default TypeOfLoan;
-fi
