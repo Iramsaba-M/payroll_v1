@@ -79,30 +79,25 @@ f:'',
 
 cc:'ml-20 w-36 mr-8 text-center',
 
-
-
-  
-
-  //ctc inner template
-  
-
+//ctc inner template
   leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr- text-gray text-sm w-[77vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
   
   leaveuploadinput:'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-20',
 
 
-  leavepolicyname:'px-2 font-semibold  ',
-  leavetableHeader:'px-5 text-start  ',
-  leavecolumn:'ml-6 w-[16vh]  ',
+  leavepolicyname:'px-2 font-semibold  outline-none ',
+  leavetableHeader:'px-5 text-start  outline-none ',
+  leavecolumn:'ml-6 w-[16vh]  outline-none ',
   holidaytableHeader:'px-5 text-start  ',
-  holidaytablerow:' -translate-x-[2vh] px-1   bg-indigo-450',
-  holidaytablerow1:'px-5 text-start  ',
-  holidaytableHeader1:' w-[30vh] text-start',
-  holidaytableHeader2:'px-5 -translate-x-[7vh]  ',
+  holidaytablerow:' translate-x-[6vh] ml-5 px-1   bg-indigo-450 outline-none',
+  holidaytablerow1:'px-5 text-start   outline-non',
+  holidaytablerow2:'px-5  translate-x-[9vh]  outline-non',
+  holidaytableHeader1:' w-[30vh] -translate-x-[3vh] outline-none ',
+  holidaytableHeader2:'px-5 w-[30vh] translate-x-[3vh]  ',
 
-  leaverowoptionstyle:'ml-12 w-24 mr-12',
-  leavetablecolumnstyles:'ml-12 w-16 mr-12',
-  leavetablecolumnstyles2:'ml-12 w-36',
+  leaverowoptionstyle:'ml- w-32 mr-12 border-b-2  outline-none',
+  leavetablecolumnstyles:'ml-12 w-16 mr-12  outline-none',
+  leavetablecolumnstyles2:'ml-12 w-36 outline-none',
 };
 
 
