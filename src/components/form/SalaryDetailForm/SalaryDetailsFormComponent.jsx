@@ -6,7 +6,7 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import { getApiUrl } from '../../../api/GetAPI';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
-import {Button1Content, Button2Content}from '../../../pages/Employee/SalaryDetail/SalaryDetailsContents';
+import {Button1Content, Button2Content}from '../../../pages/Admin pages/Employee/SalaryDetail/SalaryDetailsContents';
 import NumberStyle from '../Formfields/number/numberstyle';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig }from '../Formfields/modal/ModalConfig';
@@ -14,15 +14,11 @@ import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 import { fetchData, postData } from '../../../services/APIService';
 
-
-
 const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
   const [ctcDetails, setCtcDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-
 
   const handleButtonClick = (label, type) => {
     if (label === "Save" && type === "submit") {
@@ -195,7 +191,6 @@ const SalaryDetailsComp = ({ config, handleSubmit, handleNextClick, employeeId }
        </div>
         ))}
       </div>
-
       {/* Section 6: Deductions (at center) */}
       <div className="form-line flex justify-center mb-4 font-semibold mr-[45vh]">
         <h2>Deductions</h2>

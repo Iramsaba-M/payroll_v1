@@ -1,11 +1,11 @@
 import React from 'react';
 import DynamicTable from './DynamicTable';
 
-function TableComponent({config, data}) {
+function TableComponent({ config, data }) {
   return (
     <div >
-      
-      <DynamicTable config= {config} data={data} />
+
+      <DynamicTable config={config} data={data} />
     </div>
   );
 }

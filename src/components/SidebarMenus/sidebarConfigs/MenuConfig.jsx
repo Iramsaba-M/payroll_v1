@@ -79,11 +79,7 @@ export const HOME_SIDEBAR_LINKS ={
                 path:'home', 
                 icon: <LiaHomeSolid />
             }, 
-            {
-                label: 'Home 5',
-                path:'home', 
-                icon: <LiaHomeSolid />
-            }, 
+            
             
     
          ],

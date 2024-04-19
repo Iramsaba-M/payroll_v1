@@ -1,6 +1,3 @@
-
-
-// DynamicSearch.js
 import React, { useState } from 'react';
 import StyleSearch from './StyleSearch';
 import { FaSearch } from 'react-icons/fa';
@@ -8,12 +5,10 @@ import { FaSearch } from 'react-icons/fa';
 const DynamicSearch = ({ data, searchKey, config, searchFunrecd }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-
   const handleSearch = (e) => {
     const searchTermValue = e.target.value.toLowerCase();
     setSearchTerm(searchTermValue);
     const filteredEmployeeData = data.filter((item) => {
-      // Perform null checks before accessing properties
       const firstName = item.first_name ? item.first_name.toLowerCase() : '';
       const middleName = item.middle_name ? item.middle_name.toLowerCase() : '';
       const lastName = item.last_name ? item.last_name.toLowerCase() : '';
@@ -26,10 +21,6 @@ const DynamicSearch = ({ data, searchKey, config, searchFunrecd }) => {
     console.log("Filtered data:", filteredEmployeeData);
     searchFunrecd(filteredEmployeeData);
   };
-  
-  
-  
-  
 
   return (
     <div className='relative'>
@@ -41,7 +32,7 @@ const DynamicSearch = ({ data, searchKey, config, searchFunrecd }) => {
             value={searchTerm}
             onChange={handleSearch}
             placeholder={config.placeholder}
-            style={StyleSearch.input} // Apply input style
+            style={StyleSearch.input} 
           />
         </div>
       </div>

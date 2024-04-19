@@ -24,4 +24,3 @@ return (
 
 export default PasswordIcon;
 
-

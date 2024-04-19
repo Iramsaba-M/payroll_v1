@@ -7,7 +7,7 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI'
 import Button from '../../../configurations/Button/Button';
-import { ButtonforDefault } from '../../../pages/Employee/BankDetail/BankDetailsContent';
+import { ButtonforDefault } from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
 
 const BankDetailFormComponent = ({ id,config, onChange }) => {
   const [values, setValues] = useState({ default_for_payroll: false,});
@@ -18,11 +18,6 @@ const BankDetailFormComponent = ({ id,config, onChange }) => {
     setValues({ ...values, [name]: value });
     onChange(id, { ...values, [name]: value });
   };
-
-  // const handleChange = (name, value) => {
-  //   setValues((prevValues) => ({ ...prevValues, [name]: value }));
-  // };
-
 
   const highlight = () => {
     setIsButtonClicked((prevState) => !prevState);
