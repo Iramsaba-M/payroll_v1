@@ -73,7 +73,7 @@ const MyLeave = ({ config, applyleave }) => {
     const fetchgetData = async () => {
         try {
 
-            const queryParams = { employee_id: 'IK02' };
+            const queryParams = { employee_id: 'IK03' };
             const endpoint = `${EndUser_Leave_Balance}?employee_id=${queryParams.employee_id}`; // Construct endpoint URL
             const response = await fetchData(endpoint);
             console.log('Post Response cards:', response);

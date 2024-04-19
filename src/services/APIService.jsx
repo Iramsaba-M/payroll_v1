@@ -50,3 +50,13 @@ export const postDataImage = async (endpoint, data) => {
     throw error;
   }
 };
+
+export const patchData = async (endpoint, data) => {
+  try {
+    const response = await axios.patch(getApiUrl(endpoint), data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error posting data to ${endpoint}:`, error);
+    throw error;
+  }
+};
