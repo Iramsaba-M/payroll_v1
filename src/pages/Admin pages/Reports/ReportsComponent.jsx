@@ -144,13 +144,15 @@ const ReportsComponent = () => {
           };
           console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
-          const response = await axios.get('http://localhost:3000/home_report_graphdata')
-          // const response = await postData(Home_and_Report_BarGraphdata, {
-          //   from_: formattedStartDate,
-          //   to: formattedEndDate,
-          // });
-          console.log('Post Response graph :', response.data);
-          setBarGraphData(response.data);
+          // const response = await axios.get('http://localhost:3000/home_report_graphdata')
+
+          const response = await postData(Home_and_Report_BarGraphdata, {
+            from_: formattedStartDate,
+            to: formattedEndDate,
+          });
+
+          console.log('Post Response graph :', response);
+          setBarGraphData(response);
         } else {
           console.log('Please select both "From" and "To" dates');
         }
@@ -170,13 +172,15 @@ const ReportsComponent = () => {
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
-        const response = await axios.get('http://localhost:3000/home_report_carddata')
-        // const response = await postData(Home_and_Reportdata, {
-        //   year: year,
-        //   month: month,
-        // });
-        console.log('Post Response cards:', response.data);
-        setCardData(response.data);
+        // const response = await axios.get('http://localhost:3000/home_report_carddata')
+
+        const response = await postData(Home_and_Reportdata, {
+          year: year,
+          month: month,
+        });
+        
+        console.log('Post Response cards:', response);
+        setCardData(response);
         console.log('setCardData:', cardData);
       } catch (error) {
         console.error('Error posting data:', error);

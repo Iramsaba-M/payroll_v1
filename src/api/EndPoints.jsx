@@ -1,15 +1,16 @@
 //Employee Registeration
 
-// export const EMP_API = 'employee/basic-details';
+export const EMP_API = 'employee/basic-details/';
 
-export const EMP_API = 'basicdetail';
+// export const EMP_API = 'basicdetail';
 
 export const BASIC_DETAILS_API_put = 'employee/basic-details';
 
 export const BASIC_DETAILS_API_Get = 'employee/basic-details';
 
-// export const CARDS_API = 'employee/total_ctc_and_employees';
-export const CARDS_API = 'cardData';
+export const CARDS_API = 'employee/total_ctc_and_employees';
+
+// export const CARDS_API = 'cardData';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
 
@@ -36,14 +37,12 @@ export const BankDetails_export = 'employee/export/bank-details';
 export const Additionaldetails_export = 'employee/export/additional-details';
 
 // Home and Report 
-export const Home_and_Reportdata ='reports/month-data'
+export const Home_and_Reportdata ='reports/calculate_total_monthly_ctc'
 
-export const Home_and_Report_BarGraphdata ='reports/graph-data'
+export const Home_and_Report_BarGraphdata ='reports/calculate_graph_data'
 
 //Runpayroll
-export const Runpayroll ='run_payroll/fetch_monthly_data/fetch_monthly_data';//sb done api testing
-
-export const mypayslip ='enduser/ /payslip/year-month';//sb done api testing
+export const Runpayroll ='run_payroll/fetch_monthly_data';//sb done api testing
 
 export const payslips ='run_payroll/fetch_employee_data ';//sb done api testing 
 
@@ -54,6 +53,8 @@ export const view ='history/dowload';
 export const EndUser_ApplyLeave = 'enduser/ /apply_leave/';//api done 
 
 export const EndUser_Leave_Balance ="enduser/ /annual_leave_balance/"//api done 
+
+export const mypayslip ='enduser/payslip/';//sb done api testing
 
 // export const EndUser_Attendance = 'enduser/my-attendence/punch/';
 
@@ -67,7 +68,7 @@ export const EndUser_notification = 'notification';
 //sb
 export const EndUser_ApplyLoan = 'loan/request/';//sb tested the api
 
-export const EndUser_ApplyReimbursement = 'enduser/ /submit_reimbursement/';//sb tested for  reimbursement form multiple reim also checked with backend 
+export const EndUser_ApplyReimbursement = 'enduser/submit_reimbursement/';//sb tested for  reimbursement form multiple reim also checked with backend 
 
 export const ctctemplate = 'test';
 
@@ -75,5 +76,10 @@ export const ctctemplatename ='tempname';
 
 export const reviewpayroll = 'modal';
 
-export const admin_Leave_and_Holiday_post = 'settings/holidays';
-export const admin_Leave_and_Holiday_get = 'settings/holidays';
+//Admin- Leave setting
+
+export const admin_settings_Holiday_list = 'settings/holiday';
+
+export const admin_settings_Leave_Policy_Get = 'settings/policies';
+
+export const admin_settings_Leave_Policy = 'settings/policy';

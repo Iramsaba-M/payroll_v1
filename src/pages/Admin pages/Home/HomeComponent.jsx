@@ -11,6 +11,9 @@ import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/
 import Button from '../../../configurations/Button/Button';
 import RoutesComponent from "../../../routing/RoutesComponent"
 import {useButtonState}  from "../../../context/ButtonStateContext"
+import { getApiUrl } from '../../../api/GetAPI'
+import { postData } from '../../../services/APIService';
+
 const Barchart = ({ graphdata }) => {
 
   if (!graphdata || !Array.isArray(graphdata)) {
@@ -138,15 +141,15 @@ const Pichart = ({ data }) => {
         const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
-        const response = await axios.get('http://localhost:3000/home_report_carddata')
+        // const response = await axios.get('http://localhost:3000/home_report_carddata')
 
-        //   const response =await axios.post(getApiUrl(Home_and_Reportdata), {
-        //   year: year,
-        //   month: month,
-        // });
+        const response = await postData(Home_and_Reportdata, {
+          year: year,
+          month: month,
+        });
 
-        console.log('Post Response:', response.data);
-        setCardData(response.data);
+        console.log('Post Response:', response);
+        setCardData(response);
       } catch (error) {
         console.error('Error posting data:', error);
       }
@@ -174,16 +177,16 @@ const Pichart = ({ data }) => {
           });
 
 
-          const response = await axios.get('http://localhost:3000/home_report_graphdata')
+          // const response = await axios.get('http://localhost:3000/home_report_graphdata')
 
-          //   const response =await axios.post(getApiUrl2(Home_and_Report_BarGraphdata), {
-          //   from_: formattedStartDate,
-          //   to: formattedEndDate,
-          // });
+          const response =await postData(Home_and_Report_BarGraphdata, {
+            from_: formattedStartDate,
+            to: formattedEndDate,
+          });
      
 
-          console.log('Graph Response:', response.data);
-          setGraphData(response.data);
+          console.log('Graph Response:', response);
+          setGraphData(response);
         } else {
           console.log('Please select both "From" and "To" dates');
         }

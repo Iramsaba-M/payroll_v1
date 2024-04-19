@@ -4,43 +4,43 @@ export const Button1Content = [
     { label: ' ',  style: 'buttonStylew' , type:"submit"},
   ];
   export const tableContent2 = [
-     {
-      name: "employee_name",
-      label: "EMPLOYEE NAME",
-      dataType: "string",
-      cssClass: "datastyle",
-      clmncss: "style4"
-    },
     {
-      name: "designation",
-      label: "DESIGNATION",
-      dataType: "string",
-      cssClass: "datastyle1",
-      clmncss: "style4"
-    },
-    {
-      name: "employee_id",
-      label: "EMP ID",
-      dataType: "string",
-      cssClass: "datastyle1",
-      clmncss: "style4"
-    },
-    {
-      name: "PAYSLIPS",
-      label: " PAYSLIPS",
-      dataType: "Date",
-      cssClass: "datastyle1",
-      clmncss: "style4",
-      content:'view'
-    },
-    {
-      name: "download",
-      label: "DOWNLOAD",
-      dataType: "icon",
-      cssClass: "datastyle1",
-      clmncss: "style4",
-      content: <MdOutlineFileDownload />
-    },
+     name: "employee_name",
+     label: "EMPLOYEE NAME",
+     dataType: "string",
+     cssClass: "datastyle",
+     clmncss: "style4"
+   },
+   {
+     name: "designation",
+     label: "DESIGNATION",
+     dataType: "string",
+     cssClass: "datastyle1",
+     clmncss: "style4"
+   },
+   {
+     name: "employee_id",
+     label: "EMP ID",
+     dataType: "string",
+     cssClass: "datastyle1",
+     clmncss: "style4"
+   },
+   {
+     name: "PAYSLIPS",
+     label: " PAYSLIPS",
+     dataType: "Date",
+     cssClass: "datastyle1",
+     clmncss: "style4",
+     content:'view'
+   },
+   {
+     name: "download",
+     label: "DOWNLOAD",
+     dataType: "icon",
+     cssClass: "datastyle1",
+     clmncss: "style4",
+     content: <MdOutlineFileDownload />
+   },
   ]
   export const tableContent3 = {
     tableposition: "review",

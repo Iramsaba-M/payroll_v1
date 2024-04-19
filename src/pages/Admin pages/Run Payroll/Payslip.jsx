@@ -6,7 +6,7 @@ import { mypayslip, payslips } from '../../../api/EndPoints';
 import DatePicker from 'react-datepicker';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { fetchData } from '../../../services/APIService';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 const Payslip = () => {

@@ -1887,13 +1887,14 @@
       "id": 5
     }
   ],
+ 
   "admin_leavepolicy": [
     {
       "id": "780c",
       "policy_name": "sick leave",
       "allowed_leaves": "12 days",
       "duration": "Jan to Dec",
-      "Paytype": "unpaid_leave",
+      "paytype": "unpaid_leave",
       "forward": false,
       "encashment": false
     },
@@ -1902,8 +1903,7 @@
       "policy_name": "casual leave",
       "allowed_leaves": "20 days",
       "duration": "Jan to Dec",
-      "pay_type": "",
-      "Pay_type": "unpaid_leave",
+      "paytype": "unpaid_leave",
       "forward": true,
       "encashment": true
     },
@@ -1914,14 +1914,14 @@
       "duration": "Jan to Dec",
       "forward": true,
       "encashment": false,
-      "Paytype": "unpaid_leave"
+      "paytype": "unpaid_leave"
     },
     {
       "id": "e262",
       "policy_name": "Maternity Leave",
       "allowed_leaves": "186 days",
       "duration": "Jan to Dec",
-      "Paytype": "unpaid_leave",
+      "paytype": "unpaid_leave",
       "forward": true,
       "encashment": false
     },
@@ -1930,7 +1930,7 @@
       "policy_name": "Paternity Leave",
       "allowed_leaves": "5 days",
       "duration": "Jan to Dec",
-      "Paytype": "unpaid_leave",
+      "paytype": "unpaid_leave",
       "forward": true,
       "encashment": false
     },
@@ -1950,46 +1950,51 @@
       "duration": "Jan to Dec",
       "forward": false,
       "encashment": false,
-      "paytype": ""
+      "paytype": "unpaid_leave"
     },
     {
-      "id": "f3bd",
-      "policy_name": "sick leave",
-      "allowed_leaves": "7 days",
-      "duration": "Jan to Dec",
-      "pay_type": "",
-      "Paytype": "unpaid_leave",
+      "id": "6cf8",
+      "policy_name": "sick leave2",
+      "allowed_leaves": "16",
+      "duration": "jan to dec",
+      "paytype": "paid_leave",
       "forward": true,
       "encashment": true
     },
     {
-      "id": "a1f7",
-      "policy_name": "leave",
-      "allowed_leaves": "8 days",
+      "id": "c13a",
+      "policy_name": "Paternity Leave",
+      "allowed_leaves": "185 ",
       "duration": "Jan to Dec",
-      "paytype": "",
+      "paytype": "paid_leave",
       "forward": true,
-      "encashment": true
+      "encashment": false
     }
   ],
   "admin_holiday": [
     {
       "id": "47c4",
-      "holiday_name": "Independance Day",
       "date": "15/8/2024",
+      "holiday_name": " Independance Day",
       "enable": true
     },
     {
       "id": "1003",
+      "date": " 26/1/2024",
       "holiday_name": "Republic Day",
-      "date": "26/1/2024",
       "enable": true
     },
     {
       "id": "4eaf",
+      "date": " 2/10/2024",
       "holiday_name": "Gandhi jayanti",
-      "date": "2/10/2024",
       "enable": false
+    },
+    {
+      "id": "dd6a",
+      "holiday_name": "Republic Day",
+      "date": "2/10/2024",
+      "enable": true
     }
   ]
 }
