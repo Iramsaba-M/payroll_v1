@@ -62,8 +62,8 @@ textcss1: '  ml-[10vh] w-[25vh] placeholder-pink-500 outline-none',
 
   //reimbrusment settings
   Remoption: {
-    label: 'block text-black-100 text-sm font-bold my-1', 
-    input: 'h-10 border-b-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs font-medium  my-2 mr-24 mb-2 px-2 py-1 w-[62vh] leading-tight focus:outline-none placeholder:text-green-500 ',//mr-14
+    label: 'block text-red-400 text-sm font-bold my-1', 
+    input: ' -mt-16 h-10 border-b-2 hover:border-blue-500 border-black-100 bg-transparent text-gray text-xs font-medium  my-2 mr-24 mb-2 px-2 py-1 w-[32vh] leading-tight focus:outline-none placeholder:text-green-500 ',//mr-14
     
   },
 //loan policy setting
