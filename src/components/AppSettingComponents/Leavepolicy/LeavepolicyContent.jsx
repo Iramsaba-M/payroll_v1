@@ -1,4 +1,5 @@
 import { RiArrowDownSFill } from "react-icons/ri";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 export const TableHeaders = [
     {
       name: 'Policy Name',
@@ -7,11 +8,11 @@ export const TableHeaders = [
     },
     {
       name: 'Allowed Leaves',
-      className: '',
+      className: 'leavetableHeade',
     },
     {
       name: 'Duration',
-      className: 'leavetableHeader',
+      className: 'leavetableHeade',
   
     },
     
@@ -25,6 +26,10 @@ export const TableHeaders = [
       },
       {
         name: 'Pay Type ',
+        className: 'leavetableHeader',
+      },
+      {
+        name: 'Edit ',
         className: '',
       },
    
@@ -90,7 +95,7 @@ export const TableHeaders = [
   
 export const OptionsComponentData1 = [
   {
-    name: 'Paytype',
+    name: 'paytype',
     options: [
       { name: 'UnPaid Leave', value: 'unpaid_leave' },
       { name: 'Paid Leave', value: 'paid_leave' },
@@ -98,7 +103,7 @@ export const OptionsComponentData1 = [
     ],
     placeholder: '',
     textcss: "leaverowoptionstyle",
-    icon: <RiArrowDownSFill  className="text-gray-400 -mt-7  -translate-x-[7vh]" />,
+    icon: <MdOutlineKeyboardArrowDown  className=" -mt-7  -translate-x-[15vh]" />,
   },
 
 ];

@@ -17,7 +17,7 @@ export const TableHeaders = [
     
     {
       name: 'Enable/Disable',
-      className: 'TableHeaders',
+      className: 'TableHeader',
     },
     
    
@@ -28,7 +28,7 @@ export const TableHeaders = [
 
     {
       name: 'holiday_name',
-      placeholder: 'policy name',
+      placeholder: 'Add Holiday +',
       textcss: 'holidaytablerow1',
     },
  
@@ -40,7 +40,7 @@ export const TableHeaders = [
 
     {
       name: 'date',
-      placeholder: 'Add no of leaves ',
+      placeholder: 'Add  Date',
       textcss: 'holidaytablerow',
     },
  
@@ -53,7 +53,7 @@ export const TableHeaders = [
     {
       name: 'edit',
       placeholder: '',
-      textcss: 'holidaytablerow1',
+      textcss: 'holidaytablerow2',
     },
  
     
@@ -74,56 +74,3 @@ export const ButtonContent = [
     { label: 'Submit',  style: 'buttonStyle' , type:"submit"},
    
   ];
-
-  ///////////////////
-  
-
-// export const TableHeaders = [
-//   {
-//     name: 'Loan Types',
-//     className: 'TableHeaders1',
-    
-//   },
-//   {
-//     name: 'Policy',
-//     className: 'TableHeaders11',
-//   },
-//   {
-//     name: 'Edit',
-//     className: 'TableHeaders111',
-
-//   },
-  
-//   {
-//     name: 'Enable/Disable',
-//     className: 'TableHeaders',
-//   },
- 
-// ];
-
-
-
-
-
-
-// export const TextComponentData1= [
-
-// {
-//   name: 'loanPolicyName_new',
-//   placeholder: 'Add new loan',
-//   textcss: 'e',
-// },
-
-
-// ];
-
-// export const TextComponentData2= [
-
-// {
-//   name: 'loanType_new',
-//   placeholder: 'Add new policy',
-//   textcss: 'd',
-// },
-
-
-// ];
