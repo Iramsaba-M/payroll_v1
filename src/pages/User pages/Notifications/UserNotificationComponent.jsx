@@ -1,17 +1,21 @@
-import { useState ,useEffect} from 'react'
-import React from 'react'
+import { useState, useEffect } from 'react';
+import React from 'react';
 import Card from '../../../configurations/Card/Card';
+import CardConfig from '../../../configurations/Card/CardConfig';
 import { UserNotificationcontent } from './UserNotificationContent';
 import { EndUser_notification } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import usernotificationstyle1 from '../../../configurations/Card/CardStyle';
+
 const UserNotificationComponent = () => {
   const [notificationData, setNotificationData] = useState({});
 
   useEffect(() => {
     const fetchNotificationData = async () => {
       try {
-        const data = await fetchData(EndUser_notification);
+        // Construct the URL with the query parameter employee_id=IK01
+        const url = `${EndUser_notification}/?employee_id=IK01`;
+        const data = await fetchData(url);
         setNotificationData(data);
         console.log('Fetched Data:', data); // Log fetched data
       } catch (error) {
@@ -30,7 +34,7 @@ const UserNotificationComponent = () => {
         console.log(`Content Key: ${contentKey}, Data:`, cardData); // Log card data
         return (
           <div key={index} className={usernotificationstyle1}>
-            <Card Configs={[{ ...item, data: cardData }]} cardTitleStyle="text-xs font-bold mb-2" />
+            <CardConfig key={index} Config={[{ ...item, data: cardData }]} />
           </div>
         );
       })}
@@ -39,6 +43,8 @@ const UserNotificationComponent = () => {
 };
 
 export default UserNotificationComponent;
+
+
 
 // import React from 'react';
 // import Card from '../../../configurations/Card/Card';

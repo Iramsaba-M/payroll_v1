@@ -319,6 +319,8 @@ import {
   TextComponentData4,
 
 } from './LoanPolicyData';
+import { Loan_policy_get, Loan_policy_patch, Loan_policy_post } from '../../../../api/EndPoints';
+import { fetchData, patchDatafiles, postDataImage } from '../../../../services/APIService';
 
 const LoanPolicy = () => {
   const [formData, setFormData] = useState({
@@ -348,6 +350,50 @@ const LoanPolicy = () => {
     setEditRowData(null);
   };
 
+  // const handleSave = async () => {
+  //   const formData = new FormData();
+    
+  //   formData.append('loan_type', editRowData.loan_type);
+  //   formData.append('maximum_amount', editRowData.maximum_amount || '');
+  //   formData.append('no_of_repayment', editRowData.no_of_repayment || '');
+  //   formData.append('roi_in_percentage', editRowData.roi_in_percentage || '');
+  //   formData.append('eligibility', editRowData.eligibility || '');
+  //   formData.append('document_needed', editRowData.document_needed || '');
+    
+  //   // Handling boolean field
+  //   if (editRowData.enable !== undefined) {
+  //     formData.append('enable', editRowData.enable ? 'true' : 'false');
+  //   }
+    
+  //   const url = `http://192.168.0.136:5000/loan/${encodeURIComponent(editRowData.loan_type)}`;
+  
+  //   try {
+  //     const response = await axios.patch(url, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data'
+  //       }
+  //     });
+  //     console.log('Loan Updated:', response.data.message);
+  //     fetchTableData(); // Refresh the table data after update
+  //   } catch (error) {
+  //     console.error('Failed to update loan:', error);
+  //   }
+  
+  //   handleCancel(); // Reset edit state
+  // };
+  // const handleChange = (e) => {
+  //   if (editRowIndex !== null) {
+  //     setEditRowData(prev => ({
+  //       ...prev,
+  //       [e.target.name]: e.target.value
+  //     }));
+  //   } else {
+  //     setFormData({
+  //       ...formData,
+  //       [e.target.name]: e.target.value
+  //     });
+  //   }
+  // };
   const handleSave = async () => {
     const formData = new FormData();
     
@@ -363,15 +409,9 @@ const LoanPolicy = () => {
       formData.append('enable', editRowData.enable ? 'true' : 'false');
     }
     
-    const url = `http://192.168.0.136:5000/loan/${encodeURIComponent(editRowData.loan_type)}`;
-  
     try {
-      const response = await axios.patch(url, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log('Loan Updated:', response.data.message);
+      const response = await patchDatafiles(Loan_policy_patch, formData); // Using the service API function
+      console.log('Loan Updated:', response.message);
       fetchTableData(); // Refresh the table data after update
     } catch (error) {
       console.error('Failed to update loan:', error);
@@ -379,6 +419,7 @@ const LoanPolicy = () => {
   
     handleCancel(); // Reset edit state
   };
+  
   const handleChange = (e) => {
     if (editRowIndex !== null) {
       setEditRowData(prev => ({
@@ -393,6 +434,50 @@ const LoanPolicy = () => {
     }
   };
   
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const form = new FormData();
+  
+  //   // Append text fields
+  //   Object.keys(formData).forEach(key => {
+  //     if (formData[key] !== null) {
+  //       form.append(key, formData[key]);
+  //     }
+  //   });
+  
+  //   // Handle Boolean value - assuming `enable` needs to be included
+  //   form.append('enable', true);
+  
+  //   // Handle File Upload - Assume you have state `file` for this example
+  //   if (file) {
+  //     form.append('policy_file', file, file.name);
+  //   }
+  
+  //   // Making the POST request
+  //   try {
+  //     const response = await axios.post('http://192.168.0.136:5000/loan', form, {
+        
+  //       headers: {
+  //         'accept': 'application/json',
+  //         'Content-Type': 'multipart/form-data'
+  //       }
+  //     });
+  //     console.log('Submission response:', response.data);
+  //     fetchTableData();
+  //     setFormData({
+  //       loan_type: '',
+  //       maximum_amount: '',
+  //       no_of_repayment: '',
+  //       roi_in_percentage: '',
+  //       eligibility: '',
+  //       document_needed: ''
+  //     });
+  //     setFile(null);  // Reset file if you maintain file state
+  //   } catch (error) {
+  //     console.error('Failed to submit form:', error.response ? error.response.data : error);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -413,14 +498,9 @@ const LoanPolicy = () => {
       form.append('policy_file', file, file.name);
     }
   
-    // Making the POST request
+    // Making the POST request using service API
     try {
-      const response = await axios.post('http://192.168.0.136:5000/loan', form, {
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await postDataImage(Loan_policy_post, form);
       console.log('Submission response:', response.data);
       fetchTableData();
       setFormData({
@@ -440,8 +520,10 @@ const LoanPolicy = () => {
 
   const fetchTableData = async () => {
     try {
-      const response = await axios.get('http://192.168.0.136:5000/loans');
-      setTableData(response.data);
+      // const response = await axios.get('http://192.168.0.136:5000/loans');
+      const response = await fetchData(Loan_policy_get);
+      // setTableData(response.data);
+      setTableData(response);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

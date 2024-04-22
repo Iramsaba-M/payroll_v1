@@ -44,9 +44,9 @@ export const TypeOfLoan = [
   ];
 
 
-  export const Reimbursementcontent = [
-    { card: 'style1',path:'./TypeReimbursement', title: 'Types of Reimbursement',icon:<TbArrowBigRight className="ml-5" />,icon2:<TbPigMoney   className="h-7 w-6 ml-12 "/> },
-    ];
+  // export const Reimbursementcontent = [
+  //   { card: 'style1',path:'./TypeReimbursement', title: 'Types of Reimbursement',icon:<TbArrowBigRight className="ml-5" />,icon2:<TbPigMoney   className="h-7 w-6 ml-12 "/> },
+  //   ];
     export const Reimbursementpolicy = [
       { card: 'style1',path:'./Reimbursementpolicy', title: 'Reimbursement Policy ',icon:<TbArrowBigRight className="ml-5" />,icon2:<TbMoneybag  className="h-7 w-6 ml-12 "/> },
       ];
