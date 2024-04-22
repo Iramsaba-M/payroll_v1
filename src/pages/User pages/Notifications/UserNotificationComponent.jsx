@@ -14,7 +14,7 @@ const UserNotificationComponent = () => {
     const fetchNotificationData = async () => {
       try {
         // Construct the URL with the query parameter employee_id=IK01
-        const url = `${EndUser_notification}/?employee_id=IK01`;
+        const url = `${EndUser_notification}?employee_id=IK01`;
         const data = await fetchData(url);
         setNotificationData(data);
         console.log('Fetched Data:', data); // Log fetched data
