@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Reimbursementcontent,Reimbursementpolicy,Multilevel } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
+import { Reimbursementpolicy,Multilevel } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
 import Box from '../../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
 import { IoMdArrowBack } from "react-icons/io";
 import {  useState } from 'react';
@@ -26,9 +26,7 @@ function ReimbursementSetting() {
       {
         (!cardclick) &&
         <div>
-      <div className='ml-36' onClick={()=>handleClick(Reimbursementcontent[0].path)}  >
-        <Box Configs={Reimbursementcontent} />
-      </div>
+
       <div className='ml-36' onClick={()=>handleClick(Reimbursementpolicy[0].path)}  >
         <Box Configs={Reimbursementpolicy} />
       </div>
