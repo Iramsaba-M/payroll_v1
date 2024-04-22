@@ -13,7 +13,7 @@ import { FaPlay } from "react-icons/fa6";
 import { EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../../api/EndPoints'
 import { fetchData, postData } from '../../../services/APIService'
 import Table2 from '../../../configurations/table2/Table2';
-
+import '../../../assets/Styles/CalendarStyle.css'
 
 export const Slider = ({ config, data }) => {
 

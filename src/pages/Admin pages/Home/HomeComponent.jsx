@@ -41,7 +41,7 @@ const Barchart = ({ graphdata }) => {
         {/* <XAxis dataKey="name" />
         <YAxis /> */}
             <XAxis dataKey="name" axisLine={false} />
-    <YAxis axisLine={false} />
+            <YAxis axisLine={false} />
         <Tooltip />
         <Legend />
         {graphdata.map(({ year }, index) => (
@@ -90,14 +90,14 @@ const Pichart = ({ data }) => {
 
 
   const HomeComponent = () => {
-    const { handleAdminClick, handlePersonalClick } = useButtonState();
+  const { handleAdminClick, handlePersonalClick } = useButtonState();
 
   const [cardData, setCardData] = useState([]);
   // const [selectedValue, setSelectedValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);//to
   const [selectedDate1, setSelectedDate1] = useState(null);//from
   const [graphData, setGraphData] = useState([]);
-  const [selectedDateTop, setSelectedDateTop] = useState(null);
+  const [selectedDateTop, setSelectedDateTop] = useState(new Date());
 
   useEffect(() => {
     const selectedDateTop = new Date(); // This is a redeclaration

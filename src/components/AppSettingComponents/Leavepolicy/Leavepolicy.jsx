@@ -10,7 +10,7 @@ import { LiaPeopleCarrySolid } from "react-icons/lia";
 import Button from '../../../configurations/Button/Button';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import { fetchData, patchData, postData } from '../../../services/APIService';
-import {  admin_settings_Leave_Policy, admin_settings_Leave_Policy_Get } from '../../../api/EndPoints';
+import {  admin_settings_Leave_Policy } from '../../../api/EndPoints';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import NumberComponent from "../../form/Formfields/number/numbercompoent"
 
@@ -144,7 +144,7 @@ const Leavepolicy = () => {
       // const response = await axios.get('http://localhost:3000/admin_leavepolicy');
       // setTableData(response.data);
 
-      const response = await fetchData(admin_settings_Leave_Policy_Get);
+      const response = await fetchData(admin_settings_Leave_Policy);
       setTableData(response);
 
       console.log('response.get', response.data)

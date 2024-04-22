@@ -62,13 +62,13 @@ export const EndUser_Get_Attendance = 'enduser/my-attendence/employee/';//api do
 
 export const EndUser_punch_status = 'enduser/my-attendence/punch/';//frontend all ok backend minor error all rready punched by employee 
 
-export const EndUser_notification = 'notification';
+export const EndUser_notification = 'enduser/user/notification/';
 
 
 //sb
-export const EndUser_ApplyLoan = 'user/loan/request/';
+export const EndUser_ApplyLoan = 'enduser/user/apply/request';
 
-export const EndUser_ApplyReimbursement = 'enduser/submit_reimbursement/submit-reimbursement/';//sb tested for  reimbursement form multiple reim also checked with backend 
+export const EndUser_ApplyReimbursement = 'enduser/reimbursement/apply';//sb tested for  reimbursement form multiple reim also checked with backend 
 
 export const ctctemplate = 'test';
 
@@ -78,8 +78,28 @@ export const reviewpayroll = 'modal';
 
 //Admin- Leave setting
 
-export const admin_settings_Holiday_list = 'settings/holiday';
+export const admin_settings_Holiday_list = 'settings/settings-holiday';
 
-export const admin_settings_Leave_Policy_Get = 'settings/policies';
+export const admin_settings_Leave_Policy = 'settings/settings-policy';
 
-export const admin_settings_Leave_Policy = 'settings/policy';
+//Admin- Loan setting
+export const Type_of_loan_get ='settings/loan';
+
+export const Type_of_loan_post ='settings/loan';
+
+export const Type_of_loan_patch ='settings/loan';
+
+export const Loan_policy_get ='settings/loan';
+
+export const Loan_policy_post ='settings/loan';
+
+export const Loan_policy_patch ='settings/loan';
+
+
+//Admin- Reibursement setting
+
+export const Reimbrusement_settings_get ='settings/settings/reimbursements';
+
+export const Reimbrusement_settings_post ='settings/settings/reimbursements';
+
+export const Reimbrusement_settings_patch ='settings/settings/reimbursements';
