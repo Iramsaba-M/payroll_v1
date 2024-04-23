@@ -117,5 +117,9 @@ export const TagConfig = [
 
     ],
   };
+  export const radiocontent = [
+    { label: 'Fresher', type: 'radio', textcss: "standard", name: 'experience_type', value: 'fresher' },
+    { label: 'Experienced', type: 'radio', textcss: "standard", name: 'experience_type', value: 'experienced' }
+  ]
   
  
