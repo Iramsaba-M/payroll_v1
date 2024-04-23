@@ -173,7 +173,7 @@ const UserReportsComponent = () => {
   }, [selectedDate, selectedDate1]);
   console.log('bar', barGraphData)
   return (
-    <div>UserReportsComponent
+    <div>
       <div className='flex  border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4 '>
         <DatePicker
           selected={selectedDate}
