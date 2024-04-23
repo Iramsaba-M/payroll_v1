@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
-import Card from '../../../configurations/Card/Card';
 import CardConfig from '../../../configurations/Card/CardConfig';
 import { UserNotificationcontent } from './UserNotificationContent';
 import { EndUser_notification } from '../../../api/EndPoints';
@@ -32,17 +31,29 @@ const UserNotificationComponent = () => {
         const { contentKey } = item;
         const cardData = notificationData[contentKey] || []; // Get data for the contentKey
         console.log(`Content Key: ${contentKey}, Data:`, cardData); // Log card data
+        const cardConfig = {
+          ...item,
+          data: cardData // Include data property in card configuration
+        };
         return (
           <div key={index} className={usernotificationstyle1}>
-            <CardConfig key={index} Config={[{ ...item, data: cardData }]} />
+            <CardConfig
+              key={index}
+              Config={[cardConfig]} // Pass updated card configuration
+            />
           </div>
         );
       })}
     </div>
   );
+  
+    
 };
 
 export default UserNotificationComponent;
+
+
+
 
 
 
