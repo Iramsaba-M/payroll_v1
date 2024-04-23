@@ -20,7 +20,6 @@ import {ModalConfig} from '../Formfields/modal/ModalConfig'
 import { postDataImage } from "../../../services/APIService";
 const BasicDetailsFormComponent = ({
   config,
-  handleSubmit,
   handleNextClick,
   handleEmpId,
   editMode,
@@ -44,7 +43,7 @@ const BasicDetailsFormComponent = ({
   };
 
    // Define onedit based on editMode
-   const handleButtonClick = async (label, type, editMode, handleSubmit) => {
+   const handleButtonClick = async (label, type, editMode) => {
     console.log("EditMode:", editMode);
     console.log("Label:", label);
     console.log("Type:", type);
@@ -128,8 +127,8 @@ const BasicDetailsFormComponent = ({
   //     handleEmpId(employeeId)
 
   //     console.log('Employee ID:', employeeId);
-  //     // If the above API call is successful, trigger the handleSubmit function from props
-  //     handleSubmit(values);
+  //     // If the above API call is successful, trigger the onSubmit function from props
+  //     onSubmit(values);
   //   } catch (error) {
   //     console.error("Error:", error);
   //   }
@@ -165,8 +164,8 @@ const BasicDetailsFormComponent = ({
       handleEmpId(employeeId)
   
       console.log('Employee ID:', employeeId);
-      // If the above API call is successful, trigger the handleSubmit function from props
-      handleSubmit(values);
+      // If the above API call is successful, trigger the onSubmit function from props
+      onSubmit(values);
     } catch (error) {
       console.error("Error:", error);
     }

@@ -13,8 +13,8 @@ const UserHomeMenus = () => {
          <div className="appname text-gray-800 text-4xl font-mono font-bold px-5 mt-3 mb-3">
            iKamai
          </div>
-          {HOME_SIDEBAR_LINKS.default.submenus.map((items) => (
-            <NavLink to={items.path} className={({isActive}) => 
+          {HOME_SIDEBAR_LINKS.default.submenus.map((items, index) => (
+            <NavLink key={index} to={items.path} className={({isActive}) =>  
               isActive ? activeLink : normalLink
              }>
               <button className=" w-48 text-left p-2.5 mx-3 my-1"> <span className="flex">
