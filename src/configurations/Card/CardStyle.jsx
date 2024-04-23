@@ -46,7 +46,12 @@ const CardStyles = {
 
   usernotificationstyle1: 'flex flex-row rounded-md p-4 bg-white shadow-md mx-4 w-[148vh] h-[13vh] border text-xl',
   usernotificationheadstyle: 'text-xs font-bold',
+  ////////////////////  user report  //////////////////////////////////////////
+  userreportstyle2: 'bg-white flex flex-col  rounded-md border-t border-s px-1 py-4 m-4   shadow-md mx-4',
+  userreportbarchart: 'w-[48vh] h-[24vh]',
+  userreportheading: " font-semibold ml-4 text-2xl",
 
+  userreportbarchart1: 'w-[155vh] h-[33vh]',
 };
 
 export default CardStyles

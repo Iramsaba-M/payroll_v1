@@ -5,26 +5,29 @@ import OptionsComponent from '../Formfields/options/OptionsComponent';
 import PasswordIcon from './PasswordIcon';
 import { VscTools } from "react-icons/vsc";
 import TagComponent from './TagComponent';
-import { TagConfig, ButtonDataforAditional } from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
+import { TagConfig, ButtonDataforAditional,radiocontent} from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
 import OptionsComp from './OptionsComp';
 import { getApiUrl } from '../../../api/GetAPI';
 import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import { ModalConfig } from '../Formfields/modal/ModalConfig'
-import { postData } from '../../../services/APIService';
+import { postData, postDataImage } from '../../../services/APIService';
 import TextComponent from '../Formfields/text/TextComponent';
 import DocumentStyles from '../DocumentsForm/DocumentStyles';
 import FileComponent from '../DocumentsForm/FileComponent';
+import RadioComponent from '../Formfields/radio_button/RadioComponent';
+import NumberComponent from '../Formfields/number/numbercompoent';
 const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [experienced, setExperienced] = useState(false);
+    const [isexperienced, setExperienced] = useState(false);
 
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value });
     };
+    
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
@@ -43,6 +46,13 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         setValues((prevOptions) => ({ ...prevOptions, ...updatedOptions }));
 
     };
+    const handleRadioChange = (name, option) => {
+        setValues({
+            ...values,
+            [name]: option
+        });
+        setExperienced(option);
+    };
 
     const handleButtonClick = (label, type) => {
         if (label === "Save" && type === "submit") {
@@ -52,22 +62,35 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
 
     const handleFileChange = (name, selectedFile) => {
         setValues({ ...values, [name]: selectedFile });
+        console.log(selectedFile.name)
     };
-    const handleCheckboxChange = (event) => {
-        setExperienced(event.target.checked); // Update experienced state when checkbox is clicked
-    }
+    
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            employeeId='Ik10007'
             const data = {
                 ...values,
-                employee_id: employeeId
+                employee_id: employeeId,
+
+                // "experience":experiencedvalues
             };
-            console.log('v2',values)
-            // Use the postData function
-            const response = await postData(ADITIONAL_DETAILS_API, data);
+            console.log('v2',data)
+            
+            const formData = new FormData();
+            //add non form data to form data
+            Object.keys(data).forEach((key) => {
+              if (key !== "file") {
+                formData.append(key, data[key]);
+              }
+            });
+            //if we have a file, add it to the form data
+            if (data.file) {
+              formData.append("file", data.file);
+            }
+            const response = await postDataImage(ADITIONAL_DETAILS_API, formData);
 
             console.log('Data sent:', response);
 
@@ -113,67 +136,86 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
             <div className='mt-4'>
                 <OptionsComp onChange={handleOptionsChange} />
             </div>
-            <div className='-mt-2'>
-                <input type="checkbox"  onChange={handleCheckboxChange} />
-                <label > Experienced</label>
-                {experienced &&(<div> 
-                <div>
-                    <div className="translate-x-[vh] -translate-y-[11vh] p-3 mr-2 w-14 flex ">
-                        {config.slice(2, 4).map((field, index) => (
-                            <div key={index}>
-                                <label className={TextStyle[field.textcss].label}>
-                                    {field.label}
-                                </label>
-                                {field.type === "text" && (
-                                    <TextComponent
+                <div className='-mt-2'>
+                    <h1 className=' text-gray-800 font-semibold mb-2'>Employee Experiance</h1>
+                    <div className='translate-x-2'>
+
+                        {radiocontent.map((field, index) => (
+
+                            <div key={index} className='flex flex-col justify-between '>
+
+
+                                <label className='translate-y-5 -mt-4  ml-7'>{field.label}</label>
+                                {field.type === 'radio' && (
+
+                                    <RadioComponent
                                         name={field.name}
-                                        placeholder={field.placeholder}
-                                        value={values[field.name] || ""}
-                                        onChange={(e) => handleChange(field.name, e.target.value)}
-                                        textcss={TextStyle[field.textcss].input}
+                                        value={field.value}
+                                        checked={values[field.name] === field.value}
+                                        onChange={() => handleRadioChange(field.name, field.value)}
+                                        textcss={TextStyle[field.textcss].label}
                                     />
+
                                 )}
-                                <div className="">
-                                    {field.type === "options" && (
-                                        <TextComponent
+                            </div>
+                        ))}
+                    </div>
+                    {isexperienced === 'experienced' && (<div>
+                        <div>
+                            <div className="translate-x-[vh] -translate-y-[11vh] p-3 mr-2 w-14 flex ">
+                                {config.slice(2, 4).map((field, index) => (
+                                    <div key={index}>
+                                        <label className={TextStyle[field.textcss].label}>
+                                            {field.label}
+                                        </label>
+                                        {field.type === "number" && (
+                                            <NumberComponent
+                                                name={field.name}
+                                                placeholder={field.placeholder}
+                                                value={values[field.name] || ""}
+                                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                                textcss={TextStyle[field.textcss].input}
+                                            />
+                                        )}
+                                        <div className="">
+                                            {field.type === "text" && (
+                                                <TextComponent
+                                                    name={field.name}
+                                                    value={values[field.name] || ""}
+                                                    onChange={(e) => handleChange(field.name, e.target.value)}
+                                                    textcss={TextStyle[field.textcss].input}
+                                                    placeholder={field.placeholder}
+                                                />
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+
+                            </div>
+
+                        </div>
+                        <div className="form-line flex mb-4 ml-3">
+                            {config.slice(4, 7).map((field, index) => (
+                                <div key={index}>
+                                    <label className={DocumentStyles[field.textcss].label}>
+                                        {field.label}
+                                    </label>
+
+                                    {field.type === "file" && (
+                                        <FileComponent
                                             name={field.name}
-                                            value={values[field.name] || ""}
-                                            options={field.options}
-                                            onChange={(e) => handleChange(field.name, e.target.value)}
-                                            textcss={TextStyle[field.textcss].input}
+                                            onChange={(file) => handleFileChange(field.name, file)}
+                                            textcss={DocumentStyles[field.textcss].input}
                                             placeholder={field.placeholder}
                                             icon={field.icon}
+                                            iconPosition={field.iconPosition}
                                         />
                                     )}
                                 </div>
-                            </div>
-                        ))}
-
-                    </div>
-
-                </div>
-                <div className="form-line flex mb-4 ml-3">
-                    {config.slice(4, 7).map((field, index) => (
-                        <div key={index}>
-                            <label className={DocumentStyles[field.textcss].label}>
-                                {field.label}
-                            </label>
-                           
-                            {field.type === "file" && (
-                                <FileComponent
-                                    name={field.name}
-                                    onChange={(file) => handleFileChange(field.name, file)}
-                                    textcss={DocumentStyles[field.textcss].input}
-                                    placeholder={field.placeholder}
-                                    icon={field.icon}
-                                    iconPosition={field.iconPosition}
-                                />
-                            )}
+                            ))}
                         </div>
-                    ))}
+                    </div>)}
                 </div>
-                </div>)}
-            </div>
 
             <div className='form-line flex justify-evenly mb-4 mr-1'>
                 <div className='w-96'></div>
