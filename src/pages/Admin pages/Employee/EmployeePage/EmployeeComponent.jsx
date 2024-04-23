@@ -1,4 +1,4 @@
-
+//Employee Component 
 import { useState, useEffect } from 'react';
 import { fetchData } from '../../../../services/APIService';
 import Card from '../../../../configurations/Card/Card';
@@ -79,7 +79,7 @@ const EmployeeComponent = () => {
        if (selectedEmployeeId) {
         try {
           const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
-          console.log('Total CTC and Employees Data:', result);
+          // console.log('Total CTC and Employees Data:', result);
           // Process data as needed
         } catch (error) {
           console.error('Error fetching total CTC and employees data:', error);

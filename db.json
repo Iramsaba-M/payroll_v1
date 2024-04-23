@@ -1996,5 +1996,33 @@
       "date": "2/10/2024",
       "enable": true
     }
+  ],
+  "enduser_report":[
+    {
+      "year": "2023",
+      "nov": {
+        "sick": 2,
+        "casual": 1,
+              "present_days" : 23
+              },
+      "dec": {
+        "sick": 2,
+        "casual": 1,
+              "present_days" : 12
+             }
+    },
+    {
+      "year": "2024",
+      "jan": {
+        "sick": 2,
+        "casual": 1,
+              "present_days": 10
+              },
+          "feb": {
+        "sick": 0,
+        "casual": 1,
+              "present_days": 15
+                  }
+    }
   ]
 }

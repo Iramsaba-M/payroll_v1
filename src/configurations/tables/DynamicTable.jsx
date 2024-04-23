@@ -59,7 +59,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
       const endpoint = `${view}/${row.employee_id}`;
       const tableData = await fetchData(endpoint);
 
-      console.log('Modal data:', tableData);
+      // console.log('Modal data:', tableData);
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
@@ -142,11 +142,11 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
 }
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
-      console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
+      // console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
       const formattedName = `${row.first_name} ${row.middle_name} ${row.last_name}`;
       if (row.photo_content) {
         const imageUrl = `data:image/png;base64, ${row.photo_content}`;
-        console.log('Image URL:', imageUrl);
+        // console.log('Image URL:', imageUrl);
         const photoIcon = (
           <img
             src={imageUrl}
@@ -241,7 +241,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
       <table>
         <thead>
           <tr className="bg-gray-100 p-2">
-            <th className="px-6">
+            <th className="px-9">
               <input type="checkbox" onChange={handleSelectAll} checked={selectAll} />
             </th>
             {config.map((column) => (

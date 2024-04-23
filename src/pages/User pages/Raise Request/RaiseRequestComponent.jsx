@@ -32,8 +32,8 @@ const RaiseRequestComponent = () => {
       {
         (!cardclick) &&
         chunkedSettingContent.map((chunk, index) => (
-          <div className='ml-8'>
-          <CardConfig key={index} Config={chunk} handleCardClick={handleCardClick} />
+          <div key={index} className='ml-8'>
+          <CardConfig  Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}
       {cardclick && (
@@ -45,6 +45,7 @@ const RaiseRequestComponent = () => {
     </div>
   );
 };
+
 
 // Helper function to chunk the array into groups of three
 const chunkArray = (array, size) => {
