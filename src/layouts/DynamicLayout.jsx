@@ -24,8 +24,6 @@ const DynamicLayout = () => {
                             {(() => {
                                 const Component = componentMapping[section.componentKey];
                                 const config = section.config;
-                                console.log(Component);
-                                console.log(`Type of Component: ${typeof Component}`);
                                 return <Component content={section.content} componentMapping={componentMapping} config={config} />;
                             })()}
                         </div>

@@ -85,7 +85,7 @@ const ReportsComponent = () => {
   const [barArray, setBarArray] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate1, setSelectedDate1] = useState(null);
-  const [selectedDateTop, setSelectedDateTop] = useState(null);
+  const [selectedDateTop, setSelectedDateTop] = useState(new Date());
 
   useEffect(() => {
     const currentDate = new Date();

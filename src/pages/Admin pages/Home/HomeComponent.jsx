@@ -28,7 +28,8 @@ const Barchart = ({ graphdata }) => {
 
   const defaultColors = ["#8884d8", "#82ca9d", "#FFBB28"];
   return (
-    <ResponsiveContainer width={1050} height={350}>
+    <div className='w-[140vh] h-[48vh]'>
+    <ResponsiveContainer >
       <BarChart
         data={data}
         margin={{
@@ -41,7 +42,7 @@ const Barchart = ({ graphdata }) => {
         {/* <XAxis dataKey="name" />
         <YAxis /> */}
             <XAxis dataKey="name" axisLine={false} />
-    <YAxis axisLine={false} />
+            <YAxis axisLine={false} />
         <Tooltip />
         <Legend />
         {graphdata.map(({ year }, index) => (
@@ -54,6 +55,7 @@ const Barchart = ({ graphdata }) => {
       </BarChart>
       <CartesianGrid />
     </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -65,8 +67,8 @@ const Pichart = ({ data }) => {
   }
 
   return (
-    <ResponsiveContainer width={200} height={200} margin={{ left: 40 }}>
-      <PieChart>
+    <ResponsiveContainer  margin={{ left: 40 }}>
+      <PieChart width={200} height={200}>
         <Pie
           data={data}
           cx={80}
@@ -90,14 +92,14 @@ const Pichart = ({ data }) => {
 
 
   const HomeComponent = () => {
-    const { handleAdminClick, handlePersonalClick } = useButtonState();
+  const { handleAdminClick, handlePersonalClick } = useButtonState();
 
   const [cardData, setCardData] = useState([]);
   // const [selectedValue, setSelectedValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);//to
   const [selectedDate1, setSelectedDate1] = useState(null);//from
   const [graphData, setGraphData] = useState([]);
-  const [selectedDateTop, setSelectedDateTop] = useState(null);
+  const [selectedDateTop, setSelectedDateTop] = useState(new Date());
 
   useEffect(() => {
     const selectedDateTop = new Date(); // This is a redeclaration

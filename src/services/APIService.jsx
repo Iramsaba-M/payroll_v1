@@ -60,3 +60,16 @@ export const patchData = async (endpoint, data) => {
     throw error;
   }
 };
+export const patchDatafiles = async (endpoint, data) => {
+  try {
+    const response = await axios.patch(getApiUrl(endpoint), data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error posting data to ${endpoint}:`, error);
+    throw error;
+  }
+};
