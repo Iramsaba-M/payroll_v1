@@ -1844,7 +1844,6 @@
       "id": "hyJA-Nt"
     }
   ],
-
   "savepolicyrem": [
     {
       "reimbursement_type": "Food",
@@ -1887,7 +1886,6 @@
       "id": 5
     }
   ],
- 
   "admin_leavepolicy": [
     {
       "id": "780c",
@@ -1997,32 +1995,32 @@
       "enable": true
     }
   ],
-  "enduser_report":[
+  "enduser_report": [
     {
       "year": "2023",
       "nov": {
         "sick": 2,
         "casual": 1,
-              "present_days" : 23
-              },
+        "present_days": 23
+      },
       "dec": {
         "sick": 2,
         "casual": 1,
-              "present_days" : 12
-             }
+        "present_days": 12
+      }
     },
     {
       "year": "2024",
       "jan": {
         "sick": 2,
         "casual": 1,
-              "present_days": 10
-              },
-          "feb": {
+        "present_days": 10
+      },
+      "feb": {
         "sick": 0,
         "casual": 1,
-              "present_days": 15
-                  }
+        "present_days": 15
+      }
     }
   ]
 }

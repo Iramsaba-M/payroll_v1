@@ -214,7 +214,7 @@ const Holidaypolicy = () => {
             ))}
 
             <tr className=' h-12 border border-b-1'>
-              <td className="">
+             
                 {TextComponentData1.map((data, i) => (
                   <td key={i} className="">
                     <TextComponent
@@ -226,7 +226,7 @@ const Holidaypolicy = () => {
                     />
                   </td>
                 ))}
-              </td>
+              
 
               {TextComponentData2.map((data, i) => (
                 <td key={i} className="">
