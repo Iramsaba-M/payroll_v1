@@ -13,11 +13,11 @@ const AddEmployee = () => {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [employeeId, setEmployeeId] = useState('');
   
-  const [editMode, setEditMode] = useState(false);
+  const [editmode, setEditMode] = useState(false);
 
   // Function to toggle edit mode
   const toggleEditMode = () => {
-    setEditMode(!editMode);
+    setEditMode(!editmode);
   };
 
   const handleNavClick = (itemName) => {
@@ -80,35 +80,35 @@ const AddEmployee = () => {
                 handleSubmit={handleButtonClick} // Assuming handleNextClick is the correct function to handle form submission
                 handleNextClick={handleNextClick}
                 handleEmpId={handleEmpId}
-                editMode={editMode} // Pass editMode prop here
+                editMode={editmode} // Pass editMode prop here
               />
             )}
             {navsContent[selectedNavItem].name === 'Salary Details' && (
               <SalaryDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editMode} // Pass editMode prop here
+                editMode={editmode} // Pass editMode prop here
               />
             )}
             {navsContent[selectedNavItem].name === 'Bank Details' && (
               <BankDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editMode} // Pass editMode prop here
+                editMode={editmode} // Pass editMode prop here
               />
             )}
             {navsContent[selectedNavItem].name === 'Documents' && (
               <Documents
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editMode} // Pass editMode prop here
+                editMode={editmode} // Pass editMode prop here
               />
             )}
             {navsContent[selectedNavItem].name === 'Aditional Details' && (
               <AditionalDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editMode} // Pass editMode prop here
+                editMode={editmode} // Pass editMode prop here
               />
             )}
           </div>
