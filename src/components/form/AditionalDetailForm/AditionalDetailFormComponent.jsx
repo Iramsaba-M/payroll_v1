@@ -70,7 +70,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         e.preventDefault();
 
         try {
-            employeeId='Ik10007'
+            
             const data = {
                 ...values,
                 employee_id: employeeId,
