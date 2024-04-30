@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import TableStyle from './TableStyle';
 import { MdOutlineEdit, MdOutlineFileDownload,MdDeleteOutline } from 'react-icons/md';
-import { view } from '../../api/EndPoints';
-import { fetchData } from '../../services/APIService';
+import { Delete_All, view } from '../../api/EndPoints';
+import { DeleteData, fetchData } from '../../services/APIService';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
@@ -89,6 +89,23 @@ function DynamicTable({ config, data, onEditEmployee }) {
       console.error('Error fetching payslips data:', error);
     }
   };
+
+  const handleDelete = async (row) => {
+    const employeeId = row.employee_id; 
+    const endpoint = `${Delete_All}?employee_id=${employeeId}`;
+  
+    try {
+      const response = await DeleteData(endpoint);
+      console.log('Employee deleted successfully:', response);
+      window.location.reload();
+      // Handle success, maybe refresh the data or show a message
+    } catch (error) {
+      console.error('Failed to delete employee:', error);
+      // Handle errors
+    }
+  };
+  
+
   
 
   const handleSelectAll = () => {
@@ -254,7 +271,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         <tbody>
           {data.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              <td className="px-6">
+              <td className="px-9">
                 <input
                   type="checkbox"
                   onChange={() => handleCheckboxChange(row)}

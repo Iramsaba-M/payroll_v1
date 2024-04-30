@@ -74,7 +74,7 @@ const ReimbursementPolicy = () => {
     }
 
     // Construct the endpoint path with the reimbursement type parameter appended correctly
-    const endpoint = `${Reimbrusement_settings_patch}?reimbursement_type=${encodeURIComponent(params.reimbursement_type)}`;
+    const endpoint = `${Reimbrusement_settings_patch}?reimbursement_type=${encodeURIComponent(prevname.reimbursement_type)}`;
 
     try {
       // Assuming patchData is a function in your service API that handles the PATCH request
@@ -111,7 +111,7 @@ const ReimbursementPolicy = () => {
   const fetchTableData = async () => {
     // const response = await axios.get('http://localhost:3000/savepolicyrem');
     const response = await fetchData(Reimbrusement_settings_get);
-    // const response = await axios.get('http://192.168.0.136:5000/reimbursements/');
+  
 
     // const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
     // setTableData(response.data);
@@ -121,7 +121,7 @@ const ReimbursementPolicy = () => {
   const handleAddPolicy = async () => {
     if (formData.reimbursement_type && formData.maximum_amount && formData.minimum_amount && formData.period) {
       // await axios.post('http://localhost:3000/savepolicyrem', formData);
-      // await axios.post('http://192.168.0.112:8000/reimbursements/', formData);
+      
       await postData(Reimbrusement_settings_post, formData); 
       
       fetchTableData();

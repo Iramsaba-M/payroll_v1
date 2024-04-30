@@ -397,7 +397,7 @@ const LoanPolicy = () => {
 
   const handleSave = async () => {
     const formData = new FormData();
-    
+    formData.append('new_loan_type', editRowData.loan_type || '');
     formData.append('maximum_amount', editRowData.maximum_amount || '');
     formData.append('no_of_repayment', editRowData.no_of_repayment || '');
     formData.append('roi_in_percentage', editRowData.roi_in_percentage || '');
@@ -409,7 +409,7 @@ const LoanPolicy = () => {
       formData.append('enable', editRowData.enable ? 'true' : 'false');
     }
     
-    const url = `${Loan_policy_patch}/${encodeURIComponent(editRowData.loan_type)}`;
+  const url = `${Loan_policy_patch}/${encodeURIComponent(prevname.loan_type)}`;
 
 
 
@@ -722,6 +722,7 @@ const LoanPolicy = () => {
       </table>
       <div className="ml-[150vh] mb-2">
       <button type='submit' className="bg-blue-400 text-white py-2 px-4 -ml-[60px] mt-2 rounded-lg">save</button>
+
 
       </div>
     </form>

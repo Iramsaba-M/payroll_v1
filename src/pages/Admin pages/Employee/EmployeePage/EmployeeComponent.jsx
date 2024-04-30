@@ -22,6 +22,8 @@ const EmployeeComponent = () => {
   const [showExportPopup, setShowExportPopup] = useState(false);
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
     salaryDetails: false,
@@ -75,10 +77,12 @@ const EmployeeComponent = () => {
   }, [location.search]);
 
   useEffect(() => {
-    const fetchTotalCTCAndEmployees = async () => {
+    const editEmployees = async () => {
        if (selectedEmployeeId) {
         try {
-          const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
+          const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`; 
+          const result = await fetchData(apiUrl);
+
           // console.log('Total CTC and Employees Data:', result);
           // Process data as needed
         } catch (error) {
@@ -87,7 +91,7 @@ const EmployeeComponent = () => {
       }
     };
 
-    fetchTotalCTCAndEmployees();
+    editEmployees();
   }, [selectedEmployeeId]);
 
   const handleAddEmployee = () => {

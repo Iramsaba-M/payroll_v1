@@ -310,21 +310,28 @@ const TypeOfLoan = () => {
   const [loanType, setLoanType] = useState("");
   const [enable, setEnable] = useState(false);
   const [file, setFile] = useState(null);
+  const  [prevname,setPrevname] = useState(null);
 
-  useEffect(() => {
+
+
+
+
+
+
+  
     const fetchData1 = async () => {
       try {
-        // const response = await axios.get("http://192.168.0.136:5001/loans/");
-  const response = await fetchData(Type_of_loan_get);
-        setLoanData(response.data);
-        setLoanData(response);
+        const response = await fetchData(Type_of_loan_get);
+        // setLoanData(response.data);
+        setLoanData(response); // This line seems redundant
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
+    useEffect(() => {
     fetchData1();
   }, []);
-
+  
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -339,10 +346,17 @@ const TypeOfLoan = () => {
   // }, []);
 
   
+  // const handleEdit = (index) => {
+  //   setEditingIndex(index);
+  //   setEditState({ ...loanData[index] });
+  // };
   const handleEdit = (index) => {
     setEditingIndex(index);
-    setEditState({ ...loanData[index] });
+    const selectedLoan = { ...loanData[index] };
+    setPrevname(selectedLoan.loan_type); // Set prevname to the original loan_type
+    setEditState(selectedLoan);
   };
+  
 
   const handleCancel = () => {
     setEditingIndex(null);
@@ -390,6 +404,7 @@ const TypeOfLoan = () => {
     // };
     const handleSave = async () => {
       const formData = new FormData();
+      formData.append('new_loan_type', editState.loan_type || '');
       formData.append('enable', editState.enable ? 'true' : 'false');
       formData.append('maximum_amount', editState.maximum_amount || '');
       formData.append('no_of_repayment', editState.no_of_repayment || '');
@@ -398,11 +413,9 @@ const TypeOfLoan = () => {
       formData.append('document_needed', editState.document_needed || '');
     
       // Assuming editState.loan_type is your identifier for the loan
-      const loanType = editState.loan_type;
-      
-  
-      
-    const url = `${Type_of_loan_patch}/${loanType}`;
+      // const loanType = editState.loan_type;
+    
+      const url = `${Type_of_loan_patch}/${encodeURIComponent(prevname)}`;
 
     
       // Handle file appending similarly to your CURL example
@@ -412,13 +425,14 @@ const TypeOfLoan = () => {
     
       try {
         const response = await patchDatafiles(url, formData); // Using the service API function
-        console.log('Loan Updated:', response.data);
-        fetchData(); // Optionally refresh the data
+        console.log('Loan Updated:', response);
+        fetchData1(); // Optionally refresh the data
         handleCancel(); // Reset edit state
       } catch (error) {
         console.error('Failed to update loan:', error.response ? error.response.data : error.message);
       }
     };
+    
     
   const downloadPdf = (base64String, fileName) => {
     const linkSource = `data:application/pdf;base64,${base64String}`;
@@ -464,7 +478,7 @@ const TypeOfLoan = () => {
     try {
       const response = await postDataImage(Type_of_loan_post, formData); // Using the service API function
       console.log('Success:', response.data);
-      fetchData(); // Refresh data after posting
+      fetchData1(); // Refresh data after posting
     } catch (error) {
       console.error('Error posting data:', error.response ? error.response.data : error.message);
     }
