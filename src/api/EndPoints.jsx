@@ -10,6 +10,8 @@ export const BASIC_DETAILS_API_Get = 'employee/basic-details';
 
 export const CARDS_API = 'employee/total_ctc_and_employees';
 
+export const Delete_All ='employee/employee_delete/'
+
 // export const CARDS_API = 'cardData';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
@@ -55,6 +57,8 @@ export const EndUser_ApplyLeave = 'enduser/apply_leave/';//api done
 export const EndUser_Leave_Balance ="enduser/apply_leave/balanace/"//api done 
 
 export const mypayslip ='enduser/payslip/';//sb done api testing
+
+export const mypayslipdownload ='payslip/';
 
 // export const EndUser_Attendance = 'enduser/my-attendence/punch/';
 

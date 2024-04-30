@@ -45,9 +45,7 @@ const AddEmployee = () => {
     }
   };
 
-  const handleToggleEditMode = (checked) => {
-    setEditMode(checked);
-  };
+
 
   const handleButtonClick = (formData) => {
     // Handle form submission here

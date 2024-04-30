@@ -73,3 +73,13 @@ export const patchDatafiles = async (endpoint, data) => {
     throw error;
   }
 };
+export const DeleteData = async (endpoint) => {
+  try {
+    const response = await axios.delete(getApiUrl(endpoint));
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching data for
+     ${endpoint}:`, error);
+    throw error;
+  }
+};
