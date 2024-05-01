@@ -25,7 +25,6 @@ import UserAppMenus from '../components/SidebarMenus/UserSidebarMenus/UserAppMen
 import UserTeamMenus from '../components/SidebarMenus/UserSidebarMenus/UserTeamMenus'
 import UserHomeMenus from '../components/SidebarMenus/UserSidebarMenus/UserHomeMenus'
 import UserSettingsMenus from "../components/SidebarMenus/UserSidebarMenus/UserSettingsMenus"
-// import UserHome from '../pages/User pages/Home/UserHome'
 import MyAttendance from '../pages/User pages/My Attendance/MyAttendance'
 import MyPayslips from '../pages/User pages/My Payslips/MyPayslips'
 import UserNotification from '../pages/User pages/Notifications/UserNotification'
@@ -43,6 +42,7 @@ import Holidaypolicy from '../components/AppSettingComponents/Leavepolicy/Holida
 import TypeReimbursement from '../components/AppSettingComponents/reimbursementpolicy/typereimbursement'
 import Reimbursementpolicy from '../components/AppSettingComponents/reimbursementpolicy/Reimbursementpolicy'
 import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
+import UserHome from '../pages/User pages/Home/UserHome'
 
 const routesConfig = [
   {
@@ -101,7 +101,7 @@ const routesConfig = [
         children: [
             {
               path: 'home',
-              element: <Home />,
+              element: <UserHome />,
             },
             {
               path: 'myattendance',

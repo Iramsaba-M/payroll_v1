@@ -1,5 +1,5 @@
 import React from 'react'
-import BodyContent from '../../configurations/bodyContent/BodyContent'
+import BodyContent from '../../../configurations/bodyContent/BodyContent'
 import UserHomeComponent from './UserHomeComponent'
 
 const UserHome = () => {

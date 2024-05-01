@@ -236,7 +236,6 @@ const Pichart = ({ data }) => {
         <div className='flex ml-[120vh] -translate-y-7'>
         <Button onClick={handleAdminClick} Configs={Admin} />
         <Button onClick={handlePersonalClick} Configs={Personal} />
-          {/* <RoutesComponent isAdmin={isAdmin} isPersonal={isPersonal} /> */}
         </div>
       </div>
 
