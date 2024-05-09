@@ -16,7 +16,7 @@ RUN npm install --force
 # Copy the rest of the application
 COPY . .
 
-# Expose port 5173
+# Expose port 5173!
 EXPOSE 5173
 
 # Command to run the application
