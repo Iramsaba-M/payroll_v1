@@ -15,16 +15,16 @@ export const fetchData = async (endpoint) => {
 };
 
 
-export const putData = async (endpoint) => {
-  try {
-    const response = await axios.put(getApiUrl(endpoint));
-    return response.data;
-  } catch (error) {
-    console.error(`Error fetching data for
-     ${endpoint}:`, error);
-    throw error;
-  }
-};
+// export const putData = async (endpoint) => {
+//   try {
+//     const response = await axios.put(getApiUrl(endpoint));
+//     return response.data;
+//   } catch (error) {
+//     console.error(`Error fetching data for
+//      ${endpoint}:`, error);
+//     throw error;
+//   }
+// };
 
 
 export const postData = async (endpoint, data) => {
@@ -80,6 +80,19 @@ export const DeleteData = async (endpoint) => {
   } catch (error) {
     console.error(`Error fetching data for
      ${endpoint}:`, error);
+    throw error;
+  }
+};
+export const putData = async (endpoint, data) => {
+  try {
+    const response = await axios.put(getApiUrl(endpoint), data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error posting data to ${endpoint}:`, error);
     throw error;
   }
 };

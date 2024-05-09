@@ -13,6 +13,8 @@ import {ModalConfig }from '../Formfields/modal/ModalConfig';
 import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 import { fetchData, postData } from '../../../services/APIService';
+import { useButtonState } from '../../../context/ButtonStateContext';
+import { BASIC_DETAILS_API_put } from '../../../api/EndPoints';
 
 const SalaryDetailsComp = ({ config, handleNextClick, employeeId }) => {
   const [values, setValues] = useState({});
@@ -20,13 +22,53 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId }) => {
   const [ctcDetails, setCtcDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleButtonClick = (label, type) => {
-    if (label === "Save" && type === "submit") {
-      setIsModalOpen(true);
-    } else if (label === "Next") {
-      handleNextClick(true);
+  const {
+    AddMode,
+    editMode,
+    EditModeclick,
+    AddEmployeeclick
+  } = useButtonState();
+  // console.log('editEmployees',editEmployees);
+
+  const handleButtonClick = async (label, type, values) => {
+    console.log("EditMode:", editMode);
+    console.log("AddMode:", AddMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+
+    if (AddMode) {
+      // When Add mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          setIsModalOpen(true); // Open modal
+         
+        } catch (error) {
+          console.error("Error calling POST API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      } 
+   
+    } else  if (!AddMode && editMode) {
+      setValues(editEmployees);
+      // When edit mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+          await putData(BASIC_DETAILS_API_put, values);
+          console.log("PUT API called successfully");
+          // Handle success or update UI accordingly
+        } catch (error) {
+          console.error("Error calling PUT API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      }
+
     }
-  };
+    };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
