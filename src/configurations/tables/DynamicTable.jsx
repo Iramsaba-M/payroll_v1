@@ -6,6 +6,7 @@ import { DeleteData, fetchData } from '../../services/APIService';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
+import { useButtonState } from '../../context/ButtonStateContext';
 
 
 function DynamicTable({ config, data, onEditEmployee }) {
@@ -13,6 +14,7 @@ function DynamicTable({ config, data, onEditEmployee }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const { EditModeclick } = useButtonState();
 
   const handleCheckboxChange = (row) => {
     if (selectedRows.includes(row)) {
@@ -71,7 +73,8 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-
+      EditModeclick();
+      console.log("Edit mode is true");
       onEditEmployee(row.employee_id); // Call the onEditEmployee function passed as a prop
     } catch (error) {
       console.error('Error fetching payslips data:', error);
@@ -269,7 +272,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, rowIndex) => (
+            {Array.isArray(data) && data.map((row, rowIndex) => (
             <tr key={rowIndex}>
               <td className="px-9">
                 <input

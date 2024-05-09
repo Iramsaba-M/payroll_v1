@@ -1,6 +1,6 @@
 
 /* eslint-disable react/prop-types */
-import  { useState } from "react";
+import  { useState,useEffect } from "react";
 import axios from "axios";
 import { fetchData ,putData} from '../../../services/APIService';
 import DateComponent from "../Formfields/date/DateComponent";
@@ -18,77 +18,179 @@ import CardConfig from "./CardConfig";
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig} from '../Formfields/modal/ModalConfig'
 import { postDataImage } from "../../../services/APIService";
+import { useButtonState } from '../../../context/ButtonStateContext';
 const BasicDetailsFormComponent = ({
   config,
   handleNextClick,
   handleEmpId,
-  editMode,
+  editEmployees,
+
 }) => {
  
-  const [values, setValues] = useState({});
+  // const [values, setValues] = useState({});
+  // const [values, setValues] = useState(editEmployees || {});
+
+  const [values, setValues] = useState(() => {
+    const initialValues = {};
+    config.forEach(field => {
+      initialValues[field.name] = editEmployees[field.name] || ''; // Set initial value based on editEmployees or empty string
+    });
+    return initialValues;
+  });
+  
+  useEffect(() => {
+    // Update values state when editEmployees prop changes
+    const updatedValues = {};
+    config.forEach(field => {
+      updatedValues[field.name] = editEmployees[field.name] || ''; // Set value based on editEmployees or empty string
+      
+    });
+    
+  const dob = editEmployees["dob"]; // Get the date of birth from editEmployees
+
+if (dob) {
+  const [day, month, year] = dob.split("/"); // Split the date string
+  const formattedDate = `${day}-${month}-${year}`; // Reorder day, month, and year
+  updatedValues["dob"] = formattedDate; // Format the date and set it in the state
+} else {
+  updatedValues["dob"] = ""; // If DOB is not available, set it to empty string
+}
+
+    updatedValues["photo_content"] = editEmployees["photo_content"] || ""; // Set photo_content directly
+
+    setValues(updatedValues);
+  }, [editEmployees]);
+
   const [originalDateValues, setOriginalDateValues] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {
+    AddMode,
+    editMode,
+    EditModeclick,
+    AddEmployeeclick
+  } = useButtonState();
+  console.log('editEmployees',editEmployees);
+
+
+  // const handleChange = (name, value) => {
+  //   if (config.some((field) => field.name === name && field.type === "date")) {
+  //     const formattedDate = value.split("-").reverse().join("-");
+  //     setOriginalDateValues({ ...originalDateValues, [name]: value });
+  //     setValues({ ...values, [name]: formattedDate });
+  //   } else {
+  //     setValues({ ...values, [name]: value });
+  //   }
+  // };
   const handleChange = (name, value) => {
     if (config.some((field) => field.name === name && field.type === "date")) {
-      const formattedDate = value.split("-").reverse().join("-");
+      const formattedDate = value.split("/").reverse().join("-"); // Assuming date format is DD/MM/YYYY
       setOriginalDateValues({ ...originalDateValues, [name]: value });
       setValues({ ...values, [name]: formattedDate });
     } else {
       setValues({ ...values, [name]: value });
     }
   };
+  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  
    // Define onedit based on editMode
-   const handleButtonClick = async (label, type, editMode) => {
+  //  const handleButtonClick = async (label, type, editMode) => {
+  //   console.log("EditMode:", editMode);
+  //   console.log("Label:", label);
+  //   console.log("Type:", type);
+  
+  //   if (!editMode) {
+  //     // When edit mode is off
+  //     if (label === "Save" && type === "submit") {
+  //       setIsModalOpen(true); // Open modal
+  //     } else if (label === "Next") {
+  //       handleNextClick(); // Call handleNextClick function
+  //     }
+  //   } else {
+  //     // When edit mode is on
+  //     if (label === "Save" && type === "submit") {
+  //       try {
+  //         // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+  //         await putData(BASIC_DETAILS_API_put, values);
+  //         console.log("PUT API called successfully");
+  //         // Handle success or update UI accordingly
+  //       } catch (error) {
+  //         console.error("Error calling PUT API:", error);
+  //         // Handle errors here
+  //       }
+  //     } else if (label === "Next") {
+  //       try {
+  //         // Navigate first (assuming handleNextClick is responsible for navigation)
+  //         handleNextClick(); // Navigate to the next page or perform navigation action
+  
+  //         // Call fetchData or other relevant function for next action in edit mode asynchronously
+  //         try {
+  //           const data = await fetchData(BASIC_DETAILS_API_Get);
+  //           console.log("GET API called");
+  //           // Process the retrieved data as needed
+  //         } catch (error) {
+  //           console.error("Error calling GET API:", error);
+  //           // Handle errors here if needed
+  //         }
+  //       } catch (error) {
+  //         console.error("Error navigating:", error);
+  //         // Handle navigation errors here if needed
+  //       }
+  //     }
+  //   }
+  // };
+  const handleButtonClick = async (label, type, values) => {
     console.log("EditMode:", editMode);
+    console.log("AddMode:", AddMode);
     console.log("Label:", label);
     console.log("Type:", type);
-  
-    if (!editMode) {
-      // When edit mode is off
-      if (label === "Save" && type === "submit") {
-        setIsModalOpen(true); // Open modal
-      } else if (label === "Next") {
-        handleNextClick(); // Call handleNextClick function
-      }
-    } else {
-      // When edit mode is on
+
+    if (AddMode) {
+      // When Add mode is active
       if (label === "Save" && type === "submit") {
         try {
-          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
-          await putData(BASIC_DETAILS_API_put, values);
+          setIsModalOpen(true); // Open modal
+        } catch (error) {
+          console.error("Error calling POST API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      }
+    } else if (!AddMode && editMode) {
+      // When edit mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          const employeeId = editEmployees.employee_id;
+          // Create an object to store updated values
+          const updatedValues = {};
+          // Loop through the values and update only the changed ones
+          Object.keys(values).forEach(key => {
+            if (values[key] !== editEmployees[key]) {
+              updatedValues[key] = values[key];
+            } else {
+              // Set fields to null if they were not changed
+              updatedValues[key] = null;
+            }
+          });
+          // Remove keys with null values
+          const filteredValues = Object.fromEntries(Object.entries(updatedValues).filter(([_, v]) => v !== null));
+          await putData(`${BASIC_DETAILS_API_put}/${employeeId}`, filteredValues);
           console.log("PUT API called successfully");
-          // Handle success or update UI accordingly
         } catch (error) {
           console.error("Error calling PUT API:", error);
           // Handle errors here
         }
       } else if (label === "Next") {
-        try {
-          // Navigate first (assuming handleNextClick is responsible for navigation)
-          handleNextClick(); // Navigate to the next page or perform navigation action
-  
-          // Call fetchData or other relevant function for next action in edit mode asynchronously
-          try {
-            const data = await fetchData(BASIC_DETAILS_API_Get);
-            console.log("GET API called");
-            // Process the retrieved data as needed
-          } catch (error) {
-            console.error("Error calling GET API:", error);
-            // Handle errors here if needed
-          }
-        } catch (error) {
-          console.error("Error navigating:", error);
-          // Handle navigation errors here if needed
-        }
+        handleNextClick();
       }
     }
-  };
-  
+};
+
   
   // old onsubmit code  dont remove it
   // const onSubmit = async (e) => {
@@ -133,10 +235,7 @@ const BasicDetailsFormComponent = ({
   //     console.error("Error:", error);
   //   }
   // };
-  BasicDetailsFormComponent.defaultProps = {
-    editMode: true,
-  };
-  
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -241,7 +340,7 @@ const BasicDetailsFormComponent = ({
                   <DateComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    value={originalDateValues[field.name] || ""}
+                    value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                   />
@@ -273,7 +372,8 @@ const BasicDetailsFormComponent = ({
                   <DateComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    value={originalDateValues[field.name] || ""}
+                    // value={originalDateValues[field.name] || ""}
+                    value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                   />
@@ -293,6 +393,7 @@ const BasicDetailsFormComponent = ({
               <CardComponent
                 CardConfig={CardConfig} 
                 handleChange={handleChange}
+                photoContent={values.photo_content}
               />
             </div>
           </div>
@@ -462,6 +563,3 @@ const BasicDetailsFormComponent = ({
 
 export default BasicDetailsFormComponent;
 
-export const payslips ='run_payroll/payroll-histroy';
-
-export const Runpayroll ='run_payroll/payroll-data';

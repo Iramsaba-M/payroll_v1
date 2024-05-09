@@ -13,7 +13,7 @@ import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionald
 import SearchableComp from '../../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../../configurations/search/search/SearchInputConfig';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
-
+import { useButtonState } from '../../../../context/ButtonStateContext';
 
 const EmployeeComponent = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -23,6 +23,7 @@ const EmployeeComponent = () => {
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  const { EditModeclick, AddEmployeeclick } = useButtonState(); 
 
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
@@ -31,6 +32,7 @@ const EmployeeComponent = () => {
     documents: false,
     additionalDetails: false,
   });
+  const[editempvalue, setEditempvalue] = useState({}); 
 
   useEffect(() => {  
     const fetchemployeeData = async () => {
@@ -76,38 +78,44 @@ const EmployeeComponent = () => {
     fetchDataAndSetState();
   }, [location.search]);
 
-  useEffect(() => {
+ 
     const editEmployees = async () => {
-       if (selectedEmployeeId) {
+      if (selectedEmployeeId) {
         try {
-          const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`; 
+          const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
           const result = await fetchData(apiUrl);
-
-          // console.log('Total CTC and Employees Data:', result);
-          // Process data as needed
+          console.log(result);
+          setEditempvalue(result)
+          // Handle result as needed...
         } catch (error) {
           console.error('Error fetching total CTC and employees data:', error);
         }
       }
     };
-
+    useEffect(() => {
     editEmployees();
   }, [selectedEmployeeId]);
 
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
+    AddEmployeeclick();
     navigate('AddEmployee');
+    setAddMode(false); 
   };
 
   const handleEditEmployee = (employeeId) => {
     setSelectedEmployeeId(employeeId);
     setShowAddEmployee(true);
-    setIsEditMode(true); // Set edit mode to true
+    EditModeclick();
     navigate(`AddEmployee?employeeId=${employeeId}`);
+   
   };
+
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
       handleAddEmployee();
+  
+      console.log("AddEmployeeclick");
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {
@@ -189,7 +197,7 @@ const EmployeeComponent = () => {
   const searchFun = (recsearchdata) => {
     setFilteredEmployeeData(recsearchdata);
   };
-
+console.log('editempvalue',editempvalue);
   return (
     <div className="flex flex-col ml-4">
       {!showAddEmployee ? (
@@ -216,7 +224,11 @@ const EmployeeComponent = () => {
  </div>
         </>
       ) : (
-        <AddEmployee employeeId={selectedEmployeeId} onClose={() => setShowAddEmployee(false)} />
+        <AddEmployee
+        employeeId={selectedEmployeeId}
+        onClose={() => setShowAddEmployee(false)}
+        editEmployees={editempvalue} // Pass the editEmployees function as prop
+      />
       )}
 
 {showImportPopup && (
