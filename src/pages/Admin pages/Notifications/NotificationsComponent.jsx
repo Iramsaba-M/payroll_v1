@@ -1,10 +1,10 @@
 import React from 'react'
-
+import ErrorScreen from '../../../errorhandling/ErrorScreen'
 
 const NotificationsComponent = () => {
   return (
     <div>
-      Notification
+      <ErrorScreen />
     </div>
   )
 }

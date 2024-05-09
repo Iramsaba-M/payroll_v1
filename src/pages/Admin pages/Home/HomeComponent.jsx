@@ -60,7 +60,7 @@ const Barchart = ({ graphdata }) => {
 }
 
 const Pichart = ({ data }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
+  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
 
   if (!data) {
     return null;
