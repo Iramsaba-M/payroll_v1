@@ -107,3 +107,5 @@ export const Reimbrusement_settings_get ='settings/settings/reimbursements';
 export const Reimbrusement_settings_post ='settings/settings/reimbursements';
 
 export const Reimbrusement_settings_patch ='settings/settings/reimbursements';
+
+export const EndUser_leaves_report ='employee_leaves';

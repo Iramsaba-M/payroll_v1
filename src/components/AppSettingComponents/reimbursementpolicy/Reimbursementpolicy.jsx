@@ -173,7 +173,7 @@ const ReimbursementPolicy = () => {
                     checked={editRowIndex === rowIndex ? editRowData.enable : row.enable}
                     handleDiameter={28}
                     offColor="#BBB"
-                    onColor="#3DCB29"
+                    onColor="#6b6aef"
                     uncheckedIcon={false}
                     checkedIcon={false}
                     className='ml-12'
@@ -201,7 +201,7 @@ const ReimbursementPolicy = () => {
   checked={formData.enable}
   handleDiameter={28}
   offColor="#BBB"
-  onColor="#3DCB29"
+  onColor="#6b6aef"
   uncheckedIcon={false}
   checkedIcon={true}
   className='ml-12'
