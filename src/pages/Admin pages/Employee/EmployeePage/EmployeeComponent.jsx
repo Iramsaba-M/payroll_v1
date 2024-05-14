@@ -9,7 +9,7 @@ import { cardContent, tableContent,  importButtonData ,ExportButtonData  } from 
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate, exportDataTemplate} from '../../../../excelUtils';
 import {getApiUrl} from '../../../../api/GetAPI';
-import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get} from '../../../../api/EndPoints';
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get,SALARY_DETAILS_GET_API, BANK_DETAILS_API_GET} from '../../../../api/EndPoints';
 import SearchableComp from '../../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../../configurations/search/search/SearchInputConfig';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
@@ -49,7 +49,7 @@ const EmployeeComponent = () => {
         const data = await fetchData(CARDS_API);
         setCardData(data);
       } catch (error) {
-        // Handle error
+        
       }
     };
 
@@ -79,22 +79,62 @@ const EmployeeComponent = () => {
   }, [location.search]);
 
  
-    const editEmployees = async () => {
-      if (selectedEmployeeId) {
-        try {
-          const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
-          const result = await fetchData(apiUrl);
-          console.log(result);
-          setEditempvalue(result)
-          // Handle result as needed...
-        } catch (error) {
-          console.error('Error fetching total CTC and employees data:', error);
-        }
+  //   const editEmployees = async () => {
+  //     if (selectedEmployeeId) {
+  //       try {
+  //         const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
+  //         const result = await fetchData(apiUrl);
+  //         console.log(result);
+  //         setEditempvalue(result)
+  //         // Handle result as needed...
+  //       } catch (error) {
+  //         console.error('Error fetching total CTC and employees data:', error);
+  //       }
+  //     }
+  //   };
+  //   useEffect(() => {
+  //   editEmployees();
+  // }, [selectedEmployeeId]);
+  const editEmployees = async () => {
+    if (selectedEmployeeId) {
+      try {
+        const basicDetailsUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
+        const salaryDetailsUrl = `${SALARY_DETAILS_GET_API}/${selectedEmployeeId}`;
+        const BankDetailsUrl = `${BANK_DETAILS_API_GET}/${selectedEmployeeId}`;
+  
+        // Fetch basic details
+        const basicDetailsResponse = await fetchData(basicDetailsUrl);
+        console.log("Basic Details Result:", basicDetailsResponse);
+  
+        // Fetch salary details
+        const salaryDetailsResponse = await fetchData(salaryDetailsUrl);
+        console.log("Salary Details Result:", salaryDetailsResponse);
+  
+        // Fetch bank details
+        const bankDetailsResponse = await fetchData(BankDetailsUrl);
+        console.log("Bank Details Result:", bankDetailsResponse);
+  
+        // Merge basic, salary, and bank details into a single object
+        const updatedEmpValue = {
+          ...basicDetailsResponse,
+          salary: salaryDetailsResponse,
+          Bank: bankDetailsResponse ,// Include bank details in the merged object
+        };
+  
+        // Update the state
+        setEditempvalue(updatedEmpValue);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-    };
-    useEffect(() => {
+    }
+  };
+  
+  
+  useEffect(() => {
     editEmployees();
   }, [selectedEmployeeId]);
+  
+  
 
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
@@ -215,7 +255,7 @@ console.log('editempvalue',editempvalue);
             </div>
           </div>
 
-          <div className="flex p-2 ml-8 mt-8">
+          <div className="flex p-2 ml-8 mt-2">
           <DynamicTable
   config={tableContent} 
   data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} 

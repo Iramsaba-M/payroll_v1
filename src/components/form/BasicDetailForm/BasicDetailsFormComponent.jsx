@@ -97,146 +97,23 @@ if (dob) {
   };
 
   
-   // Define onedit based on editMode
-  //  const handleButtonClick = async (label, type, editMode) => {
-  //   console.log("EditMode:", editMode);
-  //   console.log("Label:", label);
-  //   console.log("Type:", type);
-  
-  //   if (!editMode) {
-  //     // When edit mode is off
-  //     if (label === "Save" && type === "submit") {
-  //       setIsModalOpen(true); // Open modal
-  //     } else if (label === "Next") {
-  //       handleNextClick(); // Call handleNextClick function
-  //     }
-  //   } else {
-  //     // When edit mode is on
-  //     if (label === "Save" && type === "submit") {
-  //       try {
-  //         // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
-  //         await putData(BASIC_DETAILS_API_put, values);
-  //         console.log("PUT API called successfully");
-  //         // Handle success or update UI accordingly
-  //       } catch (error) {
-  //         console.error("Error calling PUT API:", error);
-  //         // Handle errors here
-  //       }
-  //     } else if (label === "Next") {
-  //       try {
-  //         // Navigate first (assuming handleNextClick is responsible for navigation)
-  //         handleNextClick(); // Navigate to the next page or perform navigation action
-  
-  //         // Call fetchData or other relevant function for next action in edit mode asynchronously
-  //         try {
-  //           const data = await fetchData(BASIC_DETAILS_API_Get);
-  //           console.log("GET API called");
-  //           // Process the retrieved data as needed
-  //         } catch (error) {
-  //           console.error("Error calling GET API:", error);
-  //           // Handle errors here if needed
-  //         }
-  //       } catch (error) {
-  //         console.error("Error navigating:", error);
-  //         // Handle navigation errors here if needed
-  //       }
-  //     }
-  //   }
-  // };
-  const handleButtonClick = async (label, type, values) => {
+   
+  const handleButtonClick = async (label, type ) => {
     console.log("EditMode:", editMode);
     console.log("AddMode:", AddMode);
     console.log("Label:", label);
     console.log("Type:", type);
 
-    if (AddMode) {
-      // When Add mode is active
-      if (label === "Save" && type === "submit") {
-        try {
-          setIsModalOpen(true); // Open modal
-        } catch (error) {
-          console.error("Error calling POST API:", error);
-          // Handle errors here
-        }
-      } else if (label === "Next") {
-        handleNextClick();
+      if (label === "Next") {
+        // handleNextClick();
+        handleNextClick(values.employee_id);
       }
-    } else if (!AddMode && editMode) {
-      // When edit mode is active
-      if (label === "Save" && type === "submit") {
-        try {
-          const employeeId = editEmployees.employee_id;
-          // Create an object to store updated values
-          const updatedValues = {};
-          // Loop through the values and update only the changed ones
-          Object.keys(values).forEach(key => {
-            if (values[key] !== editEmployees[key]) {
-              updatedValues[key] = values[key];
-            } else {
-              // Set fields to null if they were not changed
-              updatedValues[key] = null;
-            }
-          });
-          // Remove keys with null values
-          const filteredValues = Object.fromEntries(Object.entries(updatedValues).filter(([_, v]) => v !== null));
-          await putData(`${BASIC_DETAILS_API_put}/${employeeId}`, filteredValues);
-          console.log("PUT API called successfully");
-        } catch (error) {
-          console.error("Error calling PUT API:", error);
-          // Handle errors here
-        }
-      } else if (label === "Next") {
-        handleNextClick();
-      }
-    }
+   
 };
 
+const employeeId = values.employee_id;
   
-  // old onsubmit code  dont remove it
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-
-  //     console.log("Form Values:", values);
-  //     // Create a FormData object to handle file uploads
-  //     const formData = new FormData();
-
-  //     // Append text data to FormData
-  //     Object.entries(values).forEach(([key, value]) => {
-  //       formData.append(key, value);
-  //     });
-
-  //     // Append image file to FormData if it exists
-  //     if (values.photo_content) {
-  //       formData.append("photo_content", values.photo_content);
-  //     }
-
-  //     // Make the axios call using FormData
-  //     const response = await axios.post(
-  //       getApiUrl(BASIC_DETAILS_API),
-  //       formData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data", // Set content type for FormData
-  //         },
-  //       }
-  //     );
-
-  //     console.log("Data sent:", response.data);
-
-  //     const employeeId = values.employee_id;
-
-  //     handleEmpId(employeeId)
-
-  //     console.log('Employee ID:', employeeId);
-  //     // If the above API call is successful, trigger the onSubmit function from props
-  //     onSubmit(values);
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
-
-  const onSubmit = async (e) => {
+  const onSubmit = async (e, label) => {
     e.preventDefault();
     try {
       console.log("Form Values:", values);
@@ -253,22 +130,90 @@ if (dob) {
         formData.append("photo_content", values.photo_content);
       }
   
-      // Use postDataImage function to make the axios call
-      const response = await postDataImage(BASIC_DETAILS_API, formData);
+      if (AddMode) {
+        // When Add mode is active
+        const response = await postDataImage(BASIC_DETAILS_API, formData);
+        handleEmpId(values.employee_id);
+        setIsModalOpen(true); 
+
   
-      console.log("Data sent:", response);
+        console.log('Employee ID:', employeeId);
+        console.log("Data sent:", response);
+        // If the above API call is successful, trigger the onSubmit function from props
+        onSubmit(values, label); // Pass the label parameter
+      } else if (editMode) {
+        // When edit mode is active
+        const employeeId = values.employee_id;
   
-      const employeeId = values.employee_id;
+        // Update the data directly without creating updatedValues
+        await putData(`${BASIC_DETAILS_API_put}/${employeeId}`, values);
+        console.log("PUT API called successfully");
+        
+        handleEmpId(employeeId);
+        
+        console.log('Employee ID:', employeeId);
+        // If the above API call is successful, trigger the onSubmit function from props
+        onSubmit(values, label); // Pass the label parameter
+      }
   
-      handleEmpId(employeeId)
-  
-      console.log('Employee ID:', employeeId);
-      // If the above API call is successful, trigger the onSubmit function from props
-      onSubmit(values);
+    
     } catch (error) {
       console.error("Error:", error);
+    
+      if (error.response && error.response.status) {
+        errorCode = error.response.status;
+      }
+      
+      // Handle 422 Unprocessable Entity error specifically
+      if (errorCode === 422) {
+        return <ErrorScreen errorCode={422} />;
+      }
+      
+      // Render ErrorScreen for other error codes
+      return <ErrorScreen errorCode={errorCode} />;
     }
+    
+    
   };
+  
+  // const onSubmit = async (e, label) => {
+  //   e.preventDefault();
+  //   try {
+  //     console.log("Form Values:", values);
+  
+  //     const formData = new FormData();
+  //     Object.entries(values).forEach(([key, value]) => {
+  //       formData.append(key, value);
+  //     });
+  
+  //     if (values.photo_content) {
+  //       formData.append("photo_content", values.photo_content);
+  //     }
+  
+  //     if (AddMode) {
+  //       const response = await postDataImage(BASIC_DETAILS_API, formData);
+  //       console.log("POST API Response:", response);
+  //       onSubmit(values, label);
+  //     } else if (editMode) {
+  //       const employeeId = values.employee_id;
+  
+  //       console.log("Updating employee with ID:", employeeId);
+  //       console.log("Updated values:", values);
+  
+  //       await putData(`${BASIC_DETAILS_API_put}/${employeeId}`, values);
+  //       console.log("PUT API called successfully for employee ID:", employeeId);
+  
+  //       handleEmpId(employeeId);
+  
+  //       console.log('Employee ID:', employeeId);
+  //       onSubmit(values, label);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+  
+  
   return (
     <form onSubmit={onSubmit}>
       <div className="w-[130vh] h-[50vh]">
