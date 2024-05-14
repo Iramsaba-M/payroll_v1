@@ -12,6 +12,12 @@ export const CARDS_API = 'employee/total_ctc_and_employees';
 
 export const Delete_All ='employee/employee_delete/'
 
+export const BANK_DETAILS_API_PUT='employee/bank-details';
+
+export const BANK_DETAILS_API_GET='employee/bank-details';
+
+export const SALARY_DETAILS_PUT_API = 'employee/salary_details';
+
 // export const CARDS_API = 'cardData';
 
 export const BASIC_DETAILS_API = 'employee/basic-details';
@@ -68,6 +74,8 @@ export const EndUser_punch_status = 'enduser/my-attendence/punch/';//frontend al
 
 export const EndUser_notification = 'enduser/user/notification/';
 
+export const EndUser_leaves_report ='enduser/user/employee_leaves/';
+
 
 //sb
 export const EndUser_ApplyLoan = 'enduser/user/apply/request';
@@ -108,4 +116,3 @@ export const Reimbrusement_settings_post ='settings/settings/reimbursements';
 
 export const Reimbrusement_settings_patch ='settings/settings/reimbursements';
 
-export const EndUser_leaves_report ='employee_leaves';

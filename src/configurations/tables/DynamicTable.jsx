@@ -8,6 +8,7 @@ import { ModalPayslipConfig } from '../../components/form/Formfields/modal/Modal
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 import { useButtonState } from '../../context/ButtonStateContext';
 
+import ReactPaginate from 'react-paginate';
 
 function DynamicTable({ config, data, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
@@ -15,6 +16,16 @@ function DynamicTable({ config, data, onEditEmployee }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const { EditModeclick } = useButtonState();
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const rowsPerPage = 5; // Number of rows per page
+
+  const pageCount = Math.ceil(data.length / rowsPerPage); // Calculate the total number of pages
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+  const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
 
   const handleCheckboxChange = (row) => {
     if (selectedRows.includes(row)) {
@@ -108,9 +119,6 @@ function DynamicTable({ config, data, onEditEmployee }) {
     }
   };
   
-
-  
-
   const handleSelectAll = () => {
     if (selectAll) {
       setSelectedRows([]);
@@ -257,7 +265,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
   };
 
   return (
-    <div className="max-h-[44vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
+    <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
       <table>
         <thead>
           <tr className="bg-gray-100 p-2">
@@ -272,7 +280,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           </tr>
         </thead>
         <tbody>
-            {Array.isArray(data) && data.map((row, rowIndex) => (
+             {Array.isArray(paginatedData) && paginatedData.map((row, rowIndex) => (
             <tr key={rowIndex}>
               <td className="px-9">
                 <input
@@ -290,6 +298,30 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           ))}
         </tbody>
       </table>
+
+      <div className='flex justify-between p-1 mx-4'>
+      <p className="text-gray-400 font-medium text-sm">
+        Showing {currentPage * rowsPerPage + 1} - {Math.min((currentPage + 1) * rowsPerPage, data.length)} of {data.length} records
+      </p>
+      <ReactPaginate className='flex mx-2 '
+        previousLabel={'previous'}
+        nextLabel={'Next'}
+        breakLabel={'...'}
+        pageCount={Math.ceil(data.length / rowsPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'mt-1'}
+        pageClassName={'px-4'}
+        pageLinkClassName={'text-gray-400 font-bold text-sm'}
+        // activeClassName={'bg-blue-500 text-white'}
+        activeLinkClassName={'text-blue-400 font-bold text-sm'}
+        // previousClassName={'inline-block mx-1  bg-gray-200 px-3 py-1'}
+        previousLinkClassName={'text-gray-400 font-medium text-sm'}
+        // nextClassName={'inline-block mx-1  bg-gray-200 px-3 py-1'}
+        nextLinkClassName={'text-gray-400 font-medium text-sm'}
+      />
+      </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
       {editModalOpen && (
         <ModalComponent isOpen={editModalOpen} onClose={handleCloseModal} config={ModalReviewPayrollConfig} />
