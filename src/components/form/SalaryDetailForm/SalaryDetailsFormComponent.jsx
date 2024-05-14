@@ -10,13 +10,14 @@ import {Button1Content, Button2Content}from '../../../pages/Admin pages/Employee
 import NumberStyle from '../Formfields/number/numberstyle';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import {ModalConfig }from '../Formfields/modal/ModalConfig';
-import { SALARY_DETAILS_POST_API } from '../../../api/EndPoints';
+import { SALARY_DETAILS_POST_API, } from '../../../api/EndPoints';
 import { SALARY_DETAILS_GET_API } from '../../../api/EndPoints';
 import { fetchData, postData } from '../../../services/APIService';
 import { useButtonState } from '../../../context/ButtonStateContext';
-import { BASIC_DETAILS_API_put } from '../../../api/EndPoints';
+import { SALARY_DETAILS_PUT_API } from '../../../api/EndPoints';
+import { putData } from '../../../services/APIService';
 
-const SalaryDetailsComp = ({ config, handleNextClick, employeeId }) => {
+const SalaryDetailsComp = ({ config, handleNextClick, employeeId,editEmployees }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
   const [ctcDetails, setCtcDetails] = useState({});
@@ -28,74 +29,131 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId }) => {
     EditModeclick,
     AddEmployeeclick
   } = useButtonState();
-  // console.log('editEmployees',editEmployees);
+  console.log('editEmployees',editEmployees);
 
-  const handleButtonClick = async (label, type, values) => {
-    console.log("EditMode:", editMode);
-    console.log("AddMode:", AddMode);
-    console.log("Label:", label);
-    console.log("Type:", type);
-
-    if (AddMode) {
-      // When Add mode is active
-      if (label === "Save" && type === "submit") {
-        try {
-          setIsModalOpen(true); // Open modal
-         
-        } catch (error) {
-          console.error("Error calling POST API:", error);
-          // Handle errors here
-        }
-      } else if (label === "Next") {
-        handleNextClick();
-      } 
-   
-    } else  if (!AddMode && editMode) {
-      setValues(editEmployees);
-      // When edit mode is active
-      if (label === "Save" && type === "submit") {
-        try {
-          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
-          await putData(BASIC_DETAILS_API_put, values);
-          console.log("PUT API called successfully");
-          // Handle success or update UI accordingly
-        } catch (error) {
-          console.error("Error calling PUT API:", error);
-          // Handle errors here
-        }
-      } else if (label === "Next") {
-        handleNextClick();
-      }
-
+  useEffect(() => {
+    if (editEmployees && editEmployees.salary) {
+      setValues(editEmployees.salary);
     }
-    };
+}, [editEmployees]);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
-  const handleChange = (name, value) => {
-    setValues({ ...values, [name]: value });
-  };
+
+  // const handleButtonClick = async (label, type, values) => {
+  //   console.log("EditMode:", editMode);
+  //   console.log("AddMode:", AddMode);
+  //   console.log("Label:", label);
+  //   console.log("Type:", type);
+
+  //   if (AddMode) {
+  //     // When Add mode is active
+  //     if (label === "Save" && type === "submit") {
+  //       try {
+  //         setIsModalOpen(true); // Open modal
+         
+  //       } catch (error) {
+  //         console.error("Error calling POST API:", error);
+  //         // Handle errors here
+  //       }
+  //     } else if (label === "Next") {
+  //       handleNextClick();
+  //     } 
+   
+  //   } else  if (!AddMode && editMode) {
+  //     setValues(editEmployees);
+  //     // When edit mode is active
+  //     if (label === "Save" && type === "submit") {
+  //       try {
+  //         // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+  //         await putData(`${SALARY_DETAILS_PUT_API}/${employeeId}`, values);
+  //         console.log("PUT API called successfully");
+  //         // Handle success or update UI accordingly
+  //       } catch (error) {
+  //         console.error("Error calling PUT API:", error);
+  //         // Handle errors here
+  //       }
+  //     } else if (label === "Next") {
+  //       handleNextClick();
+  //     }
+
+  //   }
+  //   };
+
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const { annual_ctc, ctc_template } = values;
+  
+  //     // Use postData from apiService.js
+  //     const postResponse = await postData(SALARY_DETAILS_POST_API, {
+  //       annual_ctc,
+  //       ctc_template,
+  //       employee_id: employeeId,
+  //     });
+  
+  //     console.log('Data sent:', postResponse);
+  //     setPostSuccess(true);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     // Handle error as needed
+  //   }
+  // };
+  
+  // useEffect(() => {
+  //   // Fetch data only if postSuccess is true
+  //   const fetchDataIfNeeded = async () => {
+  //     try {
+  //       if (postSuccess) {
+  //         // Use fetchData from apiService.js
+  //         const response = await fetchData(`${SALARY_DETAILS_GET_API}/${employeeId}`);
+  //         console.log('GET Response Data:', response);
+  //         setValues(response);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //       // Handle error as needed
+  //     }
+  //   };
+  
+  //   fetchDataIfNeeded();
+  // }, [employeeId, postSuccess]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const { annual_ctc, ctc_template } = values;
   
-      // Use postData from apiService.js
-      const postResponse = await postData(SALARY_DETAILS_POST_API, {
-        annual_ctc,
-        ctc_template,
-        employee_id: employeeId,
-      });
+      if (AddMode) {
+        // When Add mode is active
+        const postResponse = await postData(SALARY_DETAILS_POST_API, {
+          annual_ctc,
+          ctc_template,
+          employee_id: employeeId,
+        });
   
-      console.log('Data sent:', postResponse);
-      setPostSuccess(true);
+        console.log('Data sent:', postResponse);
+        setIsModalOpen(true); 
+        setPostSuccess(true);
+      } else if (!AddMode && editMode) {
+        // When edit mode is active
+        await putData(`${SALARY_DETAILS_PUT_API}/${employeeId}`, values);
+        console.log("PUT API called successfully");
+        // Handle success or update UI accordingly
+      }
+  
     } catch (error) {
       console.error('Error:', error);
       // Handle error as needed
     }
+  };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  
+  const handleChange = (name, value) => {
+    setValues({ ...values, [name]: value });
   };
   
   useEffect(() => {
@@ -117,6 +175,23 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId }) => {
     fetchDataIfNeeded();
   }, [employeeId, postSuccess]);
   
+  const handleButtonClick =async(label,type,values)=>{
+        console.log("EditMode:", editMode);
+    console.log("AddMode:", AddMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+    if(label ==="Next")
+      handleNextClick(employeeId);
+   }
+  
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  // const handleChange = (name, value) => {
+  //   setValues({ ...values, [name]: value });
+  // };
+
 
     return (
      <form onSubmit={onSubmit}>

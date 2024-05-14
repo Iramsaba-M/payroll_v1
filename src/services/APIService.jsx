@@ -87,7 +87,7 @@ export const putData = async (endpoint, data) => {
   try {
     const response = await axios.put(getApiUrl(endpoint), data, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json' // Change content type to application/json
       }
     });
     return response.data;
