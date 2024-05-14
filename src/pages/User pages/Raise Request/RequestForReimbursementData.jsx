@@ -20,6 +20,7 @@ export const RequestForReimbursementData= [
         "placeholder":"Select Type",
         "textcss": "standard",
         "icon": <RiArrowDownSFill  className="text-black -mt-6 ml-[16vh]" />,
+        "required":true
       },
       {
         "name":"expense_date",
@@ -28,6 +29,7 @@ export const RequestForReimbursementData= [
         "placeholder": "Select Date",
         "textcss": "standard",
         "icon": <CiCalendar className="absolute text-black -mt-8 ml-[46vh]" />,
+        "required":true
       },
       {
         "name":"amount",
@@ -35,6 +37,7 @@ export const RequestForReimbursementData= [
         "type": "text",
         "placeholder": "Enter Amount",
         "textcss": "standard",
+        "required":true
         // "icon": <CiCalendar className="text-gray-500" />,
       },
 
@@ -44,6 +47,7 @@ export const RequestForReimbursementData= [
         "type": "text",
         "placeholder": "Add Description",
         "textcss": "standard",
+        "required":false
         // "icon": <CiCalendar className="text-gray-500" />,
       },
       {
@@ -54,6 +58,7 @@ export const RequestForReimbursementData= [
         textcss: 'standard_document',
         placeholder: 'Choose file(s)...',
         iconPosition:"start",
+        required:false
      
       },
 

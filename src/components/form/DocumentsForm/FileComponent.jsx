@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
-const FileComponent = ({ name, onChange, textcss,icon,  placeholder, iconPosition }) => {
+const FileComponent = ({ name, onChange, textcss,icon,  placeholder, iconPosition,onBlur }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const handleChange = (e) => {
@@ -38,6 +38,7 @@ const FileComponent = ({ name, onChange, textcss,icon,  placeholder, iconPositio
             className={textcss}
             onChange={handleChange}
             style={{ display: 'none' }}
+            onBlur={ onBlur ? onBlur : null }
           />
         </label>
       )}

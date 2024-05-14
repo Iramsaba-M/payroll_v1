@@ -6,5 +6,7 @@
 
 export const getApiUrl = (endpoint) => {
   return `${baseUrl}/${endpoint}`;
+
+  
 };
 
