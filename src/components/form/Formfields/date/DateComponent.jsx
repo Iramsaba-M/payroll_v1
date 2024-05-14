@@ -29,18 +29,29 @@ const handleDateChange = (date) => {
     // Format the date to "dd/mm/yyyy"
     const formattedDate = `${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`;
 
+    // Call the onChange function to update the parent component's state
+    onChange({
+      target: {
+        name: name,
+        value: formattedDate
+      }
+    });
+  }
+};
+ 
+  
   return (
     <div>
-
+     
       <label>{label}</label>
-      {icon}
+{icon}
       <DatePicker
         name={name}
         value={value}
         selected={selectedDate}
         placeholderText={placeholder}
-        onChange={handleDateChange}
-        dateFormat="dd/MM/yyyy"  // Expecting the date in the format "dd/MM/yyyy"
+        onChange={handleDateChange} 
+        dateFormat="dd/mm/yyyy" 
         className={textcss}
         showYearDropdown
         showMonthDropdown
