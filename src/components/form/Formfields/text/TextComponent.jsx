@@ -3,7 +3,7 @@
 import React from 'react';
 
 
-const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon }) => {
+const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon,onBlur }) => {
   return (
     <div>
       <label>{label}</label>
@@ -16,6 +16,7 @@ const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon 
         placeholder={placeholder}
         onChange={onChange}
         className={textcss}
+        onBlur={ onBlur ? onBlur : null }
       />
     </div>
   );

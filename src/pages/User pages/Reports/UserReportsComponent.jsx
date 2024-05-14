@@ -7,16 +7,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import { sickleaveContent,exmpContent1,casualleaveContent, presentdayContent } from './UserReportsContent';
+import { EndUser_leaves_report } from '../../../api/EndPoints';
 
-// export const  = [
-//   { card: 'userreportstyle2', chart: 'userreportbarchart', heading: 'Sick Leave', headstyle: 'userreportheading' },
 
-// ];
-// export const exmpContent1 = [
-
-//   { card: 'userreportstyle2', chart: 'userreportbarchart1', heading: 'Leaves Taken in last 4 Monthes', headstyle: 'userreportheading' },
-
-// ];
 
 const Barchart = ({ graphdata }) => {
   if (!graphdata || !Array.isArray(graphdata)) {
@@ -43,14 +36,10 @@ const Barchart = ({ graphdata }) => {
           bottom: 5,
         }}
       >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend verticalAlign="top" align="center" height={36} iconType="circle" />
-        {/* <Bar dataKey="pv" fill="#6C6BF0" barSize={40} />
-          <Bar dataKey="uv" fill="#A5A4F6" barSize={40} />
-          <Bar dataKey="amt" fill="#C7C7F9" barSize={40} /> */}
         {hasSick && <Bar dataKey="sick" fill="#6C6BF0" barSize={40} />}
         {hasCasual && <Bar dataKey="casual" fill="#A5A4F6" barSize={40} />}
         {hasPresent && <Bar dataKey="present_days" fill="#C7C7F9" barSize={40} />}
@@ -148,18 +137,26 @@ const UserReportsComponent = () => {
           };
           console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
-          const response = await axios.get('http://localhost:3000/enduser_report')
+          // const response = await axios.get('http://localhost:3000/enduser_report')
+          const emp='IK02'
+          const endpoint = `${EndUser_leaves_report}?employee_id=${emp}`;
+        //   const response = await postData(endpoint,
+        //      {
+        //     from_: formattedStartDate,
+        //     to_: formattedEndDate,
+        //   }
+        // );
 
-          // const response = await postData(Home_and_Report_BarGraphdata, {
-          //   from_: formattedStartDate,
-          //   to: formattedEndDate,
-          // });
-
-          console.log('Post Response graph :', response.data);
+        const response = await postData( `${EndUser_leaves_report}?employee_id=${emp}`, {
+          from_: formattedStartDate,
+          to_: formattedEndDate,
+        });
+        
+        console.log('Post Response graph :',response);
 
           setBarGraphData(transformData(response.data));
 
-          // setBarGraphData(response);
+          // setBarGraphData(transformData(response));
 
 
         } else {

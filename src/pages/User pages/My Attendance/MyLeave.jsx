@@ -134,7 +134,7 @@ const MyLeave = ({ config, applyleave }) => {
     };
 
     return (
-        <form onSubmit={onSubmit} className='mt-2 overflow-auto max-h-[87vh] ml-5 p-2 '>
+        <form onSubmit={onSubmit} className='  ml-5 p-2 '>
             <div className='p-2 border-2 '>
                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>
                 <div className='bg-gray-100 p-2 flex  rounded-md border-2'>
