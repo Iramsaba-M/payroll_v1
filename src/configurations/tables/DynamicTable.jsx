@@ -10,22 +10,18 @@ import { useButtonState } from '../../context/ButtonStateContext';
 
 import ReactPaginate from 'react-paginate';
 
-function DynamicTable({ config, data, onEditEmployee }) {
+function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const { EditModeclick } = useButtonState();
+ // Calculate the total number of pages
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const rowsPerPage = 5; // Number of rows per page
-
-  const pageCount = Math.ceil(data.length / rowsPerPage); // Calculate the total number of pages
-
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-  const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
+ const handlePageChange = (selectedPage) => {
+  setCurrentPage(selectedPage.selected + 1);
+};
+  // const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
 
   const handleCheckboxChange = (row) => {
     if (selectedRows.includes(row)) {
@@ -280,7 +276,7 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           </tr>
         </thead>
         <tbody>
-             {Array.isArray(paginatedData) && paginatedData.map((row, rowIndex) => (
+            {Array.isArray(data) && data.map((row, rowIndex) => (
             <tr key={rowIndex}>
               <td className="px-9">
                 <input
@@ -301,24 +297,23 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
 
       <div className='flex justify-between p-1 mx-4'>
       <p className="text-gray-400 font-medium text-sm">
-        Showing {currentPage * rowsPerPage + 1} - {Math.min((currentPage + 1) * rowsPerPage, data.length)} of {data.length} records
+        {/* Showing {currentPage * pageSize } - {Math.min((currentPage + 1) * pageSize, data)} of {data} employees */}
       </p>
-      <ReactPaginate className='flex mx-2 '
+     
+      <ReactPaginate className='flex'
         previousLabel={'previous'}
         nextLabel={'Next'}
         breakLabel={'...'}
-        pageCount={Math.ceil(data.length / rowsPerPage)}
-        marginPagesDisplayed={2}
+        pageCount={Math.ceil(totalDocuments / pageSize)}
         pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        forcePage={currentPage - 1}
         containerClassName={'mt-1'}
         pageClassName={'px-4'}
         pageLinkClassName={'text-gray-400 font-bold text-sm'}
-        // activeClassName={'bg-blue-500 text-white'}
         activeLinkClassName={'text-blue-400 font-bold text-sm'}
-        // previousClassName={'inline-block mx-1  bg-gray-200 px-3 py-1'}
         previousLinkClassName={'text-gray-400 font-medium text-sm'}
-        // nextClassName={'inline-block mx-1  bg-gray-200 px-3 py-1'}
         nextLinkClassName={'text-gray-400 font-medium text-sm'}
       />
       </div>

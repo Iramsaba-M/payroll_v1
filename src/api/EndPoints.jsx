@@ -1,6 +1,8 @@
 //Employee Registeration
 
-export const EMP_API = 'employee/basic-details/';
+// export const EMP_API = 'employee/basic-details/';
+
+export const EMP_API = 'employee/basic-details/employees/paginations/';
 
 // export const EMP_API = 'basicdetail';
 
@@ -116,3 +118,8 @@ export const Reimbrusement_settings_post ='settings/settings/reimbursements';
 
 export const Reimbrusement_settings_patch ='settings/settings/reimbursements';
 
+export const DOCUMENT_DETAILS_API_GET ='employee/document-details';
+
+export const DOCUMENTS_DETAILS_PUT_API= 'employee/document-details';
+
+export const ADITIONAL_DETAILS_PUT_API = 'employee/additional-details';
