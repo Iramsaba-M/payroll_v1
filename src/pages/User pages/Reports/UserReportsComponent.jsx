@@ -154,9 +154,9 @@ const UserReportsComponent = () => {
         
         console.log('Post Response graph :',response);
 
-          setBarGraphData(transformData(response.data));
+          // setBarGraphData(transformData(response.data));
 
-          // setBarGraphData(transformData(response));
+          setBarGraphData(transformData(response));
 
 
         } else {

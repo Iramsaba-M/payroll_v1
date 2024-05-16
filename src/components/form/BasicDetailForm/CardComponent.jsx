@@ -93,7 +93,7 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import CardStyles from './CardStyles';
 
-const CardComponent = ({ CardConfig = [], handleChange, photoContent }) => {
+const CardComponent = ({ CardConfig = [], handleChange, photoContent,onBlur }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
@@ -134,7 +134,7 @@ const CardComponent = ({ CardConfig = [], handleChange, photoContent }) => {
         <div className='h-10 mb-32 text-left text-lg font-semibold  text-ellipsis'></div>
       </div>
       <div></div>
-      <div className={CardStyles.displayImage}>
+      <div className={CardStyles.displayImage} onBlur={ onBlur ? onBlur : null }>
         {(uploadedImage || photoContent) && (
           <>
             <img
@@ -156,17 +156,22 @@ const CardComponent = ({ CardConfig = [], handleChange, photoContent }) => {
               </div>
             ))}
             {CardConfig.map((element, index) => (
-              <div key={index} className={CardStyles[element.css]}>
+              <div key={index} className={CardStyles[element.css]} >
                 { (
                   <>
                     {element.label}
                   </>
                 )}
+                
               </div>
+              
             ))}
           </div>
         )}
       </div>
+
+      {/* {formik.touched[CardConfig[1].name] && formik.errors[CardConfig[1].name] && <p className='error-form text-xs text-red-600'>{formik.errors[CardConfig[1].name]}</p>} */}
+
     </div>
   );
 };

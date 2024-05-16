@@ -9,7 +9,8 @@ export const formContent = [
           { "name": "template 3", "value": "template 3" },
          
       ],
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name":"annual_ctc",
@@ -18,7 +19,8 @@ export const formContent = [
       "placeholder": "Enter Annual CTC",
       "numbercss": "standard",
       "fieldstyle": "inline-block ",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"monthly_ctc",
@@ -27,7 +29,8 @@ export const formContent = [
       "placeholder": "Enter Monthly CTC",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"basic",
@@ -36,7 +39,8 @@ export const formContent = [
       "placeholder": "Enter Basic",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"da",
@@ -45,7 +49,8 @@ export const formContent = [
       "placeholder": "Enter DA",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"hra",
@@ -54,7 +59,8 @@ export const formContent = [
       "placeholder": "Enter HRA",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"allowances",
@@ -63,7 +69,8 @@ export const formContent = [
       "placeholder": "Enter Allowances",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"other_special_allowance",
@@ -72,7 +79,8 @@ export const formContent = [
       "placeholder": "Enter Other Special Allowances",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"gross_salary",
@@ -81,7 +89,8 @@ export const formContent = [
       "placeholder": "",
       "numbercss": "standardcolour",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"epf",
@@ -90,7 +99,8 @@ export const formContent = [
       "placeholder": "Enter EPF",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"esic",
@@ -99,7 +109,8 @@ export const formContent = [
       "placeholder": "Enter ESIC",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"pt",
@@ -108,7 +119,8 @@ export const formContent = [
       "placeholder": "Enter PT",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":true
     },
     {
       "name":"gratuity",
@@ -117,7 +129,8 @@ export const formContent = [
       "placeholder": "Enter Gratuity",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "float"
+      "numberType": "float",
+      "required":true
     },
     {
       "name":"medical_insurance",
@@ -126,7 +139,8 @@ export const formContent = [
       "placeholder": "Enter Medical Insurance",
       "numbercss": "standard",
       "fieldstyle": "inline-block mr-4",
-      "numberType": "text"
+      "numberType": "text",
+      "required":false
     },
     {
       "name":"others",
@@ -135,7 +149,8 @@ export const formContent = [
       "placeholder": "Enter Others",
       "numbercss": "standard",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":false
     },
     {
       "name":"net_salary",
@@ -144,7 +159,8 @@ export const formContent = [
       "placeholder": "",
       "numbercss": "standardcolour",
       "fieldstyle": "inline-block",
-      "numberType": "text"
+      "numberType": "text",
+      "required":false
     }
   ]
 
