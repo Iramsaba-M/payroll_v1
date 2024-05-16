@@ -1,6 +1,6 @@
 //Employee Component 
 import { useState, useEffect } from 'react';
-import { fetchData } from '../../../../services/APIService';
+import { fetchData, fetchData1} from '../../../../services/APIService';
 import Card from '../../../../configurations/Card/Card';
 import Button from '../../../../configurations/Button/Button';
 import ButtonData from '../../../../configurations/Button/ButtonData';
@@ -16,7 +16,13 @@ import DynamicTable from '../../../../configurations/tables/DynamicTable';
 import { useButtonState } from '../../../../context/ButtonStateContext';
 
 const EmployeeComponent = () => {
-  const [employeeData, setEmployeeData] = useState([]);
+  const [employeeData, setEmployeeData] = useState({
+    employees: [],
+    total_pages: 1,
+    page_size: 10,
+    total_documents: 0,
+    current_page: 1
+  });
   const [empcardData, setCardData] = useState([]);
   const [showImportPopup, setShowImportPopup] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
@@ -24,6 +30,10 @@ const EmployeeComponent = () => {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
   const { EditModeclick, AddEmployeeclick } = useButtonState(); 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5; // Assuming the default page size is 10
+
 
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
@@ -34,11 +44,11 @@ const EmployeeComponent = () => {
   });
   const[editempvalue, setEditempvalue] = useState({}); 
 
-  useEffect(() => {  
-    const fetchemployeeData = async () => {
+useEffect(() => {
+    const fetchEmployeeData = async (pageNumber) => {
       try {
-        const data = await fetchData(EMP_API);
-        setEmployeeData(data); 
+        const data = await fetchData1(EMP_API, pageNumber, pageSize);
+        setEmployeeData(data);
       } catch (error) {
         console.error(`Error fetching employee data:`, error);
       }
@@ -54,9 +64,8 @@ const EmployeeComponent = () => {
     };
 
     fetchCardData();
-    fetchemployeeData();
-  }, []);
-  
+    fetchEmployeeData(currentPage);
+  }, [currentPage]);
 
   useEffect(() => {
     const fetchDataAndSetState = async () => {
@@ -115,7 +124,7 @@ const EmployeeComponent = () => {
         // Fetch bank details
         const bankDetailsResponse = await fetchData(BankDetailsUrl);
         console.log("Bank Details Result:", bankDetailsResponse);
-
+  
           // Fetch Documents details
           const documentsDetailsResponse = await fetchData(DocumentsUrl);
           console.log("Bank Details Result:", documentsDetailsResponse);
@@ -268,10 +277,14 @@ console.log('editempvalue',editempvalue);
 
           <div className="flex p-2 ml-8 mt-2">
           <DynamicTable
-  config={tableContent} 
-  data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} 
-  onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
-/>
+            config={tableContent} 
+            data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData.employees} 
+            currentPage={currentPage}
+            pageSize={pageSize}
+            totalDocuments={employeeData.total_documents}
+            setCurrentPage={setCurrentPage}
+            onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
+          />
  </div>
         </>
       ) : (
