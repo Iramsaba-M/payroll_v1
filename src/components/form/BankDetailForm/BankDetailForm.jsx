@@ -164,7 +164,7 @@ import { getApiUrl } from '../../../api/GetAPI';
 import { ButtonforSave, ButtonforaddBank } from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import { ModalConfig } from '../Formfields/modal/ModalConfig'
-import { postData, putData, putData1 } from '../../../services/APIService';
+import { postData, putData } from '../../../services/APIService';
 import { useButtonState } from '../../../context/ButtonStateContext';
 import { useEffect } from 'react';
 
@@ -235,7 +235,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
         handleSubmit(dataToSend);
       } else if (editMode) {
         // Extract employee_id directly from editEmployees
-        const response = await putData1(`${BANK_DETAILS_API_PUT}/${editEmployees.employee_id}`, dataToSend);
+        const response = await putData(`${BANK_DETAILS_API_PUT}/${editEmployees.employee_id}`, dataToSend);
         console.log('PUT API response:', response);
       }
     } catch (error) {
