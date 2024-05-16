@@ -9,7 +9,7 @@ import axios from "axios";
 import CustomComponent from "./CustomComponent";
 import {customformContent, ButtonforSave, ButtonforAdd} from "../../../pages/Admin pages/Employee/Documents/DocumentsContent";
 import { getApiUrl } from "../../../api/GetAPI";
-import { DOCUMENTS_API } from "../../../api/EndPoints";
+import { DOCUMENTS_API, DOCUMENTS_DETAILS_PUT_API } from "../../../api/EndPoints";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
 import DocumentStyles from "./DocumentStyles";
 import ModalComponent from '../../form/Formfields/modal/ModalComponent'
@@ -18,26 +18,105 @@ import { postDataImage } from "../../../services/APIService";
 import { ModalPayslipConfig } from "../Formfields/modal/ModalPayslipConfig";
 import { ModalReviewPayrollConfig } from "../Formfields/modal/ModalReviewPayrollConfig";
 import { ModalConfig2 } from "../Formfields/modal/ModalConfig2";
+import { useButtonState } from "../../../context/ButtonStateContext";
+import { useEffect } from "react";
 const DocumentsFormComponent = ({
   config,
   handleNextClick,
   handleSubmit,
   employeeId,
+  editEmployees
 }) => {
   const [values, setValues] = useState({});
   const [customComponents, setCustomComponents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const {
+    AddMode,
+    editMode,
+
+  } = useButtonState();
+  // const handleChange = (name, value) => {
+  //   setValues({ ...values, [name]: value });
+  // };
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
   };
-
-  const handleButtonClick = (label, type) => {
-    if (label === "Save" && type === "submit") {
-      setIsModalOpen(true);
-    } else if (label === "Next") {
-      handleNextClick(true);
+  
+  useEffect(() => {
+    if (editEmployees && editEmployees.Documents && editEmployees.Documents.length > 0) {
+      const updatedValues = {};
+      editEmployees.Documents.forEach((doc, index) => {
+        updatedValues[`document_type_${index}`] = doc.document_type;
+        updatedValues[`file_name_${index}`] = doc.file_name;
+        // Assuming you have other fields to populate like content_type, data, document_number, etc.
+        // Add them similarly as needed
+      });
+      setValues(updatedValues);
     }
-  };
+  }, [editEmployees]);
+  
+  
+  
+  
+  // const handleButtonClick = (label, type) => {
+  //   if (label === "Save" && type === "submit") {
+  //     setIsModalOpen(true);
+  //   } else if (label === "Next") {
+  //     handleNextClick(true);
+  //   }
+  // };
+
+    const handleButtonClick = async (label, type, values) => {
+    console.log("EditMode:", editMode);
+    console.log("AddMode:", AddMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+
+    if (AddMode) {
+      // When Add mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          setIsModalOpen(true); // Open modal
+         
+        } catch (error) {
+          console.error("Error calling POST API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      } 
+   
+    } else  if (!AddMode && editMode) {
+      setValues(editEmployees);
+      // When edit mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+          await putData(`${DOCUMENTS_DETAILS_PUT_API}/${employeeId}`, values);
+          console.log("PUT API called successfully");
+          // Handle success or update UI accordingly
+        } catch (error) {
+          console.error("Error calling PUT API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      }
+
+    }
+    };
+
+ 
+ 
+
+  useEffect(() => {
+    if (editEmployees && editEmployees.Documents) {
+      setValues(editEmployees.Documents);
+    }
+}, [editEmployees]);
+console.log('editEmployees',editEmployees)
+
 
   const addCustomComponent = () => {
     setCustomComponents((prev) => [...prev, { customValue: "" }]); //syntax is creating a new array that includes all the elements from the previous state (prev) and adds a new object { customValue: '' } to the end.

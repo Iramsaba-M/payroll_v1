@@ -8,7 +8,7 @@ import TagComponent from './TagComponent';
 import { TagConfig, ButtonDataforAditional,radiocontent} from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
 import OptionsComp from './OptionsComp';
 import { getApiUrl } from '../../../api/GetAPI';
-import { ADITIONAL_DETAILS_API } from '../../../api/EndPoints';
+import { ADITIONAL_DETAILS_API,ADITIONAL_DETAILS_PUT_API } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import { ModalConfig } from '../Formfields/modal/ModalConfig'
@@ -18,7 +18,9 @@ import DocumentStyles from '../DocumentsForm/DocumentStyles';
 import FileComponent from '../DocumentsForm/FileComponent';
 import RadioComponent from '../Formfields/radio_button/RadioComponent';
 import NumberComponent from '../Formfields/number/numbercompoent';
-const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
+import { useButtonState } from '../../../context/ButtonStateContext';
+import { useEffect } from 'react';
+const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId ,editEmployees}) => {
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +29,39 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value });
     };
+
+    const {
+        AddMode,
+        editMode,
+    } = useButtonState();
+      console.log('editEmployees',editEmployees.Additional);
+    
+      useEffect(() => {
+        // If editEmployees.Additional exists, populate form fields with its data
+        if (editEmployees && editEmployees.employee_benefit) {
+            const { employee_benefit, ...rest } = editEmployees;
+            const formattedValues = {
+                ...rest,
+                employee_benefit: employee_benefit[0].split(','),
+                experience: {
+                    ...rest.experience,
+                    experience_type: rest.experience.experience_type || ''
+                }
+            };
+            setValues(formattedValues);
+        } else {
+            // If no data is available, initialize form fields with empty values
+            const initialFormValues = {};
+            // Populate initialFormValues with default values for each field in config
+            config.forEach(field => {
+                initialFormValues[field.name] = '';
+            });
+            // Set the initial state of form fields
+            setValues(initialFormValues);
+        }
+    }, [editEmployees]);
+    
+    
     
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -54,11 +89,52 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
         setExperienced(option);
     };
 
-    const handleButtonClick = (label, type) => {
-        if (label === "Save" && type === "submit") {
-            setIsModalOpen(true);
+    // const handleButtonClick = (label, type) => {
+    //     if (label === "Save" && type === "submit") {
+    //         setIsModalOpen(true);
+    //     }
+    // };
+
+    const handleButtonClick = async (label, type, values) => {
+    console.log("EditMode:", editMode);
+    console.log("AddMode:", AddMode);
+    console.log("Label:", label);
+    console.log("Type:", type);
+
+    if (AddMode) {
+      // When Add mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          setIsModalOpen(true); // Open modal
+         
+        } catch (error) {
+          console.error("Error calling POST API:", error);
+          // Handle errors here
         }
+      } else if (label === "Next") {
+        handleNextClick();
+      } 
+   
+    } else  if (!AddMode && editMode) {
+      setValues(editEmployees);
+      // When edit mode is active
+      if (label === "Save" && type === "submit") {
+        try {
+          // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
+          await putData(`${ADITIONAL_DETAILS_PUT_API}/${employeeId}`, values);
+          console.log("PUT API called successfully");
+          // Handle success or update UI accordingly
+        } catch (error) {
+          console.error("Error calling PUT API:", error);
+          // Handle errors here
+        }
+      } else if (label === "Next") {
+        handleNextClick();
+      }
+
+    }
     };
+
 
     const handleFileChange = (name, selectedFile) => {
         setValues({ ...values, [name]: selectedFile });
@@ -107,23 +183,22 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId }) => {
             <div className='border border-gray-200  p-7 mr-4'>
                 <h1 className=' text-gray-800 font-semibold mb-2'>Employee Benefits</h1>
                 <div className="form-line flex mb-4">
-                    {config.slice(1, 2).map((field, index) => (
-                        <div key={index} className={`form-field ${field.fieldstyle}`}>
-
-                            <label className={TextStyle[field.textcss].label}>{field.label}</label>
-                            {field.type === 'options' && (
-                                <OptionsComponent
-                                    name={field.name}
-                                    value={values[field.name] || ''}
-                                    options={field.options}
-                                    onChange={(e) => handleChange(field.name, e.target.value)}
-                                    textcss={TextStyle[field.textcss].input}
-                                    placeholder={field.placeholder}
-                                    icon={field.icon}
-                                />
-                            )}
-                        </div>
-                    ))}
+                {config.slice(1, 2).map((field, index) => (
+    <div key={index} className={`form-field ${field.fieldstyle}`}>
+        <label className={TextStyle[field.textcss].label}>{field.label}</label>
+        {field.type === 'options' && (
+            <OptionsComponent
+                name={field.name}
+                value={values[field.name] || ''}
+                options={field.options}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                textcss={TextStyle[field.textcss].input}
+                placeholder={field.placeholder}
+                icon={field.icon}
+            />
+        )}
+    </div>
+))}
                     <div>
                         <TagComponent
                             cardConfig={TagConfig}
