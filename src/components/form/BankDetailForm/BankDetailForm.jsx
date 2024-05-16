@@ -20,7 +20,7 @@
 //   const {
 //     AddMode,
 //     editMode,
-    
+
 //   } = useButtonState();
 //   console.log('editEmployees',editEmployees);
 //   useEffect(() => {
@@ -50,26 +50,26 @@
 //     const updatedForms = forms.map(form => (form.id === id ? { ...form, values } : form));
 //     setForms(updatedForms);
 //   };
-  
+
 
 //   const onSubmit = async (e) => {
 //     e.preventDefault();
-  
+
 //     try {
 //       const allFormValues = forms.map((form) => form.values);
 //       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
-  
+
 //       // Use the postData function
 //       const response = await postData(BANK_DETAILS_API, dataToSend);
-      
+
 //       console.log('Data sent:', response);
-  
+
 //       handleSubmit(dataToSend);
 //     } catch (error) {
 //       console.error('Error:', error);
 //     }
 //   };
-  
+
 //   const handleCloseModal = () => {
 //     setIsModalOpen(false);
 //   };
@@ -84,7 +84,7 @@
 //       if (label === "Save" && type === "submit") {
 //         try {
 //           setIsModalOpen(true); // Open modal
-         
+
 //         } catch (error) {
 //           console.error("Error calling POST API:", error);
 //           // Handle errors here
@@ -92,7 +92,7 @@
 //       } else if (label === "Next") {
 //         handleNextClick();
 //       } 
-   
+
 //     } else  if (!AddMode && editMode) {
 //       setValues(editEmployees);
 //       // When edit mode is active
@@ -112,7 +112,7 @@
 
 //     }
 //     };
-  
+
 
 //   return (
 //     <form  onSubmit={onSubmit} className=''>
@@ -139,7 +139,7 @@
 //         </div>
 //       </div>
 //       <div className='buttons flex justify-end mr- mt-6 mb-96 -ml-1 '>
-        
+
 //         <Button  Configs={ButtonforSave} onClick={handleButtonClick} />
 //       </div>
 //       <ModalComponent
@@ -164,7 +164,7 @@ import { getApiUrl } from '../../../api/GetAPI';
 import { ButtonforSave, ButtonforaddBank } from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import { ModalConfig } from '../Formfields/modal/ModalConfig'
-import { postData, putData } from '../../../services/APIService';
+import { postData, putData, putData1 } from '../../../services/APIService';
 import { useButtonState } from '../../../context/ButtonStateContext';
 import { useEffect } from 'react';
 
@@ -172,24 +172,50 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
   const [forms, setForms] = useState([{ id: 0, values: {} }]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { AddMode, editMode } = useButtonState();
-  console.log('employeeId',editEmployees.employee_id);
+  console.log('editEmployees',editEmployees);
+
+
 
   useEffect(() => {
     if (editEmployees && editEmployees.bank_details && editEmployees.bank_details.length > 0) {
-      const bankDetail = editEmployees.bank_details.find(detail => detail.employee_id === employeeId && detail.default_for_payroll === false);
-      if (bankDetail) {
-        setValues({ ...bankDetail });
-      } else {
-        setValues({ ...editEmployees.bank_details[0] });
-      }
+      // Initialize forms with existing bank details
+      setForms(editEmployees.bank_details.map((detail, index) => ({
+        id: index,
+        values: detail
+      })));
+      
+         } else {
+      
+      setForms([{ id: 0, values: {} }]);
     }
-  }, [editEmployees, employeeId]);
-  
+    addbuttonofbanks();
+  }, [editEmployees]);
+
+ 
 
   const addBank = () => {
     const newForms = [...forms, { id: forms.length, values: {} }];
+    console.log('called');
     setForms(newForms);
   };
+
+  const addbuttonofbanks = () => {
+    if (editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details) {
+      const numberOfBanksToAdd = editEmployees.Bank.bank_details.length - forms.length;
+      if (numberOfBanksToAdd > 0) {
+        const newForms = [...forms];
+        for (let i = 0; i < numberOfBanksToAdd; i++) {
+          newForms.push({ id: newForms.length, values: {} });
+        }
+        setForms(newForms);
+      }
+    }
+  };
+  
+  
+  
+  
+
 
   const handleFormChange = (id, values) => {
     const updatedForms = forms.map(form => (form.id === id ? { ...form, values } : form));
@@ -208,13 +234,9 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
         console.log('Data sent:', response);
         handleSubmit(dataToSend);
       } else if (editMode) {
-        if (!employeeId) {
-          console.error('Employee ID is missing.');
-          return; // Stop processing if employeeId is missing
-        }
-        const response = await putData(`${BANK_DETAILS_API_PUT}/${editEmployees.employee_id}`, dataToSend);
+        // Extract employee_id directly from editEmployees
+        const response = await putData1(`${BANK_DETAILS_API_PUT}/${editEmployees.employee_id}`, dataToSend);
         console.log('PUT API response:', response);
-        // Handle any further actions after updating bank details
       }
     } catch (error) {
       console.error('Error:', error);
@@ -233,20 +255,20 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
   };
 
 
-  
+
   return (
     <form onSubmit={onSubmit} className=''>
       <div className='form-line flex justify-evenly mb-4'>
         <div>
           {forms.map((form, index) => (
             <div key={index} className='shadow-sm mt-7 mb-7 ml-1'>
-            <BankDetailFormComponent
-  id={form.id}
-  config={configs}
-  values={(editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details && editEmployees.Bank.bank_details[index]) || {}}
-  onChange={handleFormChange}
-  editEmployees={editEmployees}
-/>
+              <BankDetailFormComponent
+                id={form.id}
+                config={configs}
+                values={(editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details && editEmployees.Bank.bank_details[index]) || {}}
+                onChange={handleFormChange}
+                editEmployees={editEmployees}
+              />
 
             </div>
           ))}

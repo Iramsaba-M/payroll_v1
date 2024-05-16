@@ -9,7 +9,7 @@ import { cardContent, tableContent,  importButtonData ,ExportButtonData  } from 
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate, exportDataTemplate} from '../../../../excelUtils';
 import {getApiUrl} from '../../../../api/GetAPI';
-import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get,SALARY_DETAILS_GET_API, BANK_DETAILS_API_GET} from '../../../../api/EndPoints';
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get,SALARY_DETAILS_GET_API, BANK_DETAILS_API_GET, DOCUMENT_DETAILS_API_GET, ADITIONAL_DETAILS_PUT_API} from '../../../../api/EndPoints';
 import SearchableComp from '../../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../../configurations/search/search/SearchInputConfig';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
@@ -101,6 +101,8 @@ const EmployeeComponent = () => {
         const basicDetailsUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
         const salaryDetailsUrl = `${SALARY_DETAILS_GET_API}/${selectedEmployeeId}`;
         const BankDetailsUrl = `${BANK_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const DocumentsUrl = `${DOCUMENT_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const AdditionalUrl = `${ADITIONAL_DETAILS_PUT_API}?employee_id=${selectedEmployeeId}`;
   
         // Fetch basic details
         const basicDetailsResponse = await fetchData(basicDetailsUrl);
@@ -113,12 +115,21 @@ const EmployeeComponent = () => {
         // Fetch bank details
         const bankDetailsResponse = await fetchData(BankDetailsUrl);
         console.log("Bank Details Result:", bankDetailsResponse);
+
+          // Fetch Documents details
+          const documentsDetailsResponse = await fetchData(DocumentsUrl);
+          console.log("Bank Details Result:", documentsDetailsResponse);
   
+          const additionalDetailsResponse = await fetchData(AdditionalUrl);
+          console.log("Bank Details Result:", additionalDetailsResponse);
         // Merge basic, salary, and bank details into a single object
         const updatedEmpValue = {
           ...basicDetailsResponse,
           salary: salaryDetailsResponse,
-          Bank: bankDetailsResponse ,// Include bank details in the merged object
+          Bank: bankDetailsResponse ,
+          Documents :documentsDetailsResponse,
+          Additional :additionalDetailsResponse,
+
         };
   
         // Update the state
