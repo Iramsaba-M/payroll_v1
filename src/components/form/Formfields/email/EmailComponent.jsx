@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmailComponent = ({ name,label, value, onChange, textcss, placeholder }) => {
+const EmailComponent = ({ name,label, value, onChange, textcss, placeholder,onBlur }) => {
   return (
     <div>
       <label>{label}</label>
@@ -11,6 +11,7 @@ const EmailComponent = ({ name,label, value, onChange, textcss, placeholder }) =
         placeholder={placeholder}
         onChange={onChange}
         className={textcss}
+        onBlur={ onBlur ? onBlur : null }
         />
     </div>
   );

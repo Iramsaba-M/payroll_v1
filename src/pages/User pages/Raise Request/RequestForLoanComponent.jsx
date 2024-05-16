@@ -83,8 +83,8 @@ const RequestForLoanComponent = ({ config }) => {
       console.log('formik', formik.values);
       const employee_id = "100";
       // Validate amount and installment_period
-      const amount = parseFloat(formik.values.amount);
-      const installment_period = parseInt(formik.values.installment_period);
+      const amount = parseFloat(data.amount);
+      const installment_period = parseInt(data.installment_period);
       
       if (isNaN(amount) || isNaN(installment_period)) {
         throw new Error('Amount and installment period must be valid numbers.');
