@@ -226,19 +226,28 @@ import { BANK_DETAILS_API } from '../../../api/EndPoints';
 import { getApiUrl } from '../../../api/GetAPI';
 import Button from '../../../configurations/Button/Button';
 import { ButtonforDefault } from '../../../pages/Admin pages/Employee/BankDetail/BankDetailsContent';
+import { useFormik } from 'formik';
+import { createInitialValues, formSchema, simplifiedData } from '../../../configurations/ValidationSchema/ValidationSchema';
 
-const BankDetailFormComponent = ({ id, config, onChange, values: propValues, editEmployees,employeeId }) => {
+const BankDetailFormComponent = ({ id, config, onChange, values: propValues, editEmployees, employeeId,formik }) => {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [values, setValues] = useState({
     default_for_payroll: false, // Initialize default_for_payroll as false by default
     ...propValues
   });
 
+  console.log('er', formik.values, formik.errors, values);
+
   const handleChange = (name, value) => {
     setValues(prevValues => ({
       ...prevValues,
       [name]: value
     }));
+    formik.setValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }));
+
     onChange(id, { ...values, [name]: value });
   };
 
@@ -253,12 +262,14 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
       const bankDetail = editEmployees.bank_details.find(detail => detail.employee_id === employeeId && detail.default_for_payroll === false);
       if (bankDetail) {
         setValues({ ...bankDetail });
+        formik.setValues({ ...bankDetail })
       } else {
         setValues({ ...editEmployees.bank_details[0] });
+        formik.setValues({ ...editEmployees.bank_details[0] });
       }
     }
   }, [editEmployees, employeeId]);
-  
+
 
   return (
     <div style={{ boxShadow: isButtonClicked ? '0 0 2px rgba(0, 0, 0, 0.5)' : 'none' }}>
@@ -275,6 +286,8 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
                 icon={field.icon}
+
+                onBlur={formik.handleBlur}
               />
             )}
             {field.type === 'text' && (
@@ -284,8 +297,15 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
                 placeholder={field.placeholder}
+
+                // value={values[field.name] && (formik && formik.values[field.name]) ||
+                //   // (formData && formData[item.name]) ||
+                //   ""}
+                // onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
             )}
+            {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
           </div>
         ))}
       </div>
@@ -301,8 +321,15 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
                 value={values[field.name] || ''}
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
+
+                // value={(formik && formik.values[field.name]) ||
+                //   // (formData && formData[item.name]) ||
+                //   ""}
+                // onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
             )}
+            {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
           </div>
         ))}
       </div>

@@ -191,7 +191,7 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
     console.log("AddMode:", AddMode);
     console.log("Label:", label);
     console.log("Type:", type);
-    if (label === "Next" && Object.keys(formik.errors).length === 0 && formik.isValid)
+    if (label === "Next" )
       handleNextClick(employeeId);
   }
 
