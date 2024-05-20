@@ -21,7 +21,7 @@ const EmployeeComponent = () => {
     total_pages: 1,
     page_size: 10,
     total_documents: 0,
-    current_page: 1
+    current_page: 0
   });
   const [empcardData, setCardData] = useState([]);
   const [showImportPopup, setShowImportPopup] = useState(false);
@@ -67,95 +67,103 @@ useEffect(() => {
     fetchEmployeeData(currentPage);
   }, [currentPage]);
 
-  useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      const queryParams = new URLSearchParams(location.search);
-      const empId = queryParams.get('employeeId');
+  // useEffect(() => {
+  //   const fetchDataAndSetState = async () => {
+  //     const queryParams = new URLSearchParams(location.search);
+  //     const empId = queryParams.get('employeeId');
 
-      // Construct the API URL with the employee ID
-      const apiUrl = `${EMP_API}?employeeId=${empId}`;
-      console.log('API URL:', apiUrl); // Log the API URL
+  //     // Construct the API URL with the employee ID
+  //     const apiUrl = `${EMP_API}?employeeId=${empId}`;
+  //     console.log('API URL:', apiUrl); // Log the API URL
 
-      try {
-        const data = await fetchData(apiUrl);
-        setEmployeeData(data);
-      } catch (error) {
-        console.error('Error fetching employee data:', error);
-      }
-    };
-
-    fetchDataAndSetState();
-  }, [location.search]);
-
- 
-  //   const editEmployees = async () => {
-  //     if (selectedEmployeeId) {
-  //       try {
-  //         const apiUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
-  //         const result = await fetchData(apiUrl);
-  //         console.log(result);
-  //         setEditempvalue(result)
-  //         // Handle result as needed...
-  //       } catch (error) {
-  //         console.error('Error fetching total CTC and employees data:', error);
-  //       }
+  //     try {
+  //       const data = await fetchData(apiUrl);
+  //       setEmployeeData(data);
+  //     } catch (error) {
+  //       console.error('Error fetching employee data:', error);
   //     }
   //   };
-  //   useEffect(() => {
-  //   editEmployees();
-  // }, [selectedEmployeeId]);
+
+  //   fetchDataAndSetState();
+  // }, [location.search]);
+
+ 
+  
   const editEmployees = async () => {
     if (selectedEmployeeId) {
       try {
         const basicDetailsUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
         const salaryDetailsUrl = `${SALARY_DETAILS_GET_API}/${selectedEmployeeId}`;
-        const BankDetailsUrl = `${BANK_DETAILS_API_GET}/${selectedEmployeeId}`;
-        const DocumentsUrl = `${DOCUMENT_DETAILS_API_GET}/${selectedEmployeeId}`;
-        const AdditionalUrl = `${ADITIONAL_DETAILS_PUT_API}?employee_id=${selectedEmployeeId}`;
+        const bankDetailsUrl = `${BANK_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const documentsUrl = `${DOCUMENT_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const additionalUrl = `${ADITIONAL_DETAILS_PUT_API}?employee_id=${selectedEmployeeId}`;
   
         // Fetch basic details
-        const basicDetailsResponse = await fetchData(basicDetailsUrl);
-        console.log("Basic Details Result:", basicDetailsResponse);
+        let basicDetailsResponse = null;
+        try {
+          basicDetailsResponse = await fetchData(basicDetailsUrl);
+          console.log("Basic Details Result:", basicDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching basic details:", error);
+        }
   
         // Fetch salary details
-        const salaryDetailsResponse = await fetchData(salaryDetailsUrl);
-        console.log("Salary Details Result:", salaryDetailsResponse);
+        let salaryDetailsResponse = null;
+        try {
+          salaryDetailsResponse = await fetchData(salaryDetailsUrl);
+          console.log("Salary Details Result:", salaryDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching salary details:", error);
+        }
   
         // Fetch bank details
-        const bankDetailsResponse = await fetchData(BankDetailsUrl);
-        console.log("Bank Details Result:", bankDetailsResponse);
+        let bankDetailsResponse = null;
+        try {
+          bankDetailsResponse = await fetchData(bankDetailsUrl);
+          console.log("Bank Details Result:", bankDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching bank details:", error);
+        }
   
-          // Fetch Documents details
-          const documentsDetailsResponse = await fetchData(DocumentsUrl);
-          console.log("Bank Details Result:", documentsDetailsResponse);
+        // Fetch documents details
+        let documentsDetailsResponse = null;
+        try {
+          documentsDetailsResponse = await fetchData(documentsUrl);
+          console.log("Documents Details Result:", documentsDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching documents details:", error);
+        }
   
-          const additionalDetailsResponse = await fetchData(AdditionalUrl);
-          console.log("Bank Details Result:", additionalDetailsResponse);
-        // Merge basic, salary, and bank details into a single object
+        // Fetch additional details
+        let additionalDetailsResponse = null;
+        try {
+          additionalDetailsResponse = await fetchData(additionalUrl);
+          console.log("Additional Details Result:", additionalDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching additional details:", error);
+        }
+  
+        // Merge all details into a single object
         const updatedEmpValue = {
           ...basicDetailsResponse,
-          salary: salaryDetailsResponse,
-          Bank: bankDetailsResponse ,
-          Documents :documentsDetailsResponse,
-          Additional :additionalDetailsResponse,
-
+          salary: salaryDetailsResponse || 0,
+          Bank: bankDetailsResponse || null,
+          Documents: documentsDetailsResponse || null,
+          Additional: additionalDetailsResponse || null,
         };
   
         // Update the state
         setEditempvalue(updatedEmpValue);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error in editEmployees function:', error);
       }
     }
   };
-  
   
   useEffect(() => {
     editEmployees();
   }, [selectedEmployeeId]);
   
-  
-
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
     AddEmployeeclick();
@@ -276,16 +284,16 @@ console.log('editempvalue',editempvalue);
           </div>
 
           <div className="flex p-2 ml-8 mt-2">
-          <DynamicTable
-            config={tableContent} 
-            data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData.employees} 
-            currentPage={currentPage}
-            pageSize={pageSize}
-            totalDocuments={employeeData.total_documents}
-            setCurrentPage={setCurrentPage}
-            onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
+            <DynamicTable
+              config={tableContent} 
+              data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData.employees} 
+              currentPage={currentPage}
+              pageSize={pageSize}
+              totalDocuments={employeeData.total_documents}
+              setCurrentPage={setCurrentPage}
+              onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
           />
- </div>
+          </div>
         </>
       ) : (
         <AddEmployee
