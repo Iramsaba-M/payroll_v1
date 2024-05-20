@@ -167,14 +167,14 @@ import { ModalConfig } from '../Formfields/modal/ModalConfig'
 import { postData, putData } from '../../../services/APIService';
 import { useButtonState } from '../../../context/ButtonStateContext';
 import { useEffect } from 'react';
+import { useFormik } from 'formik';
+import { createInitialValues, formSchema, simplifiedData } from '../../../configurations/ValidationSchema/ValidationSchema';
 
 const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, editEmployees }) => {
   const [forms, setForms] = useState([{ id: 0, values: {} }]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { AddMode, editMode } = useButtonState();
   console.log('editEmployees',editEmployees);
-
-
 
   useEffect(() => {
     if (editEmployees && editEmployees.bank_details && editEmployees.bank_details.length > 0) {
@@ -196,8 +196,15 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
   const addBank = () => {
     const newForms = [...forms, { id: forms.length, values: {} }];
     console.log('called');
-    setForms(newForms);
+    setForms(newForms); 
   };
+
+  const formik = useFormik({
+    initialValues: createInitialValues(configs),
+    validationSchema: formSchema(simplifiedData(configs)),
+  });
+
+  console.log('er123',formik.values, formik.errors, forms);
 
   const addbuttonofbanks = () => {
     if (editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details) {
@@ -226,6 +233,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
     e.preventDefault();
   
     try {
+      formik.handleSubmit();
       const allFormValues = forms.map((form) => form.values);
       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
   
@@ -254,8 +262,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
     }
   };
 
-
-
+ 
   return (
     <form onSubmit={onSubmit} className=''>
       <div className='form-line flex justify-evenly mb-4'>
@@ -268,6 +275,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
                 values={(editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details && editEmployees.Bank.bank_details[index]) || {}}
                 onChange={handleFormChange}
                 editEmployees={editEmployees}
+                formik={formik}
               />
 
             </div>
