@@ -24,6 +24,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId ,editEm
     const [values, setValues] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    
     const [isexperienced, setExperienced] = useState(false);
 
     const handleChange = (name, value) => {
