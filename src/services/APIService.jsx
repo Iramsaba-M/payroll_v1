@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { getApiUrl} from '../api/GetAPI';
 
-
 export const fetchData = async (endpoint) => {
   try {
     const response = await axios.get(getApiUrl(endpoint));
@@ -14,7 +13,6 @@ export const fetchData = async (endpoint) => {
   }
 };
 
-// APIService.jsx
 // APIService.jsx
 export const fetchData1 = async (endpoint, pageNumber, pageSize) => {
   try {
@@ -31,11 +29,21 @@ export const fetchData1 = async (endpoint, pageNumber, pageSize) => {
   }
 };
 
-
-
 export const postData = async (endpoint, data) => {
   try {
     const response = await axios.post(getApiUrl(endpoint), data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error posting data to ${endpoint}:`, error);
+    throw error;
+  }
+};
+
+export const postFile = async (endpoint, data) => {
+  try {
+    const response = await axios.post(getApiUrl(endpoint), data, {
+      responseType: 'blob', // Ensure the response is handled as a Blob
+    });
     return response.data;
   } catch (error) {
     console.error(`Error posting data to ${endpoint}:`, error);
@@ -90,7 +98,6 @@ export const DeleteData = async (endpoint) => {
   }
 };
 
-
 export const putDataFile = async (endpoint, data) => {
   try {
     const response = await axios.put(getApiUrl(endpoint), data, {
@@ -104,6 +111,7 @@ export const putDataFile = async (endpoint, data) => {
     throw error;
   }
 };
+
 export const putData = async (endpoint, data) => {
   try {
     const response = await axios.put(getApiUrl(endpoint), data, {

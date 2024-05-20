@@ -18,22 +18,20 @@ export const componentMapping = {
   ApplicationSearch,
   HeadConfi,
   RoutesComponent,
-
   Button,
   ButtonConfig,
   LogoConfig,
-
   Iconbar,
   IconbarComponent,
   IconConfig,
   routesConfig,
 
 };
+
 export const routingConfig = routesConfig
 
 export const sections = {
   section1: [
-
     {
       componentKey: "IconbarComponent",
       style: " border-r  min-h-screen fixed start-0 w-14",
@@ -43,7 +41,6 @@ export const sections = {
           componentKey: "LogoConfig",
           style: "flex "
         },
-
       ],
     },
     {
@@ -60,10 +57,7 @@ export const sections = {
           config: HeadConfi,
 
         },
-
       ]
     },
-
   ],
-
 };

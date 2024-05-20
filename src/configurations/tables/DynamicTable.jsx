@@ -7,6 +7,7 @@ import ModalComponent from '../../components/form/Formfields/modal/ModalComponen
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 import { useButtonState } from '../../context/ButtonStateContext';
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 
 import ReactPaginate from 'react-paginate';
 
@@ -42,8 +43,6 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-
-      
 
       const queryParams = { employee_id: row.employee_id };
       const endpoint = `${view}/${queryParams.employee_id}`;
@@ -260,6 +259,8 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
     }
   };
 
+  console.log("employee data=" ,data)
+
   return (
     <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
       <table>
@@ -295,14 +296,14 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         </tbody>
       </table>
 
-      <div className='flex justify-between p-1 mx-4'>
+      <div className='flex justify-between p-1  mt-1 mx-4'>
       <p className="text-gray-400 font-medium text-sm">
-        {/* Showing {currentPage * pageSize } - {Math.min((currentPage + 1) * pageSize, data)} of {data} employees */}
+        Showing {currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, totalDocuments)} of {totalDocuments} employees
       </p>
      
-      <ReactPaginate className='flex'
-        previousLabel={'previous'}
-        nextLabel={'Next'}
+      <ReactPaginate className='flex mb-4'
+        previousLabel={<FaCaretLeft className='h-5'/>}
+        nextLabel={<FaCaretRight className='h-5'/>}
         breakLabel={'...'}
         pageCount={Math.ceil(totalDocuments / pageSize)}
         pageRangeDisplayed={5}
@@ -310,11 +311,11 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         onPageChange={handlePageChange}
         forcePage={currentPage - 1}
         containerClassName={'mt-1'}
-        pageClassName={'px-4'}
-        pageLinkClassName={'text-gray-400 font-bold text-sm'}
-        activeLinkClassName={'text-blue-400 font-bold text-sm'}
-        previousLinkClassName={'text-gray-400 font-medium text-sm'}
-        nextLinkClassName={'text-gray-400 font-medium text-sm'}
+        pageClassName={''}
+        pageLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
+        activeLinkClassName={'relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'}
+        previousLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
+        nextLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
       />
       </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
