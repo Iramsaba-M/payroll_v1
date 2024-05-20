@@ -302,8 +302,8 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
       </p>
      
       <ReactPaginate className='flex mb-4'
-        previousLabel={<FaCaretLeft className='h-5 text-gray-700'/>}
-        nextLabel={<FaCaretRight className='h-5 text-gray-700'/>}
+        previousLabel={<FaCaretLeft className='h-5'/>}
+        nextLabel={<FaCaretRight className='h-5'/>}
         breakLabel={'...'}
         pageCount={Math.ceil(totalDocuments / pageSize)}
         pageRangeDisplayed={5}
@@ -314,8 +314,8 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         pageClassName={''}
         pageLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
         activeLinkClassName={'relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'}
-        previousLinkClassName={'relative inline-flex items-center rounded-l-sm px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
-        nextLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
+        previousLinkClassName={'relative inline-flex items-center rounded-l-lg px-4 py-2 text-sm font-semibold text-gray-600 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
+        nextLinkClassName={'relative inline-flex items-center rounded-r-lg px-4 py-2 text-sm font-semibold text-gray-600 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
       />
       </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
