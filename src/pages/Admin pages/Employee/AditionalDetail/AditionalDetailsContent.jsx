@@ -33,14 +33,16 @@ export const formContent = [
       "label": "Year of Experience",
       "type": "text",
       "placeholder": "Enter here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required": false,
     },
     {
       "name":"feedback",
       "label": "Feedback",
       "type": "text",
       "placeholder": "Enter here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required": false,
     },
     {
       label: 'Experience Certificate',
@@ -48,7 +50,8 @@ export const formContent = [
       type: 'file',
       textcss: 'additionalstandard2',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} /> 
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} /> ,
+      "required": false,
     },
     {
       label: 'Payslips',
@@ -56,7 +59,8 @@ export const formContent = [
       type: 'file',
       textcss: 'additionalstandard2',
       placeholder: 'Select',
-      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />
+      icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,
+      "required": false,
       },
       {
         label: 'Bank Status',
@@ -64,7 +68,8 @@ export const formContent = [
         type: 'file',
         textcss: 'additionalstandard2',
         placeholder: 'Select',
-        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />
+        icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle2} />,
+        "required": false,
         }, 
   ]
   
@@ -72,7 +77,7 @@ export const TagConfig = [
     {
         "label": "Add Benefit",
         "name":"employee_benefit",
-        "type": "options",
+        "type": "tagoptions",
         "dropdownOptions": [
           { "label": "food", "value": "food" },
           { "label": "Transport", "value": "Transport" },
@@ -80,6 +85,7 @@ export const TagConfig = [
         ],
         "placeholder": "",
         "textcss": "standard",
+        "required": true,
     },
     ];
 
@@ -88,14 +94,22 @@ export const TagConfig = [
   ];
 
   export const OptionData = {
+    status:{
+      label: 'Employee Status',
+      name:'employee_status',
+      type: 'OptionComp',
+      required: true,
+      },
+    
     employeeStatusOptions: [
+      
       { name: 'Active', value: 'Active' },
       { name: 'Inactive', value: 'Inactive' },
       { name: 'Terminate', value: 'Terminate' },
       { name: 'Retired', value: 'Retired' },
       
     ],
-  
+    
     typeOptions: [
       { name: 'On Leave', value: 'Leave' },
       { name: 'Suspended', value: 'Suspended' },
@@ -116,10 +130,12 @@ export const TagConfig = [
 
 
     ],
+    
   };
   export const radiocontent = [
     { label: 'Fresher', type: 'radio', textcss: "standard", name: 'experience_type', value: 'fresher' },
-    { label: 'Experienced', type: 'radio', textcss: "standard", name: 'experience_type', value: 'experienced' }
+    { label: 'Experienced', type: 'radio', textcss: "standard", name: 'experience_type', value: 'experienced',required: true, }
   ]
+
   
  

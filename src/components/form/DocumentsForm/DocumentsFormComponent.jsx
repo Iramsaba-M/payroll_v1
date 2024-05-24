@@ -1,25 +1,27 @@
 
 /* eslint-disable react/prop-types */
 
-import  { useState } from "react";
+import { useState } from "react";
 import TextComponent from "./TextComponent";
 import FileComponent from "./FileComponent";
 import DemoStyles from "./DemoStyles";
 import axios from "axios";
 import CustomComponent from "./CustomComponent";
-import {customformContent, ButtonforSave, ButtonforAdd} from "../../../pages/Admin pages/Employee/Documents/DocumentsContent";
+import { customformContent, ButtonforSave, ButtonforAdd } from "../../../pages/Admin pages/Employee/Documents/DocumentsContent";
 import { getApiUrl } from "../../../api/GetAPI";
 import { DOCUMENTS_API, DOCUMENTS_DETAILS_PUT_API } from "../../../api/EndPoints";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
 import DocumentStyles from "./DocumentStyles";
 import ModalComponent from '../../form/Formfields/modal/ModalComponent'
-import {ModalConfig} from '../../form/Formfields/modal/ModalConfig'
+import { ModalConfig } from '../../form/Formfields/modal/ModalConfig'
 import { postDataImage, putDataFile } from "../../../services/APIService";
 import { ModalPayslipConfig } from "../Formfields/modal/ModalPayslipConfig";
 import { ModalReviewPayrollConfig } from "../Formfields/modal/ModalReviewPayrollConfig";
 import { ModalConfig2 } from "../Formfields/modal/ModalConfig2";
 import { useButtonState } from "../../../context/ButtonStateContext";
 import { useEffect } from "react";
+import { useFormik } from "formik";
+import { createInitialValues, formSchema, simplifiedData } from "../../../configurations/ValidationSchema/ValidationSchema";
 // const DocumentsFormComponent = ({
 //   config,
 //   handleNextClick,
@@ -42,7 +44,7 @@ import { useEffect } from "react";
 //   const handleChange = (name, value) => {
 //     setValues({ ...values, [name]: value });
 //   };
-  
+
 //   useEffect(() => {
 //     if (editEmployees && editEmployees.Documents && editEmployees.Documents.length > 0) {
 //       const updatedValues = {};
@@ -55,10 +57,10 @@ import { useEffect } from "react";
 //       setValues(updatedValues);
 //     }
 //   }, [editEmployees]);
-  
-  
-  
-  
+
+
+
+
 //   // const handleButtonClick = (label, type) => {
 //   //   if (label === "Save" && type === "submit") {
 //   //     setIsModalOpen(true);
@@ -78,7 +80,7 @@ import { useEffect } from "react";
 //       if (label === "Save" && type === "submit") {
 //         try {
 //           setIsModalOpen(true); // Open modal
-         
+
 //         } catch (error) {
 //           console.error("Error calling POST API:", error);
 //           // Handle errors here
@@ -86,7 +88,7 @@ import { useEffect } from "react";
 //       } else if (label === "Next") {
 //         handleNextClick();
 //       } 
-   
+
 //     } else  if (!AddMode && editMode) {
 //       setValues(editEmployees);
 //       // When edit mode is active
@@ -107,8 +109,8 @@ import { useEffect } from "react";
 //     }
 //     };
 
- 
- 
+
+
 
 //   useEffect(() => {
 //     if (editEmployees && editEmployees.Documents) {
@@ -437,7 +439,7 @@ import { useEffect } from "react";
 //       Object.keys(data).forEach((key) => {
 //         formData.append(key, data[key]);
 //       });
-  
+
 //       if (AddMode) {
 //         if (label === "Save" && type === "submit") {
 //           setIsModalOpen(true);
@@ -687,32 +689,54 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
 
   const { AddMode, editMode } = useButtonState();
 
+
+  ///////////////////////////////////
+  const formik = useFormik({
+    initialValues: createInitialValues(config),
+    validationSchema: formSchema(simplifiedData(config)),
+  });
+
+  console.log('er123', formik.values, formik.errors, values,formik.isValid);
+  //////////////////////////////////////
+
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
+    formik.setValues({ ...formik.values, [name]: value });
+
   };
 
   const handleFileChange = (name, selectedFile) => {
+    console.log('selectedFile',selectedFile);
     setValues({ ...values, [name]: selectedFile });
+    formik.setValues({ ...formik.values, [name]: selectedFile });
   };
 
   useEffect(() => {
     if (editEmployees && editEmployees.Documents && editEmployees.Documents.length > 0) {
       const updatedValues = {};
       editEmployees.Documents.forEach((doc) => {
+        console.log('document',doc);
         const type = doc.document_type;
+        console.log('55353',type);
         const nameFile = `${type}_document`;
         const nameNumber = `${type}_number`;
+
+        // const namedoc = `${type}_data`;
+        // updatedValues[namedoc] = doc.data;
 
         updatedValues[nameFile] = doc.file_name;
         updatedValues[nameNumber] = doc.document_number;
       });
+      console.log('678',updatedValues);
       setValues(updatedValues);
+      formik.setValues(updatedValues);
     }
   }, [editEmployees]);
 
   const onSubmit = async (e, label, type) => {
     e.preventDefault();
     try {
+      formik.handleSubmit();
       const data = { ...values, employee_id: employeeId };
       const formData = new FormData();
       Object.keys(data).forEach((key) => {
@@ -720,29 +744,31 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
       });
 
       if (AddMode) {
-        if (label === "Save" && type === "submit") {
-          setIsModalOpen(true);
+        if (label === "Save" && type === "submit" && formik.isValid) {
+          formik.handleSubmit();
           const response = await postDataImage(DOCUMENTS_API, formData);
           console.log("Form submitted successfully:", response);
+          setIsModalOpen(true);
           handleSubmit(data);
         } else if (label === "Next") {
           handleNextClick();
         }
-      } else if (!AddMode && editMode) {
+      } else if (!AddMode && editMode && formik.isValid) {
+        formik.handleSubmit();
         if (label === "Save" && type === "submit") {
           await putDataFile(`${DOCUMENTS_DETAILS_PUT_API}/${editEmployees.employee_id}`, formData);
           console.log("PUT API called successfully");
         } else if (label === "Next") {
           handleNextClick();
         }
-      }
+      } 
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
   const handleButtonClick = (label, type) => {
-    if (label === "Next") {
+    if (label === "Next" && Object.keys(formik.errors).length === 0 && formik.isValid) {
       handleNextClick();
     }
   };
@@ -763,188 +789,215 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
 
   return (
     <form onSubmit={(e) => onSubmit(e, "Save", "submit")}>
-          <div className=" flex-col w-[130vh] h-5/6 mt-8 ">
-            <div className="form-line flex mb-4 ml-20">
-              {config.slice(0, 2).map((field, index) => (
-                <div key={index}>
-                  <label className={DocumentStyles[field.textcss].label}>
-                    {field.label}
-                  </label>
-                  {field.type === "text" && (
-                    <TextComponent
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={values[field.name] || ""}
-                      onChange={(e) => handleChange(field.name, e.target.value)}
-                      textcss={DocumentStyles[field.textcss].input}
-                      icon={field.icon}
-                    />
-                  )}
-                  {field.type === "file" && (
-                    <FileComponent
-                      name={field.name}
-                      onChange={(file) => handleFileChange(field.name, file)}
-                      value={values[field.name] || ""}
-                      textcss={DocumentStyles[field.textcss].input}
-                      placeholder={field.placeholder}
-                      icon={field.icon}
-                      iconPosition={field.iconPosition}
-                    />
-                  )}
-                </div>
-              ))}
+      {/*  <form onSubmit={onSubmit}> */}
+      <div className=" flex-col w-[130vh] h-5/6 mt-8 ">
+        <div className="form-line flex mb-4 ml-20">
+          {config.slice(0, 2).map((field, index) => (
+            <div key={index}>
+              <label className={DocumentStyles[field.textcss].label}>
+                {field.label}
+              </label>
+              {field.type === "text" && (
+                <TextComponent
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={values[field.name] || ""}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={DocumentStyles[field.textcss].input}
+                  icon={field.icon}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {field.type === "file" && (
+                <FileComponent
+                  name={field.name}
+                  onChange={(file) => handleFileChange(field.name, file)}
+                  value={values[field.name] || ""}
+                  textcss={DocumentStyles[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                  iconPosition={field.iconPosition}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
-    
-            <div className="form-line flex mb-4 ml-20">
-              {config.slice(2, 4).map((field, index) => (
-                <div key={index}>
-                  <label className={DocumentStyles[field.textcss].label}>
-                    {field.label}
-                  </label>
-                  {field.type === "text" && (
-                    <TextComponent
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={values[field.name] || ""}
-                      onChange={(e) => handleChange(field.name, e.target.value)}
-                      textcss={DocumentStyles[field.textcss].input}
-                      icon={field.icon}
-                    />
-                  )}
-                  {field.type === "file" && (
-                    <FileComponent
-                      name={field.name}
-                      onChange={(file) => handleFileChange(field.name, file)}
-                      value={values[field.name] || ""}
-                      textcss={DocumentStyles[field.textcss].input}
-                      placeholder={field.placeholder}
-                      icon={field.icon}
-                      iconPosition={field.iconPosition}
-                    />
-                  )}
-                </div>
-              ))}
+          ))}
+        </div>
+
+        <div className="form-line flex mb-4 ml-20">
+          {config.slice(2, 4).map((field, index) => (
+            <div key={index}>
+              <label className={DocumentStyles[field.textcss].label}>
+                {field.label}
+              </label>
+              {field.type === "text" && (
+                <TextComponent
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={values[field.name] || ""}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={DocumentStyles[field.textcss].input}
+                  icon={field.icon}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {field.type === "file" && (
+                <FileComponent
+                  name={field.name}
+                  onChange={(file) => handleFileChange(field.name, file)}
+                  value={values[field.name] || ""}
+                  textcss={DocumentStyles[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                  iconPosition={field.iconPosition}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
-    
-            <div className="form-line flex mb-4 ml-20">
-              {config.slice(4, 6).map((field, index) => (
-                <div key={index}>
-                  <label className={DocumentStyles[field.textcss].label}>
-                    {field.label}
-                  </label>
-                  {field.type === "text" && (
-                    <TextComponent
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={values[field.name] || ""}
-                      onChange={(e) => handleChange(field.name, e.target.value)}
-                      textcss={DocumentStyles[field.textcss].input}
-                      icon={field.icon}
-                    />
-                  )}
-                  {field.type === "file" && (
-                    <FileComponent
-                      name={field.name}
-                      onChange={(file) => handleFileChange(field.name, file)}
-                      value={values[field.name] || ""}
-                      textcss={DocumentStyles[field.textcss].input}
-                      placeholder={field.placeholder}
-                      icon={field.icon}
-                      iconPosition={field.iconPosition}
-                    />
-                  )}
-                </div>
-              ))}
+          ))}
+        </div>
+
+        <div className="form-line flex mb-4 ml-20">
+          {config.slice(4, 6).map((field, index) => (
+            <div key={index}>
+              <label className={DocumentStyles[field.textcss].label}>
+                {field.label}
+              </label>
+              {field.type === "text" && (
+                <TextComponent
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={values[field.name] || ""}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={DocumentStyles[field.textcss].input}
+                  icon={field.icon}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {field.type === "file" && (
+                <FileComponent
+                  name={field.name}
+                  onChange={(file) => handleFileChange(field.name, file)}
+                  value={values[field.name] || ""}
+                  textcss={DocumentStyles[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                  iconPosition={field.iconPosition}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
-    
-            <div className="form-line flex mb-4 ml-20">
-              {config.slice(6, 8).map((field, index) => (
-                <div key={index}>
-                  <label className={DocumentStyles[field.textcss].label}>
-                    {field.label}
-                  </label>
-                  {field.type === "text" && (
-                    <TextComponent
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={values[field.name] || ""}
-                      onChange={(e) => handleChange(field.name, e.target.value)}
-                      textcss={DocumentStyles[field.textcss].input}
-                      icon={field.icon}
-                    />
-                  )}
-                  {field.type === "file" && (
-                    <FileComponent
-                      name={field.name}
-                      onChange={(file) => handleFileChange(field.name, file)}
-                      value={values[field.name] || ""}
-                      textcss={DocumentStyles[field.textcss].input}
-                      placeholder={field.placeholder}
-                      icon={field.icon}
-                      iconPosition={field.iconPosition}
-                    />
-                  )}
-                </div>
-              ))}
+          ))}
+        </div>
+
+        <div className="form-line flex mb-4 ml-20">
+          {config.slice(6, 8).map((field, index) => (
+            <div key={index}>
+              <label className={DocumentStyles[field.textcss].label}>
+                {field.label}
+              </label>
+              {field.type === "text" && (
+                <TextComponent
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={values[field.name] || ""}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={DocumentStyles[field.textcss].input}
+                  icon={field.icon}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {field.type === "file" && (
+                <FileComponent
+                  name={field.name}
+                  onChange={(file) => handleFileChange(field.name, file)}
+                  value={values[field.name] || ""}
+                  textcss={DocumentStyles[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                  iconPosition={field.iconPosition}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
-    
-            <div className="form-line flex mb-4 ml-20">
-              {config.slice(8, 10).map((field, index) => (
-                <div key={index}>
-                  <label className={DocumentStyles[field.textcss].label}>
-                    {field.label}
-                  </label>
-                  {field.type === "text" && (
-                    <TextComponent
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={values[field.name] || ""}
-                      onChange={(e) => handleChange(field.name, e.target.value)}
-                      textcss={DocumentStyles[field.textcss].input}
-                      icon={field.icon}
-                    />
-                  )}
-                  {field.type === "file" && (
-                    <FileComponent
-                      name={field.name}
-                      onChange={(file) => handleFileChange(field.name, file)}
-                      value={values[field.name] || ""}
-                      textcss={DocumentStyles[field.textcss].input}
-                      placeholder={field.placeholder}
-                      icon={field.icon}
-                      iconPosition={field.iconPosition}
-                    />
-                  )}
-                </div>
-              ))}
+          ))}
+        </div>
+
+        <div className="form-line flex mb-4 ml-20">
+          {config.slice(8, 10).map((field, index) => (
+            <div key={index}>
+              <label className={DocumentStyles[field.textcss].label}>
+                {field.label}
+              </label>
+              {field.type === "text" && (
+                <TextComponent
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={values[field.name] || ""}
+                  onChange={(e) => handleChange(field.name, e.target.value)}
+                  textcss={DocumentStyles[field.textcss].input}
+                  icon={field.icon}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {field.type === "file" && (
+                <FileComponent
+                  name={field.name}
+                  onChange={(file) => handleFileChange(field.name, file)}
+                  value={values[field.name] || ""}
+                  textcss={DocumentStyles[field.textcss].input}
+                  placeholder={field.placeholder}
+                  icon={field.icon}
+                  iconPosition={field.iconPosition}
+
+                  onBlur={formik.handleBlur}
+                />
+              )}
+              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
-    
-            <div className="ml-[50vh]">
-          <ButtonConfig Config={ButtonforSave} onClick={() => handleSubmitForm("Save", "submit")} />
+          ))}
+        </div>
+
+        <div className="ml-[50vh]">
+          {/* <ButtonConfig Config={ButtonforSave} onClick={() => handleSubmitForm("Save", "submit")} /> */}
+          <ButtonConfig Config={ButtonforSave} onClick={(label, type) => handleButtonClick(label, type, editMode)} />
         </div>
 
         <div className="ml-20 mb-2 mr-2">
           <ButtonConfig Config={ButtonforAdd} onClick={addCustomComponent} />
         </div>
-    
-            <div className="ml-20">
-              {customComponents.map((customComponent, index) => (
-                <CustomComponent
-                  key={index}
-                  value={customComponent.customValue}
-                  config={customformContent}
-                  onCustomChange={(value) => updateCustomValue(index, value)}
-                />
-              ))}
-            </div>
-          </div>
-          <ModalComponent
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
-            config={ModalConfig2}
-          />
-        </form>
-      );
-    };
+
+        <div className="ml-20">
+          {customComponents.map((customComponent, index) => (
+            <CustomComponent
+              key={index}
+              value={customComponent.customValue}
+              config={customformContent}
+              onCustomChange={(value) => updateCustomValue(index, value)}
+            />
+          ))}
+        </div>
+      </div>
+      <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalConfig2}
+      />
+    </form>
+  );
+};
 
 export default DocumentsFormComponent;
