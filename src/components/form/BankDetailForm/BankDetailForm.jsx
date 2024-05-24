@@ -237,11 +237,12 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
       const allFormValues = forms.map((form) => form.values);
       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
   
-      if (AddMode) {
+      if (AddMode && formik.isValid) {
         const response = await postData(BANK_DETAILS_API, dataToSend);
         console.log('Data sent:', response);
+        setIsModalOpen(true);
         handleSubmit(dataToSend);
-      } else if (editMode) {
+      } else if (editMode && formik.isValid)  {
         // Extract employee_id directly from editEmployees
         const response = await putData(`${BANK_DETAILS_API_PUT}/${editEmployees.employee_id}`, dataToSend);
         console.log('PUT API response:', response);

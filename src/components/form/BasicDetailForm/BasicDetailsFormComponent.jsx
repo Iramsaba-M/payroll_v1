@@ -363,13 +363,7 @@ console.log("Merged Config:", mergedConfig);
                 handleChange={handleChange}
                 photoContent={values.photo_content}
                 onBlur={formik.handleBlur}
-                // formik={formik}
-              // photoContent={(formik && formik.values[photo_content] && values.photo_content ) ||
-              //   // (formData && formData[item.name]) ||
-              //   ""}
-              // // onChange={(e) => handleInputChange(field.name, e.target.value)}
-              // onChange={formik.handleChange}
-              // onBlur={formik.handleBlur}
+                
               />
             </div>
             
