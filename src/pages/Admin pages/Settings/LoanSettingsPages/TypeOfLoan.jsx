@@ -302,6 +302,7 @@ import { TableHeaders, TextComponentData1, FileComponentData } from "./TypeOfLoa
 import TextStyle from "../../../../components/form/Formfields/text/TextStyle";
 import { fetchData,patchDatafiles, postDataImage } from "../../../../services/APIService";
 import { Type_of_loan_get,Type_of_loan_patch, Type_of_loan_post } from "../../../../api/EndPoints";
+import ErrorScreen from "../../../../errorhandling/ErrorScreen";
 
 const TypeOfLoan = () => {
   const [loanData, setLoanData] = useState([]);
@@ -311,6 +312,8 @@ const TypeOfLoan = () => {
   const [enable, setEnable] = useState(false);
   const [file, setFile] = useState(null);
   const  [prevname,setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
+  
 
 
 
@@ -325,13 +328,18 @@ const TypeOfLoan = () => {
         // setLoanData(response.data);
         setLoanData(response); // This line seems redundant
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error('Error posting data:', error);
+        setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
       }
+      
     };
     useEffect(() => {
     fetchData1();
   }, []);
-  
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {

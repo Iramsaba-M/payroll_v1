@@ -1,11 +1,13 @@
 import React from 'react';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const PaymentReminderSetting = () => {
+  const errorCode=404
   return (
     <div>
-      Payment Reminder Setting 
+      <ErrorScreen errorCode={errorCode} />
     </div>
-  );
+  )
 }
 
 export default PaymentReminderSetting;

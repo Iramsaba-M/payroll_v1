@@ -7,6 +7,7 @@ import OptionsComponent from "../../../../components/form/Formfields/options/Opt
 import ButtonConfig from '../../../../configurations/Button/ButtonConfig';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import TextStyle from '../../../../components/form/Formfields/text/TextStyle';
+import ErrorScreen from '../../../../errorhandling/ErrorScreen';
 
 // Assuming data structure and helper components are imported correctly
 import {
@@ -38,6 +39,8 @@ const LoanPolicy = () => {
   const [editRowIndex, setEditRowIndex] = useState(null);
   const [editRowData, setEditRowData] = useState(null);
   const [prevname, setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
+  
 
 
   const handleEditClick = (rowIndex, row) => {
@@ -231,13 +234,18 @@ const LoanPolicy = () => {
       // setTableData(response.data);
       setTableData(response);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
 
   useEffect(() => {
     fetchTableData();
   }, []);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   return (
     <form onSubmit={handleSubmit} className='p-8 w-[150vh]'>

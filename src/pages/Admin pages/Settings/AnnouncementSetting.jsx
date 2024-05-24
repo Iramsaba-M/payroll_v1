@@ -1,11 +1,13 @@
 import React from 'react';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const AnnouncementSetting = () => {
+  const errorCode=404
   return (
     <div>
-      Announcement Setting
+      <ErrorScreen errorCode={errorCode} />
     </div>
-  );
+  )
 }
 
 export default AnnouncementSetting;
