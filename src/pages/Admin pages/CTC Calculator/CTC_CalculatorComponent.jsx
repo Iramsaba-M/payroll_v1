@@ -1,8 +1,13 @@
 import React from 'react'
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 export const CTC_CalculatorComponent = () => {
+  const errorCode=404;
   return (
-    <div>CTC_Calculator</div>
+    <div>
+       <ErrorScreen errorCode={errorCode} />
+    </div>
+    
   )
 }
 

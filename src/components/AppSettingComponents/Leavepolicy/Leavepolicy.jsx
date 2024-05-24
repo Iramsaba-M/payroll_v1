@@ -13,6 +13,7 @@ import { fetchData, patchData, postData } from '../../../services/APIService';
 import {  admin_settings_Leave_Policy } from '../../../api/EndPoints';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import NumberComponent from "../../form/Formfields/number/numbercompoent"
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const Leavepolicy = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const Leavepolicy = () => {
   const [editRowIndex, setEditRowIndex] = useState(null);
   const [editRowData, setEditRowData] = useState(null);
   const [prevname,setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
 
 
   /////////////////////////////////////////////////////
@@ -149,19 +151,18 @@ const Leavepolicy = () => {
 
       console.log('response.get', response.data)
     } catch (error) {
-      console.error("Failed to fetch data: ", error);
-      if (axios.isAxiosError(error)) {
-        
-        console.error("Axios error: ", error.message);
-      } else {
-        console.error("Unexpected error: ", error);
-      }
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
 
   useEffect(() => {
     fetchTableData();
   }, []);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   return (
     <form onSubmit={handleSubmit}>

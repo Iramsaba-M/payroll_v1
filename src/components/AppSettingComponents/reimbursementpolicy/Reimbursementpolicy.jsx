@@ -10,6 +10,7 @@ import OptionsComponent from '../../form/Formfields/options/OptionsComponent';
 import { RiArrowDownSFill } from "react-icons/ri";
 import { Reimbrusement_settings_get, Reimbrusement_settings_patch, Reimbrusement_settings_post } from '../../../api/EndPoints';
 import { fetchData, patchData, postData } from '../../../services/APIService';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const TableHeaders = [
   { name: 'Policy Name', className: 'TableHeaders1' },
@@ -25,6 +26,7 @@ const ReimbursementPolicy = () => {
   const [editRowData, setEditRowData] = useState(null);
   const [formData, setFormData] = useState({ reimbursement_type: '', maximum_amount: '', minimum_amount: '', period: '', enable: false });
   const [prevname, setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
 
 
   useEffect(() => { fetchTableData(); }, []);
@@ -107,16 +109,23 @@ const ReimbursementPolicy = () => {
       setTableData(newData);
     }
   };
-
   const fetchTableData = async () => {
-    // const response = await axios.get('http://localhost:3000/savepolicyrem');
-    const response = await fetchData(Reimbrusement_settings_get);
-  
-
-    // const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
-    // setTableData(response.data);
-    setTableData(response);
+    try {
+      // const response = await axios.get('http://localhost:3000/savepolicyrem');
+      const response = await fetchData(Reimbrusement_settings_get);
+      
+      // const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
+      // setTableData(response.data);
+      setTableData(response);
+    } catch (error) {
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
+    }
   };
+  
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   const handleAddPolicy = async () => {
     if (formData.reimbursement_type && formData.maximum_amount && formData.minimum_amount && formData.period) {

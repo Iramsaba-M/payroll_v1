@@ -1,9 +1,11 @@
 import React from 'react'
+import ErrorScreen from '../../../../errorhandling/ErrorScreen'
 
 const LoanApprovalSettings = () => {
+  const errorCode=404
   return (
     <div>
-      LoanApprovalSettings
+      <ErrorScreen errorCode={errorCode} />
     </div>
   )
 }

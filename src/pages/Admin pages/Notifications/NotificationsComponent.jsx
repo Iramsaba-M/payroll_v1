@@ -8,6 +8,6 @@ const NotificationsComponent = () => {
       <ErrorScreen errorCode={errorCode} />
     </div>
   )
-}
+} 
 
 export default NotificationsComponent

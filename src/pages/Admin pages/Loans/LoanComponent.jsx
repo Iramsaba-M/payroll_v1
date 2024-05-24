@@ -1,8 +1,12 @@
 import React from 'react'
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const LoanComponent = () => {
+  const errorCode=404;
   return (
-    <div>Loans</div>
+    <div> 
+      <ErrorScreen errorCode={errorCode} />
+      </div>
   )
 }
 
