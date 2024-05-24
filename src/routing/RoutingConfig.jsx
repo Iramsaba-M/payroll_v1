@@ -43,8 +43,13 @@ import TypeReimbursement from '../components/AppSettingComponents/reimbursementp
 import Reimbursementpolicy from '../components/AppSettingComponents/reimbursementpolicy/Reimbursementpolicy'
 import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
 import UserHome from '../pages/User pages/Home/UserHome'
+import ErrorScreen from '../errorhandling/ErrorScreen'
 
 const routesConfig = [
+  {
+    path: '/errorscreen',
+    element: <ErrorScreen />,
+  },
   {
     label: "Person Data",
     children: [
@@ -384,6 +389,7 @@ const routesConfig = [
       },
     ]
   }
+  
 ];
 
 export default routesConfig;

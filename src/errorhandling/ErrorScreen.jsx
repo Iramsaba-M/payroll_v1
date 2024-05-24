@@ -58,23 +58,31 @@ const ErrorScreen = ({ errorCode }) => {
       break;
   }
 
+  const handleClick = () => {
+    window.location.reload();
+  };
+
   return (
-    <div className='flex justify-evenly  '>
-      <div className='w-[50%]'>
+    <div className='flex justify-center'>
+
+      <div className=''>
         <div className='items-center ml-[30%] w-[57vh] mt-[30%] '>
           <div className='text-gray-200 text-6xl font-bold'>{errorMessage}</div>
           <div className='text-gray-900 text-4xl font-bold mt-4'>{errortitle}</div>
           <div className='text-md text-gray-header mt-4'>{errordesc}  </div>
           <div className='mt-4'>
-            <Button Configs={ButtonsConfig} />
+            <Button Configs={ButtonsConfig} onClick={handleClick} />
           </div>
         </div>
       </div>
-      <div className='w-[50%]'>
+
+      <div className=''>
         <img src={errorImage} alt="" className='object-cover w-[90vh]'/>
       </div>
+
     </div>
   );
 };
+
 
 export default ErrorScreen;

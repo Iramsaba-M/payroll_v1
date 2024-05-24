@@ -2,9 +2,10 @@ import React from 'react'
 import ErrorScreen from '../../../errorhandling/ErrorScreen'
 
 const NotificationsComponent = () => {
+  const errorCode=404
   return (
     <div>
-      <ErrorScreen />
+      <ErrorScreen errorCode={errorCode} />
     </div>
   )
 }

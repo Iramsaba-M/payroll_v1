@@ -7,7 +7,7 @@ import ModalComponent from '../../components/form/Formfields/modal/ModalComponen
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 import { useButtonState } from '../../context/ButtonStateContext';
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
+import { FaAngleRight ,FaAngleLeft } from "react-icons/fa";
 
 import ReactPaginate from 'react-paginate';
 
@@ -297,13 +297,13 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
       </table>
 
       <div className='flex justify-between p-1 mx-4'>
-      <p className="text-gray-400 font-medium p-1 mt-1 text-sm">
+      <p className="text-gray-400 font-medium p-1 text-sm">
         Showing {currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, totalDocuments)} of {totalDocuments} employees
       </p>
      
-      <ReactPaginate className='flex mb-4'
-        previousLabel={<FaCaretLeft className='h-5'/>}
-        nextLabel={<FaCaretRight className='h-5'/>}
+      <ReactPaginate className='flex'
+        previousLabel={<FaAngleLeft className='mt-1'/>}
+        nextLabel={<FaAngleRight className='mt-1'/>}
         breakLabel={'...'}
         pageCount={Math.ceil(totalDocuments / pageSize)}
         pageRangeDisplayed={5}
@@ -311,11 +311,11 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
         onPageChange={handlePageChange}
         forcePage={currentPage - 1}
         containerClassName={'mt-1'}
-        pageClassName={''}
-        pageLinkClassName={'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
-        activeLinkClassName={'relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'}
-        previousLinkClassName={'relative inline-flex items-center rounded-l-lg px-4 py-2 text-sm font-semibold text-gray-600 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
-        nextLinkClassName={'relative inline-flex items-center rounded-r-lg px-4 py-2 text-sm font-semibold text-gray-600 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'}
+        pageClassName={'px-3'}
+        pageLinkClassName={'text-gray-400 font-bold text-sm'}
+        activeLinkClassName={'text-gray-100 font-bold text-sm border-gray-2 bg-blue-600 px-3 py-2 rounded-full'}
+        previousLinkClassName={'text-gray-400 font-medium text-lg mr-2'}
+        nextLinkClassName={'text-gray-400 font-medium text-lg '}
       />
       </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
