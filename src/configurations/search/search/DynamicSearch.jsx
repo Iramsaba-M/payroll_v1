@@ -26,7 +26,7 @@ const DynamicSearch = ({ data, searchKey, config, searchFunrecd }) => {
     <div className='relative'>
       <div className={`${StyleSearch[config.style]} search-container`}>
         <div className="flex items-center">
-          <FaSearch className="search-icon" />
+          <FaSearch className="search-icon mr-2" />
           <input
             type="text"
             value={searchTerm}
