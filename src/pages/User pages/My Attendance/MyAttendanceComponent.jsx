@@ -14,6 +14,7 @@ import { EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndU
 import { fetchData, postData } from '../../../services/APIService'
 import Table2 from '../../../configurations/table2/Table2';
 import '../../../assets/Styles/CalendarStyle.css'
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 export const Slider = ({ config, data }) => {
 
@@ -139,6 +140,7 @@ const MyAttendanceComponent = () => {
   const [leavehistory, setLeavehistory] = useState(null);
   const [leavebalance, setLeavebalance] = useState(null);
   const [punchstatus, setPunchstatus] = useState(null);
+  const [errorCode, setErrorCode] = useState(null); 
 
   const Buttonclick = (label) => {
     if (label === 'Punch In') {
@@ -204,6 +206,7 @@ const MyAttendanceComponent = () => {
       setLeavebalance(response.leave_balance)
     } catch (error) {
       console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500);
     }
   };
 
@@ -226,15 +229,14 @@ const MyAttendanceComponent = () => {
       console.log('leave history', response);
     } catch (error) {
       console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500);
     }
 
   };
 
-  // const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    console.log('errorCode',errorCode);
 
-  // const formatShortWeekday = (locale, date) => {
-  //   return dayNames[date.getDay()];
-  // };
+ 
 
   const punch = async (e) => {
     // e.preventDefault();
@@ -262,6 +264,10 @@ const MyAttendanceComponent = () => {
       punch();
     }
   }, [punchstatus]);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; 
+  }
 
   return (
     <div >

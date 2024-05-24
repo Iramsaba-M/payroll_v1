@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import { sickleaveContent,exmpContent1,casualleaveContent, presentdayContent } from './UserReportsContent';
 import { EndUser_leaves_report } from '../../../api/EndPoints';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 
 
@@ -61,6 +62,7 @@ const UserReportsComponent = () => {
   const [sickData, setSickData] = useState([])
   const [casualData, setCasualData] = useState([])
   const [presentData, setPresentData] = useState([])
+  const [errorCode, setErrorCode] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -164,10 +166,16 @@ const UserReportsComponent = () => {
         }
       } catch (error) {
         console.error('Error posting data:', error);
+        setErrorCode(error.response ? error.response.status : 500);
       }
     };
     fetchData();
   }, [selectedDate, selectedDate1]);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
+
   console.log('bar', barGraphData)
   return (
     <div>

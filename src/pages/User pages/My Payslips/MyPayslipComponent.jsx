@@ -4,10 +4,12 @@ import { Mypayslipcontent } from './MypayslipContent';
 import TableComponent from '../../../configurations/tables/TableComponent';
 import { mypayslip } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const MyPayslipComponent = () => {
 
   const [tableData, setTableData] = useState([]);
+  const [errorCode, setErrorCode] = useState(null);
 
   const fetchTableData = async () => {
       
@@ -29,6 +31,8 @@ const MyPayslipComponent = () => {
       
       } catch (error) {
         console.error('Error fetching table data:', error);
+        setErrorCode(error.response ? error.response.status : 500);
+
       }
     };
     
@@ -37,6 +41,9 @@ const MyPayslipComponent = () => {
     }, [mypayslip]); // Include payslips in the dependency array
 
 
+    if (errorCode) {
+      return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+    }
   
 
   return (

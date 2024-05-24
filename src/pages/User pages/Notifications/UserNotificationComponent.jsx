@@ -64,9 +64,11 @@ import { UserNotificationcontent } from './UserNotificationContent';
 import { EndUser_notification } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import '../../../assets/Styles/CalendarStyle.css';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const UserNotificationComponent = () => {
   const [notificationData, setNotificationData] = useState([]);
+  const [errorCode, setErrorCode] = useState(null);
 
   useEffect(() => {
     const fetchNotificationData = async () => {
@@ -81,11 +83,15 @@ const UserNotificationComponent = () => {
         console.error('Error fetching data:', error);
         // Display an error notification if there's an error fetching data
         toast.error('Error fetching notification data!');
+        setErrorCode(error.response ? error.response.status : 500);
       }
     };
 
     fetchNotificationData();
   }, []);
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; 
+  }
 
   return (
     <div className="flex flex-col">
