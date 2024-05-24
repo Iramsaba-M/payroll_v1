@@ -16,6 +16,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { fetchData, postDataImage } from '../../../services/APIService';
 import { EndUser_ApplyLeave, EndUser_Leave_Balance } from '../../../api/EndPoints';
 import FileComponent from '../../../components/form/DocumentsForm/FileComponent';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const MyLeave = ({ config, applyleave }) => {
     const [values, setValues] = useState({});
@@ -26,6 +27,7 @@ const MyLeave = ({ config, applyleave }) => {
         endDate: new Date(),
         key: 'selection'
     });
+    const [errorCode, setErrorCode] = useState(null);
 
     const handleChange = (name, value) => {
         setValues({
@@ -81,12 +83,16 @@ const MyLeave = ({ config, applyleave }) => {
             setLeavebalance(response.leave_balance)
         } catch (error) {
             console.error('Error posting data:', error);
+            setErrorCode(error.response ? error.response.status : 500);
         }
     };
 
     useEffect(() => {
         fetchgetData();
     }, []);
+    if (errorCode) {
+        return <ErrorScreen errorCode={errorCode} />; 
+      }
 
     const onSubmit = async (e) => {
         e.preventDefault();
