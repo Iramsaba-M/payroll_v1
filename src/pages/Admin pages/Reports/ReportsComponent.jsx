@@ -10,6 +10,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/EndPoints';
 import { getApiUrl} from '../../../api/GetAPI';
 import { postData } from '../../../services/APIService';
+import ErrorScreen from '../../../errorhandling/ErrorScreen'
+import { Navigate } from 'react-router-dom';
 
 const Barchart = ({ graphdata }) => {
 
@@ -53,7 +55,7 @@ const Barchart = ({ graphdata }) => {
 }
 
 const Pichart = ({ graphdata }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
+  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
   if (!graphdata) {
     return null;
   }
@@ -86,6 +88,7 @@ const ReportsComponent = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate1, setSelectedDate1] = useState(null);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
+  const [errorCode, setErrorCode] = useState(null); 
 
   useEffect(() => {
     const currentDate = new Date();
@@ -158,6 +161,7 @@ const ReportsComponent = () => {
         }
       } catch (error) {
         console.error('Error posting data:', error);
+       Navigate('/errorscreen')// Set error code based on response
       }
     };
     fetchData();
@@ -184,11 +188,15 @@ const ReportsComponent = () => {
         console.log('setCardData:', cardData);
       } catch (error) {
         console.error('Error posting data:', error);
+        setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
       }
     };
     fetchData2();
   }, [selectedDateTop]);
 
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   return (
     <div className='flex flex-col mt-4 ml-4'>

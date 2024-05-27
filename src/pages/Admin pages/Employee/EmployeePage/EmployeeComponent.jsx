@@ -1,6 +1,6 @@
 //Employee Component 
 import { useState, useEffect } from 'react';
-import { fetchData } from '../../../../services/APIService';
+import { fetchData, fetchData1} from '../../../../services/APIService';
 import Card from '../../../../configurations/Card/Card';
 import Button from '../../../../configurations/Button/Button';
 import ButtonData from '../../../../configurations/Button/ButtonData';
@@ -9,19 +9,32 @@ import { cardContent, tableContent,  importButtonData ,ExportButtonData  } from 
 import AddEmployee from '../AddEmployee/AddEmployee';
 import { parseExcelFile, uploadEmployeeData, generateTemplate, exportDataTemplate} from '../../../../excelUtils';
 import {getApiUrl} from '../../../../api/GetAPI';
-import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get} from '../../../../api/EndPoints';
+import { BasicDetails_export,SalaryDetails_export,BankDetails_export,Additionaldetails_export , EMP_API, CARDS_API, BASIC_DETAILS_API_Get,SALARY_DETAILS_GET_API, BANK_DETAILS_API_GET, DOCUMENT_DETAILS_API_GET, ADITIONAL_DETAILS_PUT_API} from '../../../../api/EndPoints';
 import SearchableComp from '../../../../configurations/search/search/SearchableComp';
 import SearchInputConfig from '../../../../configurations/search/search/SearchInputConfig';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
-
+import { useButtonState } from '../../../../context/ButtonStateContext';
 
 const EmployeeComponent = () => {
-  const [employeeData, setEmployeeData] = useState([]);
+  const [employeeData, setEmployeeData] = useState({
+    employees: [],
+    total_pages: 1,
+    page_size: 10,
+    total_documents: 0,
+    current_page: 0
+  });
   const [empcardData, setCardData] = useState([]);
   const [showImportPopup, setShowImportPopup] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const { EditModeclick, AddEmployeeclick } = useButtonState(); 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5; // Assuming the default page size is 10
+
+
   const [selectedExportOptions, setSelectedExportOptions] = useState({
     basicDetails: false,
     salaryDetails: false,
@@ -29,12 +42,13 @@ const EmployeeComponent = () => {
     documents: false,
     additionalDetails: false,
   });
+  const[editempvalue, setEditempvalue] = useState({}); 
 
-  useEffect(() => {  
-    const fetchemployeeData = async () => {
+useEffect(() => {
+    const fetchEmployeeData = async (pageNumber) => {
       try {
-        const data = await fetchData(EMP_API);
-        setEmployeeData(data); 
+        const data = await fetchData1(EMP_API, pageNumber, pageSize);
+        setEmployeeData(data);
       } catch (error) {
         console.error(`Error fetching employee data:`, error);
       }
@@ -45,65 +59,130 @@ const EmployeeComponent = () => {
         const data = await fetchData(CARDS_API);
         setCardData(data);
       } catch (error) {
-        // Handle error
+        console.error(`Error fetching employee data:`, error);
       }
     };
 
     fetchCardData();
-    fetchemployeeData();
-  }, []);
-  
+    fetchEmployeeData(currentPage);
+  }, [currentPage]);
 
-  useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      const queryParams = new URLSearchParams(location.search);
-      const empId = queryParams.get('employeeId');
+  // useEffect(() => {
+  //   const fetchDataAndSetState = async () => {
+  //     const queryParams = new URLSearchParams(location.search);
+  //     const empId = queryParams.get('employeeId');
 
-      // Construct the API URL with the employee ID
-      const apiUrl = `${EMP_API}?employeeId=${empId}`;
-      console.log('API URL:', apiUrl); // Log the API URL
+  //     // Construct the API URL with the employee ID
+  //     const apiUrl = `${EMP_API}?employeeId=${empId}`;
+  //     console.log('API URL:', apiUrl); // Log the API URL
 
+  //     try {
+  //       const data = await fetchData(apiUrl);
+  //       setEmployeeData(data);
+  //     } catch (error) {
+  //       console.error('Error fetching employee data:', error);
+  //     }
+  //   };
+
+  //   fetchDataAndSetState();
+  // }, [location.search]);
+console.log("carddata",empcardData)
+   
+  const editEmployees = async () => {
+    if (selectedEmployeeId) {
       try {
-        const data = await fetchData(apiUrl);
-        setEmployeeData(data);
-      } catch (error) {
-        console.error('Error fetching employee data:', error);
-      }
-    };
-
-    fetchDataAndSetState();
-  }, [location.search]);
-
-  useEffect(() => {
-    const fetchTotalCTCAndEmployees = async () => {
-       if (selectedEmployeeId) {
+        const basicDetailsUrl = `${BASIC_DETAILS_API_Get}/${selectedEmployeeId}`;
+        const salaryDetailsUrl = `${SALARY_DETAILS_GET_API}/${selectedEmployeeId}`;
+        const bankDetailsUrl = `${BANK_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const documentsUrl = `${DOCUMENT_DETAILS_API_GET}/${selectedEmployeeId}`;
+        const additionalUrl = `${ADITIONAL_DETAILS_PUT_API}?employee_id=${selectedEmployeeId}`;
+  
+        // Fetch basic details
+        let basicDetailsResponse = null;
         try {
-          const result = await fetchData(`${BASIC_DETAILS_API_Get}?employeeId=${selectedEmployeeId}`);
-          // console.log('Total CTC and Employees Data:', result);
-          // Process data as needed
+          basicDetailsResponse = await fetchData(basicDetailsUrl);
+          console.log("Basic Details Result:", basicDetailsResponse);
         } catch (error) {
-          console.error('Error fetching total CTC and employees data:', error);
+          console.error("Error fetching basic details:", error);
         }
+  
+        // Fetch salary details
+        let salaryDetailsResponse = null;
+        try {
+          salaryDetailsResponse = await fetchData(salaryDetailsUrl);
+          console.log("Salary Details Result:", salaryDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching salary details:", error);
+        }
+  
+        // Fetch bank details
+        let bankDetailsResponse = null;
+        try {
+          bankDetailsResponse = await fetchData(bankDetailsUrl);
+          console.log("Bank Details Result:", bankDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching bank details:", error);
+        }
+  
+        // Fetch documents details
+        let documentsDetailsResponse = null;
+        try {
+          documentsDetailsResponse = await fetchData(documentsUrl);
+          console.log("Documents Details Result:", documentsDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching documents details:", error);
+        }
+  
+        // Fetch additional details
+        let additionalDetailsResponse = null;
+        try {
+          additionalDetailsResponse = await fetchData(additionalUrl);
+          console.log("Additional Details Result:", additionalDetailsResponse);
+        } catch (error) {
+          console.error("Error fetching additional details:", error);
+        }
+  
+        // Merge all details into a single object
+        const updatedEmpValue = {
+          ...basicDetailsResponse,
+          salary: salaryDetailsResponse || 0,
+          Bank: bankDetailsResponse || null,
+          Documents: documentsDetailsResponse || null,
+          Additional: additionalDetailsResponse || null,
+        };
+  
+        // Update the state
+        setEditempvalue(updatedEmpValue);
+      } catch (error) {
+        console.error('Error in editEmployees function:', error);
       }
-    };
-
-    fetchTotalCTCAndEmployees();
+    }
+  };
+  
+  useEffect(() => {
+    editEmployees();
   }, [selectedEmployeeId]);
-
+  
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
+    AddEmployeeclick();
     navigate('AddEmployee');
+    setAddMode(false); 
   };
 
   const handleEditEmployee = (employeeId) => {
     setSelectedEmployeeId(employeeId);
     setShowAddEmployee(true);
-    setIsEditMode(true); // Set edit mode to true
+    EditModeclick();
     navigate(`AddEmployee?employeeId=${employeeId}`);
+   
   };
+
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
       handleAddEmployee();
+  
+      console.log("AddEmployeeclick");
     } else if (label === 'Import') {
       setShowImportPopup(true);
     } else if (label === 'Export') {
@@ -185,7 +264,7 @@ const EmployeeComponent = () => {
   const searchFun = (recsearchdata) => {
     setFilteredEmployeeData(recsearchdata);
   };
-
+console.log('editempvalue',editempvalue);
   return (
     <div className="flex flex-col ml-4">
       {!showAddEmployee ? (
@@ -196,23 +275,31 @@ const EmployeeComponent = () => {
 
           <div className="flex items-center justify-between p-1 ml-4">
             <div className='text-left ml-4 font-lg font-bold text-gray-500'>
-              <SearchableComp SearchConfig={SearchInputConfig} data={employeeData} searchFunrec={searchFun} />
+              <SearchableComp SearchConfig={SearchInputConfig} data={employeeData.employees} searchFunrec={searchFun} />
             </div>
             <div className='text-right p-1 mr-4'>
               <Button Configs={ButtonData} onClick={handleButtonClick} />
             </div>
           </div>
 
-          <div className="flex p-2 ml-8 mt-8">
-          <DynamicTable
-  config={tableContent} 
-  data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData} 
-  onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
-/>
- </div>
+          <div className="flex p-2 ml-8 mt-2">
+            <DynamicTable
+              config={tableContent} 
+              data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData.employees} 
+              currentPage={currentPage}
+              pageSize={pageSize}
+              totalDocuments={employeeData.total_documents}
+              setCurrentPage={setCurrentPage}
+              onEditEmployee={handleEditEmployee} // Make sure this prop is correctly provided
+          />
+          </div>
         </>
       ) : (
-        <AddEmployee employeeId={selectedEmployeeId} onClose={() => setShowAddEmployee(false)} />
+        <AddEmployee
+        employeeId={selectedEmployeeId}
+        onClose={() => setShowAddEmployee(false)}
+        editEmployees={editempvalue} // Pass the editEmployees function as prop
+      />
       )}
 
 {showImportPopup && (

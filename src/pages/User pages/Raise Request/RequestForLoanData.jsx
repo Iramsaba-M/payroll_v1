@@ -15,6 +15,7 @@ export const RequestForLoanData = [
     "placeholder": "Select Type",
     "textcss": "standard",
     "icon": <RiArrowDownSFill className="text-black -mt-6 ml-[16vh]" />,
+    "required":true
   },
   {
     "name": "amount",
@@ -22,11 +23,13 @@ export const RequestForLoanData = [
     "type": "text",
     "placeholder": "Enter Amount",
     "textcss": "standard",
+    "required":true
   },
   {
     "name": "installment_period",
     "label": "Installment period",
     "type": "options",
+    "required":true,
     "options": [
       { "name": "1", "value": "1" },
       { "name": "2", "value": "2" },
@@ -76,13 +79,14 @@ export const RequestForLoanData = [
     "type": "text",
     "placeholder": "Type Here",
     "textcss": "standard",
+    "required":false
 
   },
 
 ];
 
 export const Apply = [
-  { label: 'Apply', style: 'buttonStyleApply', type: "button" },
+  { label: 'Apply', style: 'buttonStyleApply', type: "submit" },
 ];
 export const View_Policies = [
   { label: 'View policies', style: 'buttonStyleViewPolicies', type: "button" },

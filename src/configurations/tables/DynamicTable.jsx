@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import TableStyle from './TableStyle';
 import { MdOutlineEdit, MdOutlineFileDownload,MdDeleteOutline } from 'react-icons/md';
-import { view } from '../../api/EndPoints';
-import { fetchData } from '../../services/APIService';
+import { Delete_All, view } from '../../api/EndPoints';
+import { DeleteData, fetchData } from '../../services/APIService';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
+import { useButtonState } from '../../context/ButtonStateContext';
+import { FaAngleRight ,FaAngleLeft } from "react-icons/fa";
 
+import ReactPaginate from 'react-paginate';
 
-function DynamicTable({ config, data, onEditEmployee }) {
+function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const { EditModeclick } = useButtonState();
+ // Calculate the total number of pages
+
+ const handlePageChange = (selectedPage) => {
+  setCurrentPage(selectedPage.selected + 1);
+};
+  // const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
 
   const handleCheckboxChange = (row) => {
     if (selectedRows.includes(row)) {
@@ -33,8 +43,6 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-
-      
 
       const queryParams = { employee_id: row.employee_id };
       const endpoint = `${view}/${queryParams.employee_id}`;
@@ -71,7 +79,8 @@ function DynamicTable({ config, data, onEditEmployee }) {
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-
+      EditModeclick();
+      console.log("Edit mode is true");
       onEditEmployee(row.employee_id); // Call the onEditEmployee function passed as a prop
     } catch (error) {
       console.error('Error fetching payslips data:', error);
@@ -89,8 +98,22 @@ function DynamicTable({ config, data, onEditEmployee }) {
       console.error('Error fetching payslips data:', error);
     }
   };
-  
 
+  const handleDelete = async (row) => {
+    const employeeId = row.employee_id; 
+    const endpoint = `${Delete_All}?employee_id=${employeeId}`;
+  
+    try {
+      const response = await DeleteData(endpoint);
+      console.log('Employee deleted successfully:', response);
+      window.location.reload();
+      // Handle success, maybe refresh the data or show a message
+    } catch (error) {
+      console.error('Failed to delete employee:', error);
+      // Handle errors
+    }
+  };
+  
   const handleSelectAll = () => {
     if (selectAll) {
       setSelectedRows([]);
@@ -236,8 +259,10 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
     }
   };
 
+  console.log("employee data=" ,data)
+
   return (
-    <div className="max-h-[44vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
+    <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
       <table>
         <thead>
           <tr className="bg-gray-100 p-2">
@@ -252,9 +277,9 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, rowIndex) => (
+            {Array.isArray(data) && data.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              <td className="px-6">
+              <td className="px-9">
                 <input
                   type="checkbox"
                   onChange={() => handleCheckboxChange(row)}
@@ -270,6 +295,29 @@ function base64ToBlob(base64, type = 'application/octet-stream') {
           ))}
         </tbody>
       </table>
+
+      <div className='flex justify-between p-1 mx-4'>
+      <p className="text-gray-400 font-medium p-1 text-sm">
+        Showing {currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, totalDocuments)} of {totalDocuments} employees
+      </p>
+     
+      <ReactPaginate className='flex'
+        previousLabel={<FaAngleLeft className='mt-1'/>}
+        nextLabel={<FaAngleRight className='mt-1'/>}
+        breakLabel={'...'}
+        pageCount={Math.ceil(totalDocuments / pageSize)}
+        pageRangeDisplayed={5}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        forcePage={currentPage - 1}
+        containerClassName={'mt-1'}
+        pageClassName={'px-3'}
+        pageLinkClassName={'text-gray-400 font-bold text-sm'}
+        activeLinkClassName={'text-gray-100 font-bold text-sm border-gray-2 bg-blue-600 px-3 py-2 rounded-full'}
+        previousLinkClassName={'text-gray-400 font-medium text-lg mr-2'}
+        nextLinkClassName={'text-gray-400 font-medium text-lg '}
+      />
+      </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
       {editModalOpen && (
         <ModalComponent isOpen={editModalOpen} onClose={handleCloseModal} config={ModalReviewPayrollConfig} />

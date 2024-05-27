@@ -16,6 +16,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { fetchData, postDataImage } from '../../../services/APIService';
 import { EndUser_ApplyLeave, EndUser_Leave_Balance } from '../../../api/EndPoints';
 import FileComponent from '../../../components/form/DocumentsForm/FileComponent';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const MyLeave = ({ config, applyleave }) => {
     const [values, setValues] = useState({});
@@ -26,6 +27,7 @@ const MyLeave = ({ config, applyleave }) => {
         endDate: new Date(),
         key: 'selection'
     });
+    const [errorCode, setErrorCode] = useState(null);
 
     const handleChange = (name, value) => {
         setValues({
@@ -81,12 +83,16 @@ const MyLeave = ({ config, applyleave }) => {
             setLeavebalance(response.leave_balance)
         } catch (error) {
             console.error('Error posting data:', error);
+            setErrorCode(error.response ? error.response.status : 500);
         }
     };
 
     useEffect(() => {
         fetchgetData();
     }, []);
+    if (errorCode) {
+        return <ErrorScreen errorCode={errorCode} />; 
+      }
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -134,7 +140,7 @@ const MyLeave = ({ config, applyleave }) => {
     };
 
     return (
-        <form onSubmit={onSubmit} className='mt-2 overflow-auto max-h-[87vh] ml-5 p-2 '>
+        <form onSubmit={onSubmit} className='  ml-5 p-2 '>
             <div className='p-2 border-2 '>
                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>
                 <div className='bg-gray-100 p-2 flex  rounded-md border-2'>

@@ -12,6 +12,7 @@ export const formContent  = [
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />, 
       iconPosition:"end",
+      required:true
     },
     {
       label: 'Enter Aadhar Number ',
@@ -20,6 +21,7 @@ export const formContent  = [
       placeholder: 'Enter here',
       textcss: 'standard_document',
       icon:<CiEdit className={DocumentStyles.iconstyle1} />,
+      required:true
    
     },
     {
@@ -30,6 +32,7 @@ export const formContent  = [
       placeholder: 'Select',
       icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
       iconPosition:"end",
+      required:true
       },
       {
         label: 'Enter PAN Number ',
@@ -38,6 +41,7 @@ export const formContent  = [
         placeholder: 'Enter here',
         textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
+        required:true
         
       },
     
@@ -49,6 +53,7 @@ export const formContent  = [
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle} />,
         iconPosition:"end",
+        required:false
       
       },
       {
@@ -58,6 +63,7 @@ export const formContent  = [
         placeholder: 'Enter here',
         textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
+        required:false
       },
       {
         label: 'Upload EPFO Document',
@@ -67,6 +73,7 @@ export const formContent  = [
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
         iconPosition:"end",
+        required:false
       },
       {
         label: 'Enter EPFO Number ',
@@ -75,6 +82,7 @@ export const formContent  = [
         placeholder: 'Enter here',
         textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1} />,
+        required:false
       },
       {
         label: 'Upload Form 16 Document',
@@ -84,6 +92,7 @@ export const formContent  = [
         placeholder: 'Select',
         icon: <PiUploadSimpleThin className={DocumentStyles.iconstyle}/>,
         iconPosition:"end",
+        required:false
      
       },
       {
@@ -93,6 +102,7 @@ export const formContent  = [
         placeholder: 'Enter here',
         textcss: 'standard_document',
         icon:<CiEdit className={DocumentStyles.iconstyle1}/>,
+        required:false
       },  
   ];
 

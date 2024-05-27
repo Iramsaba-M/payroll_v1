@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const RadioComponent = ({ label, name, value, checked, onChange, textcss }) => {
+const RadioComponent = ({ label, name, value, checked, onChange, textcss ,onBlur}) => {
   return (
     <div>
       <label htmlFor={value}>{label}</label>
@@ -14,6 +14,7 @@ const RadioComponent = ({ label, name, value, checked, onChange, textcss }) => {
         checked={checked} 
         onChange={onChange}
         className={textcss}
+        onBlur={onBlur}
      />
     </div>
   );

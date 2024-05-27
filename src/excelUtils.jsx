@@ -7,6 +7,7 @@ import { saveAs } from 'file-saver';
 import axios from 'axios';
 import { fetchData, postData } from '../src/services/APIService';
 import { Import_GET_API, Import_UPLOAD__GET_API} from '../src/api/EndPoints';
+import { postFile } from '../src/services/APIService';
 
 
  // Function to concatenate first name, middle name, and last name
@@ -20,7 +21,7 @@ export const generateTemplate = async () => {
     const dummyData = {};
 
     // Use postData function for making the POST request
-    const response = await postData(Import_GET_API, dummyData);
+    const response = await postFile(Import_GET_API, dummyData);
 
     // Assuming the response is a Blob, modify this part accordingly
     const blob = new Blob([response], { type: 'application/octet-stream' });

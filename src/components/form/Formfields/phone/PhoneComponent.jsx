@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const PhoneComponent = ({ name,label, value, onChange, textcss, placeholder }) => {
+const PhoneComponent = ({ name,label, value, onChange, textcss, placeholder,onBlur }) => {
   return (
     <div>
       <label>{label}</label>
@@ -12,6 +12,7 @@ const PhoneComponent = ({ name,label, value, onChange, textcss, placeholder }) =
         placeholder={placeholder}
         onChange={onChange}
         className={textcss}
+        onBlur={ onBlur ? onBlur : null }
       />
     </div>
   );
