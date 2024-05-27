@@ -278,28 +278,28 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
           <div key={index} className={`form-field ${field.fieldstyle}`}>
             <label className={TextStyle[field.textcss].label}>{field.label}</label>
             {field.type === 'options' && (
-              // <OptionsComponent
-              //   name={field.name}
-              //   placeholder={field.placeholder}
-              //   options={field.options}
-              //   value={values[field.name] || ''}
-              //   onChange={(e) => handleChange(field.name, e.target.value)}
-              //   textcss={TextStyle[field.textcss].input}
-              //   icon={field.icon}
-
-              //   onBlur={formik.handleBlur}
-              // />
-
               <OptionsComponent
                 name={field.name}
                 placeholder={field.placeholder}
                 options={field.options}
-                value={formik.values[field.name] || ''}
-                onChange={formik.handleChange}
+                value={values[field.name] || ''}
+                onChange={(e) => handleChange(field.name, e.target.value)}
                 textcss={TextStyle[field.textcss].input}
                 icon={field.icon}
+
                 onBlur={formik.handleBlur}
               />
+
+              // <OptionsComponent
+              //   name={field.name}
+              //   placeholder={field.placeholder}
+              //   options={field.options}
+              //   value={formik.values[field.name] || ''}
+              //   onChange={formik.handleChange}
+              //   textcss={TextStyle[field.textcss].input}
+              //   icon={field.icon}
+              //   onBlur={formik.handleBlur}
+              // />
 
             )}
             {field.type === 'text' && (
