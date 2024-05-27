@@ -414,6 +414,7 @@ const AditionalDetailFormComponent = ({ config, handleSubmit, employeeId, editEm
             setValues(initialFormValues);
         }
     }, [editEmployees, config]);
+    console.log("editEmployees",editEmployees.Additional)
 
 
 
