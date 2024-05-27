@@ -142,7 +142,7 @@
 
 
 
-const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon  }) => {
+const OptionsComponent = ({ name, label, value, options, onChange, textcss, placeholder, icon, onBlur }) => {
   return (
     <div style={{ position: 'relative' }}>
       {icon && <div className="absolute ml-[30vh] mt-8">{icon}</div>}
@@ -153,6 +153,7 @@ const OptionsComponent = ({ name, label, value, options, onChange, textcss, plac
         onChange={onChange}
         className={textcss}
         style={{ appearance: 'none', background: 'transparent'  }}
+        onBlur={ onBlur ? onBlur : null }
       >
         {value ? null : (
           <option value="" disabled hidden>

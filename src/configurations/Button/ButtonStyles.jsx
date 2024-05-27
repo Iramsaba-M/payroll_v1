@@ -32,7 +32,9 @@ const ButtonStyles = {
   //Attendance
   AttendancebuttonStyle1: 'bg-blue-500 text-white px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 ',
   AttendancebuttonStyle2: 'bg-gray-200 text-gray-700 px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 mr-6',
-  AttendancebuttonStyle3: 'bg-green-400 text-gray-700 px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 mr-5'
+  AttendancebuttonStyle3: 'bg-green-400 text-gray-700 px-4 w-[20vh] h-10 rounded flex justify-center items-center mb-2 mr-5',
+
+  activeButton: 'border bg-white-400 text-indigo-400 font-bold shadow-md p-1 px-4 rounded flex items-center mb-2 mr-2 on hover:text-blue-500 text-sm '
 };
 
 export default ButtonStyles;

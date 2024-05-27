@@ -9,15 +9,15 @@ import Documents from '../Documents/Documents';
 import AditionalDetails from '../AditionalDetail/AditionalDetails';
 
 
-const AddEmployee = () => {
+const AddEmployee = ({editEmployees}) => {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [employeeId, setEmployeeId] = useState('');
   
-  const [editmode, setEditMode] = useState(false);
-
+  const [editMode, setEditMode] = useState(false);
+  console.log('editemp',editEmployees);
   // Function to toggle edit mode
   const toggleEditMode = () => {
-    setEditMode(!editmode);
+    setEditMode(!editMode);
   };
 
   const handleNavClick = (itemName) => {
@@ -45,9 +45,7 @@ const AddEmployee = () => {
     }
   };
 
-  const handleToggleEditMode = (checked) => {
-    setEditMode(checked);
-  };
+
 
   const handleButtonClick = (formData) => {
     // Handle form submission here
@@ -60,55 +58,45 @@ const AddEmployee = () => {
       <div className='navtabs items-center justify-center p-8 ml-16'>
         <Nav configs={navsContent} handleNavClick={handleNavClick} activeItem={navsContent[selectedNavItem].name}  />
 
-        {/* <div className="flex items-center mb-4 mr-4">
-          <label htmlFor="editModeToggle" className="cursor-pointer mr-2">Edit Mode:</label>
-          <Switch
-            id="editModeToggle"
-            checked={editMode}
-            onChange={handleToggleEditMode}
-            onColor="#007bff"
-            offColor="#ccc"
-            uncheckedIcon={false}
-            checkedIcon={false}
-          />
-        </div> */}
+  
 
         <div className='main-body pt-4 ml-1'>
           <div className='forms'>
             {navsContent[selectedNavItem].name === 'Basic Details' && (
               <BasicDetails
-                handleSubmit={handleButtonClick} // Assuming handleNextClick is the correct function to handle form submission
+          
                 handleNextClick={handleNextClick}
                 handleEmpId={handleEmpId}
-                editMode={editmode} // Pass editMode prop here
+                editEmployees={editEmployees}
               />
+
             )}
             {navsContent[selectedNavItem].name === 'Salary Details' && (
               <SalaryDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editmode} // Pass editMode prop here
+                editEmployees={editEmployees}
               />
             )}
             {navsContent[selectedNavItem].name === 'Bank Details' && (
               <BankDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editmode} // Pass editMode prop here
+                editEmployees={editEmployees}
               />
             )}
             {navsContent[selectedNavItem].name === 'Documents' && (
               <Documents
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editmode} // Pass editMode prop here
+                editEmployees={editEmployees}
               />
             )}
             {navsContent[selectedNavItem].name === 'Aditional Details' && (
               <AditionalDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
-                editMode={editmode} // Pass editMode prop here
+                editEmployees={editEmployees}
               />
             )}
           </div>

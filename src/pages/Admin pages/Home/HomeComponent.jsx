@@ -60,7 +60,7 @@ const Barchart = ({ graphdata }) => {
 }
 
 const Pichart = ({ data }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF00FF', '#00FF00'];
+  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
 
   if (!data) {
     return null;
@@ -92,7 +92,7 @@ const Pichart = ({ data }) => {
 
 
   const HomeComponent = () => {
-  const { handleAdminClick, handlePersonalClick } = useButtonState();
+  const {isAdmin, isPersonal, handleAdminClick, handlePersonalClick } = useButtonState();
 
   const [cardData, setCardData] = useState([]);
   // const [selectedValue, setSelectedValue] = useState('');
@@ -219,7 +219,9 @@ const Pichart = ({ data }) => {
     setSelectedDate1(endDate);
   }, []);
 
-  
+  console.log("person state", isPersonal)
+  console.log("person state", isAdmin)
+
   return (
     <div className="mt-3 ml-12 ">
     
@@ -234,9 +236,8 @@ const Pichart = ({ data }) => {
           showMonthYearPicker
         />
         <div className='flex ml-[120vh] -translate-y-7'>
-        <Button onClick={handleAdminClick} Configs={Admin} />
-        <Button onClick={handlePersonalClick} Configs={Personal} />
-          {/* <RoutesComponent isAdmin={isAdmin} isPersonal={isPersonal} /> */}
+        <Button onClick={handleAdminClick} Configs={Admin} activeButton={isAdmin ? 'Admin' : ''}  />
+        <Button onClick={handlePersonalClick} Configs={Personal} activeButton={isPersonal ? 'Personal' : ''}/>
         </div>
       </div>
 

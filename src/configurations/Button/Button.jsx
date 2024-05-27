@@ -2,10 +2,10 @@
 import React from 'react';
 import ButtonConfig from './ButtonConfig';
 
-const Button = ({ Configs, onClick }) => {
+const Button = ({ Configs, onClick, activeButton }) => {
   return (
     <div>
-      <ButtonConfig Config={Configs} onClick={onClick} />
+      <ButtonConfig Config={Configs} onClick={onClick} activeButton={activeButton}/>
     </div>
   );
 };

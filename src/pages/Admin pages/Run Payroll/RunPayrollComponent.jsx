@@ -7,6 +7,7 @@ import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
 import { Runpayroll } from '../../../api/EndPoints';
 import { fetchData} from '../../../services/APIService';
 import Payslip from '../Run Payroll/Payslip';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 
 const RunPayrollComponent = ( ) => {
@@ -15,6 +16,7 @@ const RunPayrollComponent = ( ) => {
   const [showFinalizeComponent, setShowFinalizeComponent] = useState(false);
   const [showPayslipsButton, setShowPayslipsButton] = useState(true);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
+  const [errorCode, setErrorCode] =useState(null);
 
   const handlePayslipsClick = () => {
     setShowDynamicTable(true);
@@ -39,15 +41,18 @@ const RunPayrollComponent = ( ) => {
       try {
         const tableData = await fetchData(Runpayroll);
         setData(tableData);
-      } catch (error) {
-        console.error('Error fetching table data:', error);
+      }  catch (error) {
+        console.error('Error posting data:', error);
+        setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
       }
     };
 
     fetchTableData();
   }, [Runpayroll]);
 
-
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
   return (
     <div>
       {/* Your JSX code */}

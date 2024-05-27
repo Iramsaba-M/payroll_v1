@@ -10,6 +10,7 @@ import OptionsComponent from '../../form/Formfields/options/OptionsComponent';
 import { RiArrowDownSFill } from "react-icons/ri";
 import { Reimbrusement_settings_get, Reimbrusement_settings_patch, Reimbrusement_settings_post } from '../../../api/EndPoints';
 import { fetchData, patchData, postData } from '../../../services/APIService';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const TableHeaders = [
   { name: 'Policy Name', className: 'TableHeaders1' },
@@ -25,6 +26,7 @@ const ReimbursementPolicy = () => {
   const [editRowData, setEditRowData] = useState(null);
   const [formData, setFormData] = useState({ reimbursement_type: '', maximum_amount: '', minimum_amount: '', period: '', enable: false });
   const [prevname, setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
 
 
   useEffect(() => { fetchTableData(); }, []);
@@ -74,7 +76,7 @@ const ReimbursementPolicy = () => {
     }
 
     // Construct the endpoint path with the reimbursement type parameter appended correctly
-    const endpoint = `${Reimbrusement_settings_patch}?reimbursement_type=${encodeURIComponent(params.reimbursement_type)}`;
+    const endpoint = `${Reimbrusement_settings_patch}?reimbursement_type=${encodeURIComponent(prevname.reimbursement_type)}`;
 
     try {
       // Assuming patchData is a function in your service API that handles the PATCH request
@@ -107,21 +109,28 @@ const ReimbursementPolicy = () => {
       setTableData(newData);
     }
   };
-
   const fetchTableData = async () => {
-    // const response = await axios.get('http://localhost:3000/savepolicyrem');
-    const response = await fetchData(Reimbrusement_settings_get);
-    // const response = await axios.get('http://192.168.0.136:5000/reimbursements/');
-
-    // const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
-    // setTableData(response.data);
-    setTableData(response);
+    try {
+      // const response = await axios.get('http://localhost:3000/savepolicyrem');
+      const response = await fetchData(Reimbrusement_settings_get);
+      
+      // const fetchedData = response.data.map(item => ({ ...item, enable: item.enable || false }));
+      // setTableData(response.data);
+      setTableData(response);
+    } catch (error) {
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
+    }
   };
+  
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   const handleAddPolicy = async () => {
     if (formData.reimbursement_type && formData.maximum_amount && formData.minimum_amount && formData.period) {
       // await axios.post('http://localhost:3000/savepolicyrem', formData);
-      // await axios.post('http://192.168.0.112:8000/reimbursements/', formData);
+      
       await postData(Reimbrusement_settings_post, formData); 
       
       fetchTableData();
@@ -173,7 +182,7 @@ const ReimbursementPolicy = () => {
                     checked={editRowIndex === rowIndex ? editRowData.enable : row.enable}
                     handleDiameter={28}
                     offColor="#BBB"
-                    onColor="#3DCB29"
+                    onColor="#6b6aef"
                     uncheckedIcon={false}
                     checkedIcon={false}
                     className='ml-12'
@@ -201,7 +210,7 @@ const ReimbursementPolicy = () => {
   checked={formData.enable}
   handleDiameter={28}
   offColor="#BBB"
-  onColor="#3DCB29"
+  onColor="#6b6aef"
   uncheckedIcon={false}
   checkedIcon={true}
   className='ml-12'

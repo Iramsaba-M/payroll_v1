@@ -11,6 +11,7 @@ import { PiAirplaneTilt } from "react-icons/pi";
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import { fetchData, patchData, postData } from '../../../services/APIService';
 import {  admin_settings_Holiday_list } from '../../../api/EndPoints';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const Holidaypolicy = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const Holidaypolicy = () => {
   const [editRowIndex, setEditRowIndex] = useState(null);
   const [editRowData, setEditRowData] = useState(null);
   const [prevname, setPrevname] = useState(null);
-
+  const [errorCode, setErrorCode] =useState(null);
   
   //////////////////////////////////////////////////
   const handleChange = (e, rowIndex = null) => {
@@ -119,19 +120,26 @@ const Holidaypolicy = () => {
   };
 
   const fetchTableData = async () => {
-    // const response = await axios.get('http://192.168.0.112:5002/settings/holiday/');
-
-    // const response = await axios.get('http://localhost:3000/admin_holiday');
-    // setTableData(response.data);
-
-    const response = await fetchData(admin_settings_Holiday_list);
-    setTableData(response);
+    try {
+      // const response = await axios.get('http://192.168.0.112:5002/settings/holiday/');
+      // const response = await axios.get('http://localhost:3000/admin_holiday');
+      // setTableData(response.data);
+      
+      const response = await fetchData(admin_settings_Holiday_list);
+      setTableData(response);
+    } catch (error) {
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
+    }
   };
-
+  
   useEffect(() => {
     fetchTableData();
   }, []);
-
+  
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
   return (
     <form onSubmit={handleSubmit}>
       <div className='px-8 mt-8'>

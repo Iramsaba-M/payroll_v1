@@ -14,13 +14,15 @@ export const formContent = [
       "placeholder": "",
       "textcss": "standard",
       "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
+      "required":true
     },
     {
       "label": "IFSC Code",
       "name":"ifsc_code",
       "type": "text",
       "placeholder": "Enter Here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
   
     {
@@ -28,14 +30,16 @@ export const formContent = [
       "name":"account_number",
       "type": "number",
       "placeholder": "Enter Here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "label": "Branch Code ",
       "name":"branch_code",
       "type": "text",
       "placeholder": "Enter Here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
   ]
   export const ButtonforDefault = [

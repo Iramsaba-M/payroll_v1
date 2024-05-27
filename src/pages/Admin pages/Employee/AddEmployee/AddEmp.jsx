@@ -4,11 +4,11 @@ import BodyContent from '../../../../configurations/bodyContent/BodyContent';
 import AddEmployee from './AddEmployee';
 
 const AddEmp = () => {
-  const [editmode, setEditMode] = useState(false); // State for edit mode
+  // const [editmode, setEditMode] = useState(false); // State for edit mode
 
-  const handleToggleEditMode = (checked) => {
-    setEditMode(checked); // Update edit mode based on the toggle switch
-  };
+  // const handleToggleEditMode = (checked) => {
+  //   setEditMode(checked); // Update edit mode based on the toggle switch
+  // };
 
   return (
     <div>

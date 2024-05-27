@@ -8,21 +8,24 @@ export const formContent = [
       "label": "",
       "type": "text",
       "placeholder": "First Name ",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     }, 
     {
       "name":"middle_name",
       "label": " ",
       "type": "text",
       "placeholder": "Middle Name ",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name":"last_name",
       "label": "",
       "type": "text",
       "placeholder": "Last Name ",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name": "dob",
@@ -31,6 +34,7 @@ export const formContent = [
       "placeholder": "dd/yy/mm",
       "textcss": "standard",
       "icon": <CiCalendar className="text-gray-500" />,
+      "required":true
     },
     {
       "name":"gender",
@@ -43,6 +47,7 @@ export const formContent = [
       "placeholder":"",
       "textcss": "standard",
       "icon": <RiArrowDownSFill  className="text-gray-400" />,
+      "required":true
     },
     {
       "name":"date_of_joining",
@@ -51,13 +56,15 @@ export const formContent = [
       "placeholder": "dd/yy/mm",
       "textcss": "standard",
       "icon": <CiCalendar className="text-gray-500" />,
+      "required":true
     },
     {
       "name":"blood_group",
       "label": "Blood group*",
       "type": "text",
       "placeholder": "Enter here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name":"designation",
@@ -72,6 +79,7 @@ export const formContent = [
       "placeholder": "",
       "textcss": "standard",
       "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
+      "required":true
       
     },
     {
@@ -79,14 +87,16 @@ export const formContent = [
       "label": "Employee ID*",
       "type": "text",
       "placeholder": "Enter here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name":"department",
       "label": "Department*",
       "type": "text",
       "placeholder": "Enter here",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     },
     {
       "name":"type_of_employee",
@@ -106,6 +116,7 @@ export const formContent = [
       ],
        "textcss": "standard",
        "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
+       "required":true
        
     },
 
@@ -114,7 +125,8 @@ export const formContent = [
     "label": "Address*",
     "type": "text",
     "placeholder": "Line",
-    "textcss": "standard"
+    "textcss": "standard",
+    "required":true
     
   },
 
@@ -138,6 +150,7 @@ export const formContent = [
     "placeholder":"",
     "textcss": "standard",
     "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
+    "required":true
   },
 
     {
@@ -151,7 +164,8 @@ export const formContent = [
             { "name": "Remote", "value": "remote" },
             { "name": "Client Site", "value": "client_site" }
         ],
-        "textcss": "standard"
+        "textcss": "standard",
+        "required":true
   
     },
 
@@ -160,7 +174,8 @@ export const formContent = [
       "label": "Personal Email* ",
       "type": "email",
       "placeholder": "Enter your email",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
     
   },
   {
@@ -168,7 +183,8 @@ export const formContent = [
       "label": "Work Email*",
       "type": "email",
       "placeholder": "Enter your email",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
       
   },
   {
@@ -176,7 +192,8 @@ export const formContent = [
       "label": "Phone Number: ",
       "type": "tel",
       "placeholder": "Enter your phone number",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
       
   },
   {
@@ -184,7 +201,8 @@ export const formContent = [
       "label": "Alternate Phone Number: ",
       "type": "tel",
       "placeholder": "Enter your phone number",
-      "textcss": "standard"
+      "textcss": "standard",
+      "required":true
       
   },
 
@@ -206,7 +224,7 @@ export const formContent = [
     ],
      "textcss": "standard",
      "icon": <RiArrowDownSFill  className="text-gray-400 -mt-6" />,
-
+     "required":true
     }, 
 ];
 

@@ -18,52 +18,46 @@ export const componentMapping = {
   ApplicationSearch,
   HeadConfi,
   RoutesComponent,
-
   Button,
   ButtonConfig,
   LogoConfig,
-
   Iconbar,
   IconbarComponent,
   IconConfig,
   routesConfig,
 
 };
+
 export const routingConfig = routesConfig
 
 export const sections = {
   section1: [
-
     {
       componentKey: "IconbarComponent",
-      style: "w-14 border-r border-gray-200",
+      style: " border-r  min-h-screen fixed start-0 w-14",
       config: IconConfig,
       content: [
         {
           componentKey: "LogoConfig",
-          style: "flex"
+          style: "flex "
         },
-
       ],
     },
     {
       componentKey: "RoutesComponent",
-      style: " flex w-60 border-r border-gray-200",
+      style: "  ",
       config: routesConfig,
     },
     {
       componentKey: "HeadComponents",
-      style: "w-full h-12 border-b-gray-50 text-gray-600 text-sm ",
+      style: "min-w-[167vh]  h-12 border-b-gray-50 text-gray-600 text-sm fixed ml-[15.8%]",//start-[19.6%] 72
       content: [
         {
           componentKey: "ApplicationSearch",
           config: HeadConfi,
 
         },
-
       ]
     },
-
   ],
-
 };

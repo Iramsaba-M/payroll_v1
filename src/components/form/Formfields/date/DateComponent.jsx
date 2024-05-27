@@ -22,7 +22,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateComponent = ({name, label, selectedDate, onChange, textcss, placeholder,value,icon}) => {
+const DateComponent = ({name, label, selectedDate, onChange, textcss, placeholder,value,icon,onBlur}) => {
   
 const handleDateChange = (date) => {
   if (date instanceof Date && !isNaN(date)) {
@@ -55,6 +55,7 @@ const handleDateChange = (date) => {
         className={textcss}
         showYearDropdown
         showMonthDropdown
+        onBlur={ onBlur ? onBlur : null }
       />
     </div>
   );

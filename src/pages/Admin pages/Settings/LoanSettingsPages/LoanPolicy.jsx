@@ -7,6 +7,7 @@ import OptionsComponent from "../../../../components/form/Formfields/options/Opt
 import ButtonConfig from '../../../../configurations/Button/ButtonConfig';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import TextStyle from '../../../../components/form/Formfields/text/TextStyle';
+import ErrorScreen from '../../../../errorhandling/ErrorScreen';
 
 // Assuming data structure and helper components are imported correctly
 import {
@@ -38,6 +39,8 @@ const LoanPolicy = () => {
   const [editRowIndex, setEditRowIndex] = useState(null);
   const [editRowData, setEditRowData] = useState(null);
   const [prevname, setPrevname] = useState(null);
+  const [errorCode, setErrorCode] =useState(null);
+  
 
 
   const handleEditClick = (rowIndex, row) => {
@@ -98,7 +101,7 @@ const LoanPolicy = () => {
 
   const handleSave = async () => {
     const formData = new FormData();
-    
+    formData.append('new_loan_type', editRowData.loan_type || '');
     formData.append('maximum_amount', editRowData.maximum_amount || '');
     formData.append('no_of_repayment', editRowData.no_of_repayment || '');
     formData.append('roi_in_percentage', editRowData.roi_in_percentage || '');
@@ -110,7 +113,7 @@ const LoanPolicy = () => {
       formData.append('enable', editRowData.enable ? 'true' : 'false');
     }
     
-    const url = `${Loan_policy_patch}/${encodeURIComponent(editRowData.loan_type)}`;
+  const url = `${Loan_policy_patch}/${encodeURIComponent(prevname.loan_type)}`;
 
 
 
@@ -231,13 +234,18 @@ const LoanPolicy = () => {
       // setTableData(response.data);
       setTableData(response);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
 
   useEffect(() => {
     fetchTableData();
   }, []);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   return (
     <form onSubmit={handleSubmit} className='p-8 w-[150vh]'>
@@ -423,6 +431,7 @@ const LoanPolicy = () => {
       </table>
       <div className="ml-[150vh] mb-2">
       <button type='submit' className="bg-blue-400 text-white py-2 px-4 -ml-[60px] mt-2 rounded-lg">save</button>
+
 
       </div>
     </form>

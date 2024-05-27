@@ -1,11 +1,13 @@
 
 import React from 'react';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const Multilevel =() => {
+  const errorCode=404
   return (
     <div>
-    Multilevel
+      <ErrorScreen errorCode={errorCode} />
     </div>
-  );
+  )
 }
 export default Multilevel;

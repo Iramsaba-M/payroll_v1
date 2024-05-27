@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, placeholder }) => {
+const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, placeholder,onBlur }) => {
   const inputType = numberType === 'float' ? 'number' : (numberType === 'int' ? 'number' : 'text');
   // Using 'number' type for both float and int because it allows for numeric input and handles validation
 
@@ -18,6 +18,7 @@ const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, 
         onChange={onChange}
         className={numbercss}
         inputMode={inputMode} // Add inputMode attribute
+        onBlur={ onBlur ? onBlur : null }
       />
     </div>
   );
