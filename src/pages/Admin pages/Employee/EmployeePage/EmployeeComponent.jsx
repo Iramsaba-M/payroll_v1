@@ -59,7 +59,7 @@ useEffect(() => {
         const data = await fetchData(CARDS_API);
         setCardData(data);
       } catch (error) {
-        
+        console.error(`Error fetching employee data:`, error);
       }
     };
 
@@ -86,9 +86,8 @@ useEffect(() => {
 
   //   fetchDataAndSetState();
   // }, [location.search]);
-
- 
-  
+console.log("carddata",empcardData)
+   
   const editEmployees = async () => {
     if (selectedEmployeeId) {
       try {

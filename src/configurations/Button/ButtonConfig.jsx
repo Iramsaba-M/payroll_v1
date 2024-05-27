@@ -31,9 +31,9 @@
 import React from 'react';
 import ButtonStyles from './ButtonStyles';
 
-const Button = ({ label, icon, style, type, onClick, buttonStyle, Editmode }) => {
+const Button = ({ label, icon, style, type, onClick, buttonStyle, Editmode, active }) => {
   return (
-    <button className={`${ButtonStyles[style]} ${buttonStyle}`} onClick={() => onClick(label, type)} editmode={Editmode}>
+    <button  className={`${ButtonStyles[style]} ${buttonStyle} ${active ? ButtonStyles.activeButton : ''}`} onClick={() => onClick(label, type)} editmode={Editmode}>
       {icon && typeof icon === 'object' ? (
         <span className={`${ButtonStyles.iconStyle} mr-2`}>{icon}</span>
       ) : (
@@ -44,11 +44,11 @@ const Button = ({ label, icon, style, type, onClick, buttonStyle, Editmode }) =>
   );
 };
 
-const ButtonConfig = ({ Config, onClick, buttonStyle }) => {
+const ButtonConfig = ({ Config, onClick, buttonStyle, activeButton  }) => {
   return (
     <div className="flex">
       {Config.map((button, index) => (
-        <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} />
+        <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} active={activeButton === button.label} />
       ))}
     </div>
   );
