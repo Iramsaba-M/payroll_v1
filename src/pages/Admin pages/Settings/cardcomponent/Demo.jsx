@@ -1,4 +1,4 @@
-import React from 'react'
+
 import BodyContent from '../../../configurations/bodyContent/BodyContent'
 import Demo_ctc from './Demo_ctc'
 const Demo = () => {

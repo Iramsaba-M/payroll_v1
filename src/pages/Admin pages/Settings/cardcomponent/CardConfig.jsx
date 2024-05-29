@@ -3,7 +3,7 @@
 import React from 'react';
 import CardStyles from './CardStyle';
 
-const Card = ({ card, title, content, icon }) => {
+const Card = ({ card, title, icon }) => {
   return (
     <DrawOutlineButton>
       <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards}`}>

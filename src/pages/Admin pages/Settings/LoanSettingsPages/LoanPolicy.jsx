@@ -1,17 +1,14 @@
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { IoSettingsOutline } from "react-icons/io5";
 import TextComponent from "../../../../components/form/Formfields/text/TextComponent";
 import OptionsComponent from "../../../../components/form/Formfields/options/OptionsComponent";
-import ButtonConfig from '../../../../configurations/Button/ButtonConfig';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import TextStyle from '../../../../components/form/Formfields/text/TextStyle';
 import ErrorScreen from '../../../../errorhandling/ErrorScreen';
 
 // Assuming data structure and helper components are imported correctly
 import {
-  ButtonSave,
   OptionsComponentData1,
   OptionsComponentData2,
   TableHeaders,

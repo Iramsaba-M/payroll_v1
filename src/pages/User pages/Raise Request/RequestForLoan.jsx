@@ -1,5 +1,4 @@
-//clean code
-import React from 'react'
+
 import RequestForLoanComponent from './RequestForLoanComponent'
 import { RequestForLoanData } from './RequestForLoanData'
 

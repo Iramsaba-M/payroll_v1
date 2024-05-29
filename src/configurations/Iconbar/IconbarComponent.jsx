@@ -1,12 +1,11 @@
 
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { useComponentMapping } from "../../context/ComponentMappingContext";
 import LogoConfig from "../logo/LogoConfig";
 
 const IconbarComponent = ({ config }) => {
-  const componentMapping = useComponentMapping();
+  // const componentMapping = useComponentMapping();
   const activeLink = "text-[#3e63dd] rounded-md bg-blue-light";
   const normalLink = "text-gray-300 hover:rounded-md";
 

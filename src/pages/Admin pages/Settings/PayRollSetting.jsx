@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
 function PayRollSetting() {
   const errorCode=404

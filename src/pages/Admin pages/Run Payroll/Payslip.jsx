@@ -1,8 +1,7 @@
 //payslip
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TableComponent from '../../../configurations/tables/TableComponent'
 import { tableContent2 } from './RunPayrollContents';
-import { mypayslip, payslips } from '../../../api/EndPoints';
 import DatePicker from 'react-datepicker';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { fetchData } from '../../../services/APIService';
@@ -12,21 +11,21 @@ import { fetchData } from '../../../services/APIService';
 const Payslip = () => {
 
   const [tableData, setTableData] = useState([]);
-  const [showPayslipsButton, setShowPayslipsButton] = useState(true);
+  // const [showPayslipsButton, setShowPayslipsButton] = useState(true);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  const handlePayslipsClick = () => {
-      setShowDynamicTable(true);
-      setShowFinalizeComponent(false);
-      setShowPayslipsButton(false);
-    };
+  // const handlePayslipsClick = () => {
+  //     setShowDynamicTable(true);
+  //     setShowFinalizeComponent(false);
+  //     setShowPayslipsButton(false);
+  //   };
   
-    const handleReviewClick = (row) => {
-      setShowDynamicTable(false);
-      setShowFinalizeComponent(true);
-      setShowPayslipsButton(false);
-    };
+    // const handleReviewClick = (row) => {
+    //   setShowDynamicTable(false);
+    //   setShowFinalizeComponent(true);
+    //   setShowPayslipsButton(false);
+    // };
   
     const handleDateChangeTop = (date) => {
       setSelectedDateTop(date);

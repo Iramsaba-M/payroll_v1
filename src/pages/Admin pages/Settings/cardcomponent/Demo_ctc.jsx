@@ -1,22 +1,19 @@
-/* eslint-disable react/prop-types */
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
+import { useState} from 'react';
 import TextComponent from '../../../../components/form/Formfields/text/TextComponent';
 import TextStyle from '../../../../components/form/Formfields/text/TextStyle';
 import OptionsComponent from '../../../../components/form/Formfields/options/OptionsComponent';
-import { TextData, OptionData, TableHeaders ,TextComponentData,OptionsComponentData, TextComponentData1,SaveTemplate,nameData} from './Demo_ctc_data';
+import { TextData, OptionData, TableHeaders ,TextComponentData,OptionsComponentData, TextComponentData1,SaveTemplate} from './Demo_ctc_data';
 import ButtonConfig from '../../../../configurations/Button/ButtonConfig';
 import ModalComponent from '../../../../components/form/Formfields/modal/ModalComponent';
-import { ModalConfig2 } from '../../../../components/form/Formfields/modal/ModalConfig2';
+import { ModalConfig2 } from '../../../../components/form/Formfields/modal/ModalConfig2'
 import { postData } from '../../../../services/APIService';
 import { ctctemplate } from '../../../../api/EndPoints';
+
 const Demo_ctc = () => {
-  const navigate = useNavigate();
-  const handleGoBack = () => {
-    window.history.back();
-  };
+  // const navigate = useNavigate();
+  // const handleGoBack = () => {
+  //   window.history.back();
+  // };
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [templateName, setTemplateName] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -138,7 +135,7 @@ const gatherDataAndPost = async (event) => {
       <td className="border border-blue-600  text-center">{option.name}</td>
     
 
-      {TextComponentData.slice(0,1).map((data, i) => (
+      {TextComponentData.slice(0,1).map((data) => (
         <td key={index} className="border border-blue-600">
           <TextComponent
             name={`${data.name}_${index}`}
@@ -165,7 +162,7 @@ const gatherDataAndPost = async (event) => {
         </td>
       ))}
 
-{TextComponentData1.slice(0,2).map((data, i) => (
+{TextComponentData1.slice(0,2).map((data) => (
         <td key={index} className="border border-blue-600">
           <TextComponent
             name={`${data.name}_${index}`}

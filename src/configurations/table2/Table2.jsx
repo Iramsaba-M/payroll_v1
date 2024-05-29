@@ -1,7 +1,5 @@
-import React from 'react';
+
 import Tablecomp from './Tablecomp2';
-
-
 
 function Table2({ config, data, onReviewClick }) {
   return (

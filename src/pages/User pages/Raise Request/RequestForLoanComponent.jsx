@@ -17,12 +17,12 @@ const RequestForLoanComponent = ({ config }) => {
   const [data, setData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleInputChange = (fieldName, value) => {
-    setData((prevData) => ({
-      ...prevData,
-      [fieldName]: value,
-    }));
-  };
+  // const handleInputChange = (fieldName, value) => {
+  //   setData((prevData) => ({
+  //     ...prevData,
+  //     [fieldName]: value,
+  //   }));
+  // };
   const handleButtonClick = (type) => {
     if (type === "submit" && Object.keys(formik.errors).length === 0 && formik.isValid) {
       setData(formik.values)
@@ -35,48 +35,7 @@ const RequestForLoanComponent = ({ config }) => {
     setIsModalOpen(false);
   };
 
-  // console.log('simplifiedData',simplifiedData);
-
-  // console.log('validationSchema');
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const employee_id="IK02"
-  //     const data2={...data,"employee_id":employee_id}
-  //     const response = await postData(EndUser_ApplyLoan, data2);
-  //     // const response = await axios.post('http://localhost:3000/az', data2);
-  //     console.log(data2);
-  //     console.log('Data sent successfully:', response.data);
-  //   } catch (error) {
-  //     console.error('Error sending data:', error);
-  //   }
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const employee_id = "100";
-  //     // Validate amount and installment_period
-  //     const amount = parseFloat(data.amount);
-  //     const installment_period = parseInt(data.installment_period);
-
-  //     if (isNaN(amount) || isNaN(installment_period)) {
-  //       throw new Error('Amount and installment period must be valid numbers.');
-  //     }
-
-  //     const loanData = {
-  //       ...data,
-  //       "employee_id": employee_id,
-  //       "amount": amount,
-  //       "installment_period": installment_period
-  //     };
-  // console.log(loanData)
-  //     const response = await postData(EndUser_ApplyLoan, loanData);
-  //     console.log('Data sent successfully:', response.data);
-  //   } catch (error) {
-  //     console.error('Error sending data:', error);
-  //   }
-  // };
+  
   const handleSubmit = async (e) => {
     // e.preventDefault();
     try {
@@ -112,65 +71,16 @@ const RequestForLoanComponent = ({ config }) => {
   }, []);
   
   
-  // const simplifiedData = config.map(({ name, label, type, required }) => ({ name, label, type, required }));
-
-  // const createInitialValues = (data) => {
-  //   const initialValues = {};
-  //   data.forEach(field => {
-  //     initialValues[field.name] = "";
-  //   });
-  //   return initialValues;
-  // };
+  
 
   const formik    = useFormik({
-      // initialValues: {
-      //   loan_type: "",
-      //   amount: "",
-      //   installment_period: "",
-      //   reason: "",
-
-      // },
+      
       initialValues : createInitialValues(config),
 
-      // validationSchema: signUpSchema([
-      //   { name: "loan_type", label: "Type Of Loan" },
-      //   { name: "amount", label: "Amount" },
-      //   { name: "installment_period", label: "Installment period" },
-      //   { name: "reason", label: "Reason" },
-      // ]),
-
+    
       validationSchema: formSchema(simplifiedData(config)),
 
-      // onSubmit:handleSubmit() //remove handlesubmit
-      //  async (values) => {
-      //     console.log('val submit');
-      //     // e.preventDefault();
-      //     if(!errors){
-      //     try {
-      //       const employee_id = "100";
-      //       // Validate amount and installment_period
-      //       const amount = parseFloat(values.amount);
-      //       const installment_period = parseInt(values.installment_period);
 
-      //       if (isNaN(amount) || isNaN(installment_period)) {
-      //         throw new Error('Amount and installment period must be valid numbers.');
-      //       }
-
-      //       const loanData = {
-      //         ...values,
-      //         "employee_id": employee_id,
-      //         "amount": amount,
-      //         "installment_period": installment_period
-      //       };
-      //   console.log(loanData)
-      //       const response = await postData(EndUser_ApplyLoan, loanData);
-      //       console.log('Data sent successfully:', response.data);
-      //     } catch (error) {
-      //       console.error('Error sending data:', error);
-      //     }
-      //   }
-
-      // },
     });
 
   console.log(formik, formik.values, formik.errors)

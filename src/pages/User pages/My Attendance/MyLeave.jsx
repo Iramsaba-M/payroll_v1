@@ -1,5 +1,5 @@
 //clean code
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '../../../configurations/Card/CardConfig';
 import { LeaveButtons, leavesdata } from './AttendanceContent';
 import RadioComponent from '../../../components/form/Formfields/radio_button/RadioComponent';

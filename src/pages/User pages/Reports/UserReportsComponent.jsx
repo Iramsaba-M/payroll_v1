@@ -1,23 +1,19 @@
-import React from 'react'
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CardConfig from '../../../configurations/Card/CardConfig';
 import { postData } from '../../../services/APIService';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import axios from 'axios';
 import { sickleaveContent,exmpContent1,casualleaveContent, presentdayContent } from './UserReportsContent';
 import { EndUser_leaves_report } from '../../../api/EndPoints';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
-
-
 
 const Barchart = ({ graphdata }) => {
   if (!graphdata || !Array.isArray(graphdata)) {
     console.error("Invalid graphdata:", graphdata);
     return null;
   }
-
 
   console.log('data', graphdata)
   const hasSick = graphdata.some(item => item.sick !== undefined);
@@ -26,9 +22,7 @@ const Barchart = ({ graphdata }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-
       <BarChart
-
         data={graphdata}
         margin={{
           top: 20,
@@ -141,7 +135,7 @@ const UserReportsComponent = () => {
 
           // const response = await axios.get('http://localhost:3000/enduser_report')
           const emp='IK02'
-          const endpoint = `${EndUser_leaves_report}?employee_id=${emp}`;
+          // const endpoint = `${EndUser_leaves_report}?employee_id=${emp}`;
         //   const response = await postData(endpoint,
         //      {
         //     from_: formattedStartDate,

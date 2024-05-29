@@ -1,4 +1,4 @@
-import React from 'react'
+
 import SalaryDetailsComp from '../../../../components/form/SalaryDetailForm/SalaryDetailsFormComponent';
 import { formContent} from '../SalaryDetail/SalaryDetailsContents'
 

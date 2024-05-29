@@ -1,15 +1,14 @@
 // HeadComponents.js
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import HeaderStyles from './HeadStyles';
 import { useComponentMapping } from '../../context/ComponentMappingContext';
 import ApplicationSearch from '../applicationsearch/ApplicationSearch';
 
-const HeadComponents = ({ content, config }) => {
+const HeadComponents = ({ config }) => {
   const location = useLocation();
   const currentPathSegments = location.pathname.split('/').filter(Boolean);
 
-  const componentMapping = useComponentMapping();
+  // const componentMapping = useComponentMapping();
 
   return (
     <div className={`${HeaderStyles.HeaderBg} `}>

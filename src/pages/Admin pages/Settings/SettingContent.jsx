@@ -1,6 +1,4 @@
 
-  
-import React from 'react';
 import { IconContext } from 'react-icons';
 import { IoCalculatorOutline } from 'react-icons/io5';
 import { FaHandHoldingDollar } from 'react-icons/fa6';

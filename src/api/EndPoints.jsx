@@ -64,7 +64,7 @@ export const EndUser_ApplyLeave = 'enduser/apply_leave/';//api done
 
 export const EndUser_Leave_Balance ="enduser/apply_leave/balanace/"//api done 
 
-export const mypayslip ='enduser/payslip/';//sb done api testing
+export const mypayslip ='enduser/payslip';//sb done api testing
 
 export const mypayslipdownload ='payslip/';
 

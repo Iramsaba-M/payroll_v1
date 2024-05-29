@@ -1,6 +1,6 @@
 //clean code
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, } from 'react-router-dom';
+import { useState} from 'react';
+import { useNavigate, } from 'react-router-dom';
 import CardConfig from '../../../pages/Admin pages/Settings/cardcomponent/CardConfig';
 import  RaiseRequestContent from './RaiseRequestContent'; // 
 import { Outlet } from 'react-router-dom';

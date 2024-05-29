@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {formContent} from '../../../Admin pages/Employee/Documents/DocumentsContent'
 import DocumentsFormComponent from '../../../../components/form/DocumentsForm/DocumentsFormComponent'
 

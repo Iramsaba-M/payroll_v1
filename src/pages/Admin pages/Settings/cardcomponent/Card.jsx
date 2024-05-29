@@ -1,4 +1,4 @@
-import React from 'react';
+
 import CardConfig from './CardConfig';
 
 const Card = ({ Configs, data }) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import BodyContent from '../../../configurations/bodyContent/BodyContent'
 import MyAttendanceComponent from './MyAttendanceComponent'
 
@@ -9,5 +9,4 @@ const MyAttendance = () => {
     </div>
   )
 }
-
 export default MyAttendance

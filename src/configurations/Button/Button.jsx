@@ -1,5 +1,4 @@
 // Button.js
-import React from 'react';
 import ButtonConfig from './ButtonConfig';
 
 const Button = ({ Configs, onClick, activeButton }) => {

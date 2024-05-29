@@ -1,26 +1,9 @@
-// import React from 'react';
-
-// const LoanSetting = () => {
-//   return (
-//     <div>
-//       Loan Setting
-//     </div>
-//   );
-// }
-
-// export default LoanSetting;
-
 
 import { Outlet, useNavigate } from 'react-router-dom';
 import {  Loanpolicycontent, TypeOfLoan,LoanApprovalSettings } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
 import Box from '../../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
 import { IoMdArrowBack } from "react-icons/io";
-import { useEffect, useState } from 'react';
-
-// import axios from 'axios';
-// import { fetchData } from '../../services/APIService';
-// import { ctctemplatename } from '../../api/EndPoints';
-// import Card from '../../configurations/Card/Card';
+import { useState } from 'react';
 
 const LoanSetting = () => {
   const navigate = useNavigate();

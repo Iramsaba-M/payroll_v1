@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useState,useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import { Mypayslipcontent } from './MypayslipContent';
 import TableComponent from '../../../configurations/tables/TableComponent';
 import { mypayslip } from '../../../api/EndPoints';

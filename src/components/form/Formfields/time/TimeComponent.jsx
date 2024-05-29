@@ -1,4 +1,3 @@
-import React from 'react';
 
 const TimeComponent = ({ label, value, onChange, textcss, placeholder }) => {
   return (

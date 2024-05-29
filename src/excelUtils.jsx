@@ -1,11 +1,9 @@
 
 // excelUtils.js
 import ExcelJS from 'exceljs';
-import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import axios from 'axios';
-import { fetchData, postData } from '../src/services/APIService';
+import { postData } from '../src/services/APIService';
 import { Import_GET_API, Import_UPLOAD__GET_API} from '../src/api/EndPoints';
 import { postFile } from '../src/services/APIService';
 

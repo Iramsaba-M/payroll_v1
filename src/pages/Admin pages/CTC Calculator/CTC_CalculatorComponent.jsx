@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 export const CTC_CalculatorComponent = () => {

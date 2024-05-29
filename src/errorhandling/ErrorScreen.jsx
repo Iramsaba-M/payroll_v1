@@ -1,15 +1,11 @@
 //ErrorScreen.jsx
 
-import React from 'react'; 
 import Button from '../configurations/Button/Button';
 import { ButtonsConfig } from './ErrorConfig';
-
 import servererror from '../assets/Images/servererror.jpg';
-import errorimg from '../assets/Images/errorimg.png'
 import error from '../assets/Images/error.jpg'
 import gatewaytimeouterror from '../assets/Images/gatewaytimeouterror.jpg'
 import pnferror from '../assets/Images/pnferror.jpg'
-
 
 const ErrorScreen = ({ errorCode }) => {
   let errorMessage = '';

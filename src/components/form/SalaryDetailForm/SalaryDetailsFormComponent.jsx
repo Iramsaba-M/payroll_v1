@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TextComponent from '../Formfields/text/TextComponent';
-import TextStyle from '../Formfields/text/TextStyle';
-import axios from 'axios';
 import OptionsComponent from '../Formfields/options/OptionsComponent';
-import { getApiUrl } from '../../../api/GetAPI';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import { Button1Content, Button2Content } from '../../../pages/Admin pages/Employee/SalaryDetail/SalaryDetailsContents';
@@ -22,14 +18,12 @@ import { createInitialValues, formSchema, simplifiedData } from '../../../config
 const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
-  const [ctcDetails, setCtcDetails] = useState({});
+  // const [ctcDetails, setCtcDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     AddMode,
     editMode,
-    EditModeclick,
-    AddEmployeeclick
   } = useButtonState();
   console.log('editEmployees', editEmployees);
 
@@ -186,7 +180,7 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
     fetchDataIfNeeded();
   }, [employeeId, postSuccess]);
 
-  const handleButtonClick = async (label, type, values) => {
+  const handleButtonClick = async (label, type) => {
     console.log("EditMode:", editMode);
     console.log("AddMode:", AddMode);
     console.log("Label:", label);

@@ -1,6 +1,5 @@
 //clean code
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../../configurations/Card/CardConfig';
@@ -9,9 +8,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
-import RoutesComponent from "../../../routing/RoutesComponent"
 import {useButtonState}  from "../../../context/ButtonStateContext"
-import { getApiUrl } from '../../../api/GetAPI'
 import { postData } from '../../../services/APIService';
 
 const Barchart = ({ graphdata }) => {

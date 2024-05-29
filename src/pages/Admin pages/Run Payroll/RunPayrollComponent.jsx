@@ -1,7 +1,6 @@
-// RunPayrollComponent.jsxcvbnmfghj
-import React, { useState, useEffect } from 'react';
-import { tableContent2, tableContent3 } from '../Run Payroll/RunPayrollContents';
-import Tablecomp from '../../../configurations/table2/Tablecomp2';
+// RunPayrollComponent
+import { useState, useEffect } from 'react';
+import { tableContent3 } from '../Run Payroll/RunPayrollContents';
 import Table2 from '../../../configurations/table2/Table2';
 import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
 import { Runpayroll } from '../../../api/EndPoints';
@@ -11,11 +10,10 @@ import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 
 const RunPayrollComponent = ( ) => {
-  const [tableData, setTableData] = useState([]);
   const [showDynamicTable, setShowDynamicTable] = useState(false);
   const [showFinalizeComponent, setShowFinalizeComponent] = useState(false);
   const [showPayslipsButton, setShowPayslipsButton] = useState(true);
-  const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
+  // const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
   const [errorCode, setErrorCode] =useState(null);
 
   const handlePayslipsClick = () => {
@@ -24,15 +22,15 @@ const RunPayrollComponent = ( ) => {
     setShowPayslipsButton(false);
   };
 
-  const handleReviewClick = (row) => {
+  const handleReviewClick = () => {
     setShowDynamicTable(false);
     setShowFinalizeComponent(true);
     setShowPayslipsButton(false);
   };
 
-  const handleDateChangeTop = (date) => {
-    setSelectedDateTop(date);
-  };
+  // const handleDateChangeTop = (date) => {
+  //   setSelectedDateTop(date);
+  // };
 
    const [data, setData] = useState(null);
 

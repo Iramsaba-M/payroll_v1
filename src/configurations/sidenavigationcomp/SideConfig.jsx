@@ -1,5 +1,4 @@
 // SideNavigation.js
-import React from 'react';
 import SideNavigationStyles from './SideNavStyles';
 
 const SideNavigationItem = ({ label, icon }) => {

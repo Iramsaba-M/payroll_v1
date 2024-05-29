@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, } from 'react-router-dom';
+
+import { useState} from 'react';
+import { useNavigate, } from 'react-router-dom';
 import CardConfig from './cardcomponent/CardConfig';
 import SettingContent from './SettingContent';
 import { Outlet } from 'react-router-dom';

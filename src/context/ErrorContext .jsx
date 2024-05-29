@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import ErrorScreen from '../errorhandling/ErrorScreen' // Adjust the import path as needed
 
 const ErrorContext = createContext();

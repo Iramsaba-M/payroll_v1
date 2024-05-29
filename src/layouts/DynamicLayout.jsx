@@ -1,5 +1,4 @@
 
-import React from "react";
 import { useComponentMapping } from "../context/ComponentMappingContext";
 import { Route } from "react-router-dom";
 import { sections } from "./LayoutConfigFile";

@@ -1,14 +1,12 @@
-import React from 'react';
+
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie } from 'recharts';
 import Card from '../../../configurations/Card/CardConfig';
-import axios from 'axios';
 import { exmpContent, exmpContent1, exmpContent2, cardContent, cardContent2, cardContent3, internContent, insuranceContent, pfContent } from './ReportsContent';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/EndPoints';
-import { getApiUrl} from '../../../api/GetAPI';
 import { postData } from '../../../services/APIService';
 import ErrorScreen from '../../../errorhandling/ErrorScreen'
 import { Navigate } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import logo from '../../assets/Images/logo.png'
 
 const Profile = () => {

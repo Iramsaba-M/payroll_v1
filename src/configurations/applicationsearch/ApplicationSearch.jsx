@@ -1,5 +1,5 @@
 // ApplicationSearch.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ApplicationSearchConfig from './ApplicationSearchConfig';
 import ApplicationSearchStyles from './ApplicationSearchStyles';
 import ApplicationSearchComp from './Applicationsearchcomp';

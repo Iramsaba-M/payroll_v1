@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TableStyle from './TableStyle';
 import { MdOutlineEdit, MdOutlineFileDownload,MdDeleteOutline } from 'react-icons/md';
 import { Delete_All, view } from '../../api/EndPoints';
@@ -65,7 +65,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
 
       setIsModalOpen(true);
       const endpoint = `${view}/${row.employee_id}`;
-      const tableData = await fetchData(endpoint);
+      // const tableData = await fetchData(endpoint);
 
       // console.log('Modal data:', tableData);
     } catch (error) {
@@ -154,15 +154,15 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
 };
 
 
-function base64ToBlob(base64, type = 'application/octet-stream') {
-  const binStr = atob(base64);
-  const len = binStr.length;
-  const arr = new Uint8Array(len);
-  for (let i = 0; i < len; i++) {
-    arr[i] = binStr.charCodeAt(i);
-  }
-  return new Blob([arr], { type: type });
-}
+// function base64ToBlob(base64, type = 'application/octet-stream') {
+//   const binStr = atob(base64);
+//   const len = binStr.length;
+//   const arr = new Uint8Array(len);
+//   for (let i = 0; i < len; i++) {
+//     arr[i] = binStr.charCodeAt(i);
+//   }
+//   return new Blob([arr], { type: type });
+// }
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
       // console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);

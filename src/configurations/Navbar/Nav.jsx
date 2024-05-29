@@ -1,5 +1,4 @@
 
-import React from 'react';
 import NavComponent from './NavComponent';
 
 const Nav = ({ configs, handleNavClick, activeItem }) => {

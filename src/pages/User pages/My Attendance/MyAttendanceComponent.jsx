@@ -1,16 +1,13 @@
-//clean code
-import React from 'react'
+
 import { useState, useEffect, useRef } from 'react'
 import { AttendanceButtons, Attendanccard, Attendanccard2, leavesdata2, radiocontent, leavehistorytable } from './AttendanceContent'
 // import { leavecard1, leavecard2, leavecard3, leavecard4, leavecard5, leavecard6, leavecard7, leavecard8 } from './AttendanceContent'
 import Card from '../../../configurations/Card/CardConfig'
 import Calendar from 'react-calendar';
 import MyLeave from './MyLeave'
-import TableComponent from '../../../configurations/tables/TableComponent'
-import axios from 'axios'
 import ButtonConfig from '../../../configurations/Button/ButtonConfig'
 import { FaPlay } from "react-icons/fa6";
-import { EndUser_ApplyLeave, EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../../api/EndPoints'
+import { EndUser_Get_Attendance, EndUser_Leave_Balance, EndUser_punch_status } from '../../../api/EndPoints'
 import { fetchData, postData } from '../../../services/APIService'
 import Table2 from '../../../configurations/table2/Table2';
 import '../../../assets/Styles/CalendarStyle.css'

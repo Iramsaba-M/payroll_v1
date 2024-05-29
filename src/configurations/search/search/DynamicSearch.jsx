@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import StyleSearch from './StyleSearch';
 import { FaSearch } from 'react-icons/fa';
 
-const DynamicSearch = ({ data, searchKey, config, searchFunrecd }) => {
+const DynamicSearch = ({ data,config, searchFunrecd }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {

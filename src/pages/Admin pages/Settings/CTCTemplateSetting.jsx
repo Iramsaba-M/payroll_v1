@@ -3,10 +3,8 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { BoxContent, BoxContent2 } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
 import Box from '../../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { fetchData } from '../../../services/APIService';
 import { ctctemplatename } from '../../../api/EndPoints';
-// import Card from '../../configurations/Card/Card';
 
 import { IoMdArrowBack } from "react-icons/io";
 const CTCTemplateSetting = () => {

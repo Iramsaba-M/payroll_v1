@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from '../../../configurations/Card/CardConfig';
 import TableComponent from '../../../configurations/tables/TableComponent';
-import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5,tableContent2 } from './RunPayrollContents';
+import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5 } from './RunPayrollContents';
 import Button from '../../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { payslips } from '../../../api/EndPoints';
@@ -17,7 +17,7 @@ const RunPayrollFinalizeCompomnent = () => {
   const [payrolldata, setPayrollData] = useState([]);
   const [payrolltabledata, setpayrollTableData] = useState([]);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
-  const [tableData, setTableData] = useState([]);
+
 
   const fetchTableData = async () => {
     try {
@@ -73,8 +73,8 @@ const RunPayrollFinalizeCompomnent = () => {
     const fetchData = async () => {
       try {
         console.log('Fetching data from cardpiedata endpoint...');
-        const year = selectedDateTop.getFullYear();
-        const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
+        // const year = selectedDateTop.getFullYear();
+        // const month = selectedDateTop.toLocaleString('en-us', { month: 'short' }).toLowerCase();
         // Rest of your code
 
         const response = await axios.get('http://localhost:3000/reviewPayroll')

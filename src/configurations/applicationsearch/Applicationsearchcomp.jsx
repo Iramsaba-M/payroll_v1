@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import ApplicationSearchStyles from './ApplicationSearchStyles';
 import routesConfig from '../../routing/RoutingConfig';

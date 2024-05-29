@@ -1,13 +1,13 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DynamicSearch from '../search/DynamicSearch';
 import SearchInputConfig from './SearchInputConfig';
 
 const SearchableComp = ({ data, searchFunrec }) => {
-  const [searchData, setSearchData] = useState([]);
+  // const [searchData, setSearchData] = useState([]);
 
   const recSearchData = (searchedData) => {
-    setSearchData(searchedData);
+    // setSearchData(searchedData);
     searchFunrec(searchedData);
   };
 
