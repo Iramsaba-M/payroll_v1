@@ -14,7 +14,7 @@ export const exmpContent = [
   ];
   
   export const casualleaveContent = [
-    { card: 'userreportstyle2', chart: 'userreportbarchart', heading: 'Cick Leave', headstyle: 'userreportheading' },
+    { card: 'userreportstyle2', chart: 'userreportbarchart', heading: 'Casual Leave', headstyle: 'userreportheading' },
   
   ];
 
