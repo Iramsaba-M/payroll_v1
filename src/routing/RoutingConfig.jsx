@@ -44,6 +44,15 @@ import Reimbursementpolicy from '../components/AppSettingComponents/reimbursemen
 import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
 import UserHome from '../pages/User pages/Home/UserHome'
 import ErrorScreen from '../errorhandling/ErrorScreen'
+import LeaveNotification from '../pages/Admin pages/Notifications/LeaveNotification/LeaveNotification'
+import PayrollNotification from '../pages/Admin pages/Notifications/PayrollNotification/PayrollNotification'
+import LoanNotification from '../pages/Admin pages/Notifications/LoanNotification/LoanNotification'
+import ReimbursementNotification from '../pages/Admin pages/Notifications/ReimbursementNotification/ReimbursementNotification'
+import PoliciesNotification from '../pages/Admin pages/Notifications/PoliciesNotification/PoliciesNotification'
+import SystemNotification from '../pages/Admin pages/Notifications/SystemNotification/SystemNotification'
+import ReportsNotification from '../pages/Admin pages/Notifications/ReportsNotification/ReportsNotification'
+import Announcements from '../pages/Admin pages/Notifications/Announcements/Announcements'
+import PaymentsReminder from '../pages/Admin pages/Notifications/PaymentsReminder/PaymentsReminder'
 
 const routesConfig = [
   {
@@ -261,6 +270,44 @@ const routesConfig = [
               {
                 path: 'notifications',
                 element: <Notifications />,
+                children:[
+                  {
+                    path: 'LeaveNotification',
+                    element: <LeaveNotification />,
+                  },
+                  {
+                    path: 'PayrollNotification',
+                    element: <PayrollNotification />,
+                  },
+                  {
+                    path: 'LoanNotification',
+                    element: <LoanNotification />,
+                  },
+                  {
+                    path: 'ReimbursementNotification',
+                    element: <ReimbursementNotification />,
+                  },
+                  {
+                    path: 'PaymentsReminder',
+                    element: <PaymentsReminder />,
+                  },
+                  {
+                    path: 'PoliciesNotification',
+                    element: <PoliciesNotification />,
+                  },
+                  {
+                    path: 'SystemNotification',
+                    element: <SystemNotification />,
+                  },
+                  {
+                    path: 'ReportsNotification',
+                    element: <ReportsNotification />,
+                  },
+                  {
+                    path: 'Announcements',
+                    element: <Announcements />,
+                  },
+                ]
               },
               {
                 path: 'ctccalculator',
