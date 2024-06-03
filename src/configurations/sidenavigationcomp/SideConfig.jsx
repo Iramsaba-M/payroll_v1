@@ -1,5 +1,6 @@
 // SideNavigation.js
 import SideNavigationStyles from './SideNavStyles';
+import PropTypes from 'prop-types';
 
 const SideNavigationItem = ({ label, icon }) => {
   return (
@@ -10,6 +11,11 @@ const SideNavigationItem = ({ label, icon }) => {
   );
 };
 
+SideNavigationItem.propTypes = {
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.node, // Adjust as per the type of icon (e.g., string, element, etc.)
+};
+
 const SideNavigation = ({ Config }) => {
   return (
     <div className={SideNavigationStyles.container}>
@@ -18,6 +24,15 @@ const SideNavigation = ({ Config }) => {
       ))}
     </div>
   );
+};
+
+SideNavigation.propTypes = {
+  Config: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      icon: PropTypes.node, // Adjust as per the type of icon (e.g., string, element, etc.)
+    })
+  ).isRequired,
 };
 
 export default SideNavigation;

@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import NavStyle from './NavStyle';
+import PropTypes from 'prop-types';
 
 const NavComponent = ({ config, handleNavClick, activeItem }) => {
-  const [activeItems, setActiveItem] = useState(config[0].name);
 
   const handleTabClick = (item) => {
-    setActiveItem(item);
     handleNavClick(item);
-
   };
+
   return (
     <nav className="navbar">
       <ul className="nav-menu flex list-none">
@@ -29,4 +27,17 @@ const NavComponent = ({ config, handleNavClick, activeItem }) => {
     </nav>
   );
 };
+
+NavComponent.propTypes = {
+  config: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      navcss: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  handleNavClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
+};
+
 export default NavComponent;

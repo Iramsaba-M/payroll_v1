@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react';
 import { OptionData } from '../../../pages/Admin pages/Employee/AditionalDetail/AditionalDetailsContent';
 import { RiArrowDropDownFill } from "react-icons/ri";
+import PropTypes from 'prop-types';
 
-const OptionsComp = ({ onChange, initialValues = {},onBlur,formik }) => {
+const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
   const [employee_status, setEmployeeStatus] = useState(initialValues.employee_status || '');
   const [type, setType] = useState(initialValues.type || '');
   const [selectedLeaveOption, setSelectedLeaveOption] = useState(initialValues.reason || '');
@@ -120,6 +121,13 @@ const OptionsComp = ({ onChange, initialValues = {},onBlur,formik }) => {
       </div>
     </div>
   );
+};
+
+OptionsComp.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  initialValues: PropTypes.object,
+  onBlur: PropTypes.func,
+  formik: PropTypes.object,
 };
 
 export default OptionsComp;

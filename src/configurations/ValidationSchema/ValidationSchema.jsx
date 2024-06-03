@@ -17,13 +17,13 @@ export const formSchema = (config) => {
             case 'email':
               validationRule = Yup.string().required(`${input.label} is required`).email(`${input.label} must be a valid email`);
               break;
-            case 'tel': 
+            case 'tel':
               validationRule = Yup.string().required(`${input.label} is required`).matches(/^\d{10}$/, `${input.label} must be a valid phone number`);
               break;
             case 'tagoptions':
               console.log('tags');
               validationRule = Yup.array().required(`${input.label} is required`)
-              .test('not-null', `${input.label} must not be Empty`,value => value !== null && value.length > 0);
+                .test('not-null', `${input.label} must not be Empty`, value => value !== null && value.length > 0);
               break;
             case 'radio':
             case 'OptionComp':
@@ -43,7 +43,6 @@ export const formSchema = (config) => {
   );
 };
 
-
 export const simplifiedData = (config) => {
   return config.map(({ name, label, type, required }) => ({ name, label, type, required }));
 };
@@ -51,9 +50,9 @@ export const simplifiedData = (config) => {
 export const createInitialValues = (data) => {
   const initialValues = {};
   data.forEach(field => {
-    
+
     initialValues[field.name] = null;
-    
+
   });
   return initialValues;
 };

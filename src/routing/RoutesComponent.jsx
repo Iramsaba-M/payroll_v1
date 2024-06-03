@@ -10,8 +10,8 @@ const RoutesComponent = () => {
   const filteredRoutes = isAdmin
     ? routesConfig.find((config) => config.label === "Admin Data").children
     : isPersonal
-    ? routesConfig.find((config) => config.label === "Person Data").children
-    : []; // Default to empty array if neither isAdmin nor isPersonal
+      ? routesConfig.find((config) => config.label === "Person Data").children
+      : []; // Default to empty array if neither isAdmin nor isPersonal
 
   const renderRoutes = (routes) => {
     return routes.map((route, index) => (
@@ -20,10 +20,10 @@ const RoutesComponent = () => {
       </Route>
     ));
   };
-  
+
   return (
     <div className="flex w-60 border-r border-gray-200">
-      
+
       <Routes>{renderRoutes(filteredRoutes)}</Routes>
     </div>
   );

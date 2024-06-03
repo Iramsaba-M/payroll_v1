@@ -1,7 +1,7 @@
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import PropTypes from 'prop-types';
 import { AttendanceButtons, Attendanccard, Attendanccard2, leavesdata2, radiocontent, leavehistorytable } from './AttendanceContent'
-// import { leavecard1, leavecard2, leavecard3, leavecard4, leavecard5, leavecard6, leavecard7, leavecard8 } from './AttendanceContent'
 import Card from '../../../configurations/Card/CardConfig'
 import Calendar from 'react-calendar';
 import MyLeave from './MyLeave'
@@ -16,7 +16,6 @@ import ErrorScreen from '../../../errorhandling/ErrorScreen';
 export const Slider = ({ config, data }) => {
 
   const containerRef = useRef(null);
-  const [showButtons, setShowButtons] = useState(false);
 
   const handleScroll = (scrollOffset) => {
     if (containerRef.current) {
@@ -53,8 +52,6 @@ export const Slider = ({ config, data }) => {
   return (
     <div className=" w-[55vh] bg-gray-100 flex justify-center ">
       <div
-        onMouseEnter={() => setShowButtons(true)}
-        onMouseLeave={() => setShowButtons(false)}
         style={{ position: "relative" }}
       >
         <div
@@ -125,6 +122,10 @@ export const Slider = ({ config, data }) => {
   );
 }
 
+Slider.propTypes = {
+  config: PropTypes.array.isRequired,
+  data: PropTypes.object,
+};
 
 const MyAttendanceComponent = () => {
 
@@ -132,12 +133,10 @@ const MyAttendanceComponent = () => {
   const [value, onChange] = useState(new Date());
   const [applyleave, SetApplyleave] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [punchin, setPunchin] = useState(null);
-  const [punchout, setPunchout] = useState(null);
   const [leavehistory, setLeavehistory] = useState(null);
   const [leavebalance, setLeavebalance] = useState(null);
   const [punchstatus, setPunchstatus] = useState(null);
-  const [errorCode, setErrorCode] = useState(null); 
+  const [errorCode, setErrorCode] = useState(null);
 
   const Buttonclick = (label) => {
     if (label === 'Punch In') {
@@ -150,20 +149,12 @@ const MyAttendanceComponent = () => {
   };
   const handlePunchin = () => {
     setSelectedDate(true);
-    // setPunchin(value);
-    // console.log('punch in',value)
     setPunchstatus('punchin')
-    // console.log(punchstatus)
-    // punch()
+
   }
   const handlePunchout = () => {
-    // const punchouttime=new Date().toLocaleString();
-    // setSelectedDate(punchouttime);
-    // setPunchout(punchouttime);
-    // console.log('punch out',punchouttime)
     setPunchstatus('punchout')
-    // console.log(punchstatus)
-    // punch()
+
 
   }
 
@@ -176,9 +167,7 @@ const MyAttendanceComponent = () => {
       className += ' bg-white  hover:border    py-1  rounded-md  scale-75 ';
 
     }
-    // if( date.getMonth() !== new Date().getMonth){
-    //   className +='text-black '
-    // }
+
     if (selectedDate && date.toDateString() === new Date().toDateString()) {
       className = ' bg-green-300  w-10 font-bold border-2';//bg-lime-400 or bg-green-300 bg-green-300
     }
@@ -197,7 +186,7 @@ const MyAttendanceComponent = () => {
       const response = await fetchData(endpoint);
 
 
-      console.log('Post leave', response,endpoint);
+      console.log('Post leave', response, endpoint);
 
       // setLeavebalance(response.data.leave_balance)
       setLeavebalance(response.leave_balance)
@@ -207,10 +196,6 @@ const MyAttendanceComponent = () => {
     }
   };
 
-  useEffect(() => {
-    fetchgetData();
-    fetchAttendanceData();
-  }, []);
 
   const fetchAttendanceData = async () => {
     try {
@@ -231,12 +216,11 @@ const MyAttendanceComponent = () => {
 
   };
 
-    console.log('errorCode',errorCode);
+  console.log('errorCode', errorCode);
 
- 
 
-  const punch = async (e) => {
-    // e.preventDefault();
+
+  const punch = useCallback(async () => {
 
     try {
       const emp = 'IK04';
@@ -250,21 +234,27 @@ const MyAttendanceComponent = () => {
 
 
       console.log('Data sent:', response);
-      // handlesubmit();
+
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }, [punchstatus]);
+
+  useEffect(() => {
+    fetchgetData();
+    fetchAttendanceData();
+  }, []);
 
   useEffect(() => {
     if (punchstatus) {
       punch();
     }
-  }, [punchstatus]);
+  }, [punchstatus, punch]);
 
   if (errorCode) {
-    return <ErrorScreen errorCode={errorCode} />; 
+    return <ErrorScreen errorCode={errorCode} />;
   }
+
 
   return (
     <div >
@@ -284,8 +274,8 @@ const MyAttendanceComponent = () => {
         </div>
 
         <div className='mt-6 '>
-          
-            
+
+
           <Calendar
             onChange={onChange}
             value={value}
@@ -300,9 +290,8 @@ const MyAttendanceComponent = () => {
 
             tileClassName={customTileClassName}
 
-              //new
           />
-          
+
         </div>
         <div>
         </div>

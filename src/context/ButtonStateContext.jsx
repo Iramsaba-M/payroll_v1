@@ -1,5 +1,6 @@
 
 import { createContext, useState, useContext } from "react";
+import PropTypes from 'prop-types';
 
 const ButtonStateContext = createContext();
 
@@ -23,13 +24,13 @@ export const ButtonStateProvider = ({ children }) => {
 
   const AddEmployeeclick = () => {
     setAddMode(true);
-     setEditMode(false); 
-     console.log("Add mode is on");
+    setEditMode(false);
+    console.log("Add mode is on");
     console.log("Edit mode is off");
   };
 
-   const EditModeclick = () => {
-    setEditMode(true); 
+  const EditModeclick = () => {
+    setEditMode(true);
     setAddMode(false);
     console.log("Add mode is off");
     console.log("Edit mode is on");
@@ -51,4 +52,8 @@ export const ButtonStateProvider = ({ children }) => {
       {children}
     </ButtonStateContext.Provider>
   );
+};
+
+ButtonStateProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };

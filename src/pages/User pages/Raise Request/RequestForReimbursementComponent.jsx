@@ -1,5 +1,6 @@
 //clean code
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import RequestForReimbursementStyles from './RequestForReimbursementStyles';
 import OptionsComponent from '../../../components/form/Formfields/options/OptionsComponent';
 import TextComponent from '../../../components/form/Formfields/text/TextComponent';
@@ -12,7 +13,7 @@ import ModalComponent from '../../../components/form/Formfields/modal/ModalCompo
 import { ModalConfig2 } from '../../../components/form/Formfields/modal/ModalConfig2';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import { EndUser_ApplyReimbursement } from '../../../api/EndPoints';
-import {postDataImage} from '../../../services/APIService';
+import { postDataImage } from '../../../services/APIService';
 
 const RequestForReimbursementComponent = ({ config }) => {
   const [formData, setFormData] = useState([{ id: 0, values: {} }]);
@@ -43,34 +44,7 @@ const RequestForReimbursementComponent = ({ config }) => {
     setFormData(formData.filter((form) => form.id !== id));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await Promise.all(
-  //       formData.map(async (form) => {
-  //         const employee_id = "IK666";
-  //         const amount = parseFloat(form.values.amount);
-  //         const formData = new FormData();
-  //         formData.append('employee_id', employee_id);
-  //         formData.append('amount', amount);
-  //         formData.append('reimbursment_type', form.values.reimbursment_type);
-  //         formData.append('expense_date', form.values.expense_date);
-  //         formData.append('description', form.values.description);
-  //         formData.append('documents', form.values.documents);
-  //         const response = await axios.post('http://192.168.0.117:8000/enduser/ submit_reimbursement/', formData, {
-  //           headers: {
-  //             'Content-Type': 'multipart/form-data'
-  //           }
-  //         });
 
-  //         console.log('Data sent successfully:', response.data);
-  //       })
-  //     );
-
-  //   } catch (error) {
-  //     console.error('Error sending data:', error);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -85,10 +59,10 @@ const RequestForReimbursementComponent = ({ config }) => {
           data.append('expense_date', form.values.expense_date);
           data.append('description', form.values.description);
           data.append('documents', form.values.documents);
-  
+
           // Utilize EndUser_ApplyReimbursement constant
           const response = await postDataImage(EndUser_ApplyReimbursement, data);
-  
+
           console.log('Data sent successfully:', response);
         })
       );
@@ -96,7 +70,22 @@ const RequestForReimbursementComponent = ({ config }) => {
       console.error('Error sending data:', error);
     }
   };
-  
+
+  RequestForReimbursementComponent.propTypes = {
+    config: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(['options', 'date', 'text', 'file']).isRequired,
+      options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+      })),
+      placeholder: PropTypes.string,
+      icon: PropTypes.element,
+      iconPosition: PropTypes.oneOf(['left', 'right']),
+      textcss: PropTypes.string,
+    })).isRequired,
+  };
 
 
   return (
@@ -105,7 +94,6 @@ const RequestForReimbursementComponent = ({ config }) => {
         <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Reimbursement</h1>
         <div className='border-2 border-gray-200 shadow-md h-full ml-7'>
           <div className=' ml-7 mt-6'>
-            {/* <form onSubmit={handleSubmit}> */}
             <form onSubmit={(e) => handleSubmit(e, 'Requestreimbursement')}>
               {formData.map((form, index) => (
                 <div key={index} className="flex items-center">

@@ -1,5 +1,6 @@
-//clean code
-import { useEffect, useState } from 'react';
+//RequestForLoanComponent.jsx
+import { useEffect, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import OptionsComponent from '../../../components/form/Formfields/options/OptionsComponent';
 import TextComponent from '../../../components/form/Formfields/text/TextComponent';
 import Button from '../../../configurations/Button/Button';
@@ -10,51 +11,52 @@ import { ModalConfig2 } from '../../../components/form/Formfields/modal/ModalCon
 import { postData } from '../../../services/APIService';
 import { EndUser_ApplyLoan } from '../../../api/EndPoints';
 import { useFormik } from "formik";
-import { formSchema,simplifiedData,createInitialValues } from '../../../configurations/ValidationSchema/ValidationSchema';
+import { formSchema, simplifiedData, createInitialValues } from '../../../configurations/ValidationSchema/ValidationSchema';
 
 
 const RequestForLoanComponent = ({ config }) => {
   const [data, setData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleInputChange = (fieldName, value) => {
-  //   setData((prevData) => ({
-  //     ...prevData,
-  //     [fieldName]: value,
-  //   }));
-  // };
   const handleButtonClick = (type) => {
     if (type === "submit" && Object.keys(formik.errors).length === 0 && formik.isValid) {
       setData(formik.values)
       handleSubmit();
     }
   };
- 
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
-  
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
+  const formik = useFormik({
+
+    initialValues: createInitialValues(config),
+
+
+    validationSchema: formSchema(simplifiedData(config)),
+
+
+  });
+
+  const handleSubmit = useCallback(async () => {
     try {
       console.log('formik', formik.values);
       const employee_id = "100";
       // Validate amount and installment_period
       const amount = parseFloat(data.amount);
       const installment_period = parseInt(data.installment_period);
-      
+
       if (isNaN(amount) || isNaN(installment_period)) {
         throw new Error('Amount and installment period must be valid numbers.');
       }
-      
+
       const loanData = {
         ...data,
         "employee_id": employee_id,
         "amount": amount,
         "installment_period": installment_period,
-        
+
       };
       console.log(loanData)
       const response = await postData(EndUser_ApplyLoan, loanData);
@@ -64,26 +66,18 @@ const RequestForLoanComponent = ({ config }) => {
     } catch (error) {
       console.error('Error sending data:', error);
     }
-  };
-  
+  }, [data, formik.values]);
+
   useEffect(() => {
     handleSubmit();
-  }, []);
-  
-  
-  
-
-  const formik    = useFormik({
-      
-      initialValues : createInitialValues(config),
-
-    
-      validationSchema: formSchema(simplifiedData(config)),
+  }, [handleSubmit]);
 
 
-    });
 
   console.log(formik, formik.values, formik.errors)
+  RequestForLoanComponent.propTypes = {
+    config: PropTypes.array.isRequired, // Validate config prop
+  };
 
   return (
     <div className=''>
@@ -94,7 +88,6 @@ const RequestForLoanComponent = ({ config }) => {
         </div>
         <div className='border-2 border-gray-200 shadow-md h-[50vh] ml-7 -mt-2 '>
           <div className=' ml-7 mt-7'>
-            {/* <form onSubmit={handleSubmit}> */}
             <form onSubmit={formik.handleSubmit}>
               {config.slice(0, 1).map((field, index) => (
                 <div key={index}>
@@ -109,11 +102,8 @@ const RequestForLoanComponent = ({ config }) => {
                       textcss={RequestForLoanStyles[field.textcss].input}
                       icon={field.icon}
                       placeholder={field.placeholder}
-                      // value={data[field.name] || ''}
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
-                      // onChange={(e) => handleInputChange(field.name, e.target.value)}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
@@ -133,10 +123,7 @@ const RequestForLoanComponent = ({ config }) => {
                       textcss={RequestForLoanStyles[field.textcss].input}
                       icon={field.icon}
                       placeholder={field.placeholder}
-                      // value={data[field.name] || ''}
-                      // onChange={(e) => handleInputChange(field.name, e.target.value) }\
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -159,10 +146,7 @@ const RequestForLoanComponent = ({ config }) => {
                       textcss={RequestForLoanStyles[field.textcss].input}
                       icon={field.icon}
                       placeholder={field.placeholder}
-                      // value={data[field.name] || ''}
-                      // onChange={(e) => handleInputChange(field.name, e.target.value)}
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -183,10 +167,7 @@ const RequestForLoanComponent = ({ config }) => {
                       textcss={RequestForLoanStyles[field.textcss].input}
                       icon={field.icon}
                       placeholder={field.placeholder}
-                      // value={data[field.name] || ''}
-                      // onChange={(e) => handleInputChange(field.name, e.target.value)}
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}

@@ -1,19 +1,11 @@
 
 import { useComponentMapping } from "../context/ComponentMappingContext";
-import { Route } from "react-router-dom";
 import { sections } from "./LayoutConfigFile";
 
 const DynamicLayout = () => {
 
     const componentMapping = useComponentMapping();
 
-    const renderRoutes = (routes, componentMapping) => {
-        return routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} index={route.index}>
-                {route.children && renderRoutes(route.children, componentMapping)}
-            </Route>
-        ));
-    };
     return (
         <div className="">
             <div className="flex ml-14   ">

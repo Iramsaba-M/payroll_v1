@@ -1,15 +1,15 @@
 //clean code
-import { useState} from 'react';
+import { useState } from 'react';
 import { useNavigate, } from 'react-router-dom';
 import CardConfig from '../../../pages/Admin pages/Settings/cardcomponent/CardConfig';
-import  RaiseRequestContent from './RaiseRequestContent'; // 
+import RaiseRequestContent from './RaiseRequestContent'; // 
 import { Outlet } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 const RaiseRequestComponent = () => {
 
   const [cardclick, setCardClick] = useState(false)
   const navigate = useNavigate();
-  
+
 
   const handleCardClick = (route) => {
 
@@ -33,7 +33,7 @@ const RaiseRequestComponent = () => {
         (!cardclick) &&
         chunkedSettingContent.map((chunk, index) => (
           <div key={index} className='ml-8'>
-          <CardConfig  Config={chunk} handleCardClick={handleCardClick} />
+            <CardConfig Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}
       {cardclick && (

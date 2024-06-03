@@ -1,6 +1,6 @@
 
 import { Outlet, useNavigate } from 'react-router-dom';
-import {  Loanpolicycontent, TypeOfLoan,LoanApprovalSettings } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
+import { Loanpolicycontent, TypeOfLoan, LoanApprovalSettings } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
 import Box from '../../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
 import { IoMdArrowBack } from "react-icons/io";
 import { useState } from 'react';
@@ -21,25 +21,25 @@ const LoanSetting = () => {
 
   return (
     <div>
-      
- 
+
+
       {
         (!cardclick) &&
         <div>
-      <div className='ml-36' onClick={()=>handleClick(TypeOfLoan[0].path)}  >
-        <Box Configs={TypeOfLoan} />
-      </div>
-      <div className='ml-36' onClick={()=>handleClick(Loanpolicycontent[0].path)}  >
-        <Box Configs={Loanpolicycontent} />
-      </div>
-      <div className='ml-36' onClick={()=>handleClick(LoanApprovalSettings[0].path)}  >
-        <Box Configs={LoanApprovalSettings} />
-      </div>
-      </div>}
+          <div className='ml-36' onClick={() => handleClick(TypeOfLoan[0].path)}  >
+            <Box Configs={TypeOfLoan} />
+          </div>
+          <div className='ml-36' onClick={() => handleClick(Loanpolicycontent[0].path)}  >
+            <Box Configs={Loanpolicycontent} />
+          </div>
+          <div className='ml-36' onClick={() => handleClick(LoanApprovalSettings[0].path)}  >
+            <Box Configs={LoanApprovalSettings} />
+          </div>
+        </div>}
       {cardclick && (
         <>
-        <div className='-mt-6 '>
-          <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          <div className='-mt-6 '>
+            <button onClick={handleBackClick}><IoMdArrowBack /></button>
           </div>
           <Outlet />
         </>

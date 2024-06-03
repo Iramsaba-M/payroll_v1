@@ -5,7 +5,7 @@ import EmployeeComponent from './EmployeeComponent'
 const Employee = () => {
   return (
     <div>
-        <BodyContent content={EmployeeComponent} />
+      <BodyContent content={EmployeeComponent} />
     </div>
   )
 }

@@ -5,7 +5,7 @@ import UserReportsComponent from './UserReportsComponent'
 const UserReports = () => {
   return (
     <div>
-        <BodyContent content={UserReportsComponent} />
+      <BodyContent content={UserReportsComponent} />
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import CardStyles from './CardStyle';
+import PropTypes from 'prop-types';
 
 const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle, name,
-  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone, multivaluestyle, multiheadingstyle, onClick }) => {
+  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone, onClick }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -47,6 +48,31 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
   );
 };
 
+Card.propTypes = {
+  chart: PropTypes.string,
+  card: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  icon: PropTypes.node,
+  comp: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  heading: PropTypes.string,
+  iconstyle: PropTypes.string,
+  heading2: PropTypes.string,
+  heading3: PropTypes.string,
+  contentStyle: PropTypes.object,
+  name: PropTypes.string,
+  contentvalue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  contentvalue2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  className: PropTypes.string,
+  classNametext: PropTypes.string,
+  contentstyle: PropTypes.string,
+  contentstyle2: PropTypes.string,
+  headstyle: PropTypes.string,
+  multivalue: PropTypes.arrayOf(PropTypes.object),
+  multiclone: PropTypes.object,
+  onClick: PropTypes.func,
+};
+
 const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclone, onClick }) => {
   return (
     <div className="flex  ">
@@ -66,6 +92,16 @@ const CardConfig = ({ Config, data, comp, contentvalue, contentvalue2, multiclon
       ))}
     </div>
   );
+};
+
+CardConfig.propTypes = {
+  Config: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.array.isRequired,
+  comp: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  contentvalue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  contentvalue2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  multiclone: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default CardConfig;

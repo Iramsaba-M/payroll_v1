@@ -4,12 +4,11 @@ import ExcelJS from 'exceljs';
 import 'jspdf-autotable';
 import { saveAs } from 'file-saver';
 import { postData } from '../src/services/APIService';
-import { Import_GET_API, Import_UPLOAD__GET_API} from '../src/api/EndPoints';
+import { Import_GET_API, Import_UPLOAD__GET_API } from '../src/api/EndPoints';
 import { postFile } from '../src/services/APIService';
 
-
- // Function to concatenate first name, middle name, and last name
- export const concatenateName = (First_Name, Middle_Name, Last_Name) => {
+// Function to concatenate first name, middle name, and last name
+export const concatenateName = (First_Name, Middle_Name, Last_Name) => {
   return [First_Name, Middle_Name, Last_Name].filter(Boolean).join(' ');
 };
 
@@ -70,8 +69,6 @@ export const parseExcelFile = async (file) => {
 
   console.log('Column Names:', columnNames);
 
- 
-
   // Iterate through rows and columns to extract data
   worksheet.eachRow((row, rowNumber) => {
     if (rowNumber > 1) {
@@ -85,13 +82,13 @@ export const parseExcelFile = async (file) => {
           // Format the date to "DD/MM/YYYY"
           const formattedDate = cell.value
             ? new Date(cell.value).toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-              })
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })
             : null;
           currentEmployee['JOINING_DATE'] = formattedDate; // Assign to 'JOINING_DATE'
-        
+
         } else if (columnNames[columnIndex].toLowerCase().includes('name')) {
           // Concatenate first name, middle name, and last name
           currentEmployeeName += cell.value ? cell.value.trim() + ' ' : '';
@@ -131,7 +128,7 @@ export const exportDataTemplate = async (apiEndpoint, format) => {
       headers: {
         'Accept': '*/*',
       },
-      
+
     });
 
     if (!response.ok) {
@@ -151,7 +148,7 @@ export const exportDataTemplate = async (apiEndpoint, format) => {
 
     // Create a link element
     const link = document.createElement('a');
-    
+
     // Create a URL for the Blob
     const url = URL.createObjectURL(blob);
 

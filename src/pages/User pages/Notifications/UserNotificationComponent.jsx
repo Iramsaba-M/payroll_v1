@@ -33,7 +33,7 @@ const UserNotificationComponent = () => {
     fetchNotificationData();
   }, []);
   if (errorCode) {
-    return <ErrorScreen errorCode={errorCode} />; 
+    return <ErrorScreen errorCode={errorCode} />;
   }
 
   return (

@@ -1,13 +1,11 @@
 
-import { useState } from 'react';
 import DynamicSearch from '../search/DynamicSearch';
 import SearchInputConfig from './SearchInputConfig';
+import PropTypes from 'prop-types';
 
 const SearchableComp = ({ data, searchFunrec }) => {
-  // const [searchData, setSearchData] = useState([]);
 
   const recSearchData = (searchedData) => {
-    // setSearchData(searchedData);
     searchFunrec(searchedData);
   };
 
@@ -24,6 +22,11 @@ const SearchableComp = ({ data, searchFunrec }) => {
       ))}
     </div>
   );
+};
+
+SearchableComp.propTypes = {
+  data: PropTypes.array.isRequired, // Assuming data is an array, adjust the prop type accordingly
+  searchFunrec: PropTypes.func.isRequired
 };
 
 export default SearchableComp;

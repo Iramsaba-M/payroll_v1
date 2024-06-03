@@ -1,23 +1,11 @@
-// import { MdEditNote } from "react-icons/md";
 
-// import { TbArrowBigRight } from "react-icons/tb";
-// import { FaPlus } from "react-icons/fa6";
-// export const BoxContent = [
-//     { card: 'style1', title: 'Add New Template',icon:<TbArrowBigRight className="ml-5" />,icon2:<FaPlus  className="h-5 w-5 "/> },
-
-//   ];
-
-//   export const BoxContent2 = [
-//     { card: 'style1', title: '',icon:<TbArrowBigRight  className="ml-5"/> },
-
-//   ];
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbArrowBigRight } from "react-icons/tb";
 import { FaPlus } from "react-icons/fa6";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { RiLock2Line } from "react-icons/ri";
-import { TbPigMoney ,TbMoneybag} from "react-icons/tb";
+import { TbMoneybag} from "react-icons/tb";
 import { TiTickOutline } from "react-icons/ti";
 import { PiHandCoins } from "react-icons/pi";
 

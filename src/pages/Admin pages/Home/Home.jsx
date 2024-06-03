@@ -5,7 +5,7 @@ import HomeComponent from './HomeComponent'
 const Home = () => {
   return (
     <div>
-        <BodyContent content={HomeComponent} />
+      <BodyContent content={HomeComponent} />
     </div>
   )
 }

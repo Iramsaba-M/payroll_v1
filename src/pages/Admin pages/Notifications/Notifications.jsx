@@ -5,7 +5,7 @@ import NotificationsComponent from './NotificationsComponent'
 const Notifications = () => {
   return (
     <div>
-        <BodyContent content={NotificationsComponent} />
+      <BodyContent content={NotificationsComponent} />
     </div>
   )
 }

@@ -9,19 +9,19 @@ export const cardContent = [
 ];
 
 export const tablesearchContent = [
-{  
-  "placeholder" : "  Search ",
-  "style" : "search1"
-} 
+  {
+    "placeholder": "  Search ",
+    "style": "search1"
+  }
 ]
-  
+
 export const ButtonContent = [
   { label: 'Add Employee', icon: <CiImport />, style: 'buttonStyle' },
   { label: 'Import', icon: <CiImport />, style: 'buttonStyle1' },
-  { label: 'Export', icon: <BsArrowBarUp />, style: 'buttonStyle1' }, 
+  { label: 'Export', icon: <BsArrowBarUp />, style: 'buttonStyle1' },
 ];
 
-import { MdOutlineEdit,MdDeleteOutline } from 'react-icons/md';
+import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md';
 
 export const tableContent = [
   {
@@ -80,7 +80,7 @@ export const tableContent = [
 
 
 export const importButtonData = [
-  { label: 'Download Template',  style: 'buttonStyle2' },
+  { label: 'Download Template', style: 'buttonStyle2' },
   { label: 'Upload File', style: 'buttonStyle2' },
 ];
 

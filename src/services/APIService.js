@@ -1,6 +1,6 @@
 // apiService.js
 import axios from 'axios';
-import { getApiUrl} from '../api/GetAPI';
+import { getApiUrl } from '../api/GetAPI';
 
 export const fetchData = async (endpoint) => {
   try {

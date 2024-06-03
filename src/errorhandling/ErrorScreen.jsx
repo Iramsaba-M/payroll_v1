@@ -6,6 +6,8 @@ import servererror from '../assets/Images/servererror.jpg';
 import error from '../assets/Images/error.jpg'
 import gatewaytimeouterror from '../assets/Images/gatewaytimeouterror.jpg'
 import pnferror from '../assets/Images/pnferror.jpg'
+import PropTypes from 'prop-types';
+
 
 const ErrorScreen = ({ errorCode }) => {
   let errorMessage = '';
@@ -71,14 +73,17 @@ const ErrorScreen = ({ errorCode }) => {
           </div>
         </div>
       </div>
-
+      3
       <div className=''>
-        <img src={errorImage} alt="" className='object-cover w-[90vh]'/>
+        <img src={errorImage} alt="" className='object-cover w-[90vh]' />
       </div>
 
     </div>
   );
 };
 
+ErrorScreen.propTypes = {
+  errorCode: PropTypes.number,
+};
 
 export default ErrorScreen;

@@ -1,9 +1,8 @@
 
-import React from 'react';
+import PropTypes from 'prop-types';
 
-const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, placeholder,onBlur }) => {
+const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, placeholder, onBlur }) => {
   const inputType = numberType === 'float' ? 'number' : (numberType === 'int' ? 'number' : 'text');
-  // Using 'number' type for both float and int because it allows for numeric input and handles validation
 
   const inputMode = inputType === 'number' ? 'numeric' : 'none';
 
@@ -18,10 +17,24 @@ const NumberComponent = ({ name, label, value, onChange, numberType, numbercss, 
         onChange={onChange}
         className={numbercss}
         inputMode={inputMode} // Add inputMode attribute
-        onBlur={ onBlur ? onBlur : null }
+        onBlur={onBlur ? onBlur : null}
       />
     </div>
   );
+};
+
+NumberComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  numberType: PropTypes.oneOf(['float', 'int', 'text']).isRequired,
+  numbercss: PropTypes.string,
+  placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
 };
 
 export default NumberComponent;

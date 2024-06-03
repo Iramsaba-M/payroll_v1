@@ -2,12 +2,12 @@
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 export const CTC_CalculatorComponent = () => {
-  const errorCode=404;
+  const errorCode = 404;
   return (
     <div>
-       <ErrorScreen errorCode={errorCode} />
+      <ErrorScreen errorCode={errorCode} />
     </div>
-    
+
   )
 }
 

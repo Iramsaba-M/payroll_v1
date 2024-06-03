@@ -12,11 +12,11 @@ const ReviewPayrollStyle = {
     input: '  ml-[54px] border-gray-100  text-gray text-xs leading-tight focus:outline-none w-[10vh] placeholder:text-black',
   },
 
-  i:'rounded flex mb-1 mr-2 text-xs px-1',
-  ii:'bg-gray-200 text-blue-800 w-4 rounded-[4px] py-[1px]',
-  iii:'ml-1 text-blue-700',
+  i: 'rounded flex mb-1 mr-2 text-xs px-1',
+  ii: 'bg-gray-200 text-blue-800 w-4 rounded-[4px] py-[1px]',
+  iii: 'ml-1 text-blue-700',
 
-  
+
   name: {
     label: 'block text-black-600 text-xs font-bold my-',
     input: 'w-[30vh]   border-gray-100  text-blue-600 text-2xl   leading-tight focus:outline-none  placeholder:text-violet-500',

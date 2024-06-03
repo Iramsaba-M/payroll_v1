@@ -5,7 +5,7 @@ import ReportsComponent from './ReportsComponent'
 const Reports = () => {
   return (
     <div>
-        <BodyContent content={ReportsComponent} />
+      <BodyContent content={ReportsComponent} />
     </div>
   )
 }

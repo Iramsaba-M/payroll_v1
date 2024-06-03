@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import OptionsComponent from '../Formfields/options/OptionsComponent';
 import NumberComponent from '../Formfields/number/numbercompoent';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
@@ -14,11 +14,11 @@ import { SALARY_DETAILS_PUT_API } from '../../../api/EndPoints';
 import { putData } from '../../../services/APIService';
 import { useFormik } from 'formik';
 import { createInitialValues, formSchema, simplifiedData } from '../../../configurations/ValidationSchema/ValidationSchema';
+import PropTypes from 'prop-types';
 
 const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees }) => {
   const [values, setValues] = useState({});
   const [postSuccess, setPostSuccess] = useState(false);
-  // const [ctcDetails, setCtcDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
@@ -33,98 +33,16 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
       formik.setValues(editEmployees.salary)
     }
   }, [editEmployees]);
-  //////////////////////////////////////
+
   const formik = useFormik({
     initialValues: createInitialValues(config),
     validationSchema: formSchema(simplifiedData(config)),
   });
-  //////////////////////////////////////
-
-
-  // const handleButtonClick = async (label, type, values) => {
-  //   console.log("EditMode:", editMode);
-  //   console.log("AddMode:", AddMode);
-  //   console.log("Label:", label);
-  //   console.log("Type:", type);
-
-  //   if (AddMode) {
-  //     // When Add mode is active
-  //     if (label === "Save" && type === "submit") {
-  //       try {
-  //         setIsModalOpen(true); // Open modal
-
-  //       } catch (error) {
-  //         console.error("Error calling POST API:", error);
-  //         // Handle errors here
-  //       }
-  //     } else if (label === "Next") {
-  //       handleNextClick();
-  //     } 
-
-  //   } else  if (!AddMode && editMode) {
-  //     setValues(editEmployees);
-  //     // When edit mode is active
-  //     if (label === "Save" && type === "submit") {
-  //       try {
-  //         // Assuming BASIC_DETAILS_API_put is the correct endpoint URL for PUT requests
-  //         await putData(`${SALARY_DETAILS_PUT_API}/${employeeId}`, values);
-  //         console.log("PUT API called successfully");
-  //         // Handle success or update UI accordingly
-  //       } catch (error) {
-  //         console.error("Error calling PUT API:", error);
-  //         // Handle errors here
-  //       }
-  //     } else if (label === "Next") {
-  //       handleNextClick();
-  //     }
-
-  //   }
-  //   };
-
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { annual_ctc, ctc_template } = values;
-
-  //     // Use postData from apiService.js
-  //     const postResponse = await postData(SALARY_DETAILS_POST_API, {
-  //       annual_ctc,
-  //       ctc_template,
-  //       employee_id: employeeId,
-  //     });
-
-  //     console.log('Data sent:', postResponse);
-  //     setPostSuccess(true);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     // Handle error as needed
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   // Fetch data only if postSuccess is true
-  //   const fetchDataIfNeeded = async () => {
-  //     try {
-  //       if (postSuccess) {
-  //         // Use fetchData from apiService.js
-  //         const response = await fetchData(`${SALARY_DETAILS_GET_API}/${employeeId}`);
-  //         console.log('GET Response Data:', response);
-  //         setValues(response);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //       // Handle error as needed
-  //     }
-  //   };
-
-  //   fetchDataIfNeeded();
-  // }, [employeeId, postSuccess]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      
+
       const { annual_ctc, ctc_template } = values;
 
       if (AddMode) {
@@ -185,17 +103,9 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
     console.log("AddMode:", AddMode);
     console.log("Label:", label);
     console.log("Type:", type);
-    if (label === "Next" )
+    if (label === "Next")
       handleNextClick(employeeId);
   }
-
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
-
-  // const handleChange = (name, value) => {
-  //   setValues({ ...values, [name]: value });
-  // };
 
   console.log('er', formik.values, formik.errors, values);
   return (
@@ -209,16 +119,13 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
               {field.type === 'options' && (
                 <OptionsComponent
                   name={field.name}
-                  // value={values[field.name] || ''}  
                   options={field.options}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={NumberStyle[field.textcss].input}
                   placeholder={field.placeholder}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -236,15 +143,12 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
                   <NumberComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     numberType={field.numberType}  // Use field.numberType or default to "float"
                     numbercss={NumberStyle[field.numbercss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -273,7 +177,6 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
                 <NumberComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  //  value={values.earning && values.earning[field.name] || ""}
                   value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : null}
                   onChange={(e) => handleChange("earning", field.name, e.target.value)}
                   numberType={field.numberType}  // Use field.numberType or default to "float"
@@ -295,7 +198,6 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
                 <NumberComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  // value={values.earning && values.earning[field.name] || ""}
                   value={(values.earning && values.earning[field.name]) !== undefined ? values.earning[field.name] : null}
                   onChange={(e) => handleChange("earning", field.name, e.target.value)}
                   numberType={field.numberType}  // Use field.numberType or default to "float"
@@ -343,7 +245,6 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
                 <NumberComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  // value={values.deduction && values.deduction[field.name] || ""}
                   value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : null}
                   onChange={(e) => handleChange("deduction", field.name, e.target.value)}
                   numberType={field.numberType}  // Use field.numberType or default to "float"
@@ -365,7 +266,6 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
                 <NumberComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  // value={values.deduction && values.deduction[field.name] || ""}
                   value={(values.deduction && values.deduction[field.name]) !== undefined ? values.deduction[field.name] : null}
                   onChange={(e) => handleChange("deduction", field.name, e.target.value)}
                   numberType={field.numberType}  // Use field.numberType or default to "float"
@@ -408,6 +308,13 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
       />
     </form>
   );
+};
+
+SalaryDetailsComp.propTypes = {
+  config: PropTypes.array.isRequired,
+  handleNextClick: PropTypes.func.isRequired,
+  employeeId: PropTypes.string.isRequired,
+  editEmployees: PropTypes.object.isRequired
 };
 
 export default SalaryDetailsComp;

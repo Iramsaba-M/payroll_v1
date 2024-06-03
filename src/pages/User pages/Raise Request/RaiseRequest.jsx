@@ -5,7 +5,7 @@ import RaiseRequestComponent from './RaiseRequestComponent'
 const RaiseRequest = () => {
   return (
     <div>
-        <BodyContent content={RaiseRequestComponent} />
+      <BodyContent content={RaiseRequestComponent} />
     </div>
   )
 }

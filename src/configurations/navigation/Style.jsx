@@ -1,7 +1,6 @@
 
 const Style = {
 
-
     style1: "hover:text-blue-500 font-normal mx-8 text-black-800",
 
     style2: "text-blue-800 hover:text-red-500 font-normal mx-10  my-10",
@@ -12,7 +11,6 @@ const Style = {
 
     style5: "hover:text-blue-500 font-normal p-2 text-gray-600",
 }
-
 
 export default Style;
 

@@ -7,8 +7,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: '',
     textcss: 'name',
-
-
   },
   {
     label: 'Net Pay',
@@ -16,8 +14,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: '',
     textcss: 'standard',
-
-
   },
   {
     label: 'Emp.ID:',
@@ -25,8 +21,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: '',
     textcss: 'empid',
-
-
   },
   {
     label: 'Payable Days',
@@ -34,8 +28,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'payabledays',
-
-
   },
   {
     label: 'Basic',
@@ -43,8 +35,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'basic',
-
-
   },
   {
     label: 'Basic Arrer',
@@ -52,8 +42,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'basicarrer',
-
-
   },
   {
     label: 'House Rent Allowance',
@@ -61,8 +49,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'houserentallowance',
-
-
   },
   {
     label: 'Fixed Allowance',
@@ -70,9 +56,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'fixedallowance',
-
-
-
   },
   {
     label: 'Fixed Allowance Arrear',
@@ -80,8 +63,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'fixedallowancearrear',
-
-
   },
   {
     label: 'Gross Salary',
@@ -89,8 +70,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'GROSS',
-
-
   },
   {
     label: 'EPF',
@@ -98,8 +77,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'EPF',
-
-
   },
   {
     label: 'ESIC',
@@ -107,8 +84,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'ESIC',
-
-
   },
   {
     label: 'PT',
@@ -116,8 +91,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'PT',
-
-
   },
   {
     label: 'Net Salary',
@@ -125,8 +98,6 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'netsalary',
-
-
   },
   {
     label: 'Net Pay',
@@ -134,18 +105,13 @@ export const ReviewPayrollData = [
     type: 'text',
     placeholder: 'Enter here',
     textcss: 'netpay',
-
-
   },
-
   {
     label: '',
     name: 'input',
     type: 'textarea',
     placeholder: 'Enter here',
     textcss: 'standard_document8',
-
-
   },
 
 ];
@@ -155,19 +121,15 @@ export const ButtonforSave = [
   { label: 'Next', style: 'buttonStyle3', type: "Button" },
 ];
 
-
-
-
 export const addlop = [
   { label: '+ Add LOP', style: 'buttonStyleaddlop', type: "button" },
 ];
-
 
 export const add = [
   {
     label: (
       <button className={ReviewPayrollStyle.i}>
-        <span className={ReviewPayrollStyle.ii}><FiPlus  className="ml-0.5 h-[13px]"/></span> <div className={ReviewPayrollStyle.iii}>Add</div>
+        <span className={ReviewPayrollStyle.ii}><FiPlus className="ml-0.5 h-[13px]" /></span> <div className={ReviewPayrollStyle.iii}>Add</div>
       </button>
     ),
     type: "button",

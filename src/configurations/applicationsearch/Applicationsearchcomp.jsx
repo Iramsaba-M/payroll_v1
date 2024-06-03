@@ -3,6 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import ApplicationSearchStyles from './ApplicationSearchStyles';
 import routesConfig from '../../routing/RoutingConfig';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import PropTypes from 'prop-types';
 
 const ApplicationSearchComp = ({ config }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,6 +84,13 @@ const ApplicationSearchComp = ({ config }) => {
       </div>
     </div>
   );
+};
+
+ApplicationSearchComp.propTypes = {
+  config: PropTypes.shape({
+    style: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default ApplicationSearchComp;
