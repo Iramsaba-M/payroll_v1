@@ -131,3 +131,6 @@ export const EndUser_ApplyReimbursement = 'enduser/reimbursement/apply';//sb tes
 //Report
 export const EndUser_leaves_report ='enduser/user/employee_leaves/';
 
+//enduser_home
+export const ENDUSER_HOME_EMPLOYEE_CTC ='employees'
+

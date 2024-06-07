@@ -73,7 +73,7 @@ const ErrorScreen = ({ errorCode }) => {
           </div>
         </div>
       </div>
-      3
+      
       <div className=''>
         <img src={errorImage} alt="" className='object-cover w-[90vh]' />
       </div>

@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 
-const TextComponent = ({ name, label, value, onChange, textcss, placeholder, icon, onBlur }) => {
+const TextComponent = ({ name, label, value, onChange, textcss, placeholder, icon, onBlur, readonly }) => {
   return (
     <div>
       <label>{label}</label>
@@ -15,6 +15,7 @@ const TextComponent = ({ name, label, value, onChange, textcss, placeholder, ico
         onChange={onChange}
         className={textcss}
         onBlur={onBlur ? onBlur : null}
+        readOnly={readonly?true:false}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 // Head.jsx
-import HeadComponents from './HeadComponents';
+import HeadComponents from './HeaderComponents';
 import PropTypes from 'prop-types';
 
 const Header = ({ HeadConfi, currentPath }) => {
