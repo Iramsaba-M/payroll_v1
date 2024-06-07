@@ -48,10 +48,13 @@ const CardStyles = {
   usernotificationheadstyle: 'text-xs font-bold',
   ////////////////////  user report  //////////////////////////////////////////
   userreportstyle2: 'bg-white flex flex-col  rounded-md border-t border-s px-1 py-4 m-4   shadow-md mx-4',
-  userreportbarchart: 'w-[48vh] h-[24vh]',
-  userreportheading: " font-semibold ml-4 text-2xl",
+  userreportbarchart: 'w-[48vh] lg:h-[24vh] h-[30vh]',
+  userreportheading: " font-semibold ml-4 lg:text-2xl text-3xl",
 
-  userreportbarchart1: 'w-[155vh] h-[33vh]',
+  userreportbarchart1: 'w-[155vh] lg:h-[33vh] h-[40vh]',
+  /////////////////end user home////////////////////////////
+  enduserhomestyle: ' bg-white-50 -mt-0.5 rounded-md shadow-md px-6 py-4 w-[80vh]  lg:h-[34vh] border text-gray-600  h-[40vh]',
+  enduserhomepichart: 'lg:w-[70vh] lg:h-[26vh] lg:mt-2 mt-5 ml-[8vh] w-[77vh] h-[30vh] ',
 };
 
 export default CardStyles
