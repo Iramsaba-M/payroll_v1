@@ -1,6 +1,6 @@
 // HeadComponents.js
 import { Link, useLocation } from 'react-router-dom';
-import HeaderStyles from './HeadStyles';
+import HeaderStyles from './HeaderStyles';
 import ApplicationSearch from '../applicationsearch/ApplicationSearch';
 import PropTypes from 'prop-types';
 

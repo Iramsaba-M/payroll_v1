@@ -5,7 +5,7 @@ import IconConfig from "../configurations/Iconbar/IconConfig.jsx"
 import routesConfig from "../routing/RoutingConfig.jsx";
 import LogoConfig from "../configurations/logo/LogoConfig.jsx";
 import HeadConfi from "../configurations/Header/HeadConfi";
-import HeadComponents from "../configurations/Header/HeadComponents.jsx";
+import HeadComponents from "../configurations/Header/HeaderComponents.jsx";
 import Iconbar from "../configurations/Iconbar/Iconbar.jsx";
 import ButtonConfig from "../configurations/Button/ButtonConfig.jsx";
 import Header from "../configurations/Header/Header.jsx"

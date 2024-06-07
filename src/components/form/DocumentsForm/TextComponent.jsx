@@ -1,5 +1,5 @@
 
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon,onBlur }) => {
   return (
@@ -18,6 +18,17 @@ const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon,
       />
     </div>
   );
+};
+
+TextComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  textcss: PropTypes.string,
+  placeholder: PropTypes.string,
+  icon: PropTypes.node,
+  onBlur: PropTypes.func,
 };
 
 export default TextComponent;

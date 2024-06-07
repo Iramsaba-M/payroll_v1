@@ -8,7 +8,7 @@ const DynamicLayout = () => {
 
     return (
         <div className="">
-            <div className="flex ml-14   ">
+            <div className="flex ml-14">
                 {sections.section1 &&
                     sections.section1.map((section, index) => (
                         <div key={index} className={section.style}>

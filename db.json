@@ -2022,5 +2022,13 @@
         "present_days": 15
       }
     }
+  ],
+
+  "enduser_home":[{
+    "employee_id" : "IK01",
+    "deduction" : "5667",
+    "earnings" : "34567",
+    "annual_ctc" : "300000"
+    }
   ]
 }
