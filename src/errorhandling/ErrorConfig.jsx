@@ -1,3 +1,3 @@
 export const ButtonsConfig = [
-    { label: 'Reload',  style: 'buttonStyle' , type:"submit"}
-  ];
+  { label: 'Reload', style: 'buttonStyle', type: "submit" }
+];

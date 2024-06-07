@@ -1,5 +1,6 @@
 
 import DynamicTable from './DynamicTable';
+import PropTypes from 'prop-types';
 
 function TableComponent({ config, data }) {
   return (
@@ -9,5 +10,10 @@ function TableComponent({ config, data }) {
     </div>
   );
 }
+
+TableComponent.propTypes = {
+  config: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default TableComponent; 

@@ -1,14 +1,13 @@
 // HeadComponents.js
 import { Link, useLocation } from 'react-router-dom';
 import HeaderStyles from './HeadStyles';
-import { useComponentMapping } from '../../context/ComponentMappingContext';
 import ApplicationSearch from '../applicationsearch/ApplicationSearch';
+import PropTypes from 'prop-types';
 
 const HeadComponents = ({ config }) => {
   const location = useLocation();
   const currentPathSegments = location.pathname.split('/').filter(Boolean);
 
-  // const componentMapping = useComponentMapping();
 
   return (
     <div className={`${HeaderStyles.HeaderBg} `}>
@@ -38,6 +37,13 @@ const HeadComponents = ({ config }) => {
       </div>
     </div>
   );
+};
+
+HeadComponents.propTypes = {
+  config: PropTypes.arrayOf(PropTypes.shape({
+    css: PropTypes.string,
+    text: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default HeadComponents;

@@ -8,11 +8,12 @@ import { BsClock } from 'react-icons/bs';
 import { BsMegaphone } from 'react-icons/bs';
 import { RiThermometerLine } from 'react-icons/ri';
 import { BsPostcardHeart } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
 function BlueLargeIcon({ icon: Icon }) {
   return (
     <IconContext.Provider
-      value={{ color: '#3B82F6', size: '50px'}}
+      value={{ color: '#3B82F6', size: '50px' }}
     >
       <div className=''>
         <Icon />
@@ -71,6 +72,10 @@ const SettingContent = [
     to: '/apps/Settings/PayslipSetting',
   },
 ];
+
+BlueLargeIcon.propTypes = {
+  icon: PropTypes.elementType.isRequired, // Validate icon prop as a React element type
+};
 
 export default SettingContent;
 

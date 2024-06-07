@@ -34,7 +34,4 @@ export const tableContent3 = [
         cssClass: "datastyle4",
         clmncss: "style3"
     },
-
-
-
 ];

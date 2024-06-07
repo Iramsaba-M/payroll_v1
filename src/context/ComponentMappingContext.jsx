@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const ComponentMappingContext = createContext();
 
@@ -18,4 +19,9 @@ export const ComponentMappingProvider = ({ children, value }) => {
             {children}
         </ComponentMappingContext.Provider>
     );
+};
+
+ComponentMappingProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+    value: PropTypes.object.isRequired,
 };

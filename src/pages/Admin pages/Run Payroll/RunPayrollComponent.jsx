@@ -4,17 +4,15 @@ import { tableContent3 } from '../Run Payroll/RunPayrollContents';
 import Table2 from '../../../configurations/table2/Table2';
 import RunPayrollFinalizeCompomnent from './RunPayrollFinalizeCompomnent';
 import { Runpayroll } from '../../../api/EndPoints';
-import { fetchData} from '../../../services/APIService';
+import { fetchData } from '../../../services/APIService';
 import Payslip from '../Run Payroll/Payslip';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
-
-const RunPayrollComponent = ( ) => {
+const RunPayrollComponent = () => {
   const [showDynamicTable, setShowDynamicTable] = useState(false);
   const [showFinalizeComponent, setShowFinalizeComponent] = useState(false);
   const [showPayslipsButton, setShowPayslipsButton] = useState(true);
-  // const [selectedDateTop, setSelectedDateTop] = useState(new Date()); 
-  const [errorCode, setErrorCode] =useState(null);
+  const [errorCode, setErrorCode] = useState(null);
 
   const handlePayslipsClick = () => {
     setShowDynamicTable(true);
@@ -28,25 +26,21 @@ const RunPayrollComponent = ( ) => {
     setShowPayslipsButton(false);
   };
 
-  // const handleDateChangeTop = (date) => {
-  //   setSelectedDateTop(date);
-  // };
-
-   const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchTableData = async () => {
       try {
         const tableData = await fetchData(Runpayroll);
         setData(tableData);
-      }  catch (error) {
+      } catch (error) {
         console.error('Error posting data:', error);
         setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
       }
     };
 
     fetchTableData();
-  }, [Runpayroll]);
+  }, []);
 
   if (errorCode) {
     return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred

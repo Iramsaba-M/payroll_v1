@@ -1,5 +1,5 @@
 //clean code
-import  { useState } from 'react';
+import { useState } from 'react';
 import Nav from '../../../../configurations/Navbar/Nav';
 import { navsContent } from './AddEmplyeeContent';
 import BasicDetails from '../BasicDetails/BasicDetails';
@@ -7,18 +7,13 @@ import SalaryDetails from '../SalaryDetail/SalaryDetails';
 import BankDetails from '../BankDetail/BankDetails';
 import Documents from '../Documents/Documents';
 import AditionalDetails from '../AditionalDetail/AditionalDetails';
+import PropTypes from 'prop-types';
 
-
-const AddEmployee = ({editEmployees}) => {
+const AddEmployee = ({ editEmployees }) => {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [employeeId, setEmployeeId] = useState('');
-  
-  const [editMode, setEditMode] = useState(false);
-  console.log('editemp',editEmployees);
-  // Function to toggle edit mode
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
-  };
+
+  console.log('editemp', editEmployees);
 
   const handleNavClick = (itemName) => {
     const selectedIndex = navsContent.findIndex((item) => item.name === itemName);
@@ -45,26 +40,22 @@ const AddEmployee = ({editEmployees}) => {
     }
   };
 
-
-
-  const handleButtonClick = (formData) => {
-    // Handle form submission here
-    console.log('Form data submitted:', formData);
+  AddEmployee.propTypes = {
+    editEmployees: PropTypes.func.isRequired, // Assuming editEmployees is a function, adjust the type accordingly
   };
-  
 
   return (
     <div>
       <div className='navtabs items-center justify-center p-8 ml-16'>
-        <Nav configs={navsContent} handleNavClick={handleNavClick} activeItem={navsContent[selectedNavItem].name}  />
+        <Nav configs={navsContent} handleNavClick={handleNavClick} activeItem={navsContent[selectedNavItem].name} />
 
-  
+
 
         <div className='main-body pt-4 ml-1'>
           <div className='forms'>
             {navsContent[selectedNavItem].name === 'Basic Details' && (
               <BasicDetails
-          
+
                 handleNextClick={handleNextClick}
                 handleEmpId={handleEmpId}
                 editEmployees={editEmployees}

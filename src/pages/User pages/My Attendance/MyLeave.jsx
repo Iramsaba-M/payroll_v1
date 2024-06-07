@@ -4,19 +4,17 @@ import Card from '../../../configurations/Card/CardConfig';
 import { LeaveButtons, leavesdata } from './AttendanceContent';
 import RadioComponent from '../../../components/form/Formfields/radio_button/RadioComponent';
 import TextStyle from '../../../components/form/Formfields/text/TextStyle';
-
 import TextareaComponent from '../../../components/form/Formfields/textarea/TextareaComponent';
-
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import { DateRangePicker } from 'react-date-range';
 import dayjs from 'dayjs';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-
 import { fetchData, postDataImage } from '../../../services/APIService';
 import { EndUser_ApplyLeave, EndUser_Leave_Balance } from '../../../api/EndPoints';
 import FileComponent from '../../../components/form/DocumentsForm/FileComponent';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import PropTypes from 'prop-types';
 
 const MyLeave = ({ config, applyleave }) => {
     const [values, setValues] = useState({});
@@ -51,7 +49,7 @@ const MyLeave = ({ config, applyleave }) => {
     }
     const handlebuttonclick = (label) => {
         if (label === 'Apply Leave') {
-            // onSubmit(true);
+            onSubmit(true);
     
         } else if (label === 'Cancle') {
             applyleave(false);
@@ -139,6 +137,10 @@ const MyLeave = ({ config, applyleave }) => {
         }
     };
 
+    MyLeave.propTypes = {
+        config: PropTypes.array.isRequired, // Validate config prop as an array
+        applyleave: PropTypes.func.isRequired, // Validate applyleave prop as a function
+    };
     return (
         <form onSubmit={onSubmit} className='  ml-5 p-2 '>
             <div className='p-2 border-2 '>

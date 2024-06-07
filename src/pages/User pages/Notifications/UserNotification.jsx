@@ -5,7 +5,7 @@ import UserNotificationComponent from './UserNotificationComponent'
 const UserNotification = () => {
   return (
     <div>
-        <BodyContent content={UserNotificationComponent} />
+      <BodyContent content={UserNotificationComponent} />
     </div>
   )
 }

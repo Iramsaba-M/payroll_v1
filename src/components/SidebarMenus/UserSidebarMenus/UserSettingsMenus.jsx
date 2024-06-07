@@ -1,5 +1,4 @@
 
-import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SETTINGS_SIDEBAR_LINKS } from "../sidebarConfigs/UserMenuConfig";
 

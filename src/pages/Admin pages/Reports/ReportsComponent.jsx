@@ -10,6 +10,7 @@ import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/
 import { postData } from '../../../services/APIService';
 import ErrorScreen from '../../../errorhandling/ErrorScreen'
 import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Barchart = ({ graphdata }) => {
 
@@ -34,10 +35,10 @@ const Barchart = ({ graphdata }) => {
           right: 30,
           left: 10,
           bottom: 5,
-        }}      
+        }}
       >
         <XAxis dataKey="name" />
-        <YAxis axisLine={false}/>
+        <YAxis axisLine={false} />
         <Tooltip />
         <Legend />
         {/* <CartesianGrid strokeDasharray="3" /> */}
@@ -82,11 +83,10 @@ const Pichart = ({ graphdata }) => {
 const ReportsComponent = () => {
   const [cardData, setCardData] = useState([]);
   const [bargraphData, setBarGraphData] = useState([]);
-  const [barArray, setBarArray] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate1, setSelectedDate1] = useState(null);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
-  const [errorCode, setErrorCode] = useState(null); 
+  const [errorCode, setErrorCode] = useState(null);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -117,7 +117,7 @@ const ReportsComponent = () => {
     setSelectedDate(startDate);
     setSelectedDate1(endDate);
   }, []);
-  
+
   const handleDateChangeTop = (date) => {
     setSelectedDateTop(date);
   };
@@ -159,12 +159,12 @@ const ReportsComponent = () => {
         }
       } catch (error) {
         console.error('Error posting data:', error);
-       Navigate('/errorscreen')// Set error code based on response
+        Navigate('/errorscreen')// Set error code based on response
       }
     };
     fetchData();
   }, [selectedDate, selectedDate1]);
-  
+
 
   useEffect(() => {
     const fetchData2 = async () => {
@@ -180,7 +180,7 @@ const ReportsComponent = () => {
           year: year,
           month: month,
         });
-        
+
         console.log('Post Response cards:', response);
         setCardData(response);
         console.log('setCardData:', cardData);
@@ -195,6 +195,15 @@ const ReportsComponent = () => {
   if (errorCode) {
     return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
   }
+
+  Barchart.propTypes = {
+    graphdata: PropTypes.array.isRequired,
+  };
+
+  // Prop validation for Pichart component
+  Pichart.propTypes = {
+    graphdata: PropTypes.array.isRequired,
+  };
 
   return (
     <div className='flex flex-col mt-4 ml-4'>
@@ -227,7 +236,7 @@ const ReportsComponent = () => {
             onChange={handleDateChangeTop}
             placeholderText='To'
             dateFormat="MMMM-yyyy"
-            style={{ appearance: 'none', background: 'transparent'  }}
+            style={{ appearance: 'none', background: 'transparent' }}
             className='w-[18vh] on hover:border-blue-500 text-center  focus:outline-none '
             showMonthYearPicker
           />

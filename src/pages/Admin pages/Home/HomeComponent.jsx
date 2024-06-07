@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import Card from '../../../configurations/Card/CardConfig';
-import { total_employees, total_payroll, tds, pt, epf, esic, insurance ,exmpContent,exmpContent1, Admin, Personal} from "./HomeContent";
+import { total_employees, total_payroll, tds, pt, epf, esic, insurance, exmpContent, exmpContent1, Admin, Personal } from "./HomeContent";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Home_and_Report_BarGraphdata, Home_and_Reportdata } from '../../../api/EndPoints';
 import Button from '../../../configurations/Button/Button';
-import {useButtonState}  from "../../../context/ButtonStateContext"
+import { useButtonState } from "../../../context/ButtonStateContext"
 import { postData } from '../../../services/APIService';
+import PropTypes from 'prop-types';
 
 const Barchart = ({ graphdata }) => {
 
@@ -26,35 +27,38 @@ const Barchart = ({ graphdata }) => {
   const defaultColors = ["#8884d8", "#82ca9d", "#FFBB28"];
   return (
     <div className='w-[140vh] h-[48vh]'>
-    <ResponsiveContainer >
-      <BarChart
-        data={data}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 10,
-          bottom: 5,
-        }}
-      >
-        {/* <XAxis dataKey="name" />
-        <YAxis /> */}
-            <XAxis dataKey="name" axisLine={false} />
-            <YAxis axisLine={false} />
-        <Tooltip />
-        <Legend />
-        {graphdata.map(({ year }, index) => (
-          <Bar key={year} dataKey={year} stackId="a"
-            fill={defaultColors[index % defaultColors.length]}
-            // fill=" #4e4cc8" 
-            barSize={60} />
+      <ResponsiveContainer >
+        <BarChart
+          data={data}
+          margin={{
+            top: 20,
+            right: 30,
+            left: 10,
+            bottom: 5,
+          }}
+        >
 
-        ))}
-      </BarChart>
-      <CartesianGrid />
-    </ResponsiveContainer>
+          <XAxis dataKey="name" axisLine={false} />
+          <YAxis axisLine={false} />
+          <Tooltip />
+          <Legend />
+          {graphdata.map(({ year }, index) => (
+            <Bar key={year} dataKey={year} stackId="a"
+              fill={defaultColors[index % defaultColors.length]}
+              // fill=" #4e4cc8" 
+              barSize={60} />
+
+          ))}
+        </BarChart>
+        <CartesianGrid />
+      </ResponsiveContainer>
     </div>
   );
 }
+
+Barchart.propTypes = {
+  graphdata: PropTypes.array, // Ensure graphdata is an array
+};
 
 const Pichart = ({ data }) => {
   const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
@@ -64,7 +68,7 @@ const Pichart = ({ data }) => {
   }
 
   return (
-    <ResponsiveContainer  margin={{ left: 40 }}>
+    <ResponsiveContainer margin={{ left: 40 }}>
       <PieChart width={200} height={200}>
         <Pie
           data={data}
@@ -86,13 +90,14 @@ const Pichart = ({ data }) => {
   );
 };
 
+Pichart.propTypes = {
+  data: PropTypes.array, // Ensure data is an array
+};
 
-
-  const HomeComponent = () => {
-  const {isAdmin, isPersonal, handleAdminClick, handlePersonalClick } = useButtonState();
+const HomeComponent = () => {
+  const { isAdmin, isPersonal, handleAdminClick, handlePersonalClick } = useButtonState();
 
   const [cardData, setCardData] = useState([]);
-  // const [selectedValue, setSelectedValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);//to
   const [selectedDate1, setSelectedDate1] = useState(null);//from
   const [graphData, setGraphData] = useState([]);
@@ -178,11 +183,11 @@ const Pichart = ({ data }) => {
 
           // const response = await axios.get('http://localhost:3000/home_report_graphdata')
 
-          const response =await postData(Home_and_Report_BarGraphdata, {
+          const response = await postData(Home_and_Report_BarGraphdata, {
             from_: formattedStartDate,
             to: formattedEndDate,
           });
-     
+
 
           console.log('Graph Response:', response);
           setGraphData(response);
@@ -221,7 +226,7 @@ const Pichart = ({ data }) => {
 
   return (
     <div className="mt-3 ml-12 ">
-    
+
       <div className='ml-4 h-[4vh] border w-[18vh] rounded-md mt-2  '>
         <DatePicker
           selected={selectedDateTop}
@@ -233,8 +238,8 @@ const Pichart = ({ data }) => {
           showMonthYearPicker
         />
         <div className='flex ml-[120vh] -translate-y-7'>
-        <Button onClick={handleAdminClick} Configs={Admin} activeButton={isAdmin ? 'Admin' : ''}  />
-        <Button onClick={handlePersonalClick} Configs={Personal} activeButton={isPersonal ? 'Personal' : ''}/>
+          <Button onClick={handleAdminClick} Configs={Admin} activeButton={isAdmin ? 'Admin' : ''} />
+          <Button onClick={handlePersonalClick} Configs={Personal} activeButton={isPersonal ? 'Personal' : ''} />
         </div>
       </div>
 

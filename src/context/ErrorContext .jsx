@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from 'react';
 import ErrorScreen from '../errorhandling/ErrorScreen' // Adjust the import path as needed
+import PropTypes from 'prop-types';
 
 const ErrorContext = createContext();
 
@@ -12,6 +13,10 @@ export const ErrorProvider = ({ children }) => {
     error,
     setError,
     clearError: () => setError(null),
+  };
+
+  ErrorProvider.propTypes = {
+    children: PropTypes.node.isRequired,
   };
 
   return (

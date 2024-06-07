@@ -5,7 +5,7 @@ import RunPayrollComponent from './RunPayrollComponent'
 const RunPayroll = () => {
   return (
     <div>
-        <BodyContent content={RunPayrollComponent} />
+      <BodyContent content={RunPayrollComponent} />
     </div>
   )
 }

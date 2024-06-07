@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { IoSettingsOutline } from "react-icons/io5";
 import OptionsComponent from '../../form/Formfields/options/OptionsComponent';
 import TextStyle from '../../form/Formfields/text/TextStyle';
 import { OptionsComponentData1, ButtonContent, TableHeaders, TextComponentData1, TextComponentData2, TextComponentData3, TextComponentData4, TextComponentData5 } from './LeavepolicyContent'
 import TextComponent from '../../form/Formfields/text/TextComponent';
 import Switch from "react-switch"; // import the Switch component
 import { LiaPeopleCarrySolid } from "react-icons/lia";
-import Button from '../../../configurations/Button/Button';
 import ButtonConfig from '../../../configurations/Button/ButtonConfig';
 import { fetchData, patchData, postData } from '../../../services/APIService';
-import {  admin_settings_Leave_Policy } from '../../../api/EndPoints';
+import { admin_settings_Leave_Policy } from '../../../api/EndPoints';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import NumberComponent from "../../form/Formfields/number/numbercompoent"
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
@@ -27,11 +24,9 @@ const Leavepolicy = () => {
   const [encashment, setEncashment] = useState(false);
   const [editRowIndex, setEditRowIndex] = useState(null);
   const [editRowData, setEditRowData] = useState(null);
-  const [prevname,setPrevname] = useState(null);
-  const [errorCode, setErrorCode] =useState(null);
+  const [prevname, setPrevname] = useState(null);
+  const [errorCode, setErrorCode] = useState(null);
 
-
-  /////////////////////////////////////////////////////
   const handleChange = (e, rowIndex = null) => {
     const { name, value } = e.target;
     if (rowIndex !== null) {
@@ -83,26 +78,20 @@ const Leavepolicy = () => {
       forward: editRowData.forward || false,
       encashment: editRowData.encashment || false
     }
-    
-    // const url = `http://192.168.0.112:5000/settings/policy/?policy_name=${prevname.policy_name}`;
-    // const url = `http://localhost:3000/admin_leavepolicy/?policy_name=${updateleavedata.policy_name}`;
-    const url = `${admin_settings_Leave_Policy}/?policy_name=${prevname.policy_name}`;
-    
-    try {
-      // const response = await axios.patch(url,updateleavedata);
-      // console.log(response.data.message); 
 
-      const response = await patchData(url,updateleavedata);
-      console.log(response); 
+    const url = `${admin_settings_Leave_Policy}/?policy_name=${prevname.policy_name}`;
+
+    try {
+      const response = await patchData(url, updateleavedata);
+      console.log(response);
       fetchTableData();
     } catch (error) {
       console.error('Failed to update leave policy:', error);
     }
 
-    handleCancel(); 
+    handleCancel();
   };
 
-  ///////////////////////////////////////////////////////////////////////////////////
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -110,28 +99,25 @@ const Leavepolicy = () => {
     if (!formData.policy_name.trim()) {
       console.error('Error: leave name is required');
       alert('Error: leave name is required');
-      return; 
-  }
-    try{
-      const leavedata = { ...formData, "forward": carryforward, "encashment": encashment } 
-    console.log('leavedata', leavedata)
-    const response = await postData(admin_settings_Leave_Policy, leavedata);
+      return;
+    }
+    try {
+      const leavedata = { ...formData, "forward": carryforward, "encashment": encashment }
+      console.log('leavedata', leavedata)
+      const response = await postData(admin_settings_Leave_Policy, leavedata);
 
-    // const response = await axios.post('http://192.168.0.112:5000/settings/policy',leavedata);
+      console.log(response)
 
-    // const response = await axios.post('http://localhost:3000/admin_leavepolicy', leavedata);
-    console.log(response)
+      fetchTableData();
 
-    fetchTableData();
-    
-    setFormData({
-      policy_name: '',
-      allowed_leaves: null,
-      duration: '',
-      forward: '',
-      encashment: '',
-      paytype: ''
-    });
+      setFormData({
+        policy_name: '',
+        allowed_leaves: null,
+        duration: '',
+        forward: '',
+        encashment: '',
+        paytype: ''
+      });
     } catch (error) {
       console.error('Failed to post', error);
     }
@@ -141,10 +127,6 @@ const Leavepolicy = () => {
 
 
     try {
-      // const response = await axios.get('http://192.168.0.112:5002/settings/policies');
-
-      // const response = await axios.get('http://localhost:3000/admin_leavepolicy');
-      // setTableData(response.data);
 
       const response = await fetchData(admin_settings_Leave_Policy);
       setTableData(response);
@@ -186,13 +168,13 @@ const Leavepolicy = () => {
               <tr key={rowIndex} className={`h-12 border border-b-1 ${editRowIndex === rowIndex ? 'bg-blue-100' : ''}`}>
                 {TextComponentData1.map((data, i) => (
                   <td key={i} className="">
-                      <TextComponent
-                        name={data.name}
-                        onChange={(e) => handleChange(e, rowIndex)}
-                        value={editRowIndex === rowIndex ? editRowData.name : row[data.name]}
-                        placeholder={data.placeholder}
-                        textcss={TextStyle[data.textcss]}
-                      />
+                    <TextComponent
+                      name={data.name}
+                      onChange={(e) => handleChange(e, rowIndex)}
+                      value={editRowIndex === rowIndex ? editRowData.name : row[data.name]}
+                      placeholder={data.placeholder}
+                      textcss={TextStyle[data.textcss]}
+                    />
                   </td>
                 ))}
                 {TextComponentData2.map((data, i) => (
@@ -225,11 +207,11 @@ const Leavepolicy = () => {
                         checked={editRowIndex === rowIndex ? editRowData.forward : row[data.name]}
                         onColor="#6b6aef" // color when the switch is ON                 
                         handleDiameter={20}
-                        uncheckedIcon={false} 
-                        checkedIcon={false} 
+                        uncheckedIcon={false}
+                        checkedIcon={false}
                         boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)" // box shadow
-                        height={25} 
-                        width={50} 
+                        height={25}
+                        width={50}
                       />
                     </div>
                   </td>
@@ -241,12 +223,12 @@ const Leavepolicy = () => {
                         onChange={(checked) => handleEncashmentChange(checked, rowIndex)}
                         checked={editRowIndex === rowIndex ? editRowData.encashment : row[data.name]}
                         onColor="#6b6aef" // color when the switch is oN               
-                        handleDiameter={20} 
-                        uncheckedIcon={false} 
-                        checkedIcon={false} 
-                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)" 
-                        height={25} 
-                        width={50} 
+                        handleDiameter={20}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                        height={25}
+                        width={50}
                       />
                     </div>
                   </td>
@@ -278,19 +260,19 @@ const Leavepolicy = () => {
             ))}
 
             <tr className=' h-12 border border-b-1'>
-              
-                {TextComponentData1.map((data, i) => (
-                  <td key={i} className="">
-                    <TextComponent
-                      name={data.name}
-                      onChange={handleChange}
-                      value={formData[data.name]}
-                      placeholder={data.placeholder}
-                      textcss={TextStyle[data.textcss]}
-                    />
-                  </td>
-                ))}
-              
+
+              {TextComponentData1.map((data, i) => (
+                <td key={i} className="">
+                  <TextComponent
+                    name={data.name}
+                    onChange={handleChange}
+                    value={formData[data.name]}
+                    placeholder={data.placeholder}
+                    textcss={TextStyle[data.textcss]}
+                  />
+                </td>
+              ))}
+
 
               {TextComponentData2.map((data, i) => (
                 <td key={i} className="">
@@ -323,12 +305,12 @@ const Leavepolicy = () => {
                       onChange={(checked) => setCarryforward(checked)}
                       checked={carryforward}
                       onColor="#6b6aef" // color when the switch is on
-                      handleDiameter={20} 
+                      handleDiameter={20}
                       uncheckedIcon={false}
-                      checkedIcon={false} 
+                      checkedIcon={false}
                       boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)" // box shadow
-                      height={25} 
-                      width={50} 
+                      height={25}
+                      width={50}
                     /></div>
                 </td>
               ))}
@@ -340,12 +322,12 @@ const Leavepolicy = () => {
                       onChange={(checked) => setEncashment(checked)}
                       checked={encashment}
                       onColor="#6b6aef" // color when the switch is on
-                      handleDiameter={20} 
-                      uncheckedIcon={false} 
+                      handleDiameter={20}
+                      uncheckedIcon={false}
                       checkedIcon={false}
                       boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)" // box shadow
-                      height={25} 
-                      width={50} 
+                      height={25}
+                      width={50}
                     />
                   </div>
                 </td>

@@ -1,5 +1,6 @@
-// Head.js
+// Head.jsx
 import HeadComponents from './HeadComponents';
+import PropTypes from 'prop-types';
 
 const Header = ({ HeadConfi, currentPath }) => {
 
@@ -7,5 +8,11 @@ const Header = ({ HeadConfi, currentPath }) => {
     <HeadComponents props={HeadConfi} currentPath={currentPath} />
   );
 };
+
+Header.propTypes = {
+  HeadConfi: PropTypes.array.isRequired,
+  currentPath: PropTypes.string.isRequired
+};
+
 
 export default Header;

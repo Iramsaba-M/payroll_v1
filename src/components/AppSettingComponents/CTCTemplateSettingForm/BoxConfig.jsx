@@ -1,6 +1,7 @@
 
 import React from "react";
 import BoxStyles from "./BoxStyle";
+import PropTypes from 'prop-types';
 
 const Box = ({ card, title, content, icon, icon2 }) => {
   return (
@@ -14,6 +15,14 @@ const Box = ({ card, title, content, icon, icon2 }) => {
       <p className={BoxStyles.CardContent}>{content}</p>
     </div>
   );
+};
+
+Box.propTypes = {
+  card: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  icon2: PropTypes.node.isRequired,
 };
 
 const BoxConfig = ({ Config, data }) => {
@@ -33,5 +42,17 @@ const BoxConfig = ({ Config, data }) => {
     </div>
   );
 };
+
+BoxConfig.propTypes = {
+  Config: PropTypes.arrayOf(PropTypes.shape({
+    card: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    contentKey: PropTypes.string.isRequired, // Assuming contentKey is the key for data object
+    icon: PropTypes.node.isRequired,
+    icon2: PropTypes.node.isRequired,
+  })).isRequired,
+  data: PropTypes.array.isRequired,
+};
+
 
 export default BoxConfig;

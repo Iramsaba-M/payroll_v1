@@ -10,7 +10,7 @@ export const TextData = [
   }
 ];
 
- export const OptionData = [
+export const OptionData = [
   {
     "name": "templatename",
     "label": " ",
@@ -25,10 +25,10 @@ export const TextData = [
     ],
     "placeholder": "Select Components",
     "textcss": "ctcoption",
-    "icon": <RiArrowDownSFill  className="text-gray-400 -mt-3  -translate-x-16" />,
+    "icon": <RiArrowDownSFill className="text-gray-400 -mt-3  -translate-x-16" />,
   },
 ];
-export const nameData =[ {
+export const nameData = [{
   optionName: 'name',
   valueName: 'value',
   componentName: 'component',
@@ -41,7 +41,7 @@ export const TableHeaders = [
   {
     name: 'Components',
     className: 'TableHeaders',
-    
+
   },
   {
     name: '% Value',
@@ -52,7 +52,7 @@ export const TableHeaders = [
     className: 'TableHeaders',
 
   },
-  
+
   {
     name: 'Condition type',
     className: 'TableHeaders',
@@ -67,14 +67,14 @@ export const TableHeaders = [
   },
 ];
 
-  export const config1 = {
-    name: 'name',
-    value: 'value',
-    component: 'component',
-    conditionType: 'conditionType',
-    typeValue: 'typeValue',
-    conditionValue: 'conditionValue',
-  };
+export const config1 = {
+  name: 'name',
+  value: 'value',
+  component: 'component',
+  conditionType: 'conditionType',
+  typeValue: 'typeValue',
+  conditionValue: 'conditionValue',
+};
 
 export const OptionsComponentData = [
   {
@@ -87,7 +87,7 @@ export const OptionsComponentData = [
     ],
     placeholder: '',
     textcss: "OptionsComponentData",
-    icon: <RiArrowDownSFill  className="text-gray-400 -mt-7  -translate-x-[7vh]" />,
+    icon: <RiArrowDownSFill className="text-gray-400 -mt-7  -translate-x-[7vh]" />,
   },
   {
     name: 'conditionType',
@@ -97,8 +97,8 @@ export const OptionsComponentData = [
     ],
     placeholder: '',
     textcss: 'OptionsComponentData2',
-    icon: <RiArrowDownSFill  className="text-gray-400 -mt-7  -translate-x-[12vh] " />,
-  
+    icon: <RiArrowDownSFill className="text-gray-400 -mt-7  -translate-x-[12vh] " />,
+
 
   },
 ];
@@ -109,10 +109,10 @@ export const TextComponentData = [
     placeholder: '',
     textcss: 'textcss',
   },
- 
+
 ];
 
-export const TextComponentData1= [
+export const TextComponentData1 = [
 
   {
     name: 'typeValue',
@@ -127,5 +127,5 @@ export const TextComponentData1= [
 ];
 
 export const SaveTemplate = [
-  { label: 'Save Template',  style: 'buttonStyle3' , type:"submit" },
+  { label: 'Save Template', style: 'buttonStyle3', type: "submit" },
 ];

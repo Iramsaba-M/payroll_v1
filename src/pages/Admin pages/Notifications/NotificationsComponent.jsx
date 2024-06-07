@@ -1,19 +1,5 @@
-// import React from 'react'
-// import ErrorScreen from '../../../errorhandling/ErrorScreen'
 
-// const NotificationsComponent = () => {
-//   const errorCode=404
-//   return (
-//     <div>
-//       <ErrorScreen errorCode={errorCode} />
-//     </div>
-//   )
-// } 
-
-// export default NotificationsComponent
-
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardConfig from '../Settings/cardcomponent/CardConfig';
 import NotificationContent from './NotificationContent';
@@ -43,13 +29,13 @@ const NotificationsComponent = () => {
         (!cardclick) &&
         chunkedContent.map((chunk, index) => (
           <div key={index} className='ml-8'>
-          <CardConfig  Config={chunk} handleCardClick={handleCardClick} />
+            <CardConfig Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}
       {cardclick && (
         <>
-        <div className='mt-4'>
-          <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          <div className='mt-4'>
+            <button onClick={handleBackClick}><IoMdArrowBack /></button>
           </div>
           <Outlet />
         </>

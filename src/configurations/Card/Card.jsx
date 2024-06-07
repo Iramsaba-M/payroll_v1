@@ -1,5 +1,6 @@
 
 import CardConfig from './CardConfig';
+import PropTypes from 'prop-types';
 
 const Card = ({ Configs, data }) => {
   return (
@@ -9,4 +10,8 @@ const Card = ({ Configs, data }) => {
   );
 };
 
+Card.propTypes = {
+  Configs: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+};
 export default Card;

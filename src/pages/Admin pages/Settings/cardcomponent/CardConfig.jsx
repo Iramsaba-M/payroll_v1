@@ -1,7 +1,6 @@
-
-
 import React from 'react';
 import CardStyles from './CardStyle';
+import PropTypes from 'prop-types';
 
 const Card = ({ card, title, icon }) => {
   return (
@@ -18,6 +17,12 @@ const Card = ({ card, title, icon }) => {
   );
 };
 
+Card.propTypes = {
+  card: PropTypes.string.isRequired, // Validate card prop as a string
+  title: PropTypes.string.isRequired, // Validate title prop as a string
+  icon: PropTypes.node, // Validate icon prop as a React node (optional)
+};
+
 const CardConfig = ({ Config, data, handleCardClick }) => {
   return (
     <div className="flex flex-none">
@@ -31,7 +36,6 @@ const CardConfig = ({ Config, data, handleCardClick }) => {
               icon={card.icon ? card.icon : null}
             />
           </div>
-          {/* <NavLink> Commented out for now */}
         </React.Fragment>
       ))}
     </div>
@@ -39,6 +43,12 @@ const CardConfig = ({ Config, data, handleCardClick }) => {
 };
 
 export default CardConfig;
+
+CardConfig.propTypes = {
+  Config: PropTypes.array.isRequired, // Validate Config prop as an array
+  data: PropTypes.array, // Validate data prop as an array (optional)
+  handleCardClick: PropTypes.func.isRequired, // Validate handleCardClick prop as a function
+};
 
 const DrawOutlineButton = ({ children, ...rest }) => {
   return (
@@ -61,4 +71,9 @@ const DrawOutlineButton = ({ children, ...rest }) => {
       <span className="absolute bottom-0 left-0 h-0 w-[2px] bg-indigo-300 transition-all delay-300 duration-100 group-hover:h-full" />
     </div>
   );
+};
+
+// PropTypes validation for DrawOutlineButton component
+DrawOutlineButton.propTypes = {
+  children: PropTypes.node.isRequired, // Validate children prop as a React node
 };

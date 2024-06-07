@@ -5,7 +5,7 @@ import MyAttendanceComponent from './MyAttendanceComponent'
 const MyAttendance = () => {
   return (
     <div>
-        <BodyContent content={MyAttendanceComponent} />
+      <BodyContent content={MyAttendanceComponent} />
     </div>
   )
 }

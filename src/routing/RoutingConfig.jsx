@@ -20,7 +20,6 @@ import PayslipSetting from '../pages/Admin pages/Settings/PayslipSetting'
 import ReimbursementSetting from '../pages/Admin pages/Settings/ReimbursementSetting'
 import LoanSetting from '../pages/Admin pages/Settings/LoanSetting'
 import Demo_ctc from '../pages/Admin pages/Settings/cardcomponent/Demo_ctc'
-// import Demo from '../pages/Admin pages/Settings/cardcomponent/Demo'
 import UserAppMenus from '../components/SidebarMenus/UserSidebarMenus/UserAppMenus'
 import UserTeamMenus from '../components/SidebarMenus/UserSidebarMenus/UserTeamMenus'
 import UserHomeMenus from '../components/SidebarMenus/UserSidebarMenus/UserHomeMenus'
@@ -64,128 +63,121 @@ const routesConfig = [
     children: [
       {
         path: '/',
-        label:"Home",
+        label: "Home",
         element: <UserHomeMenus />,
         children: [
-            {
-              path: 'home1',
-              element: <Home />,
-            },
-            {
-              path: 'home2',
-              element: <Employee />,
-            },
-            {
-              path: 'home3',
-              element: <RunPayroll />,
-            },
-            {
-              path: 'home4',
-              element: <Notifications />,
-            },
-          ],
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
+        ],
       },
       {
         path: 'team',
-        label:"Team",
+        label: "Team",
         element: <UserTeamMenus />,
         children: [
-            {
-                path: 'home1',
-                element: <Home />,
-              },
-              {
-                path: 'home2',
-                element: <Employee />,
-              },
-              {
-                path: 'home3',
-                element: <RunPayroll />,
-              },
-              {
-                path: 'home4',
-                element: <Notifications />,
-              },
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
         ],
       },
       {
         path: 'apps',
-        label:"Appplication",
+        label: "Appplication",
         element: <UserAppMenus />,
         children: [
-            {
-              path: 'home',
-              element: <UserHome />,
-            },
-            {
-              path: 'myattendance',
-              element: <MyAttendance />,
-            },
-            {
-              path: 'mypayslips',
-              element: <MyPayslips />,
-            },
-            {
-              path: 'usernotification',
-              element: <UserNotification />,
-            },
-            {
-              path: 'raiserequest',
-              element: <RaiseRequest />,
-              children: [
-                {
-                    path: 'RequestforLoan',
-                    element: <RequestForLoan/>,
-                    // children: [
-                    //   {
-                    //     path: 'RequestForReimbursement',
-                    //     element: <RequestForReimbursement/>,
-                    //   },
-                      
-                    // ]
-                  },
-                  {
-                    path: 'RequestForReimbursement',
-                    element: <RequestForReimbursement/>,
-                  },
-                  {
-                    path: 'ReimbursementSetting',
-                    element: <ReimbursementSetting />,
-                  },
-                
-                  
-              ],
-            },
-            {
-              path: 'userreports',
-              element: <UserReports />,
-            },
-      ],
+          {
+            path: 'home',
+            element: <UserHome />,
+          },
+          {
+            path: 'myattendance',
+            element: <MyAttendance />,
+          },
+          {
+            path: 'mypayslips',
+            element: <MyPayslips />,
+          },
+          {
+            path: 'usernotification',
+            element: <UserNotification />,
+          },
+          {
+            path: 'raiserequest',
+            element: <RaiseRequest />,
+            children: [
+              {
+                path: 'RequestforLoan',
+                element: <RequestForLoan />,
+              },
+              {
+                path: 'RequestForReimbursement',
+                element: <RequestForReimbursement />,
+              },
+              {
+                path: 'ReimbursementSetting',
+                element: <ReimbursementSetting />,
+              },
+
+
+            ],
+          },
+          {
+            path: 'userreports',
+            element: <UserReports />,
+          },
+        ],
       },
 
       {
         path: 'settings',
-        label:"Setting",
+        label: "Setting",
         element: <UserSettingsMenus />,
         children: [
-            {
-                path: 'home1',
-                element: <Home />,
-              },
-              {
-                path: 'home2',
-                element: <Employee />,
-              },
-              {
-                path: 'home3',
-                element: <RunPayroll />,
-              },
-              {
-                path: 'home4',
-                element: <Notifications />,
-              },
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
         ],
-      }, 
+      },
     ]
   },
 
@@ -194,249 +186,239 @@ const routesConfig = [
     children: [
       {
         path: '/',
-        label:"Home",
+        label: "Home",
         element: <HomeMenus />,
         children: [
-            {
-              path: 'home1',
-              element: <Home />,
-            },
-            {
-              path: 'home2',
-              element: <Employee />,
-            },
-            {
-              path: 'home3',
-              element: <RunPayroll />,
-            },
-            {
-              path: 'home4',
-              element: <Notifications />,
-            },
-          ],
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
+        ],
       },
       {
         path: 'team',
-        label:"Team",
+        label: "Team",
         element: <TeamMeanus />,
         children: [
-            {
-                path: 'home1',
-                element: <Home />,
-              },
-              {
-                path: 'home2',
-                element: <Employee />,
-              },
-              {
-                path: 'home3',
-                element: <RunPayroll />,
-              },
-              {
-                path: 'home4',
-                element: <Notifications />,
-              },
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
         ],
       },
       {
         path: 'apps',
-        label:"Appplication",
+        label: "Appplication",
         element: <AppMenus />,
         children: [
-            {
-                path: 'home',
-                element: <Home />,
+          {
+            path: 'home',
+            element: <Home />,
+          },
+          {
+            path: 'Employees',
+            element: <Employee />,
+            children: [
+              {
+                path: 'AddEmployee',
+                element: <AddEmp />,
+              },
+            ],
+          },
+          {
+            path: 'runpayroll',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'notifications',
+            element: <Notifications />,
+            children: [
+              {
+                path: 'LeaveNotification',
+                element: <LeaveNotification />,
               },
               {
-                path: 'Employees',
-                element: <Employee />,
+                path: 'PayrollNotification',
+                element: <PayrollNotification />,
+              },
+              {
+                path: 'LoanNotification',
+                element: <LoanNotification />,
+              },
+              {
+                path: 'ReimbursementNotification',
+                element: <ReimbursementNotification />,
+              },
+              {
+                path: 'PaymentsReminder',
+                element: <PaymentsReminder />,
+              },
+              {
+                path: 'PoliciesNotification',
+                element: <PoliciesNotification />,
+              },
+              {
+                path: 'SystemNotification',
+                element: <SystemNotification />,
+              },
+              {
+                path: 'ReportsNotification',
+                element: <ReportsNotification />,
+              },
+              {
+                path: 'Announcements',
+                element: <Announcements />,
+              },
+            ]
+          },
+          {
+            path: 'ctccalculator',
+            element: <CTC_Calculator />,
+          },
+          {
+            path: 'loans',
+            element: <Loans />,
+          },
+          {
+            path: 'reports',
+            element: <Reports />,
+          },
+          {
+            path: 'settings',
+            element: <Settings />,
+            children: [
+              {
+                path: 'CTCTemplateSetting',
+                element: <CTCTemplateSetting />,
                 children: [
                   {
-                      path: 'AddEmployee',
-                      element: <AddEmp/>,
-                  },    
-                ],
-              },
-              {
-                path: 'runpayroll',
-                element: <RunPayroll />,
-                // children: [
-                //   {
-                //       path: 'Reviewpayroll',
-                //       element: <ReviewPayroll/>,
-                //   },    
-                // ],
-              },
-              {
-                path: 'notifications',
-                element: <Notifications />,
-                children:[
-                  {
-                    path: 'LeaveNotification',
-                    element: <LeaveNotification />,
-                  },
-                  {
-                    path: 'PayrollNotification',
-                    element: <PayrollNotification />,
-                  },
-                  {
-                    path: 'LoanNotification',
-                    element: <LoanNotification />,
-                  },
-                  {
-                    path: 'ReimbursementNotification',
-                    element: <ReimbursementNotification />,
-                  },
-                  {
-                    path: 'PaymentsReminder',
-                    element: <PaymentsReminder />,
-                  },
-                  {
-                    path: 'PoliciesNotification',
-                    element: <PoliciesNotification />,
-                  },
-                  {
-                    path: 'SystemNotification',
-                    element: <SystemNotification />,
-                  },
-                  {
-                    path: 'ReportsNotification',
-                    element: <ReportsNotification />,
-                  },
-                  {
-                    path: 'Announcements',
-                    element: <Announcements />,
+                    path: 'Demo_ctc',
+                    element: <Demo_ctc />,
                   },
                 ]
               },
+
               {
-                path: 'ctccalculator',
-                element: <CTC_Calculator />,
+                path: 'PayRollSetting',
+                element: <PayRollSetting />,
               },
               {
-                path: 'loans',
-                element: <Loans />,
-              },
-              {
-                path: 'reports',
-                element: <Reports />,
-              },
-              {
-                path: 'settings',
-                element: <Settings />,
+                path: 'ReimbursementSetting',
+                element: <ReimbursementSetting />,
                 children: [
                   {
-                      path: 'CTCTemplateSetting',
-                      element: <CTCTemplateSetting />,
-                      children: [
-                        {
-                          path: 'Demo_ctc',
-                          element: <Demo_ctc/>,
-                        },
-                        // {
-                        //   path: 'CTCTemplateSetting',
-                        //   element: <CTCTemplateSetting />,
-                        // }
-                      ]
-                    },
-                 
-                    {
-                      path: 'PayRollSetting',
-                      element: <PayRollSetting />,
-                    },
-                    {
-                      path: 'ReimbursementSetting',
-                      element: <ReimbursementSetting />,
-                      children: [
-                        {
-                            path: 'TypeReimbursement',
-                            element: <TypeReimbursement/>,
-                        },    
-                        {
-                          path: 'Reimbursementpolicy',
-                          element: <Reimbursementpolicy/>,
-                        },
-                        {
-                          path: 'Multilevel',
-                          element: <Multilevel/>,
-                        },    
-                      ],
-                    },
-                    {
-                      path: 'LoanSetting',
-                      element: <LoanSetting />,
-                      children: [
-                        {
-                            path: 'TypeOfLoan',
-                            element: <TypeOfLoan/>,
-                        },    
-                        {
-                          path: 'LoanPolicy',
-                          element: <LoanPolicy/>,
-                        }, 
-                        {
-                          path: 'LoanApprovalSettings',
-                          element: <LoanApprovalSettings/>,
-                        },  
-                      ],
-                    },
-                    {
-                      path: 'PayslipSetting',
-                      element: <PayslipSetting />,
-                    },
-                    {
-                      path: 'PaymentReminderSetting',
-                      element: <PaymentReminderSetting />,
-                    },
-                    {
-                      path: 'AnnouncementSetting',
-                      element: <AnnouncementSetting />,
-                    },
-                    {
-                      path: 'LeaveSetting',
-                      element: <LeaveSetting />,
-                      children: [
-                        {
-                            path: 'LeavePolicy',
-                            element: <Leavepolicy/>,
-                        },
-                        {
-                          path: 'HolidayPolicy',
-                          element: <Holidaypolicy/>,
-                        },
-                      ],
-                    },
-                    
+                    path: 'TypeReimbursement',
+                    element: <TypeReimbursement />,
+                  },
+                  {
+                    path: 'Reimbursementpolicy',
+                    element: <Reimbursementpolicy />,
+                  },
+                  {
+                    path: 'Multilevel',
+                    element: <Multilevel />,
+                  },
                 ],
               },
-          ],
+              {
+                path: 'LoanSetting',
+                element: <LoanSetting />,
+                children: [
+                  {
+                    path: 'TypeOfLoan',
+                    element: <TypeOfLoan />,
+                  },
+                  {
+                    path: 'LoanPolicy',
+                    element: <LoanPolicy />,
+                  },
+                  {
+                    path: 'LoanApprovalSettings',
+                    element: <LoanApprovalSettings />,
+                  },
+                ],
+              },
+              {
+                path: 'PayslipSetting',
+                element: <PayslipSetting />,
+              },
+              {
+                path: 'PaymentReminderSetting',
+                element: <PaymentReminderSetting />,
+              },
+              {
+                path: 'AnnouncementSetting',
+                element: <AnnouncementSetting />,
+              },
+              {
+                path: 'LeaveSetting',
+                element: <LeaveSetting />,
+                children: [
+                  {
+                    path: 'LeavePolicy',
+                    element: <Leavepolicy />,
+                  },
+                  {
+                    path: 'HolidayPolicy',
+                    element: <Holidaypolicy />,
+                  },
+                ],
+              },
+
+            ],
+          },
+        ],
       },
       {
         path: 'settings',
-        label:"Setting",
+        label: "Setting",
         element: <SettingsMenus />,
         children: [
-            {
-                path: 'home1',
-                element: <Home />,
-              },
-              {
-                path: 'home2',
-                element: <Employee />,
-              },
-              {
-                path: 'home3',
-                element: <RunPayroll />,
-              },
-              {
-                path: 'home4',
-                element: <Notifications />,
-              },
+          {
+            path: 'home1',
+            element: <Home />,
+          },
+          {
+            path: 'home2',
+            element: <Employee />,
+          },
+          {
+            path: 'home3',
+            element: <RunPayroll />,
+          },
+          {
+            path: 'home4',
+            element: <Notifications />,
+          },
         ],
       },
     ]
   }
-  
+
 ];
 
 export default routesConfig;

@@ -1,4 +1,5 @@
-import React from 'react';
+
+import PropTypes from 'prop-types';
 
 const TripleInputComponent = ({ name, label, values, onChange, textcss, placeholders, keys }) => {
   return (
@@ -7,7 +8,7 @@ const TripleInputComponent = ({ name, label, values, onChange, textcss, placehol
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         {Array.from({ length: 3 }).map((_, index) => (
           <input
-            name={keys ? keys[index] : name} 
+            name={keys ? keys[index] : name}
             key={index}
             type="text"
             value={values[index] || ""}
@@ -21,6 +22,15 @@ const TripleInputComponent = ({ name, label, values, onChange, textcss, placehol
   );
 };
 
+TripleInputComponent.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  textcss: PropTypes.string,
+  placeholders: PropTypes.arrayOf(PropTypes.string),
+  keys: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default TripleInputComponent;
 

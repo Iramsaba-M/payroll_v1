@@ -4,7 +4,7 @@ import Demo_ctc from './Demo_ctc'
 const Demo = () => {
   return (
     <div>
-         <BodyContent content={Demo_ctc} />
+      <BodyContent content={Demo_ctc} />
     </div>
   )
 }

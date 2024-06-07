@@ -1,11 +1,9 @@
 
 import { NavLink } from "react-router-dom";
-
-import { useComponentMapping } from "../../context/ComponentMappingContext";
 import LogoConfig from "../logo/LogoConfig";
+import PropTypes from 'prop-types';
 
 const IconbarComponent = ({ config }) => {
-  // const componentMapping = useComponentMapping();
   const activeLink = "text-[#3e63dd] rounded-md bg-blue-light";
   const normalLink = "text-gray-300 hover:rounded-md";
 
@@ -28,6 +26,17 @@ const IconbarComponent = ({ config }) => {
       </ul>
     </div>
   );
+};
+
+IconbarComponent.propTypes = {
+  config: PropTypes.shape({
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        path: PropTypes.string.isRequired,
+        icon: PropTypes.element.isRequired
+      })
+    ).isRequired
+  }).isRequired
 };
 
 export default IconbarComponent;

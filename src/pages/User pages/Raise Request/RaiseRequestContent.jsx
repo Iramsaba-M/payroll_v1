@@ -2,7 +2,7 @@
 import { GiReceiveMoney } from "react-icons/gi";
 import { GiPayMoney } from "react-icons/gi";
 import { IconContext } from 'react-icons';
-
+import PropTypes from 'prop-types';
 
 function BlueLargeIcon({ icon: Icon }) {
   return (
@@ -16,6 +16,10 @@ function BlueLargeIcon({ icon: Icon }) {
   );
 }
 
+BlueLargeIcon.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+};
+
 const RaiseRequestContent = [
   {
     title: 'Request for Loan',
@@ -26,10 +30,10 @@ const RaiseRequestContent = [
   {
     title: 'Request for Reimbursement',
     card: 'requestforreimbursement',
-    icon: <BlueLargeIcon icon={GiReceiveMoney } />,
+    icon: <BlueLargeIcon icon={GiReceiveMoney} />,
     to: '/apps/raiserequest/RequestForReimbursement',
   },
-  
+
 ];
 
 export default RaiseRequestContent;

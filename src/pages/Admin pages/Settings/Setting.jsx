@@ -5,7 +5,7 @@ import SettingComponent from './SettingComponent'
 const Setting = () => {
   return (
     <div>
-        <BodyContent content={SettingComponent} />
+      <BodyContent content={SettingComponent} />
     </div>
   )
 }

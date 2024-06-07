@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-
 import TextComponent from '../../text/TextComponent';
 import PayslipStyles from './PayslipStyles';
 import Profile from '../../../../../configurations/profile/Profile';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const PayslipComponent = ({ config }) => {
   const [data, setData] = useState(null);
@@ -16,19 +16,19 @@ const PayslipComponent = ({ config }) => {
       try {
         const response = await axios.get('http://localhost:3000/az');
 
-        setData(response.data[0]); 
+        setData(response.data[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
-    fetchData(); 
+    fetchData();
   }, []);
 
   const handleInputChange = (fieldName, newValue) => {
-    
+
     setData((prevData) => ({
       ...prevData,
       [fieldName]: newValue,
@@ -102,7 +102,6 @@ const PayslipComponent = ({ config }) => {
                       name={field.name}
                       textcss={PayslipStyles[field.textcss].input}
                       icon={field.icon}
-                      // value={data[field.name]} 
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                     />
                     {/* <div style={{ position: 'absolute', top: 0, left: 0 ,fontSize: '12px'}}> */}
@@ -126,10 +125,8 @@ const PayslipComponent = ({ config }) => {
                       name={field.name}
                       textcss={PayslipStyles[field.textcss].input}
                       icon={field.icon}
-                      // value={data[field.name]} 
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                     />
-                    {/* <div style={{ position: 'absolute', top: 0, left: 0 ,fontSize: '12px'}}> */}
                     <div className="absolute top-0 left-0 text-xs ml-[7vh]">
                       {data[field.name]}
                     </div>
@@ -152,10 +149,8 @@ const PayslipComponent = ({ config }) => {
                       name={field.name}
                       textcss={PayslipStyles[field.textcss].input}
                       icon={field.icon}
-                      // value={data[field.name]} 
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                     />
-                    {/* <div style={{ position: 'absolute', top: 0, left: 0 ,fontSize: '12px'}}> */}
                     <div className="absolute top-0 left-0 text-xs ml-[7vh]">
                       {data[field.name]}
                     </div>
@@ -176,10 +171,8 @@ const PayslipComponent = ({ config }) => {
                       name={field.name}
                       textcss={PayslipStyles[field.textcss].input}
                       icon={field.icon}
-                      // value={data[field.name]} 
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                     />
-                    {/* <div style={{ position: 'absolute', top: 0, left: 0 ,fontSize: '12px'}}> */}
                     <div className="absolute top-0 left-0 text-xs ml-[7vh] ">
                       {data[field.name]}
                     </div>
@@ -222,7 +215,6 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -245,7 +237,6 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -268,7 +259,6 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -291,214 +281,20 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
                         {data[field.name]}
                       </div>
                     </div>
-                       )}
-                       </div>
-                     ))}
-       
-                     {config.slice(8, 9).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-       
-                     {config.slice(9, 10).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-       
-                     {config.slice(10, 11).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-                     {config.slice(11, 12).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-                   </div>
-       
-       
-                   <div className='border-2 mr-[1px]  ml-1 w-[49vh] rounded-sm mt-[3px]'>
-                     {config.slice(12, 13).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-                   </div>
-                 </div>
-       
-                 <div>
-       
-                   <div className='border-2 w-[49vh] h-[195px] rounded-sm mt-[3px]'>
-                     {config.slice(13, 14).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-       
-       
-                     ))}
-       
-                     {config.slice(14, 15).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-       
-                     {config.slice(15, 16).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                           {field.label}
-                         </label>
-       
-                         {field.type === "text" && (
-                           <div style={{ position: 'relative' }}>
-                             <TextComponent
-                               name={field.name}
-                               textcss={PayslipStyles[field.textcss].input}
-                               icon={field.icon}
-                               // value={data[field.name]} 
-                               onChange={(e) => handleInputChange(field.name, e.target.value)}
-                             />
-                             <div className="absolute top-0 left-0 text-xs ml-[18vh]">
-                               {data[field.name]}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     ))}
-       
-                     {config.slice(16, 17).map((field, index) => (
-                       <div key={index} className={PayslipStyles[field.textcss].container}>
-                         <label className={PayslipStyles[field.textcss].label}>
-                         {field.label}
+                  )}
+                </div>
+              ))}
+
+              {config.slice(8, 9).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
                   </label>
 
                   {field.type === "text" && (
@@ -507,7 +303,191 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {config.slice(9, 10).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {config.slice(10, 11).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+              {config.slice(11, 12).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+
+            <div className='border-2 mr-[1px]  ml-1 w-[49vh] rounded-sm mt-[3px]'>
+              {config.slice(12, 13).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+
+            <div className='border-2 w-[49vh] h-[195px] rounded-sm mt-[3px]'>
+              {config.slice(13, 14).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+
+              ))}
+
+              {config.slice(14, 15).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {config.slice(15, 16).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
+                        onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      />
+                      <div className="absolute top-0 left-0 text-xs ml-[18vh]">
+                        {data[field.name]}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {config.slice(16, 17).map((field, index) => (
+                <div key={index} className={PayslipStyles[field.textcss].container}>
+                  <label className={PayslipStyles[field.textcss].label}>
+                    {field.label}
+                  </label>
+
+                  {field.type === "text" && (
+                    <div style={{ position: 'relative' }}>
+                      <TextComponent
+                        name={field.name}
+                        textcss={PayslipStyles[field.textcss].input}
+                        icon={field.icon}
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -530,7 +510,6 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -554,7 +533,6 @@ const PayslipComponent = ({ config }) => {
                         name={field.name}
                         textcss={PayslipStyles[field.textcss].input}
                         icon={field.icon}
-                        // value={data[field.name]} 
                         onChange={(e) => handleInputChange(field.name, e.target.value)}
                       />
                       <div className="absolute top-0 left-0 text-xs ml-[18vh]">
@@ -581,7 +559,6 @@ const PayslipComponent = ({ config }) => {
                     name={field.name}
                     textcss={PayslipStyles[field.textcss].input}
                     icon={field.icon}
-                    // value={data[field.name]} 
                     onChange={(e) => handleInputChange(field.name, e.target.value)}
                   />
                   <div style={{ position: 'absolute', top: 0, left: 0, fontSize: '12px' }}>
@@ -604,7 +581,6 @@ const PayslipComponent = ({ config }) => {
                     name={field.name}
                     textcss={PayslipStyles[field.textcss].input}
                     icon={field.icon}
-                    // value={data[field.name]} 
                     onChange={(e) => handleInputChange(field.name, e.target.value)}
                   />
                   <div style={{ position: 'absolute', top: 0, left: 0, fontSize: '12px' }}>
@@ -627,7 +603,6 @@ const PayslipComponent = ({ config }) => {
                     name={field.name}
                     textcss={PayslipStyles[field.textcss].input}
                     icon={field.icon}
-                    // value={data[field.name]} 
                     onChange={(e) => handleInputChange(field.name, e.target.value)}
                   />
                   <div style={{ position: 'absolute', top: 0, left: 0, fontSize: '12px' }}>
@@ -645,6 +620,17 @@ const PayslipComponent = ({ config }) => {
     </div>
   )
 }
+
+PayslipComponent.propTypes = {
+  config: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    textcss: PropTypes.string.isRequired,
+    icon: PropTypes.string
+  })).isRequired
+};
+
 export default PayslipComponent;
 
 
@@ -656,14 +642,14 @@ export default PayslipComponent;
 
 
 
-       
-       
-       
-       
-       
-       
-       
-       
+
+
+
+
+
+
+
+
 
 
 

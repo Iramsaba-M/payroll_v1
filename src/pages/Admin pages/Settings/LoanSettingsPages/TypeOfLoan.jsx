@@ -188,52 +188,54 @@ const TypeOfLoan = () => {
               </tr>
             ))}
             <tr>
-              {TextComponentData1.map((data, i) => (
-                <td key={i}>
-                  <TextComponent
-                    value={loanType}
-                    onChange={(e) => setLoanType(e.target.value)}
-                    placeholder={data.placeholder}
-                  />
-                </td>
-              ))}
-              {FileComponentData.slice(0, 1).map((data, i) => (
-                <td key={i}>
-                  <FileComponent
-                    name="policy_file"
-                    placeholder="Upload Policy File"
-                    onChange={(file) => {
-                      if (file) {
-                        console.log("Selected File:", file);
-                        if (file.type === "application/pdf") {
-                          setFile(file);
-                          console.log("PDF file selected:", file);
-                        } else {
-                          console.error("Invalid file type, only PDFs are allowed.");
-                        }
-                      } else {
-                        console.error("No file selected.");
-                      }
-                    }}
-                    textcss={TextStyle[data.textcss]}
-                    accept="application/pdf"
-                  />
+  {TextComponentData1.map((data, i) => (
+    <td key={i}>
+      <TextComponent
+        value={loanType}
+        onChange={(e) => setLoanType(e.target.value)}
+        placeholder={data.placeholder}
+      />
+    </td>
+  ))}
+  {FileComponentData.slice(0, 1).map((data, i) => (
+    <td key={i}>
+      <FileComponent
+        name="policy_file"
+        placeholder="Upload Policy File"
+        onChange={(file) => {
+          if (file) {
+            console.log("Selected File:", file);
+            if (file.type === "application/pdf") {
+              setFile(file);
+              console.log("PDF file selected:", file);
+            } else {
+              console.error("Invalid file type, only PDFs are allowed.");
+            }
+          } else {
+            console.error("No file selected.");
+          }
+        }}
+        textcss={TextStyle[data.textcss]}
+        accept="application/pdf"
+      />
+    </td>
+  ))}
+  <td>
+    {/* <MdOutlineEdit className="h-6 w-6 ml-32" onClick={() => handleEdit(i)} /> */}
+  </td>
+  <td>
+    <Switch
+      onChange={(checked) => setEnable(checked)}
+      checked={enable}
+      onColor="#6b6aef"
+      handleDiameter={28}
+      uncheckedIcon={false}
+      checkedIcon={false}
+      className="ml-32"
+    />
+  </td>
+</tr>
 
-                </td>
-              ))}
-              <td> <MdOutlineEdit className="h-6 w-6 ml-32" onClick={() => handleEdit(i)} /></td>
-              <td>
-                <Switch
-                  onChange={(checked) => setEnable(checked)}
-                  checked={enable}
-                  onColor="#6b6aef"
-                  handleDiameter={28}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  className="ml-32"
-                />
-              </td>
-            </tr>
           </tbody>
         </table>
         <td>

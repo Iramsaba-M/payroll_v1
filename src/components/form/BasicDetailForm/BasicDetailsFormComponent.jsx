@@ -1,8 +1,7 @@
 
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { fetchData, putDataFile } from '../../../services/APIService';
+import { putDataFile } from '../../../services/APIService';
 import DateComponent from "../Formfields/date/DateComponent";
 import TextComponent from "../Formfields/text/TextComponent";
 import TextStyle from "../Formfields/text/TextStyle";
@@ -11,8 +10,7 @@ import OptionsComponent from "../Formfields/options/OptionsComponent";
 import { ButtonContent } from "../../../pages/Admin pages/Employee/BasicDetails/BasicDetailsContent";
 import PhoneComponent from "../Formfields/phone/PhoneComponent";
 import ButtonConfig from "../../../configurations/Button/ButtonConfig";
-import { BASIC_DETAILS_API, BASIC_DETAILS_API_Get, BASIC_DETAILS_API_put } from "../../../api/EndPoints";
-import { getApiUrl } from "../../../api/GetAPI";
+import { BASIC_DETAILS_API, BASIC_DETAILS_API_put } from "../../../api/EndPoints";
 import CardComponent from "./CardComponent";
 import CardConfig from "./CardConfig";
 import ModalComponent from '../Formfields/modal/ModalComponent';
@@ -29,10 +27,6 @@ const BasicDetailsFormComponent = ({
 
 }) => {
 
-  // const [values, setValues] = useState({});
-  // const [values, setValues] = useState(editEmployees || {});
- 
-
   const [values, setValues] = useState(() => {
     const initialValues = {};
     config.forEach(field => {
@@ -41,31 +35,26 @@ const BasicDetailsFormComponent = ({
 
     return initialValues;
   });
-///////////////////////////////////////////////////////////////
-const mergedConfig = [];
-// Assuming CardConfig[1] exists and contains the object you mentioned
-if (CardConfig.length > 1) {
-    // Push objects from config array
+
+  const mergedConfig = [];
+  if (CardConfig.length > 1) {
     config.forEach(item => {
-        mergedConfig.push(item);
+      mergedConfig.push(item);
     });
 
-    // Push object from CardConfig at index 1
     mergedConfig.push(CardConfig[1]);
-} else {
+  } else {
     console.error("CardConfig at index 1 does not exist");
-}
+  }
 
-console.log("Merged Config:", mergedConfig);
+  console.log("Merged Config:", mergedConfig);
 
   const formik = useFormik({
     initialValues: createInitialValues(mergedConfig),
     validationSchema: formSchema(simplifiedData(mergedConfig)),
   });
 
-//////////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    // Update values state when editEmployees prop changes
     const updatedValues = {};
     config.forEach(field => {
       updatedValues[field.name] = editEmployees[field.name] || ''; // Set value based on editEmployees or empty string
@@ -92,9 +81,7 @@ console.log("Merged Config:", mergedConfig);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     AddMode,
-    editMode,
-    EditModeclick,
-    AddEmployeeclick
+    editMode
   } = useButtonState();
   console.log('editEmployees', editEmployees);
 
@@ -111,9 +98,6 @@ console.log("Merged Config:", mergedConfig);
     }
   };
 
-
-
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -127,7 +111,6 @@ console.log("Merged Config:", mergedConfig);
     console.log("Type:", type);
 
     if (label === "Next" && Object.keys(formik.errors).length === 0 && formik.isValid) {
-      // handleNextClick();
       handleNextClick(values.employee_id);
     }
 
@@ -142,7 +125,7 @@ console.log("Merged Config:", mergedConfig);
       console.log("Form Values:", values);
       // Create a FormData object to handle form data including file uploads
       const formData = new FormData();
-  
+
       // Append text data to FormData
       Object.entries(values).forEach(([key, value]) => {
         // Append all form fields except photo_content
@@ -150,13 +133,13 @@ console.log("Merged Config:", mergedConfig);
           formData.append(key, value);
         }
       });
-  
+
       // Check if photo_content exists and is a file object
       if (values.photo_content instanceof File) {
         // If photo_content is a file object, append it to FormData
         formData.append('photo_content', values.photo_content);
       }
-  
+
       // Check if it's in AddMode or editMode
       if (AddMode) {
         // When Add mode is active
@@ -168,9 +151,8 @@ console.log("Merged Config:", mergedConfig);
         // If the above API call is successful, trigger the onSubmit function from props
         onSubmit(values, label); // Pass the label parameter
 
-      } 
-      else if (editMode)
-      {
+      }
+      else if (editMode) {
         // When edit mode is active
         const employeeId = values.employee_id;
         // Update the data directly without creating updatedValues
@@ -187,8 +169,8 @@ console.log("Merged Config:", mergedConfig);
   };
 
 
-  console.log('er',formik.values, formik.errors, values);
-  
+  // console.log('er',formik.values, formik.errors, values);
+
   return (
     <form onSubmit={onSubmit}>
       <div className="w-[130vh] h-[50vh]">
@@ -207,14 +189,11 @@ console.log("Merged Config:", mergedConfig);
                   <TextComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -230,14 +209,11 @@ console.log("Merged Config:", mergedConfig);
                   <TextComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -253,14 +229,11 @@ console.log("Merged Config:", mergedConfig);
                   <TextComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -281,14 +254,11 @@ console.log("Merged Config:", mergedConfig);
                   <DateComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -296,15 +266,12 @@ console.log("Merged Config:", mergedConfig);
                   <OptionsComponent
                     name={field.name}
                     options={field.options}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
 
                   />
@@ -326,16 +293,12 @@ console.log("Merged Config:", mergedConfig);
                   <DateComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={originalDateValues[field.name] || ""}
 
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -343,14 +306,11 @@ console.log("Merged Config:", mergedConfig);
                   <TextComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -363,12 +323,12 @@ console.log("Merged Config:", mergedConfig);
                 handleChange={handleChange}
                 photoContent={values.photo_content}
                 onBlur={formik.handleBlur}
-                
+
               />
             </div>
-            
+
           </div>
-          { formik.touched['photo_content'] && formik.errors['photo_content'] && <p className='error-form text-xs text-red-600 translate-x-[-130%]'>{formik.errors['photo_content']}</p>}
+          {formik.touched['photo_content'] && formik.errors['photo_content'] && <p className='error-form text-xs text-red-600 translate-x-[-130%]'>{formik.errors['photo_content']}</p>}
         </div>
 
         <div className="form-line flex mb-4 ">
@@ -381,16 +341,13 @@ console.log("Merged Config:", mergedConfig);
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -398,14 +355,11 @@ console.log("Merged Config:", mergedConfig);
                 <TextComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={(e) => handleInputChange(field.name, e.target.value)}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -423,16 +377,13 @@ console.log("Merged Config:", mergedConfig);
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -449,14 +400,11 @@ console.log("Merged Config:", mergedConfig);
                   <TextComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -465,16 +413,13 @@ console.log("Merged Config:", mergedConfig);
                     <OptionsComponent
                       name={field.name}
                       options={field.options}
-                      // value={values[field.name] || ""}
                       onChange={(e) => handleChange(field.name, e.target.value)}
                       textcss={TextStyle[field.textcss].input}
                       placeholder={field.placeholder}
                       icon={field.icon}
 
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
-                      // onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
                   )}
@@ -495,16 +440,13 @@ console.log("Merged Config:", mergedConfig);
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -512,14 +454,11 @@ console.log("Merged Config:", mergedConfig);
                 <EmailComponent
                   name={field.name}
                   placeholder={field.placeholder}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
 
                   value={(formik && formik.values[field.name]) ||
-                    // (formData && formData[item.name]) ||
                     ""}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               )}
@@ -539,14 +478,11 @@ console.log("Merged Config:", mergedConfig);
                   <PhoneComponent
                     name={field.name}
                     placeholder={field.placeholder}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
 
                     value={(formik && formik.values[field.name]) ||
-                      // (formData && formData[item.name]) ||
                       ""}
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                 )}
@@ -555,16 +491,13 @@ console.log("Merged Config:", mergedConfig);
                     <OptionsComponent
                       name={field.name}
                       options={field.options}
-                      // value={values[field.name] || ""}
                       onChange={(e) => handleChange(field.name, e.target.value)}
                       textcss={TextStyle[field.textcss].input}
                       placeholder={field.placeholder}
                       icon={field.icon}
 
                       value={(formik && formik.values[field.name]) ||
-                        // (formData && formData[item.name]) ||
                         ""}
-                      // onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
                   )}
@@ -576,16 +509,11 @@ console.log("Merged Config:", mergedConfig);
           </div>
         </div>
         <div className=" ml-[107vh] -mt-20">
-        
-        <ButtonConfig Config={ButtonContent} onClick={(label, type) => handleButtonClick(label, type, editMode)} />
 
-      </div>
-      </div>
-      {/* <div className=" ml-[107vh] -translate-y-[-27vh]">
-        {" "}
-        <ButtonConfig Config={ButtonContent} onClick={(label, type) => handleButtonClick(label, type, editMode)} />
+          <ButtonConfig Config={ButtonContent} onClick={(label, type) => handleButtonClick(label, type, editMode)} />
 
-      </div> */}
+        </div>
+      </div>
       <ModalComponent
         isOpen={isModalOpen}
         onClose={handleCloseModal}

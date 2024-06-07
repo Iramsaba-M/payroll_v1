@@ -1,25 +1,34 @@
 
+import PropTypes from 'prop-types';
 
-import React from 'react';
-
-
-const TextComponent = ({name, label, value, onChange, textcss, placeholder,icon,onBlur }) => {
+const TextComponent = ({ name, label, value, onChange, textcss, placeholder, icon, onBlur }) => {
   return (
     <div>
       <label>{label}</label>
       {icon && <span>{icon}</span>}
-      
+
       <input
-      name={name}
+        name={name}
         type="text"
         value={value}
         placeholder={placeholder}
         onChange={onChange}
         className={textcss}
-        onBlur={ onBlur ? onBlur : null }
+        onBlur={onBlur ? onBlur : null}
       />
     </div>
   );
+};
+
+TextComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  textcss: PropTypes.string,
+  placeholder: PropTypes.string,
+  icon: PropTypes.node,
+  onBlur: PropTypes.func,
 };
 
 export default TextComponent;

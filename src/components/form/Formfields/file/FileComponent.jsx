@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const FileComponent = ({ name, onChange, textcss,icon,  placeholder }) => {
+
+const FileComponent = ({ name, onChange, textcss, icon, placeholder }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const handleChange = (e) => {
@@ -16,14 +18,14 @@ const FileComponent = ({ name, onChange, textcss,icon,  placeholder }) => {
     <div className={textcss}>
       {uploadedFile ? (
         <>
-       <div className='mt-8'></div>
+          <div className='mt-8'></div>
           <span className="mr-2 mt-3">{uploadedFile.name}</span>
-          <button  className='mt-3 text-blue-700' onClick={handleCancelFile}>Cancel</button>
+          <button className='mt-3 text-blue-700' onClick={handleCancelFile}>Cancel</button>
         </>
       ) : (
         <label htmlFor={name} >
           <div className='flex items-center mt-2 '>
-          <div>{placeholder}</div> 
+            <div>{placeholder}</div>
             <span>{icon}</span>
           </div>
           <input
@@ -39,6 +41,14 @@ const FileComponent = ({ name, onChange, textcss,icon,  placeholder }) => {
       )}
     </div>
   );
+};
+
+FileComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  textcss: PropTypes.string,
+  icon: PropTypes.node,
+  placeholder: PropTypes.string
 };
 
 export default FileComponent;

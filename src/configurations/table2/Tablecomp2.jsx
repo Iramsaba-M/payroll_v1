@@ -1,6 +1,7 @@
 
 // Tablecomp.jsx
 import TableStyle2 from './Tablestyle2';
+import PropTypes from 'prop-types';
 
 function Tablecomp({ config, data, onReviewClick }) {
   const renderCellContent = (row, column) => {
@@ -10,13 +11,9 @@ function Tablecomp({ config, data, onReviewClick }) {
     return row[column.name] || '';
   };
 
-  const handleReviewClick = (row) => {
-    console.log('Review clicked for row:', row);
-  };
-
   return (
     <div className={TableStyle2[config.tableposition]} >
-     
+
       <table className='w-full'>
         <thead>
           <tr className='bg-gray-100 p-2'>
@@ -47,7 +44,7 @@ function Tablecomp({ config, data, onReviewClick }) {
             ))
           ) : (
             <tr>
-              <td colSpan={config.length} className="text-center">No data available</td>
+              <td colSpan={config.column.length} className="text-center">No data available</td>
             </tr>
           )}
         </tbody>
@@ -55,5 +52,20 @@ function Tablecomp({ config, data, onReviewClick }) {
     </div>
   );
 }
+
+Tablecomp.propTypes = {
+  config: PropTypes.shape({
+    tableposition: PropTypes.string.isRequired,
+    column: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      clmncss: PropTypes.string,
+      actionStyles: PropTypes.object,
+      cssClass: PropTypes.string,
+    })).isRequired,
+  }).isRequired,
+  data: PropTypes.array.isRequired,
+  onReviewClick: PropTypes.func.isRequired,
+};
 
 export default Tablecomp;

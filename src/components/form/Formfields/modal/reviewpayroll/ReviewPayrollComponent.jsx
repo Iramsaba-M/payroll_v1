@@ -1,12 +1,14 @@
 import { LuPen } from "react-icons/lu";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import TextComponent from "../../text/TextComponent";
 import ReviewPayrollStyle from "./ReviewPayrollStyle";
 import Button from "../../../../../configurations/Button/Button";
 import { addlop, add } from "./ReviewPayrollData";
 import { fetchData } from "../../../../../services/APIService";
 import { reviewpayroll } from "../../../../../api/EndPoints";
+import PropTypes from 'prop-types';
+
+
 const ReviewPayrollComponent = ({ config }) => {
   const [data, setData] = useState([]);
 
@@ -22,9 +24,9 @@ const ReviewPayrollComponent = ({ config }) => {
 
     fetchDataFromEndpoint();
   }, []);
-  
+
   const handleInputChange = (fieldName, newValue) => {
-    
+
     setData((prevData) => ({
       ...prevData,
       [fieldName]: newValue,
@@ -109,7 +111,6 @@ const ReviewPayrollComponent = ({ config }) => {
           </div>
         ))}
       </div>
-      {/* <button className='bg-gray-100 text-violet-400 text-xs px-2 rounded m'>+ Add LOP</button> */}
 
 
       <Button Configs={addlop} />
@@ -143,7 +144,6 @@ const ReviewPayrollComponent = ({ config }) => {
             {field.type === "text" && (
               <TextComponent
                 name={field.name}
-                // placeholder={data[field.name]} // use the fetched data as the placeholder
                 value={data[field.name]}
                 textcss={ReviewPayrollStyle[field.textcss].input}
                 icon={field.icon}
@@ -161,7 +161,6 @@ const ReviewPayrollComponent = ({ config }) => {
               <TextComponent
                 name={field.name}
                 value={data[field.name]}
-                //placeholder={data[field.name]} // use the fetched data as the placeholder
                 textcss={ReviewPayrollStyle[field.textcss].input}
                 icon={field.icon}
                 onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -178,7 +177,6 @@ const ReviewPayrollComponent = ({ config }) => {
               <TextComponent
                 name={field.name}
                 value={data[field.name]}
-                ////placeholder={data[field.name]} // use the fetched data as the placeholder
                 textcss={ReviewPayrollStyle[field.textcss].input}
                 icon={field.icon}
                 onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -195,7 +193,6 @@ const ReviewPayrollComponent = ({ config }) => {
               <TextComponent
                 name={field.name}
                 value={data[field.name]}
-                // placeholder={data[field.name]} // use the fetched data as the placeholder
                 textcss={ReviewPayrollStyle[field.textcss].input}
                 icon={field.icon}
                 onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -203,7 +200,6 @@ const ReviewPayrollComponent = ({ config }) => {
             )}
           </div>
         ))}
-        {/* <button className='bg-gray-100 text-violet-400 text-xs px-2 rounded md'>+ Add</button> */}
         <Button Configs={add} />
         <div className='mt-'>
           {config.slice(9, 10).map((field, index) => (
@@ -240,7 +236,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  //placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -260,7 +255,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  // placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -280,7 +274,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  //placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -290,7 +283,6 @@ const ReviewPayrollComponent = ({ config }) => {
             </div>
           ))}
         </div>
-        {/* <button className='bg-gray-100 text-violet-400 text-xs px-2 rounded m'>+ Add</button> */}
         <Button Configs={add} />
         <div className=''>
           {config.slice(13, 14).map((field, index) => (
@@ -302,7 +294,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  //placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -315,7 +306,6 @@ const ReviewPayrollComponent = ({ config }) => {
         <div className='flex mt-2'> <p className='text-xs font-bold text-black-500'>Reimbursements</p>
           <p className='ml-[32.6vh] text-[10px] font-semibold'>AMOUNT</p>
         </div>
-        {/* <button className='bg-gray-100 text-violet-400 text-xs px-2 rounded md'>+ Add</button> */}
         <div className="mt-1">
           <Button Configs={add} />
         </div>
@@ -323,7 +313,6 @@ const ReviewPayrollComponent = ({ config }) => {
           <p className='ml-[32.2vh] text-[10px] font-semibold'>AMOUNT</p>
 
         </div>
-        {/* <button className='bg-gray-100 text-violet-400 text-xs px-2 rounded md'>+ Add</button> */}
         <div className="mt-1">
           <Button Configs={add} />
         </div>
@@ -337,7 +326,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  // placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -358,7 +346,6 @@ const ReviewPayrollComponent = ({ config }) => {
                 <TextComponent
                   name={field.name}
                   value={data[field.name]}
-                  // placeholder={data[field.name]} // use the fetched data as the placeholder
                   textcss={ReviewPayrollStyle[field.textcss].input}
                   icon={field.icon}
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
@@ -376,5 +363,18 @@ const ReviewPayrollComponent = ({ config }) => {
     </div>
   )
 }
+
+ReviewPayrollComponent.propTypes = {
+  config: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      textcss: PropTypes.string.isRequired,
+      placeholder: PropTypes.string,
+      icon: PropTypes.element,
+    })
+  ).isRequired,
+};
 
 export default ReviewPayrollComponent;

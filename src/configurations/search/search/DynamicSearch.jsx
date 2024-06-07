@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import StyleSearch from './StyleSearch';
 import { FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
-const DynamicSearch = ({ data,config, searchFunrecd }) => {
+const DynamicSearch = ({ data, config, searchFunrecd }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
@@ -32,12 +33,18 @@ const DynamicSearch = ({ data,config, searchFunrecd }) => {
             value={searchTerm}
             onChange={handleSearch}
             placeholder={config.placeholder}
-            style={StyleSearch.input} 
+            style={StyleSearch.input}
           />
         </div>
       </div>
     </div>
   );
+};
+
+DynamicSearch.propTypes = {
+  data: PropTypes.array.isRequired, // Assuming data is an array, adjust the prop type accordingly
+  config: PropTypes.object.isRequired, // Assuming config is an object, adjust the prop type accordingly
+  searchFunrecd: PropTypes.func.isRequired
 };
 
 export default DynamicSearch;

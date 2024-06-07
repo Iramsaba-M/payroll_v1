@@ -130,12 +130,6 @@ export const leavecard8 = [
   },
 ]
 
-
-
-
-
-
-
 export const leavesdata2 = [
 
   { heading: 'CL ', name: 'casual' },
@@ -169,23 +163,6 @@ export const radiocontent = [
   },
 ]
 
-// export const leavehistorytable = [
-//   // maxheight:"Attendancetableheight",
-//   {
-//     name: "start_date",
-//     label: " Date",
-//     dataType: "string",
-//     cssClass: "leavedatastyle",//datastyle
-//     clmncss: "leavestyles"//payrollstyle3
-//   },
-//   {
-//     name: "type_of_leave",
-//     label: " Type of Leave",
-//     dataType: "string",
-//     cssClass: "leavedatastyle",//datastyle
-//     clmncss: "leavestyles"//payrollstyle3
-//   },
-// ]
 export const leavehistorytable = {
   tableposition: "Attendancetableheight",
   column: [

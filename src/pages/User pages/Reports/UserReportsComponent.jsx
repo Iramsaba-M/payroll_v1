@@ -1,13 +1,15 @@
-import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+// import PropTypes from 'prop-types';
+import { useState, useEffect, useCallback } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CardConfig from '../../../configurations/Card/CardConfig';
-import { postData } from '../../../services/APIService';
+import { postData } from '../../../services/APIService'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { sickleaveContent,exmpContent1,casualleaveContent, presentdayContent } from './UserReportsContent';
+import { sickleaveContent, exmpContent1, casualleaveContent, presentdayContent } from './UserReportsContent';
 import { EndUser_leaves_report } from '../../../api/EndPoints';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import PropTypes from 'prop-types';
+
 
 const Barchart = ({ graphdata }) => {
   if (!graphdata || !Array.isArray(graphdata)) {
@@ -15,7 +17,6 @@ const Barchart = ({ graphdata }) => {
     return null;
   }
 
-  console.log('data', graphdata)
   const hasSick = graphdata.some(item => item.sick !== undefined);
   const hasCasual = graphdata.some(item => item.casual !== undefined);
   const hasPresent = graphdata.some(item => item.present_days !== undefined);
@@ -41,31 +42,36 @@ const Barchart = ({ graphdata }) => {
       </BarChart>
     </ResponsiveContainer>
   );
+};
 
-}
-
-
-
+Barchart.propTypes = {
+  graphdata: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    sick: PropTypes.number,
+    casual: PropTypes.number,
+    present_days: PropTypes.number,
+  })).isRequired,
+};
 
 const UserReportsComponent = () => {
-
-
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate1, setSelectedDate1] = useState(null);
   const [barGraphData, setBarGraphData] = useState(null);
-  const [sickData, setSickData] = useState([])
-  const [casualData, setCasualData] = useState([])
-  const [presentData, setPresentData] = useState([])
+  const [sickData, setSickData] = useState([]);
+  const [casualData, setCasualData] = useState([]);
+  const [presentData, setPresentData] = useState([]);
   const [errorCode, setErrorCode] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
   const handleDateChange1 = (date) => {
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     setSelectedDate1(lastDayOfMonth);
   };
-  const transformData = (graphdata) => {
+
+  const transformData = useCallback((graphdata) => {
     const transformedData = [];
     const transformedSickData = [];
     const transformedCasualData = [];
@@ -88,27 +94,20 @@ const UserReportsComponent = () => {
           transformedPresentData.push({ name: `${month}-${year}`, present_days: item[key].present_days });
 
           transformedData.push(obj);
-         
         }
       });
     });
-    console.log('obj2:', sickData, "obj3", casualData, 'obj4', presentData)
-    setSickData(transformedSickData);
-    setCasualData(transformedCasualData);
-    setPresentData(transformedPresentData);
-    console.log('transformedData', transformedData)
-    return transformedData;
-  };
+
+    return { transformedData, transformedSickData, transformedCasualData, transformedPresentData };
+  }, []);
 
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
 
-    // Set the end date to the last day of the previous month
     const endDate = new Date(currentYear, currentMonth, 0);
 
-    // If the current month is February, adjust the start date to exclude it
     const startDate = new Date(
       currentMonth === 1 ? currentYear - 1 : currentYear,
       currentMonth === 1 ? 0 : currentMonth - 4,
@@ -131,30 +130,19 @@ const UserReportsComponent = () => {
             year: selectedDate1.getFullYear(),
             month: selectedDate1.toLocaleString('en-us', { month: 'short' }),
           };
-          console.log('before Post Response:', formattedStartDate, formattedEndDate);
 
-          // const response = await axios.get('http://localhost:3000/enduser_report')
-          const emp='IK02'
-          // const endpoint = `${EndUser_leaves_report}?employee_id=${emp}`;
-        //   const response = await postData(endpoint,
-        //      {
-        //     from_: formattedStartDate,
-        //     to_: formattedEndDate,
-        //   }
-        // );
+          const emp = 'IK02';
+          const response = await postData(`${EndUser_leaves_report}?employee_id=${emp}`, {
+            from_: formattedStartDate,
+            to_: formattedEndDate,
+          });
 
-        const response = await postData( `${EndUser_leaves_report}?employee_id=${emp}`, {
-          from_: formattedStartDate,
-          to_: formattedEndDate,
-        });
-        
-        console.log('Post Response graph :',response);
+          const { transformedData, transformedSickData, transformedCasualData, transformedPresentData } = transformData(response);
 
-          // setBarGraphData(transformData(response.data));
-
-          setBarGraphData(transformData(response));
-
-
+          setBarGraphData(transformedData);
+          setSickData(transformedSickData);
+          setCasualData(transformedCasualData);
+          setPresentData(transformedPresentData);
         } else {
           console.log('Please select both "From" and "To" dates');
         }
@@ -164,22 +152,21 @@ const UserReportsComponent = () => {
       }
     };
     fetchData();
-  }, [selectedDate, selectedDate1]);
+  }, [selectedDate, selectedDate1, transformData]);
 
   if (errorCode) {
-    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+    return <ErrorScreen errorCode={errorCode} />;
   }
 
-  console.log('bar', barGraphData)
   return (
     <div>
-      <div className='flex  border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4 '>
+      <div className='flex border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4'>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="MMM-yyyy"
           placeholderText='From'
-          className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+          className='w-[12vh] hover:border-blue-500 text-center focus:outline-none'
           showMonthYearPicker
         />
         <div className='text-gray-400'>~</div>
@@ -188,17 +175,15 @@ const UserReportsComponent = () => {
           onChange={handleDateChange1}
           placeholderText='To'
           dateFormat="MMM-yyyy"
-          style={{ appearance: 'none', background: 'transparent' }}
-          className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+          className='w-[12vh] hover:border-blue-500 text-center focus:outline-none'
           showMonthYearPicker
         />
       </div>
-      <div className=''>
+      <div>
         <CardConfig Config={exmpContent1} comp={<Barchart graphdata={barGraphData} />} />
       </div>
       <div className='flex mt-'>
-
-        <div >
+        <div>
           <CardConfig Config={casualleaveContent} comp={<Barchart graphdata={casualData} />} />
         </div>
         <div className='ml-'>
@@ -209,6 +194,7 @@ const UserReportsComponent = () => {
         </div>
       </div>
     </div>
-  )
-}
-export default UserReportsComponent
+  );
+};
+
+export default UserReportsComponent;

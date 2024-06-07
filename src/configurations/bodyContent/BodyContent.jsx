@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 const BodyContent = ({ content: NewComponent }) => {
 
@@ -7,9 +8,10 @@ const BodyContent = ({ content: NewComponent }) => {
         <NewComponent />
       </div>
     </>
-
   )
-
 }
+BodyContent.propTypes = {
+  content: PropTypes.elementType.isRequired // Assuming content is a component
+};
 
 export default BodyContent

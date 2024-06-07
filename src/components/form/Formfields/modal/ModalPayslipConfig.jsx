@@ -5,14 +5,11 @@ import Payslip from "./payslip/Payslip";
 
 export const ModalPayslipConfig = [
 
-    {
-        buttonStyle: 'CrossButton5',
-        icon: <RxCross1/>,
-        MainDiv: 'MainDiv5',
-        ModalBody: 'ModalBody5',
-        component:   <Payslip/>,
-      
-    
-      },
-
+  {
+    buttonStyle: 'CrossButton5',
+    icon: <RxCross1 />,
+    MainDiv: 'MainDiv5',
+    ModalBody: 'ModalBody5',
+    component: <Payslip />,
+  },
 ]

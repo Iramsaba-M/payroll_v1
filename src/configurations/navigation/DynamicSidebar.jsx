@@ -1,6 +1,7 @@
-import React from 'react'
+
 import { NavLink } from 'react-router-dom';
 import Style from './Style';
+import PropTypes from 'prop-types';
 
 const DynamicSidebar = ({ menuConfig }) => {
   return (
@@ -19,9 +20,11 @@ const DynamicSidebar = ({ menuConfig }) => {
 
       </nav>
     </div>
-
-
   );
 }
+
+DynamicSidebar.propTypes = {
+  menuConfig: PropTypes.array.isRequired // Assuming menuConfig is an array of objects
+};
 
 export default DynamicSidebar

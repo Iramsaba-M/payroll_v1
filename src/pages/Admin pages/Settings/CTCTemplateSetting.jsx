@@ -40,33 +40,33 @@ const CTCTemplateSetting = () => {
 
   return (
     <div>
-      
-     
+
+
 
       {
         (!cardclick) &&
         <div>
-        <div className='ml-36' onClick={handleClick}  >
-          <Box Configs={BoxContent} />
+          <div className='ml-36' onClick={handleClick}  >
+            <Box Configs={BoxContent} />
+          </div>
+
+          <div className='ml-[19vh]'>
+            {templates.map((template, index) => {
+              const Configs = [
+                {
+                  ...BoxContent2[0],
+                  title: template
+                }
+              ];
+              return <Box key={index} Configs={Configs} />
+            })}
+          </div>
         </div>
-   
-       <div className='ml-[19vh]'>
-    {templates.map((template, index) => {
-      const Configs = [
-        { 
-          ...BoxContent2[0], 
-          title: template 
-        }
-      ];
-      return <Box key={index} Configs={Configs} />
-    })}
-  </div>
-  </div>
-        }
+      }
       {cardclick && (
         <>
-        <div className='-mt-6 '>
-          <button onClick={handleBackClick}><IoMdArrowBack /></button>
+          <div className='-mt-6 '>
+            <button onClick={handleBackClick}><IoMdArrowBack /></button>
           </div>
           <Outlet />
         </>

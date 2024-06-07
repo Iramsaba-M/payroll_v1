@@ -5,8 +5,8 @@ import LoanComponent from './LoanComponent'
 const Loans = () => {
   return (
     <div>
-        <BodyContent content={LoanComponent} />
-        
+      <BodyContent content={LoanComponent} />
+
     </div>
   )
 }
