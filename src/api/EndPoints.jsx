@@ -106,7 +106,7 @@ export const Leave_notification_patch ='update_leave_settings/';
  
 export const Loan_notification_admin ='loan_employee';
  
-export const Loan_notification_patch ='employees/';
+export const Loan_notification_patch ='update_loan_settings/';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

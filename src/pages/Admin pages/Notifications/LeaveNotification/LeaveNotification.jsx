@@ -1,11 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
 import { LeavetableContent } from './LeaveNotificationConfig';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import EditModal from '../EditModal';
 import { Leave_notification_admin } from '../../../../api/EndPoints';
 import { fetchData1 } from '../../../../services/APIService';
 
@@ -21,8 +20,7 @@ const LeaveNotifications = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+
     const pageSize = 5;
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -60,22 +58,7 @@ const LeaveNotifications = () => {
         setCurrentPage(1); // Reset to the first page when date changes
     };
 
-    const handleEditClick = (employee) => {
-        setSelectedEmployee(employee);
-        setIsModalOpen(true);
-    };
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setSelectedEmployee(null);
-    };
-
-    const handleSaveComment = (action, comment) => {
-        console.log(`Action: ${action}, Comment: ${comment}, Employee: ${selectedEmployee}`);
-        // Handle the save action here
-        setIsModalOpen(false);
-        setSelectedEmployee(null);
-    };
 
     return (
         <div className="container mx-auto p-4">
@@ -105,7 +88,7 @@ const LeaveNotifications = () => {
                         pageSize={pageSize}
                         totalDocuments={data.total_documents}
                         setCurrentPage={setCurrentPage}
-                        handleEditClick={handleEditClick} // Pass handleEditClick to DynamicTable
+
                     />
                 </div>
             )}

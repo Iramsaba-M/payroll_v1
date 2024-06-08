@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { containerStyle, textContainerStyle, buttonContainerStyle, textStyle, buttonStyle, buttonTextStyle } from './Payrollnotifystyles';
 import RunPayrollFinalizeComponent from '../../Run Payroll/RunPayrollFinalizeCompomnent';
 

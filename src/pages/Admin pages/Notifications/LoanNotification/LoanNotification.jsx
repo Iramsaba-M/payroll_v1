@@ -1,8 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import DynamicTable from '../../../../configurations/tables/DynamicTable';
 import { LoantableContent } from './LoanNotificationConfig';
-import EditModal from '../EditModal';
 import { Loan_notification_admin } from '../../../../api/EndPoints';
 import { fetchData1 } from '../../../../services/APIService';
 
@@ -17,8 +16,6 @@ const LoanNotifications = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
     const pageSize = 5;
 
     // server
@@ -73,24 +70,6 @@ const LoanNotifications = () => {
     useEffect(() => {
         fetchData(currentPage, pageSize);
     }, [currentPage, pageSize]);
-
-    const handleEditClick = (employee) => {
-        setSelectedEmployee(employee);
-        setIsModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setSelectedEmployee(null);
-    };
-
-    const handleSaveComment = (action, comment) => {
-        console.log(`Action: ${action}, Comment: ${comment}, Employee: ${selectedEmployee}`);
-        // Handle the save action here
-        setIsModalOpen(false);
-        setSelectedEmployee(null);
-    };
-
     return (
         <div>
             {loading ? (
@@ -104,7 +83,7 @@ const LoanNotifications = () => {
                         pageSize={pageSize}
                         totalDocuments={data.total_documents}
                         setCurrentPage={setCurrentPage}
-                        handleEditClick={handleEditClick} // Pass handleEditClick to DynamicTable
+
                     />
                 </div>
             )}

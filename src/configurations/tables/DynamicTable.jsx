@@ -1,34 +1,35 @@
 import { useState } from 'react';
 import TableStyle from './TableStyle';
-import { MdOutlineEdit, MdOutlineFileDownload,MdDeleteOutline } from 'react-icons/md';
+import { MdOutlineEdit, MdOutlineFileDownload, MdDeleteOutline } from 'react-icons/md';
 import { Delete_All, view } from '../../api/EndPoints';
 import { DeleteData, fetchData } from '../../services/APIService';
 import ModalComponent from '../../components/form/Formfields/modal/ModalComponent';
 import { ModalPayslipConfig } from '../../components/form/Formfields/modal/ModalPayslipConfig';
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 import { useButtonState } from '../../context/ButtonStateContext';
-import { FaAngleRight ,FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
 import { FaRegCheckCircle } from "react-icons/fa";
 import ReactPaginate from 'react-paginate';
 import { Editmodelconfig } from '../../components/form/Formfields/modal/Editmodelconfig';
 import { Editmodelloanconfig } from '../../components/form/Formfields/modal/Editmodelconfigloan';
+import PropTypes from 'prop-types';
 
 
-function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
-  const [selectedRows, setSelectedRows] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
+function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
+  // const [selectedRows, setSelectedRows] = useState([]);
+  // const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [editnotifyopen ,seteditnotifyopen] = useState(false);
-  const [editloanopen ,seteditloanopen] = useState(false);
+  const [editnotifyopen, seteditnotifyopen] = useState(false);
+  const [editloanopen, seteditloanopen] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const { EditModeclick } = useButtonState();
- // Calculate the total number of pages
+  // Calculate the total number of pages
 
- const handlePageChange = (selectedPage) => {
-  setCurrentPage(selectedPage.selected + 1);
-};
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage.selected + 1);
+  };
   // const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
 
   // const handleCheckboxChange = (row) => {
@@ -73,7 +74,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       }
 
       setIsModalOpen(true);
-      const endpoint = `${view}/${row.employee_id}`;
+      // const endpoint = `${view}/${row.employee_id}`;
       // const tableData = await fetchData(endpoint);
 
       // console.log('Modal data:', tableData);
@@ -101,8 +102,8 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
         console.error('Error: Invalid row data or missing employee_id');
         return;
       }
-      setEditModalOpen(true) 
-     
+      setEditModalOpen(true)
+
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
@@ -116,8 +117,8 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       }
       // Store the employee_id of the selected row
       setSelectedEmployeeId(row.employee_id);
-      seteditnotifyopen(true,row.employee_id);
-      
+      seteditnotifyopen(true, row.employee_id);
+
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
@@ -130,17 +131,17 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       }
       // Store the employee_id of the selected row
       setSelectedEmployeeId(row.employee_id);
-      seteditloanopen(true,row.employee_id);
-      
+      seteditloanopen(true, row.employee_id);
+
     } catch (error) {
       console.error('Error fetching payslips data:', error);
     }
   }
 
   const handleDelete = async (row) => {
-    const employeeId = row.employee_id; 
+    const employeeId = row.employee_id;
     const endpoint = `${Delete_All}?employee_id=${employeeId}`;
-  
+
     try {
       const response = await DeleteData(endpoint);
       console.log('Employee deleted successfully:', response);
@@ -151,16 +152,16 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       // Handle errors
     }
   };
-  
-  const handleSelectAll = () => {
-    if (selectAll) {
-      setSelectedRows([]);
-    } else {
-      setSelectedRows([...data]);
-    }
-    setSelectAll(!selectAll);
-  };
- 
+
+  // const handleSelectAll = () => {
+  //   if (selectAll) {
+  //     setSelectedRows([]);
+  //   } else {
+  //     setSelectedRows([...data]);
+  //   }
+  //   setSelectAll(!selectAll);
+  // };
+
   const handleDownload2 = (row) => {
     const employee_id = 2; // Statically define employee_id here
 
@@ -170,37 +171,37 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
     const downloadUrl = `http://192.168.0.136:8000/payslip/?employee_id=${employee_id}&year=${year}&month=${month}`;
 
     fetch(downloadUrl)
-        .then(response => response.blob()) // Get the response as a Blob object directly
-        .then(blobData => {
-            // Create Blob object from the received data
-            const blobUrl = URL.createObjectURL(blobData);
+      .then(response => response.blob()) // Get the response as a Blob object directly
+      .then(blobData => {
+        // Create Blob object from the received data
+        const blobUrl = URL.createObjectURL(blobData);
 
-            // Create a temporary <a> element to trigger the download
-            const a = document.createElement('a');
-            a.href = blobUrl;
-            a.download = `payslip_${employee_id}_${year}_${month}.pdf`; // Set the filename for the downloaded PDF
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        // Create a temporary <a> element to trigger the download
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = `payslip_${employee_id}_${year}_${month}.pdf`; // Set the filename for the downloaded PDF
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
 
-            // Clean up the Blob URL object
-            URL.revokeObjectURL(blobUrl);
-        })
-        .catch(error => {
-            console.error('Error downloading payslip:', error);
-        });
-};
+        // Clean up the Blob URL object
+        URL.revokeObjectURL(blobUrl);
+      })
+      .catch(error => {
+        console.error('Error downloading payslip:', error);
+      });
+  };
 
 
-// function base64ToBlob(base64, type = 'application/octet-stream') {
-//   const binStr = atob(base64);
-//   const len = binStr.length;
-//   const arr = new Uint8Array(len);
-//   for (let i = 0; i < len; i++) {
-//     arr[i] = binStr.charCodeAt(i);
-//   }
-//   return new Blob([arr], { type: type });
-// }
+  // function base64ToBlob(base64, type = 'application/octet-stream') {
+  //   const binStr = atob(base64);
+  //   const len = binStr.length;
+  //   const arr = new Uint8Array(len);
+  //   for (let i = 0; i < len; i++) {
+  //     arr[i] = binStr.charCodeAt(i);
+  //   }
+  //   return new Blob([arr], { type: type });
+  // }
   const renderCellContent = (row, column) => {
     if (column.name === 'employee_name' && row.first_name && row.middle_name && row.last_name) {
       // console.log('Rendering employee name:', row.id, row.first_name, row.middle_name, row.last_name);
@@ -226,7 +227,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       // If photo_content is not available, still render employee name
       return <span>{formattedName}</span>;
     }
-     
+
     if (column.name === 'status' && column.clmncss) {
       const statusStyle = column.statusStyles ? column.statusStyles[row[column.name]] : '';
       return <div className='flex justify-center'><div className={TableStyle[statusStyle]} >{row[column.name]}</div></div>;
@@ -269,16 +270,16 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
           <MdOutlineFileDownload />
         </button>
       );
-      }else if (column.dataType === 'icon' && column.name === 'delete') {
-        // Render Download button with icon
-        return (
-          <button
-            className=" text-gray-400 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
-            onClick={() => handleDelete(row)}
-          >
-             <MdDeleteOutline />
-          </button>
-        );
+    } else if (column.dataType === 'icon' && column.name === 'delete') {
+      // Render Download button with icon
+      return (
+        <button
+          className=" text-gray-400 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
+          onClick={() => handleDelete(row)}
+        >
+          <MdDeleteOutline />
+        </button>
+      );
     } else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
       // Render Edit icon
       return (
@@ -289,51 +290,62 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
           <MdOutlineEdit />
         </button>
       );
-    }else if (column.dataType === 'icon' && column.name === 'action') {
-      switch(row.status) {
-          case 'approved':
-              return <FaRegCheckCircle  className="text-green-500 ml-[12px] text-xl font-bold" />;
-          case 'rejected':
-              return <ImCancelCircle className="text-red-500 ml-[12px] text-xl" />;
-          case 'pending':
-          default:
-            console.log('row',row);
-              return (
-                  <button
-                      className="cursor-pointer"
-                      onClick={() => editleavenotification(row)} 
-                  >
-                      <MdOutlineEdit  className="text-blue-500  text-xl" />
-                  </button>
-              );
-      }
-  }else if (column.dataType === 'icon' && column.name === 'action2') {
-    switch(row.status) {
+    } else if (column.dataType === 'icon' && column.name === 'action') {
+      switch (row.status) {
         case 'approved':
-            return <FaRegCheckCircle  className="text-green-500 ml-[4px] text-xl font-bold" />;
+          return <FaRegCheckCircle className="text-green-500 ml-[12px] text-xl font-bold" />;
         case 'rejected':
-            return <ImCancelCircle className="text-red-500 ml-[4px] text-xl" />;
+          return <ImCancelCircle className="text-red-500 ml-[12px] text-xl" />;
         case 'pending':
         default:
-          console.log('row',row);
-            return (
-                <button
-                    className="cursor-pointer"
-                    onClick={() => editloannotification(row)} 
-                >
-                    <MdOutlineEdit  className="text-blue-500  text-xl" />
-                </button>
-            );
+          console.log('row', row);
+          return (
+            <button
+              className="cursor-pointer"
+              onClick={() => editleavenotification(row)}
+            >
+              <MdOutlineEdit className="text-blue-500  text-xl" />
+            </button>
+          );
+      }
+    } else if (column.dataType === 'icon' && column.name === 'action2') {
+      switch (row.status) {
+        case 'approved':
+          return <FaRegCheckCircle className="text-green-500 ml-[4px] text-xl font-bold" />;
+        case 'rejected':
+          return <ImCancelCircle className="text-red-500 ml-[4px] text-xl" />;
+        case 'pending':
+        default:
+          console.log('row', row);
+          return (
+            <button
+              className="cursor-pointer"
+              onClick={() => editloannotification(row)}
+            >
+              <MdOutlineEdit className="text-blue-500  text-xl" />
+            </button>
+          );
+      }
     }
-}
-    
+
     else {
       // Default rendering for other columns
       return row[column.name] || '';
     }
   };
 
-  console.log("employee data=" ,data)
+  console.log("employee data=", data)
+
+  DynamicTable.propTypes = {
+    config: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    currentPage: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    totalDocuments: PropTypes.number.isRequired,
+    setCurrentPage: PropTypes.func.isRequired,
+    onEditEmployee: PropTypes.func.isRequired,
+
+  };
 
   return (
     <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
@@ -351,7 +363,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
           </tr>
         </thead>
         <tbody>
-            {Array.isArray(data) && data.map((row, rowIndex) => (
+          {Array.isArray(data) && data.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {/* <td className="px-9">
                 <input
@@ -371,26 +383,26 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       </table>
 
       <div className='flex justify-between p-1 mx-4'>
-      <p className="text-gray-400 font-medium p-1 text-sm">
-        Showing {currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, totalDocuments)} of {totalDocuments} employees
-      </p>
-     
-      <ReactPaginate className='flex'
-        previousLabel={<FaAngleLeft className='mt-1'/>}
-        nextLabel={<FaAngleRight className='mt-1'/>}
-        breakLabel={'...'}
-        pageCount={Math.ceil(totalDocuments / pageSize)}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageChange}
-        forcePage={currentPage - 1}
-        containerClassName={'mt-1'}
-        pageClassName={'px-3'}
-        pageLinkClassName={'text-gray-400 font-bold text-sm'}
-        activeLinkClassName={'text-gray-100 font-bold text-sm border-gray-2 bg-blue-600 px-3 py-2 rounded-full'}
-        previousLinkClassName={'text-gray-400 font-medium text-lg mr-2'}
-        nextLinkClassName={'text-gray-400 font-medium text-lg '}
-      />
+        <p className="text-gray-400 font-medium p-1 text-sm">
+          Showing {currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, totalDocuments)} of {totalDocuments} employees
+        </p>
+
+        <ReactPaginate className='flex'
+          previousLabel={<FaAngleLeft className='mt-1' />}
+          nextLabel={<FaAngleRight className='mt-1' />}
+          breakLabel={'...'}
+          pageCount={Math.ceil(totalDocuments / pageSize)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageChange}
+          forcePage={currentPage - 1}
+          containerClassName={'mt-1'}
+          pageClassName={'px-3'}
+          pageLinkClassName={'text-gray-400 font-bold text-sm'}
+          activeLinkClassName={'text-gray-100 font-bold text-sm border-gray-2 bg-blue-600 px-3 py-2 rounded-full'}
+          previousLinkClassName={'text-gray-400 font-medium text-lg mr-2'}
+          nextLinkClassName={'text-gray-400 font-medium text-lg '}
+        />
       </div>
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
       {editModalOpen && (
@@ -401,7 +413,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
         // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
         <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} employee_id={selectedEmployeeId} />
       )}
-       {editloanopen && (
+      {editloanopen && (
         // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
         <ModalComponent isOpen={editloanopen} onClose={handleCloseModal} config={Editmodelloanconfig} employee_id={selectedEmployeeId} />
       )}
