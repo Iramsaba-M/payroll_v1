@@ -1,40 +1,13 @@
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Loan_notification_patch } from '../../../api/EndPoints';
 import { patchData } from '../../../services/APIService';
+import PropTypes from 'prop-types';
 
 const EditModalloan = ({ employee_id }) => {
   const [comment, setComment] = useState('');
 
-  // const handleSave = (status) => {
-  //   if (!employee_id) {
-  //     console.error('Error: Employee ID is undefined');
-  //     return;
-  //   }
-
-  //   const data = {
-  //     addcomment: comment,
-  //     status: status,
-  //   };
-
-  //   const url = `http://localhost:3000/Loannotification/${employee_id}`;
-
-  //   fetch(url, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //   .then(response => response.json())
-  //   .then(result => {
-  //     console.log('Success:', result);
-  //     // Add any additional logic after successful save
-  //   })
-  //   .catch(error => {
-  //     console.error('Error:', error);
-  //   });
-  // };
+  
   const handleSave = async (status) => {
     if (!employee_id) {
       console.error('Error: Employee ID is undefined');
@@ -54,7 +27,10 @@ const EditModalloan = ({ employee_id }) => {
       console.error('Error:', error);
     }
   };
-
+  EditModalloan.propTypes = {
+   
+    employee_id: PropTypes.str
+};
   return (
     <div className="relative p-4 bg-white shadow-md rounded-lg">
       <h3 className="text-m mb-2">Add Comment</h3>

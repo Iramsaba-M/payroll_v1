@@ -1,12 +1,18 @@
 import React from 'react';
 import ModalStyles from './ModalStyles';
-import { RxCross1 } from 'react-icons/rx';
+import PropTypes from 'prop-types';
+
 
 const ModalComponent = ({ isOpen, onClose, config, employee_id }) => {
   const closeModal = () => {
     onClose();
   };
-
+  ModalComponent.propTypes = {
+    config: PropTypes.array.isRequired,
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.bool,
+    employee_id: PropTypes.str
+  };
   return (
     <>
       {isOpen && (
