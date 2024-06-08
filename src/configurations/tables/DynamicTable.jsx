@@ -8,14 +8,21 @@ import { ModalPayslipConfig } from '../../components/form/Formfields/modal/Modal
 import { ModalReviewPayrollConfig } from '../../components/form/Formfields/modal/ModalReviewPayrollConfig';
 import { useButtonState } from '../../context/ButtonStateContext';
 import { FaAngleRight ,FaAngleLeft } from "react-icons/fa";
-
+import { ImCancelCircle } from "react-icons/im";
+import { FaRegCheckCircle } from "react-icons/fa";
 import ReactPaginate from 'react-paginate';
+import { Editmodelconfig } from '../../components/form/Formfields/modal/Editmodelconfig';
+import { Editmodelloanconfig } from '../../components/form/Formfields/modal/Editmodelconfigloan';
+
 
 function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editnotifyopen ,seteditnotifyopen] = useState(false);
+  const [editloanopen ,seteditloanopen] = useState(false);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const { EditModeclick } = useButtonState();
  // Calculate the total number of pages
 
@@ -24,17 +31,19 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
 };
   // const paginatedData = data.slice(currentPage * rowsPerPage, (currentPage + 1) * rowsPerPage);
 
-  const handleCheckboxChange = (row) => {
-    if (selectedRows.includes(row)) {
-      setSelectedRows(selectedRows.filter((selectedRow) => selectedRow !== row));
-    } else {
-      setSelectedRows([...selectedRows, row]);
-    }
-  };
+  // const handleCheckboxChange = (row) => {
+  //   if (selectedRows.includes(row)) {
+  //     setSelectedRows(selectedRows.filter((selectedRow) => selectedRow !== row));
+  //   } else {
+  //     setSelectedRows([...selectedRows, row]);
+  //   }
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditModalOpen(false);
+    seteditnotifyopen(false);
+    seteditloanopen(false);
   };
 
   const handleDownload = async (row) => {
@@ -99,6 +108,35 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
     }
   };
 
+  const editleavenotification = async (row) => {
+    try {
+      if (!row || !row.employee_id) {
+        console.error('Error: Invalid row data or missing employee_id');
+        return;
+      }
+      // Store the employee_id of the selected row
+      setSelectedEmployeeId(row.employee_id);
+      seteditnotifyopen(true,row.employee_id);
+      
+    } catch (error) {
+      console.error('Error fetching payslips data:', error);
+    }
+  };
+  const editloannotification = async (row) => {
+    try {
+      if (!row || !row.employee_id) {
+        console.error('Error: Invalid row data or missing employee_id');
+        return;
+      }
+      // Store the employee_id of the selected row
+      setSelectedEmployeeId(row.employee_id);
+      seteditloanopen(true,row.employee_id);
+      
+    } catch (error) {
+      console.error('Error fetching payslips data:', error);
+    }
+  }
+
   const handleDelete = async (row) => {
     const employeeId = row.employee_id; 
     const endpoint = `${Delete_All}?employee_id=${employeeId}`;
@@ -122,7 +160,7 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
     }
     setSelectAll(!selectAll);
   };
-  
+ 
   const handleDownload2 = (row) => {
     const employee_id = 2; // Statically define employee_id here
 
@@ -251,7 +289,43 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
           <MdOutlineEdit />
         </button>
       );
+    }else if (column.dataType === 'icon' && column.name === 'action') {
+      switch(row.status) {
+          case 'approved':
+              return <FaRegCheckCircle  className="text-green-500 ml-[12px] text-xl font-bold" />;
+          case 'rejected':
+              return <ImCancelCircle className="text-red-500 ml-[12px] text-xl" />;
+          case 'pending':
+          default:
+            console.log('row',row);
+              return (
+                  <button
+                      className="cursor-pointer"
+                      onClick={() => editleavenotification(row)} 
+                  >
+                      <MdOutlineEdit  className="text-blue-500  text-xl" />
+                  </button>
+              );
+      }
+  }else if (column.dataType === 'icon' && column.name === 'action2') {
+    switch(row.status) {
+        case 'approved':
+            return <FaRegCheckCircle  className="text-green-500 ml-[4px] text-xl font-bold" />;
+        case 'rejected':
+            return <ImCancelCircle className="text-red-500 ml-[4px] text-xl" />;
+        case 'pending':
+        default:
+          console.log('row',row);
+            return (
+                <button
+                    className="cursor-pointer"
+                    onClick={() => editloannotification(row)} 
+                >
+                    <MdOutlineEdit  className="text-blue-500  text-xl" />
+                </button>
+            );
     }
+}
     
     else {
       // Default rendering for other columns
@@ -266,9 +340,9 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       <table>
         <thead>
           <tr className="bg-gray-100 p-2">
-            <th className="px-9">
+            {/* <th className="px-8">
               <input type="checkbox" onChange={handleSelectAll} checked={selectAll} />
-            </th>
+            </th> */}
             {config.map((column) => (
               <th key={column.name} className={TableStyle[column.clmncss]}>
                 {column.label}
@@ -279,13 +353,13 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
         <tbody>
             {Array.isArray(data) && data.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              <td className="px-9">
+              {/* <td className="px-9">
                 <input
                   type="checkbox"
                   onChange={() => handleCheckboxChange(row)}
                   checked={selectedRows.includes(row)}
                 />
-              </td>
+              </td> */}
               {config.map((column) => (
                 <td key={column.name} className={TableStyle[column.cssClass]} style={{ textAlign: 'center' }}>
                   {renderCellContent(row, column)}
@@ -321,9 +395,19 @@ function DynamicTable({ config, data,currentPage, pageSize, totalDocuments, setC
       {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} config={ModalPayslipConfig} />}
       {editModalOpen && (
         <ModalComponent isOpen={editModalOpen} onClose={handleCloseModal} config={ModalReviewPayrollConfig} />
+        // <ModalComponent isOpen={editModalOpen} onClose={handleCloseModal} config={Editmodelconfig} />
+      )}
+      {editnotifyopen && (
+        // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
+        <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} employee_id={selectedEmployeeId} />
+      )}
+       {editloanopen && (
+        // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
+        <ModalComponent isOpen={editloanopen} onClose={handleCloseModal} config={Editmodelloanconfig} employee_id={selectedEmployeeId} />
       )}
     </div>
   );
 }
+
 
 export default DynamicTable;
