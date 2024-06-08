@@ -1,11 +1,8 @@
-
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ModalStyles from './ModalStyles';
 import { RxCross1 } from 'react-icons/rx';
-import axios from 'axios';
 
-const ModalComponent = ({ isOpen, onClose, config }) => {
+const ModalComponent = ({ isOpen, onClose, config, employee_id }) => {
   const closeModal = () => {
     onClose();
   };
@@ -15,7 +12,7 @@ const ModalComponent = ({ isOpen, onClose, config }) => {
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="absolute inset-0 bg-blue-100 opacity-60"></div>
-          <div className="">
+          <div>
             {config.map((item, index) => (
               <div key={index} className={`${ModalStyles[item.MainDiv]}`}>
                 <div className={`${ModalStyles[item.ModalBody]}`}>
@@ -29,7 +26,8 @@ const ModalComponent = ({ isOpen, onClose, config }) => {
                       {item.icon}
                     </button>
                   </div>
-                  {item.component}
+                  {/* Pass employee_id as a prop to the component */}
+                  {React.cloneElement(item.component, { employee_id })}
                 </div>
               </div>
             ))}
@@ -41,3 +39,4 @@ const ModalComponent = ({ isOpen, onClose, config }) => {
 };
 
 export default ModalComponent;
+
