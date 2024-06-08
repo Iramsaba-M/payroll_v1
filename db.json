@@ -2030,5 +2030,148 @@
     "earnings" : "34567",
     "annual_ctc" : "300000"
     }
+  ],
+
+  "Leavenotification": [
+      {
+          "employee_id" : "IK01",
+          "employee_name" : "John Doe",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "hello",
+          "status":"pending",
+          "comment":"Still pending"
+      },
+      {
+          "employee_id" : "IK02",
+          "employee_name" : "Jane Smith",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "abshjhj",
+          "status":"approved",
+          "comment":"Approved by admin"
+      },
+      {
+          "employee_id" : "IK03",
+          "employee_name" : "Alice Johnson",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "abshjhj",
+          "status":"rejected",
+          "comment":"Rejected by admin"
+      },
+      {
+          "employee_id" : "IK04",
+          "employee_name" : "Bob Brown",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "abshjhj",
+          "status":"pending",
+          "comment":"Still pending"
+      },
+      {
+          "employee_id" : "IK05",
+          "employee_name" : "Charlie Davis",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "abshjhj",
+          "status":"approved",
+          "comment":"Rejected by admin"
+      },
+      {
+          "employee_id" : "IK06",
+          "employee_name" : "Diana Evans",
+          "start_date": "12/03/2023",
+          "end_date": "13/03/2023",
+          "full_day" : "true",
+          "leave_type": "sick",
+          "reason": "abshjhj",
+          "status":"rejected",
+          "comment":"Rejected by admin"
+      }
+  ],
+"Loannotification":[
+  {
+    "employee_id" : "IKO1",
+    "employee_name": "abc",
+    "loan_type" : "home_loan",
+    "maximum_amount": 1000,
+    "instalment_period":8,
+    "emi":5000,
+    "reason":"pending",
+    "status":"pending",
+    "comment":"Still pending"
+    },
+    {
+    "employee_id" : "IKO2",
+    "employee_name": "abc",
+    "loan_type" : "home_loan",
+    "maximum_amount": 1000,
+    "instalment_period":8,
+    "emi":5000,
+    "reason":"pending",
+    "status":"approved",
+    "comment":"Still pending"
+    },
+    {
+      "employee_id" : "IKO3",
+      "employee_name": "abc",
+      "loan_type" : "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period":8,
+      "emi":5000,
+      "reason":"pending",
+      "status":"rejected",
+      "comment":"Still pending"
+      },
+      {
+      "employee_id" : "IKO4",
+      "employee_name": "abc",
+      "loan_type" : "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period":8,
+      "emi":5000,
+      "reason":"pending",
+      "status":"approved",
+      "comment":"Still pending"
+      },
+      {
+        "employee_id" : "IKO5",
+        "employee_name": "abc",
+        "loan_type" : "home_loan",
+        "maximum_amount": 1000,
+        "instalment_period":8,
+        "emi":5000,
+        "reason":"pending",
+        "status":"pending",
+        "comment":"Still pending"
+ 
+        },
+        {
+        "employee_id" : "IKO6",
+        "employee_name": "abc",
+        "loan_type" : "home_loan",
+        "maximum_amount": 1000,
+        "instalment_period":8,
+        "emi":5000,
+        "reason":"pending",
+        "status":"rejected",
+        "comment":"Still pending"
+        }
+  ],
+    "payrollnotification": [
+      { "text": "Payroll is currently on hold." },
+      { "text": "Payroll will be processed tomorrow." },
+      { "text": "Payroll is currently on hold." }
   ]
 }

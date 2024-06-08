@@ -1,4 +1,3 @@
-//clean code
 import { useState, useEffect } from 'react';
 import Card from '../../../configurations/Card/CardConfig';
 import { LeaveButtons, leavesdata } from './AttendanceContent';
@@ -50,7 +49,7 @@ const MyLeave = ({ config, applyleave }) => {
     const handlebuttonclick = (label) => {
         if (label === 'Apply Leave') {
             onSubmit(true);
-    
+
         } else if (label === 'Cancle') {
             applyleave(false);
             console.log(applyleave)
@@ -89,16 +88,14 @@ const MyLeave = ({ config, applyleave }) => {
         fetchgetData();
     }, []);
     if (errorCode) {
-        return <ErrorScreen errorCode={errorCode} />; 
-      }
+        return <ErrorScreen errorCode={errorCode} />;
+    }
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const emp = 'IK02';
-
-
 
             const formData = new FormData();
             // Append form data
@@ -152,7 +149,7 @@ const MyLeave = ({ config, applyleave }) => {
             </div>
 
             <div className='mt-2 flex justify-between  '>
-                <div className='bg-gray-100 border-2 py-3 w-[77vh] px-10  text-gray-500 text-sm rounded-md '>
+                <div className='bg-gray-100 border-2 py-3 lg:w-[77vh] w-[85vh] px-10  text-gray-500 text-sm rounded-md '>
 
                     {config.map((field, index) => (
 
@@ -176,7 +173,7 @@ const MyLeave = ({ config, applyleave }) => {
                     ))}
 
                 </div>
-                <div className='bg-gray-100 border-2 text-sm text-gray-500 p-1  w-[77vh] rounded-md'>
+                <div className='bg-gray-100 border-2 text-sm text-gray-500 p-1  rounded-md'>
                     <div>
                         <DateRangePicker ranges={[daterange]} onChange={handleRangechange}
                             rdrDefinedrangeswraper={false} showDateDisplay={true}

@@ -91,7 +91,7 @@ const RequestForReimbursementComponent = ({ config }) => {
   return (
     <div className=''>
       <div className='w-[160vh]'>
-        <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Reimbursement</h1>
+        <h1 className='lg:text-xl text-2xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Reimbursement</h1>
         <div className='border-2 border-gray-200 shadow-md h-full ml-7'>
           <div className=' ml-7 mt-6'>
             <form onSubmit={(e) => handleSubmit(e, 'Requestreimbursement')}>

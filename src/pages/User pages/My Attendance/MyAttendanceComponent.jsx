@@ -61,17 +61,17 @@ export const Slider = ({ config, data }) => {
           {config.map((item, index) => (
             <div
               key={index}
-              className=" border-4 border-gray-100  p-1   h-28  flex flex-col  justify-betwee w-40  "
+              className=" border-4 border-gray-100  p-1  lg:h-28 h-24 flex flex-col  justify-betwee w-40  "
             >
-              <div className='w-[10vh] mt-2 borde h-24 flex justify-center'>
-                <h1 className="     text-center">
+              <div className='lg:w-[10vh] w-[13vh] mt-2 borde lg:h-24 h-20 flex justify-center'>
+                <h1 className=" text-center">
                   {item.heading}
                 </h1>
               </div>
               {data &&
                 Object.entries(data).map(([key, value], cloneIndex) => {
                   if (item.name === key) {
-                    return <div key={cloneIndex} className='flex justify-center items-baseline border w-10 ml-4 bg-white -mt-12'>
+                    return <div key={cloneIndex} className='flex justify-center items-baseline border lg:w-10 w-12 lg:ml-4 ml-5 bg-white -mt-12'>
                       {value}
                     </div>;
                   }
@@ -160,17 +160,17 @@ const MyAttendanceComponent = () => {
 
   const customTileClassName = ({ date, view }) => {
     let className = '';
+    if (selectedDate && date.toDateString() === new Date().toDateString()) {
+      className = ' bg-green-300  font-bold border-2';//bg-lime-400 or bg-green-300 bg-green-300
+    }
     if (date.toDateString() === new Date().toDateString()) {
-      className += ' font-bold  bg-blue-300  text-gray-700  transfor-none ring ring-gray-400 ';
+      className += ' font-bold   text-gray-700  transfor-none ring ring-gray-400 ';
     }
     if (view === 'month') {
-      className += ' bg-white  hover:border    py-1  rounded-md  scale-75 ';
+      className += '   hover:border  py-1 rounded-md scale-75';
 
     }
-
-    if (selectedDate && date.toDateString() === new Date().toDateString()) {
-      className = ' bg-green-300  w-10 font-bold border-2';//bg-lime-400 or bg-green-300 bg-green-300
-    }
+    
 
 
     return className.trim();
