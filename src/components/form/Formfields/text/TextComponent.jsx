@@ -30,6 +30,7 @@ TextComponent.propTypes = {
   placeholder: PropTypes.string,
   icon: PropTypes.node,
   onBlur: PropTypes.func,
+  readonly:PropTypes.bool,
 };
 
 export default TextComponent;

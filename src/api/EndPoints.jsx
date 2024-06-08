@@ -98,6 +98,16 @@ export const Home_and_Reportdata ='reports/calculate_total_monthly_ctc'
 
 export const Home_and_Report_BarGraphdata ='reports/calculate_graph_data'
 
+//Admin Notification
+ 
+export const Leave_notification_admin ='leave_settings/';
+ 
+export const Leave_notification_patch ='update_leave_settings/';
+ 
+export const Loan_notification_admin ='loan_employee';
+ 
+export const Loan_notification_patch ='employees/';
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //ENDUSER

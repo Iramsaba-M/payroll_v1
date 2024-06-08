@@ -5,8 +5,6 @@ import TableComponent from '../../../configurations/tables/TableComponent';
 import { RunPayrolltableContent,finalizeButtons, ApproveandProcess, PrintPayslip,cardContent,cardContent2,cardContent3,cardContent4,cardContent5 } from './RunPayrollContents';
 import Button from '../../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { payslips } from '../../../api/EndPoints';
-import { fetchData } from '../../../services/APIService';
 import axios from 'axios';
 import Payslip from '../Run Payroll/Payslip';
 
@@ -17,21 +15,6 @@ const RunPayrollFinalizeCompomnent = () => {
   const [payrolldata, setPayrollData] = useState([]);
   const [payrolltabledata, setpayrollTableData] = useState([]);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
-
-
-  const fetchTableData = async () => {
-    try {
-      const tableData = await fetchData(payslips); // Fetch data based on payslips
-      setTableData(tableData);
-    } catch (error) {
-      console.error('Error fetching table data:', error);
-    }
-  };
-  
-  useEffect(() => {
-    fetchTableData(); // Fetch data on component mount or when payslips change
-  }, [payslips]); // Include payslips in the dependency array
-
 
   useEffect(() => {
     const currentDate = new Date();

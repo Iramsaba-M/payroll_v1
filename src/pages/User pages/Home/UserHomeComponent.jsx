@@ -1,30 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useButtonState } from "../../../context/ButtonStateContext"
 import { Admin, Personal } from "../../Admin pages/Home/HomeContent"
 import Button from '../../../configurations/Button/Button';
-import { Holi, UserHomeconfig, picard } from './UserHomeContent'
+import { UserHomeconfig, picard } from './UserHomeContent'
 import TextStyle from '../../../components/form/Formfields/text/TextStyle';
 import TextComponent from '../../../components/form/Formfields/text/TextComponent';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import Card from '../../../configurations/Card/Card';
 import CardConfig from '../../../configurations/Card/CardConfig';
-import Box from '../../../components/AppSettingComponents/CTCTemplateSettingForm/Box';
-import { HolidayListcontent } from '../../../components/AppSettingComponents/CTCTemplateSettingForm/BoxContent';
 import { BASIC_DETAILS_API_Get, DOCUMENT_DETAILS_API_GET, ENDUSER_HOME_EMPLOYEE_CTC } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
-import CardComponent from '../../../components/form/BasicDetailForm/CardComponent';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 
 const Pichart = ({ data }) => {
   const COLORS = ['#6C6BF0', '#AEAEF7', '#CFCFFA'];
- 
+
   if (!data) {
     return null;
   }
- 
-  console.log('data',data);
-
   return (
     <ResponsiveContainer >
       <PieChart >
@@ -49,7 +42,9 @@ const Pichart = ({ data }) => {
     </ResponsiveContainer>
   );
 };
-
+Pichart.propTypes = {
+  data: PropTypes.array, // Ensure data is an array
+};
 
 
 const UserHomeComponent = () => {
@@ -58,7 +53,7 @@ const UserHomeComponent = () => {
 
   const [employee, setEmployee] = useState([])
   const [documentvalue, setDocumentvalue] = useState();
-  const [pidata,setPidata]= useState();
+  const [pidata, setPidata] = useState();
 
   const Fetchemployee = async () => {
     try {
@@ -67,9 +62,7 @@ const UserHomeComponent = () => {
       const basicDetailsUrl = `${BASIC_DETAILS_API_Get}/${employee_id}`;
       const documentsUrl = `${DOCUMENT_DETAILS_API_GET}/${employee_id}`;
       const ctcstructureurl = `${ENDUSER_HOME_EMPLOYEE_CTC}?employee_id=${employee_id1}`;
-      // const ctcstructureurl = `http://192.168.0.146:8000/employees?employee_id=IK01`;
-      // Fetch basic details
-      // let basicDetailsResponse={};
+
       try {
         const basicDetailsResponse = await fetchData(basicDetailsUrl);
         console.log("Basic Details Result:", basicDetailsResponse);
@@ -78,8 +71,6 @@ const UserHomeComponent = () => {
         console.error("Error fetching basic details:", error);
       }
 
-
-
       try {
         const documentsDetailsResponse = await fetchData(documentsUrl);
         console.log("Documents Details Result:", documentsDetailsResponse);
@@ -87,28 +78,27 @@ const UserHomeComponent = () => {
       } catch (error) {
         console.error("Error fetching documents details:", error);
       }
-      
+
       try {
         const ctcstructure = await fetchData(ctcstructureurl);
-        const data=ctcstructure;
-       
-       // const ctcstructure = await axios.get('http://localhost:3000/enduser_home')
-       // const data=ctcstructure.data;
- 
-      
-      const transformedData = [
-        { name: 'Deductions', value: parseFloat(data[0].deduction.toFixed(2)) },
-        { name: 'Earnings', value: parseFloat(data[0].earnings.toFixed(2)) },
-        { name: 'Annual CTC', value: parseFloat(data[0].annual_ctc.toFixed(2)) }
-      ];
-      
-       setPidata(transformedData)
-       console.log('employee2',  transformedData);
-   
-     } catch (error) {
-       console.error("Error ctc :", error);
-     }
+        const data = ctcstructure;
 
+        // const ctcstructure = await axios.get('http://localhost:3000/enduser_home')
+        // const data=ctcstructure.data;
+
+
+        const transformedData = [
+          { name: 'Deductions', value: parseFloat(data[0].deduction.toFixed(2)) },
+          { name: 'Earnings', value: parseFloat(data[0].earnings.toFixed(2)) },
+          { name: 'Annual CTC', value: parseFloat(data[0].annual_ctc.toFixed(2)) }
+        ];
+
+        setPidata(transformedData)
+        console.log('employee2', transformedData);
+
+      } catch (error) {
+        console.error("Error ctc :", error);
+      }
 
     } catch (error) {
       console.error('Error in fetching data:', error);
@@ -167,10 +157,7 @@ const UserHomeComponent = () => {
                     )}
                   </div>
                 ))}
-
-
               </div>
-
             </div>
           </div>
           <div className='md:w-7/10 mx-7 px-2'>
@@ -192,17 +179,11 @@ const UserHomeComponent = () => {
                     </label>
                     <div >
                       <span className=''></span>
-                      {/* {documentvalue && documentvalue.map((doc) => (
-                        <div className='-mt-5 ml-3 text-gray-500 font-semibold'>
-                          {doc.document_type === field.name ?  doc.document_number : ''}
-                        </div>
-
-                      ))} */}
                       {documentvalue && documentvalue.map((doc, index) => (
                         doc.document_type === field.name ? (
                           <div key={index} className=' ml-3 mt-2 lg:mt-1 text-gray-500 font-semibold'>:{'  '} {doc.document_number}</div>
-                        ) : ': '
-                      ))} 
+                        ) : ' '
+                      ))}
                     </div>
                   </span>
                 </div>
@@ -210,7 +191,6 @@ const UserHomeComponent = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )

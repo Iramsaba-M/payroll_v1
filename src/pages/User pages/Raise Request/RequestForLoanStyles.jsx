@@ -1,27 +1,27 @@
 const RequestForLoanStyles = {
   standard: {
-
-    label: 'block text-gray-600 text-xs font-bold my-1',
-    input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none placeholder-black ',//mr-14
-
+     
+    label: 'block text-gray-600 lg:text-xs font-bold my-1 text-sm', 
+    input: 'border-b hover:border-blue-500 border-black bg-transparent text-gray lg:text-xs my-2 mr-24 mb-2 px-2 py-1 w-[50vh] leading-tight focus:outline-none placeholder-black text-sm ',//mr-14
+    
   },
   standard_Home: {
-    label: 'block text-gray-600 text-xs font-bold my-1',
+    label: 'block text-gray-600 text-xs font-bold my-1', 
     input: 'border-2 hover:border-blue-500 border-gray-100 bg-transparent rounded-md text-gray text-xs my-2 mr- mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-24
-
+    
   },
   standarddemo: {
-    label: 'block text-gray-600 text-xs font-bold my-1',
+    label: 'block text-gray-600 text-xs font-bold my-1', 
     input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent mr-14 text-gray text-xs  mb-2 px-2 py-1 w-64 leading-tight focus:outline-none',
-
+    
   },
   standard1: {
-    label: 'block text-gray-700 text-sm font-semibold my-1',
+    label: 'block text-gray-700 text-sm font-semibold my-1', 
     input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs mr-14 py-3 my-2 w-60 leading-tight focus:outline-none',
   },
 
   standard2: {
-    label: 'block text-gray-700 text-xs font-bold my-1',
+    label: 'block text-gray-700 text-xs font-bold my-1', 
     input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mr-6 mb-2 px-2 py-1 w-[54vh] leading-tight focus:outline-none',
   },
 

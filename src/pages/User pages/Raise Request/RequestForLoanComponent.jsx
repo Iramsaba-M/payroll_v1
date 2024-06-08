@@ -83,10 +83,10 @@ const RequestForLoanComponent = ({ config }) => {
     <div className=''>
       <div className='w-[160vh]'>
         <div className='flex'>
-          <h1 className='text-xl font-semibold translate-x-[5vh] -translate-y-[4vh]'>Request For Loan</h1>
-          <div className=' translate-x-[5vh] -mt-8 ml-[103vh]'><Button Configs={View_Policies} /></div>
+          <h1 className='lg:text-xl font-semibold translate-x-[5vh] lg:-translate-y-[4vh] text-2xl -translate-y-[5vh]'>Request For Loan</h1>
+          <div className=' translate-x-[5vh] -mt-8 lg:ml-[103vh] ml-[95vh]'><Button Configs={View_Policies} /></div>
         </div>
-        <div className='border-2 border-gray-200 shadow-md h-[50vh] ml-7 -mt-2 '>
+        <div className='border-2 border-gray-200 shadow-md ml-7 -mt-2 '>
           <div className=' ml-7 mt-7'>
             <form onSubmit={formik.handleSubmit}>
               {config.slice(0, 1).map((field, index) => (
@@ -108,7 +108,7 @@ const RequestForLoanComponent = ({ config }) => {
                       onBlur={formik.handleBlur}
                     />
                   )}
-                  {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
+                  {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form lg:text-xs text-sm text-red-600'>{formik.errors[field.name]}</p>}
                 </div>
               ))}
 
@@ -129,7 +129,7 @@ const RequestForLoanComponent = ({ config }) => {
                       onBlur={formik.handleBlur}
                     />
                   )}
-                  {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
+                  {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form lg:text-xs text-sm text-red-600'>{formik.errors[field.name]}</p>}
                 </div>
               ))}
 
@@ -152,7 +152,7 @@ const RequestForLoanComponent = ({ config }) => {
                       onBlur={formik.handleBlur}
                     />
                   )}
-                  {formik.touched[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
+                  {formik.touched[field.name] && <p className='error-form lg:text-xs text-sm text-red-600'>{formik.errors[field.name]}</p>}
                 </div>
               ))}
 
@@ -173,7 +173,7 @@ const RequestForLoanComponent = ({ config }) => {
                       onBlur={formik.handleBlur}
                     />
                   )}
-                  {formik.touched[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
+                  {formik.touched[field.name] && <p className='error-form lg:text-xs text-sm text-red-600'>{formik.errors[field.name]}</p>}
                 </div>
               ))}
               <div className='flex mt-3'>

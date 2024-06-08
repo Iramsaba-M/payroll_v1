@@ -1,4 +1,3 @@
-import { MdContentCopy } from "react-icons/md";
 
 export const UserHomeconfig=[
     {
