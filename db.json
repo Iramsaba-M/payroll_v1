@@ -2024,11 +2024,11 @@
     }
   ],
 
-  "enduser_home":[{
+ "enduser_home":[{
     "employee_id" : "IK01",
-    "deduction" : "5667",
-    "earnings" : "34567",
-    "annual_ctc" : "300000"
+    "deduction" : 5667.00000000000000003,
+    "earnings" : 34567.99999957656789,
+    "annual_ctc" : 300000.64544657876
     }
   ],
 

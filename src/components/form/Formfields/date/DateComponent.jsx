@@ -1,9 +1,10 @@
-
+import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from 'prop-types';
 
-const DateComponent = ({ name, label, selectedDate, onChange, textcss, placeholder, value, icon, onBlur }) => {
+const DateComponent = ({ name, label, selectedDate: propSelectedDate, onChange, textcss, placeholder, value, icon }) => {
+  const [selectedDate, setSelectedDate] = useState(propSelectedDate);
 
   const handleDateChange = (date) => {
     if (date instanceof Date && !isNaN(date)) {
@@ -14,32 +15,32 @@ const DateComponent = ({ name, label, selectedDate, onChange, textcss, placehold
       onChange({
         target: {
           name: name,
-          value: formattedDate
-        }
+          value: formattedDate,
+        },
       });
     }
+    setSelectedDate(date);
   };
 
   return (
     <div>
-
       <label>{label}</label>
       {icon}
       <DatePicker
-        name={name}
-        value={value}
+        values={value}
         selected={selectedDate}
+        onChange={(date) => handleDateChange(date)}
         placeholderText={placeholder}
-        onChange={handleDateChange}
-        dateFormat="dd/mm/yyyy"
         className={textcss}
-        showYearDropdown
+        dateFormat="dd/MM/yyyy"
         showMonthDropdown
-        onBlur={onBlur ? onBlur : null}
+        showYearDropdown
+        dropdownMode="select"
       />
     </div>
   );
 };
+
 
 DateComponent.propTypes = {
   name: PropTypes.string.isRequired,
