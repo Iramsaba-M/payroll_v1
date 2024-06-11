@@ -8,12 +8,14 @@ const TableStyle = {
   style5: "text-center px-[136.5px] py-2 text-gray-500 bg-gray-100 text-sm font-sans",
   style6: "text-center px-[20px] py-2 w-[111px]  mt-10 text-gray-500 bg-gray-100 text-sm font-sans",
   style7: "text-center px-[20px] py-2 w-[130px]  mt-10 text-gray-500 bg-gray-100 text-sm font-sans",
-  
+  stylep: "text-center px-[70px] py-2 text-gray-500 bg-gray-100 text-sm font-sans",
+
   datastyle: "border-b-zinc-50 text-center font-bold text-gray-700 text-xs  pl-7",
   datastyle1: " border-b-zinc-50 border-b text-center text-black px-10  py-4 text-sm ",
   datastyle2: "  border-b-zinc-50  border-b text-center text-gray-400 px-6  py-4 text-sm ",
   datastyle3: "border-b-zinc-50 text-center font-bold text-gray-700 text-lg  pl-14",
   datastyle4: "border-b border-zinc-50 text-center text-black px-10 py-4 text-sm text-gray-500 bg-green-500 text-sm font-sans rounded-lg",
+  
 
  payrollstyle3: "text-center  px-[4vh]  py-4 text-gray-500 bg-gray-100  text-sm font-sans",
  payrollstyle4: "text-center   px-8 text-gray-500 bg-gray-100 text-sm font-sans",//px-[1vh]
