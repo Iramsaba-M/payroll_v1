@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Mypayslipcontent } from './MypayslipContent';
-import TableComponent from '../../../configurations/tables/TableComponent';
 import { mypayslip } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';

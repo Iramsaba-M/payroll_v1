@@ -44,9 +44,11 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
         formik.setValues({ ...editEmployees.bank_details[0] });
       }
     }
-  }, [editEmployees, employeeId, formik]);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editEmployees, employeeId]);
 
 
+  
   return (
     <div style={{ boxShadow: isButtonClicked ? '0 0 2px rgba(0, 0, 0, 0.5)' : 'none' }}>
       <div className="form-line flex mb-4 ml-1">
