@@ -11,6 +11,7 @@ import { admin_settings_Leave_Policy } from '../../../api/EndPoints';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import NumberComponent from "../../form/Formfields/number/numbercompoent"
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const Leavepolicy = () => {
   const [formData, setFormData] = useState({
@@ -135,12 +136,18 @@ const Leavepolicy = () => {
     } catch (error) {
       console.error('Error posting data:', error);
       setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
+      console.error('Error posting data:', error);
+      setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
 
   useEffect(() => {
     fetchTableData();
   }, []);
+
+  if (errorCode) {
+    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
+  }
 
   if (errorCode) {
     return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred

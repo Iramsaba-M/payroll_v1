@@ -59,6 +59,10 @@ const routesConfig = [
     element: <ErrorScreen />,
   },
   {
+    path: '/errorscreen',
+    element: <ErrorScreen />,
+  },
+  {
     label: "Person Data",
     children: [
       {

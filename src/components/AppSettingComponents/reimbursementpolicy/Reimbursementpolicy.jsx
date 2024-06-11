@@ -10,6 +10,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { Reimbrusement_settings_get, Reimbrusement_settings_patch, Reimbrusement_settings_post } from '../../../api/EndPoints';
 import { fetchData, patchData, postData } from '../../../services/APIService';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const TableHeaders = [
   { name: 'Policy Name', className: 'TableHeaders1' },

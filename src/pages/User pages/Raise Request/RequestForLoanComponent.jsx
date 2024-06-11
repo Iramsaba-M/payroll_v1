@@ -5,6 +5,7 @@ import OptionsComponent from '../../../components/form/Formfields/options/Option
 import TextComponent from '../../../components/form/Formfields/text/TextComponent';
 import Button from '../../../configurations/Button/Button';
 import { Apply, Cancel, View_Policies } from './RequestForLoanData';
+import { Apply, Cancel, View_Policies } from './RequestForLoanData';
 import RequestForLoanStyles from './RequestForLoanStyles';
 import ModalComponent from '../../../components/form/Formfields/modal/ModalComponent';
 import { ModalConfig2 } from '../../../components/form/Formfields/modal/ModalConfig2';
@@ -17,13 +18,19 @@ import { formSchema, simplifiedData, createInitialValues } from '../../../config
 const RequestForLoanComponent = ({ config }) => {
   const [data, setData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [data, setData] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleButtonClick = (type) => {
     if (type === "submit" && Object.keys(formik.errors).length === 0 && formik.isValid) {
       setData(formik.values)
       handleSubmit();
+    if (type === "submit" && Object.keys(formik.errors).length === 0 && formik.isValid) {
+      setData(formik.values)
+      handleSubmit();
     }
   };
+ 
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -59,8 +66,11 @@ const RequestForLoanComponent = ({ config }) => {
 
       };
       console.log(loanData)
+      console.log(loanData)
       const response = await postData(EndUser_ApplyLoan, loanData);
       console.log('Data sent successfully:', response.data);
+      setIsModalOpen(true);
+
       setIsModalOpen(true);
 
     } catch (error) {
@@ -93,9 +103,11 @@ const RequestForLoanComponent = ({ config }) => {
                 <div key={index}>
                   <label className={RequestForLoanStyles[field.textcss].label}>
                     {field.label}
+                    {field.label}
                   </label>
                   {field.type === 'options' && (
                     <OptionsComponent
+
 
                       name={field.name}
                       options={field.options}
@@ -141,6 +153,7 @@ const RequestForLoanComponent = ({ config }) => {
                   {field.type === 'options' && (
                     <OptionsComponent
 
+
                       name={field.name}
                       options={field.options}
                       textcss={RequestForLoanStyles[field.textcss].input}
@@ -177,6 +190,7 @@ const RequestForLoanComponent = ({ config }) => {
                 </div>
               ))}
               <div className='flex mt-3'>
+                <Button Configs={Apply} onClick={() => handleButtonClick("submit")} />
                 <Button Configs={Apply} onClick={() => handleButtonClick("submit")} />
                 <Button Configs={Cancel} />
               </div>

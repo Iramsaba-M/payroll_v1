@@ -62,6 +62,7 @@ Barchart.propTypes = {
 
 const Pichart = ({ data }) => {
   const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
+  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
 
   if (!data) {
     return null;
@@ -220,6 +221,9 @@ const HomeComponent = () => {
     setSelectedDate(startDate);
     setSelectedDate1(endDate);
   }, []);
+
+  console.log("person state", isPersonal)
+  console.log("person state", isAdmin)
 
   console.log("person state", isPersonal)
   console.log("person state", isAdmin)

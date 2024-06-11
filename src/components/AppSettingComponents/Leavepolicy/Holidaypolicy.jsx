@@ -119,7 +119,7 @@ const Holidaypolicy = () => {
       setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
-
+  
   useEffect(() => {
     fetchTableData();
   }, []);

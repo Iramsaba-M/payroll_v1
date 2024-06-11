@@ -25,6 +25,7 @@ const CardComponent = ({ CardConfig = [], handleChange, photoContent, onBlur }) 
   const removeImage = () => {
     setUploadedImage(null);
     handleChange('photo_content', null); // Clear photoContent if uploaded image is removed
+    handleChange('photo_content', null); // Clear photoContent if uploaded image is removed
   };
 
   const removeFile = (index) => {
@@ -50,12 +51,15 @@ const CardComponent = ({ CardConfig = [], handleChange, photoContent, onBlur }) 
           <>
             <img
               src={uploadedImage || `data:image/png;base64,${photoContent}`}
+              src={uploadedImage || `data:image/png;base64,${photoContent}`}
               alt='Uploaded'
               className={' h-28 w-32  justify-center items-center'}
               onClick={handleImageClick}
             />
             <button className={CardStyles.removestyle} onClick={removeImage}>Remove</button>
           </>
+        )}
+        {!uploadedImage && !photoContent && (
         )}
         {!uploadedImage && !photoContent && (
           <div {...getRootProps()} className=' h-28'>
@@ -80,6 +84,9 @@ const CardComponent = ({ CardConfig = [], handleChange, photoContent, onBlur }) 
           </div>
         )}
       </div>
+
+      {/* {formik.touched[CardConfig[1].name] && formik.errors[CardConfig[1].name] && <p className='error-form text-xs text-red-600'>{formik.errors[CardConfig[1].name]}</p>} */}
+
     </div>
   );
 };
@@ -92,3 +99,4 @@ CardComponent.propTypes = {
 };
 
 export default CardComponent;
+

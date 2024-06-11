@@ -73,6 +73,7 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
 
     try {
       formik.handleSubmit();
+      formik.handleSubmit();
       const allFormValues = forms.map((form) => form.values);
       const dataToSend = { employee_id: employeeId, bank_details: allFormValues };
 
@@ -107,16 +108,23 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
     <form onSubmit={onSubmit} className=''>
       <div className='form-line flex justify-evenly mb-4'>
         <div>
+    <form onSubmit={onSubmit} className=''>
+      <div className='form-line flex justify-evenly mb-4'>
+        <div>
           {forms.map((form, index) => (
             <div key={index} className='shadow-sm mt-7 mb-7 ml-1'>
               <BankDetailFormComponent
                 id={form.id}
                 config={configs}
                 values={(editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details && editEmployees.Bank.bank_details[index]) || {}}
+                values={(editEmployees && editEmployees.Bank && editEmployees.Bank.bank_details && editEmployees.Bank.bank_details[index]) || {}}
                 onChange={handleFormChange}
                 editEmployees={editEmployees}
                 formik={formik}
+                editEmployees={editEmployees}
+                formik={formik}
               />
+
 
             </div>
           ))}
@@ -127,9 +135,17 @@ const BankDetailForm = ({ configs, handleNextClick, handleSubmit, employeeId, ed
           </div>
           <div className='flex justify-center ml-7'>
             <button type="button" onClick={addBank} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center mb-2 mr-1'>Add another bank details</button>
+        <div className='w-64'>
+          <div className='flex w-60 justify-center h-10 border-solid mt-4'>
+            <button type="button" onClick={addBank}>Add Bank</button>
+          </div>
+          <div className='flex justify-center ml-7'>
+            <button type="button" onClick={addBank} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center mb-2 mr-1'>Add another bank details</button>
           </div>
         </div>
       </div>
+      <div className='buttons flex justify-end mr- mt-6 mb-96 -ml-1'>
+        <Button Configs={ButtonforSave} onClick={handleButtonClick} />
       <div className='buttons flex justify-end mr- mt-6 mb-96 -ml-1'>
         <Button Configs={ButtonforSave} onClick={handleButtonClick} />
       </div>

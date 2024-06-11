@@ -34,6 +34,7 @@ const ButtonConfig = ({ Config, onClick, buttonStyle, activeButton }) => {
     <div className="flex">
       {Config.map((button, index) => (
         <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} active={activeButton === button.label} />
+        <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} active={activeButton === button.label} />
       ))}
     </div>
   );

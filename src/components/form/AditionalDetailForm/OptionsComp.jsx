@@ -18,10 +18,13 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
   const handleEmployeeStatusChange = (value) => {
     setEmployeeStatus(value);
     setType('');
+    setType('');
     setSelectedLeaveOption('');
     onChange({ employee_status: value });
   };
 
+  const handleTypeChange = (value) => {
+    setType(value);
   const handleTypeChange = (value) => {
     setType(value);
     setSelectedLeaveOption('');
@@ -38,12 +41,19 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
       <h1 className='text-gray-800 font-semibold mb-2'>Employee Status</h1>
       <div className='flex mb-4'>
         <div className='form-line flex mb-4'>
+    <div>
+      <h1 className='text-gray-800 font-semibold mb-2'>Employee Status</h1>
+      <div className='flex mb-4'>
+        <div className='form-line flex mb-4'>
           <label className='block text-gray-600 text-xs font-bold my-1'></label>
           <select
             style={{ appearance: 'none', background: 'transparent' }}
             className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60"
+            style={{ appearance: 'none', background: 'transparent' }}
+            className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60"
             value={employee_status}
             onChange={(e) => handleEmployeeStatusChange(e.target.value)}
+            onBlur={onBlur}
             onBlur={onBlur}
           >
             <option value="" disabled>Select Employee Status</option>
@@ -55,6 +65,9 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
           </select>
           <RiArrowDropDownFill className='size-6 -ml-[11vh] mt-2 text-gray-700' />
           {formik.touched["employee_status"] && formik.errors["employee_status"] && <p className='error-form text-xs -ml-28 -translate-y-7 text-red-600'>{formik.errors["employee_status"]}</p>}
+          </select>
+          <RiArrowDropDownFill className='size-6 -ml-[11vh] mt-2 text-gray-700' />
+          {formik.touched["employee_status"] && formik.errors["employee_status"] && <p className='error-form text-xs -ml-28 -translate-y-7 text-red-600'>{formik.errors["employee_status"]}</p>}
         </div>
         <div className='flex justify-col mb-4 ml-28'>
           {employee_status === 'Inactive' && (
@@ -62,8 +75,11 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
               <label className='block text-gray-600 text-xs font-bold my-1'></label>
               <select
                 style={{ appearance: 'none', background: 'transparent' }}
+                style={{ appearance: 'none', background: 'transparent' }}
                 className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                 value={type}
+                onChange={(e) => handleTypeChange(e.target.value)}
+                onBlur={onBlur}
                 onChange={(e) => handleTypeChange(e.target.value)}
                 onBlur={onBlur}
               >
@@ -75,14 +91,18 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
                 ))}
               </select>
               <RiArrowDropDownFill className='h-6 w-6 -ml-[11vh] mt-2 text-gray-700' />
+              </select>
+              <RiArrowDropDownFill className='h-6 w-6 -ml-[11vh] mt-2 text-gray-700' />
               {type === 'Leave' && (
                 <div className='ml-20'>
                   <label className='block text-gray-600 text-xs font-bold my-1'></label>
                   <select
                     style={{ appearance: 'none', background: 'transparent' }}
+                    style={{ appearance: 'none', background: 'transparent' }}
                     className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     value={selectedLeaveOption}
                     onChange={(e) => handleLeaveOptionChange(e.target.value)}
+                    onBlur={onBlur}
                     onBlur={onBlur}
                   >
                     <option value="" disabled>Select Leave Option</option>
@@ -93,15 +113,22 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
                     ))}
                   </select>
                   <RiArrowDropDownFill className='h-6 w-6 -mt-8 ml-[29vh] text-gray-700' />
+                  </select>
+                  <RiArrowDropDownFill className='h-6 w-6 -mt-8 ml-[29vh] text-gray-700' />
                 </div>
               )}
               {type === 'Suspended' && (
                 <div className='ml-20'>
                   <label className='block text-gray-600 text-xs font-bold my-1'></label>
+                  <label className='block text-gray-600 text-xs font-bold my-1'></label>
                   <select
+                    style={{ appearance: 'none', background: 'transparent' }}
                     style={{ appearance: 'none', background: 'transparent' }}
                     className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
                     value={selectedLeaveOption}
+                    onChange={(e) => handleLeaveOptionChange(e.target.value)}
+                    onBlur={onBlur}
+                  >
                     onChange={(e) => handleLeaveOptionChange(e.target.value)}
                     onBlur={onBlur}
                   >
@@ -111,6 +138,8 @@ const OptionsComp = ({ onChange, initialValues = {}, onBlur, formik }) => {
                         {option.name}
                       </option>
                     ))}
+                  </select>
+                  <RiArrowDropDownFill className='h-6 w-6 -mt-9 ml-[29vh] text-gray-700' />
                   </select>
                   <RiArrowDropDownFill className='h-6 w-6 -mt-9 ml-[29vh] text-gray-700' />
                 </div>

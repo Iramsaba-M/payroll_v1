@@ -19,6 +19,7 @@ export const generateTemplate = async () => {
 
     // Use postData function for making the POST request
     const response = await postFile(Import_GET_API, dummyData);
+    const response = await postFile(Import_GET_API, dummyData);
 
     // Assuming the response is a Blob, modify this part accordingly
     const blob = new Blob([response], { type: 'application/octet-stream' });

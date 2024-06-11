@@ -87,6 +87,7 @@ export const RequestForLoanData = [
 
 export const Apply = [
   { label: 'Apply', style: 'buttonStyleApply', type: "submit" },
+  { label: 'Apply', style: 'buttonStyleApply', type: "submit" },
 ];
 export const View_Policies = [
   { label: 'View policies', style: 'buttonStyleViewPolicies', type: "button" },

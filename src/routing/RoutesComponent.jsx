@@ -20,7 +20,7 @@ const RoutesComponent = () => {
       </Route>
     ));
   };
-
+  
   return (
     <div className="flex w-60 border-r border-gray-200">
 

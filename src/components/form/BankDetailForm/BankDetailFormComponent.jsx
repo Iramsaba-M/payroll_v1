@@ -13,8 +13,23 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
   });
 
   console.log('er', formik.values, formik.errors, values);
+  const [values, setValues] = useState({
+    default_for_payroll: false, // Initialize default_for_payroll as false by default
+    ...propValues
+  });
+
+  console.log('er', formik.values, formik.errors, values);
 
   const handleChange = (name, value) => {
+    setValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }));
+    formik.setValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }));
+
     setValues(prevValues => ({
       ...prevValues,
       [name]: value
@@ -28,6 +43,7 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
   };
 
   const highlight = () => {
+    setIsButtonClicked(prevState => !prevState);
     setIsButtonClicked(prevState => !prevState);
     const setDefaultPayroll = !values["default_for_payroll"];
     handleChange("default_for_payroll", setDefaultPayroll);
@@ -51,6 +67,7 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
   
   return (
     <div style={{ boxShadow: isButtonClicked ? '0 0 2px rgba(0, 0, 0, 0.5)' : 'none' }}>
+      <div className="form-line flex mb-4 ml-1">
       <div className="form-line flex mb-4 ml-1">
         {config.slice(0, 2).map((field, index) => (
           <div key={index} className={`form-field ${field.fieldstyle}`}>
@@ -80,6 +97,7 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
               />
             )}
             {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
+            {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
           </div>
         ))}
       </div>
@@ -88,6 +106,7 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
         {config.slice(2, 4).map((field, index) => (
           <div key={index} className={`form-field ${field.fieldstyle}`}>
             <label className={TextStyle[field.textcss].label}>{field.label}</label>
+            {(field.type === 'number' || field.type === 'text') && (
             {(field.type === 'number' || field.type === 'text') && (
               <TextComponent
                 name={field.name}
@@ -103,6 +122,8 @@ const BankDetailFormComponent = ({ id, config, onChange, values: propValues, edi
         ))}
       </div>
 
+      <div className='buttons flex  mt-6 ml-1'>
+        <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>
       <div className='buttons flex  mt-6 ml-1'>
         <button type="button" onClick={highlight} className='bg-gray-200 text-blue-600 p-2 px-4 rounded flex items-center  mb-2 mr-5'>Set default for payroll</button>
       </div>
@@ -121,3 +142,4 @@ BankDetailFormComponent.propTypes = {
 };
 
 export default BankDetailFormComponent;
+

@@ -11,6 +11,8 @@ export const ButtonStateProvider = ({ children }) => {
   const [isPersonal, setIsPersonal] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [AddMode, setAddMode] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [AddMode, setAddMode] = useState(false);
 
   const handleAdminClick = () => {
     setIsAdmin(true);
@@ -42,6 +44,11 @@ export const ButtonStateProvider = ({ children }) => {
         isAdmin,
         isPersonal,
         handleAdminClick,
+        handlePersonalClick,
+        AddEmployeeclick,
+        EditModeclick,
+        AddMode,
+        editMode
         handlePersonalClick,
         AddEmployeeclick,
         EditModeclick,

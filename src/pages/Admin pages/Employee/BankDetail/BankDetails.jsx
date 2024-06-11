@@ -7,6 +7,7 @@ const BankDetails = ({ handleNextClick, employeeId, editEmployees }) => {
   return (
     <div className='bankdeatils '>
       <BankDetailForm configs={formContent} handleNextClick={handleNextClick} employeeId={employeeId} editEmployees={editEmployees} />
+      <BankDetailForm configs={formContent} handleNextClick={handleNextClick} employeeId={employeeId} editEmployees={editEmployees} />
     </div>
   )
 }

@@ -48,6 +48,9 @@ const TypeOfLoan = () => {
     const selectedLoan = { ...loanData[index] };
     setPrevname(selectedLoan.loan_type); // Set prevname to the original loan_type
     setEditState(selectedLoan);
+    const selectedLoan = { ...loanData[index] };
+    setPrevname(selectedLoan.loan_type); // Set prevname to the original loan_type
+    setEditState(selectedLoan);
   };
 
 
@@ -110,6 +113,7 @@ const TypeOfLoan = () => {
     try {
       const response = await postDataImage(Type_of_loan_post, formData); // Using the service API function
       console.log('Success:', response.data);
+      fetchData1(); // Refresh data after posting
       fetchData1(); // Refresh data after posting
     } catch (error) {
       console.error('Error posting data:', error.response ? error.response.data : error.message);

@@ -59,13 +59,16 @@ const AddEmployee = ({ editEmployees }) => {
                 handleNextClick={handleNextClick}
                 handleEmpId={handleEmpId}
                 editEmployees={editEmployees}
+                editEmployees={editEmployees}
               />
+
 
             )}
             {navsContent[selectedNavItem].name === 'Salary Details' && (
               <SalaryDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
+                editEmployees={editEmployees}
                 editEmployees={editEmployees}
               />
             )}
@@ -74,6 +77,7 @@ const AddEmployee = ({ editEmployees }) => {
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
                 editEmployees={editEmployees}
+                editEmployees={editEmployees}
               />
             )}
             {navsContent[selectedNavItem].name === 'Documents' && (
@@ -81,12 +85,14 @@ const AddEmployee = ({ editEmployees }) => {
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
                 editEmployees={editEmployees}
+                editEmployees={editEmployees}
               />
             )}
             {navsContent[selectedNavItem].name === 'Aditional Details' && (
               <AditionalDetails
                 handleNextClick={handleNextClick}
                 employeeId={employeeId}
+                editEmployees={editEmployees}
                 editEmployees={editEmployees}
               />
             )}
