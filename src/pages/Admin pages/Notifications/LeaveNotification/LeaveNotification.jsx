@@ -51,6 +51,7 @@ const LeaveNotifications = () => {
         const month = monthNames[selectedDate.getMonth()]; // Convert month number to month name
         const year = selectedDate.getFullYear();
         fetchData(month, year);
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, selectedDate]);
 
     const handleDateChange = (date) => {

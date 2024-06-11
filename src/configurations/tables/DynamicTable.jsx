@@ -343,9 +343,10 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
     pageSize: PropTypes.number.isRequired,
     totalDocuments: PropTypes.number.isRequired,
     setCurrentPage: PropTypes.func.isRequired,
-    onEditEmployee: PropTypes.func.isRequired,
+    onEditEmployee: PropTypes.func
 
   };
+  const totalPages = Math.max(Math.ceil(totalDocuments / pageSize), 1);
 
   return (
     <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
@@ -391,7 +392,7 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
           previousLabel={<FaAngleLeft className='mt-1' />}
           nextLabel={<FaAngleRight className='mt-1' />}
           breakLabel={'...'}
-          pageCount={Math.ceil(totalDocuments / pageSize)}
+          pageCount={totalPages}
           pageRangeDisplayed={5}
           marginPagesDisplayed={2}
           onPageChange={handlePageChange}

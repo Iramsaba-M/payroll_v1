@@ -60,6 +60,7 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
       setValues(updatedValues);
       formik.setValues(updatedValues);
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editEmployees]);
 
   const onSubmit = async (e, label, type) => {

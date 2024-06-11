@@ -169,7 +169,7 @@ const UserHomeComponent = () => {
               <CardConfig Config={picard} comp={<Pichart data={pidata} />} />
             </div>
             <div className='border px-7 rounded-md shadow-md py-1'>
-              <h className='font-semibold text-gray-700 '>MY Documents : </h>
+              <h2 className='font-semibold text-gray-700 '>MY Documents : </h2>
               {UserHomeconfig.slice(5, 9).map((field, index) => (
 
                 <div key={index} className='lg:h-8 border-2 my-2 h-12  ' style={{ backgroundColor: '#D1D1F8' }}>

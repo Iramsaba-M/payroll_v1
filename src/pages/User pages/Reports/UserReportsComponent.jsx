@@ -13,7 +13,6 @@ import PropTypes from 'prop-types';
 
 const Barchart = ({ graphdata }) => {
   if (!graphdata || !Array.isArray(graphdata)) {
-    console.error("Invalid graphdata:", graphdata);
     return null;
   }
 

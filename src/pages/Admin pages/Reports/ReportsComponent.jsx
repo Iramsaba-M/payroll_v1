@@ -190,6 +190,7 @@ const ReportsComponent = () => {
       }
     };
     fetchData2();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDateTop]);
 
   if (errorCode) {
