@@ -6,9 +6,7 @@ const PayslipSetting = () => {
   return (
     <div>
       <ErrorScreen errorCode={errorCode} />
-      <ErrorScreen errorCode={errorCode} />
     </div>
-  )
   )
 }
 

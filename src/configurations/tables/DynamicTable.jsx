@@ -91,8 +91,6 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
       }
       EditModeclick();
       console.log("Edit mode is true");
-      EditModeclick();
-      console.log("Edit mode is true");
       onEditEmployee(row.employee_id); // Call the onEditEmployee function passed as a prop
     } catch (error) {
       console.error('Error fetching payslips data:', error);
@@ -351,7 +349,6 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
   const totalPages = Math.max(Math.ceil(totalDocuments / pageSize), 1);
 
   return (
-    <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
     <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
       <table>
         <thead>
