@@ -34,12 +34,12 @@ const DASHBOARD_ICONBAR_LINKS =
     footerIcon: [
         {
             key: 'notifications',
-            path: "/",
+            // path: "/",
             icon: <BiBell className={IconStyle.style1} />
         },
         {
             key: 'logout',
-            path: "/",
+            path: "/apps/home",
             icon: <BiLogOut className={IconStyle.style1} />
         },
     ],

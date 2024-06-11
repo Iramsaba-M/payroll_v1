@@ -75,6 +75,7 @@ const BasicDetailsFormComponent = ({
 
     setValues(updatedValues);
     formik.setValues(updatedValues)
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editEmployees]);
 
   const [originalDateValues, setOriginalDateValues] = useState({});

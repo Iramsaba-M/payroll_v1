@@ -32,6 +32,7 @@ const SalaryDetailsComp = ({ config, handleNextClick, employeeId, editEmployees 
       setValues(editEmployees.salary);
       formik.setValues(editEmployees.salary)
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editEmployees]);
 
   const formik = useFormik({

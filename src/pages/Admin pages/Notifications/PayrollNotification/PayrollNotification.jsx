@@ -32,8 +32,8 @@ const PayrollNotification = () => {
   return (
     <div>
       {notifications.length > 0 ? (
-        notifications.map((notification) => (
-          <div key={notification.id} className={containerStyle}>
+        notifications.map((notification,index) => (
+          <div key={index} className={containerStyle}>
             <div className={textContainerStyle}>
               <div className={textStyle}>{notification.text}</div>
             </div>

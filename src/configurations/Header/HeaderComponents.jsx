@@ -43,7 +43,7 @@ HeadComponents.propTypes = {
   config: PropTypes.arrayOf(PropTypes.shape({
     css: PropTypes.string,
     text: PropTypes.string.isRequired,
-  })).isRequired,
+  })),
 };
 
 export default HeadComponents;
