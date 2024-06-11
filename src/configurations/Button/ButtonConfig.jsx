@@ -1,4 +1,3 @@
-
 import ButtonStyles from './ButtonStyles';
 import PropTypes from 'prop-types';
 
@@ -33,7 +32,6 @@ const ButtonConfig = ({ Config, onClick, buttonStyle, activeButton }) => {
   return (
     <div className="flex">
       {Config.map((button, index) => (
-        <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} active={activeButton === button.label} />
         <Button key={index} {...button} onClick={onClick} buttonStyle={buttonStyle} active={activeButton === button.label} />
       ))}
     </div>

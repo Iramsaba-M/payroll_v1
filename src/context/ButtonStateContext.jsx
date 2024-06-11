@@ -1,4 +1,3 @@
-
 import { createContext, useState, useContext } from "react";
 import PropTypes from 'prop-types';
 
@@ -9,8 +8,6 @@ export const useButtonState = () => useContext(ButtonStateContext);
 export const ButtonStateProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(true);
   const [isPersonal, setIsPersonal] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  const [AddMode, setAddMode] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [AddMode, setAddMode] = useState(false);
 
@@ -44,11 +41,6 @@ export const ButtonStateProvider = ({ children }) => {
         isAdmin,
         isPersonal,
         handleAdminClick,
-        handlePersonalClick,
-        AddEmployeeclick,
-        EditModeclick,
-        AddMode,
-        editMode
         handlePersonalClick,
         AddEmployeeclick,
         EditModeclick,

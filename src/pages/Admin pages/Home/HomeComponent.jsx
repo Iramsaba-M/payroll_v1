@@ -62,7 +62,6 @@ Barchart.propTypes = {
 
 const Pichart = ({ data }) => {
   const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
-  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
 
   if (!data) {
     return null;

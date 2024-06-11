@@ -11,7 +11,6 @@ import { admin_settings_Leave_Policy } from '../../../api/EndPoints';
 import { MdOutlineEdit, MdCheck, MdCancel } from "react-icons/md";
 import NumberComponent from "../../form/Formfields/number/numbercompoent"
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const Leavepolicy = () => {
   const [formData, setFormData] = useState({
