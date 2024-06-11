@@ -13,6 +13,7 @@ const RunPayrollComponent = () => {
   const [showFinalizeComponent, setShowFinalizeComponent] = useState(false);
   const [showPayslipsButton, setShowPayslipsButton] = useState(true);
   const [errorCode, setErrorCode] = useState(null);
+  
 
   const handlePayslipsClick = () => {
     setShowDynamicTable(true);

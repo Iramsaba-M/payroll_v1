@@ -8,28 +8,28 @@ export const tableContent2 = [
     label: "EMPLOYEE NAME",
     dataType: "string",
     cssClass: "datastyle",
-    clmncss: "style4"
+    clmncss: "stylep"
   },
   {
     name: "designation",
     label: "DESIGNATION",
     dataType: "string",
     cssClass: "datastyle1",
-    clmncss: "style4"
+    clmncss: "stylep"
   },
   {
     name: "employee_id",
     label: "EMP ID",
     dataType: "string",
     cssClass: "datastyle1",
-    clmncss: "style4"
+    clmncss: "stylep"
   },
   {
     name: "PAYSLIPS",
     label: " PAYSLIPS",
     dataType: "Date",
     cssClass: "datastyle1",
-    clmncss: "style4",
+    clmncss: "stylep",
     content: 'view'
   },
   {
@@ -37,7 +37,7 @@ export const tableContent2 = [
     label: "DOWNLOAD",
     dataType: "icon",
     cssClass: "datastyle1",
-    clmncss: "style4",
+    clmncss: "stylep",
     content: <MdOutlineFileDownload />
   },
 ]

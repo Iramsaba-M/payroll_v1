@@ -7,6 +7,7 @@ import Button from '../../../configurations/Button/Button';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import axios from 'axios';
 import Payslip from '../Run Payroll/Payslip';
+import DynamicTable from '../../../configurations/tables/DynamicTable';
 
 
 const RunPayrollFinalizeCompomnent = () => {
@@ -15,6 +16,8 @@ const RunPayrollFinalizeCompomnent = () => {
   const [payrolldata, setPayrollData] = useState([]);
   const [payrolltabledata, setpayrollTableData] = useState([]);
   const [selectedDateTop, setSelectedDateTop] = useState(new Date());
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
 
   useEffect(() => {
     const currentDate = new Date();
@@ -145,9 +148,16 @@ const RunPayrollFinalizeCompomnent = () => {
         </div>
       </div>
       <div className="flex  justify-center -mt-2">
-        <TableComponent config={RunPayrolltableContent}
-          data={payrolltabledata} 
-      />
+      
+      <DynamicTable
+              config={RunPayrolltableContent}
+              data={payrolltabledata}
+              currentPage={currentPage}
+              pageSize={pageSize}
+              totalDocuments={payrolltabledata.total_documents}
+              setCurrentPage={setCurrentPage}
+             
+            />
       </div>
 
       <div className=' text-xs font-semibold mt-4 flex justify-col justify-between '>

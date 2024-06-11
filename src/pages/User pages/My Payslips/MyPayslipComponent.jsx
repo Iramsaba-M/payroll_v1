@@ -4,10 +4,13 @@ import TableComponent from '../../../configurations/tables/TableComponent';
 import { mypayslip } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import DynamicTable from '../../../configurations/tables/DynamicTable';
 
 const MyPayslipComponent = () => {
   const [tableData, setTableData] = useState([]);
   const [errorCode, setErrorCode] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
 
   const fetchTableData = async () => {
     try {
@@ -39,7 +42,16 @@ const MyPayslipComponent = () => {
 
   return (
     <div className='px-[60px] mt-10'>
-      <TableComponent config={Mypayslipcontent} data={tableData} />
+     
+      <DynamicTable
+              config={Mypayslipcontent}
+              data={tableData}
+              currentPage={currentPage}
+              pageSize={pageSize}
+              totalDocuments={tableData.total_documents}
+              setCurrentPage={setCurrentPage}
+             
+            />
     </div>
   );
 }
