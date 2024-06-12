@@ -9,7 +9,6 @@ const BasicDetails = ({ handleNextClick, handleEmpId, handleButtonClick, editEmp
     <div>
       <div className='basicdeatils'>
         <BasicDetailsFormComponent config={formContent} handleNextClick={handleNextClick} handleEmpId={handleEmpId} handleSubmit={handleButtonClick} editEmployees={editEmployees} />
-        <BasicDetailsFormComponent config={formContent} handleNextClick={handleNextClick} handleEmpId={handleEmpId} handleSubmit={handleButtonClick} editEmployees={editEmployees} />
       </div>
     </div>
   );

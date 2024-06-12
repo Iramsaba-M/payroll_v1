@@ -224,9 +224,6 @@ const HomeComponent = () => {
   console.log("person state", isPersonal)
   console.log("person state", isAdmin)
 
-  console.log("person state", isPersonal)
-  console.log("person state", isAdmin)
-
   return (
     <div className="mt-3 ml-12 ">
 

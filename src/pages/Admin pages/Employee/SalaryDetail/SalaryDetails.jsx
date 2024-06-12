@@ -9,7 +9,6 @@ const SalaryDetails = ({ handleNextClick, employeeId, editEmployees }) => {
     <div>
       <div className='salarydeatils'>
         <SalaryDetailsComp config={formContent} handleNextClick={handleNextClick} employeeId={employeeId} editEmployees={editEmployees} />
-        <SalaryDetailsComp config={formContent} handleNextClick={handleNextClick} employeeId={employeeId} editEmployees={editEmployees} />
       </div>
     </div>
   );

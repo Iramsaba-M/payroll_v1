@@ -81,7 +81,6 @@ const MyLeave = ({ config, applyleave }) => {
         } catch (error) {
             console.error('Error posting data:', error);
             setErrorCode(error.response ? error.response.status : 500);
-            setErrorCode(error.response ? error.response.status : 500);
         }
     };
 
