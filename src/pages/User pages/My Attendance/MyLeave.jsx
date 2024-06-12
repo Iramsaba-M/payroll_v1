@@ -25,7 +25,6 @@ const MyLeave = ({ config, applyleave }) => {
         key: 'selection'
     });
     const [errorCode, setErrorCode] = useState(null);
-    const [errorCode, setErrorCode] = useState(null);
 
     const handleChange = (name, value) => {
         setValues({
@@ -141,7 +140,6 @@ const MyLeave = ({ config, applyleave }) => {
         applyleave: PropTypes.func.isRequired, // Validate applyleave prop as a function
     };
     return (
-        <form onSubmit={onSubmit} className='  ml-5 p-2 '>
         <form onSubmit={onSubmit} className='  ml-5 p-2 '>
             <div className='p-2 border-2 '>
                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>

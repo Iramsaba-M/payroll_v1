@@ -24,13 +24,6 @@ const EmployeeComponent = () => {
     total_documents: 0,
     current_page: 0
   });
-  const [employeeData, setEmployeeData] = useState({
-    employees: [],
-    total_pages: 1,
-    page_size: 10,
-    total_documents: 0,
-    current_page: 0
-  });
   const [empcardData, setCardData] = useState([]);
   const [showImportPopup, setShowImportPopup] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
@@ -57,8 +50,6 @@ const EmployeeComponent = () => {
       try {
         const data = await fetchData1(EMP_API, pageNumber, pageSize);
         setEmployeeData(data);
-        const data = await fetchData1(EMP_API, pageNumber, pageSize);
-        setEmployeeData(data);
       } catch (error) {
         console.error(`Error fetching employee data:`, error);
       }
@@ -69,7 +60,6 @@ const EmployeeComponent = () => {
         const data = await fetchData(CARDS_API);
         setCardData(data);
       } catch (error) {
-        console.error(`Error fetching employee data:`, error);
         console.error(`Error fetching employee data:`, error);
       }
     };
@@ -155,24 +145,20 @@ const EmployeeComponent = () => {
   useEffect(() => {
     editEmployees();
   }, [selectedEmployeeId]);
-  
+
   const handleAddEmployee = () => {
     setShowAddEmployee(true);
     AddEmployeeclick();
-    AddEmployeeclick();
     navigate('AddEmployee');
-    setAddMode(false); 
   };
 
   const handleEditEmployee = (employeeId) => {
     setSelectedEmployeeId(employeeId);
     setShowAddEmployee(true);
     EditModeclick();
-    EditModeclick();
     navigate(`AddEmployee?employeeId=${employeeId}`);
 
   };
-
 
   const handleButtonClick = (label) => {
     if (label === 'Add Employee') {
@@ -268,7 +254,6 @@ const EmployeeComponent = () => {
 
           <div className="flex items-center justify-between p-1 ml-4">
             <div className='text-left ml-4 font-lg font-bold text-gray-500'>
-              <SearchableComp SearchConfig={SearchInputConfig} data={employeeData.employees} searchFunrec={searchFun} />
               <SearchableComp SearchConfig={SearchInputConfig} data={employeeData.employees} searchFunrec={searchFun} />
             </div>
             <div className='text-right p-1 mr-4'>

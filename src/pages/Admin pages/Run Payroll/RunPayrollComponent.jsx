@@ -7,7 +7,6 @@ import { Runpayroll } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import Payslip from '../Run Payroll/Payslip';
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 const RunPayrollComponent = () => {
   const [showDynamicTable, setShowDynamicTable] = useState(false);
@@ -44,9 +43,6 @@ const RunPayrollComponent = () => {
     fetchTableData();
   }, []);
 
-  if (errorCode) {
-    return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
-  }
   if (errorCode) {
     return <ErrorScreen errorCode={errorCode} />; // Render ErrorScreen if an error occurred
   }

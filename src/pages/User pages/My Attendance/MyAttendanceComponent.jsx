@@ -12,7 +12,6 @@ import { fetchData, postData } from '../../../services/APIService'
 import Table2 from '../../../configurations/table2/Table2';
 import '../../../assets/Styles/CalendarStyle.css'
 import ErrorScreen from '../../../errorhandling/ErrorScreen';
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
 
 export const Slider = ({ config, data }) => {
 
@@ -194,7 +193,6 @@ const MyAttendanceComponent = () => {
     } catch (error) {
       console.error('Error posting data:', error);
       setErrorCode(error.response ? error.response.status : 500);
-      setErrorCode(error.response ? error.response.status : 500);
     }
   };
 
@@ -213,7 +211,6 @@ const MyAttendanceComponent = () => {
       console.log('leave history', response);
     } catch (error) {
       console.error('Error posting data:', error);
-      setErrorCode(error.response ? error.response.status : 500);
       setErrorCode(error.response ? error.response.status : 500);
     }
 
@@ -266,7 +263,6 @@ const MyAttendanceComponent = () => {
           <ButtonConfig Config={AttendanceButtons} onClick={Buttonclick} />
         </div>
         <div className='flex w-[130vh] justify-between p-2  border-2 shadow-sm border-gray-100 '>
-        <div className='flex w-[130vh] justify-between p-2  border-2 shadow-sm border-gray-100 '>
 
           <Card Config={Attendanccard} comp={<Slider config={leavesdata2} data={leavebalance} />}
           />
@@ -283,7 +279,6 @@ const MyAttendanceComponent = () => {
           <Calendar
             onChange={onChange}
             value={value}
-            className="border-2 shadow-md border-gray-100  w[100vh] h[30vh] bg text-center text-xl py-3" //hover:border-blue-500
             className="border-2 shadow-md border-gray-100  w[100vh] h[30vh] bg text-center text-xl py-3" //hover:border-blue-500
             navigationLabel={({ label }) => (
               <span className=" p-4  mt-20  text-center text-xl font-bold   px-10">{label}</span> // Change arrow color and position

@@ -106,21 +106,16 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
   const addCustomComponent = () => {
     setCustomComponents((prev) => [...prev, { customValue: "" }]);
   };
-    setCustomComponents((prev) => [...prev, { customValue: "" }]);
-  };
 
   const updateCustomValue = (index, value) => {
     setCustomComponents((prev) =>
       prev.map((item, i) => (i === index ? { ...item, customValue: value } : item))
-      prev.map((item, i) => (i === index ? { ...item, customValue: value } : item))
     );
   };
-
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
 
   return (
     <form onSubmit={(e) => onSubmit(e, "Save", "submit")}>
@@ -141,8 +136,6 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   icon={field.icon}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
               {field.type === "file" && (
@@ -150,18 +143,14 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   name={field.name}
                   onChange={(file) => handleFileChange(field.name, file)}
                   value={values[field.name] || ""}
-                  value={values[field.name] || ""}
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
                   iconPosition={field.iconPosition}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
@@ -183,8 +172,6 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   icon={field.icon}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
               {field.type === "file" && (
@@ -192,18 +179,14 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   name={field.name}
                   onChange={(file) => handleFileChange(field.name, file)}
                   value={values[field.name] || ""}
-                  value={values[field.name] || ""}
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
                   iconPosition={field.iconPosition}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
@@ -225,8 +208,6 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   icon={field.icon}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
               {field.type === "file" && (
@@ -234,18 +215,14 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   name={field.name}
                   onChange={(file) => handleFileChange(field.name, file)}
                   value={values[field.name] || ""}
-                  value={values[field.name] || ""}
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
                   iconPosition={field.iconPosition}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
@@ -267,8 +244,6 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   icon={field.icon}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
               {field.type === "file" && (
@@ -276,18 +251,14 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   name={field.name}
                   onChange={(file) => handleFileChange(field.name, file)}
                   value={values[field.name] || ""}
-                  value={values[field.name] || ""}
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
                   iconPosition={field.iconPosition}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
@@ -309,8 +280,6 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   icon={field.icon}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
               {field.type === "file" && (
@@ -318,23 +287,18 @@ const DocumentsFormComponent = ({ config, handleNextClick, handleSubmit, employe
                   name={field.name}
                   onChange={(file) => handleFileChange(field.name, file)}
                   value={values[field.name] || ""}
-                  value={values[field.name] || ""}
                   textcss={DocumentStyles[field.textcss].input}
                   placeholder={field.placeholder}
                   icon={field.icon}
                   iconPosition={field.iconPosition}
 
                   onBlur={formik.handleBlur}
-
-                  onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
         </div>
-
 
         <div className="ml-[50vh]">
           <ButtonConfig Config={ButtonforSave} onClick={(label, type) => handleButtonClick(label, type, editMode)} />

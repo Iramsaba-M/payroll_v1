@@ -15,11 +15,7 @@ import CardComponent from "./CardComponent";
 import CardConfig from "./CardConfig";
 import ModalComponent from '../Formfields/modal/ModalComponent';
 import { ModalConfig } from '../Formfields/modal/ModalConfig'
-import { ModalConfig } from '../Formfields/modal/ModalConfig'
 import { postDataImage } from "../../../services/APIService";
-import { useButtonState } from '../../../context/ButtonStateContext';
-import { useFormik } from "formik";
-import { createInitialValues, formSchema, simplifiedData } from "../../../configurations/ValidationSchema/ValidationSchema";
 import { useButtonState } from '../../../context/ButtonStateContext';
 import { useFormik } from "formik";
 import { createInitialValues, formSchema, simplifiedData } from "../../../configurations/ValidationSchema/ValidationSchema";
@@ -27,8 +23,6 @@ const BasicDetailsFormComponent = ({
   config,
   handleNextClick,
   handleEmpId,
-  editEmployees,
-
   editEmployees,
 
 }) => {
@@ -96,20 +90,14 @@ const BasicDetailsFormComponent = ({
   const handleChange = (name, value) => {
     if (config.some((field) => field.name === name && field.type === "date")) {
       const formattedDate = value.split("/").reverse().join("-"); // Assuming date format is DD/MM/YYYY
-      const formattedDate = value.split("/").reverse().join("-"); // Assuming date format is DD/MM/YYYY
       setOriginalDateValues({ ...originalDateValues, [name]: value });
       setValues({ ...values, [name]: formattedDate });
-      formik.setValues({ ...formik.values, [name]: formattedDate });
       formik.setValues({ ...formik.values, [name]: formattedDate });
     } else {
       setValues({ ...values, [name]: value });
       formik.setValues({ ...formik.values, [name]: value });
-      formik.setValues({ ...formik.values, [name]: value });
     }
   };
-
-
-
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -118,11 +106,7 @@ const BasicDetailsFormComponent = ({
 
 
   const handleButtonClick = async (label, type) => {
-
-
-  const handleButtonClick = async (label, type) => {
     console.log("EditMode:", editMode);
-    console.log("AddMode:", AddMode);
     console.log("AddMode:", AddMode);
     console.log("Label:", label);
     console.log("Type:", type);
@@ -136,13 +120,10 @@ const BasicDetailsFormComponent = ({
   const employeeId = values.employee_id;
 
   const onSubmit = async (e, label) => {
-  const onSubmit = async (e, label) => {
     e.preventDefault();
     try {
       formik.handleSubmit();
-      formik.handleSubmit();
       console.log("Form Values:", values);
-      // Create a FormData object to handle form data including file uploads
       // Create a FormData object to handle form data including file uploads
       const formData = new FormData();
 
@@ -218,7 +199,6 @@ const BasicDetailsFormComponent = ({
                   />
                 )}
                 {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
-                {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               </div>
             ))}
             {config.slice(1, 2).map((field, index) => (
@@ -238,7 +218,6 @@ const BasicDetailsFormComponent = ({
                     onBlur={formik.handleBlur}
                   />
                 )}
-                {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
                 {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               </div>
             ))}
@@ -260,7 +239,6 @@ const BasicDetailsFormComponent = ({
                   />
                 )}
                 {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
-                {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               </div>
             ))}
           </div>
@@ -269,7 +247,6 @@ const BasicDetailsFormComponent = ({
           <div className="form-line flex mb-4">
             {config.slice(3, 5).map((field, index) => (
               <div key={index} className={`form-field ${field.fieldstyle}`}>
-                <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
@@ -290,7 +267,6 @@ const BasicDetailsFormComponent = ({
                   <OptionsComponent
                     name={field.name}
                     options={field.options}
-                    // value={values[field.name] || ""}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
@@ -302,7 +278,6 @@ const BasicDetailsFormComponent = ({
                   />
                 )}
                 {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
-                {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               </div>
             ))}
           </div>
@@ -311,7 +286,6 @@ const BasicDetailsFormComponent = ({
           <div className="form-line flex mb-4">
             {config.slice(5, 7).map((field, index) => (
               <div key={index} className={`form-field ${field.fieldstyle}`}>
-                <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <div className="absolute ml-[30vh] mt-8">{field.icon}</div>
                 <label className={TextStyle[field.textcss].label}>
                   {field.label}
@@ -342,12 +316,10 @@ const BasicDetailsFormComponent = ({
                   />
                 )}
                 {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
-                {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               </div>
             ))}
             <div className=" translate-y-[-390%] ml-8 p-3">
               <CardComponent
-                CardConfig={CardConfig}
                 CardConfig={CardConfig}
                 handleChange={handleChange}
                 photoContent={values.photo_content}
@@ -361,7 +333,6 @@ const BasicDetailsFormComponent = ({
         </div>
 
         <div className="form-line flex mb-4 ">
-        <div className="form-line flex mb-4 ">
           {config.slice(7, 10).map((field, index) => (
             <div key={index} className={`form-field ${field.fieldstyle}`}>
               <label className={TextStyle[field.textcss].label}>
@@ -371,7 +342,6 @@ const BasicDetailsFormComponent = ({
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
@@ -395,7 +365,6 @@ const BasicDetailsFormComponent = ({
                 />
               )}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
         </div>
@@ -409,7 +378,6 @@ const BasicDetailsFormComponent = ({
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
@@ -420,7 +388,6 @@ const BasicDetailsFormComponent = ({
                   onBlur={formik.handleBlur}
                 />
               )}
-              {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
               {formik.touched[field.name] && formik.errors[field.name] && <p className='error-form text-xs text-red-600'>{formik.errors[field.name]}</p>}
             </div>
           ))}
@@ -462,7 +429,6 @@ const BasicDetailsFormComponent = ({
               </div>
             ))}
 
-
           </div>
         </div>
         <div className=" flex mb-4 -translate-y-[12vh] w-6">
@@ -475,7 +441,6 @@ const BasicDetailsFormComponent = ({
                 <OptionsComponent
                   name={field.name}
                   options={field.options}
-                  // value={values[field.name] || ""}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}
@@ -503,7 +468,6 @@ const BasicDetailsFormComponent = ({
           ))}
         </div>
         <div className="">
-
 
           <div className="form-line flex mb-4 -translate-y-[12vh]">
             {config.slice(16, 19).map((field, index) => (
@@ -558,7 +522,6 @@ const BasicDetailsFormComponent = ({
       />
     </form>
   );
-}
 }
 
 export default BasicDetailsFormComponent;

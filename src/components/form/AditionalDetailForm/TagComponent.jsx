@@ -17,7 +17,6 @@ const TagComponent = ({ cardConfig, onOptionChange, initialSelectedOptions = [],
     }
 
     const { label, dropdownOptions, placeholder } = cardConfig[0];
-    const { label, dropdownOptions, placeholder } = cardConfig[0];
 
     const handleRemoveOption = (optionLabel) => {
         const updatedOptions = selectedOptions.filter((option) => option !== optionLabel);
@@ -31,30 +30,20 @@ const TagComponent = ({ cardConfig, onOptionChange, initialSelectedOptions = [],
             const updatedOptions = [...selectedOptions, selectedValue.trim()];
             setSelectedOptions(updatedOptions);
             onOptionChange && onOptionChange(updatedOptions);
-            const updatedOptions = [...selectedOptions, selectedValue.trim()];
-            setSelectedOptions(updatedOptions);
-            onOptionChange && onOptionChange(updatedOptions);
         }
     };
 
-
     return (
-        <div>
         <div>
             <div className='block text-gray-600 text-xs font-bold my-1'>{label}</div>
             <div className="">
                 <div className="">
                     <select
                         value=""
-                        value=""
                         onChange={handleDropdownChange}
                         style={{ appearance: 'none', background: 'transparent' }}
                         onBlur={onBlur}
-                        style={{ appearance: 'none', background: 'transparent' }}
-                        onBlur={onBlur}
                         className="border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-14 mb-2 px-2 py-1 w-60 leading-tight focus:outline-none"
-                    >
-                        <option value="" disabled>{placeholder}</option>
                     >
                         <option value="" disabled>{placeholder}</option>
                         {dropdownOptions.map((option, index) => (
@@ -65,12 +54,9 @@ const TagComponent = ({ cardConfig, onOptionChange, initialSelectedOptions = [],
                     </select>
                     <RiArrowDropDownFill className='size-6 ml-[29vh] -mt-8 text-gray-700' />
                 </div>
-                    <RiArrowDropDownFill className='size-6 ml-[29vh] -mt-8 text-gray-700' />
-                </div>
             </div>
             <div className="flex items-center flex-wrap mt-2">
                 {selectedOptions.map((tag, index) => (
-                    <span key={index} className="border-gray-100 bg-transparent text-gray text-xs mr-6 mb-2 leading-tight focus:outline-none">
                     <span key={index} className="border-gray-100 bg-transparent text-gray text-xs mr-6 mb-2 leading-tight focus:outline-none">
                         {tag}
                         <span
@@ -84,7 +70,6 @@ const TagComponent = ({ cardConfig, onOptionChange, initialSelectedOptions = [],
                 ))}
 
             </div>
-            {formik.touched["employee_benefit"] && formik.errors["employee_benefit"] && <p className='error-form text-xs text-red-600'>{formik.errors["employee_benefit"]}</p>}
             {formik.touched["employee_benefit"] && formik.errors["employee_benefit"] && <p className='error-form text-xs text-red-600'>{formik.errors["employee_benefit"]}</p>}
         </div>
     );

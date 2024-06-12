@@ -55,7 +55,6 @@ const Barchart = ({ graphdata }) => {
 
 const Pichart = ({ graphdata }) => {
   const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
-  const COLORS = ['#6495ED', '#008B8B', '#00CED1'];
   if (!graphdata) {
     return null;
   }
@@ -187,7 +186,6 @@ const ReportsComponent = () => {
         console.log('setCardData:', cardData);
       } catch (error) {
         console.error('Error posting data:', error);
-        setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
         setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
       }
     };
