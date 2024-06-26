@@ -1,0 +1,56 @@
+/* Announcememt.css */
+.editor-container {
+  position: relative;
+  
+}
+
+.ql-toolbar {
+  position: relative;
+  /* width: 100%; */
+  z-index: 1;
+}
+
+.ql-container.ql-snow {
+  min-height: 8rem;
+  border:none;
+  
+}
+
+
+.ql-toolbar.ql-snow {
+  border-top: none;
+  border: #F1F4FD; 
+}
+
+.custom-toolbar .ql-picker,
+.custom-toolbar .ql-stroke,
+.custom-toolbar .ql-fill,
+.custom-toolbar .ql-picker-options {
+  color: #6C6BF0; /* Blue color */
+  /*fill: #3b82f6; /* Blue color for fill */
+  stroke: #9A9CF6; /* Blue color for stroke */
+}
+
+.custom-toolbar .ql-picker-item:hover,
+.custom-toolbar .ql-picker-label:hover,
+.custom-toolbar .ql-stroke:hover,
+.custom-toolbar .ql-fill:hover {
+  color: #6C6BF0; /* Darker blue color for hover */
+  /* fill: #2563eb; /* Darker blue color for hover */
+  stroke: #6C6BF0; /* Darker blue color for hover */
+}
+
+.custom-toolbar .ql-picker-options {
+  border-color: #6C6BF0; /* Blue color for border */
+}
+.ql-tooltip {
+  /* max-width: 200px; */
+  left: auto !important;
+  right: auto !important;
+  /* margin-left:  !important; */
+  margin-right: auto !important;
+}
+.custom-toolbar .preview {
+  color: #6C6BF0;
+  stroke: #6C6BF0;
+}

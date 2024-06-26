@@ -104,6 +104,13 @@ const TextStyle = {
     label: 'block text-gray-700 lg:text-sm font-bold text-base',
     input: '   bg-transparent mr-14 text-gray-500 lg:text-sm font-semibold mb-2   lg:w-64 leading-tight focus:outline-none w-52 text-base', 
   },
+
+  //payment remainder setting //
+  paymentsettingtext: {
+    label: 'block text-gray-600 text-xs font-bold my-1',
+    input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent mr-3 text-gray text-sm text-centre mb-2 px-2 py-1 leading-tight focus:outline-none',//mr-14
+
+  },
 };
 
 

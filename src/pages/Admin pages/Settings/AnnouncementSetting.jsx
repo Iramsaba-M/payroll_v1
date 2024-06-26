@@ -1,11 +1,10 @@
 
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import AnnouncementSettingComponent from '../../../components/AppSettingComponents/AnnouncementSettings/AnnouncementSettingComponent';
 
 const AnnouncementSetting = () => {
-  const errorCode = 404
   return (
     <div>
-      <ErrorScreen errorCode={errorCode} />
+      <AnnouncementSettingComponent />
     </div>
   )
 
