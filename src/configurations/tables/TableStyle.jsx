@@ -33,7 +33,9 @@ mypayslipdatastyle1: " border-b-zinc-50 border-b text-center text-black px-10  p
 style8: "text-center px-[30.5px] py-2  mt-10 text-gray-500 bg-gray-100 text-xs font-sans",
 style9: "text-center px-[24px] py-2  mt-10 text-gray-500 bg-gray-100 text-xs font-sans",
 style10: "text-center px-[4.3vh] py-2  mt-10 text-gray-500 bg-gray-100 text-xs font-sans",
+style11: "text-center px-[20px] py-2  mt-10 text-gray-500 bg-gray-100 text-xs font-sans",
 datastyle5: "  border-b-zinc-50  border-b text-center text-gray-800 px-6  py-4 text-sm ",
+
 }
 
 export default TableStyle;
