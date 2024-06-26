@@ -1,11 +1,10 @@
 
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
+import PaymentsReminderSettings from '../../../components/AppSettingComponents/PaymentRemainderSettings.jsx/PaymentRemainderSettings';
 
 const PaymentReminderSetting = () => {
-  const errorCode = 404
   return (
     <div>
-      <ErrorScreen errorCode={errorCode} />
+      <PaymentsReminderSettings />
     </div>
   )
 }

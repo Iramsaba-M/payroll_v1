@@ -1,11 +1,14 @@
 
-import ErrorScreen from '../../../errorhandling/ErrorScreen';
+// import ErrorScreen from '../../../errorhandling/ErrorScreen';
+
+import Calendar from "../../../components/form/Formfields/modal/CustomCalander/Calendar";
 
 const PayslipSetting = () => {
-  const errorCode = 404
+  // const errorCode = 404
   return (
     <div>
-      <ErrorScreen errorCode={errorCode} />
+      <Calendar />
+      {/* <ErrorScreen errorCode={errorCode} /> */}
     </div>
   )
 }
