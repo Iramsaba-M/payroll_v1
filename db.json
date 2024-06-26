@@ -2042,166 +2042,105 @@
       "id": "8244"
     }
   ],
-  "Leavenotification": [
+
+  "paymentRemainder": [
     {
-      "employee_id": "IK01",
-      "employee_name": "John Doe",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "hello",
-      "status": "pending",
-      "comment": "Still pending",
-      "id": "af26"
+      "ESIC": "Upcoming Remainder in 2 days",
+      "due_date": "2024-06-24",
+      "payment_date": "2024-06-19",
+      "id": "94f3"
     },
     {
-      "employee_id": "IK02",
-      "employee_name": "Jane Smith",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "abshjhj",
-      "status": "approved",
-      "comment": "Approved by admin",
-      "id": "345e"
+      "PT": "Today is the due ",
+      "due_date": "2024-06-20",
+      "payment_date": "2024-06-19",
+      "id": "33b8"
     },
     {
-      "employee_id": "IK03",
-      "employee_name": "Alice Johnson",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "abshjhj",
-      "status": "rejected",
-      "comment": "Rejected by admin",
-      "id": "b08b"
+      "TDS": "Today is Payment Day",
+      "due_date": "2024-06-21",
+      "payment_date": "2024-06-20",
+      "id": "c42b"
     },
     {
-      "employee_id": "IK04",
-      "employee_name": "Bob Brown",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "abshjhj",
-      "status": "pending",
-      "comment": "Still pending",
-      "id": "ff58"
-    },
-    {
-      "employee_id": "IK05",
-      "employee_name": "Charlie Davis",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "abshjhj",
-      "status": "approved",
-      "comment": "Rejected by admin",
-      "id": "33a8"
-    },
-    {
-      "employee_id": "IK06",
-      "employee_name": "Diana Evans",
-      "start_date": "12/03/2023",
-      "end_date": "13/03/2023",
-      "full_day": "true",
-      "leave_type": "sick",
-      "reason": "abshjhj",
-      "status": "rejected",
-      "comment": "Rejected by admin",
-      "id": "6db4"
+      "TDS": "Due Date is on 7th of this month.",
+      "due_date": "2024-06-24",
+      "payment_date": "2024-06-22",
+      "id": "816e"
     }
   ],
-  "Loannotification": [
+  "paymentRemaindersetting1": [
     {
-      "employee_id": "IKO1",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "pending",
-      "comment": "Still pending",
-      "id": "8030"
+      "name": "payment-ESIC",
+      "enable": true,
+      "payment_type": "onetime",
+      "due_date": "2024-06-14",
+      "payment_date": "2024-06-13",
+      "id": "553c"
     },
     {
-      "employee_id": "IKO2",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "approved",
-      "comment": "Still pending",
-      "id": "3bdb"
+      "name": "payment-PT",
+      "enable": true,
+      "payment_type": "onetime",
+      "due_date": "2024-06-14",
+      "payment_date": "2024-06-13",
+      "id": "fdab"
     },
     {
-      "employee_id": "IKO3",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "rejected",
-      "comment": "Still pending",
-      "id": "eae2"
+      "name": "payment-TDS",
+      "enable": true,
+      "payment_type": "onetime",
+      "due_date": "2024-06-14",
+      "payment_date": "2024-06-13",
+      "id": "4965"
     },
     {
-      "employee_id": "IKO4",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "approved",
-      "comment": "Still pending",
-      "id": "121f"
+      "name": "payment-PF",
+      "enable": false,
+      "payment_type": "recurring",
+      "due_date": "2024-06-14",
+      "payment_date": "2024-06-13",
+      "id": "4964"
     },
     {
-      "employee_id": "IKO5",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "pending",
-      "comment": "Still pending",
-      "id": "e704"
+      "id": "e5ac",
+      "name": "vikas v1",
+      "enable": false,
+      "payment_type": "recurring",
+      "due_date": "2024-06-14",
+      "payment_date": "2024-06-13",
+      "paymentType": "recurring"
     },
     {
-      "employee_id": "IKO6",
-      "employee_name": "abc",
-      "loan_type": "home_loan",
-      "maximum_amount": 1000,
-      "instalment_period": 8,
-      "emi": 5000,
-      "reason": "pending",
-      "status": "rejected",
-      "comment": "Still pending",
-      "id": "e185"
+      "id": "f18f",
+      "due_date": "2024-06-21",
+      "payment_date": "2024-06-29",
+      "payment_type": "recurring",
+      "name": "vikas-v2",
+      "enable": true,
+      "recur_type": "weekly"
     }
   ],
-  "payrollnotification": [
+  "AnnouncementSettingComponent": [
     {
-      "text": "Payroll is currently on hold.",
-      "id": "2b81"
+      "id": "c3fe",
+      "content": "<p><strong>Vikas</strong></p><p><br></p><ul><li><span style=\"color: rgb(68, 68, 68);\">hi hello</span></li><li><span style=\"color: rgb(68, 68, 68);\">my name is vikas</span></li></ul><p><br></p>"
     },
     {
-      "text": "Payroll will be processed tomorrow.",
-      "id": "a9ca"
+      "id": "215f",
+      "content": "<p><a href=\"http://localhost:5173/apps/Settings/AnnouncementSetting\" rel=\"noopener noreferrer\" target=\"_blank\">hssh</a></p>"
     },
     {
-      "text": "Payroll is currently on hold.",
-      "id": "bbb9"
+      "id": "34dc",
+      "content": "<p class=\"ql-align-justify\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-justify\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-justify\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p>"
+    },
+    {
+      "id": "c35f",
+      "content": "<h3 class=\"ql-align-right\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</h3><h3 class=\"ql-align-right\">Or maybe looking for something more romantic? What are you today: bold or playful?</h3><h3 class=\"ql-align-right\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</h3><p><br></p>"
+    },
+    {
+      "id": "bd91",
+      "content": "<p class=\"ql-align-center\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-center\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-center\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p><p class=\"ql-align-center\"><br></p>"
     }
   ],
 

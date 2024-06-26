@@ -64,12 +64,12 @@ const ReimbrusmentApprovalSettings = () => {
       }
       return acc;
     }, {});
-    
+
     const renumberedNames = {};
     renumberedApprovers.forEach((approver) => {
       renumberedNames[approver.id] = filteredNames[approver.id] || approverNames[approver.id];
     });
-    
+
     setApproverNames(renumberedNames);
   };   
 
@@ -108,11 +108,8 @@ const ReimbrusmentApprovalSettings = () => {
     }
   };
 
-const Multilevel =() => {
-  const errorCode=404
- 
   return (
-    
+
     <div className={containerStyle}>
       <div className={textContainerStyle}>
         <div className={headingStyle}>
@@ -157,7 +154,7 @@ const Multilevel =() => {
               <MdCancel />
             </span>
           </div>
-          
+
           ))}
           <button className={addButtonStyle} onClick={addNewLevel}>
             Add New Level
@@ -169,6 +166,8 @@ const Multilevel =() => {
 
       </div>
     </div>
-  )
-  }
-export default Multilevel;
+  );
+};
+
+export default ReimbrusmentApprovalSettings;
+ 
