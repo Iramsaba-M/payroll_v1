@@ -14,6 +14,8 @@ import ReactPaginate from 'react-paginate';
 import { Editmodelconfig } from '../../components/form/Formfields/modal/Editmodelconfig';
 import { Editmodelloanconfig } from '../../components/form/Formfields/modal/Editmodelconfigloan';
 import PropTypes from 'prop-types';
+import { GrView } from "react-icons/gr";
+import { Editmodelreport } from '../../components/form/Formfields/modal/Editmodelconfigreport';
 
 
 function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
@@ -22,6 +24,7 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editnotifyopen, seteditnotifyopen] = useState(false);
+  const [editreportopen, seteditreportopen] = useState(false);
   const [editloanopen, seteditloanopen] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const { EditModeclick } = useButtonState();
@@ -45,6 +48,7 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
     setEditModalOpen(false);
     seteditnotifyopen(false);
     seteditloanopen(false);
+    seteditreportopen(false);
   };
 
   const handleDownload = async (row) => {
@@ -108,7 +112,28 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
       console.error('Error fetching payslips data:', error);
     }
   };
+  const handleInvoice = (base64Data) => {
+    try {
+      // Decode the Base64 content to a binary string
+      const byteCharacters = atob(base64Data);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
 
+      // Create a Blob from the binary data
+      const blob = new Blob([byteArray], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      // Open the PDF in a new tab
+      window.open(url);
+    } catch (error) {
+      console.error('Error fetching or displaying invoice data:', error);
+    }
+  };
+
+  
   const editleavenotification = async (row) => {
     try {
       if (!row || !row.employee_id) {
@@ -132,6 +157,20 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
       // Store the employee_id of the selected row
       setSelectedEmployeeId(row.employee_id);
       seteditloanopen(true, row.employee_id);
+
+    } catch (error) {
+      console.error('Error fetching payslips data:', error);
+    }
+  }
+  const editreportnotification = async (row) => {
+    try {
+      if (!row || !row.employee_id) {
+        console.error('Error: Invalid row data or missing employee_id');
+        return;
+      }
+      // Store the employee_id of the selected row
+      setSelectedEmployeeId(row.employee_id);
+      seteditreportopen(true, row.employee_id);
 
     } catch (error) {
       console.error('Error fetching payslips data:', error);
@@ -280,7 +319,19 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
           <MdDeleteOutline />
         </button>
       );
-    } else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
+    } else if (column.dataType === 'icon' && column.name === 'documents') {
+      // Render Download button with icon
+      return (
+        <button
+          className=" text-gray-400 px-4 py-1 rounded-full cursor-pointer inline-flex items-center"
+          onClick={() => handleInvoice(row.documents)}
+        >
+          <GrView /> 
+              view
+        </button>
+      );
+    }
+    else if (column.dataType === 'icon' && column.name === 'finalizeedit') {
       // Render Edit icon
       return (
         <button
@@ -321,6 +372,24 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
             <button
               className="cursor-pointer"
               onClick={() => editloannotification(row)}
+            >
+              <MdOutlineEdit className="text-blue-500  text-xl" />
+            </button>
+          );
+      }
+    }else if (column.dataType === 'icon' && column.name === 'action3') {
+      switch (row.status) {
+        case 'Approved':
+          return <FaRegCheckCircle className="text-green-500 ml-[4px] text-xl font-bold" />;
+        case 'Rejected':
+          return <ImCancelCircle className="text-red-500 ml-[4px] text-xl" />;
+        case 'Pending':
+        default:
+          console.log('row', row);
+          return (
+            <button
+              className="cursor-pointer"
+              onClick={() => editreportnotification(row)}
             >
               <MdOutlineEdit className="text-blue-500  text-xl" />
             </button>
@@ -418,9 +487,12 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
         // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
         <ModalComponent isOpen={editloanopen} onClose={handleCloseModal} config={Editmodelloanconfig} employee_id={selectedEmployeeId} />
       )}
+      {editreportopen && (
+        // <ModalComponent isOpen={editnotifyopen} onClose={handleCloseModal} config={Editmodelconfig} />
+        <ModalComponent isOpen={editreportopen} onClose={handleCloseModal} config={Editmodelreport} employee_id={selectedEmployeeId} />
+      )}
     </div>
   );
 }
-
 
 export default DynamicTable;
