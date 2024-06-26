@@ -1,44 +1,67 @@
 
+// import { useComponentMapping } from "../context/ComponentMappingContext";
+// import { sections } from "./LayoutConfigFile";
+
+// const DynamicLayout = () => {
+
+//     const componentMapping = useComponentMapping();
+
+//     return (
+//         <div className="">
+//             <div className="flex ml-14">
+//                 {sections.section1 &&
+//                     sections.section1.map((section, index) => (
+//                         <div key={index} className={section.style}>
+//                             {(() => {
+//                                 const Component = componentMapping[section.componentKey];
+//                                 const config = section.config;
+//                                 return <Component content={section.content} componentMapping={componentMapping} config={config} />;
+//                             })()}
+//                         </div>
+//                     ))}
+//             </div>
+
+//         </div>
+//     );
+// };
+
+// export default DynamicLayout;
+
 import { useComponentMapping } from "../context/ComponentMappingContext";
 import { sections } from "./LayoutConfigFile";
+import PropTypes from 'prop-types';
 
-const DynamicLayout = () => {
+const DynamicLayout = ({ role }) => {
+  const componentMapping = useComponentMapping();
 
-    const componentMapping = useComponentMapping();
-
-    return (
-        <div className="">
-            <div className="flex ml-14">
-                {sections.section1 &&
-                    sections.section1.map((section, index) => (
-                        <div key={index} className={section.style}>
-                            {(() => {
-                                const Component = componentMapping[section.componentKey];
-                                const config = section.config;
-                                return <Component content={section.content} componentMapping={componentMapping} config={config} />;
-                            })()}
-                        </div>
-                    ))}
-
-                <div className="">
-                    {sections.section2 &&
-                        sections.section2.map((section, index) => (
-                            <div key={index} className={section.style}>
-                                {(() => {
-                                    const Component = componentMapping[section.componentKey];
-                                    if (!Component) {
-                                        console.error(`Component with key "${section.componentKey}" not found.`);
-                                        return null;
-                                    }
-                                    return <Component content={section.content} componentMapping={componentMapping} />;
-                                })()}
-                            </div>
-                        ))}
-                </div>
+  return (
+    <div className="">
+      <div className="flex ml-14">
+        {sections.section1 &&
+          sections.section1.map((section, index) => (
+            <div key={index} className={section.style}>
+              {(() => {
+                const Component = componentMapping[section.componentKey];
+                const config = section.config;
+                return (
+                  <Component
+                    content={section.content}
+                    componentMapping={componentMapping}
+                    config={config}
+                    role={role} // Pass the role to each component
+                  />
+                );
+              })()}
             </div>
-
-        </div>
-    );
+          ))}
+      </div>
+    </div>
+  );
 };
+
+DynamicLayout.propTypes = {
+  role: PropTypes.string.isRequired, // Define role prop type
+};
+
 
 export default DynamicLayout;

@@ -2,10 +2,12 @@
 import { NavLink } from "react-router-dom";
 import LogoConfig from "../logo/LogoConfig";
 import PropTypes from 'prop-types';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const IconbarComponent = ({ config }) => {
   const activeLink = "text-[#3e63dd] rounded-md bg-blue-light";
   const normalLink = "text-gray-300 hover:rounded-md";
+  const { logout } = useAuth0();
 
   return (
     <div className="w-14 h-64 flex flex-col items-center justify-between  mt-1">
@@ -22,15 +24,25 @@ const IconbarComponent = ({ config }) => {
         ))}
       </ul>
 
-      <ul className="absolute bottom-2 w-12  flex flex-col justify-between items-center">
+      <ul className="absolute bottom-2 w-12 flex flex-col justify-between items-center">
         {config && config.footerIcon.map((footerIcon, index) => (
-          <NavLink
-            key={index}
-            to={footerIcon.path}
-            className={normalLink} 
-          >
-            <li className="cursor-pointer ">{footerIcon.icon}</li>
-          </NavLink>
+          footerIcon.key === 'logout' ? (
+            <button
+              key={index}
+              onClick={() => logout({ returnTo: window.location.origin })}
+              className={normalLink}
+            >
+              <li className="cursor-pointer">{footerIcon.icon}</li>
+            </button>
+          ) : (
+            <NavLink
+              key={index}
+              to={footerIcon.path}
+              className={normalLink}
+            >
+              <li className="cursor-pointer">{footerIcon.icon}</li>
+            </NavLink>
+          )
         ))}
       </ul>
     </div>
@@ -50,8 +62,8 @@ IconbarComponent.propTypes = {
         path: PropTypes.string.isRequired,
         icon: PropTypes.element.isRequired
       })
-    ).isRequired
-  }).isRequired
+    )
+  })
 };
 
 export default IconbarComponent;

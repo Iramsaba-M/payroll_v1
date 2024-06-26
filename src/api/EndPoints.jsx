@@ -108,6 +108,10 @@ export const Loan_notification_admin ='loan_employee';
  
 export const Loan_notification_patch ='update_loan_settings/';
 
+export const Reimbrusment_notification_admin ='reimbrusementnotify';
+ 
+export const Reimbrusement_notification_patch ='reimbrusementnotify/';
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //ENDUSER

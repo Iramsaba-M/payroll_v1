@@ -1,0 +1,10 @@
+{
+    "title": "Create a Learning Management System Account",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "emailLabel": "Email Id",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "submitButtonLabel": "Submit"
+  }
+  

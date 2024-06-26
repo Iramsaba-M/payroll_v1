@@ -948,35 +948,43 @@
   "Typeofreimbursement": [
     {
       "reimbursement_type": "food",
-      "enable": false
+      "enable": false,
+      "id": "d239"
     },
     {
       "reimbursement_type": "hotel and accomodation",
-      "enable": true
+      "enable": true,
+      "id": "6782"
     },
     {
       "reimbursement_type": "travel",
-      "enable": false
+      "enable": false,
+      "id": "4692"
     },
     {
       "reimbursement_type": "bonus",
-      "enable": true
+      "enable": true,
+      "id": "6854"
     },
     {
       "reimbursement_type": "travel",
-      "enable": false
+      "enable": false,
+      "id": "989b"
     },
     {
       "reimbursement_type": "bonus",
-      "enable": true
+      "enable": true,
+      "id": "3bbb"
     },
     {
       "reimbursement_type": "FFF",
-      "enable": false
+      "enable": false,
+      "id": "b70c"
     },
     {
       "reimbursement_type": "hello",
-      "enable": false
+      "enable": false,
+      "id": "1ae9"
     }
   ],
   "reimbursementpolicy": [
@@ -1851,7 +1859,7 @@
       "minimum_amount": "234",
       "enable": "",
       "period": "Within 1 month of expense made",
-      "id": 1
+      "id": "1"
     },
     {
       "reimbursement_type": "travel",
@@ -1859,7 +1867,7 @@
       "minimum_amount": "234",
       "enable": false,
       "period": "Within 3 month of expense made",
-      "id": 2
+      "id": "2"
     },
     {
       "reimbursement_type": "Hotel & Accommodation",
@@ -1867,7 +1875,7 @@
       "minimum_amount": "12345",
       "enable": true,
       "period": "Within 6 month of expense made",
-      "id": 3
+      "id": "3"
     },
     {
       "reimbursement_type": "Fuel",
@@ -1875,7 +1883,7 @@
       "minimum_amount": "3456",
       "enable": true,
       "period": "",
-      "id": 4
+      "id": "4"
     },
     {
       "reimbursement_type": "holiday",
@@ -1883,7 +1891,7 @@
       "minimum_amount": "1234",
       "enable": true,
       "period": "Within 2 month of expense made",
-      "id": 5
+      "id": "5"
     }
   ],
   "admin_leavepolicy": [
@@ -2007,7 +2015,8 @@
         "sick": 2,
         "casual": 1,
         "present_days": 12
-      }
+      },
+      "id": "964c"
     },
     {
       "year": "2024",
@@ -2020,158 +2029,672 @@
         "sick": 0,
         "casual": 1,
         "present_days": 15
-      }
+      },
+      "id": "140d"
     }
   ],
-
- "enduser_home":[{
-    "employee_id" : "IK01",
-    "deduction" : 5667.00000000000000003,
-    "earnings" : 34567.99999957656789,
-    "annual_ctc" : 300000.64544657876
+  "enduser_home": [
+    {
+      "employee_id": "IK01",
+      "deduction": 5667,
+      "earnings": 34567.99999957657,
+      "annual_ctc": 300000.64544657874,
+      "id": "8244"
+    }
+  ],
+  "Leavenotification": [
+    {
+      "employee_id": "IK01",
+      "employee_name": "John Doe",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "hello",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "af26"
+    },
+    {
+      "employee_id": "IK02",
+      "employee_name": "Jane Smith",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "approved",
+      "comment": "Approved by admin",
+      "id": "345e"
+    },
+    {
+      "employee_id": "IK03",
+      "employee_name": "Alice Johnson",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "rejected",
+      "comment": "Rejected by admin",
+      "id": "b08b"
+    },
+    {
+      "employee_id": "IK04",
+      "employee_name": "Bob Brown",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "ff58"
+    },
+    {
+      "employee_id": "IK05",
+      "employee_name": "Charlie Davis",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "approved",
+      "comment": "Rejected by admin",
+      "id": "33a8"
+    },
+    {
+      "employee_id": "IK06",
+      "employee_name": "Diana Evans",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "rejected",
+      "comment": "Rejected by admin",
+      "id": "6db4"
+    }
+  ],
+  "Loannotification": [
+    {
+      "employee_id": "IKO1",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "8030"
+    },
+    {
+      "employee_id": "IKO2",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "approved",
+      "comment": "Still pending",
+      "id": "3bdb"
+    },
+    {
+      "employee_id": "IKO3",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "rejected",
+      "comment": "Still pending",
+      "id": "eae2"
+    },
+    {
+      "employee_id": "IKO4",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "approved",
+      "comment": "Still pending",
+      "id": "121f"
+    },
+    {
+      "employee_id": "IKO5",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "e704"
+    },
+    {
+      "employee_id": "IKO6",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "rejected",
+      "comment": "Still pending",
+      "id": "e185"
+    }
+  ],
+  "payrollnotification": [
+    {
+      "text": "Payroll is currently on hold.",
+      "id": "2b81"
+    },
+    {
+      "text": "Payroll will be processed tomorrow.",
+      "id": "a9ca"
+    },
+    {
+      "text": "Payroll is currently on hold.",
+      "id": "bbb9"
     }
   ],
 
   "Leavenotification": [
-      {
-          "employee_id" : "IK01",
-          "employee_name" : "John Doe",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "hello",
-          "status":"pending",
-          "comment":"Still pending"
-      },
-      {
-          "employee_id" : "IK02",
-          "employee_name" : "Jane Smith",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "abshjhj",
-          "status":"approved",
-          "comment":"Approved by admin"
-      },
-      {
-          "employee_id" : "IK03",
-          "employee_name" : "Alice Johnson",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "abshjhj",
-          "status":"rejected",
-          "comment":"Rejected by admin"
-      },
-      {
-          "employee_id" : "IK04",
-          "employee_name" : "Bob Brown",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "abshjhj",
-          "status":"pending",
-          "comment":"Still pending"
-      },
-      {
-          "employee_id" : "IK05",
-          "employee_name" : "Charlie Davis",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "abshjhj",
-          "status":"approved",
-          "comment":"Rejected by admin"
-      },
-      {
-          "employee_id" : "IK06",
-          "employee_name" : "Diana Evans",
-          "start_date": "12/03/2023",
-          "end_date": "13/03/2023",
-          "full_day" : "true",
-          "leave_type": "sick",
-          "reason": "abshjhj",
-          "status":"rejected",
-          "comment":"Rejected by admin"
-      }
+    {
+      "employee_id": "IK01",
+      "employee_name": "John Doe",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "hello",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "86f9"
+    },
+    {
+      "employee_id": "IK02",
+      "employee_name": "Jane Smith",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "approved",
+      "comment": "Approved by admin",
+      "id": "c1c9"
+    },
+    {
+      "employee_id": "IK03",
+      "employee_name": "Alice Johnson",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "rejected",
+      "comment": "Rejected by admin",
+      "id": "3217"
+    },
+    {
+      "employee_id": "IK04",
+      "employee_name": "Bob Brown",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "088d"
+    },
+    {
+      "employee_id": "IK05",
+      "employee_name": "Charlie Davis",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "approved",
+      "comment": "Rejected by admin",
+      "id": "a769"
+    },
+    {
+      "employee_id": "IK06",
+      "employee_name": "Diana Evans",
+      "start_date": "12/03/2023",
+      "end_date": "13/03/2023",
+      "full_day": "true",
+      "leave_type": "sick",
+      "reason": "abshjhj",
+      "status": "rejected",
+      "comment": "Rejected by admin",
+      "id": "1cb4"
+    }
   ],
-"Loannotification":[
-  {
-    "employee_id" : "IKO1",
-    "employee_name": "abc",
-    "loan_type" : "home_loan",
-    "maximum_amount": 1000,
-    "instalment_period":8,
-    "emi":5000,
-    "reason":"pending",
-    "status":"pending",
-    "comment":"Still pending"
+  "Loannotification": [
+    {
+      "employee_id": "IKO1",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "52be"
     },
     {
-    "employee_id" : "IKO2",
-    "employee_name": "abc",
-    "loan_type" : "home_loan",
-    "maximum_amount": 1000,
-    "instalment_period":8,
-    "emi":5000,
-    "reason":"pending",
-    "status":"approved",
-    "comment":"Still pending"
+      "employee_id": "IKO2",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "approved",
+      "comment": "Still pending",
+      "id": "0d41"
     },
     {
-      "employee_id" : "IKO3",
+      "employee_id": "IKO3",
       "employee_name": "abc",
-      "loan_type" : "home_loan",
+      "loan_type": "home_loan",
       "maximum_amount": 1000,
-      "instalment_period":8,
-      "emi":5000,
-      "reason":"pending",
-      "status":"rejected",
-      "comment":"Still pending"
-      },
-      {
-      "employee_id" : "IKO4",
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "rejected",
+      "comment": "Still pending",
+      "id": "fae9"
+    },
+    {
+      "employee_id": "IKO4",
       "employee_name": "abc",
-      "loan_type" : "home_loan",
+      "loan_type": "home_loan",
       "maximum_amount": 1000,
-      "instalment_period":8,
-      "emi":5000,
-      "reason":"pending",
-      "status":"approved",
-      "comment":"Still pending"
-      },
-      {
-        "employee_id" : "IKO5",
-        "employee_name": "abc",
-        "loan_type" : "home_loan",
-        "maximum_amount": 1000,
-        "instalment_period":8,
-        "emi":5000,
-        "reason":"pending",
-        "status":"pending",
-        "comment":"Still pending"
- 
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "approved",
+      "comment": "Still pending",
+      "id": "1514"
+    },
+    {
+      "employee_id": "IKO5",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "pending",
+      "comment": "Still pending",
+      "id": "126a"
+    },
+    {
+      "employee_id": "IKO6",
+      "employee_name": "abc",
+      "loan_type": "home_loan",
+      "maximum_amount": 1000,
+      "instalment_period": 8,
+      "emi": 5000,
+      "reason": "pending",
+      "status": "rejected",
+      "comment": "Still pending",
+      "id": "f5be"
+    }
+  ],
+  "payrollnotification": [
+    {
+      "text": "Payroll is currently on hold.",
+      "id": "04e8"
+    },
+    {
+      "text": "Payroll will be processed tomorrow.",
+      "id": "3298"
+    },
+    {
+      "text": "Payroll is currently on hold.",
+      "id": "e241"
+    }
+  ],
+  "reimbrusmentnotifyadmin": [
+    {
+      "employee_name": "John Doe",
+      "employee_id": "E12345",
+      "Reimbursement_Type": "Travel",
+      "expense_date": "2024-06-01",
+      "description": "Flight tickets for conference",
+      "amount": "500.00",
+      "invoice": "<MdOutlineEdit />",
+      "status": "Pending",
+      "comments": "Waiting for approval",
+      "action2": "<MdOutlineEdit />",
+      "id": "9f21"
+    },
+    {
+      "employee_name": "Jane Smith",
+      "employee_id": "E54321",
+      "Reimbursement_Type": "Accommodation",
+      "expense_date": "2024-06-05",
+      "description": "Hotel stay during conference",
+      "amount": "300.00",
+      "invoice": "<MdOutlineEdit />",
+      "status": "Approved",
+      "comments": "Approved by manager",
+      "action2": "<MdOutlineEdit />",
+      "id": "af8d"
+    },
+    {
+      "employee_name": "Alice Johnson",
+      "employee_id": "E67890",
+      "Reimbursement_Type": "Meals",
+      "expense_date": "2024-06-07",
+      "description": "Meals during business trip",
+      "amount": "150.00",
+      "invoice": "<MdOutlineEdit />",
+      "status": "Rejected",
+      "comments": "Exceeded daily allowance",
+      "action2": "<MdOutlineEdit />",
+      "id": "4d1c"
+    },
+    {
+      "employee_name": "Bob Brown",
+      "employee_id": "E09876",
+      "Reimbursement_Type": "Transport",
+      "expense_date": "2024-06-10",
+      "description": "Taxi fare for client meeting",
+      "amount": "75.00",
+      "invoice": "<MdOutlineEdit />",
+      "status": "Pending",
+      "comments": "Submitted for review",
+      "action2": "<MdOutlineEdit />",
+      "id": "646b"
+    },
+    {
+      "employee_name": "Chris Evans",
+      "employee_id": "E13579",
+      "Reimbursement_Type": "Office Supplies",
+      "expense_date": "2024-06-11",
+      "description": "Purchased printer ink",
+      "amount": "60.00",
+      "invoice": "<MdOutlineEdit />",
+      "status": "Approved",
+      "comments": "Approved by procurement",
+      "action2": "<MdOutlineEdit />",
+      "id": "efb4"
+    }
+  ],
+  "reportsnotification": [
+    {
+      "text": "Payroll Report for IT Department Q2 is generated",
+      "id": "46c6"
+    },
+    {
+      "text": "Salary Report of May 2023 is ready. Click here to view.",
+      "id": "2845"
+    }
+  ],
+  "saveLoanApprovalSettings": [
+    {
+      "id": "4345",
+      "approvalType": "allApprovers",
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "vsk@gmail.com"
         },
         {
-        "employee_id" : "IKO6",
-        "employee_name": "abc",
-        "loan_type" : "home_loan",
-        "maximum_amount": 1000,
-        "instalment_period":8,
-        "emi":5000,
-        "reason":"pending",
-        "status":"rejected",
-        "comment":"Still pending"
+          "id": 2,
+          "level": 2,
+          "name": "vk@gmail.com"
         }
+      ]
+    },
+    {
+      "id": "b055",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "abc@gmail.com"
+        },
+        {
+          "id": 2,
+          "level": 2,
+          "name": "xyz@gmail.com"
+        },
+        {
+          "id": 3,
+          "level": 3,
+          "name": "pqr@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": "4a48",
+      "approvalType": false,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "vk@gmail.con"
+        }
+      ]
+    },
+    {
+      "id": "e7a2",
+      "approvalType": false,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        }
+      ]
+    },
+    {
+      "id": "a976",
+      "approvalType": false,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        },
+        {
+          "id": 2,
+          "level": 2,
+          "name": "approver3@example.com"
+        }
+      ]
+    },
+    {
+      "id": "8b0f",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        }
+      ]
+    },
+    {
+      "id": "0b8b",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        },
+        {
+          "id": 2,
+          "level": 2,
+          "name": "approver2@example.com"
+        }
+      ]
+    },
+    {
+      "id": "ddbd",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        },
+        {
+          "id": 5,
+          "level": 2,
+          "name": "approver1@example.com"
+        }
+      ]
+    },
+    {
+      "id": "aa44",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        },
+        {
+          "id": 4,
+          "level": 2,
+          "name": "approver3@example.com"
+        }
+      ]
+    },
+    {
+      "id": "01d6",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver1@example.com"
+        },
+        {
+          "id": 4,
+          "level": 2,
+          "name": "approver3@example.com"
+        }
+      ]
+    },
+    {
+      "id": "7841",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": "approver2@example.com"
+        },
+        {
+          "id": 2,
+          "level": 2,
+          "name": "approver2@example.com"
+        },
+        {
+          "id": 3,
+          "level": 3,
+          "name": ""
+        }
+      ]
+    },
+    {
+      "id": "8027",
+      "approvalType": true,
+      "approvers": [
+        {
+          "id": 1,
+          "level": 1,
+          "name": ""
+        },
+        {
+          "id": 2,
+          "level": 2,
+          "name": ""
+        },
+        {
+          "id": 3,
+          "level": 3,
+          "name": ""
+        },
+        {
+          "id": 4,
+          "level": 4,
+          "name": ""
+        }
+      ]
+    }
+ ],
+  "emails": [
+    {
+      "id": "1",
+      "email": "approver1@example.com"
+    },
+    {
+      "id": "2",
+      "email": "approver2@example.com"
+    },
+    {
+      "id": "3",
+      "email": "approver3@example.com"
+    },
+    {
+      "id": "4",
+      "email": "approver4@example.com"
+    }
   ],
-    "payrollnotification": [
-      { "text": "Payroll is currently on hold." },
-      { "text": "Payroll will be processed tomorrow." },
-      { "text": "Payroll is currently on hold." }
+
+  "users": [
+    {
+      "id": "204c",
+      "nickname": "saba",
+      "name": "saba@gmail.com",
+      "picture": "https://s.gravatar.com/avatar/78720e7250674601189086e983b9c807?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsa.png",
+      "updated_at": "2024-06-24T10:08:09.778Z",
+      "email": "saba@gmail.com",
+      "email_verified": false,
+      "sub": "auth0|667920ac4dc2a2f7799c1043",
+      "role": "admin"
+    },
+    {
+      "id": "c053",
+      "nickname": "vikas",
+      "name": "vikas@gmail.com",
+      "picture": "https://s.gravatar.com/avatar/66169f2b6068780a7c83b5dd99090c03?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fvi.png",
+      "updated_at": "2024-06-24T10:08:37.780Z",
+      "email": "vikas@gmail.com",
+      "email_verified": false,
+      "sub": "auth0|667920d2ab09b31a6c70553a",
+      "role": "employee"
+    },
+    {
+      "id": "e00e",
+      "nickname": "vaishnavi",
+      "name": "vaishnavi@gmail.com",
+      "picture": "https://s.gravatar.com/avatar/f66843fa439ed9a698ab3055d8f225d7?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fva.png",
+      "updated_at": "2024-06-24T10:09:13.360Z",
+      "email": "vaishnavi@gmail.com",
+      "email_verified": false,
+      "sub": "auth0|667920f6ab09b31a6c705550",
+      "role": "employee"
+    }
   ]
 }
