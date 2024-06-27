@@ -6,6 +6,7 @@ import { ButtonStateProvider } from "./context/ButtonStateContext";
 import LoginButton from './authlogin/LoginButton';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
+import Layout from './pages/Home page/Layout/Layout'
 
 // function App() {
 //   const { isAuthenticated, user } = useAuth0();
@@ -49,7 +50,7 @@ function App() {
   }, []);
 
   if (!isAuthenticated) {
-    return <LoginButton />;
+    return <Layout />;
   }
 
   if (!userData) {
