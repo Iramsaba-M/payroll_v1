@@ -20,7 +20,7 @@
 //       </Route>
 //     ));
 //   };
-  
+
 //   return (
 //     <div className="flex w-60 border-r border-gray-200">
 
@@ -35,21 +35,21 @@ import { Routes, Route } from "react-router-dom";
 import { useButtonState } from "../context/ButtonStateContext";
 import routesConfig from "./RoutingConfig"; // Import your routing configuration
 import PropTypes from 'prop-types';
+import { useUserRole } from '../context/UserRoleContext';
 
-const RoutesComponent = ({ role }) => {
+const RoutesComponent = () => {
   const { isAdmin } = useButtonState();
+  const { role } = useUserRole();
 
-  
-  const filteredRoutes = role === "admin"  
-  ? 
-      isAdmin ? routesConfig.find((config) => config.label === "Admin Data").children
-      :routesConfig.find((config) => config.label === "Person Data").children
-      
-     
-    
-  : role === "employee"
-    ? routesConfig.find((config) => config.label === "Person Data").children
-    : [];
+
+  const filteredRoutes = role === "admin"
+    ?
+    isAdmin ? routesConfig.find((config) => config.label === "Admin Data").children
+      : routesConfig.find((config) => config.label === "Person Data").children
+
+    : role === "employee"
+      ? routesConfig.find((config) => config.label === "Person Data").children
+      : [];
 
   const renderRoutes = (routes) => {
     return routes.map((route, index) => (

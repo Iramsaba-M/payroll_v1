@@ -15,7 +15,7 @@ const NotificationsComponent = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/notifications/');
+    navigate('/notifications/');
     setCardClick(false);
   };
 

@@ -2124,23 +2124,23 @@
   "AnnouncementSettingComponent": [
     {
       "id": "c3fe",
-      "content": "<p><strong>Vikas</strong></p><p><br></p><ul><li><span style=\"color: rgb(68, 68, 68);\">hi hello</span></li><li><span style=\"color: rgb(68, 68, 68);\">my name is vikas</span></li></ul><p><br></p>"
+      "value": "<p><strong>Vikas</strong></p><p><br></p><ul><li><span style=\"color: rgb(68, 68, 68);\">hi hello</span></li><li><span style=\"color: rgb(68, 68, 68);\">my name is vikas</span></li></ul><p><br></p>"
     },
     {
       "id": "215f",
-      "content": "<p><a href=\"http://localhost:5173/apps/Settings/AnnouncementSetting\" rel=\"noopener noreferrer\" target=\"_blank\">hssh</a></p>"
+      "value": "<p><a href=\"http://localhost:5173/apps/Settings/AnnouncementSetting\" rel=\"noopener noreferrer\" target=\"_blank\">hssh</a></p>"
     },
     {
       "id": "34dc",
-      "content": "<p class=\"ql-align-justify\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-justify\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-justify\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p>"
+      "value": "<p class=\"ql-align-justify\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-justify\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-justify\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p>"
     },
     {
       "id": "c35f",
-      "content": "<h3 class=\"ql-align-right\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</h3><h3 class=\"ql-align-right\">Or maybe looking for something more romantic? What are you today: bold or playful?</h3><h3 class=\"ql-align-right\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</h3><p><br></p>"
+      "value": "<h3 class=\"ql-align-right\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</h3><h3 class=\"ql-align-right\">Or maybe looking for something more romantic? What are you today: bold or playful?</h3><h3 class=\"ql-align-right\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</h3><p><br></p>"
     },
     {
       "id": "bd91",
-      "content": "<p class=\"ql-align-center\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-center\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-center\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p><p class=\"ql-align-center\"><br></p>"
+      "value": "<p class=\"ql-align-center\">March 13, 2023&nbsp;-&nbsp;‎Express yourself the way you want, with the most downloaded&nbsp;Fonts&nbsp;keyboard in the world! Feeling gothic?</p><p class=\"ql-align-center\">Or maybe looking for something more romantic? What are you today: bold or playful?</p><p class=\"ql-align-center\">Or do you just wanna keep it fancy?&nbsp;Fonts&nbsp;has got you covered! Make your social media profiles stand&nbsp;</p><p class=\"ql-align-center\"><br></p>"
     }
   ],
 

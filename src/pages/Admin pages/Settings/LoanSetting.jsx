@@ -15,7 +15,7 @@ const LoanSetting = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/settings/LoanSetting');
+    navigate('/settings/LoanSetting');
     setCardClick(false);
   };
 

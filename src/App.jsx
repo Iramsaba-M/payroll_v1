@@ -3,10 +3,10 @@ import DynamicLayout from './layouts/DynamicLayout';
 import { ComponentMappingProvider } from './context/ComponentMappingContext';
 import { componentMapping } from './layouts/LayoutConfigFile';
 import { ButtonStateProvider } from "./context/ButtonStateContext";
-import LoginButton from './authlogin/LoginButton';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import Layout from './pages/Home page/Layout/Layout'
+import { UserRoleProvider, useUserRole } from './context/UserRoleContext';
 
 // function App() {
 //   const { isAuthenticated, user } = useAuth0();
@@ -32,9 +32,9 @@ import Layout from './pages/Home page/Layout/Layout'
 
 
 function App() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, logout } = useAuth0();
   const [userData, setUserData] = useState(null);
-  const { logout } = useAuth0();
+  const { setRole } = useUserRole();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -54,40 +54,60 @@ function App() {
   }
 
   if (!userData) {
-    return <div>Loading...
-      <button  className="bg-blue-500 text-white p-2 mb-4"  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-        Log Out
-    </button>
-    </div>;
+    return (
+      <div>
+        Loading...
+        <button
+          className="bg-blue-500 text-white p-2 mb-4"
+          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+        >
+          Log Out
+        </button>
+      </div>
+    );
   }
 
   const currentUser = userData.find(u => u.email === user.email);
 
   if (!currentUser) {
-    return <div>User not found
-      <button  className="bg-blue-500 text-white p-2 mb-4"  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-        Log Out
-    </button>
-    </div>;
-    
-
+    return (
+      <div>
+        User not found
+        <button
+          className="bg-blue-500 text-white p-2 mb-4"
+          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+        >
+          Log Out
+        </button>
+      </div>
+    );
   }
+
+  setRole(currentUser.role);
 
   return (
     <div className="App">
       <ComponentMappingProvider value={componentMapping}>
         <ButtonStateProvider>
-          <DynamicLayout role={currentUser.role} />
+          <DynamicLayout />
         </ButtonStateProvider>
       </ComponentMappingProvider>
     </div>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <UserRoleProvider>
+      <App />
+    </UserRoleProvider>
+  );
+}
+
+// export default App;
 
 
-   {/* <Routes>
+{/* <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route

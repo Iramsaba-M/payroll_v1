@@ -1,7 +1,4 @@
-import HomeMenus from '../components/SidebarMenus/SidebarMenus/HomeMenus'
 import AppMenus from '../components/SidebarMenus/SidebarMenus/AppMenus'
-import SettingsMenus from '../components/SidebarMenus/SidebarMenus/SettingsMenus'
-import TeamMeanus from '../components/SidebarMenus/SidebarMenus/TeamMenus'
 import Home from '../pages/Admin pages/Home/Home'
 import Employee from '../pages/Admin pages/Employee/EmployeePage/Employee'
 import RunPayroll from '../pages/Admin pages/Run Payroll/RunPayroll';
@@ -21,9 +18,6 @@ import ReimbursementSetting from '../pages/Admin pages/Settings/ReimbursementSet
 import LoanSetting from '../pages/Admin pages/Settings/LoanSetting'
 import Demo_ctc from '../pages/Admin pages/Settings/cardcomponent/Demo_ctc'
 import UserAppMenus from '../components/SidebarMenus/UserSidebarMenus/UserAppMenus'
-import UserTeamMenus from '../components/SidebarMenus/UserSidebarMenus/UserTeamMenus'
-import UserHomeMenus from '../components/SidebarMenus/UserSidebarMenus/UserHomeMenus'
-import UserSettingsMenus from "../components/SidebarMenus/UserSidebarMenus/UserSettingsMenus"
 import MyAttendance from '../pages/User pages/My Attendance/MyAttendance'
 import MyPayslips from '../pages/User pages/My Payslips/MyPayslips'
 import UserNotification from '../pages/User pages/Notifications/UserNotification'
@@ -34,10 +28,8 @@ import RequestForReimbursement from '../pages/User pages/Raise Request/RequestFo
 import LoanPolicy from '../pages/Admin pages/Settings/LoanSettingsPages/LoanPolicy'
 import TypeOfLoan from '../pages/Admin pages/Settings/LoanSettingsPages/TypeOfLoan'
 import LoanApprovalSettings from '../pages/Admin pages/Settings/LoanSettingsPages/LoanApprovalSettings'
-
 import Leavepolicy from '../components/AppSettingComponents/Leavepolicy/Leavepolicy'
 import Holidaypolicy from '../components/AppSettingComponents/Leavepolicy/Holidaypolicy'
-
 import TypeReimbursement from '../components/AppSettingComponents/reimbursementpolicy/typereimbursement'
 import Reimbursementpolicy from '../components/AppSettingComponents/reimbursementpolicy/Reimbursementpolicy'
 import Multilevel from '../components/AppSettingComponents/reimbursementpolicy/Multilevel'
@@ -59,77 +51,37 @@ const routesConfig = [
     element: <ErrorScreen />,
   },
   {
+
     label: "Person Data",
     children: [
+
       {
         path: '/',
-        label: "Home",
-        element: <UserHomeMenus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
-      {
-        path: 'team',
-        label: "Team",
-        element: <UserTeamMenus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
-      {
-        path: 'apps',
         label: "Appplication",
         element: <UserAppMenus />,
         children: [
           {
-            path: 'home',
+            index: true,
+            element: <UserHome />, // Default component for Person Data
+          },
+          {
+            path: 'Home',
             element: <UserHome />,
           },
           {
-            path: 'myattendance',
+            path: 'MyAttendance',
             element: <MyAttendance />,
           },
           {
-            path: 'mypayslips',
+            path: 'MyPayslips',
             element: <MyPayslips />,
           },
           {
-            path: 'usernotification',
+            path: 'UserNotification',
             element: <UserNotification />,
           },
           {
-            path: 'raiserequest',
+            path: 'RaiseRequest',
             element: <RaiseRequest />,
             children: [
               {
@@ -149,94 +101,30 @@ const routesConfig = [
             ],
           },
           {
-            path: 'userreports',
+            path: 'Reports',
             element: <UserReports />,
           },
         ],
       },
 
-      {
-        path: 'settings',
-        label: "Setting",
-        element: <UserSettingsMenus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
     ]
   },
 
   {
     label: "Admin Data",
     children: [
+
       {
         path: '/',
-        label: "Home",
-        element: <HomeMenus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
-      {
-        path: 'team',
-        label: "Team",
-        element: <TeamMeanus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
-      {
-        path: 'apps',
         label: "Appplication",
         element: <AppMenus />,
         children: [
           {
-            path: 'home',
+            index: true,
+            element: <Home />, // Default component for Person Data
+          },
+          {
+            path: 'Home',
             element: <Home />,
           },
           {
@@ -393,29 +281,7 @@ const routesConfig = [
           },
         ],
       },
-      {
-        path: 'settings',
-        label: "Setting",
-        element: <SettingsMenus />,
-        children: [
-          {
-            path: 'home1',
-            element: <Home />,
-          },
-          {
-            path: 'home2',
-            element: <Employee />,
-          },
-          {
-            path: 'home3',
-            element: <RunPayroll />,
-          },
-          {
-            path: 'home4',
-            element: <Notifications />,
-          },
-        ],
-      },
+
     ]
   }
 

@@ -34,7 +34,7 @@ const CTCTemplateSetting = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/apps/settings/CTCTemplateSetting');
+    navigate('/settings/CTCTemplateSetting');
     setCardClick(false);
   };
 

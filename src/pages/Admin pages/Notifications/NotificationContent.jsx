@@ -4,47 +4,47 @@ const NotificationContent = [
   {
     title: 'Leave Notification',
     card: 'style3',
-    to: '/apps/notifications/LeaveNotification',
+    to: '/notifications/LeaveNotification',
   },
   {
     title: 'Payroll Notification',
     card: 'style4',
-    to: '/apps/notifications/PayrollNotification',
+    to: '/notifications/PayrollNotification',
   },
   {
     title: 'Loan Notification',
     card: 'style3',
-    to: '/apps/notifications/LoanNotification',
+    to: '/notifications/LoanNotification',
   },
   {
     title: ' Reimbursement Notification',
     card: 'style5',
-    to: '/apps/notifications/ReimbursementNotification',
+    to: '/notifications/ReimbursementNotification',
   },
   {
     title: 'Payments Reminder',
     card: 'style3',
-    to: '/apps/notifications/PaymentsReminder',
+    to: '/notifications/PaymentsReminder',
   },
   {
     title: ' Policies Notification',
     card: 'style4',
-    to: '/apps/notifications/PoliciesNotification',
+    to: '/notifications/PoliciesNotification',
   },
   {
     title: 'System Notification ',
     card: 'style3',
-    to: '/apps/notifications/SystemNotification',
+    to: '/notifications/SystemNotification',
   },
   {
     title: 'Reports Notification',
     card: 'style4',
-    to: '/apps/notifications/ReportsNotification',
+    to: '/notifications/ReportsNotification',
   },
   {
     title: 'Announcements',
     card: 'style3',
-    to: '/apps/notifications/Announcements',
+    to: '/notifications/Announcements',
   },
 ];
 

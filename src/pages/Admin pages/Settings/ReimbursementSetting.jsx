@@ -15,7 +15,7 @@ function ReimbursementSetting() {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/settings/ReimbursementSetting');
+    navigate('/settings/ReimbursementSetting');
     setCardClick(false);
   };
 

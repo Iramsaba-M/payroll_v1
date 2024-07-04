@@ -15,7 +15,7 @@ const LeaveSetting = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/settings/LeaveSetting');
+    navigate('/settings/LeaveSetting');
     setCardClick(false);
   };
 

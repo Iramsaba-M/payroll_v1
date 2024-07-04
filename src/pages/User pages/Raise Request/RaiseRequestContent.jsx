@@ -25,13 +25,13 @@ const RaiseRequestContent = [
     title: 'Request for Loan',
     card: 'requestforloan',
     icon: <BlueLargeIcon icon={GiPayMoney} />,
-    to: '/apps/raiserequest/RequestForLoan',
+    to: '/raiserequest/RequestForLoan',
   },
   {
     title: 'Request for Reimbursement',
     card: 'requestforreimbursement',
     icon: <BlueLargeIcon icon={GiReceiveMoney} />,
-    to: '/apps/raiserequest/RequestForReimbursement',
+    to: '/raiserequest/RequestForReimbursement',
   },
 
 ];

@@ -10,10 +10,11 @@ import CardConfig from '../../../configurations/Card/CardConfig';
 import { BASIC_DETAILS_API_Get, DOCUMENT_DETAILS_API_GET, ENDUSER_HOME_EMPLOYEE_CTC } from '../../../api/EndPoints';
 import { fetchData } from '../../../services/APIService';
 import PropTypes from 'prop-types';
-
+import { useUserRole } from '../../../context/UserRoleContext';
 
 const Pichart = ({ data }) => {
   const COLORS = ['#6C6BF0', '#AEAEF7', '#CFCFFA'];
+ 
 
   if (!data) {
     return null;
@@ -49,6 +50,7 @@ Pichart.propTypes = {
 
 const UserHomeComponent = () => {
   const { isAdmin, isPersonal, handleAdminClick, handlePersonalClick } = useButtonState();
+  const { role } = useUserRole();
   console.log(UserHomeconfig);
 
   const [employee, setEmployee] = useState([])
@@ -110,12 +112,16 @@ const UserHomeComponent = () => {
   }, []);
 
   console.log('employee', employee, documentvalue);
+  
+  console.log('role', role);
   return (
     <div className=' ml-12  mt-2  px-2 '>
-      <div className='flex ml-[119.5vh] '>
-        <Button onClick={handleAdminClick} Configs={Admin} activeButton={isAdmin ? 'Admin' : ''} />
-        <Button onClick={handlePersonalClick} Configs={Personal} activeButton={isPersonal ? 'Personal' : ''} />
-      </div>
+      {role === 'admin' && (
+        <div className='flex ml-[119.5vh]'>
+          <Button onClick={handleAdminClick} Configs={Admin} activeButton={isAdmin ? 'Admin' : ''} />
+          <Button onClick={handlePersonalClick} Configs={Personal} activeButton={isPersonal ? 'Personal' : ''} />
+        </div>
+      )}
 
       <div className=''>
         <div className='p-2 px-6 lg:w-[143vh] border lg:h-20 shadow-md bg-white rounded w-[147vh] h-24'>
@@ -165,7 +171,7 @@ const UserHomeComponent = () => {
             <h2 className=' lg:text-2xl font-bold  text-3xl'>
               Welcome Back <span className='text-blue-800 '>{employee ? employee.first_name : ''} </span> !
             </h2>
-            <div className='mt-2'>
+            <div className='mt-2 w-[39rm]'>
               <CardConfig Config={picard} comp={<Pichart data={pidata} />} />
             </div>
             <div className='border px-7 rounded-md shadow-md py-1'>

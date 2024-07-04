@@ -8,8 +8,8 @@ const AppMenus = () => {
   const normalLink = "rounded-md w-48 text-left py-2 mx-2 hover:bg-gray-off text-xs ";
   return (
     <>
-      <ul className="fixed border-r h-screen  w-60">
-        <div className="appname text-bold text-4xl font-mono font-bold px-6 mt-3 mb-3  ">
+      <ul className="fixed border-r border-gray-100 h-screen  w-60">
+        <div className="appname text-bold text-4xl font-mono font-bold px-6 mt-4 mb-4  ">
           iKamai
         </div>
         <div className="flex flex-col  mt-2">

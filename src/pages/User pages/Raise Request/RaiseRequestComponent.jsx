@@ -18,7 +18,7 @@ const RaiseRequestComponent = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/raiserequest');
+    navigate('/raiserequest');
     setCardClick(false);
   };
 
@@ -32,7 +32,7 @@ const RaiseRequestComponent = () => {
       {
         (!cardclick) &&
         chunkedSettingContent.map((chunk, index) => (
-          <div key={index} className='ml-8'>
+          <div key={index} className='ml-32'>
             <CardConfig Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}

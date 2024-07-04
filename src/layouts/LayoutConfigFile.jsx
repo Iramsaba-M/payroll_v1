@@ -30,7 +30,7 @@ export const sections = {
   section1: [
     {
       componentKey: "IconbarComponent",
-      style: " border-r  min-h-screen fixed start-0 w-14",
+      style: " min-h-screen border-r border-gray-100 fixed start-0 w-14",
       config: IconConfig,
       content: [
         {

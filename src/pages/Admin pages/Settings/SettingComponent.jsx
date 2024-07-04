@@ -16,7 +16,7 @@ const SettingComponent = () => {
     setCardClick(true)
   };
   const handleBackClick = () => {
-    navigate('/apps/settings/');
+    navigate('/settings/');
     setCardClick(false);
   };
 
