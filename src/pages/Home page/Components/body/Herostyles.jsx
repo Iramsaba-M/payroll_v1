@@ -21,14 +21,14 @@
 // HeroStyles.js
 
 const HeroStyles = {
-  heroContainer: 'bg-blue-100 w-screen mt-0 h-[700px] relative flex justify-center items-center',
+  heroContainer: 'bg-blue-100  border-black mt-0 h-[50rem] relative flex justify-center items-center',
   twoColumnContainer: 'flex w-full',
   heroDescriptionContainer: 'flex-1 p-2',
   heroImageContainer: 'flex-1 relative',
   heroImage: 'w-full h-full object-cover drop-shadow-2xl', // Adjusted the image style
   heroImageOverlay: 'absolute top-0 left-0 w-full text-center text-white p-8',
   heroTitle: 'text-3xl font-bold mb-4 text-blue-500',
-  heroDescription: 'text-5xl ml-[-700px] mt-[140px] hover:text-blue-600 cursor-pointer text-black font-bold leading-relaxed tracking-absolute whitespace-pre-line',
+  heroDescription: 'text-5xl  ml-[-43rem] mt-[11rem] hover:text-blue-600 cursor-pointer text-black font-bold leading-relaxed tracking-absolute whitespace-pre-line',
   
 };
 

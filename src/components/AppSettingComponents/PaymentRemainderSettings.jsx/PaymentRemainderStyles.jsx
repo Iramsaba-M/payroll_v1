@@ -9,7 +9,7 @@ export const paymentStyles = {
   buttonStyle: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600",
   buttonTextStyle: "text-sm",
   dateInputContainer: 'flex flex-col w-[17rem] bg-gray-200  px-4  rounded-md',
-  dateInputRow: 'flex justify-between items-center mb-2 mt-1',
-  dateLabel: 'mr-2  text-xs w-[20vh]',
-  dateInput: 'border text-xs  border-gray-300 p-1  rounded-md'
+  dateInputRow: 'flex justify-between  items-center mb-2 mt-1',
+  dateLabel: 'mr-2 w-[10rem] text-xs ',
+  dateInput: 'border text-xs w-[7rem] border-gray-300 p-1  rounded-md'
 }

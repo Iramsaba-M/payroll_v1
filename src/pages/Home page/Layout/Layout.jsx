@@ -16,7 +16,7 @@ import { CardConfig3 } from '../Components/card3/CardConfig';
 
 function Layout() {
   return (
-    <div>
+    <div className='w-fit'>
       <HeaderComponent items={HeaderConfig} />
       <Hero heroData={HeroData} />
       <CardComponent cards={CardConfig} />

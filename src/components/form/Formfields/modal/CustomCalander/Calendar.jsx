@@ -412,6 +412,7 @@ const Calendar = ({ onRangeChange }) => {
     const endOfWeek = new Date(selectedYear, selectedMonth, selectedDate.getDate() + (6 - selectedDate.getDay()));
     setSelectedDate(startOfWeek);
     onRangeChange(startOfWeek, endOfWeek);
+
   };
 
   const handleMonthly = () => {
@@ -433,6 +434,11 @@ const Calendar = ({ onRangeChange }) => {
   const handleCustom = () => {
     setRangeType('custom');
     console.log('Custom range selected');
+  };
+  const handleSave = () => {
+    if (rangeStart && rangeEnd) {
+      onRangeChange(formatDate(rangeStart),formatDate(rangeEnd) );
+    }
   };
 
   const renderCalendar = () => {
@@ -497,10 +503,10 @@ const Calendar = ({ onRangeChange }) => {
   };
 
   const formatDate = (date) => {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
     const year = date.getFullYear();
-    return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+    return `${day}/${month}/${year}`;
   };
 
   const months = [
@@ -555,7 +561,19 @@ const Calendar = ({ onRangeChange }) => {
           End Date: {rangeEnd ? formatDate(rangeEnd) : 'Not Selected'}
         </div>
       </div>)}
+             <div className={calendarStyles.weekdays}>
+        <div>Sun</div>
+         <div>Mon</div>
+         <div>Tue</div>
+         <div>Wed</div>
+         <div>Thu</div>
+         <div>Fri</div>
+         <div>Sat</div>
+       </div>
       {renderCalendar()}
+      <div className={calendarStyles.buttonsContainer}>
+        <button onClick={handleSave} className={`${calendarStyles.button} ${calendarStyles.saveButton}`}>Save</button>
+      </div>
     </div>
   );
 };

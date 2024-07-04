@@ -5,9 +5,18 @@ import axios from 'axios';
 import './Announcememt.css';
 import Announcementcss from "./AnnouncementSettingStyles";
 import { FaRegEye, FaSearch } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import PropTypes from 'prop-types';
+import ModalComponent from "../../form/Formfields/modal/ModalComponent";
+import { ModalAnnouncementconfig } from "../../form/Formfields/modal/ModalAnnouncementconfig";
+import { IoSettingsOutline } from "react-icons/io5";
+import DateComponent from "../../form/Formfields/date/DateComponent";
+import OptionsComponent from "../../form/Formfields/options/OptionsComponent";
+import { settingsModelconfig } from "./AnnouncementSettingContent";
+import TextStyle from "../../form/Formfields/text/TextStyle";
+import SettingsComponent from "./SettingsComponent";
 
-const CustomToolbar = ({setPreview}) => (
+const CustomToolbar = ({ setIsModalOpen, setModalsetting }) => (
   <div id="toolbar" className={`custom-toolbar ${Announcementcss.customtoolbar} `}>
     <div className="ml-32"></div>
     {/* <select className="ql-font">
@@ -19,7 +28,6 @@ const CustomToolbar = ({setPreview}) => (
       <option value="1"></option>
       <option value="2"></option>
       <option value="3"></option>
-
       <option value=""></option>
     </select>
     <button className="ql-bold "></button>
@@ -41,14 +49,16 @@ const CustomToolbar = ({setPreview}) => (
     <button className="ql-link"></button>
     <button className="ql-image"></button>
     <button className="ql-video"></button>
-    
+
     <button className="ql-clean"></button>
-    <FaRegEye className="preview  ml-1.5 mt-0.5 text-xl cursor-pointer" onClick={() => setPreview(true)} />
+    <FaRegEye className="preview  ml-1.5 mt-0.5 text-xl cursor-pointer" onClick={() => setIsModalOpen(true)} />
+    <IoMdSettings className="preview  ml-1.5 mt-0.5 text-xl cursor-pointer" onClick={() => setModalsetting(true)} />
   </div>
 );
 CustomToolbar.propTypes = {
-  setPreview: PropTypes.bool,
-  
+  setIsModalOpen: PropTypes.bool,
+  setModalsetting: PropTypes.bool,
+
 };
 
 
@@ -63,14 +73,21 @@ const AnnouncementSettingComponent = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [announcementsearch, setAnnouncementsearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [preview,setPreview]=useState(false)
+  const [preview, setPreview] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [Modalsetting, setModalsetting] = useState(false)
+  const [settings, setSettings] = useState({})
 
   const handleSave = async () => {
     setIsSaving(true);
+    const form = {
+      'value': value, 'settings': settings
+    }
+    console.log('val2', form);
     try {
-      const response = await axios.post('http://localhost:3000/AnnouncementSettingComponent', {
-        content: value,
-      });
+      const response = await axios.post('http://localhost:3000/AnnouncementSettingComponent',
+        form
+      );
 
       console.log('Content saved:', response.data);
       setValue('');
@@ -94,6 +111,11 @@ const AnnouncementSettingComponent = () => {
     }
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setModalsetting(false);
+  };
+  console.log('value', value, settings);
   return (
     <div>
       <div>
@@ -117,7 +139,11 @@ const AnnouncementSettingComponent = () => {
               <div className="mt-4 ">
                 {searchResults.map((announcement, index) => (
                   <div key={index} className="p-4 mb-4 bg-button-bg  rounded border shadow">
-                    <div dangerouslySetInnerHTML={{ __html: announcement.content }} />
+                    <div className="quill editor ql-container">
+                        <div class="ql-editor" data-gramm="false" >
+                          <div  dangerouslySetInnerHTML={{ __html: announcement.value }} />
+                        </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -135,7 +161,7 @@ const AnnouncementSettingComponent = () => {
             modules={modules}
             className="editor"
           />
-          <CustomToolbar setPreview={setPreview} />
+          <CustomToolbar setIsModalOpen={setIsModalOpen} setModalsetting={setModalsetting} />
 
         </div>
         <div className="flex justify-end mt-2">
@@ -147,8 +173,13 @@ const AnnouncementSettingComponent = () => {
             {isSaving ? 'Processing...' : 'Publish'}
           </button>
         </div>
+        <div>
 
-        {preview && (
+
+        </div>
+
+
+        {/* {preview && (
             <div className="preview mt-4 p-2 bg-white border rounded">
               <h2 className="text-xl font-bold">Preview</h2>
               <div className="preview-content mt-2" dangerouslySetInnerHTML={{ __html: value }} />
@@ -159,9 +190,35 @@ const AnnouncementSettingComponent = () => {
                 Close Preview
               </button>
             </div>
-          )}
-      </div>)}
-    </div>
+          )} */}
+      </div >)}
+      <ModalComponent
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        config={ModalAnnouncementconfig}
+        component={(
+          <div className=" preview mt-4 p-2 bg-white border rounded">
+            <h1 className=" font-bold">Preview</h1>
+            <div className="quill editor">
+              <div className="ql-container ">
+                <div class="ql-editor" data-gramm="false" >
+                  <div className="" dangerouslySetInnerHTML={{ __html: value }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      />
+
+      <ModalComponent
+        isOpen={Modalsetting}
+        onClose={handleCloseModal}
+        config={ModalAnnouncementconfig}
+        component={
+          <SettingsComponent Settingvalue={setSettings} />
+        }
+      />
+    </div >
   );
 };
 

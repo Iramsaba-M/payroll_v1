@@ -47,7 +47,7 @@ const ReimbursementNotification = () => {
     const fetchData = async (currentPage, pageSize) => {
         setLoading(true);
         try {
-            const url = 'http://192.168.1.57:8000/enduser/reimbursement/all?employee_id=IK10001';
+            const url = 'http://127.0.0.1:8000/enduser/reimbursement/all?employee_id=IK10001';
             const response = await fetch(url);
             const result = await response.json();
 

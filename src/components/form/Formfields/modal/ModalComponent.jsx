@@ -45,11 +45,12 @@
 // };
 
 // export default ModalComponent;
+
 import React from 'react';
 import ModalStyles from './ModalStyles';
 import PropTypes from 'prop-types';
 
-const ModalComponent = ({ isOpen, onClose, config, employee_id }) => {
+const ModalComponent = ({ isOpen, onClose, config, employee_id, handlerangecal ,component}) => {
   const closeModal = () => {
     onClose();
   };
@@ -65,7 +66,7 @@ const ModalComponent = ({ isOpen, onClose, config, employee_id }) => {
     <>
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="absolute inset-0 bg-blue-100 opacity-60"></div>
+          <div className="absolute inset-0 bg-gray-500 opacity-60"></div>
           <div>
             {config.map((item, index) => (
               <div key={index} className={`${ModalStyles[item.MainDiv]}`}>
@@ -81,14 +82,30 @@ const ModalComponent = ({ isOpen, onClose, config, employee_id }) => {
                     </button>
                   </div>
                   {/* Check if item.component exists before rendering */}
-                  {item.component && (
+                  {/* {item.component && (
                     // Conditional rendering based on employee_id
                     employee_id ? (
                       React.cloneElement(item.component, { employee_id })
                     ) : (
                       React.cloneElement(item.component, { employee_id: '' })  // Pass an empty string if employee_id is falsy
                     )
+                  )} */}
+                  {item.component && (
+                    React.cloneElement(
+                      item.component,
+                      {
+                        handlerangecal: handlerangecal ? handlerangecal : '',
+                        employee_id: employee_id ? employee_id : ''
+                      }
+                    )
                   )}
+                  {component && (
+                    <div className={`${ModalStyles[item.componentstyle]}`}>
+                    {component}
+                    </div>
+                  )
+
+                  }
                 </div>
               </div>
             ))}

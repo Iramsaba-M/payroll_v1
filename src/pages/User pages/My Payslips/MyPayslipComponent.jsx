@@ -40,7 +40,7 @@ const MyPayslipComponent = () => {
   }
 
   return (
-    <div className='px-[60px] mt-10'>
+    <div className='px-[60px] mt-10 ml-12'>
      
       <DynamicTable
               config={Mypayslipcontent}
