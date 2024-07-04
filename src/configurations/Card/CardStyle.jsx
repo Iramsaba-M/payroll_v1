@@ -53,7 +53,7 @@ const CardStyles = {
 
   userreportbarchart1: 'w-[155vh] lg:h-[33vh] h-[40vh]',
   /////////////////end user home////////////////////////////
-  enduserhomestyle: ' bg-white-50 -mt-0.5 rounded-md shadow-md px-6 py-4 w-[80vh]  lg:h-[34vh] border text-gray-600  h-[40vh]',
+  enduserhomestyle: ' bg-white-50 -mt-0.5 rounded-md shadow-md px-6 py-4 w-[39rem]  lg:h-[34vh] border text-gray-600  h-[40vh]',//w-[80vh]
   enduserhomepichart: 'lg:w-[70vh] lg:h-[26vh] lg:mt-2 mt-5 ml-[8vh] w-[77vh] h-[30vh] ',
 };
 

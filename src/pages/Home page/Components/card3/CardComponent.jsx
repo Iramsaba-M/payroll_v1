@@ -10,7 +10,7 @@ const CardComponent3 = ({ cards }) => {
      
 
       {/* Cards */}
-      <div className={`flex flex-wrap justify-items-stretch mt-[520px] px-22 bg-blue-200${CardStyle3.cardContainer}`}>
+      <div className={`flex flex-wrap justify-items-stretch mt-[38rem] bg-gray-800 text-white  ${CardStyle3.cardContainer}`}>
         {cards.map((card, index) => (
           <div key={index} className={CardStyle3.card}>
             {card.icon}

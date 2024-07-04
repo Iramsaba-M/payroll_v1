@@ -111,6 +111,13 @@ const TextStyle = {
     input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent mr-3 text-gray text-sm text-centre mb-2 px-2 py-1 leading-tight focus:outline-none',//mr-14
 
   },
+
+  //announcement setting model
+  settingmodel: {
+    label: 'block text-gray-700 text-sm  w-[10rem]  my-1',
+    input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray-500 w-[8rem] text-xs my-2 mr-24 mb-2 px-2 py-1  leading-tight focus:outline-none',//mr-14
+
+  },
 };
 
 

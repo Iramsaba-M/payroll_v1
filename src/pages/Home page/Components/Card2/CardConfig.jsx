@@ -2,8 +2,8 @@
 import React from 'react';
 import CardStyles from './CardStyle';
 
-const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle, 
-  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone,multivaluestyle,multiheadingstyle }) => {
+const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, heading2, heading3, contentStyle,
+  contentvalue, contentvalue2, className, classNametext, contentstyle, contentstyle2, headstyle, multivalue, multiclone, multivaluestyle, multiheadingstyle }) => {
   return (
     <div className={`${CardStyles[card]} ${CardStyles.MarginBetweenCards} ${className}`}>
       {title && (<h3 className={CardStyles.CardTitle}>{title}</h3>)}

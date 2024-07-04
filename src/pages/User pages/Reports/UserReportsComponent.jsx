@@ -158,8 +158,8 @@ const UserReportsComponent = () => {
   }
 
   return (
-    <div>
-       <div className='flex  border-t border-s-2 border-b-2 border-r lg:w-[28vh] lg:h-8  rounded-md ml-4 w-[32vh] h-12'>
+    <div >
+       <div className='flex  border-t border-s-2 border-b-2 bg-white mt-2 border-r lg:w-[28vh] lg:h-8  rounded-md ml-4 w-[32vh] h-12'>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
@@ -178,10 +178,10 @@ const UserReportsComponent = () => {
           showMonthYearPicker
         />
       </div>
-      <div>
+      <div className='-mt-2'>
         <CardConfig Config={exmpContent1} comp={<Barchart graphdata={barGraphData} />} />
       </div>
-      <div className='flex mt-'>
+      <div className='flex -mt-2'>
         <div>
           <CardConfig Config={casualleaveContent} comp={<Barchart graphdata={casualData} />} />
         </div>
