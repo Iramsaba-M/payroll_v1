@@ -29,11 +29,13 @@ const SettingComponent = () => {
       {/* Setting */}
       {
         (!cardclick) &&
+        <div className='mt-12'> {
         chunkedSettingContent.map((chunk, index) => (
-          <div key={index} className='ml-8'>
+          <div key={index} className='ml-8 m-2'>
             <CardConfig Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}
+        </div> }
       {cardclick && (
         <>
           <div className='mt-4'>

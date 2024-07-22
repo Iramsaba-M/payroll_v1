@@ -28,4 +28,5 @@ export const calendarStyles = {
   button: 'px-4 py-2 rounded',
   activeButton: 'bg-blue-500 text-white',
   inactiveButton: 'bg-gray-100 text-gray-700',
+  saveButton:'bg-blue-500 text-white mb-2',
 };

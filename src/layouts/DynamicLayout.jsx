@@ -8,7 +8,7 @@ const DynamicLayout = ({ role }) => {
 
   return (
     <div className="">
-      <div className="flex ml-14">
+      <div className="flex ml-14 bg-[#fbfcfc]  min-h-screen">
         {sections.section1 &&
           sections.section1.map((section, index) => (
             <div key={index} className={section.style}>

@@ -6,9 +6,10 @@ const UserRoleContext = createContext();
 // Create a provider component
 export const UserRoleProvider = ({ children }) => {
   const [role, setRole] = useState(null);
+  const [shownav,setshownav] = useState(true);
 
   return (
-    <UserRoleContext.Provider value={{ role, setRole }}>
+    <UserRoleContext.Provider value={{ role, setRole , shownav,setshownav}}>
       {children}
     </UserRoleContext.Provider>
   );

@@ -1,24 +1,24 @@
 
 const CardStyles = {
-  style1: 'bg-cyan-50 rounded-md shadow-sm p-4 m-7 w-72 size-40 text-teal-600 text-semibold text-lg font-bold',
-  style2: 'bg-purple-50 rounded-md shadow-sm p-4 m-7 w-72 size-40 text-purple-600 text-semibold text-lg font-bold',
-  style3: 'bg-blue-50 rounded-md shadow-sm p-4 m-6 w-72 size-40 text-blue-600 text-semibold text-lg font-bold',
-  homestyle1: 'bg-white-50 rounded-md shadow-md p-4 m-4 w-[45vh] size-40 h-32 border text-gray-700',
-  homestyle2: 'flex flex-col rounded-md  p-4 w-29 bg-white shadow-md mx-4 w-[144vh] h-[55vh] border ',
-  homestyle3: 'bg-white-50 rounded-md shadow-md p-4 m- w-[45vh] size-40 h-[38vh] border text-gray-600',
-  CardTitle: 'text-xl  font-bold mb-2',
+  style1: 'bg-cyan-50 rounded-lg shadow-sm border border-gray-100 p-4 m-7 w-72 size-40 text-teal-600 text-semibold text-lg font-bold',
+  style2: 'bg-purple-50 rounded-lg shadow-sm border border-gray-100 p-4 m-7 w-72 size-40 text-purple-600 text-semibold text-lg font-bold',
+  style3: 'bg-blue-50 rounded-lg shadow-sm border border-gray-100 p-4 m-6 w-72 size-40 text-blue-600 text-semibold text-lg font-bold',
+  homestyle1: ' rounded-lg shadow-sm p-4 m-4 w-[45vh] bg-white size-40 h-32 border text-gray-700',
+  homestyle2: 'flex flex-col rounded-lg  p-4 w-29 bg-white shadow-sm mx-4 w-[144vh] h-[55vh] border ',
+  homestyle3: 'bg-white rounded-lg shadow-sm p-4 m- w-[45vh] size-40 h-[38vh] border text-gray-600',
+  CardTitle: 'text-xl  font-bold mb-2 ',
   CardContent: 'mx-4 text-blue-600 text-2xl font-semibold ',
   MarginBetweenCards: 'my-5',
-  homebarchart: 'w-[70vh] h-[30vh]',
+  homebarchart: 'w-[30vh] h-[30vh]',
   homepichart2: 'w-[25vh] h-[25vh] mt-4  ml-[8vh]  ',
   homeiconstyle1: ' -mt-[4vh]  text-red-400',
   homecontent: ' text-gray-600 ml-28 mt-8 text- font-medium w-6',
-  homecontent_bold: ' text-gray-500 ml-28 mt-8 text-lg font-bold w-6',
+  homecontent_bold: ' text-gray-500 ml-[8rem] mt-8 text-lg  font-bold w-6',
   homecontent2: ' text-gray-500 text-center -mt-2 text-lg font-bold ',
   /////////////////////////////////////////////////
-  reportstyle1: 'bg-white rounded-md border-t border-s shadow-md p-4 m-4 w-64 size-40 h-32 ',
-  reportstyle3: 'bg-white rounded-md border-t border-s shadow-md p-4 m-4 w-[37vh] size-40 h-32 ',
-  reportstyle2: 'bg-white flex flex-col  rounded-md border-t border-s px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
+  reportstyle1: 'bg-white rounded-xl border-t border-s shadow-md p-4 m-4 w-64 size-40 h-32 ',
+  reportstyle3: 'bg-white rounded-xl border-t border-s shadow-md p-4 m-4 w-[37vh] size-40 h-32 ',
+  reportstyle2: 'bg-white flex flex-col  rounded-xl border-t border-s px-1 py-4  min-w-72 min-size-40  shadow-md mx-4',
   reportbarchart: 'w-[77vh] h-[32vh]',
   reportpichart: 'w-[25vh] h-[25vh] -mt-12 ml-24 ',
   reporticonstyle1: '-mt-8   ml-[24vh] ',
@@ -53,7 +53,7 @@ const CardStyles = {
 
   userreportbarchart1: 'w-[155vh] lg:h-[33vh] h-[40vh]',
   /////////////////end user home////////////////////////////
-  enduserhomestyle: ' bg-white-50 -mt-0.5 rounded-md shadow-md px-6 py-4 w-[39rem]  lg:h-[34vh] border text-gray-600  h-[40vh]',//w-[80vh]
+  enduserhomestyle: ' bg-white-50 -mt-0.5 rounded-md shadow-md px-6 py-4   lg:h-[34vh] border text-gray-600  h-[40vh]',//w-[80vh]
   enduserhomepichart: 'lg:w-[70vh] lg:h-[26vh] lg:mt-2 mt-5 ml-[8vh] w-[77vh] h-[30vh] ',
 };
 

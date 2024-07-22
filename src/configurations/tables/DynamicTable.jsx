@@ -16,6 +16,7 @@ import { Editmodelloanconfig } from '../../components/form/Formfields/modal/Edit
 import PropTypes from 'prop-types';
 import { GrView } from "react-icons/gr";
 import { Editmodelreport } from '../../components/form/Formfields/modal/Editmodelconfigreport';
+import '../../assets/Styles/CalendarStyle.css';
 
 
 function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, setCurrentPage, onEditEmployee }) {
@@ -418,9 +419,9 @@ function DynamicTable({ config, data, currentPage, pageSize, totalDocuments, set
   const totalPages = Math.max(Math.ceil(totalDocuments / pageSize), 1);
 
   return (
-    <div className="max-h-[48vh] overflow-y-auto border-2 rounded-md hover:border-blue-500">
+    <div className="max-h-[48vh] overflow-y-auto border-2 bg-white rounded-xl hover:border-blue-500  no-scrollbar">
       <table>
-        <thead>
+        <thead >
           <tr className="bg-gray-100 p-2">
             {/* <th className="px-8">
               <input type="checkbox" onChange={handleSelectAll} checked={selectAll} />

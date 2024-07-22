@@ -19,6 +19,7 @@ import { postDataImage } from "../../../services/APIService";
 import { useButtonState } from '../../../context/ButtonStateContext';
 import { useFormik } from "formik";
 import { createInitialValues, formSchema, simplifiedData } from "../../../configurations/ValidationSchema/ValidationSchema";
+import axios from "axios";
 const BasicDetailsFormComponent = ({
   config,
   handleNextClick,
@@ -26,7 +27,7 @@ const BasicDetailsFormComponent = ({
   editEmployees,
 
 }) => {
-
+  const [optionsData, setOptionsData] = useState({});
   const [values, setValues] = useState(() => {
     const initialValues = {};
     config.forEach(field => {
@@ -86,6 +87,23 @@ const BasicDetailsFormComponent = ({
   } = useButtonState();
   console.log('editEmployees', editEmployees);
 
+  // useEffect(() => {
+  //   const fetchOptions = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:3000/basicdetailoptn');
+  //       const optionsObj = response.data.reduce((acc, item) => {
+  //         acc[item.name] = item.options;
+  //         return acc;
+  //       }, {});
+  //       setOptionsData(optionsObj);
+  //       console.log('options',optionsData,optionsObj);
+  //     } catch (error) {
+  //       console.error('Error fetching options:', error);
+  //     }
+  //   };
+
+  //   fetchOptions();
+  // }, []);
 
   const handleChange = (name, value) => {
     if (config.some((field) => field.name === name && field.type === "date")) {
@@ -174,7 +192,7 @@ const BasicDetailsFormComponent = ({
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="w-[130vh] h-[50vh]">
+      <div className="w-[130vh] h-[50vh] ">
         <h1 className="block text-gray-600 text-xs font-bold my-1">
           Employee Name*
         </h1>
@@ -266,7 +284,8 @@ const BasicDetailsFormComponent = ({
                 {field.type === "options" && (
                   <OptionsComponent
                     name={field.name}
-                    options={field.options}
+                    // options={field.options}
+                    options={optionsData[field.name] || field.options}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     textcss={TextStyle[field.textcss].input}
                     placeholder={field.placeholder}
@@ -341,7 +360,8 @@ const BasicDetailsFormComponent = ({
               {field.type === "options" && (
                 <OptionsComponent
                   name={field.name}
-                  options={field.options}
+                  // options={field.options}
+                  options={optionsData[field.name] || field.options}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   textcss={TextStyle[field.textcss].input}
                   placeholder={field.placeholder}

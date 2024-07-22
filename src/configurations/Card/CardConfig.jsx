@@ -16,7 +16,7 @@ const Card = ({ chart, card, title, content, icon, comp, heading, iconstyle, hea
 
       {heading && (<h3 className={`${CardStyles[headstyle]}`}>{heading}</h3>)}
       <div className={` ${classNametext}`}>{heading2 && (<h3 className='ml-16 font-bold'>{heading2}</h3>)}</div>
-      {heading3 && (<h3 className='ml-4 font-bold'>{heading3}</h3>)}
+      {heading3 && (<h3 className='ml-8 font-bold'>{heading3}</h3>)}
       {content && <p style={contentStyle}>{content}</p>}
       {comp && (
         <div className={`${CardStyles[chart]}`}>

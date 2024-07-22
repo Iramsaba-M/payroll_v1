@@ -253,7 +253,7 @@ const EmployeeComponent = () => {
           </div>
 
           <div className="flex items-center justify-between p-1 ml-4">
-            <div className='text-left ml-4 font-lg font-bold text-gray-500'>
+            <div className='text-left ml-4 font-lg bg-white rounded-2xl border-2 border-gray-200 font-bold text-gray-500'>
               <SearchableComp SearchConfig={SearchInputConfig} data={employeeData.employees} searchFunrec={searchFun} />
             </div>
             <div className='text-right p-1 mr-4'>
@@ -261,7 +261,7 @@ const EmployeeComponent = () => {
             </div>
           </div>
 
-          <div className="flex p-2 ml-8 mt-2">
+          <div className="flex px-2 ml-8  mt-2">
             <DynamicTable
               config={tableContent}
               data={filteredEmployeeData.length > 0 ? filteredEmployeeData : employeeData.employees}

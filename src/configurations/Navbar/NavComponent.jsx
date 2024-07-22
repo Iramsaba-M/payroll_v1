@@ -9,7 +9,7 @@ const NavComponent = ({ config, handleNavClick, activeItem }) => {
 
   return (
     <nav className="navbar">
-      <ul className="nav-menu flex list-none">
+      <ul className="nav-menu flex   list-none">
         {config.map((item) => (
           <li
             key={item.id}

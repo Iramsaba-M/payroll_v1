@@ -158,14 +158,14 @@ const UserReportsComponent = () => {
   }
 
   return (
-    <div >
-       <div className='flex  border-t border-s-2 border-b-2 bg-white mt-2 border-r lg:w-[28vh] lg:h-8  rounded-md ml-4 w-[32vh] h-12'>
+    <div className='ml-6'>
+       <div className='flex  border-t border-s-2 border-b-2 bg-white mt-2 border-r  lg:w-[28vh] lg:h-8  rounded-md ml-4 w-[32vh] h-12'>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="MMM-yyyy"
           placeholderText='From'
-          className='lg:w-[12vh] lg:mt-0 w-[15vh] mt-2  on hover:border-blue-500 text-center  focus:outline-none '
+          className='lg:w-[12vh] lg:mt-0 w-[15vh] mt-2  on hover:border-blue-500 text-center rounded-md focus:outline-none '
           showMonthYearPicker
         />
         <div className='text-gray-400'>~</div>
@@ -174,7 +174,7 @@ const UserReportsComponent = () => {
           onChange={handleDateChange1}
           placeholderText='To'
           dateFormat="MMM-yyyy"
-          className='lg:w-[12vh] lg:mt-0 w-[15vh] mt-2  on hover:border-blue-500 text-center  focus:outline-none '
+          className='lg:w-[12vh] lg:mt-0 w-[15vh] mt-2  on hover:border-blue-500 text-center rounded-md focus:outline-none '
           showMonthYearPicker
         />
       </div>

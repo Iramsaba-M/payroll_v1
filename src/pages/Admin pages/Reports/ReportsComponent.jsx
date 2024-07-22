@@ -209,13 +209,13 @@ const ReportsComponent = () => {
   return (
     <div className='flex flex-col mt-4 ml-4'>
       <div className='flex '>
-        <div className='flex  border-t border-s-2 border-b-2 border-r w-[28vh] h-8 rounded-md ml-4 '>
+        <div className='flex  border-t border-s-2 border-b-2 border-r bg-white w-[28vh] h-8 rounded-xl ml-4 '>
           <DatePicker
             selected={selectedDate}
             onChange={handleDateChange}
             dateFormat="MMM-yyyy"
             placeholderText='From'
-            className='w-[12vh]  on hover:border-blue-500 text-center  focus:outline-none '
+            className='w-[12vh]  on hover:border-blue-500 ml-1 text-center rounded-xl focus:outline-none '
             showMonthYearPicker
           />
           <div className='text-gray-400'>~</div>
@@ -231,14 +231,14 @@ const ReportsComponent = () => {
         </div>
 
 
-        <div className='ml-[54.5vh] border-t border-s-2 border-b-2 border-r w-[20vh] h-8 rounded-md '>
+        <div className='ml-[54.5vh] border-t border-s-2 border-b-2 bg-white borded-r w-[20vh] h-8 rounded-xl '>
           <DatePicker
             selected={selectedDateTop}
             onChange={handleDateChangeTop}
             placeholderText='To'
             dateFormat="MMMM-yyyy"
             style={{ appearance: 'none', background: 'transparent' }}
-            className='w-[18vh] on hover:border-blue-500 text-center  focus:outline-none '
+            className='w-[18vh] on hover:border-blue-500 text-center rounded-xl focus:outline-none '
             showMonthYearPicker
           />
         </div>

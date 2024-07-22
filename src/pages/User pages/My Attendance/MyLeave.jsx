@@ -139,17 +139,17 @@ const MyLeave = ({ config, applyleave }) => {
         applyleave: PropTypes.func.isRequired, // Validate applyleave prop as a function
     };
     return (
-        <form onSubmit={onSubmit} className='  ml-5 p-2 '>
-            <div className='p-2 border-2 '>
+        <form onSubmit={onSubmit} className='  rounded-xl  ml-5 p-2 '>
+            <div className='p-2 bg-white border-2 '>
                 <h1 className='text-gray-400 text-base font-bold'>Leave Balance</h1>
-                <div className='bg-gray-100 p-2 flex  rounded-md border-2'>
+                <div className='bg-gray-200 p-2 flex  rounded-md border-2'>
                     <Card Config={leavesdata} multiclone={leavebalance} onClick={handleLeavetype} />
 
                 </div>
             </div>
 
             <div className='mt-2 flex justify-between  '>
-                <div className='bg-gray-100 border-2 py-3 lg:w-[77vh] w-[85vh] px-10  text-gray-500 text-sm rounded-md '>
+                <div className='bg-gray-200 border-2 py-3 lg:w-[77vh] w-[85vh] px-10  text-gray-500 text-sm rounded-md '>
 
                     {config.map((field, index) => (
 
@@ -173,7 +173,7 @@ const MyLeave = ({ config, applyleave }) => {
                     ))}
 
                 </div>
-                <div className='bg-gray-100 border-2 text-sm text-gray-500 p-1  rounded-md'>
+                <div className='bg-gray-200 border-2 text-sm text-gray-500 p-1  rounded-md'>
                     <div>
                         <DateRangePicker ranges={[daterange]} onChange={handleRangechange}
                             rdrDefinedrangeswraper={false} showDateDisplay={true}
@@ -189,9 +189,9 @@ const MyLeave = ({ config, applyleave }) => {
 
             <div>
 
-                <div className="form-line flex justify-between  ">
+                <div className="form-line  flex justify-between  ">
                     {config.slice(2, 3).map((field, index) => (
-                        <div key={index} className={`form-field ${field.fieldstyle}`}>
+                        <div key={index} className={`form-field  ${field.fieldstyle}`}>
 
                             <label className={TextStyle[field.textcss].label}>{field.label}</label>
                             {field.type === 'textarea' && (

@@ -44,8 +44,8 @@ const Barchart = ({ graphdata }) => {
           <Legend />
           {graphdata.map(({ year }, index) => (
             <Bar key={year} dataKey={year} stackId="a"
-              fill={defaultColors[index % defaultColors.length]}
-              // fill=" #4e4cc8" 
+              // fill={defaultColors[index % defaultColors.length]}
+              fill=" #6495ED" 
               barSize={60} />
 
           ))}
@@ -225,16 +225,16 @@ const HomeComponent = () => {
   console.log("person state", isAdmin)
 
   return (
-    <div className="mt-3 ml-12 ">
+    <div className="mt-3 ml-12  ">
 
-      <div className='ml-4 h-[4vh] border w-[18vh] rounded-md mt-2  '>
+      <div className='ml-4 h-[4vh] border border-gray-200 w-[18vh] rounded-xl mt-2 bg-white '>
         <DatePicker
           selected={selectedDateTop}
           onChange={handleDateChangeTop}
           placeholderText='To'
           dateFormat="MMMM-yyyy"
           style={{ appearance: 'none', background: 'transparent' }}
-          className='w-[17vh] on hover:border-blue-500 text-center  focus:outline-none '
+          className='w-[17vh] on hover:border-blue-500 text-center rounded-xl focus:outline-none '
           showMonthYearPicker
         />
         <div className='flex ml-[120vh] -translate-y-7'>
@@ -264,13 +264,13 @@ const HomeComponent = () => {
         </div>
       </div>
       {/* <RangePicker onChange={handleDateRangeChange}/> */}
-      <div className='flex h-[4vh] border w-[36vh] rounded-md ml-4 '>
+      <div className='flex h-[4vh] border border-gray-200 w-[36vh] rounded-xl ml-4 bg-white'>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="MMM-yyyy"
           placeholderText='From'
-          className='w-[17vh]  on hover:border-blue-500 text-center  focus:outline-none '
+          className='w-[17vh]  on hover:border-blue-500 text-center rounded-xl  focus:outline-none '
           showMonthYearPicker
         />
         <div className='text-gray-400'>~</div>
@@ -280,7 +280,7 @@ const HomeComponent = () => {
           placeholderText='To'
           dateFormat="MMM-yyyy"
           style={{ appearance: 'none', background: 'transparent' }}
-          className='w-[17vh] on hover:border-blue-500 text-center  focus:outline-none '
+          className='w-[17vh] on hover:border-blue-500 text-center rounded-xl focus:outline-none '
           showMonthYearPicker
         />
       </div>

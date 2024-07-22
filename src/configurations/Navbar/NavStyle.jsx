@@ -5,8 +5,8 @@ const NavStyle = {
   style4: "text-bule-800 hover:text-blue-500 font-bold mx-12",
   style5: "hover:text-blue-500 font-normal mx-8 p-2 text-gray-600",
   style6: "text-gray-400 border-2 rounded-md text-xs font-medium  hover:text-blue-600 p-1 px-14",
-  activeStyle: " transform border scale-104 shadow-md text-red-500 text-sm ",
-  selectedTab: "transform scale-110 font-bold text-blue-600   scale-120",
+  activeStyle: " transform border bg-white scale-104 shadow-md text-red-500 text-sm ",
+  selectedTab: "transform scale-110  font-bold text-blue-600   scale-120",
 };
 
 export default NavStyle;

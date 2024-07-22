@@ -1,7 +1,7 @@
 const TextStyle = {
   standard: {
     label: 'block text-gray-600 text-xs font-bold my-1',
-    input: 'border-b-2 hover:border-blue-500 border-gray-100 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-14
+    input: 'border-b-2 hover:border-blue-500 border-gray-200 bg-transparent text-gray text-xs my-2 mr-24 mb-2 px-2 py-1 w-[33vh] leading-tight focus:outline-none',//mr-14
 
   },
   //loansettings sb
@@ -80,9 +80,9 @@ const TextStyle = {
   cc: 'ml-20 w-36 mr-8 text-center',
 
   //ctc inner template
-  leavetextarea:'bg-gray-100 border-2  hover:border-blue-500 mt-2  mr- text-gray text-sm lg:w-[77vh] w-[85vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
+  leavetextarea:'bg-gray-200 border-2  hover:border-blue-500 mt-2  mr- text-gray text-sm lg:w-[77vh] w-[85vh] min-h-20 rounded-md px-2 py-1 w-64 leading-tight focus:outline-none',
 
-  leaveuploadinput: 'bg-gray-100 text-gray-700 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-20',
+  leaveuploadinput: 'bg-gray-200 text-gray-800 px-4  min-h-10 rounded border-2 hover:border-blue-500 flex justify-center items-center  mr-20',
 
 
   leavepolicyname: 'px-2 font-semibold  outline-none ',

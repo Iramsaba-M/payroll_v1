@@ -32,7 +32,7 @@ const RaiseRequestComponent = () => {
       {
         (!cardclick) &&
         chunkedSettingContent.map((chunk, index) => (
-          <div key={index} className='ml-32'>
+          <div key={index} className='ml-40 mt-40'>
             <CardConfig Config={chunk} handleCardClick={handleCardClick} />
           </div>
         ))}

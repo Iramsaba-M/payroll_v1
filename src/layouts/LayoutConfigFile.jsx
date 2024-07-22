@@ -30,23 +30,23 @@ export const sections = {
   section1: [
     {
       componentKey: "IconbarComponent",
-      style: " min-h-screen border-r border-gray-100 fixed start-0 w-14",
+      style: " min-h-screen  fixed start-0 ",
       config: IconConfig,
       content: [
         {
           componentKey: "LogoConfig",
-          style: "flex "
+          style: "flex bg-red-600 "
         },
       ],
     },
     {
       componentKey: "RoutesComponent",
-      style: "  ",
+      style: "  -ml-4 ",
       config: routesConfig,
     },
     {
       componentKey: "HeaderComponents",
-      style: "min-w-[167vh]  h-12 border-b-gray-50 text-gray-600 text-sm fixed ml-[15.8%]",//start-[19.6%] 72
+      style: "  min-w-[178vh]      fixed ml-[10.4%]",//start-[19.6%] 72
       content: [
         {
           componentKey: "ApplicationSearch",
@@ -57,3 +57,5 @@ export const sections = {
     },
   ],
 };
+
+

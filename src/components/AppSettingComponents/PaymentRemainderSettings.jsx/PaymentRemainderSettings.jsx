@@ -19,33 +19,17 @@ import DateComponent from '../../form/Formfields/date/DateComponent';
 const PaymentsReminderSettings = () => {
   const [payments, setPayments] = useState([]);
   const [values, setValues] = useState({
-    due_date: dayjs().format('YYYY-MM-DD'),
-    payment_date: dayjs().format('YYYY-MM-DD'),
+    due_date: dayjs().format('DD/MM/YYYY'),
+    payment_date: dayjs().format('DD/MM/YYYY'),
     payment_type: "onetime",
   });
-  // const [daterange, setDaterange] = useState({
-  //   startDate: dayjs().format('YYYY-MM-DD'),
-  //   endDate: dayjs().format('YYYY-MM-DD'),
-  // });
+  
   const [paymentType, setPaymentType] = useState('onetime'); // State to manage selected payment type
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addcard, setAddcard] = useState(false);
-
-  const handleRangeChange = (name, value, index = null) => {
-    if (index !== null) {
-      setPayments(prev => {
-        const newPayments = [...prev];
-        newPayments[index][name] = value;
-        return newPayments;
-      });
-    } else {
-      setValues(prevValues => ({
-        ...prevValues,
-        [name]: value,
-      }));
-    }
-    console.log('fghjk', name, value);
-  };
+  const [currentIndex, setCurrentIndex] = useState(null);
+  const [rec , setRec] = useState(null);
+ 
 
   const handleChange = (name, value, index = null) => {
     if (index !== null) {
@@ -73,7 +57,6 @@ const PaymentsReminderSettings = () => {
       }
     } catch (error) {
       console.error('Error posting data:', error);
-      // setErrorCode(error.response ? error.response.status : 500); // Set error code based on response
     }
   };
 
@@ -93,26 +76,26 @@ const PaymentsReminderSettings = () => {
         ...prevValues,
         [name]: type,
       }));
+      setPaymentType(type);
     }
-    setPaymentType(type);
+    
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setCurrentIndex(null);
   };
 
-  const handlemodel = () => {
-    // alert('click');
-    // console.log('click');
-    setIsModalOpen(true);
+  const handlemodel = (index = null) => {
 
+    setIsModalOpen(true);
+    setCurrentIndex(index);
   };
 
   const onSave = () => {
     const dataToSend = {
       ...values,
-      // startDate: daterange.startDate,
-      // endDate: daterange.endDate,
+      
     };
     console.log('dataToSendPOWS', dataToSend);
     axios.post('http://localhost:3000/paymentRemaindersetting1', dataToSend)
@@ -122,8 +105,8 @@ const PaymentsReminderSettings = () => {
         fetchingData();
         // Reset form values and hide the new reminder form
         setValues({
-          due_date: dayjs().format('YYYY-MM-DD'),
-          payment_date: dayjs().format('YYYY-MM-DD'),
+          due_date: dayjs().format('DD/MM/YYYY'),
+          payment_date: dayjs().format('DD/MM/YYYY'),
           payment_type: "onetime",
         });
         setAddcard(false);
@@ -147,28 +130,77 @@ const PaymentsReminderSettings = () => {
       });
   };
 
-  const handlerangecal = (start, end) => {
-    if (index !== null) {
-      setPayments(prev => ({
-        ...prev,
-        payment_date: start,
-        due_date: end
-      }));
+  const handleDelete = (index) => {
+    
+    const paymentToDelete = payments[index];
+    console.log('handleDelete called',paymentToDelete,'i',index);
+    axios.delete(`http://localhost:3000/paymentRemaindersetting1/${paymentToDelete.name}`)
+      .then(response => {
+        console.log('Data deleted successfully:', response.data);
+        fetchingData();
+      })
+      .catch(error => {
+        console.error('Error deleting data:', error);
+      });
+  };
+
+  // const handlerangecal = (start, end) => {
+
+  //   if (currentIndex !== null && payments[currentIndex]) {
+  //     setPayments(prev => {
+  //       const newPayments = [...prev];
+  //       newPayments[currentIndex].payment_date = start;
+  //       newPayments[currentIndex].due_date = end;
+  //       return newPayments;
+  //     });
+  //   } else {
+  //     setValues(prev => ({
+  //       ...prev,
+  //       payment_date: start,
+  //       due_date: end,
+  //     }));
+  //   }
+    
+  // };
+
+  const handlerangecal = (start = null, end = null, reccuringdates) => {
+    console.log("callllll"-start, end, reccuringdates);
+    if (currentIndex !== null && payments[currentIndex]) {
+      setPayments(prev => {
+        const newPayments = [...prev];
+        newPayments[currentIndex].payment_date = ( (start === null)? payments[currentIndex].payment_date: start);
+        newPayments[currentIndex].due_date = ((end === null)? payments[currentIndex].due_date: end);
+        newPayments[currentIndex].payment_type = reccuringdates ? 'recurring' : payments[currentIndex].payment_type;
+        newPayments[currentIndex].recurring_dates = reccuringdates;
+        return newPayments;
+      });
     } else {
       setValues(prev => ({
         ...prev,
-        payment_date: start,
-        due_date: end
+        payment_date: ( (start === null) ? values.payment_date: start),
+        due_date: ( (end === null) ? values.due_date: end),
+        payment_type: reccuringdates ? 'recurring' : values.payment_type,
+        recurring_dates: reccuringdates,
       }));
     }
-    // setValues(prev => ({
-    //   ...prev,
-    //   payment_date: start,
-    //   due_date: end
-    // }));
-
-    console.log('Selected Date Range:', start, end, values);
   };
+
+  // const handlerecurring =(dates)=>{
+  //   if (currentIndex !== null && payments[currentIndex]) {
+  //     setPayments(prev => {
+  //       const newPayments = [...prev];
+  //       newPayments[currentIndex].payment_type = "recurring",
+  //       newPayments[currentIndex].recurring_dates = dates;
+  //       return newPayments;
+  //     });
+  //   } else {
+  //     setValues(prev => ({
+  //       ...prev,
+  //       payment_type : "recurring",
+  //       recurring_dates : dates
+  //     }));
+  //   }
+  // }
 
   console.log('paymentType', paymentType, values);
 
@@ -179,12 +211,12 @@ const PaymentsReminderSettings = () => {
           <h2 className='flex place-items-baseline'>Payment Reminder Settings</h2>
           <TbClockDollar className='text-xl mt-1 ml-2' />
         </div>
-        <div>
+        {!addcard ? (<div>
           <button
             onClick={() => setAddcard(true)}
             className='ml-[59rem] object-right text-sm font-medium text-gray-600  '
           ><span className='border-b-2 py-1 border-gray-400'>Add New Reminder</span></button>
-        </div>
+        </div>) : null}
       </div>
       <div className={paymentStyles.wrapperStyle}>
         {payments.length > 0 ? (
@@ -221,7 +253,7 @@ const PaymentsReminderSettings = () => {
                   </div>
                 ))}
                 <div className=''>
-                  <div className={paymentStyles.dateInputContainer} onClick={handlemodel(index,)}>
+                  <div className={paymentStyles.dateInputContainer} onClick={() => handlemodel(index)}>
 
                     {config.map((field, j) => (
 
@@ -230,49 +262,19 @@ const PaymentsReminderSettings = () => {
                         {field.type === 'date' && (
                           <>
                             {/* <label className={paymentStyles.dateLabel}>{field.label}</label> */}
-                            
+
                             <input
                               type="text"
                               value={payment[field.name] || ''}
-                              onChange={(e) => handleRangeChange(field.name, e.target.value, index)}
+                              onChange={(e) => handleChange(field.name, e.target.value, index)}
                               className={paymentStyles.dateInput}
-                              // icon={field.icon}
                             />
                             <div className='-ml-6'>{field.icon}</div>
                           </>
-                          // <DateComponent
-                          //   name={field.name}
-                          //   placeholder={field.placeholder}
-                          //   onChange={(e) => handleRangeChange(field.name, e.target.value, index)}
-                          //   textcss=
-                          //   {paymentStyles.dateInput}
-                          //   // {TextStyle[field.textcss].input}
-                          //   value={payment[field.name] || ''}
-                          // />
+                          
                         )}
-
                       </div>
                     ))}
-                    {/* <div className={paymentStyles.dateInputRow}>
-                      <label className={paymentStyles.dateLabel}>Set Due Date</label>
-                      <input
-                        type="text"
-                        value={payment.due_date || ''}
-                        onChange={(e) => handleRangeChange('due_date', e.target.value, index)}
-                        className={paymentStyles.dateInput}
-                      />
-                    </div>
-                    <div className={paymentStyles.dateInputRow}>
-                      <label className={paymentStyles.dateLabel}>Set Payment Date</label>
-                      <input
-                        type="text"
-                        value={payment.payment_date || ''}
-                        onChange={(e) => handleRangeChange('payment_date', e.target.value, index)}
-                        className={paymentStyles.dateInput}
-                      />
-                    </div> */}
-
-
                   </div>
                 </div>
                 {ToggleConfig.map((toggle, k) => (
@@ -292,16 +294,21 @@ const PaymentsReminderSettings = () => {
                   </div>
                 ))}
               </div>
-              <button onClick={() => onUpdate(index)} className='mt-2 text-sm ml-20 px-4 py-1 bg-blue-500 text-white rounded'>
-                Update
-              </button>
+              <div className='flex'>
+                <button onClick={() => onUpdate(index)} className='mt-2 text-sm ml-20 px-4 py-1 bg-blue-500 text-white rounded'>
+                  Update
+                </button>
+                 <button  onClick={() => handleDelete(index)} className='mt-2 text-sm ml-9 px-4 bg-[#F64541] text-white rounded'> 
+                  Delete
+                </button>
+              </ div>
             </div>
           ))
         ) : (
           <div>No notifications available.</div>
         )}
 
-        {addcard && (
+        {addcard ? (
           <div className={paymentStyles.containerStyle}>
             <div className={paymentStyles.textContainerStyle}>
               {config.slice(0, 1).map((field, index) => (
@@ -334,15 +341,24 @@ const PaymentsReminderSettings = () => {
                 </div>
               ))}
               <div className=''>
+
                 <div className={paymentStyles.dateInputContainer} onClick={handlemodel}>
-                  <div className={paymentStyles.dateInputRow}>
-                    <label className={paymentStyles.dateLabel}>Set Due Date</label>
-                    <input type="text" value={values.due_date} onChange={(e) => handleRangeChange('due_date', e.target.value)} className={paymentStyles.dateInput} />
-                  </div>
-                  <div className={paymentStyles.dateInputRow}>
-                    <label className={paymentStyles.dateLabel}>Set Payment Date</label>
-                    <input type="text" value={values.payment_date} onChange={(e) => handleRangeChange('payment_date', e.target.value)} className={paymentStyles.dateInput} />
-                  </div>
+                  {config.map((field, j) => (
+                    <div key={j} className={paymentStyles.dateInputRow}>
+                      <label className={paymentStyles.dateLabel}>{field.label}</label>
+                      {field.type === 'date' && (
+                        <>
+                          <input
+                            type="text"
+                            value={values[field.name] || ''}
+                            onChange={(e) => handleChange(field.name, e.target.value)}
+                            className={paymentStyles.dateInput}
+                          />
+                          <div className='-ml-6'>{field.icon}</div>
+                        </>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
               {ToggleConfig.map((toggle, index) => (
@@ -368,14 +384,14 @@ const PaymentsReminderSettings = () => {
               </button>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
       <ModalComponent
 
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         config={Modalcalendarconfig}
-        component={<Calendar onRangeChange={handlerangecal} />}
+        component={<Calendar onRangeChange={handlerangecal} />} //rec={handlerecurring}
       />
     </div>
   );

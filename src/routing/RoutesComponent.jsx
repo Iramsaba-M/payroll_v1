@@ -39,7 +39,7 @@ import { useUserRole } from '../context/UserRoleContext';
 
 const RoutesComponent = () => {
   const { isAdmin } = useButtonState();
-  const { role } = useUserRole();
+  const { role ,shownav ,setshownav } = useUserRole();
 
 
   const filteredRoutes = role === "admin"
@@ -60,7 +60,7 @@ const RoutesComponent = () => {
   };
 
   return (
-    <div className="flex w-60 border-r border-gray-200">
+    <div className= {`flex  min-h-screen bg-white ${shownav === true ? 'w-44' : 'w-6'}`} >
       <Routes>{renderRoutes(filteredRoutes)}</Routes>
     </div>
   );

@@ -32,7 +32,7 @@ const HeadComponents = ({ config }) => {
           ))}
       </ul>
 
-      <div className="mb-3">
+      <div className="mb-3    ">
         <ApplicationSearch />
       </div>
     </div>
